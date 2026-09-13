@@ -332,6 +332,24 @@
     "Qc2"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-changed-mates-3",
+   "fen": "8/4p2K/Q2B4/1N1Np3/1pP1k1P1/6P1/2n1P3/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 18",
+   "themes": [
+    "Changed mates",
+    "Self-block",
+    "Dual avoidance (king flight)"
+   ],
+   "note": "Same Black unit (Sc2) makes both thematic defences: self-blocks on d4/e3. Each self-block lets EITHER White knight mate; the flight the defence unguards picks the knight, the bishop key/try picks the square by capturing the pawn that guards it (Bxb4 frees c3; Bxe7 frees d6/f6). 1.Bxb4? fails to 1...e6! closing the queen's 6th-rank threat line - the pawn the key removes.",
+   "solution": "#2 (9+5)   FEN 8/4p2K/Q2B4/1N1Np3/1pP1k1P1/6P1/2n1P3/8 w - - 0 1\nTry: 1.Bxb4? (threat: 2.Qg6#)\n   1...Sd4 2.Sbc3#\n   1...Se3 2.Sdc3#\n   (4 further moves allow the threat)\n   but 1...e6!\nTry: 1.Qa7? (zugzwang)\n   1...Se3 2.Qxe3#\n   1...Sa3/Se1/Sa1 2.Qe3#\n   1...exd6 2.Sxd6#/Sf6#  [dual]\n   1...e6 2.Sf6#\n   1...b3 2.Sdc3#/Sbc3#  [dual]\n   but 1...Sd4!\nTry: 1.Qb6? (zugzwang)\n   1...Se3 2.Qxe3#\n   1...Sa3/Se1/Sa1 2.Qe3#\n   1...exd6 2.Sxd6#/Sf6#  [dual]\n   1...e6 2.Sf6#\n   1...b3 2.Sdc3#/Sbc3#  [dual]\n   but 1...Sd4!\nKey: 1.Bxe7! (threat: 2.Qg6#)\n   1...Sd4 2.Sd6#\n   1...Se3 2.Sf6#\n   (4 further moves allow the threat)\nChanged continuations:\n   1...Se3: Sdc3# -> Qxe3#   [try Bxb4 vs try Qa7]\n   1...Se3: Sdc3# -> Qxe3#   [try Bxb4 vs try Qb6]\n   1...Sd4: Sbc3# -> Sxd6#   [try Bxb4 vs key Bxe7]\n   1...Se3: Sdc3# -> Sf6#   [try Bxb4 vs key Bxe7]\n   1...Se3: Qxe3# -> Sf6#   [try Qa7 vs key Bxe7]\n   1...Se3: Qxe3# -> Sf6#   [try Qb6 vs key Bxe7]\nTransferred continuations:\n   Sf6#: after e6 -> after Se3   [try Qa7 vs key Bxe7]\n   Sf6#: after e6 -> after Se3   [try Qb6 vs key Bxe7]\n(2184 nodes, 0.14s)",
+   "keys": [
+    "Bxe7"
+   ],
+   "cooked": false
   }
  ]
 }

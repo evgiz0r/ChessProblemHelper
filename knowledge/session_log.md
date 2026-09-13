@@ -267,3 +267,28 @@
   extra pawns block Black's other moves; the setting was rotated to enforce a single thematic defence.
 * Tool fixes: necessity now counts SET PLAY as content (wPg6 exists only so that 1...g6 is provided), and the
   dual-avoidance line no longer says "0 thematic defences" when there is no half-battery.
+
+## Session 18: same-piece changed mates (task set by Evgeni; his solution verified)
+* Task: a simple #2 with changed mates where the SAME Black unit makes both thematic defences (his sessions 16
+  and 17 used two different knights).
+* Claude's attempt: a whole-diagram search (set play + quiet key + changed mates, holes tolerated, then a beam
+  hole-closer, then the full solver). Four skeleton families, ~5M positions. Found geometries but nothing sound:
+      bKd5 bSc6 (guards d4 and e5) wRe4: every set mate on d4, every solution mate on e5;
+      8/8/2n2B2/1K1k4/1Q2R3/8/8/8: reciprocal change 1...Se5 2.Rxe5 / 1...Sd4 2.Qxd4 -> Qxe5 / Rxd4 after 1.Qe7,
+      but the key square is attacked by the knight and 1...Sa7+ has no answer.
+  Two hand completions were cooked (mates in 1 the solver saw and Claude did not); a third became a complete
+  block that every waiting move solves. Recorded as a negative result in lessons.jsonl.
+* Evgeni's solution:
+      8/4p2K/Q2B4/1N1Np3/1pP1k1P1/6P1/2n1P3/8   #2 (9+5)
+      1.Bxb4? (2.Qg6#)  1...Sd4 2.Sbc3#   1...Se3 2.Sdc3#   but 1...e6! (closes the 6th rank)
+      1.Bxe7! (2.Qg6#)  1...Sd4 2.Sd6#    1...Se3 2.Sf6#
+  His order: (1) the squares and the effect that creates several mates at once - here the c2 knight's self-blocks
+  on d4/e3, each of which lets EITHER White knight mate; (2) the differentiation - the mating squares are guarded
+  by Black pawns and each bishop capture removes one guard, so each phase allows one pair; (3) then a threat and
+  cleaning. The flight the defence unguards picks the knight (2.Sf6+? Ke3!, 2.Sd6+? Kd4! - unified dual
+  avoidance), the phase picks the square. His own verdict: play somewhat natural, not an ideal problem, but the
+  required theme.
+* Critique (tool): capture key; wBd6 plays only the key; wKh7 passive; 14 units. Extra phases 1.Qa7?/1.Qb6?
+  (zugzwang, 1...Se3 2.Qxe3#) refuted by 1...Sd4!.
+* Tool gain: compose/changed_mates_search.py (the whole-diagram evaluator and beam hole-closer), kept with its
+  negative result documented.
