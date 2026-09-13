@@ -106,6 +106,11 @@ def piece_necessity(problem, res, time_limit=20):
             new_tries = {ph['first_move']['san'] for ph in r.get('phases', [])
                          if ph['type'] == 'try' and ph['first_move']['uci'][:2] == kp_sq}
             lost_tries = base_tries - new_tries
+            # changed-mate relations are content whoever makes the try (E. Bourd s19: the try 1.e6? by a pawn
+            # carries the changes); so are duals introduced into a try phase that takes part in a change
+            def _changes(rr):
+                return {(c['defence'], tuple(c['phases'])) for c in rr.get('relations', {}).get('changed', [])}
+            lost_changes = _changes(res) - _changes(r)
             try:
                 from .motives import dual_avoidance_after as _da
                 km = chess.Move.from_uci(key_uci)
@@ -119,6 +124,9 @@ def piece_necessity(problem, res, time_limit=20):
             if lost_tries:
                 out[chess.square_name(sq)] = ('needed for the CONTENT: without it the tries '
                                               + ', '.join('1.' + t + '?' for t in sorted(lost_tries)) + ' are lost')
+            elif lost_changes:
+                out[chess.square_name(sq)] = ('needed for the CONTENT: without it the changed mate(s) after '
+                                              + ', '.join(sorted({'1...' + d for d, _ in lost_changes})) + ' are lost')
             elif duals:
                 out[chess.square_name(sq)] = ('needed for the CONTENT: without it ' +
                     ', '.join(f"1...{v['defence']['san']} allows {'/'.join(c['san'] for c in v['continuations'])}" for v in duals[:2]))
@@ -330,7 +338,15 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
             else:
                 why = verdict.replace('needed', '').strip(' ()')
                 why = 'no solution without it' if why.startswith('no solution') else why
-                add('minor', 'cook-stopper', f"{_pname(board, sq)} takes part in no mate; needed for soundness ({why})")
+                # a unit that PLAYS a try taking part in a changed-mate relation is thematic, not a cook-stopper
+                changed_phases = {ph for c in res.get('relations', {}).get('changed', []) for ph in c['phases']}
+                my_tries = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == chess.square_name(sq)
+                            and f"try {t['first_move']['san']}" in changed_phases]
+                if my_tries:
+                    add('plus', 'thematic unit', f"{_pname(board, sq)} takes part in no mate but plays the thematic try "
+                                                 + ', '.join('1.' + t + '?' for t in my_tries) + ' (changed mates)')
+                else:
+                    add('minor', 'cook-stopper', f"{_pname(board, sq)} takes part in no mate; needed for soundness ({why})")
         else:
             add('major', 'superfluous piece', f"{_pname(board, sq)} takes part in no mate and is not needed for soundness")
     for sq, verdict in nec.items():

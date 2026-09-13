@@ -350,6 +350,24 @@
     "Bxe7"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-changed-mates-4",
+   "fen": "1K3b2/1P1p1B2/3r2p1/Q3P1RN/R1n1k2p/3p1p2/4nP2/4Nb2",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 19",
+   "themes": [
+    "Changed mates",
+    "Self-block",
+    "Two units defend on the same square"
+   ],
+   "note": "Task: two different units defend on the same square, mates changed. Rd6-d4 and Se2-d4 self-block d4 (a diagram flight). Try 1.e6? (2.Qe5#): Rd4 2.Bxg6#, Sd4 2.Rg4#, Rxe6 2.Qd5#, but 1...Bg7!. Key 1.Qd2! (2.Qe3#): Rd4 2.Sf6#, Sd4 2.Qf4#, Re6 2.Qxd3#. Three changes and a changed threat. The queen is the selector: on a5 it holds d5/e5 (try mates), on d2 it holds e3/f4 (key mates). Sc4 is pinned by Ra4 (so Sxd2 is impossible and 1...Kd4 2.Rxc4#). bPg6 stops Qf5 (try dual), bPh4 stops Sg3 (key dual): each alone looks removable, together they are not.",
+   "solution": "#2 (10+11)   FEN 1K3b2/1P1p1B2/3r2p1/Q3P1RN/R1n1k2p/3p1p2/4nP2/4Nb2 w - - 0 1\nSet play:\n   1...Rf6/Rc6/Rb6/Ra6 2.Qd5#\n   1...Rd5 2.Qxd5#\n   1...Rd4 2.Bxg6#\n   1...Kd4 2.Rxc4#\n   unprovided: Bg7, Be7, Bh6, Re6, Sf4, Sd4, Sg3, Sc3, Sg1, Sc1, Bh3, Bg2, gxh5, h3, d2\nTry: 1.Bxc4? (threat: 2.Bxd3#/Bd5#)\n   (21 further moves allow the threat)\n   but 1...Sd4!\nTry: 1.exd6? (threat: 2.Qe5#/Qd5#)\n   (15 further moves allow the threat)\n   but 1...Bxd6+!\nTry: 1.e6? (threat: 2.Qe5#)\n   1...Rxe6 2.Qd5#\n   1...Rd5 2.Qxd5#\n   1...Rd4 2.Bxg6#\n   1...Sd4 2.Rg4#\n   (17 further moves allow the threat)\n   but 1...Bg7!\nKey: 1.Qd2! (threat: 2.Qe3#)\n   1...Re6 2.Qxd3#\n   1...Rd4 2.Sf6#\n   1...Kd4 2.Rxc4#\n   1...Sd4 2.Qf4#\n   (17 further moves allow the threat)\nChanged continuations:\n   1...Rd4: Bxg6# -> Sf6#   [set play vs key Qd2]\n   1...Rd4: Bxg6# -> Sf6#   [try e6 vs key Qd2]\n   1...Re6: Qd5# -> Qxd3#   [try e6 vs key Qd2]\n   1...Sd4: Rg4# -> Qxf4#   [try e6 vs key Qd2]\nPatterns:\n   White interference try: 1.Bxc4? cuts Ra4 -> d4; 1...Sd4!   [try Bxc4]\n   changed threat: Bd5#/Bxd3# / Qd5#/Qe5#   [try Bxc4 vs try exd6]\n   changed threat: Bd5#/Bxd3# / Qe5#   [try Bxc4 vs try e6]\n   changed threat: Bd5#/Bxd3# / Qe3#   [try Bxc4 vs key Qd2]\n   changed threat: Qd5#/Qe5# / Qe3#   [try exd6 vs key Qd2]\n   changed threat: Qe5# / Qe3#   [try e6 vs key Qd2]\n(5901 nodes, 0.31s)",
+   "keys": [
+    "Qd2"
+   ],
+   "cooked": false
   }
  ]
 }

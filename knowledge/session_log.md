@@ -292,3 +292,21 @@
   (zugzwang, 1...Se3 2.Qxe3#) refuted by 1...Sd4!.
 * Tool gain: compose/changed_mates_search.py (the whole-diagram evaluator and beam hole-closer), kept with its
   negative result documented.
+
+## Session 19: two different units defend on the same square, mates changed
+* Evgeni's lessons: mating squares and lines must be close to the king; a fast start is two units CAPTURING a
+  White unit on the same square (8/3n4/8/3kP3/8/4r3/8/8) or a Grimshaw near the king; then arrange the mates,
+  then the differentiation, then a threat those defences parry.
+* Claude's searches (Grimshaw families near d5, then his capture scheme with Q/R/S/P enumerations, ~4M
+  positions) found no sound skeleton; the recurring cost is covering the king's field for a queen mate on the
+  other side of the self-block. Hand line: 1...Rxe5 2.Qd3# by line opening was reached, the Sxe5 side was not.
+* Evgeni's solution:
+      1K3b2/1P1p1B2/3r2p1/Q3P1RN/R1n1k2p/3p1p2/4nP2/4Nb2   #2 (10+11)
+      1.e6? (2.Qe5#)  1...Rd4 2.Bxg6#  1...Sd4 2.Rg4#  1...Rxe6 2.Qd5#   but 1...Bg7!
+      1.Qd2! (2.Qe3#) 1...Rd4 2.Sf6#   1...Sd4 2.Qf4#  1...Re6 2.Qxd3#  (1...Kd4 2.Rxc4#)
+  Technical details verified: Sc4 pinned by Ra4 (only Se2 reaches d4; Sxd2 impossible; Kd4 met by Rxc4#);
+  Bxg6 fails after the key because the bishop leaving f7 abandons d5 once the queen has left a5; Rg4 fails after
+  the key because f5/e5 are no longer held (in the try the e6 pawn holds f5, the queen e5); Sf6 fails in the try
+  because f4 is open (Qd2 covers it in the solution); bPg6 and bPh4 each removable alone, not together.
+* Tool gains: critique counts lost changed-mate relations as content and marks a try-playing unit thematic
+  (wPe5 was 'cook-stopper', bPg6 'not needed').
