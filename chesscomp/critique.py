@@ -310,6 +310,9 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     sp = next((p for p in res['phases'] if p['type'] == 'set'), None)
     if sp:
         unprov = sp.get('unprovided', [])
+        checks = [u for u in unprov if u.endswith('+')]
+        if checks:
+            add('major', 'unprovided check', 'unprovided CHECK in the set play: ' + ', '.join(checks) + ' (fatal, E. Bourd)')
         if unprov and len(unprov) <= 2:
             add('minor', 'unprovided move', 'unprovided in diagram: ' + ', '.join(unprov) + ' (hints at the key)')
 

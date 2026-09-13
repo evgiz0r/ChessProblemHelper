@@ -411,10 +411,26 @@
     "Changed mates",
     "King key"
    ],
-   "note": "Bishop version of the one-move change, king boxed (no flights). Set 1...Bxd4 2.Qf3# (self-block: in the diagram Qf3+ Kxd4). 1.Kc5! (2.Qf3#, the king now protects d4) 1...Bxd4+ 2.Qxd4#. Six units. Flaws: one defence, the thematic defence is a check, Bg7/Bf6/Be5+ unprovided in the set (1...Be5+! refutes every queen/rook try).",
+   "note": "Bishop version of the one-move change, king boxed (no flights). Set 1...Bxd4 2.Qf3# (self-block: in the diagram Qf3+ Kxd4). 1.Kc5! (2.Qf3#, the king now protects d4) 1...Bxd4+ 2.Qxd4#. Six units. Flaws: one defence, the thematic defence is a check, Bg7/Bf6/Be5+ unprovided in the set (1...Be5+! refutes every queen/rook try). REJECTED by E. Bourd: 1...Be5+ is an unprovided check in the set play, a fatal flaw. Replaced by claude-one-bishop-change-2.",
    "solution": "#2 (4+2)   FEN 7b/8/3K4/8/3Pk3/2Q5/8/5R2 w - - 0 1\nSet play:\n   1...Bxd4 2.Qf3#\n   unprovided: Bg7, Bf6, Be5+\nTry: 1.Qg3? (threat: 2.Rf4#)\n   (4 further moves allow the threat)\n   but 1...Be5+!\nTry: 1.Qd2? (threat: 2.Rf4#)\n   (3 further moves allow the threat)\n   but 1...Be5+!\nTry: 1.Rf3? (threat: 2.Qe3#/Qd3#)\n   (3 further moves allow the threat)\n   but 1...Be5+!\nKey: 1.Kc5! (threat: 2.Qf3#)\n   1...Bxd4+ 2.Qxd4#\n   (3 further moves allow the threat)\nChanged continuations:\n   1...Bxd4: Qf3# -> Qxd4#   [set play vs key Kc5]\nPatterns:\n   changed threat: Rf4# / Qd3#/Qe3#   [try Qg3 vs try Rf3]\n   changed threat: Rf4# / Qf3#   [try Qg3 vs key Kc5]\n   changed threat: Rf4# / Qd3#/Qe3#   [try Qd2 vs try Rf3]\n   changed threat: Rf4# / Qf3#   [try Qd2 vs key Kc5]\n   changed threat: Qd3#/Qe3# / Qf3#   [try Rf3 vs key Kc5]\n(1382 nodes, 0.08s)",
    "keys": [
     "Kc5"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "claude-one-bishop-change-2",
+   "fen": "7n/6b1/1Np5/R7/3Pk1K1/2Q5/8/8",
+   "stip": "#2",
+   "author": "Claude (task and constraints by E. Bourd)",
+   "source": "session 19",
+   "themes": [
+    "Changed mates"
+   ],
+   "note": "Bishop version, no flights, no unprovided checks, quiet defence. Set 1...Bxd4 2.Qf3# (self-block; in the diagram Qf3+ Kxd4), Bf8/Bh6 2.Re5#, Be5 2.Rxe5#. 1.Ra4! (2.Qf3#): the rook leaves the 5th rank to protect d4, so 1...Bxd4 2.Qxd4#. Tries by the key piece: 1.Rf5? Sg6!, 1.Rd5? cxd5!, 1.Ra3? Bxd4!. bSh8 and bPc6 exist to refute the tries; wSb6 blocks the rook from b5/b6 squares that would cook.",
+   "solution": "#2 (5+4)   FEN 7n/6b1/1Np5/R7/3Pk1K1/2Q5/8/8 w - - 0 1\nSet play:\n   1...Bf8/Bh6 2.Re5#\n   1...Be5 2.Rxe5#\n   1...Bxd4 2.Qf3#\n   unprovided: Sf7, Sg6, Bf6, c5\nTry: 1.Sc4? (threat: 2.Sd6#/Sd2#/Qe3#)\n   (7 further moves allow the threat)\n   but 1...c5!\nTry: 1.Rf5? (threat: 2.Rf4#)\n   1...Bh6 2.Re5#\n   1...Be5 2.Rxe5#\n   1...Bxd4 2.Qf3#\n   (4 further moves allow the threat)\n   but 1...Sg6!\nTry: 1.Rd5? (threat: 2.Qf3#)\n   (8 further moves allow the threat)\n   but 1...cxd5!\nTry: 1.Ra3? (threat: 2.Qe3#/Qd3#)\n   (7 further moves allow the threat)\n   but 1...Bxd4!\nKey: 1.Ra4! (threat: 2.Qf3#)\n   1...Bxd4 2.Qxd4#\n   (7 further moves allow the threat)\nChanged continuations:\n   1...Bxd4: Qf3# -> Qxd4#   [set play vs key Ra4]\n   1...Bxd4: Qf3# -> Qxd4#   [try Rf5 vs key Ra4]\nPatterns:\n   White interference try: 1.Sc4? cuts Qc3 -> c5; 1...c5!   [try Sc4]\n   changed threat: Qe3#/Sd2#/Sd6# / Rf4#   [try Sc4 vs try Rf5]\n   changed threat: Qe3#/Sd2#/Sd6# / Qf3#   [try Sc4 vs try Rd5]\n   changed threat: Qe3#/Sd2#/Sd6# / Qf3#   [try Sc4 vs key Ra4]\n   changed threat: Rf4# / Qf3#   [try Rf5 vs try Rd5]\n   changed threat: Rf4# / Qd3#/Qe3#   [try Rf5 vs try Ra3]\n   changed threat: Rf4# / Qf3#   [try Rf5 vs key Ra4]\n   changed threat: Qf3# / Qd3#/Qe3#   [try Rd5 vs try Ra3]\n   changed threat: Qd3#/Qe3# / Qf3#   [try Ra3 vs key Ra4]\n   Dombrovskis: Bxd4   [key Ra4 vs try Rf5]\n(2958 nodes, 0.16s)",
+   "keys": [
+    "Ra4"
    ],
    "cooked": false
   }

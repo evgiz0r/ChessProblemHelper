@@ -325,3 +325,9 @@
 * Bishop version (task): with a no-flights filter in the evaluator the same enumeration gave sound miniatures directly:
       7b/8/3K4/8/3Pk3/2Q5/8/5R2   #2 (4+2)   set 1...Bxd4 2.Qf3#;  1.Kc5! (2.Qf3#) 1...Bxd4+ 2.Qxd4#
   King key protecting d4. Flaws: one defence, the defence checks, Bg7/Bf6/Be5+ unprovided.
+* Evgeni: an unprovided CHECK in the set play is a fatal flaw -> the 6-unit miniature (1...Be5+) is rejected; rule
+  added to the evaluator (rejects) and the critique (major). Rerun with no flights + no unprovided checks:
+      7n/6b1/1Np5/R7/3Pk1K1/2Q5/8/8   #2 (5+4)   set 1...Bxd4 2.Qf3#;  1.Ra4! (2.Qf3#) 1...Bxd4 2.Qxd4#
+      tries 1.Rf5? Sg6!  1.Rd5? cxd5!  1.Ra3? Bxd4!
+  Quiet defence, no flights, no unprovided checks; four unprovided quiet moves in the set. Closer bug found: cook
+  count was capped, so a 12-key position looked like a 2-key one; fixed (exact count up to 20).
