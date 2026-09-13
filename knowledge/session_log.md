@@ -362,3 +362,35 @@
   1...e5!, key 1.Qd2! (Qd5#/Qf4#) - both self-pin mates changed by the queen post; threat by the Bg6/Sf5 battery.
   Solver: sound; thematic dual after 1...Rbxf5 (Qd5#/Rxe7#, the d7 rook mating on the e-file for the same pin
   reason) - Rd7->d8 removes it with nothing else changed; also Qd4+ Rxd4/Qxd4, 18 units.
+
+## Session 20: composing on the bench, and what the journal showed
+
+* Tooling: the Composing Bench artifact (board with place/move/remove, rotate, mirror, shift, undo, FEN load,
+  pre-key solving via `analysis.js`, post-key solving with threat/holes, journal to the artifact db). Evgeni
+  composed on it for three sittings; the journal (383 steps, 90 solves, no typed notes) was read back with
+  `read_db` and condensed. The journal now has a "story only" filter (solves, notes, transforms) and collapsed
+  solve lines, because the raw list was too verbose to review.
+* His task: self-pin mates by two Black units capturing on one square, changed between set and solution.
+  What he reported as the hard part: a REASON why the thematic captures are defences.
+* Sitting 1 (17:49, 2 min): the scheme from our task, 8/3r4/8/R4N2/1R1Pk1P1/6P1/K3P3/3N2b1; post-key: double
+  threat Re5#/Sc3#.
+* Sitting 2 (17:53-18:38, 206 steps): same scheme with Rc4/Rb4 pinning, queen on b5/c1/a5, then a rotation
+  (18:01), a shift, a second double rotation (18:10) and two more rotations (18:27, 18:28) - the structure was
+  turned around looking for a threat the captures would stop. Every post-key solve gave a threat with one or two
+  holes or "no threat"; the two pre-key solves (18:07, 18:37) found only checking tries and no key. A 16-minute
+  stretch (18:10-18:26) of placements without a single solve produced nothing. Ended at
+  b3R3/K5b1/B5p1/6Q1/3kN2R/1PN5/3B1n2/4r3 (threat Qc5#, hole Sxe4), abandoned.
+* Sitting 3 (19:26-19:59, 164 steps): board CLEARED and rebuilt from the idea: bKd4, wPe4 as the capture
+  square, bRe8 on the file, a Black bishop/rook on the a8 diagonal, wRh4 pinning the rank, knights a5/c5, Ka1.
+  Queen tried on g3 (double threat Qe3/Qc3), a2 (Qc4#), e2 (double threat Qd3/Qd1 with Kf6), then knight
+  threats Sab3/Scb3 - each solve showed a double threat or holes, none gave the captures a reason. 19:49: the
+  a8 rook became a QUEEN, the White king went to e1 with a Black pawn e2 and knight d1 in front; 19:56: Rg5 and
+  Qh2 removed, Qh5 placed (set mates Qe5#/Qd5#), moved to e2: post-key threat Qd3# and the captures on e4 now
+  PIN the queen against Ke1 while self-pinning against Rh4 - the reason found. Then pre-key: 1.fxe8=S cook
+  (f7 pawn removed), Qf3/Qxe2 double key (Bh1 added: 1.Qf3? Bxf3!), Sf2 dual Qxf2 (h3 -> g3).
+* Result (E. Bourd): q3r3/8/3B4/N1N4Q/p1PkPR1r/6p1/3Pp3/3nK2b - set 1...Rxe4 2.Qe5#, 1...Qxe4 2.Qd5#;
+  1.Qf3? (2.Qd3#) Bxf3!; 1.Qxe2! (2.Qd3#) 1...Rxe4 2.Se6#, 1...Qxe4 2.Sc6#. Sound. Capture key, 18 units;
+  the solver's necessity check shows bRh4 and the Rf4 shift unnecessary: q3r3/8/3B4/N1N4Q/p1PkP2R/6p1/3Pp3/3nK2b
+  (17 units) has the same play. Recorded as bourd-queen-pin-selfpin.
+* Critique change: a White king anchoring a pin that a defence creates is now reported as 'thematic king'
+  (with the pinning defences) instead of 'passive king'.

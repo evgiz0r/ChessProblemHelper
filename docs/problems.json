@@ -504,6 +504,24 @@
     "Qd2"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-queen-pin-selfpin",
+   "fen": "q3r3/8/3B4/N1N4Q/p1PkPR1r/6p1/3Pp3/3nK2b",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 20 (composed on the bench, 383 journal steps)",
+   "themes": [
+    "Self-pin by capture",
+    "Changed mates",
+    "Pin of the white queen"
+   ],
+   "note": "Black Qa8 and Re8 both aim at e4 along lines that continue to the white Qe2/Ke1: the key 1.Qxe2! (2.Qd3#) makes each capture on e4 a defence because the capturer PINS the queen against Ke1, and the same capture self-pins the capturer against Rf4. Set: Rxe4 2.Qe5#, Qxe4 2.Qd5# (Qh5 exploits the self-pin); key: Rxe4 2.Se6#, Qxe4 2.Sc6# (knight checks the pinned piece cannot answer). Try 1.Qf3? (2.Qd3#) Bxf3!, the h1 bishop turning the cook into a try; g3 pawn removes the Qxf2 dual after Sf2. Flaws: capture key, 18 units. Solver-verified trim: bRh4 removed and the pinner back on h4 (q3r3/8/3B4/N1N4Q/p1PkP2R/6p1/3Pp3/3nK2b, 17 units) keeps everything.",
+   "solution": "#2 (9+9)   FEN q3r3/8/3B4/N1N4Q/p1PkPR1r/6p1/3Pp3/3nK2b w - - 0 1\nSet play:\n   1...Rh8/Rg8/Rf8/Rd8/Rc8/Rb8/Rxe4 2.Qe5#\n   1...Re5 2.Qxe5#\n   1...Qd8/Qc8/Qb8/Qa7/Qa6/Qxa5/Qxe4 2.Qd5#\n   1...Qd5 2.Qxd5#\n   unprovided: Re7, Re6, Qb7, Qc6, Rxh5, Rg4, Rxf4, Rh3, Rh2, Bxe4, Bf3, Bg2, Se3, Sc3, Sf2, Sb2, a3, g2\nTry: 1.Qf3? (threat: 2.Qd3#)\n   1...Se3 2.Qxe3#\n   1...Sf2/Sb2 2.Qe3#/Qc3#  [dual]\n   (32 further moves allow the threat)\n   but 1...Bxf3!\nKey: 1.Qxe2! (threat: 2.Qd3#)\n   1...Rxe4 2.Se6#\n   1...Qxe4 2.Sc6#\n   1...Sf2/Sb2 2.Qe3#\n   (33 further moves allow the threat)\nChanged continuations:\n   1...Qxe4: Qd5# -> Sc6#   [set play vs key Qxe2]\n   1...Rxe4: Qe5# -> Se6#   [set play vs key Qxe2]\n(5430 nodes, 0.21s)",
+   "keys": [
+    "Qxe2"
+   ],
+   "cooked": false
   }
  ]
 }

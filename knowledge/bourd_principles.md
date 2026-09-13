@@ -109,3 +109,27 @@ bourd-one-knight-change, bourd-selfpin-changed-mates-2, and the Claude settings 
   rotate, reflect, move pieces, respect the constraints of the position.
 * Claude's board sight is unreliable (asserted "no mate in one", solver found three, twice). Every step is
   checked, and the check is cheap.
+
+## Session 20: the reason for a defence (from Evgeni's bench journal)
+
+Evgeni composed a two-capture self-pin problem on the bench and said afterwards that the issue was
+"finding a reason why the thematic moves are defenses". The journal shows what that costs and what
+solved it:
+
+- A scheme with a good mechanism (two Black pieces capturing on e4, a rank pinner, knight mates) is not a
+  problem until the captures STOP something. Rotating, shifting and re-posting the queen around such a
+  scheme for 45 minutes gave threats with holes, double threats, or no threat - never a reason.
+- The reason came from a line geometry: put the threat piece (the queen) and the White king on the
+  extension of the capture line (e8-e4-e2-e1). Then every capture on e4 pins the queen, which is why the
+  threat 2.Qd3 fails; the same capture self-pins the capturer against the rank rook, which is what the new
+  knight mates use. One Black rook was changed into a queen so both captures reach e4 from different lines
+  and both land on the pinning file.
+- The set mates come from the key piece (Qh5: Qe5#/Qd5#), which moves to e2 and switches them off -
+  the same shape as bourd-one-knight-change and the self-pin problem of session 19.
+- Finishing is a short loop of pre-key solves: cook by promotion -> remove the pawn; two keys with the
+  same threat -> give Black a capture on the unwanted key square (Bh1 -> Bxf3!) which makes it a try; dual
+  after a side defence -> a Black pawn guarding the dual square. Each fix took under a minute once the
+  solver named the flaw.
+- Last step, which he skipped: remove pieces and re-solve. bRh4 and the Rf4 shift were unnecessary.
+- Process rule: after a few solves without a reason for the defences, clear and rebuild from the idea. The
+  fresh sitting took 33 minutes; the rotated one took 45 and ended nowhere.

@@ -75,6 +75,30 @@ def mate_participation(problem, res):
     return use
 
 
+def king_pin_anchor(problem, res):
+    """Defences of the key phase that PIN a White piece against the White king (E. Bourd s20: the White
+    king is thematic when it anchors the pin a defence creates - 1...Rxe4 pinning Qe2 is why the threat
+    fails). Returns strings like '1...Rxe4 pins Qe2'."""
+    out = []
+    key_ph = next((ph for ph in res.get('phases', []) if ph['type'] == 'key'), None)
+    if not key_ph:
+        return out
+    b1 = problem.board.copy()
+    b1.push(chess.Move.from_uci(key_ph['first_move']['uci']))
+    wk = b1.king(chess.WHITE)
+    if wk is None:
+        return out
+    before = {sq for sq in chess.SquareSet(b1.occupied_co[chess.WHITE]) if b1.is_pinned(chess.WHITE, sq)}
+    for v in key_ph['variations']:
+        if v['threat_repeat'] or not v['continuations']:
+            continue
+        b2 = b1.copy(); b2.push(chess.Move.from_uci(v['defence']['uci']))
+        new = {sq for sq in chess.SquareSet(b2.occupied_co[chess.WHITE]) if b2.is_pinned(chess.WHITE, sq)} - before
+        for sq in sorted(new):
+            out.append(f"1...{v['defence']['san']} pins {_pname(b2, sq)}")
+    return out
+
+
 def piece_necessity(problem, res, time_limit=20):
     """Remove each non-royal piece from the diagram: does the problem stay sound with the same key?
     If yes, the piece is not needed for soundness (it may still be needed for a variation)."""
@@ -328,7 +352,12 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
             continue
         verdict = nec.get(name, '')
         if p.piece_type == chess.KING:
-            add('minor', 'passive king', f"{_pname(board, sq)} takes part in no mate (acceptable if placed only to avoid checks)")
+            anchors = king_pin_anchor(problem, res)
+            if anchors:
+                add('plus', 'thematic king', f"{_pname(board, sq)} takes part in no mate but anchors a pin the defence creates: "
+                                             + ', '.join(anchors))
+            else:
+                add('minor', 'passive king', f"{_pname(board, sq)} takes part in no mate (acceptable if placed only to avoid checks)")
         elif sq == kmove.from_square:
             add('minor', 'passive piece', f"{_pname(board, sq)} takes part in no mate (forgivable: it plays the key)")
         elif verdict.startswith('needed'):
