@@ -358,3 +358,7 @@
   blockers + a6 plug), a plug that kept the rook's thematic line, protectors without lines to the king, a
   protector that does not capture with mate. Still open: the double threat (Qe3 protected by the front knight)
   and the gxf3 dual.
+* Evgeni's two-rook version 8/3Rp1K1/6B1/1r3N1R/2N1k2P/1p4B1/2b1P3/1n2Qrq1: try 1.Qc3? (Qe5#/Qf3#) refuted by
+  1...e5!, key 1.Qd2! (Qd5#/Qf4#) - both self-pin mates changed by the queen post; threat by the Bg6/Sf5 battery.
+  Solver: sound; thematic dual after 1...Rbxf5 (Qd5#/Rxe7#, the d7 rook mating on the e-file for the same pin
+  reason) - Rd7->d8 removes it with nothing else changed; also Qd4+ Rxd4/Qxd4, 18 units.

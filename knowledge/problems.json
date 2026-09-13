@@ -487,6 +487,23 @@
     "Qg3"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-two-rook-selfpin",
+   "fen": "8/3Rp1K1/6B1/1r3N1R/2N1k2P/1p4B1/2b1P3/1n2Qrq1",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 19",
+   "themes": [
+    "Self-pin by capture",
+    "Changed mates"
+   ],
+   "note": "Two rooks self-pin on f5 (pinner Bg6), threat by the Bg6/Sf5 battery. 1.Qc3? (2.Sfd6#) Rbxf5 2.Qe5#, Rfxf5 2.Qf3# but 1...e5! (blocks c3-e5, guards d4/f4). 1.Qd2! (2.Sfd6#) Rbxf5 2.Qd5#, Rfxf5 2.Qf4#: both self-pin mates changed between try and key by the queen post. Flaws: thematic dual 1...Rbxf5 2.Qd5#/Rxe7# (the d7 rook protects d5 and also mates on the e-file because the pinned rook cannot interpose on e5); Rd7->d8 removes it. 1...Qd4+ Rxd4/Qxd4 dual; 18 units; Kg7 passive; Ph4 only stops Rh4+.",
+   "solution": "#2 (10+8)   FEN 8/3Rp1K1/6B1/1r3N1R/2N1k2P/1p4B1/2b1P3/1n2Qrq1 w - - 0 1\nSet play:\n   1...Qd4+ 2.Rxd4#\n   1...Qxg3/Qh2/Qg2/Qh1 2.Rd4#\n   1...Rf2 2.Rd4#\n   1...Sc3/Sa3 2.Sd2#\n   1...Sd2 2.Sxd2#\n   unprovided: Rb8, Rb7, Rb6, Rbxf5, Re5, Rd5, Rc5, Ra5, Rb4, Bd3, Bd1, Qa7, Qb6, Qc5, Qe3, Qf2, Rfxf5, Rf4, Rf3, Rxe1, e6, b2, e5\nTry: 1.Qc3? (threat: 2.Sfd6#)\n   1...Rbxf5 2.Qe5#\n   1...Re5 2.Qxe5#\n   1...Qd4+ 2.Rxd4#/Qxd4#  [dual]\n   1...Qxg3 2.Rd4#/Qd4#  [dual]\n   1...Rfxf5 2.Qf3#\n   1...Sxc3 2.Sd2#\n   (27 further moves allow the threat)\n   but 1...e5!\nTry: 1.Qf2? (threat: 2.Rd4#/Sfd6#)\n   1...e5 2.Se7#/Sh6#/Sd4#/Sfe3#  [dual]\n   (24 further moves allow the threat)\n   but 1...Qxf2!\nKey: 1.Qd2! (threat: 2.Sfd6#)\n   1...Rbxf5 2.Rxe7#/Qd5#  [dual]\n   1...Bd3 2.Qxd3#\n   1...Qd4+ 2.Rxd4#/Qxd4#  [dual]\n   1...Rfxf5 2.Qf4#\n   1...Sxd2 2.Sxd2#\n   (29 further moves allow the threat)\nChanged continuations:\n   1...Rfxf5: Qf3# -> Qf4#   [try Qc3 vs key Qd2]\n(8444 nodes, 0.44s)",
+   "keys": [
+    "Qd2"
+   ],
+   "cooked": false
   }
  ]
 }
