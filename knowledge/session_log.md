@@ -346,3 +346,8 @@
   1.Qh5 itself (2.Qh1# unstoppable). Two-unit repairs (g4/e3 changes + one Black unit) found none. The evaluator
   accepts his position under every filter, so the miss was the material budget (one pawn slot, no Black plugs)
   and a wrong hand assumption (new mates must be adjacent and protected) - recorded in lessons.
+* Evgeni's sound version: 3rN2b/7b/8/n1Q5/1R1Pk1P1/4P3/4K3/8 - the knight a5 refutes 1.d5+ AND 1.Sc7 (1...Sc4!),
+  so the phases are inverted: 1.Sc7? shows Qd5#/Qe7#, the key 1.Qh5! (2.Qh1#) shows Sd6#/Sf6#. I had found the
+  a5 knight and rejected it because it refuted Sc7 - the missing intuition is 'a resource that refutes the cook and
+  the key makes the key a try'. Recorded as lessons. Process feedback from Evgeni: iterate at the composer's level
+  (cause -> remedy -> verify), not by launching an enumeration per micro-question.

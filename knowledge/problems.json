@@ -452,6 +452,24 @@
     "Qh5"
    ],
    "cooked": true
+  },
+  {
+   "id": "bourd-selfpin-changed-mates-2",
+   "fen": "3rN2b/7b/8/n1Q5/1R1Pk1P1/4P3/4K3/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 19",
+   "themes": [
+    "Changed mates",
+    "Self-pin by capture",
+    "Dual avoidance (line opened)"
+   ],
+   "note": "Sound version of the self-pin scheme. 1.Sc7? (2.Qc2#) 1...Rxd4 2.Qd5#, 1...Bxd4 2.Qe7# but 1...Sc4! (blocks the c-file and the pin line). 1.Qh5! (2.Qh1#) 1...Rxd4 2.Sd6#, 1...Bxd4 2.Sf6# (each knight mate capturable only by the unit now pinned). The knight a5 also refutes the would-be cook 1.d5+ by 1...Sc4. Set play equals the solution play, so the try/solution change stands on its own.",
+   "solution": "#2 (7+5)   FEN 3rN2b/7b/8/n1Q5/1R1Pk1P1/4P3/4K3/8 w - - 0 1\nSet play:\n   1...Bf6 2.Sxf6#\n   1...Be5 2.Qxe5#\n   1...Bxd4 2.Sf6#\n   1...Rc8/Rb8/Ra8/Rxd4 2.Sd6#\n   1...Rd6 2.Sxd6#\n   1...Rd5 2.Qc2#\n   1...Bg8 2.Qf5#\n   1...Bf5 2.Qxf5#\n   unprovided: Bg7, Rxe8, Rd7, Bg6, Sb7, Sc6, Sc4, Sb3\nTry: 1.Sc7? (threat: 2.Qc2#)\n   1...Bxd4 2.Qe7#\n   1...Rxd4 2.Qd5#\n   (18 further moves allow the threat)\n   but 1...Sc4!\nKey: 1.Qh5! (threat: 2.Qh1#)\n   1...Bxd4 2.Sf6#\n   1...Rxd4 2.Sd6#\n   (17 further moves allow the threat)\nChanged continuations:\n   1...Bxd4: Sxf6# -> Qe7#   [set play vs try Sc7]\n   1...Rxd4: Sd6# -> Qd5#   [set play vs try Sc7]\n   1...Bxd4: Qe7# -> Sxf6#   [try Sc7 vs key Qh5]\n   1...Rxd4: Qd5# -> Sd6#   [try Sc7 vs key Qh5]\nPatterns:\n   changed threat: Qc2# / Qh1#   [try Sc7 vs key Qh5]\n(3198 nodes, 0.18s)",
+   "keys": [
+    "Qh5"
+   ],
+   "cooked": false
   }
  ]
 }
