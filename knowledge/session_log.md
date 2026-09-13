@@ -340,3 +340,9 @@
   Qd5/Qe5 need d5 AND e5 protected, no single key square protects both, and any static protector of e5 makes
   Qe5 a set dual. The key must switch the set mates OFF (remove a guard they need) while switching the new
   mates ON - a two-effect key not yet found.
+* Evgeni's own setting for the self-pin task: 3rN2b/1p5b/8/2Q5/1R1Pk1P1/4P3/4K3/8 - set Rxd4 2.Sd6#, Bxd4 2.Sf6#;
+  1.Sc7! (2.Qc2#) Rxd4 2.Qd5#, Bxd4 2.Qe7# (interposition on e5 impossible for the pinned bishop); 1.Qh5 meant
+  as a try showing the set mates. Solver: COOKED by 1.d5+ (discovered check, Rb4 protects d4 for the queen) and by
+  1.Qh5 itself (2.Qh1# unstoppable). Two-unit repairs (g4/e3 changes + one Black unit) found none. The evaluator
+  accepts his position under every filter, so the miss was the material budget (one pawn slot, no Black plugs)
+  and a wrong hand assumption (new mates must be adjacent and protected) - recorded in lessons.

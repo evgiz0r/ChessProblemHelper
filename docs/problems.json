@@ -433,6 +433,25 @@
     "Ra4"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-selfpin-changed-mates",
+   "fen": "3rN2b/1p5b/8/2Q5/1R1Pk1P1/4P3/4K3/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 19",
+   "themes": [
+    "Changed mates",
+    "Self-pin by capture"
+   ],
+   "note": "Intended: set 1...Rxd4 2.Sd6# (pinned rook cannot take d6), 1...Bxd4 2.Sf6# (pinned bishop cannot take f6); 1.Sc7! (2.Qc2#) 1...Rxd4 2.Qd5# (knight protects d5), 1...Bxd4 2.Qe7# (pinned bishop cannot interpose on e5). The key piece gives the set mates and switches them off by moving; its arrival protects the new square. COOKED as given: 1.d5+ (discovered check from Rb4; 1...Bd4 2.Qxd4#, 1...Ke5 2.Qd4#, d4 protected by the pinner) and 1.Qh5 (2.Qh1#) which was meant as a try showing the set mates. No one- or two-unit repair found.",
+   "solution": "#2 (7+5)   FEN 3rN2b/1p5b/8/2Q5/1R1Pk1P1/4P3/4K3/8 w - - 0 1\nSet play:\n   1...Bf6 2.Sxf6#\n   1...Be5 2.Qxe5#\n   1...Bxd4 2.Sf6#\n   1...Rc8/Rb8/Ra8/Rxd4 2.Sd6#\n   1...Rd6 2.Sxd6#\n   1...Rd5 2.Qc2#\n   1...Bg8 2.Qf5#\n   1...Bf5 2.Qxf5#\n   unprovided: Bg7, Rxe8, Rd7, Bg6, b6, b5\nTry: 1.Rb5? (threat: 2.Qc2#)\n   1...Rc8 2.Sd6#/Qd5#  [dual]\n   (14 further moves allow the threat)\n   but 1...Rxd4!\nKey: 1.d5+! (check)\n   1...Ke5 2.Qd4#\n   1...Bd4 2.Qxd4#\nKey: 1.Sc7! (threat: 2.Qc2#)\n   1...Bxd4 2.Qe7#\n   1...Rxd4 2.Qd5#\n   (17 further moves allow the threat)\nKey: 1.Qh5! (threat: 2.Qh1#)\n   1...Bxd4 2.Sf6#\n   1...Rxd4 2.Sd6#\n   (15 further moves allow the threat)\nCOOKED: 3 keys: d5+, Sc7, Qh5\nChanged continuations:\n   1...Bxd4: Sxf6# -> Qd4#   [set play vs key d5+]\n   1...Bxd4: Sxf6# -> Qe7#   [set play vs key Sc7]\n   1...Rxd4: Sd6# -> Qd5#   [set play vs key Sc7]\n   1...Bxd4: Qd4# -> Qe7#   [key d5+ vs key Sc7]\n   1...Bxd4: Qd4# -> Sxf6#   [key d5+ vs key Qh5]\n   1...Bxd4: Qe7# -> Sxf6#   [key Sc7 vs key Qh5]\n   1...Rxd4: Qd5# -> Sd6#   [key Sc7 vs key Qh5]\nPatterns:\n   changed threat: Qc2# / Qh1#   [try Rb5 vs key Qh5]\n   changed threat: Qc2# / Qh1#   [key Sc7 vs key Qh5]\n(3589 nodes, 0.2s)",
+   "keys": [
+    "d5+",
+    "Sc7",
+    "Qh5"
+   ],
+   "cooked": true
   }
  ]
 }
