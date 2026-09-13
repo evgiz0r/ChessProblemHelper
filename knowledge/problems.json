@@ -470,6 +470,23 @@
     "Qh5"
    ],
    "cooked": false
+  },
+  {
+   "id": "claude-two-rook-selfpin-v1",
+   "fen": "8/7B/p6K/r4N2/1N1Pk3/2P4P/6PQ/5r2",
+   "stip": "#2",
+   "author": "Claude (scheme by E. Bourd: 8/7B/8/r4N2/4k3/8/8/5r2)",
+   "source": "session 19",
+   "themes": [
+    "Self-pin by capture",
+    "Dual avoidance (defender retains control)"
+   ],
+   "note": "Single solution, first sound setting. 1.Qg3! (2.Sd6# battery / 2.Qe3#) 1...Raxf5 2.Qe5# (the pinned rook still attacks e5 but cannot take; the f1 rook guards f3 so Qf3 fails), 1...Rfxf5 2.Qf3# (mirror). Built as: queen g3 covers e3/f3/f4/e5 and reaches both mating squares; Sb4 covers d3/d5 off the rooks lines; c3 protects b4/d4; d4 protects e5; g2 protects f3; Kh6 behind h3 with bPa6 plugging the a-file (two free rooks reach every square, so the king needs blockers, not distance). Blemishes: double threat (the f5 knight protects e3, so the key square that covers the hole also mates there), and 1...Rf3 2.Qxf3/gxf3 (the f3 protector captures).",
+   "solution": "#2 (9+4)   FEN 8/7B/p6K/r4N2/1N1Pk3/2P4P/6PQ/5r2 w - - 0 1\nSet play:\n   1...Raxf5/Ra4/Ra3/Ra2/Raa1 2.Qe5#\n   1...Re5 2.Qxe5#\n   unprovided: Rd5, Rc5, Rb5, Rfxf5, Rf4, Rf3, Rf2, Rh1, Rg1, Re1, Rd1, Rc1, Rb1, Rfa1\nKey: 1.Qg3! (threat: 2.Sd6#/Qe3#)\n   1...Raxf5 2.Qe5#\n   1...Rfxf5 2.Qf3#\n   1...Rf3 2.Qxf3#/gxf3#  [dual]\n   (17 further moves allow the threat)\n(1899 nodes, 0.12s)",
+   "keys": [
+    "Qg3"
+   ],
+   "cooked": false
   }
  ]
 }

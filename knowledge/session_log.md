@@ -351,3 +351,10 @@
   a5 knight and rejected it because it refuted Sc7 - the missing intuition is 'a resource that refutes the cook and
   the key makes the key a try'. Recorded as lessons. Process feedback from Evgeni: iterate at the composer's level
   (cause -> remedy -> verify), not by launching an enumeration per micro-question.
+* Task: self-pin mates with two Black rooks (scheme 8/7B/8/r4N2/4k3/8/8/5r2), single solution first. Built by
+  hand in five solver passes (no enumeration): 8/7B/p6K/r4N2/1N1Pk3/2P4P/6PQ/5r2 - 1.Qg3! (2.Sd6#/Qe3#)
+  1...Raxf5 2.Qe5#, 1...Rfxf5 2.Qf3#, each pinned rook still 'guarding' the mating square, the other rook's
+  real guard as dual avoidance. What was lacking each step: a check-proof king (rooks reach everything ->
+  blockers + a6 plug), a plug that kept the rook's thematic line, protectors without lines to the king, a
+  protector that does not capture with mate. Still open: the double threat (Qe3 protected by the front knight)
+  and the gxf3 dual.
