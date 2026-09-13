@@ -133,3 +133,19 @@ solved it:
 - Last step, which he skipped: remove pieces and re-solve. bRh4 and the Rf4 shift were unnecessary.
 - Process rule: after a few solves without a reason for the defences, clear and rebuild from the idea. The
   fresh sitting took 33 minutes; the rotated one took 45 and ended nowhere.
+
+### What the journal taught about tempo (session 20, Claude's reading of Evgeni's process)
+
+- Reasons a capture defends, to check at scheme time before any solving: it pins the threat piece
+  against the White king (this problem); it removes a guard the threat mate needs; it opens a Black line
+  to the threat's mate square; it closes a White line; it guards the mate square itself. If none of these
+  is available for the capture square, no queen post will make the captures defences.
+- The signal that a structure is empty: a pre-key solve returning only checking tries (no quiet move
+  threatens anything), or post-key solves that change between "double threat", "holes" and "no threat"
+  across four or five queen posts. That is not a flaw to fix; the geometry has no line to exploit.
+  Rotation and shifting preserve the geometry, so they cannot supply it - they only make room.
+- The signal to keep playing: the solve names one thing (one cook with a line, one hole, one dual, one
+  double threat with a nameable second square). Each has a one-unit remedy and costs a minute.
+- Tempo: one solve per minute; sixteen minutes of placing without solving produced nothing.
+- The White king is a construction resource, not only something to hide from checks: behind the threat
+  piece on a line it turns captures on that line into pins.
