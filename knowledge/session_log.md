@@ -331,3 +331,12 @@
       tries 1.Rf5? Sg6!  1.Rd5? cxd5!  1.Ra3? Bxd4!
   Quiet defence, no flights, no unprovided checks; four unprovided quiet moves in the set. Closer bug found: cook
   count was capped, so a 12-key position looked like a 2-key one; fixed (exact count up to 20).
+* Task: changed mates with two Black units self-pinning (8/3r4/8/8/1R1Pk3/8/8/6b1, Rxd4/Bxd4 pinned by Rb4).
+  NOT achieved this round. Findings: (a) with the bishop on g1 (guards e3) no White placement with Q+K+2 units
+  gives both captures a changed mate (p1/p2: ~3M positions, 0 hits); (b) moving the bishop to g7 makes it guard e5
+  THROUGH its capture square, so the pinned bishop's "attack" on e5 and the pinned rook's on d5 are both
+  exploitable: 63 placements give distinct set mates for both captures, the best being knight mates
+  4N3/3r2b1/8/1Q6/1R1Pk3/4P3/4K3/8 (1...Rxd4 2.Sd6#, 1...Bxd4 2.Sf6#); (c) no key changes both: the new mates
+  Qd5/Qe5 need d5 AND e5 protected, no single key square protects both, and any static protector of e5 makes
+  Qe5 a set dual. The key must switch the set mates OFF (remove a guard they need) while switching the new
+  mates ON - a two-effect key not yet found.
