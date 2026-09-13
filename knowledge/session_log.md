@@ -319,3 +319,9 @@
   Flaws: d5 an unprovided flight in the diagram (inherent: the queen must stand behind the knight on the 5th rank,
   any other cover of d5 gives Qg4# in 1 or a Re3 dual after the key), a try refuted by the king, Rg8/Sf8/Se1 only
   for soundness. Boards now rendered as SVG for Evgeni instead of ASCII.
+* Evgeni's one-knight version 8/2K2p2/6pB/3p1nQ1/3Pk1P1/2P5/4P3/5r2: boxed king, 1.Qf6! 1...Sxd4 2.Qxd4# (set 2.Qe3#).
+  Lessons: never build around a king with a flight; the moved key piece just gives the other mate; reuse ideas and
+  the search process, not structures (rotate, reflect, manipulate, respect the constraints).
+* Bishop version (task): with a no-flights filter in the evaluator the same enumeration gave sound miniatures directly:
+      7b/8/3K4/8/3Pk3/2Q5/8/5R2   #2 (4+2)   set 1...Bxd4 2.Qf3#;  1.Kc5! (2.Qf3#) 1...Bxd4+ 2.Qxd4#
+  King key protecting d4. Flaws: one defence, the defence checks, Bg7/Bf6/Be5+ unprovided.

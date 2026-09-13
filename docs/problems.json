@@ -384,6 +384,39 @@
     "Qf6"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-one-knight-change",
+   "fen": "8/2K2p2/6pB/3p1nQ1/3Pk1P1/2P5/4P3/5r2",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 19",
+   "themes": [
+    "Changed mates"
+   ],
+   "note": "One knight move, one change, no flights. Set 1...Sxd4 2.Qe3# (e3 protected by Bh6 once the queen leaves g5). 1.Qf6! (2.Qe5#) 1...Sxd4 2.Qxd4# (c3 protects). The key piece itself gives the new mate. The king is boxed (e2, g4, d5, c3-d4, Sf5, Qg5), which is what makes it simple to build.",
+   "solution": "#2 (7+6)   FEN 8/2K2p2/6pB/3p1nQ1/3Pk1P1/2P5/4P3/5r2 w - - 0 1\nSet play:\n   1...Sg7 2.Qe5#/Qe3#  [dual]\n   1...Se7 2.Qxe7#/Qe5#/Qe3#  [dual]\n   1...Sxh6 2.Qe5#\n   1...Sd6/Sh4/Sg3 2.Qe7#/Qe5#/Qe3#  [dual]\n   1...Sxd4 2.Qe3#\n   1...Se3 2.Qxe3#/Qe7#/Qe5#  [dual]\n   1...Rf4 2.Qxf4#\n   1...Rh1/Rg1/Re1/Rd1/Rc1/Rb1/Ra1 2.Qf4#\n   unprovided: Rf3, Rf2, f6\nKey: 1.Qf6! (threat: 2.Qe5#)\n   1...Sxd4 2.Qxd4#\n   (18 further moves allow the threat)\nChanged continuations:\n   1...Sxd4: Qe3# -> Qxd4#   [set play vs key Qf6]\n(1713 nodes, 0.11s)",
+   "keys": [
+    "Qf6"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "claude-one-bishop-change",
+   "fen": "7b/8/3K4/8/3Pk3/2Q5/8/5R2",
+   "stip": "#2",
+   "author": "Claude (task and constraints by E. Bourd)",
+   "source": "session 19",
+   "themes": [
+    "Changed mates",
+    "King key"
+   ],
+   "note": "Bishop version of the one-move change, king boxed (no flights). Set 1...Bxd4 2.Qf3# (self-block: in the diagram Qf3+ Kxd4). 1.Kc5! (2.Qf3#, the king now protects d4) 1...Bxd4+ 2.Qxd4#. Six units. Flaws: one defence, the thematic defence is a check, Bg7/Bf6/Be5+ unprovided in the set (1...Be5+! refutes every queen/rook try).",
+   "solution": "#2 (4+2)   FEN 7b/8/3K4/8/3Pk3/2Q5/8/5R2 w - - 0 1\nSet play:\n   1...Bxd4 2.Qf3#\n   unprovided: Bg7, Bf6, Be5+\nTry: 1.Qg3? (threat: 2.Rf4#)\n   (4 further moves allow the threat)\n   but 1...Be5+!\nTry: 1.Qd2? (threat: 2.Rf4#)\n   (3 further moves allow the threat)\n   but 1...Be5+!\nTry: 1.Rf3? (threat: 2.Qe3#/Qd3#)\n   (3 further moves allow the threat)\n   but 1...Be5+!\nKey: 1.Kc5! (threat: 2.Qf3#)\n   1...Bxd4+ 2.Qxd4#\n   (3 further moves allow the threat)\nChanged continuations:\n   1...Bxd4: Qf3# -> Qxd4#   [set play vs key Kc5]\nPatterns:\n   changed threat: Rf4# / Qd3#/Qe3#   [try Qg3 vs try Rf3]\n   changed threat: Rf4# / Qf3#   [try Qg3 vs key Kc5]\n   changed threat: Rf4# / Qd3#/Qe3#   [try Qd2 vs try Rf3]\n   changed threat: Rf4# / Qf3#   [try Qd2 vs key Kc5]\n   changed threat: Qd3#/Qe3# / Qf3#   [try Rf3 vs key Kc5]\n(1382 nodes, 0.08s)",
+   "keys": [
+    "Kc5"
+   ],
+   "cooked": false
   }
  ]
 }
