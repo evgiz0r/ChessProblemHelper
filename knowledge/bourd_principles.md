@@ -66,3 +66,46 @@ Living document. Each principle is linked to the tool rule that implements it (o
   4th rank (Rd4), diagonal c1-f4 (Rd2), diagonal b8-f4 (Rd6).
 * Structural lesson: a pinned piece on e5 is attacked by the rook on d5 itself (capture keys Rxe5 keep
   appearing) and blocks the rook's path along the 5th rank. The e5 pin is the wrong one.
+
+## Sessions 18-19 (Sept 2026): changed mates, and how to iterate
+
+Taught while composing five changed-mate problems (see `problems.json`: bourd-changed-mates-3/4,
+bourd-one-knight-change, bourd-selfpin-changed-mates-2, and the Claude settings judged alongside).
+
+### Construction order for a change
+1. Choose the squares and the Black EFFECT that creates several mates at once: a self-block usually;
+   closing a line, opening a line, unguarding several squares do the same job. A self-pin by capture is
+   an effect too (the pinned unit can neither capture the mating piece nor interpose).
+2. Choose the DIFFERENTIATION: which of those mates each phase allows. Selectors seen: the mating squares
+   are guarded by Black pawns and each first move removes one guard (Bxb4/Bxe7); the queen's post holds one
+   pair of squares per phase (a5 vs d2, g5 vs f6); the key piece gives the set mates itself and switches
+   them off by moving while its arrival protects the new square (Se8-c7); the key that moved just does
+   the other mate (Qg5-f6, Sxd4 Qe3 -> Qxd4).
+3. Only then a threat that the thematic defences parry, and cleaning.
+
+### Hard rules (fatal or near-fatal)
+* Build around a king WITHOUT escapes. A diagram flight is structurally hard: every escape must be
+  answered in every phase. The same enumeration that needed 10 units with a flight gave 6-unit hits without.
+* An unprovided CHECK in the set play is fatal. Ordinary unprovided moves are a blemish.
+* Mating squares and their lines close to the king; a Grimshaw square near the king, lines crossing there.
+* A pinner on the rank + a White pawn on the pin square + a queen nearby = a discovered-check cook
+  (1.d5+ with the pinner protecting d4). Give Black the blocker before anything else.
+
+### Stopping cooks, and what a refutation means
+* Stop a cook by giving Black a resource that lives only in the cook's line (a knight that can block the
+  discovered check on c4), not by weakening White (that breaks the mates).
+* If that resource also refutes the intended key, INVERT: the intended key becomes the try, the other move
+  the key (1.Sc7? Sc4!, 1.Qh5!). A try whose play equals the set play still shows the change on its own.
+* Test removals in pairs before calling a unit superfluous (bPg6 and bPh4 each removable alone, not together).
+* Necessity is judged on content in every phase: a unit that only plays a try carrying changed mates is
+  thematic, not a cook-stopper.
+
+### How to iterate (process, from Evgeni's feedback)
+* Cause -> remedy -> verify. The solver verifies a claim already made; it is not a generator.
+* When the solver reports a cook, name what makes it work, then pick from the remedy list above.
+* Enumerate only for PLACEMENT, after the mechanism and the selector are fixed on paper; a search family
+  never produced a decision this session, only confirmed one.
+* Reuse ideas and the search process, not structures: the same solution appears in other directions -
+  rotate, reflect, move pieces, respect the constraints of the position.
+* Claude's board sight is unreliable (asserted "no mate in one", solver found three, twice). Every step is
+  checked, and the check is cheap.
