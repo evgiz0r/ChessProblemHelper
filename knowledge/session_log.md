@@ -310,3 +310,12 @@
   because f4 is open (Qd2 covers it in the solution); bPg6 and bPh4 each removable alone, not together.
 * Tool gains: critique counts lost changed-mate relations as content and marks a try-playing unit thematic
   (wPe5 was 'cook-stopper', bPg6 'not needed').
+* Smaller task from Evgeni: ONE knight move, ONE changed mate, set vs solution, from 8/8/8/5n2/3Pk3/8/8/8.
+  Search (wK, wQ, one unit around his three units; criterion: a specific knight move with a mate no other knight
+  move gets) -> 85 hits; best skeleton wKd2 wQg5 wRd3 wPd4: set 1...Sxd4 2.Re3#, 1.Qf6! (2.Qe5#) 1...Sxd4 2.Rxd4#.
+  Beam closer -> sound:
+      5NR1/8/8/5nQ1/3Pk3/3R1p2/3K4/4N3   #2 (7+3)   1.Qf6! (2.Qe5#) 1...Sxd4 2.Rxd4#, 1...Kd5 2.Qe6#
+      set 1...Sxd4 2.Re3#;  1.Qh5? 1...Sxd4 2.Rg4# but 1...Kd5!
+  Flaws: d5 an unprovided flight in the diagram (inherent: the queen must stand behind the knight on the 5th rank,
+  any other cover of d5 gives Qg4# in 1 or a Re3 dual after the key), a try refuted by the king, Rg8/Sf8/Se1 only
+  for soundness. Boards now rendered as SVG for Evgeni instead of ASCII.

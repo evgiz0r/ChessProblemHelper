@@ -368,6 +368,22 @@
     "Qd2"
    ],
    "cooked": false
+  },
+  {
+   "id": "claude-one-knight-change",
+   "fen": "5NR1/8/8/5nQ1/3Pk3/3R1p2/3K4/4N3",
+   "stip": "#2",
+   "author": "Claude (from E. Bourd's scheme 8/8/8/5n2/3Pk3/8/8/8)",
+   "source": "session 19",
+   "themes": [
+    "Changed mates"
+   ],
+   "note": "Task: one knight move, one changed mate set vs solution. Set 1...Sxd4 2.Re3# (Qg5 holds d5/f5/f4); 1.Qf6! (2.Qe5#) 1...Sxd4 2.Rxd4# (Qf6 protects d4, no longer holds d5 so Re3 fails to Kd5); 1...Kd5 2.Qe6#. 1.Qh5? gives 1...Sxd4 2.Rg4# (third mate) but 1...Kd5!. Structural: the queen must stand behind the knight on the 5th rank (from anywhere else Qe5 is mate in 1), so d5 is a bare flight in the diagram; any static cover of d5 makes Re3 a dual after the key. Rg8/Sf8/Se1/bPf3 are the soundness bill: Rg8 (Rg4 after Kf4), Sf8 (e6 for Qe6#), Se1 (f3 after Se3), f3 pawn (a tempo so a waiting move fails).",
+   "solution": "#2 (7+3)   FEN 5NR1/8/8/5nQ1/3Pk3/3R1p2/3K4/4N3 w - - 0 1\nSet play:\n   1...Sg7/Se7/Sh6/Sd6/Sh4/Sg3/Se3 2.Qe5#\n   1...Sxd4 2.Re3#\n   unprovided: Kd5, f2\nTry: 1.Sxf3? (zugzwang)\n   1...Sg7/Se7/Sh6/Sd6/Sh4/Sxd4/Sg3 2.Qe5#/Re3#  [dual]\n   1...Se3 2.Rxe3#\n   but 1...Kd5!\nTry: 1.Sh7? (threat: 2.Sf6#)\n   (9 further moves allow the threat)\n   but 1...Kd5!\nTry: 1.Sd7? (threat: 2.Sf6#)\n   (9 further moves allow the threat)\n   but 1...Kd5!\nTry: 1.Sg6? (zugzwang)\n   1...Sg7/Se7/Sd6 2.Qe5#\n   1...Sh6/Sh4/Sg3/Se3 2.Re8#/Qe5#  [dual]\n   1...Sxd4 2.Qe5#/Re3#  [dual]\n   1...f2 2.Qg2#\n   but 1...Kd5!\nTry: 1.Se6? (zugzwang)\n   1...Sg7/Se7/Sh6/Sd6/Sh4/Sg3 2.Sc5#/Qe5#/Re3#  [dual]\n   1...Sxd4 2.Rxd4#/Sc5#/Re3#  [dual]\n   1...Se3 2.Rxe3#/Sc5#/Qe5#  [dual]\n   1...f2 2.Qg2#\n   but 1...Kd5!\nTry: 1.Qg6? (zugzwang)\n   1...Kd5 2.Qe6#\n   1...Kf4 2.Qg4#\n   but 1...f2!\nTry: 1.Qh5? (threat: 2.Qxf3#)\n   1...Sh4 2.Rg4#/Qe5#  [dual]\n   1...Sxd4 2.Rg4#\n   (8 further moves allow the threat)\n   but 1...Kd5!\nKey: 1.Qf6! (threat: 2.Qe5#)\n   1...Sxd4 2.Rxd4#\n   1...Kd5 2.Qe6#\n   (9 further moves allow the threat)\nChanged continuations:\n   1...Se3: Qe5# -> Re3#   [set play vs try Sxf3]\n   1...Sxd4: Re3# -> Rg4#   [set play vs try Qh5]\n   1...Sxd4: Re3# -> Rxd4#   [set play vs key Qf6]\n   1...Sxd4: Rg4# -> Rxd4#   [try Qh5 vs key Qf6]\nPatterns:\n   changed threat: Sf6# / Qxf3#   [try Sh7 vs try Qh5]\n   changed threat: Sf6# / Qe5#   [try Sh7 vs key Qf6]\n   changed threat: Sf6# / Qxf3#   [try Sd7 vs try Qh5]\n   changed threat: Sf6# / Qe5#   [try Sd7 vs key Qf6]\n   changed threat: Qxf3# / Qe5#   [try Qh5 vs key Qf6]\n(5018 nodes, 0.29s)",
+   "keys": [
+    "Qf6"
+   ],
+   "cooked": false
   }
  ]
 }
