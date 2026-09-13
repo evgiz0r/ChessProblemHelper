@@ -1,0 +1,337 @@
+{
+ "generated": "2026-09-13",
+ "note": "Positions from the composing sessions. POST-KEY entries are positions with Black to move.",
+ "problems": [
+  {
+   "id": "bourd-variantim-2635",
+   "fen": "1Q6/R1Bpb3/2p5/6p1/1p1P4/1k6/N7/2K2B2",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "Variantim No. 65 #2635, Apr 2015, 3rd Comm. (Israel Ring Tourney)",
+   "themes": [
+    "Bristol",
+    "Pickabish"
+   ],
+   "note": "Session 1. Bishop clearance with three thematic bishop tries.",
+   "solution": "#2 (7+6)   FEN 1Q6/R1Bpb3/2p5/6p1/1p1P4/1k6/N7/2K2B2 w - - 0 1\nSet play:\n   1...Bd8/Bf6 2.Qxb4#\n   1...Bd6 2.Qg8#\n   1...d6 2.Qxb4#\n   unprovided: Bf8, Bc5, c5, g4, d5\nTry: 1.Qh8? (threat: 2.Qh3#)\n   1...Bd6 2.Qg8#\n   (7 further moves allow the threat)\n   but 1...g4!\nTry: 1.Qb5? (threat: 2.Qc4#/Qa4#/Qd3#/Bc4#)\n   (9 further moves allow the threat)\n   but 1...cxb5!\nTry: 1.Bd8? (threat: 2.Qg3#)\n   1...d6 2.Qxb4#\n   (7 further moves allow the threat)\n   but 1...Bd6!\nTry: 1.Bd6? (threat: 2.Qxb4#/Qg8#)\n   (5 further moves allow the threat)\n   but 1...c5!\nTry: 1.Bb6? (threat: 2.Qg3#)\n   1...Bd6 2.Qg8#\n   (7 further moves allow the threat)\n   but 1...d6!\nKey: 1.Bh2! (threat: 2.Qg3#)\n   1...Bd6 2.Qg8#\n   1...d6 2.Qxb4#\n   (7 further moves allow the threat)\nPatterns:\n   Bristol: 1.Bh2 + 2.Qg3#   [key Bh2]\n   changed threat: Qh3# / Bc4#/Qa4#/Qc4#/Qd3#   [try Qh8 vs try Qb5]\n   changed threat: Qh3# / Qg3#   [try Qh8 vs try Bd8]\n   changed threat: Qh3# / Qg8#/Qxb4#   [try Qh8 vs try Bd6]\n   changed threat: Qh3# / Qg3#   [try Qh8 vs try Bb6]\n   changed threat: Qh3# / Qg3#   [try Qh8 vs key Bh2]\n   changed threat: Bc4#/Qa4#/Qc4#/Qd3# / Qg3#   [try Qb5 vs try Bd8]\n   changed threat: Bc4#/Qa4#/Qc4#/Qd3# / Qg8#/Qxb4#   [try Qb5 vs try Bd6]\n   changed threat: Bc4#/Qa4#/Qc4#/Qd3# / Qg3#   [try Qb5 vs try Bb6]\n   changed threat: Bc4#/Qa4#/Qc4#/Qd3# / Qg3#   [try Qb5 vs key Bh2]\n   changed threat: Qg3# / Qg8#/Qxb4#   [try Bd8 vs try Bd6]\n   changed threat: Qg8#/Qxb4# / Qg3#   [try Bd6 vs try Bb6]\n   changed threat: Qg8#/Qxb4# / Qg3#   [try Bd6 vs key Bh2]\n   Grimshaw: Bd6/d6 on d6   [key]",
+   "keys": [
+    "Bh2"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-novice-2002",
+   "fen": "3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "Novice Composers TT 2002, 5th Place (yacpdb 2753)",
+   "themes": [
+    "Half-pin",
+    "Cross-check",
+    "Unpin (Black)"
+   ],
+   "note": "Session 3. Half-pin Qf6+Se5 on h8-d4.",
+   "solution": "#2 (8+8)   FEN 3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8 w - - 0 1\nSet play:\n   1...Qxh8/Qg7 2.Se6#\n   1...Qxd8/Qf7/Qh6/Qg6 2.Bxe5#\n   1...Qe6 2.Sxe6#\n   1...Qxc6+ 2.Sxc6#\n   1...Qg5/Qh4 2.Bxe5#/Se6#  [dual]\n   1...Sf7/Sxd7/Sg6/Sg4/Sc4/Sf3/Sxd3 2.Se6#\n   1...Sxc6 2.Sxc6#/Se6#  [dual]\n   1...f3 2.Qe3#\n   unprovided: Rxh8, Rg8, Re8, Rxd8, Rf7, Qe7, Qd6, g2\nTry: 1.Bc4? (threat: 2.Rxd5#)\n   1...Qxd8/Qf7 2.Bxe5#/Qxe5#/Qd3#  [dual]\n   1...Qe6 2.Sxe6#/Qd3#  [dual]\n   1...Qd6 2.Qd3#\n   1...Qxc6+ 2.Sxc6#\n   1...Sxd7/Sxc4 2.Se6#\n   (19 further moves allow the threat)\n   but 1...Rxd8!\nKey: 1.Bxf5! (threat: 2.Qe4#)\n   1...Qd6 2.Qd3#\n   1...Qxc6+ 2.Sxc6#\n   1...Qxf5 2.Qc4#\n   1...Sxd7 2.Se6#\n   (24 further moves allow the threat)\nPatterns:\n   changed threat: Rxd5# / Qe4#   [try Bc4 vs key Bxf5]",
+   "keys": [
+    "Bxf5"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-bristol-prototype",
+   "fen": "8/6N1/4p3/2bp4/4kP2/3pPp2/1B1P3K/Q7",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "teaching prototype, session 1",
+   "themes": [
+    "Bristol"
+   ],
+   "note": "His own worked example of building a Bristol from scratch.",
+   "solution": "#2 (7+6)   FEN 8/6N1/4p3/2bp4/4kP2/3pPp2/1B1P3K/Q7 w - - 0 1\nSet play:\n   1...d4 2.Qa8#\n   1...f2 2.Qh1#\n   unprovided: Bf8, Be7, Ba7, Bd6, Bb6, Bd4, Bb4, Bxe3, Ba3, e5\nTry: 1.Ba3? (threat: 2.Qe5#)\n   1...Bd6 2.Qd4#\n   1...Bd4 2.Qxd4#\n   1...f2 2.Qh1#\n   (8 further moves allow the threat)\n   but 1...d4!\nTry: 1.Bc1? (threat: 2.Qe5#)\n   1...Bd6 2.Qd4#\n   1...Bd4 2.Qxd4#\n   1...d4 2.Qa8#\n   (8 further moves allow the threat)\n   but 1...f2!\nTry: 1.Qg1? (threat: 2.Qg6#)\n   1...Bxe3 2.Qxe3#\n   1...f2 2.Qg2#/Qh1#  [dual]\n   (9 further moves allow the threat)\n   but 1...d4!\nKey: 1.Bf6! (threat: 2.Qe5#)\n   1...Bd6 2.Qd4#\n   1...Bd4 2.Qxd4#\n   1...d4 2.Qa8#\n   1...f2 2.Qh1#\n   (8 further moves allow the threat)\nPatterns:\n   Bristol: 1.Bf6 + 2.Qe5#   [key Bf6]\n   Bristol (in variation): 1.Bf6 Bd6 2.Qd4#   [key Bf6]\n   Bristol (in variation): 1.Bf6 Bd4 2.Qxd4#   [key Bf6]\n   changed threat: Qe5# / Qg6#   [try Ba3 vs try Qg1]\n   changed threat: Qe5# / Qg6#   [try Bc1 vs try Qg1]\n   changed threat: Qg6# / Qe5#   [try Qg1 vs key Bf6]\n(2082 nodes, 0.09s)",
+   "keys": [
+    "Bf6"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-rook-interference-sketch",
+   "fen": "3b4/6n1/N2R4/2RP1p2/3Pkp2/K3pN2/BB2P3/7r",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "sketch, session 2",
+   "themes": [
+    "White interference try"
+   ],
+   "note": "1.Rc2! with 1.Rc4?/1.Rc3? cutting Ba2/Bb2. His verdict: guard/unguard play, key rook has no role.",
+   "solution": "#2 (10+7)   FEN 3b4/6n1/N2R4/2RP1p2/3Pkp2/K3pN2/BB2P3/7r w - - 0 1\nSet play:\n   1...Bc7/Bb6/Ba5 2.Sg5#\n   1...Bg5 2.Sxg5#\n   1...Se8/Sh5 2.Re6#\n   1...Se6 2.Rxe6#\n   1...Rh8/Rh7/Rh6/Rh5/Rh4/Rh3/Rh2 2.Bb1#\n   1...Rb1 2.Bxb1#\n   unprovided: Be7, Bf6, Bh4, Rg1, Rf1, Re1, Rd1, Rc1, Ra1\nTry: 1.Rc8? (threat: 2.Sc5#)\n   1...Bb6 2.Sg5#\n   1...Se6 2.Rxe6#\n   (21 further moves allow the threat)\n   but 1...Rc1!\nTry: 1.Rc7? (threat: 2.Sc5#)\n   1...Se6 2.Rxe6#\n   (20 further moves allow the threat)\n   but 1...Rc1!\nTry: 1.Rcc6? (threat: 2.Sc5#)\n   1...Bb6 2.Sg5#\n   1...Se6 2.Rxe6#\n   (21 further moves allow the threat)\n   but 1...Rc1!\nTry: 1.Rb5? (threat: 2.Sc5#)\n   1...Bb6 2.Sg5#\n   1...Se6 2.Rxe6#\n   (21 further moves allow the threat)\n   but 1...Rc1!\nTry: 1.Ra5? (threat: 2.Sc5#)\n   1...Bb6 2.Sg5#\n   1...Se6 2.Rxe6#\n   (21 further moves allow the threat)\n   but 1...Rc1!\nTry: 1.Rc4? (threat: 2.Sc5#)\n   1...Bb6 2.Sg5#\n   (22 further moves allow the threat)\n   but 1...Se6!\nTry: 1.Rc3? (threat: 2.Sc5#)\n   1...Se6 2.Rxe6#\n   (22 further moves allow the threat)\n   but 1...Bb6!\nTry: 1.Rc1? (threat: 2.Sc5#/Bb1#)\n   (21 further moves allow the threat)\n   but 1...Rxc1!\nKey: 1.Rc2! (threat: 2.Sc5#)\n   1...Bb6 2.Sg5#\n   1...Se6 2.Rxe6#\n   (22 further moves allow the threat)\nPatterns:\n   White interference try: 1.Rc4? cuts Ba2 -> d5; 1...Se6!   [try Rc4]\n   White interference try: 1.Rc3? cuts Bb2 -> d4; 1...Bb6!   [try Rc3]\n(10051 nodes, 0.38s)",
+   "keys": [
+    "Rc2"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-retained-control",
+   "fen": "8/3nRR2/3Qr1p1/1p2b3/2p1k1B1/1N2p1B1/4P3/1K6",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "post-key scheme, session 7",
+   "themes": [
+    "Retained-control dual avoidance"
+   ],
+   "note": "POST-KEY position (Black to move). Three Black units to f6, each retaining its own line.",
+   "solution": "#2 (8+8)   FEN 8/3nRR2/3Qr1p1/1p2b3/2p1k1B1/1N2p1B1/4P3/1K6 b - - 0 1\nSet play:\n   1...Sf8/Sb8/Sb6 2.Bf3#/Sc5#  [dual]\n   1...Sf6 2.Sc5#\n   1...Sc5 2.Sxc5#/Bf3#  [dual]\n   1...Rxe7 2.Qc6#/Bf3#  [dual]\n   1...Rf6 2.Qd4#\n   1...Rxd6 2.Bf3#\n   1...Bh8/Bg7/Bc3/Bb2/Ba1 2.Rf4#/Qc6#/Bf3#  [dual]\n   1...Bf6 2.Qc6#\n   1...Bxd6 2.Bf3#\n   1...Bf4 2.Rxf4#/Qd4#/Bf3#  [dual]\n   1...Bd4 2.Qxd4#/Rf4#/Qc6#/Bf3#  [dual]\n   1...Bxg3 2.Qd4#/Bf3#  [dual]\n   1...cxb3/c3 2.Qd3#/Bf3#  [dual]\n   1...g5 2.Bf5#/Bf3#  [dual]\n   1...b4 2.Bf3#\nNo solution found.\n(1073 nodes, 0.04s)",
+   "keys": [],
+   "cooked": false
+  },
+  {
+   "id": "bourd-line-opening-scheme",
+   "fen": "2N5/8/K1p4p/1pk2N2/R2n3r/1P2n2p/7Q/4r1BB",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "post-key scheme, session 7",
+   "themes": [
+    "Line-opening dual avoidance"
+   ],
+   "note": "POST-KEY position. Two knight captures on f5, each opening a rook line.",
+   "solution": "#2 (8+9)   FEN 2N5/8/K1p4p/1pk2N2/R2n3r/1P2n2p/7Q/4r1BB b - - 0 1\nSet play:\n   1...Rh5/Rg4/Re4 2.Qd6#\n   1...Se6/Sxb3/Se2/Sdc2 2.Qd6#/Qe5#  [dual]\n   1...Sdxf5 2.Qe5#\n   1...Sf3 2.Qd6#\n   1...Sexf5 2.Qc2#\n   1...Sd5/Sg2/Sd1 2.Qd6#\n   1...Sg4 2.Bxd4#/Qd6#/Qc2#  [dual]\n   1...Sc4 2.b4#\n   1...Sec2 2.Qxc2#/Qd6#  [dual]\n   1...Sf1 2.Qd6#/Qc2#  [dual]\n   1...Re2/Rxg1/Rf1/Rd1/Rc1/Rb1/Ra1 2.Qd6#\n   1...bxa4/b4 2.Qd6#\n   1...h5 2.Qd6#\n   unprovided: Rf4\nNo solution found.\n(1256 nodes, 0.05s)",
+   "keys": [],
+   "cooked": false
+  },
+  {
+   "id": "bourd-pawn-halfbattery-rank",
+   "fen": "8/3K2bb/1p6/1p1kppR1/1P6/2PPQ3/8/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "post-key scheme, session 9",
+   "themes": [
+    "Pawn half-battery on a rank (line opening)"
+   ],
+   "note": "POST-KEY position. Pawn ADVANCES open bishop diagonals; unified avoidance.",
+   "solution": "#2 (6+7)   FEN 8/3K2bb/1p6/1p1kppR1/1P6/2PPQ3/8/8 b - - 0 1\nSet play:\n   1...f4 2.Qd4#\n   1...e4 2.Qxe4#\n   unprovided: Bg8, Bg6, Bh8, Bf8, Bh6, Bf6\nNo solution found.\n(257 nodes, 0.01s)",
+   "keys": [],
+   "cooked": false
+  },
+  {
+   "id": "bourd-pawn-halfbattery-file",
+   "fen": "3R4/2b2p2/2bp4/2Np4/1BPk1P2/1P3P2/Kn2Q3/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "post-key scheme, session 9",
+   "themes": [
+    "Pawn half-battery on a file (line opening)"
+   ],
+   "note": "POST-KEY position (threat Qf2#, no holes). Pawn CAPTURES open bishop diagonals.",
+   "solution": "#2 (9+7)   FEN 3R4/2b2p2/2bp4/2Np4/1BPk1P2/1P3P2/Kn2Q3/8 b - - 0 1\nSet play:\n   1...Bxd8/Bb8/Bb6/Ba5 2.Qf2#\n   1...Be8/Ba8/Bd7/Bb7/Bb5/Ba4 2.Qf2#\n   1...Sxc4 2.Qd3#\n   1...Sa4 2.Qd3#/Qf2#/Qd2#  [dual]\n   1...Sd3 2.Qxd3#\n   1...Sd1 2.Qd3#/Qd2#  [dual]\n   1...dxc5 2.Qe4#\n   1...dxc4 2.Qe5#\n   1...f6/f5 2.Se6#/Qf2#  [dual]\nNo solution found.\n(791 nodes, 0.03s)",
+   "keys": [],
+   "cooked": false
+  },
+  {
+   "id": "bourd-pawn-halfbattery-full",
+   "fen": "b2R4/b6p/8/N2pPQ2/2Npp2R/1pPk3P/1Pp5/2n2KB1",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 11",
+   "themes": [
+    "Pawn half-battery",
+    "Switchback",
+    "Unpinning key"
+   ],
+   "note": "1.Qf4! Three variations, unified line-opening avoidance over the two thematic ones; 1...e3 is extra play.",
+   "solution": "#2 (11+10)   FEN b2R4/b6p/8/N2pPQ2/2Npp2R/1pPk3P/1Pp5/2n2KB1 w - - 0 1\nSet play:\n   1...dxc3 2.Qxe4#\n   unprovided: Bb7, Bc6, Bb8, Bb6, Bc5, Se2, Sa2, dxc4, h6, h5\nTry: 1.Rxd5? (threat: 2.Qxe4#)\n   (9 further moves allow the threat)\n   but 1...Bxd5!\nTry: 1.Rxe4? (threat: 2.Rxd4#/Qf3#/Rh4#/Rg4#/Rf4#/Re3#/Re2#/Re1#)\n   (11 further moves allow the threat)\n   but 1...dxe4!\nTry: 1.Qg5? (threat: 2.Qd2#)\n   1...dxc4 2.Qe3#\n   1...e3 2.Qf5#\n   (9 further moves allow the threat)\n   but 1...dxc3!\nTry: 1.Qf2? (threat: 2.Qd2#)\n   1...Se2 2.Qxe2#\n   1...dxc4 2.Qe3#\n   1...e3 2.Qf5#\n   (8 further moves allow the threat)\n   but 1...dxc3!\nTry: 1.Rf4? (threat: 2.Rf3#)\n   1...dxc3 2.Qxe4#\n   (9 further moves allow the threat)\n   but 1...dxc4!\nKey: 1.Qf4! (threat: 2.Qd2#)\n   1...dxc4 2.Qe3#\n   1...dxc3 2.Qxe4#\n   1...e3 2.Qf5#\n   (9 further moves allow the threat)\nPatterns:\n   changed threat: Qxe4# / Qf3#/Re1#/Re2#/Re3#/Rf4#/Rg4#/Rh4#/Rxd4#   [try Rxd5 vs try Rxe4]\n   changed threat: Qxe4# / Qd2#   [try Rxd5 vs try Qg5]\n   changed threat: Qxe4# / Qd2#   [try Rxd5 vs try Qf2]\n   changed threat: Qxe4# / Rf3#   [try Rxd5 vs try Rf4]\n   changed threat: Qxe4# / Qd2#   [try Rxd5 vs key Qf4]\n   changed threat: Qf3#/Re1#/Re2#/Re3#/Rf4#/Rg4#/Rh4#/Rxd4# / Qd2#   [try Rxe4 vs try Qg5]\n   changed threat: Qf3#/Re1#/Re2#/Re3#/Rf4#/Rg4#/Rh4#/Rxd4# / Qd2#   [try Rxe4 vs try Qf2]\n   changed threat: Qf3#/Re1#/Re2#/Re3#/Rf4#/Rg4#/Rh4#/Rxd4# / Rf3#   [try Rxe4 vs try Rf4]\n   changed threat: Qf3#/Re1#/Re2#/Re3#/Rf4#/Rg4#/Rh4#/Rxd4# / Qd2#   [try Rxe4 vs key Qf4]\n   changed threat: Qd2# / Rf3#   [try Qg5 vs try Rf4]\n   changed threat: Qd2# / Rf3#   [try Qf2 vs try Rf4]\n   changed threat: Rf3# / Qd2#   [try Rf4 vs key Qf4]\n(4568 nodes, 0.19s)",
+   "keys": [
+    "Qf4"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-selfpin-scheme",
+   "fen": "8/7B/8/5K2/3N4/4k3/r7/b2Q4",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "scheme, session 15",
+   "themes": [
+    "Self-pinning king tries"
+   ],
+   "note": "SCHEME ONLY (no solution). Ke5/Kf6 self-pin Sd4 against Ba1.",
+   "solution": "#2 (4+3)   FEN 8/7B/8/5K2/3N4/4k3/r7/b2Q4 w - - 0 1\nNo solution found.\n(723 nodes, 0.03s)",
+   "keys": [],
+   "cooked": false
+  },
+  {
+   "id": "bourd-kingkey-simple",
+   "fen": "2N5/4p3/1R6/npk5/b5P1/2P1NK2/2P4B/5B1Q",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 13",
+   "themes": [
+    "King key",
+    "White interference try"
+   ],
+   "note": "1.Kf2! The first stage: tries are ORDINARY shut-offs of lines already open.",
+   "solution": "#2 (10+5)   FEN 2N5/4p3/1R6/npk5/b5P1/2P1NK2/2P4B/5B1Q w - - 0 1\nSet play:\n   1...e6 2.Bd6#\n   unprovided: Sb7, Sc6, Sc4, Sb3, Bb3, Bxc2, b4, e5\nTry: 1.Kg3? (threat: 2.Qd5#)\n   1...Bb3 2.Rxb5#\n   (7 further moves allow the threat)\n   but 1...e6!\nTry: 1.Ke2? (threat: 2.Qd5#)\n   1...e6 2.Bd6#\n   (7 further moves allow the threat)\n   but 1...Bb3!\nKey: 1.Kf2! (threat: 2.Qd5#)\n   1...Bb3 2.Rxb5#\n   1...e6 2.Bd6#\n   (7 further moves allow the threat)\nPatterns:\n   White interference try: 1.Ke2? cuts Bf1 -> b5; 1...Bb3!   [try Ke2]\n(2167 nodes, 0.12s)",
+   "keys": [
+    "Kf2"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-kingkey-double-paradox",
+   "fen": "b5BQ/8/4pK1B/1N6/1p2P3/1P1krpN1/1R6/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 13",
+   "themes": [
+    "King key",
+    "Anticipatory line closing (double paradox)"
+   ],
+   "note": "1.Ke7! The deepened version: the tries close lines that are not open yet; the defences open them.",
+   "solution": "#2 (9+6)   FEN b5BQ/8/4pK1B/1N6/1p2P3/1P1krpN1/1R6/8 w - - 0 1\nSet play:\n   1...Rxe4/Re1 2.Rd2#\n   1...e5 2.Bc4#\n   unprovided: Bb7, Bc6, Bd5, Bxe4, Re2, f2\nTry: 1.Bxe6? (threat: 2.Bc4#)\n   1...Rxe4 2.Rd2#\n   (6 further moves allow the threat)\n   but 1...Bd5!\nTry: 1.Kf7? (threat: 2.Qd4#)\n   1...Rxe4 2.Rd2#\n   (7 further moves allow the threat)\n   but 1...e5!\nTry: 1.Kg6? (threat: 2.Qd4#)\n   1...Rxe4 2.Rd2#\n   1...e5 2.Bc4#\n   (6 further moves allow the threat)\n   but 1...Bxe4+!\nTry: 1.Kg5? (threat: 2.Qd4#)\n   1...e5 2.Bc4#\n   (7 further moves allow the threat)\n   but 1...Rxe4!\nKey: 1.Ke7! (threat: 2.Qd4#)\n   1...Rxe4 2.Rd2#\n   1...e5 2.Bc4#\n   (7 further moves allow the threat)\nPatterns:\n   White interference try: 1.Kg5? cuts Bh6 -> e3; 1...Rxe4!   [try Kg5]\n   changed threat: Bc4# / Qd4#   [try Bxe6 vs try Kf7]\n   changed threat: Bc4# / Qd4#   [try Bxe6 vs try Kg6]\n   changed threat: Bc4# / Qd4#   [try Bxe6 vs try Kg5]\n   changed threat: Bc4# / Qd4#   [try Bxe6 vs key Ke7]\n(2656 nodes, 0.12s)",
+   "keys": [
+    "Ke7"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-kingkey-three-tries",
+   "fen": "3b4/4p1R1/1PP1kN2/6P1/2N3Pn/B1K2p1n/4P3/QB1R4",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 14",
+   "themes": [
+    "King key",
+    "White interference try"
+   ],
+   "note": "1.Kb3! Three tries, each closing a different White line. wPb6 is thematic (its loss kills two tries).",
+   "solution": "#2 (13+6)   FEN 3b4/4p1R1/1PP1kN2/6P1/2N3Pn/B1K2p1n/4P3/QB1R4 w - - 0 1\nSet play:\n   1...Bc7/Bxb6 2.Rxe7#\n   1...Sg6/Sg2 2.Bf5#\n   1...Sf5 2.Bxf5#/gxf5#  [dual]\n   1...exf6 2.Rd6#\n   unprovided: Sxg5, Sf4, Sf2, Sg1, fxe2, f2\nTry: 1.Rxd8? (threat: 2.Rxe7#)\n   1...Sg6 2.Bf5#\n   1...Sf5 2.Bxf5#/gxf5#  [dual]\n   (7 further moves allow the threat)\n   but 1...Sxg5!\nTry: 1.Sh7? (threat: 2.Sf8#)\n   1...Sg6 2.Bf5#\n   (9 further moves allow the threat)\n   but 1...Sxg5!\nTry: 1.Sd7? (threat: 2.Sf8#/Sc5#)\n   (10 further moves allow the threat)\n   but 1...Sxg5!\nTry: 1.Se4? (threat: 2.Sc5#)\n   1...Bxb6 2.Rxe7#\n   (9 further moves allow the threat)\n   but 1...Sxg5!\nTry: 1.Kb4? (threat: 2.Qe5#)\n   1...Sg6 2.Bf5#\n   1...exf6 2.Rd6#\n   (9 further moves allow the threat)\n   but 1...Bc7!\nTry: 1.Kd2? (threat: 2.Qe5#)\n   1...Bc7 2.Rxe7#\n   1...Sg6 2.Bf5#\n   (9 further moves allow the threat)\n   but 1...exf6!\nTry: 1.Kc2? (threat: 2.Qe5#)\n   1...Bc7 2.Rxe7#\n   1...exf6 2.Rd6#\n   (9 further moves allow the threat)\n   but 1...Sg6!\nTry: 1.Rd5? (threat: 2.Re5#)\n   1...Bc7 2.Rxe7#\n   1...Sg6 2.Bf5#\n   1...exf6 2.Rd6#\n   (8 further moves allow the threat)\n   but 1...Sxg5!\nTry: 1.Bh7? (threat: 2.Bg8#)\n   (11 further moves allow the threat)\n   but 1...Sxg5!\nTry: 1.c7? (threat: 2.cxd8=S#/c8=Q#/c8=B#)\n   1...Bxc7 2.Rxe7#\n   (9 further moves allow the threat)\n   but 1...Sxg5!\nKey: 1.Kb3! (threat: 2.Qe5#)\n   1...Bc7 2.Rxe7#\n   1...Sg6 2.Bf5#\n   1...exf6 2.Rd6#\n   (9 further moves allow the threat)\nPatterns:\n   White interference try: 1.Kb4? cuts Ba3 -> e7; 1...Bc7!   [try Kb4]\n   White interference try: 1.Kc2? cuts Bb1 -> g6; 1...Sg6!   [try Kc2]\n   changed threat: Rxe7# / Sf8#   [try Rxd8 vs try Sh7]\n   changed threat: Rxe7# / Sc5#/Sf8#   [try Rxd8 vs try Sd7]\n   changed threat: Rxe7# / Sc5#   [try Rxd8 vs try Se4]\n   changed threat: Rxe7# / Qe5#   [try Rxd8 vs try Kb4]\n   changed threat: Rxe7# / Qe5#   [try Rxd8 vs try Kd2]\n   changed threat: Rxe7# / Qe5#   [try Rxd8 vs try Kc2]\n   changed threat: Rxe7# / Re5#   [try Rxd8 vs try Rd5]\n   changed threat: Rxe7# / Bg8#   [try Rxd8 vs try Bh7]\n   changed threat: Rxe7# / c8=B#/c8=Q#/cxd8=S#   [try Rxd8 vs try c7]\n   changed threat: Rxe7# / Qe5#   [try Rxd8 vs key Kb3]\n   changed threat: Sf8# / Sc5#   [try Sh7 vs try Se4]\n   changed threat: Sf8# / Qe5#   [try Sh7 vs try Kb4]\n   changed threat: Sf8# / Qe5#   [try Sh7 vs try Kd2]\n   changed threat: Sf8# / Qe5#   [try Sh7 vs try Kc2]\n   changed threat: Sf8# / Re5#   [try Sh7 vs try Rd5]\n   changed threat: Sf8# / Bg8#   [try Sh7 vs try Bh7]\n   changed threat: Sf8# / c8=B#/c8=Q#/cxd8=S#   [try Sh7 vs try c7]\n   changed threat: Sf8# / Qe5#   [try Sh7 vs key Kb3]\n   changed threat: Sc5#/Sf8# / Qe5#   [try Sd7 vs try Kb4]\n   changed threat: Sc5#/Sf8# / Qe5#   [try Sd7 vs try Kd2]\n   changed threat: Sc5#/Sf8# / Qe5#   [try Sd7 vs try Kc2]\n   changed threat: Sc5#/Sf8# / Re5#   [try Sd7 vs try Rd5]\n   changed threat: Sc5#/Sf8# / Bg8#   [try Sd7 vs try Bh7]\n   changed threat: Sc5#/Sf8# / c8=B#/c8=Q#/cxd8=S#   [try Sd7 vs try c7]\n   changed threat: Sc5#/Sf8# / Qe5#   [try Sd7 vs key Kb3]\n   changed threat: Sc5# / Qe5#   [try Se4 vs try Kb4]\n   changed threat: Sc5# / Qe5#   [try Se4 vs try Kd2]\n   changed threat: Sc5# / Qe5#   [try Se4 vs try Kc2]\n   changed threat: Sc5# / Re5#   [try Se4 vs try Rd5]\n   changed threat: Sc5# / Bg8#   [try Se4 vs try Bh7]\n   changed threat: Sc5# / c8=B#/c8=Q#/cxd8=S#   [try Se4 vs try c7]\n   changed threat: Sc5# / Qe5#   [try Se4 vs key Kb3]\n   changed threat: Qe5# / Re5#   [try Kb4 vs try Rd5]\n   changed threat: Qe5# / Bg8#   [try Kb4 vs try Bh7]\n   changed threat: Qe5# / c8=B#/c8=Q#/cxd8=S#   [try Kb4 vs try c7]\n   changed threat: Qe5# / Re5#   [try Kd2 vs try Rd5]\n   changed threat: Qe5# / Bg8#   [try Kd2 vs try Bh7]\n   changed threat: Qe5# / c8=B#/c8=Q#/cxd8=S#   [try Kd2 vs try c7]\n   changed threat: Qe5# / Re5#   [try Kc2 vs try Rd5]\n   changed threat: Qe5# / Bg8#   [try Kc2 vs try Bh7]\n   changed threat: Qe5# / c8=B#/c8=Q#/cxd8=S#   [try Kc2 vs try c7]\n   changed threat: Re5# / Bg8#   [try Rd5 vs try Bh7]\n   changed threat: Re5# / c8=B#/c8=Q#/cxd8=S#   [try Rd5 vs try c7]\n   changed threat: Re5# / Qe5#   [try Rd5 vs key Kb3]\n   changed threat: Bg8# / c8=B#/c8=Q#/cxd8=S#   [try Bh7 vs try c7]\n   changed threat: Bg8# / Qe5#   [try Bh7 vs key Kb3]\n   changed threat: c8=B#/c8=Q#/cxd8=S# / Qe5#   [try c7 vs key Kb3]\n(9417 nodes, 0.41s)",
+   "keys": [
+    "Kb3"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-selfpin-full",
+   "fen": "1B1R3Q/4p1K1/6p1/1p1Npp2/R1b1kpN1/4P3/3bP1r1/6qB",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 15",
+   "themes": [
+    "King key",
+    "Self-pinning king tries"
+   ],
+   "note": "1.Kf8! Kg8?/Kf7? self-pin Sd5 (Bc4); Kxg6? self-pins Sg4 (Rg2). The key pins nothing.",
+   "solution": "#2 (10+11)   FEN 1B1R3Q/4p1K1/6p1/1p1Npp2/R1b1kpN1/4P3/3bP1r1/6qB w - - 0 1\nSet play:\n   1...Bxe3/Bc1 2.Sc3#\n   1...Bc3 2.Sxc3#\n   1...Qh2/Qd1/Qc1/Qb1/Qa1 2.Sf2#\n   1...Qf2 2.Sxf2#\n   1...e6 2.Sdf6#/Sgf6#  [dual]\n   unprovided: Ba5, Bb4, Be1, Qxe3, Qxh1, Qf1, Qe1, fxg4, bxa4, fxe3, g5, b4, f3\nTry: 1.Kxg6? (threat: 2.Qxe5#)\n   1...Bc3 2.Sxc3#\n   (20 further moves allow the threat)\n   but 1...Qa1!\nTry: 1.Kg8? (threat: 2.Qxe5#)\n   1...Qa1 2.Sf2#\n   (21 further moves allow the threat)\n   but 1...Bc3!\nTry: 1.Kf7? (threat: 2.Qxe5#)\n   1...Qa1 2.Sf2#\n   (21 further moves allow the threat)\n   but 1...Bc3!\nKey: 1.Kf8! (threat: 2.Qxe5#)\n   1...Bc3 2.Sxc3#\n   1...Qa1 2.Sf2#\n   (21 further moves allow the threat)\n(6021 nodes, 0.32s)",
+   "keys": [
+    "Kf8"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-changed-mates-1",
+   "fen": "2Rn1N2/7K/3P4/3k4/pB1p1P2/3n1P2/1p1Q1p2/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 16",
+   "themes": [
+    "Changed mates"
+   ],
+   "note": "1.Qc2! with 1.Qe2? as try; two mates change. Flaw: duals after 1...Se5 and 1...Sxf4.",
+   "solution": "#2 (8+7)   FEN 2Rn1N2/7K/3P4/3k4/pB1p1P2/3n1P2/1p1Q1p2/8 w - - 0 1\nSet play:\n   1...b1=S 2.Qa2#\n   unprovided: Sf7, Sb7, Se6, Sc6, Se5, Sc5, Sxf4, Sxb4, Se1, Sc1, a3, f1=Q, f1=R, f1=B, f1=S, b1=Q, b1=R, b1=B\nTry: 1.Qc3? (threat: 2.Qc4#)\n   1...Sc6 2.Qxc6#\n   1...Se5/Sxf4/Sxb4 2.Qc5#\n   1...Sc5 2.Qxc5#\n   (14 further moves allow the threat)\n   but 1...dxc3!\nTry: 1.Qe2? (threat: 2.Qe4#)\n   1...Sc6 2.Qe6#\n   1...Sxb4 2.Qe5#\n   (16 further moves allow the threat)\n   but 1...Sc5!\nKey: 1.Qc2! (threat: 2.Qc4#)\n   1...Sc6 2.Qxc6#\n   1...Se5 2.Qc5#/Qe4#  [dual]\n   1...Sc5 2.Qxc5#\n   1...Sxf4 2.Qf5#/Qc5#/Qe4#  [dual]\n   1...Sxb4 2.Qc5#\n   (14 further moves allow the threat)\nChanged continuations:\n   1...Sxb4: Qc5# -> Qxe5#   [try Qc3 vs try Qe2]\n   1...Sc6: Qc6# -> Qe6#   [try Qc3 vs try Qe2]\n   1...Sxb4: Qxe5# -> Qc5#   [try Qe2 vs key Qc2]\n   1...Sc6: Qe6# -> Qc6#   [try Qe2 vs key Qc2]\nPatterns:\n   changed threat: Qc4# / Qe4#   [try Qc3 vs try Qe2]\n   changed threat: Qe4# / Qc4#   [try Qe2 vs key Qc2]\n(3498 nodes, 0.15s)",
+   "keys": [
+    "Qc2"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "bourd-changed-mates-2",
+   "fen": "b3r3/2pQ2p1/4n1P1/1R6/4k1P1/2K1P2R/8/4n3",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 17",
+   "themes": [
+    "Changed mates"
+   ],
+   "note": "1.Qf7! Queen switches from the d-file to the f-file; two changed mates, dual-free after the key.",
+   "solution": "#2 (7+7)   FEN b3r3/2pQ2p1/4n1P1/1R6/4k1P1/2K1P2R/8/4n3 w - - 0 1\nSet play:\n   1...Rh8/Rg8/Rf8/Rd8/Rc8/Rb8 2.Qxe6#\n   1...Bc6 2.Qxc6#\n   1...Bd5 2.Qxd5#\n   1...Sf8/Sd8/Sg5/Sc5/Sf4 2.Qf5#/Qd4#  [dual]\n   1...Sd4 2.Qxd4#\n   1...Sf3/Sg2/Sc2 2.Qd3#\n   1...Sd3 2.Qxd3#\n   unprovided: Re7, Bb7, c6, c5\nKey: 1.Qf7! (threat: 2.Qf5#)\n   1...Rf8 2.Qxe6#\n   1...Sd4 2.Qf4#\n   1...Sf3 2.Qxf3#\n   (19 further moves allow the threat)\nChanged continuations:\n   1...Sf3: Qd3# -> Qxf3#   [set play vs key Qf7]\n   1...Sd4: Qd4# -> Qf4#   [set play vs key Qf7]\n(2909 nodes, 0.2s)",
+   "keys": [
+    "Qf7"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "claude-bristol-miniature",
+   "fen": "2b2K2/8/7k/8/5N2/8/1B5N/Q7",
+   "stip": "#2",
+   "author": "Claude",
+   "source": "session 1 attempt",
+   "themes": [
+    "Bristol"
+   ],
+   "note": "Rejected by E.B.: king escape, both tries refuted by the same king move, too simple for its flaws.",
+   "solution": "#2 (5+2)   FEN 2b2K2/8/7k/8/5N2/8/1B5N/Q7 w - - 0 1\nTry: 1.Ba3? (threat: 2.Qg7#)\n   (8 further moves allow the threat)\n   but 1...Kg5!\nTry: 1.Bc1? (threat: 2.Qg7#)\n   (8 further moves allow the threat)\n   but 1...Kg5!\nTry: 1.Qg1? (threat: 2.Qg7#/Qg6#)\n   (7 further moves allow the threat)\n   but 1...Bg4!\nKey: 1.Bh8! (threat: 2.Qg7#)\n   1...Kg5 2.Qf6#\n   (8 further moves allow the threat)\nPatterns:\n   Bristol: 1.Bh8 + 2.Qg7#   [key Bh8]\n   Bristol (in variation): 1.Bh8 Kg5 2.Qf6#   [key Bh8]\n(2483 nodes, 0.11s)",
+   "keys": [
+    "Bh8"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "claude-halfpin-core-qs",
+   "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+   "stip": "#2",
+   "author": "Claude",
+   "source": "session 5 core",
+   "themes": [
+    "Half-pin (pure)"
+   ],
+   "note": "POST-KEY core, 6 holes. Both mates exploit the pin; avoidance not unified.",
+   "solution": "#2 (5+3)   FEN R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5 b - - 0 1\nSet play:\n   1...Qxh8/Qg7/Qg6/Qf5 2.Qc5#\n   1...Qf8/Qe7/Qd6 2.Qd2#\n   1...Qd8 2.Rxd8#/Qc5#/Qd2#  [dual]\n   1...Qf7/Qh6/Qe6/Qg5/Qh4/Qf3 2.Qc5#/Qd2#  [dual]\n   1...Qf4 2.Rd8#/Qc5#/Qd2#  [dual]\n   1...Qf2 2.Rd8#/Qc5#  [dual]\n   1...Sf7/Sc6 2.Qc5#/Qd2#  [dual]\n   1...Sd7 2.Qd2#\n   1...Sg6/Sg4 2.Rd8#/Qc5#/Qd2#  [dual]\n   1...Sf3 2.Rd8#/Qc5#  [dual]\n   1...Sd3 2.Rd8#\n   unprovided: Qc6+, Qb6+, Qa6+, Qf1+, Sc4, Kd5\nNo solution found.\n(1294 nodes, 0.05s)",
+   "keys": [],
+   "cooked": false
+  },
+  {
+   "id": "claude-pawn-core",
+   "fen": "3R4/8/3p4/3pN3/3kN3/8/2QB4/2R4K",
+   "stip": "#2",
+   "author": "Claude",
+   "source": "session 8 core",
+   "themes": [
+    "Pawn half-battery"
+   ],
+   "note": "POST-KEY core. Flaws: dual threat (Sc6#/Sf3#) and one hole (Kxe5).",
+   "solution": "#2 (7+3)   FEN 3R4/8/3p4/3pN3/3kN3/8/2QB4/2R4K b - - 0 1\nSet play:\n   1...dxe5 2.Qc4#\n   1...dxe4 2.Qc5#\n   unprovided: Kxe5\nNo solution found.\n(147 nodes, 0.01s)",
+   "keys": [],
+   "cooked": false
+  },
+  {
+   "id": "claude-pawn-halfbattery-complete",
+   "fen": "3R4/2bN1p2/2bp4/3p4/1BPk1P2/1P3P2/K3Q3/5n2",
+   "stip": "#2",
+   "author": "Claude (from E. Bourd's scheme)",
+   "source": "session 10",
+   "themes": [
+    "Pawn half-battery on a file (line opening)"
+   ],
+   "note": "1.Sc5! Completed from his file scheme; 1.Se5? blocks its own mating square. Thin try set.",
+   "solution": "#2 (9+7)   FEN 3R4/2bN1p2/2bp4/3p4/1BPk1P2/1P3P2/K3Q3/5n2 w - - 0 1\nSet play:\n   1...Sg3/Se3/Sh2 2.Qd2#\n   1...Sd2 2.Qxd2#\n   unprovided: Bxd8, Bb8, Bb6, Ba5, Ba8, Bxd7, Bb7, Bb5, Ba4, dxc4, f6, f5\nTry: 1.Se5? (threat: 2.Sxc6#/Qd3#)\n   1...dxe5 2.Qe4#\n   (16 further moves allow the threat)\n   but 1...dxc4!\nKey: 1.Sc5! (threat: 2.Qd3#)\n   1...dxc5 2.Qe4#\n   1...dxc4 2.Qe5#\n   (16 further moves allow the threat)\n(3369 nodes, 0.16s)",
+   "keys": [
+    "Sc5"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "claude-changed-mates-set-version",
+   "fen": "2Rn1N2/7K/3P2p1/3k1p2/pB1p1P2/3n1P2/1p2Qp2/8",
+   "stip": "#2",
+   "author": "Claude (from E. Bourd's position)",
+   "source": "session 16",
+   "themes": [
+    "Changed mates"
+   ],
+   "note": "Set+solution version of bourd-changed-mates-1, DUAL-FREE after the key. bPf5 guards e4.",
+   "solution": "#2 (8+9)   FEN 2Rn1N2/7K/3P2p1/3k1p2/pB1p1P2/3n1P2/1p2Qp2/8 w - - 0 1\nSet play:\n   1...Sf7/Sb7/Sc6 2.Qe6#\n   1...Se6 2.Qxe6#\n   1...Se5 2.Qxe5#/Qb5#  [dual]\n   1...Sxf4 2.Qb5#\n   1...Sxb4 2.Qe5#\n   1...Se1/Sc1 2.Qe5#/Qb5#/Qc4#  [dual]\n   1...b1=S 2.Qa2#\n   unprovided: Sc5, g5, a3, f1=Q, f1=R, f1=B, f1=S, b1=Q, b1=R, b1=B\nTry: 1.Sd7? (threat: 2.Sf6#/Sb6#)\n   1...Se5 2.Qxe5#\n   1...Sxb4 2.Qe5#\n   (17 further moves allow the threat)\n   but 1...Sc5!\nKey: 1.Qc2! (threat: 2.Qc4#)\n   1...Sc6 2.Qxc6#\n   1...Se5/Sxf4/Sxb4 2.Qc5#\n   1...Sc5 2.Qxc5#\n   (15 further moves allow the threat)\nChanged continuations:\n   1...Sxb4: Qxe5# -> Qc5#   [set play vs key Qc2]\n   1...Sxf4: Qb5# -> Qc5#   [set play vs key Qc2]\n   1...Sc6: Qe6# -> Qc6#   [set play vs key Qc2]\n   1...Sxb4: Qxe5# -> Qc5#   [try Sd7 vs key Qc2]\n   1...Se5: Qxe5# -> Qc5#   [try Sd7 vs key Qc2]\nPatterns:\n   changed threat: Sb6#/Sf6# / Qc4#   [try Sd7 vs key Qc2]\n(3427 nodes, 0.18s)",
+   "keys": [
+    "Qc2"
+   ],
+   "cooked": false
+  }
+ ]
+}

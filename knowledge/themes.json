@@ -1,0 +1,164 @@
+{
+ "Changed mates": {
+  "definition": "The same Black defence is answered by different White mates in two phases (set play / try / solution).",
+  "detector": "relations.changed",
+  "source": "standard"
+ },
+ "Reciprocal change": {
+  "definition": "a->A, b->B in one phase becomes a->B, b->A in another.",
+  "detector": "relations.reciprocal",
+  "source": "standard"
+ },
+ "Transferred mates": {
+  "definition": "The same mate follows different defences in different phases.",
+  "detector": "relations.transferred",
+  "source": "standard"
+ },
+ "Le Grand": {
+  "definition": "Phase 1: threat A, defence a -> B. Phase 2: threat B, defence a -> A.",
+  "detector": "patterns:Le Grand",
+  "source": "standard"
+ },
+ "Pseudo Le Grand": {
+  "definition": "Threats of two phases reappear as mates after defences in the other phase, with different defences.",
+  "detector": "patterns:Pseudo Le Grand",
+  "source": "standard"
+ },
+ "Threat reversal": {
+  "definition": "1.A? threatens B; 1.B! threatens A.",
+  "detector": "patterns:Threat reversal",
+  "source": "yacpdb keyword, verified 7/7"
+ },
+ "Dombrovskis": {
+  "definition": "In a try, defence a defeats threat A (often refuting); in the solution a is answered by A.",
+  "detector": "patterns:Dombrovskis",
+  "source": "standard; detector over-fires, needs refinement",
+  "status": "needs refinement"
+ },
+ "Zagoruiko": {
+  "definition": ">=3 phases, the same >=2 defences answered by different mates in every phase.",
+  "detector": "patterns:Zagoruiko",
+  "source": "standard, verified 8/8"
+ },
+ "Bristol": {
+  "definition": "A line piece moves along a line; another piece follows on the same line in the same direction, passing the vacated square and stopping short. Extended by thematic tries where the line piece stops on squares that block something else.",
+  "detector": "patterns:Bristol",
+  "source": "taught by E. Bourd, session 1",
+  "examples": [
+   "Variantim 2015 #2635 (yacpdb 427925)",
+   "prototype 8/6N1/4p3/2bp4/4kP2/3pPp2/1B1P3K/Q7"
+  ]
+ },
+ "White interference try": {
+  "definition": "A try fails because the moving White piece closes a White line; the refutation exploits a square that line used to guard.",
+  "detector": "patterns:White interference try",
+  "source": "derived from session 1 (B to f6/g7 blocking a knight mate / rook path)"
+ },
+ "Pickabish": {
+  "definition": "The key bishop's choice of square, shown by tries to several squares.",
+  "detector": null,
+  "source": "yacpdb keyword on Variantim 2015; definition to confirm with E. Bourd",
+  "status": "unconfirmed"
+ },
+ "Grimshaw": {
+  "definition": "Two Black line pieces (usually R and B) whose lines cross on one square; each defence onto that square interferes with the other piece, and each is answered by a different mate exploiting the interference.",
+  "detector": "motives: two defences on the same square, each 'black interference' of the other piece",
+  "source": "standard"
+ },
+ "Self-block": {
+  "definition": "A Black defence occupies a square next to its own king, allowing a mate that no longer needs to guard it.",
+  "detector": "motives.mate: self-block",
+  "source": "standard"
+ },
+ "Unguard": {
+  "definition": "A Black defence moves a piece off a guarding post, allowing the mate.",
+  "detector": "motives.mate: unguard",
+  "source": "standard"
+ },
+ "Half-pin": {
+  "definition": "Two Black pieces on one line between a White line piece and the Black king; when one moves, the other is left pinned and the mate exploits that self-pin.",
+  "detector": "motives.detect_half_pin",
+  "source": "standard; taught via Bourd, Novice Composers TT 2002 (yacpdb 2753)",
+  "examples": [
+   "3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8"
+  ]
+ },
+ "Cross-check": {
+  "definition": "Black defends by giving check; White answers by a mating move that also parries the check (often capturing the checker).",
+  "detector": "motives: cross-check",
+  "source": "standard"
+ },
+ "Unpin (Black)": {
+  "definition": "A Black defence releases a pinned Black unit (capturing the pinner or interposing on the pin line) so that it can defend.",
+  "detector": "motives: unpins",
+  "source": "standard"
+ },
+ "Half-pin (pure)": {
+  "definition": "Half-pin in which BOTH thematic mates exploit the self-pin of the other unit (it cannot capture the mating unit or interpose), and each mate fails after the other defence for a concrete reason.",
+  "detector": "compose.scheme_search.pin_exploited + avoidance_reason",
+  "source": "E. Bourd s5"
+ },
+ "Try set (same threat)": {
+  "definition": "Several first moves carry the same threat as the key; each fails to one thematic defence because it commands only part of the mating squares needed. The key is the square that commands all of them.",
+  "detector": "critique: try set",
+  "source": "E. Bourd s6"
+ },
+ "Retained-control dual avoidance": {
+  "definition": "Several Black units defend by arriving on the SAME square; each still controls, from that square, the line it held before, and that retained control is what refutes the sibling mate. Unified second-layer motivation.",
+  "detector": "motives.dual_avoidance_after -> kind \"defender retains control\"",
+  "source": "E. Bourd s7",
+  "examples": [
+   "8/3nRR2/3Qr1p1/1p2b3/2p1k1B1/1N2p1B1/4P3/1K6 (post-key, threat Bf3#): Sf6/Rf6/Bf6 -> Sc5#/Qd4#/Qc6#"
+  ]
+ },
+ "Line-opening dual avoidance": {
+  "definition": "Each thematic defence opens a line for another Black unit, and that opened line is what refutes the sibling mate. Unified second-layer motivation.",
+  "detector": "motives.dual_avoidance_after -> kind \"line opened by the defence\"",
+  "source": "E. Bourd s7",
+  "examples": [
+   "2N5/8/K1p4p/1pk2N2/R2n3r/1P2n2p/7Q/4r1BB (post-key, threat Qd6#): Sdxf5 -> Qe5#, Sexf5 -> Qc2#"
+  ]
+ },
+ "Pawn half-battery on a rank (line opening)": {
+  "definition": "Two black pawns on a rank between a White rook and the king. Each pawn ADVANCES (possible on a rank, unlike a file), leaving the other pinned so it cannot capture the mating unit; and the advance opens a diagonal for a black bishop behind, which is what refutes the sibling mate. Unified avoidance.",
+  "detector": "compose.motif_space",
+  "source": "E. Bourd s9",
+  "examples": [
+   "8/3K2bb/1p6/1p1kppR1/1P6/2PPQ3/8/8 (post-key): 1...f4 2.Qd4# (2.Qe4? Bxe4!) / 1...e4 2.Qxe4# (2.Qd4? Bxd4!)"
+  ]
+ },
+ "Pawn half-battery on a file (line opening)": {
+  "definition": "Two black pawns on a file between a White rook and the king; neither can advance, so both defend by CAPTURING sideways. Each capture opens the diagonal of a black bishop standing behind it, and that bishop refutes the sibling mate. Same unified motivation as the rank version, different geometry.",
+  "detector": "compose.motif_space",
+  "source": "E. Bourd s9",
+  "examples": [
+   "3R4/2b2p2/2bp4/2Np4/1BPk1P2/1P3P2/Kn2Q3/8 (post-key, threat Qf2#): 1...dxc5 2.Qe4# (2.Qe5? Bxe5!) / 1...dxc4 2.Qe5# (2.Qe4? Bxe4!)"
+  ]
+ },
+ "Switchback": {
+  "definition": "A piece returns to the square it left (typically the key piece giving mate on its diagram square).",
+  "detector": "motives.key_extras -> switchback",
+  "source": "E. Bourd s11"
+ },
+ "Unpinning key": {
+  "definition": "The key releases a pinned Black unit; the freed unit provides an extra defence and variation.",
+  "detector": "motives.key_extras -> unpins",
+  "source": "E. Bourd s11"
+ },
+ "Anticipatory line closing (double paradox)": {
+  "definition": "A try by the key piece fails because it closes a White line that is not open yet in the diagram: the line is blocked by a Black unit, and only that unit own defence opens it. The self-interference costs nothing at the moment it is played and only bites one move later - much more hidden than an ordinary shut-off. Two flavours: the try cuts a SUPPORTING line of the mate, or the mating piece own path.",
+  "detector": "motives.anticipatory_closing",
+  "source": "E. Bourd s13",
+  "examples": [
+   "b5BQ/8/4pK1B/1N6/1p2P3/1P1krpN1/1R6/8 #2: 1.Ke7! (2.Qd4#); 1.Kg5? closes Bh6 - 1...Rxe4!; 1.Kf7? closes Bg8 - 1...e5!"
+  ]
+ },
+ "Self-pinning king tries": {
+  "definition": "The key is a White king move that opens a line; the tries fail because the king steps onto a square that completes a pin of one of White own pieces (Black line piece - White piece - king destination, collinear), so the mate that unit would deliver becomes impossible. Unified concept for the try refutations, different from line closing.",
+  "detector": "compose.pin_geometry + compose.selfpin evaluate",
+  "source": "E. Bourd s15",
+  "examples": [
+   "scheme: 8/7B/8/5K2/3N4/4k3/r7/b2Q4 - 1.Ke5? Ra3! and Sc2 is pinned by Ba1"
+  ]
+ }
+}

@@ -1,0 +1,72 @@
+[
+ {
+  "id": "flight-in-diagram",
+  "text": "A king escape available in the diagram makes the problem easy to solve.",
+  "weight": "major",
+  "rule": "king escape in diagram",
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "king-refutes-try",
+  "text": "A try refuted by a king move is pretty bad.",
+  "weight": "major",
+  "rule": "king refutes try",
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "same-refutation",
+  "text": "The same refutation for several thematic tries is bad.",
+  "weight": "major",
+  "rule": "same refutation",
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "participation",
+  "text": "Every piece should take part in the mates; the key piece is forgivable.",
+  "weight": "flaw",
+  "rule": "passive piece / cook-stopper / superfluous piece",
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "no-unanswered-defence",
+  "text": "No obvious Black defence without an answer, or the key becomes trivial.",
+  "weight": "flaw",
+  "rule": "unprovided move",
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "weak-simple-defences",
+  "text": "Simple defences (pawn moves opening lines for the king) defend against anything and help the solver; heavy pieces moving and leaving squares are better.",
+  "weight": "preference",
+  "rule": "defence strength (motives)",
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "economy",
+  "text": "Economy and an airy position are valued, but aesthetics yield to content as ideas get richer.",
+  "weight": "balance",
+  "rule": "economy",
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "natural",
+  "text": "A natural, game-like look adds points.",
+  "weight": "plus",
+  "rule": null,
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "valued",
+  "text": "Long moves, paradoxes, thematic play and geometric manoeuvres are valued; more so when doubled or tripled.",
+  "weight": "plus",
+  "rule": "long key / theme",
+  "source": "E. Bourd s1"
+ },
+ {
+  "id": "simple-plus-flaws",
+  "text": "Too simple plus big flaws is not worth it, even if economical.",
+  "weight": "judgement",
+  "rule": null,
+  "source": "E. Bourd s1 (on the Kh6 Bristol miniature)"
+ }
+]

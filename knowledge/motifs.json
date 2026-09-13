@@ -1,0 +1,158 @@
+{
+ "cells": {
+  "advance | capture prevention | line opened by the defence": [
+   {
+    "label": "Bourd rank-pawn (advances)",
+    "source": "sessions 7-9",
+    "fen": "8/3K2bb/1p6/1p1kppR1/1P6/2PPQ3/8/8",
+    "defence": "f4",
+    "mate": "Qd4#"
+   },
+   {
+    "label": "Bourd rank-pawn (advances)",
+    "source": "sessions 7-9",
+    "fen": "8/3K2bb/1p6/1p1kppR1/1P6/2PPQ3/8/8",
+    "defence": "e4",
+    "mate": "Qxe4#"
+   }
+  ],
+  "capture | capture prevention | line opened by the defence": [
+   {
+    "label": "Bourd file-pawn (captures)",
+    "source": "sessions 7-9",
+    "fen": "3R4/2b2p2/2bp4/2Np4/1BPk1P2/1P3P2/Kn2Q3/8",
+    "defence": "dxc5",
+    "mate": "Qe4#"
+   },
+   {
+    "label": "Bourd file-pawn (captures)",
+    "source": "sessions 7-9",
+    "fen": "3R4/2b2p2/2bp4/2Np4/1BPk1P2/1P3P2/Kn2Q3/8",
+    "defence": "dxc4",
+    "mate": "Qe5#"
+   },
+   {
+    "label": "Claude+Bourd completed file-pawn #2",
+    "source": "session 10",
+    "fen": "3R4/2b2p2/2bp4/2Np4/1BPk1P2/1P3P2/K3Q3/5n2",
+    "defence": "dxc5",
+    "mate": "Qe4#"
+   },
+   {
+    "label": "Claude+Bourd completed file-pawn #2",
+    "source": "session 10",
+    "fen": "3R4/2b2p2/2bp4/2Np4/1BPk1P2/1P3P2/K3Q3/5n2",
+    "defence": "dxc4",
+    "mate": "Qe5#"
+   }
+  ],
+  "capture | capture prevention | king flight": [
+   {
+    "label": "Claude file-pawn core",
+    "source": "sessions 7-9",
+    "fen": "3R4/8/3p4/3pN3/3kN3/8/2QB4/2R4K",
+    "defence": "dxe5",
+    "mate": "Qc4#"
+   },
+   {
+    "label": "Claude file-pawn core",
+    "source": "sessions 7-9",
+    "fen": "3R4/8/3p4/3pN3/3kN3/8/2QB4/2R4K",
+    "defence": "dxe4",
+    "mate": "Qc5#"
+   }
+  ],
+  "piece move | none | defender retains control": [
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Qxh8",
+    "mate": "Qc5#"
+   },
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Qg7",
+    "mate": "Qc5#"
+   },
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Qg6",
+    "mate": "Qc5#"
+   },
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Qf5",
+    "mate": "Qc5#"
+   },
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Sd7",
+    "mate": "Qd2#"
+   },
+   {
+    "label": "Bourd three-to-f6",
+    "source": "sessions 7-9",
+    "fen": "8/3nRR2/3Qr1p1/1p2b3/2p1k1B1/1N2p1B1/4P3/1K6",
+    "defence": "Rf6",
+    "mate": "Qd4#"
+   }
+  ],
+  "piece move | interposition prevention | defender retains control": [
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Qf8",
+    "mate": "Qd2#"
+   },
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Qe7",
+    "mate": "Qd2#"
+   },
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Qd6",
+    "mate": "Qd2#"
+   }
+  ],
+  "piece move | capture prevention | defender retains control": [
+   {
+    "label": "Claude Q+S core",
+    "source": "sessions 7-9",
+    "fen": "R6B/8/5q2/1K2n3/3k4/4R3/8/2Q5",
+    "defence": "Sd3",
+    "mate": "Rd8#"
+   }
+  ],
+  "piece move | none | another unit": [
+   {
+    "label": "Bourd three-to-f6",
+    "source": "sessions 7-9",
+    "fen": "8/3nRR2/3Qr1p1/1p2b3/2p1k1B1/1N2p1B1/4P3/1K6",
+    "defence": "Sf6",
+    "mate": "Sc5#"
+   },
+   {
+    "label": "Bourd three-to-f6",
+    "source": "sessions 7-9",
+    "fen": "8/3nRR2/3Qr1p1/1p2b3/2p1k1B1/1N2p1B1/4P3/1K6",
+    "defence": "Rxd6",
+    "mate": "Bf3#"
+   }
+  ]
+ }
+}

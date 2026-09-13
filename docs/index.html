@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chess Problem Helper</title>
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#000000;
+    --rule:#000000;
+    --grey:#767472;
+    --hatch:#b9b7b4;
+    --award:#a51c16;          /* the red used for prizes in problem magazines */
+    --tint:#f2f1ee;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    font-size:17px; line-height:1.5;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 72px}
+  header{border-bottom:2px solid var(--rule);padding-bottom:10px;margin-bottom:26px;
+         display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  h1{font-size:26px;font-weight:600;margin:0;letter-spacing:.01em}
+  header p{margin:0;color:var(--grey);font-size:15px;max-width:46ch}
+  .cols{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:40px;align-items:start}
+  @media(max-width:860px){.cols{grid-template-columns:1fr;gap:28px}}
+
+  /* diagram block, laid out like a printed problem */
+  .diagram figcaption{text-align:center;font-size:15px;line-height:1.35;margin-bottom:8px;min-height:3em}
+  .diagram .who{font-weight:600}
+  .diagram .award{color:var(--award)}
+  svg.board{width:100%;height:auto;display:block}
+  .underboard{display:flex;justify-content:space-between;align-items:baseline;margin-top:6px;font-size:16px}
+  .underboard .count{font-variant-numeric:tabular-nums;color:var(--grey)}
+
+  .palette{margin-top:18px;display:flex;flex-wrap:wrap;gap:4px}
+  .palette button{font-family:inherit;font-size:24px;line-height:1;width:38px;height:38px;
+    background:var(--paper);border:1px solid var(--hatch);cursor:pointer;padding:0}
+  .palette button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .palette .sep{width:10px}
+
+  label{display:block;font-size:14px;color:var(--grey);margin-bottom:4px}
+  input[type=text],select,textarea{
+    width:100%;font-family:ui-monospace,"SF Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+    font-size:14px;padding:8px 9px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:0}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px}
+  .row > div{flex:1 1 160px}
+  button.act{font-family:inherit;font-size:16px;padding:9px 18px;border:1px solid var(--ink);
+    background:var(--ink);color:var(--paper);cursor:pointer;border-radius:0}
+  button.act[disabled]{opacity:.45;cursor:progress}
+  button.ghost{background:var(--paper);color:var(--ink)}
+  button.act:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--award);outline-offset:2px}
+
+  pre.report{font-family:ui-monospace,"SF Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+    font-size:13.5px;line-height:1.55;white-space:pre-wrap;background:var(--tint);
+    border-left:2px solid var(--rule);padding:14px 16px;margin:0;min-height:220px;overflow-wrap:anywhere}
+  .note{font-size:15px;color:var(--grey);margin:10px 0 0}
+  .hint{font-size:13.5px;color:var(--grey)}
+  footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-size:14px;color:var(--grey)}
+  a{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Chess Problem Helper</h1>
+  <p>Set up a position, solve it, and read the play the way a problem magazine prints it: set play, tries with their refutations, the key, and what changes between them.</p>
+</header>
+
+<div class="cols">
+  <section class="diagram">
+    <figure style="margin:0">
+      <figcaption id="caption"><span class="who">Position</span><br><span id="capsrc"></span></figcaption>
+      <svg class="board" id="board" viewBox="0 0 360 360" role="img" aria-label="Chess diagram"></svg>
+      <div class="underboard"><span id="stipLabel">#2</span><span class="count" id="count">(0+0)</span></div>
+    </figure>
+
+    <div class="palette" id="palette" aria-label="Pieces to place"></div>
+    <p class="hint">Pick a piece, then click squares to place it. The eraser clears a square.</p>
+  </section>
+
+  <section>
+    <div class="row">
+      <div style="flex:3 1 260px">
+        <label for="fen">Position (FEN)</label>
+        <input type="text" id="fen" spellcheck="false" value="b3r3/2pQ2p1/4n1P1/1R6/4k1P1/2K1P2R/8/4n3">
+      </div>
+      <div style="flex:0 1 130px">
+        <label for="stip">Stipulation</label>
+        <select id="stip"><option>#2</option><option>h#2</option></select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div style="flex:2 1 240px">
+        <label for="collection">From the collection</label>
+        <select id="collection"><option value="">Choose a problem…</option></select>
+      </div>
+      <div style="flex:0 0 auto;display:flex;gap:8px">
+        <button class="act" id="solve">Solve</button>
+        <button class="act ghost" id="clear">Clear board</button>
+      </div>
+    </div>
+
+    <p class="note" id="probnote"></p>
+    <pre class="report" id="report">Press Solve to analyse the position.</pre>
+  </section>
+</div>
+
+<footer>
+  Runs entirely in your browser. The same analysis is available offline as the Python package in this
+  repository: <code>python -m chesscomp.report --fen "…" "#2" --critique</code>.
+</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0-beta.8/chess.min.js"></script>
+<script src="analysis.js"></script>
+<script>
+const GLYPH={K:'\u2654',Q:'\u2655',R:'\u2656',B:'\u2657',N:'\u2658',P:'\u2659',
+             k:'\u265A',q:'\u265B',r:'\u265C',b:'\u265D',n:'\u265E',p:'\u265F'};
+const FILES='abcdefgh';
+let placement='b3r3/2pQ2p1/4n1P1/1R6/4k1P1/2K1P2R/8/4n3';
+let brush='Q';
+
+function parse(pl){
+  const rows=pl.split('/'); const grid=[];
+  for(const r of rows){ const row=[];
+    for(const ch of r){ if(/\d/.test(ch)) for(let i=0;i<+ch;i++) row.push(null); else row.push(ch); }
+    while(row.length<8) row.push(null);
+    grid.push(row.slice(0,8));
+  }
+  while(grid.length<8) grid.push([null,null,null,null,null,null,null,null]);
+  return grid.slice(0,8);
+}
+function serialise(grid){
+  return grid.map(row=>{ let s='',e=0;
+    for(const c of row){ if(c===null) e++; else { if(e){s+=e;e=0;} s+=c; } }
+    if(e) s+=e; return s;
+  }).join('/');
+}
+function counts(grid){
+  let w=0,b=0;
+  for(const row of grid) for(const c of row) if(c) (c===c.toUpperCase()? w++ : b++);
+  return `(${w}+${b})`;
+}
+
+function draw(){
+  const grid=parse(placement), sq=40, svg=document.getElementById('board');
+  let s=`<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="var(--hatch)" stroke-width="1.6"/></pattern></defs>`;
+  for(let r=0;r<8;r++) for(let f=0;f<8;f++){
+    const dark=(r+f)%2===1;
+    s+=`<rect x="${f*sq+20}" y="${r*sq+10}" width="${sq}" height="${sq}" fill="${dark?'url(#hatch)':'var(--paper)'}"
+         data-sq="${FILES[f]}${8-r}" class="cell" style="cursor:pointer"/>`;
+    const p=grid[r][f];
+    if(p) s+=`<text x="${f*sq+20+sq/2}" y="${r*sq+10+sq/2+11}" text-anchor="middle" font-size="32"
+              style="pointer-events:none;font-family:'DejaVu Sans','Segoe UI Symbol','Apple Symbols',serif">${GLYPH[p]}</text>`;
+  }
+  s+=`<rect x="20" y="10" width="320" height="320" fill="none" stroke="var(--rule)" stroke-width="1.6"/>`;
+  for(let f=0;f<8;f++) s+=`<text x="${f*sq+20+sq/2}" y="348" text-anchor="middle" font-size="11" fill="var(--grey)">${FILES[f]}</text>`;
+  for(let r=0;r<8;r++) s+=`<text x="12" y="${r*sq+10+sq/2+4}" text-anchor="middle" font-size="11" fill="var(--grey)">${8-r}</text>`;
+  svg.innerHTML=s;
+  svg.querySelectorAll('.cell').forEach(el=>el.addEventListener('click',()=>{
+    const name=el.dataset.sq, f=FILES.indexOf(name[0]), r=8-(+name[1]);
+    const g=parse(placement); g[r][f]= brush==='.' ? null : brush;
+    placement=serialise(g); document.getElementById('fen').value=placement; draw();
+  }));
+  document.getElementById('count').textContent=counts(grid);
+}
+
+function buildPalette(){
+  const p=document.getElementById('palette');
+  const order=['K','Q','R','B','N','P','sep','k','q','r','b','n','p','sep','.'];
+  p.innerHTML='';
+  for(const key of order){
+    if(key==='sep'){ const d=document.createElement('span'); d.className='sep'; p.appendChild(d); continue; }
+    const btn=document.createElement('button');
+    btn.textContent = key==='.' ? '\u232B' : GLYPH[key];
+    btn.title = key==='.' ? 'Erase' : key;
+    btn.setAttribute('aria-pressed', String(key===brush));
+    btn.addEventListener('click',()=>{ brush=key; buildPalette(); });
+    p.appendChild(btn);
+  }
+}
+
+document.getElementById('fen').addEventListener('change',e=>{
+  placement=e.target.value.trim().split(/\s+/)[0]; draw();
+});
+document.getElementById('clear').addEventListener('click',()=>{
+  placement='8/8/8/8/8/8/8/8'; document.getElementById('fen').value=placement;
+  document.getElementById('caption').innerHTML='<span class="who">Position</span><br><span id="capsrc"></span>';
+  document.getElementById('probnote').textContent=''; draw();
+});
+document.getElementById('stip').addEventListener('change',e=>{
+  document.getElementById('stipLabel').textContent=e.target.value;
+});
+
+document.getElementById('solve').addEventListener('click',()=>{
+  const btn=document.getElementById('solve'), out=document.getElementById('report');
+  btn.disabled=true; out.textContent='Solving…';
+  setTimeout(()=>{
+    try{
+      const res=ChessComp.analyse(document.getElementById('fen').value, document.getElementById('stip').value);
+      out.textContent=ChessComp.formatReport(res);
+    }catch(err){ out.textContent='That position could not be analysed: '+err.message; }
+    btn.disabled=false;
+  },20);
+});
+
+fetch('problems.json').then(r=>r.json()).then(data=>{
+  const sel=document.getElementById('collection');
+  for(const p of data.problems){
+    const o=document.createElement('option');
+    o.value=p.id; o.textContent=`${p.author} — ${p.id}`;
+    sel.appendChild(o);
+  }
+  sel.addEventListener('change',()=>{
+    const p=data.problems.find(x=>x.id===sel.value); if(!p) return;
+    placement=p.fen; document.getElementById('fen').value=p.fen;
+    document.getElementById('stip').value = p.stip==='#2' ? '#2' : p.stip;
+    document.getElementById('stipLabel').textContent=p.stip;
+    document.getElementById('caption').innerHTML =
+      `<span class="who">${p.author}</span><br><span>${p.source}</span>`;
+    document.getElementById('probnote').textContent = p.note + (p.themes.length? '  Themes: '+p.themes.join(', ') : '');
+    document.getElementById('report').textContent='Press Solve to analyse the position.';
+    draw();
+  });
+}).catch(()=>{
+  document.getElementById('probnote').textContent='The collection file could not be loaded; the board still works.';
+});
+
+buildPalette(); draw();
+</script>
+</body>
+</html>
