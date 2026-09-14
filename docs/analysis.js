@@ -136,6 +136,35 @@
   }
 
   /* Why does each sibling mate fail after a given defence? (dual-avoidance motive) */
+  function noCheckReason(c, mv) {
+    // the move gave no check: if it vacated a square on a White line piece's ray to the Black king and that
+    // ray is still blocked, name the blocker (2.Sxg3? after 1...Qxe5: the c4-f4 battery is closed by Bd4)
+    const board = c.board();
+    let k = null;
+    for (let r = 0; r < 8; r++) for (let f = 0; f < 8; f++) { const p = board[r][f]; if (p && p.type === 'k' && p.color === 'b') k = [r, f]; }
+    if (!k) return 'no check';
+    const sqName = (r, f) => 'abcdefgh'[f] + (8 - r);
+    const from = mv.from;
+    const names = { r: 'R', b: 'B', q: 'Q', n: 'S', p: 'P', k: 'K' };
+    for (const [dr, df] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]) {
+      const diag = dr !== 0 && df !== 0;
+      let r = k[0] + dr, f = k[1] + df, passed = false; const blockers = [];
+      while (r >= 0 && r < 8 && f >= 0 && f < 8) {
+        const p = board[r][f]; const nm = sqName(r, f);
+        if (nm === from) passed = true;
+        else if (p) {
+          if (p.color === 'w' && (p.type === 'q' || (diag ? p.type === 'b' : p.type === 'r'))) {
+            if (passed && blockers.length) return `no check (the battery ${names[p.type]}${nm}-${sqName(k[0], k[1])} is still closed by ${blockers.join(', ')})`;
+            break;
+          }
+          blockers.push((p.color === 'w' ? 'w' : 'b') + names[p.type] + nm);
+        }
+        r += dr; f += df;
+      }
+    }
+    return 'no check';
+  }
+
   function dualAvoidance(fen, keyMove) {
     const c = boardFrom(fen, 'w');
     if (!c) return [];
@@ -163,11 +192,13 @@
         if (c.isCheckmate()) { item.avoided.push({ mate: osan, refutation: null, kind: 'DUAL' }); c.undo(); c.undo(); continue; }
         const escapes = legal(c);
         let best = null;
+        // no check at all: nothing Black plays is the reason (a battery whose line is still closed)
+        const noCheck = !c.isCheck() ? noCheckReason(c, cand) : null;
         for (const e of escapes) {
           let kind;
-          if (e.to === cand.to) kind = e.from === d.to ? 'defender retains control' : 'another unit captures the mating unit';
+          if (noCheck) kind = noCheck;
+          else if (e.to === cand.to) kind = e.from === d.to ? 'defender retains control' : 'another unit captures the mating unit';
           else if (e.piece === 'k') kind = 'king flight';
-          else if (!c.isCheck()) kind = 'no check';
           else kind = 'interposition';
           const rank = ['defender retains control', 'another unit captures the mating unit', 'interposition', 'king flight', 'no check'].indexOf(kind);
           if (!best || rank < best.rank) best = { rank, kind, san: S(e.san) };
@@ -298,7 +329,7 @@
       if (marked.length) {
         L.push('Dual avoidance:');
         marked.forEach(it => L.push(`   1...${it.defence} 2.${it.mate}  ` +
-          it.avoided.map(a => a.refutation ? `(2.${a.mate}? ${a.refutation}!  ${a.kind})` : `(2.${a.mate}? also mate - DUAL)`).join(' ')));
+          it.avoided.map(a => /^no check/.test(a.kind) ? `(2.${a.mate}? ${a.kind})` : a.refutation ? `(2.${a.mate}? ${a.refutation}!  ${a.kind})` : `(2.${a.mate}? also mate - DUAL)`).join(' ')));
         const kinds = new Set(marked.map(it => it.avoided[0] && it.avoided[0].kind).filter(Boolean));
         if (kinds.size === 1) L.push(`   [unified avoidance: ${[...kinds][0]}]`);
       }

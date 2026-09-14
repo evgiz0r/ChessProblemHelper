@@ -394,3 +394,22 @@
   (17 units) has the same play. Recorded as bourd-queen-pin-selfpin.
 * Critique change: a White king anchoring a pin that a defence creates is now reported as 'thematic king'
   (with the pinning defences) instead of 'passive king'.
+
+## Session 21: two captures on one square, three phases (Evgeni on the bench)
+
+* Three more bench sittings after session 20. Sept 13, 20:13-20:46 (203 steps, 40 solves) and 21:33-22:06
+  (211 steps, 36 solves): the two-captures idea with a Black queen and bishop on the same White knight, rotated
+  eight times in all, ending both times in zugzwang positions with 20-27 holes and no threat. Sept 14,
+  22:10-22:31 (182 steps, 43 solves): finished.
+* Result: KB3R2/4p2P/4Pq2/2pPNB1p/1pRbNk1P/6pQ/3P4/7n - set Qxe5 2.Bg6#, Bxe5 2.Sg5#; 1.Qxh1? (2.Qf3#)
+  Qxe5 2.Bh3#, Bxe5 2.Qf1# but g2!; 1.Qg2! (2.Qf3#) Qxe5 2.Bh3#, Bxe5 2.Sxg3#. Sound. Bxe5 mated three ways
+  over three phases, Qxe5 two ways; both captures open a battery for the other's mate, so dual avoidance is
+  unified (no check: the other line is still closed). Flaws: 22 units, 10 pawns, d5/e6 pure cook-stoppers,
+  Ka8 idle, six-fold bishop duals after Qxe5 in the non-thematic tries. Recorded as
+  bourd-two-captures-three-phase.
+* Bug he found: the dual-avoidance line "2.Sxg3? Sxg3! another unit captures the mating unit" after 1...Qxe5.
+  Sxg3 gives no check there (Bd4 still closes Rc4-f4), so no Black move is the reason. All three classifiers
+  (Python _avoid_kind, dual_avoidance, JS dualAvoidance) tested the capture branch before the check test;
+  now no-check comes first and the closed battery with its blocker is named. Regression test added.
+* Bench: refresh button (new journal session, board emptied, earlier sessions hidden behind a toggle),
+  story-only journal by default, solve lines lead with the cook/key verdict.

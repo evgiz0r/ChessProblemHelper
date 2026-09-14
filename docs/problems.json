@@ -522,6 +522,25 @@
     "Qxe2"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-two-captures-three-phase",
+   "fen": "KB3R2/4p2P/4Pq2/2pPNB1p/1pRbNk1P/6pQ/3P4/7n",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 21 (bench, 182 steps in 21 minutes)",
+   "themes": [
+    "Changed mates",
+    "Two units capture on one square",
+    "Battery play",
+    "Three phases"
+   ],
+   "note": "Black Qf6 and Bd4 both capture the knight e5. Each capture opens a White battery for the OTHER mate: Bxe5 vacates d4 and opens Rc4-f4 (front piece Se4), Qxe5 self-blocks and the Bf5/Rf8 battery fires. Set: Qxe5 2.Bg6#, Bxe5 2.Sg5#. Try 1.Qxh1? (2.Qf3#) Qxe5 2.Bh3#, Bxe5 2.Qf1# but 1...g2!. Key 1.Qg2! (2.Qf3#) Qxe5 2.Bh3#, Bxe5 2.Sxg3#: Bxe5 answered three ways across three phases, Qxe5 two ways; the mate chosen by where the White queen stands (Qh3 guards g4 so any Bf5 departure mates, Qg2 is blocked by the g3 pawn so only Bh3 covers g4). Dual avoidance unified: each sibling mate gives no check because the other battery line is still closed. Flaws: 22 units and 10 pawns; d5 (answers Kxf5) and e6 (stops Qe6) only stop cooks; Ka8 idle; the non-thematic tries carry six-fold bishop duals after Qxe5. Flight-giving key (f5). Verified sound by the Python solver.",
+   "solution": "#2 (13+9)   FEN KB3R2/4p2P/4Pq2/2pPNB1p/1pRbNk1P/6pQ/3P4/7n w - - 0 1\nSet play:\n   1...Qg6 2.Bxg6#\n   1...Qxf5 2.Qxf5#\n   1...Qxe5 2.Bg6#\n   1...Qxh4 2.Qxh4#\n   1...Bxe5 2.Sg5#\n   1...Bc3 2.Sxc3#\n   1...Bf2 2.Sxf2#\n   1...Bb2/Ba1 2.Sc3#\n   1...Bg1 2.Sf2#\n   1...g2 2.Sg6#/Sd3#/Qf3#  [dual]\n   unprovided: Qh8, Qxf8, Qg7, Qf7, Qh6, Qxe6, Qg5, Be3, Sf2, b3\nTry: 1.Sxf6? (threat: 2.Sxh5#)\n   (3 further moves allow the threat)\n   but 1...exf6!\nTry: 1.Sxc5? (threat: 2.Rxd4#/Scd3#)\n   1...Qxe5 2.Bg6#/Bg4#/Be4#/Bd3#/Bc2#/Bb1#  [dual]\n   1...Qxh4 2.Qxh4#\n   (11 further moves allow the threat)\n   but 1...Sf2!\nTry: 1.Sxg3? (threat: 2.Sxh5#/Se2#)\n   1...Qxf5 2.Rxf5#\n   1...Qxh4 2.Qxh4#\n   (11 further moves allow the threat)\n   but 1...Sxg3!\nTry: 1.Qxh1? (threat: 2.Qf3#)\n   1...Qxe5 2.Bh3#\n   1...Bxe5 2.Qf1#\n   (18 further moves allow the threat)\n   but 1...g2!\nTry: 1.Sg5? (threat: 2.Sg6#/Sd3#)\n   1...Qxe5 2.Bg6#/Bg4#/Be4#/Bd3#/Bc2#/Bb1#  [dual]\n   (11 further moves allow the threat)\n   but 1...Qxg5!\nTry: 1.Sc3? (threat: 2.Se2#)\n   1...Qxf5 2.Rxf5#/Qxf5#  [dual]\n   1...Qxe5 2.Bg6#/Bg4#/Be4#/Bd3#/Bc2#/Bb1#  [dual]\n   1...Qxh4 2.Qxh4#\n   (11 further moves allow the threat)\n   but 1...bxc3!\nTry: 1.Sf2? (threat: 2.Sfd3#)\n   1...Qxf5 2.Rxf5#/Qxf5#  [dual]\n   1...Qxe5 2.Bg6#/Bg4#/Be4#/Bd3#/Bc2#/Bb1#  [dual]\n   1...Qxh4 2.Qxh4#\n   1...gxf2 2.Sg6#/Sd3#/Qf3#  [dual]\n   (10 further moves allow the threat)\n   but 1...Sxf2!\nKey: 1.Qg2! (threat: 2.Qf3#)\n   1...Qxe5 2.Bh3#\n   1...Bxe5 2.Sxg3#\n   (19 further moves allow the threat)\nChanged continuations:\n   1...Qxf5: Qxf5# -> Rxf5#   [set play vs try Sxg3]\n   1...Bxe5: Sg5# -> Qf1#   [set play vs try Qxh1]\n   1...Qxe5: Bxg6# -> Bh3#   [set play vs try Qxh1]\n   1...Bxe5: Sg5# -> Sxg3#   [set play vs key Qg2]\n   1...Qxe5: Bxg6# -> Bh3#   [set play vs key Qg2]\n   1...Bxe5: Qf1# -> Sxg3#   [try Qxh1 vs key Qg2]\nPatterns:\n(8732 nodes, 0.33s)",
+   "keys": [
+    "Qg2"
+   ],
+   "cooked": false
   }
  ]
 }

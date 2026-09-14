@@ -235,6 +235,29 @@ def format_explained(explained):
     return '\n'.join(lines)
 
 
+def _no_check_reason(after: chess.Board, mate: chess.Move) -> str:
+    """The sibling mate gives no check here. Say why when it is a battery whose line is still closed
+    (E. Bourd s21: 2.Sxg3? after 1...Qxe5 fails because Bd4 still closes the c4-f4 line, not because
+    a knight can capture on g3)."""
+    k = after.king(chess.BLACK)
+    if k is None:
+        return 'no check'
+    for x in chess.SquareSet(after.occupied_co[chess.WHITE]):
+        pt = after.piece_type_at(x)
+        if pt not in (chess.ROOK, chess.BISHOP, chess.QUEEN):
+            continue
+        between = chess.SquareSet.between(x, k)
+        if mate.from_square not in between:
+            continue
+        orth = chess.square_file(x) == chess.square_file(k) or chess.square_rank(x) == chess.square_rank(k)
+        if (orth and pt == chess.BISHOP) or (not orth and pt == chess.ROOK):
+            continue
+        blockers = [nm(after, s) for s in between if after.piece_at(s)]
+        if blockers:
+            return f"no check (the battery {nm(after, x)}-{chess.square_name(k)} is still closed by {', '.join(blockers)})"
+    return 'no check'
+
+
 def _avoid_kind(before: chess.Board, d: chess.Move, mate: chess.Move, after: chess.Board, esc: chess.Move):
     """Classify WHY a sibling mate fails: the composer's 'second layer' of unity (E. Bourd, s6/s7)."""
     who_sq = esc.from_square
@@ -248,12 +271,14 @@ def _avoid_kind(before: chess.Board, d: chess.Move, mate: chess.Move, after: che
         if pc and not t.piece_at(d.from_square):
             t.set_piece_at(d.from_square, pc)
             opened = esc not in t.legal_moves
+    # a move that gives no check is not refuted by anything Black does: say so first, or the first legal
+    # capture of the "mating" unit is reported as the reason (a battery whose line is still closed)
+    if not after.is_check():
+        return _no_check_reason(after, mate), who
     if esc.to_square == mate.to_square:
         act = f'captures on {chess.square_name(mate.to_square)}'
     elif who_sq == after.king(chess.BLACK):
         return f'king flight to {chess.square_name(esc.to_square)}', who
-    elif not after.is_check():
-        return 'no check', who
     else:
         act = f'interposes on {chess.square_name(esc.to_square)}'
     if who_sq == d.to_square:
@@ -360,7 +385,8 @@ def format_dual_avoidance_after(res):
         h = res['half_batteries'][0]
         lines.append(f"   half-battery {h['pinner']}: {h['names'][0]} + {h['names'][1]}")
     for it in res['variations']:
-        marks = ' '.join(f"(2.{x['mate']}? {x['refutation']}!  {x['kind']})" if x['refutation']
+        marks = ' '.join(f"(2.{x['mate']}? {x['kind']})" if x['kind'].startswith('no check')
+                         else f"(2.{x['mate']}? {x['refutation']}!  {x['kind']})" if x['refutation']
                          else f"(2.{x['mate']}? also mate - DUAL)" for x in it['avoided'])
         tag = '' if it.get('by_half_battery', True) else '   [extra play - not a half-battery unit]'
         lines.append(f"   1...{it['defence']} 2.{it['mate']}  {marks}{tag}".rstrip())
@@ -405,16 +431,16 @@ def dual_avoidance(problem, res) -> list[dict]:
                 if not esc:
                     continue
                 e = esc[0]
-                if e.to_square == mv.to_square:
+                if not a.is_check():
+                    kind = _no_check_reason(a, mv)
+                elif e.to_square == mv.to_square:
                     kind = f'capture of the mating unit by {nm(a, e.from_square)}'
                 elif e.from_square == a.king(chess.BLACK):
                     kind = f'king flight to {chess.square_name(e.to_square)}'
-                elif not a.is_check():
-                    kind = 'no check'
                 else:
                     kind = 'interposition'
-                item['avoided'].append({'mate': msan, 'kind': kind, 'refutation': san(a, e),
-                                        'text': f"2.{msan}? {san(a, e)}!"})
+                item['avoided'].append({'mate': msan, 'kind': kind, 'refutation': None if kind.startswith('no check') else san(a, e),
+                                        'text': f"2.{msan}? {kind}" if kind.startswith('no check') else f"2.{msan}? {san(a, e)}!"})
             out.append(item)
     return out
 
