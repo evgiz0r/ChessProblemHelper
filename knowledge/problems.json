@@ -541,6 +541,26 @@
     "Qg2"
    ],
    "cooked": false
+  },
+  {
+   "id": "claude-bristol-corner",
+   "fen": "Q1K5/1B6/8/8/3n1p1p/8/4NN1k/4N3",
+   "stip": "#2",
+   "author": "Claude",
+   "source": "session 22 (task from E. Bourd: solution only, key to a corner)",
+   "themes": [
+    "Bristol clearance",
+    "Corner key",
+    "Self-block",
+    "Line opening",
+    "Unguard"
+   ],
+   "note": "1.Bh1! (2.Qg2#). The bishop must clear the whole a8-h1 diagonal for the queen AND keep protecting g2 (Qg2 unprotected is answered by Kxg2), so the far corner is the only square: 1.Ba6/Bc8? Kg1! and any nearer diagonal square blocks the queen. Black king boxed in the diagram (g1/g3 Se2, h1/g2 Bb7, h3 Sf2). 1...Sc6 (interposition, unguards f3) 2.Sf3#; 1...Sf3 (interposition) 2.Sxf3#; 1...h3 (self-block, attacks g2) 2.Sg4#; 1...f3 (interposition opening b8-h2) 2.Qb8#. Grown from the 5-unit kernel Q7/KB6/6N1/8/8/8/7k/8 (already sound). The pawn f4 is the b8-h2 blocker: only a pawn can open a line by interposing without being able to return (a knight or rook that interposes can step back onto the diagonal against Qb8+). Kc8 blocks the queen's 8th-rank routes (Qc8-h3, Qg8-g2, Qh8), Se1 blocks the first rank against Qa1, the d4 knight blocks the long diagonal against the same Qa1-h8. Flaws: Kc8 passive, three knights, Sf3/Sxf3 is the same mating square twice.",
+   "solution": "#2 (6+4)   FEN Q1K5/1B6/8/8/3n1p1p/8/4NN1k/4N3 w - - 0 1\nSet play:\n   1...h3 2.Sg4#\n   1...f3 2.Qb8#\n   unprovided: Se6, Sc6, Sf5, Sb5, Sf3, Sb3, Sxe2, Sc2\nTry: 1.Bg2? (threat: 2.Sg4#)\n   (9 further moves allow the threat)\n   but 1...Sxe2!\nKey: 1.Bh1! (threat: 2.Qg2#)\n   1...Sc6 2.Sf3#\n   1...Sf3 2.Sxf3#\n   1...h3 2.Sg4#\n   1...f3 2.Qb8#\n   (6 further moves allow the threat)\nPatterns:\n   Bristol: 1.Bh1 + 2.Qg2#   [key Bh1]\n   changed threat: Sg4# / Qg2#   [try Bg2 vs key Bh1]\n(1427 nodes, 0.06s)",
+   "keys": [
+    "Bh1"
+   ],
+   "cooked": false
   }
  ]
 }

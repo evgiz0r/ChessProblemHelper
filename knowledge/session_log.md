@@ -413,3 +413,18 @@
   now no-check comes first and the closed battery with its blocker is named. Regression test added.
 * Bench: refresh button (new journal session, board emptied, earlier sessions hidden behind a toggle),
   story-only journal by default, solve lines lead with the cook/key verdict.
+
+## Session 22: a corner key, solution only (Claude)
+
+* Task from Evgeni: something simple, solution only, key to a corner. Chosen mechanism: Bristol clearance
+  along a8-h1 with the queen following to g2, the bishop keeping g2 protected from h1.
+* Kernel Q7/KB6/6N1/8/8/8/7k/8 is already sound (1.Bh1! 2.Qg2#; 1.Ba6? Kg1!). From there: box the king
+  in the diagram (Se2 for g1/g3, Sf2 for h1/h3), then the cooks of a corner queen (a-file, 8th rank, first
+  rank, long diagonal) and the reason interpositions are hard to answer (they cut the queen's protection of
+  h1). Dead ends kept as lessons: a first-rank rook protecting h1 mates on h1 in one; a g4 pawn guarding h3
+  blocks the 4th-rank rook mate; every non-pawn interposer can step back onto the b8-h2 diagonal against Qb8.
+* Result: Q1K5/1B6/8/8/3n1p1p/8/4NN1k/4N3 #2 (6+4) - 1.Bh1! (2.Qg2#) Sc6 2.Sf3#, Sf3 2.Sxf3#, h3 2.Sg4#,
+  f3 2.Qb8#. No flights in the diagram, no duals, one try of note (1.Bg2? Sxe2!). Flaws: Kc8 passive, three
+  knights, f3 mated twice on the same square. Recorded as claude-bristol-corner.
+* Tooling: corner/bristol_search.py in the scratchpad (kernel + n units, prefilter 'the key still forces
+  mate', then full solve); 60k positions in ~4 minutes for one White plus one Black unit.
