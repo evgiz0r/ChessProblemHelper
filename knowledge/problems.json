@@ -543,7 +543,7 @@
    "cooked": false
   },
   {
-   "id": "claude-bristol-corner",
+   "id": "claude-bristol-corner-promoted",
    "fen": "Q1K5/1B6/8/8/3n1p1p/8/4NN1k/4N3",
    "stip": "#2",
    "author": "Claude",
@@ -555,8 +555,28 @@
     "Line opening",
     "Unguard"
    ],
-   "note": "1.Bh1! (2.Qg2#). The bishop must clear the whole a8-h1 diagonal for the queen AND keep protecting g2 (Qg2 unprotected is answered by Kxg2), so the far corner is the only square: 1.Ba6/Bc8? Kg1! and any nearer diagonal square blocks the queen. Black king boxed in the diagram (g1/g3 Se2, h1/g2 Bb7, h3 Sf2). 1...Sc6 (interposition, unguards f3) 2.Sf3#; 1...Sf3 (interposition) 2.Sxf3#; 1...h3 (self-block, attacks g2) 2.Sg4#; 1...f3 (interposition opening b8-h2) 2.Qb8#. Grown from the 5-unit kernel Q7/KB6/6N1/8/8/8/7k/8 (already sound). The pawn f4 is the b8-h2 blocker: only a pawn can open a line by interposing without being able to return (a knight or rook that interposes can step back onto the diagonal against Qb8+). Kc8 blocks the queen's 8th-rank routes (Qc8-h3, Qg8-g2, Qh8), Se1 blocks the first rank against Qa1, the d4 knight blocks the long diagonal against the same Qa1-h8. Flaws: Kc8 passive, three knights, Sf3/Sxf3 is the same mating square twice.",
+   "note": "REJECTED by E. Bourd: three white knights = promoted piece, a fatal flaw. Kept as the record of the mistake; the corrected setting is claude-bristol-corner. 1.Bh1! (2.Qg2#). The bishop must clear the whole a8-h1 diagonal for the queen AND keep protecting g2 (Qg2 unprotected is answered by Kxg2), so the far corner is the only square: 1.Ba6/Bc8? Kg1! and any nearer diagonal square blocks the queen. Black king boxed in the diagram (g1/g3 Se2, h1/g2 Bb7, h3 Sf2). 1...Sc6 (interposition, unguards f3) 2.Sf3#; 1...Sf3 (interposition) 2.Sxf3#; 1...h3 (self-block, attacks g2) 2.Sg4#; 1...f3 (interposition opening b8-h2) 2.Qb8#. Grown from the 5-unit kernel Q7/KB6/6N1/8/8/8/7k/8 (already sound). The pawn f4 is the b8-h2 blocker: only a pawn can open a line by interposing without being able to return (a knight or rook that interposes can step back onto the diagonal against Qb8+). Kc8 blocks the queen's 8th-rank routes (Qc8-h3, Qg8-g2, Qh8), Se1 blocks the first rank against Qa1, the d4 knight blocks the long diagonal against the same Qa1-h8. Flaws: Kc8 passive, three knights, Sf3/Sxf3 is the same mating square twice.",
    "solution": "#2 (6+4)   FEN Q1K5/1B6/8/8/3n1p1p/8/4NN1k/4N3 w - - 0 1\nSet play:\n   1...h3 2.Sg4#\n   1...f3 2.Qb8#\n   unprovided: Se6, Sc6, Sf5, Sb5, Sf3, Sb3, Sxe2, Sc2\nTry: 1.Bg2? (threat: 2.Sg4#)\n   (9 further moves allow the threat)\n   but 1...Sxe2!\nKey: 1.Bh1! (threat: 2.Qg2#)\n   1...Sc6 2.Sf3#\n   1...Sf3 2.Sxf3#\n   1...h3 2.Sg4#\n   1...f3 2.Qb8#\n   (6 further moves allow the threat)\nPatterns:\n   Bristol: 1.Bh1 + 2.Qg2#   [key Bh1]\n   changed threat: Sg4# / Qg2#   [try Bg2 vs key Bh1]\n(1427 nodes, 0.06s)",
+   "keys": [
+    "Bh1"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "claude-bristol-corner",
+   "fen": "Q1K5/1B6/8/8/5p1p/R1n5/4NN1k/8",
+   "stip": "#2",
+   "author": "Claude",
+   "source": "session 22 (task from E. Bourd: solution only, key to a corner); corrected after his promoted-piece objection",
+   "themes": [
+    "Bristol clearance",
+    "Corner key",
+    "Self-block",
+    "Line opening",
+    "Line opening by a knight"
+   ],
+   "note": "1.Bh1! (2.Qg2#). The bishop must clear the whole a8-h1 diagonal for the queen AND keep protecting g2 (1.Ba6? Kg1!), so the far corner is the only square. Black king boxed in the diagram (g1/g3 Se2, h1/g2 Bb7, h3 Sf2 and Ra3 once c3 clears). 1...Sd5/Se4 (interposition that opens the third rank) 2.Rh3# (protected by Sf2, x-raying h1 through the king); 1...h3 (self-block, attacks g2) 2.Sg4#; 1...f3 (interposition opening b8-h2) 2.Qb8# (h1 protected by Sf2). The rook on a3 also blocks the a-file against Qa1, Kc8 blocks the queen's 8th-rank routes. 1.Rxc3? threat Rh3# fails to 1...h3!. Flaws: Kc8 passive, Sd5/Se4 is one variation with two forms, second-layer unity absent. 10 units, legal force.",
+   "solution": "#2 (6+4)   FEN Q1K5/1B6/8/8/5p1p/R1n5/4NN1k/8 w - - 0 1\nSet play:\n   1...Sb5/Sa4/Sa2/Sd1/Sb1 2.Rh3#/Sg4#  [dual]\n   1...h3 2.Sg4#\n   unprovided: Sd5, Se4, Sxe2, f3\nTry: 1.Rxc3? (threat: 2.Rh3#/Sg4#)\n   (1 further moves allow the threat)\n   but 1...f3!\nKey: 1.Bh1! (threat: 2.Qg2#)\n   1...Sd5/Se4 2.Rh3#\n   1...h3 2.Sg4#\n   1...f3 2.Qb8#\n   (6 further moves allow the threat)\nPatterns:\n   Bristol: 1.Bh1 + 2.Qg2#   [key Bh1]\n   changed threat: Rh3#/Sg4# / Qg2#   [try Rxc3 vs key Bh1]\n(1201 nodes, 0.06s)",
    "keys": [
     "Bh1"
    ],

@@ -423,7 +423,7 @@
   rank, long diagonal) and the reason interpositions are hard to answer (they cut the queen's protection of
   h1). Dead ends kept as lessons: a first-rank rook protecting h1 mates on h1 in one; a g4 pawn guarding h3
   blocks the 4th-rank rook mate; every non-pawn interposer can step back onto the b8-h2 diagonal against Qb8.
-* Result: Q1K5/1B6/8/8/3n1p1p/8/4NN1k/4N3 #2 (6+4) - 1.Bh1! (2.Qg2#) Sc6 2.Sf3#, Sf3 2.Sxf3#, h3 2.Sg4#,
+* First result Q1K5/1B6/8/8/3n1p1p/8/4NN1k/4N3 #2 (6+4) REJECTED by Evgeni: three white knights, a promoted piece is fatal. Corrected: Q1K5/1B6/8/8/5p1p/R1n5/4NN1k/8 #2 (6+4) - 1.Bh1! (2.Qg2#) Sd5/Se4 2.Rh3#, h3 2.Sg4#, f3 2.Qb8#; the a3 rook replaces the e1 knight (blocks the a-file, mates on h3 when the c3 knight interposes) and the black knight moved from d4 to c3. Earlier result, for the record: (6+4) - 1.Bh1! (2.Qg2#) Sc6 2.Sf3#, Sf3 2.Sxf3#, h3 2.Sg4#,
   f3 2.Qb8#. No flights in the diagram, no duals, one try of note (1.Bg2? Sxe2!). Flaws: Kc8 passive, three
   knights, f3 mated twice on the same square. Recorded as claude-bristol-corner.
 * Tooling: corner/bristol_search.py in the scratchpad (kernel + n units, prefilter 'the key still forces
