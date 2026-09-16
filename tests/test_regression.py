@@ -31,3 +31,14 @@ def test_dual_avoidance_no_check_is_reported_before_captures():
     assert k.startswith('no check') and 'Bd4' in k and 'Rc4' in k
     k2 = by['Bxe5']['avoided'][0]['kind']
     assert k2.startswith('no check') and 'Qf6' in k2
+
+
+def test_stalemating_promotions_are_shown_as_tries():
+    """E. Bourd s24: the wrong promotions of an underpromotion key must appear in the report."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    r = analyse(Problem.from_fen('8/2K1P3/3P4/3kP3/7R/3N4/8/5R2 w - - 0 1', '#2'), include_set=False)
+    tries = {ph['first_move']['san']: ph for ph in r['phases'] if ph['type'] == 'try'}
+    assert r['keys'] == ['e8=B']
+    assert tries['e8=Q'].get('stalemate') and tries['e8=R'].get('stalemate')
+    assert [x['san'] for x in tries['e8=S']['refutations']] == ['Ke6']

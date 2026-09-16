@@ -20,6 +20,8 @@ def format_phase(ph, show_threat_repeats=False):
             head += f" (threat: 2.{_conts(ph['threat'])})"
         elif ph.get('check_key'):
             head += ' (check)'
+        elif ph.get('stalemate'):
+            head += ' (stalemate)'
         elif ph.get('zugzwang'):
             head += ' (zugzwang)'
     lines.append(head)
@@ -42,7 +44,7 @@ def format_phase(ph, show_threat_repeats=False):
     if hidden:
         lines.append(f'   ({hidden} further moves allow the threat)')
     if ph['type'] == 'try':
-        lines.append('   but ' + ', '.join(f"1...{r['san']}!" for r in ph['refutations']))
+        lines.append('   but stalemate!' if ph.get('stalemate') else '   but ' + ', '.join(f"1...{r['san']}!" for r in ph['refutations']))
     if ph['type'] == 'set' and ph.get('unprovided'):
         lines.append('   unprovided: ' + ', '.join(ph['unprovided']))
     return '\n'.join(lines)

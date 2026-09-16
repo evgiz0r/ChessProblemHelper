@@ -63,6 +63,11 @@ def _phase(eng, board, n, mode, first_move, kind, refs=None):
     _ORIGIN.clear(); _ORIGIN[chess.square_name(first_move.to_square)] = chess.square_name(first_move.from_square)
     board.push(first_move)
     try:
+        if refs == 'stalemate':
+            ph['refutations'] = []
+            ph['stalemate'] = True
+            ph['threat'] = []; ph['zugzwang'] = True; ph['check_key'] = False; ph['variations'] = []; ph['flights'] = []
+            return ph
         if refs is not None:
             ph['refutations'] = _cont_list(board, refs)
         threat = []
@@ -352,6 +357,16 @@ def analyse(problem: Problem, max_refutations: int = 1, include_tries: bool = Tr
                 finally:
                     board.pop()
                 if refs is None:
+                    # a first move that stalemates Black is a try refuted by the stalemate itself (E. Bourd s24:
+                    # the wrong promotions of an underpromotion key must be shown, not silently dropped)
+                    if include_tries and not board.gives_check(w):
+                        board.push(w)
+                        try:
+                            stale = board.is_stalemate()
+                        finally:
+                            board.pop()
+                        if stale:
+                            tries.append((w, 'stalemate'))
                     continue
                 if not refs:
                     keys.append(w)

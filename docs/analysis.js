@@ -232,31 +232,30 @@
     const sp = setPlay(fen);
     if (sp && sp.variations.some(v => v.conts.length)) res.phases.push(sp);
 
-    const keys = [], tries = [];
+    const keys = [], tries = [], stales = [];
     for (const w of legal(c)) {
       if (solvesShort(c, w)) { res.keys.push(S(c.move(w).san)); c.undo(); res.cooked = true; continue; }
       c.move(w);
       const ok = blackAllAnswered(c);
-      let refCount = 0;
+      let refCount = 0, stale = false;
       if (!ok) {
-        let threat = false;
-        const nullFen = c.fen().replace(/ b /, ' w ');
-        try { const nc = new Chess(nullFen); threat = !nc.isCheck() && matesIn1(nc).length > 0; } catch (e) {}
-        if (threat) {
-          for (const b of legal(c)) {
-            c.move(b);
-            const dead = c.isGameOver() && !c.isCheckmate();
-            const ms = dead ? [] : matesIn1(c);
-            c.undo();
-            if (!ms.length) refCount++;
-            if (refCount > (opts.maxRefutations || 1)) break;
-          }
-        } else refCount = 99;
+        if (c.isStalemate()) stale = true;                 // shown as a try refuted by the stalemate itself
+        else for (const b of legal(c)) {                   // zugzwang tries count their refutations like threats do
+          c.move(b);
+          const dead = c.isGameOver() && !c.isCheckmate();
+          const ms = dead ? [] : matesIn1(c);
+          c.undo();
+          if (!ms.length) refCount++;
+          if (refCount > (opts.maxRefutations || 1)) break;
+        }
       }
+      const givesCheck = c.isCheck();
       c.undo();
       if (ok) keys.push(w);
+      else if (stale) { if (!givesCheck) stales.push(w); }
       else if (refCount <= (opts.maxRefutations || 1)) tries.push(w);
     }
+    for (const t of stales) { const ph = phaseAfter(c, t, 'try'); ph.stalemate = true; ph.threat = []; ph.variations = []; res.phases.push(ph); }
     for (const t of tries) res.phases.push(phaseAfter(c, t, 'try'));
     for (const k of keys) res.phases.push(phaseAfter(c, k, 'key'));
     res.keys = res.keys.concat(keys.map(k => { const s = S(c.move(k).san); c.undo(); return s; }));
@@ -296,7 +295,7 @@
       } else {
         let h = `${ph.type === 'key' ? 'Key' : 'Try'}: 1.${ph.first}${ph.type === 'key' ? '!' : '?'}`;
         if (ph.threat.length) h += ` (threat: 2.${ph.threat.map(t => t.san).join('/')})`;
-        else h += ' (zugzwang or check)';
+        else h += ph.stalemate ? ' (stalemate)' : ' (zugzwang or check)';
         L.push(h);
       }
       const groups = new Map();
@@ -311,7 +310,8 @@
       for (const g of groups.values())
         L.push(`   1...${g.defs.join('/')} 2.${g.conts.map(x => x.san).join('/')}${g.dual ? '  [DUAL]' : ''}`);
       if (hidden) L.push(`   (${hidden} further moves allow the threat)`);
-      if (ph.type === 'try' && ph.refutations.length) L.push('   but ' + ph.refutations.map(r => `1...${r}!`).join(', '));
+      if (ph.type === 'try' && ph.stalemate) L.push('   but stalemate!');
+      else if (ph.type === 'try' && ph.refutations.length) L.push('   but ' + ph.refutations.map(r => `1...${r}!`).join(', '));
       if (ph.type === 'set' && ph.unprovided.length) L.push('   unprovided: ' + ph.unprovided.slice(0, 12).join(', '));
     }
     if (!res.keys.length) L.push('No solution found.');
