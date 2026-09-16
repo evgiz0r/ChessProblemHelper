@@ -673,6 +673,25 @@
     "d8=R"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-minimal-bishop-promotion",
+   "fen": "7K/3P1k2/3Q4/8/8/8/8/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 24 (bench, 9 solves in 3 minutes)",
+   "themes": [
+    "Bishop promotion key",
+    "Flight-giving key",
+    "Miniature",
+    "Block"
+   ],
+   "note": "1.d8=B! (zugzwang, gives the flight e8) Ke8 2.Qe7#. Black is in a complete block: the d7 pawn covers e8, the queen the rest, the king h8 g7/g8. The promotion removes the pawn's attack on e8; a queen or rook on d8 covers e8 along the rank and stalemates, a knight checks and after Ke8 cannot protect e7, the bishop gives the flight and then protects e7 for the queen mate. Four units; his claim, checked by exhaustive enumeration of all K+X+P v K placements: see the session log.",
+   "solution": "#2 (3+1)   FEN 7K/3P1k2/3Q4/8/8/8/8/8 w - - 0 1\nTry: 1.Kh7? (stalemate)\n   but stalemate!\nTry: 1.Qh6? (zugzwang)\n   but 1...Ke7!\nTry: 1.Qc6? (zugzwang)\n   1...Kf8 2.Qf6#\n   but 1...Ke7!\nTry: 1.Qb6? (zugzwang)\n   1...Kf8 2.Qf6#\n   but 1...Ke7!\nTry: 1.Qa6? (zugzwang)\n   1...Kf8 2.Qf6#\n   but 1...Ke7!\nTry: 1.Qe5? (zugzwang)\n   1...Kf8 2.Qe8#/Qg7#/Qf6#  [dual]\n   but 1...Kg6!\nTry: 1.d8=Q? (stalemate)\n   but stalemate!\nTry: 1.d8=R? (stalemate)\n   but stalemate!\nKey: 1.d8=B! (zugzwang)\n   1...Ke8 2.Qe7#\n(863 nodes, 0.03s)",
+   "keys": [
+    "d8=B"
+   ],
+   "cooked": false
   }
  ]
 }

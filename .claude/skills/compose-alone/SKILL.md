@@ -21,5 +21,12 @@ Load `compose` and `judge` first. Then:
 6. **Record** with `record`: the problem (or the best failed attempt, marked), the lessons, the session
    log line, then commit and push.
 
+## Budgets are hard limits
+An unattended run has a wall clock of 20 minutes and 45 tool calls; whoever launches it arms a watchdog
+(a background timer that ends the run) because the agent tool has no timeout of its own. Reason in at most
+three sentences between tool calls; append one line to a notes file after every solve so progress is
+visible from outside. The first unattended run made one tool call in 27 minutes and hit its output limit
+thinking: that is the failure mode these limits exist for.
+
 Never show or record a position you have not solved in this session. Never add a promoted piece to
 fix a cook. Prefer fewer units over an extra variation of the same mate.

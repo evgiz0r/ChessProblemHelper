@@ -24,6 +24,12 @@ Read `references/construction.md` now (the order and the rules with their exampl
 6. **Trim.** Remove each unit and re-solve; remove pairs too. The critique lists what is not needed.
 7. **Judge before showing**: load `judge`. Draw the board, give the FEN, name the flaws first.
 
+## Shrink before you grow
+When the mechanism is known, find its minimal form first: the mate picture with the fewest units, kings and
+the key piece moved one square per solve (E. Bourd: 12 units -> 4 in nine solves, 7K/3P1k2/3Q4/8/8/8/8/8).
+Add units only to add content, never to protect a structure that was already bigger than the idea. When two
+thematic moves both solve, choose the key and make the other fail for its own reason: that is a doubling.
+
 ## Tempo
 One solve per change; never sixteen minutes of placing without a solve. If four or five posts of the
 key piece give only "double threat", "holes" or "no threat", the geometry has no line to exploit:

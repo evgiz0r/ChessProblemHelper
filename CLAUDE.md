@@ -22,6 +22,10 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his
   bench journal: load `bench`; before ending a session: load `record`.
 
+## Unattended runs
+Every subagent gets a watchdog: a background timer of at most 20 minutes, after which it is stopped whatever
+it is doing, plus a tool-call cap in its prompt. It writes a notes line per solve so a stall is visible.
+
 ## Layout
 `chesscomp/` solver, analysis, motives, critique, compose tools. `knowledge/` principles, lessons,
 session log, problem collection (`docs/problems.json` must equal `knowledge/problems.json`). `docs/`
