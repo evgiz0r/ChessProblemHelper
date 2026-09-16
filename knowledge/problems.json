@@ -635,6 +635,25 @@
     "e8=R"
    ],
    "cooked": false
+  },
+  {
+   "id": "claude-underpromotion-B-flight",
+   "fen": "8/2K1P3/3P4/3kP3/7R/3N4/8/5R2",
+   "stip": "#2",
+   "author": "Claude",
+   "source": "session 24 (task from E. Bourd: bishop promotion motivated by a king flight, not a pin)",
+   "themes": [
+    "Bishop promotion key",
+    "Flight",
+    "X-ray mate",
+    "Miniature"
+   ],
+   "note": "1.e8=B! Ke6 2.Bf7#. The black king's only square is e6, on the promotion file: a queen or rook on e8 covers it and stalemates; the knight leaves it but has no mate after Ke6 (Sc7 is blocked by the white king, Sg7+ Kd5). The bishop leaves e6, the king must step there, and the bishop mates from f7 covering the vacated d5 by x-ray through the king. Box: c4/d4/e4 Rh4, c5/e5 Sd3 (protecting e5), c6/d7 the white king, d6 pawn (protected by e5) covering e7, f5/f6/f7 Rf1 (protecting the mating bishop). No unit may cover d5 while checking it, or a check followed by e8=Q# cooks (Rc4+, Rd7+, e4+ in the first draft); the knight h5 that covered f6 mated on f4 in one. Flaws: the diagram flight is the whole idea and stays unprovided; thin.",
+   "solution": "#2 (7+1)   FEN 8/2K1P3/3P4/3kP3/7R/3N4/8/5R2 w - - 0 1\nTry: 1.Kb7? (zugzwang)\n   but 1...Ke6!\nTry: 1.Kb6? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rg4? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rhf4? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rb4? (zugzwang)\n   but 1...Ke6!\nTry: 1.Ra4? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rf8? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rf7? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rf5? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rff4? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rf3? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rf2? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rfh1? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rg1? (zugzwang)\n   but 1...Ke6!\nTry: 1.Re1? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rd1? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rc1? (zugzwang)\n   but 1...Ke6!\nTry: 1.Rb1? (zugzwang)\n   but 1...Ke6!\nTry: 1.Ra1? (zugzwang)\n   but 1...Ke6!\nTry: 1.e8=S? (zugzwang)\n   but 1...Ke6!\nTry: 1.d7? (zugzwang)\n   but 1...Ke6!\nTry: 1.e6? (zugzwang)\n   but 1...Kxe6!\nKey: 1.e8=B! (threat: 2.Bf7#)\n   (1 further moves allow the threat)\n(2490 nodes, 0.18s)",
+   "keys": [
+    "e8=B"
+   ],
+   "cooked": false
   }
  ]
 }

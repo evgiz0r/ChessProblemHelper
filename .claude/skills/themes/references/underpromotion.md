@@ -7,5 +7,8 @@ Reason used in all three: after the wrong promotion Black is stalemated (the que
 last Black move; a bishop cannot pin on a file, a rook cannot on a diagonal; a knight pins nothing but
 must then produce the mate). Cost: Black immobile, so the play is thin; ~150k enumerated additions gave
 no second variation.
+Flight motivation (not pin): claude-underpromotion-B-flight (8/2K1P3/3P4/3kP3/7R/3N4/8/5R2: 1.e8=B! Ke6
+2.Bf7#) - the only Black square lies on the promotion file, Q/R cover it and stalemate, the bishop mates from
+the diagonal-adjacent square with an x-ray over the vacated square; box units must not be able to check d5.
 Not done yet: an underpromotion key with a threat and real defences (the check-avoidance route failed,
 see the compose skill's dead ends), and mates by underpromotion (AUW without the queen).
