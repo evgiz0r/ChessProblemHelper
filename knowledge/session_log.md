@@ -428,3 +428,18 @@
   knights, f3 mated twice on the same square. Recorded as claude-bristol-corner.
 * Tooling: corner/bristol_search.py in the scratchpad (kernel + n units, prefilter 'the key still forces
   mate', then full solve); 60k positions in ~4 minutes for one White plus one Black unit.
+
+## Session 23: three underpromotion keys (Claude)
+
+* Task from Evgeni: a #2 with an underpromotion solution; three problems covering all underpromotions.
+* Chosen reason, common to all three: after the wrong promotion Black is stalemated. Knight:
+  8/4P3/4bB2/6K1/1N2k3/8/4P1N1/8 - 1.e8=S! B~ 2.Sd6# (Q/R pin the e6 bishop, B has no mate). Bishop:
+  K7/4P3/5PN1/4b3/2P1k1P1/5N2/4PP2/8 - 1.e8=B! (2.Bc6#) (Q/R pin the e5 bishop, S has no mate: f6 blocked
+  and d6 guarded by the bishop's diagonal). Rook: 8/4P3/8/5P2/4N2k/5P2/6P1/K7 - 1.e8=R! Kh5 2.Rh8# (Q/B
+  cover h5 and stalemate, S lets the king out to h6 after Kh5). All sound, 8, 11 and 7 units, all thin.
+* Dead ends kept as lessons: the check-avoidance route (king on the promotion file) fails because the
+  hole the knight mate fills is a flight the quiet key cannot answer; pinned bishops self-block the knight's
+  mating squares with duals; pinned knights self-block the bishop's mating squares; a boxed king turns every
+  protected adjacent check into a mate in one.
+* Enumeration: one/two-unit additions around each kernel (about 150k positions) found no version with a
+  second variation - the stalemate motivation leaves Black nothing to move.
