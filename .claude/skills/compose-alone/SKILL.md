@@ -30,3 +30,5 @@ thinking: that is the failure mode these limits exist for.
 
 Never show or record a position you have not solved in this session. Never add a promoted piece to
 fix a cook. Prefer fewer units over an extra variation of the same mate.
+
+- **Fifteen-minute mark**: write the best sound position so far as the result (FEN, key, variations, flaws) before anything else. A search started after that point is not allowed; the watchdog stops the run at twenty minutes and an unfinished enumeration is worth nothing. (Session 25: the first timed run was stopped mid-enumeration with a sound position it had not reported.)

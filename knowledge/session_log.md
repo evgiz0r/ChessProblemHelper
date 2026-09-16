@@ -451,3 +451,29 @@
 * Session 24: Evgeni's four-unit 1.d8=B! (7K/3P1k2/3Q4/8/8/8/8/8, bourd-minimal-bishop-promotion) checked exhaustively with chesscomp.compose.minimal: 2.67M placements, 29 unique bishop-promotion keys, 11 with the flight variation, all queen-based, none with another extra unit. Lessons on his shrink-to-minimum method and on turning a cook between two promotions into a tripled theme are in lessons.jsonl and the compose skill.
 
 * Session 24: minimal forms confirmed by enumeration: rook 3 units, bishop 4, knight 4 (Evgeni's prediction). Positions recorded as minimal-rook-promotion, minimal-knight-promotion, minimal-knight-promotion-rook.
+
+## Session 25: a key that gives two flights (Claude, on Evgeni's scheme)
+
+* Task: "compose a problem where the key gives 2 flights", then "use the scheme on my board now, Se4
+  will give two flights" - his bench board held bK d5, bP e5, wS c5 and nothing else.
+* Before his scheme: two-flight searches in the abstract (bK e4, a bishop or queen leaving the a7-g1
+  diagonal so d4 and e3 open, up to three added units, about 10M positions in 20 minutes of four cores)
+  found nothing. His three units with the key move named reached a sound position in one sitting.
+* Result: 2R2B1b/8/4P1bN/2Nkp3/p4p2/2Q5/3K4/8 #2 (7+6). 1.Se4! (2.Qc4#) 1...Kxe6 2.Qc6#, 1...Kxe4 2.Qd3#.
+  Tries 1.Sd7?/1.Sa6? give the same flights and mates but fail to 1...Bd3!. Recorded as
+  claude-two-flight-knight-sacrifice. Thin (no non-king defence), 13 units; every unit necessary, no pair
+  removable (checked).
+* How it was found, in order: the mates first (Qc6 needs the c-file, so the knight's departure unmasks it;
+  Qd3 needs d3 guarded in the diagram by bBg6 THROUGH e4, so the key closes the line and the capturing
+  king closes it again); then the threat Qc4 with the rook's protection of c4 masked by the knight; then
+  four cooks, each with a cause: Qb3+ Kd4 Qd3# (bPa4), any f-file rook checking on the d-file (no rook;
+  Sh6 for f5/f7), Sd7 with Qxe5# (bBh8 protects e5), and Se6 - the one other knight move that covers d4,
+  so Qc6 became a second threat and Kxe6 walked into the same Qc6#. Fixed by occupying e6 with a white
+  pawn the king can capture: the cook-stopper became the second flight. Lessons in lessons.jsonl.
+* Searches were used for placement only (one or two units around a fixed kernel, 300-420 s budgets, four
+  jobs); around the final kernel three added units found no lighter setting.
+* Compose-alone test: the lean agent (45 tool calls, 20 minutes, notes file) was stopped by the watchdog at
+  20 minutes having made 22 tool calls and 16 solves. It had chosen a two-flight key on its own and reached
+  a sound but thin 9-unit position (Q3b3/8/4p3/1P6/3k4/3N4/1N1K2P1/8, both flights met by the threat), and
+  was enumerating around it when stopped. Recorded as claude-alone-two-flight-thin. Skill change: at the
+  15-minute mark the agent writes its best sound position as the result instead of starting a search.

@@ -157,3 +157,11 @@ Evgeni's four-promotion problem 5K2/3P4/1N2p3/1P2k1NP/1P4P1/3p4/3B4/8 (1.d8=Q? s
 king-flight variation. His judgement: the theme is tripled, and that balances flaws that would be fatal
 in a simple problem; clean and simple is usually considered worse than complex with some flaws, though
 that is somewhat subjective. For composing: doubling the theme buys tolerance; economy alone buys little.
+
+## Session 25: he hands over a scheme, not a theme
+
+Asked for a key that gives two flights, Evgeni put three units on the bench (bK d5, bP e5, wS c5) and
+said "use the scheme on my board now, Se4 will give two flights". The scheme names the key move and the
+flight squares and leaves everything else open. Working from it reached a sound position in one sitting
+where a day of abstract searching had not: the composer's part is the mechanism and the key move; the
+builder's part is mates, threat, cooks. Result: claude-two-flight-knight-sacrifice (13 units, thin).

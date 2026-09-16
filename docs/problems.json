@@ -745,6 +745,42 @@
     "c8=S"
    ],
    "cooked": false
+  },
+  {
+   "id": "claude-two-flight-knight-sacrifice",
+   "fen": "2R2B1b/8/4P1bN/2Nkp3/p4p2/2Q5/3K4/8",
+   "stip": "#2",
+   "author": "Claude, on a scheme by E. Bourd",
+   "source": "session 25",
+   "themes": [
+    "Flight-giving key",
+    "Sacrificial key",
+    "Two flights",
+    "Line closing"
+   ],
+   "note": "Evgeni's scheme (bK d5, bP e5, wS c5: 'Se4 will give two flights'). 1.Se4! (2.Qc4#) sacrifices the knight and unprotects the e6 pawn: 1...Kxe6 2.Qc6#, 1...Kxe4 2.Qd3#. The knight's departure unmasks the c-file (Qc4 threat, Qc6 mate, Rc8 protecting c4); its arrival closes the g6-d3 diagonal, which is why the tries 1.Sd7?/1.Sa6? (same flights, same mates) fail to 1...Bd3! and why after 1...Kxe4 the king itself blocks the bishop and Qd3 mates. The white pawn on e6 stops 1.Se6 (the one other knight move that covered d4 and made Qc6 a threat) by occupying the square, and becomes the second flight. Thin: no non-king defence. 13 units.",
+   "solution": "#2 (7+6)   FEN 2R2B1b/8/4P1bN/2Nkp3/p4p2/2Q5/3K4/8 w - - 0 1\nSet play:\n   1...Be8/Bf7/Bh5 2.Qd3#\n   1...Bd3 2.Qxd3#\n   unprovided: Bg7, Bf6, Bh7, Bf5, Be4, Bc2, Bb1, e4, f3, a3\nTry: 1.Rc6? (threat: 2.Rd6#)\n   (14 further moves allow the threat)\n   but 1...Kxc6!\nTry: 1.Sd7? (threat: 2.Qc4#)\n   1...Kxe6 2.Qc6#\n   1...Ke4 2.Qd3#\n   (13 further moves allow the threat)\n   but 1...Bd3!\nTry: 1.Sa6? (threat: 2.Qc4#)\n   1...Kxe6 2.Qc6#\n   1...Ke4 2.Qd3#\n   1...e4 2.Sc7#\n   (12 further moves allow the threat)\n   but 1...Bd3!\nTry: 1.Sb3? (threat: 2.Qc6#/Qc4#)\n   (16 further moves allow the threat)\n   but 1...e4!\nKey: 1.Se4! (threat: 2.Qc4#)\n   1...Kxe6 2.Qc6#\n   1...Kxe4 2.Qd3#\n   (10 further moves allow the threat)\nPatterns:\n   changed threat: Rd6# / Qc4#   [try Rc6 vs try Sd7]\n   changed threat: Rd6# / Qc4#   [try Rc6 vs try Sa6]\n   changed threat: Rd6# / Qc4#/Qc6#   [try Rc6 vs try Sb3]\n   changed threat: Rd6# / Qc4#   [try Rc6 vs key Se4]\nTransferred continuations:\n   Qd3#: after Be8 -> after Ke4   [set play vs try Sd7]\n   Qd3#: after Bf7 -> after Ke4   [set play vs try Sd7]\n   Qd3#: after Bh5 -> after Ke4   [set play vs try Sd7]\n   Qd3#: after Bd3 -> after Ke4   [set play vs try Sd7]\n   Qd3#: after Be8 -> after Ke4   [set play vs try Sa6]\n   Qd3#: after Bf7 -> after Ke4   [set play vs try Sa6]\n   Qd3#: after Bh5 -> after Ke4   [set play vs try Sa6]\n   Qd3#: after Bd3 -> after Ke4   [set play vs try Sa6]\n   Qd3#: after Be8 -> after Ke4   [set play vs key Se4]\n   Qd3#: after Bf7 -> after Ke4   [set play vs key Se4]\n   Qd3#: after Bh5 -> after Ke4   [set play vs key Se4]\n   Qd3#: after Bd3 -> after Ke4   [set play vs key Se4]\n(5741 nodes, 0.27s)",
+   "keys": [
+    "Se4"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "claude-alone-two-flight-thin",
+   "fen": "Q3b3/8/4p3/1P6/3k4/3N4/1N1K2P1/8",
+   "stip": "#2",
+   "author": "Claude compose-alone agent (stopped at 20 min)",
+   "source": "session 25",
+   "themes": [
+    "Flight-giving key",
+    "Two flights"
+   ],
+   "note": "Produced unattended in 16 solves: 1.Qb8! (2.Qe5#) gives d5 and e4, but both flights are met by the threat and two pawns are pure cook-stoppers. Kept as the record of the first timed compose-alone run, not as a problem.",
+   "solution": "#2 (6+3)   FEN Q3b3/8/4p3/1P6/3k4/3N4/1N1K2P1/8 w - - 0 1\nTry: 1.Qc6? (threat: 2.Qc4#)\n   (5 further moves allow the threat)\n   but 1...Bxc6!\nKey: 1.Qb8! (threat: 2.Qe5#)\n   (9 further moves allow the threat)\nPatterns:\n   changed threat: Qc4# / Qe5#   [try Qc6 vs key Qb8]\n(1367 nodes, 0.08s)",
+   "keys": [
+    "Qb8"
+   ],
+   "cooked": false
   }
  ]
 }

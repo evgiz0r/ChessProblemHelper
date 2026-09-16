@@ -14,3 +14,4 @@ say so.
 - `references/corner_key.md` - Bristol clearance with a corner key.
 - `references/underpromotion.md` - S/B/R promotion keys by stalemate motivation.
 - `references/half_pin_king_key.md` - half-pin, pawn half-battery, White-king key with interference tries.
+- `references/flight_giving_key.md` - a key that gives two flights (sacrificial knight, two capture-flights, mates by one queen differing by x-ray; the other arrival squares of the key piece).
