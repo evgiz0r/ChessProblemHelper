@@ -25,7 +25,7 @@ def check_one(args):
     """One pawn square + extra unit type: enumerate the extra unit's square and both kings."""
     pawn_sq, extra_type, promo = args
     out = []; seen = 0
-    for xs in chess.SQUARES:
+    for xs in ([None] if extra_type is None else chess.SQUARES):
         if xs == pawn_sq: continue
         for wk in chess.SQUARES:
             if wk in (pawn_sq, xs): continue
@@ -33,7 +33,7 @@ def check_one(args):
                 if bk in (pawn_sq, xs, wk) or chess.square_distance(wk, bk) < 2: continue
                 b = chess.Board(None)
                 b.set_piece_at(pawn_sq, chess.Piece(chess.PAWN, chess.WHITE))
-                b.set_piece_at(xs, chess.Piece(extra_type, chess.WHITE))
+                if xs is not None: b.set_piece_at(xs, chess.Piece(extra_type, chess.WHITE))
                 b.set_piece_at(wk, chess.Piece(chess.KING, chess.WHITE))
                 b.set_piece_at(bk, chess.Piece(chess.KING, chess.BLACK))
                 b.turn = chess.WHITE
@@ -54,11 +54,11 @@ def check_one(args):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--key-promo', default='b', choices='qrbn')
-    ap.add_argument('--extra', default='Q,R,B,N', help='types of the one extra White unit')
+    ap.add_argument('--extra', default='Q,R,B,N', help='types of the one extra White unit; none = K+P v K')
     ap.add_argument('--files', default='abcd', help='pawn files (mirror symmetry: a-d covers all)')
     ap.add_argument('--jobs', type=int, default=4)
     a = ap.parse_args()
-    types = {'Q': chess.QUEEN, 'R': chess.ROOK, 'B': chess.BISHOP, 'N': chess.KNIGHT}
+    types = {'Q': chess.QUEEN, 'R': chess.ROOK, 'B': chess.BISHOP, 'N': chess.KNIGHT, 'none': None}
     tasks = [(chess.square(ord(f) - 97, 6), types[t], PROMO[a.key_promo]) for f in a.files for t in a.extra.split(',')]
     t0 = time.time(); seen = 0; hits = []
     with Pool(a.jobs) as pool:

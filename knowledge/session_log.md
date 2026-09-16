@@ -449,3 +449,5 @@
 * Session 24, from Evgeni: bourd-four-promotions (all four promotions of the d-pawn as tries/key). Judging principle recorded: flaws are weighed against content; a tripled theme carries flaws that would be fatal in a simple problem. Solver fix: zugzwang and stalemating tries are now shown (they were hidden on the bench).
 
 * Session 24: Evgeni's four-unit 1.d8=B! (7K/3P1k2/3Q4/8/8/8/8/8, bourd-minimal-bishop-promotion) checked exhaustively with chesscomp.compose.minimal: 2.67M placements, 29 unique bishop-promotion keys, 11 with the flight variation, all queen-based, none with another extra unit. Lessons on his shrink-to-minimum method and on turning a cook between two promotions into a tripled theme are in lessons.jsonl and the compose skill.
+
+* Session 24: minimal forms confirmed by enumeration: rook 3 units, bishop 4, knight 4 (Evgeni's prediction). Positions recorded as minimal-rook-promotion, minimal-knight-promotion, minimal-knight-promotion-rook.

@@ -692,6 +692,59 @@
     "d8=B"
    ],
    "cooked": false
+  },
+  {
+   "id": "minimal-rook-promotion",
+   "fen": "8/k1P5/2K5/8/8/8/8/8",
+   "stip": "#2",
+   "author": "found by enumeration (claim by E. Bourd)",
+   "source": "session 24, chesscomp.compose.minimal over all K+P v K",
+   "themes": [
+    "Rook promotion key",
+    "Miniature",
+    "Flight-giving key"
+   ],
+   "note": "1.c8=Q? stalemate; 1.c8=R! Ka6 2.Ra8#. Three units: the floor for a rook promotion key. The only other three-unit hit, 8/1P6/8/8/8/8/5K2/7k, is the same idea as a threat (a queen on b8 would cover h2 and stalemate).",
+   "solution": "#2 (2+1)   FEN 8/k1P5/2K5/8/8/8/8/8 w - - 0 1\nTry: 1.c8=Q? (stalemate)\n   but stalemate!\nKey: 1.c8=R! (zugzwang)\n   1...Ka6 2.Ra8#\n(83 nodes, 0.0s)",
+   "keys": [
+    "c8=R"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "minimal-knight-promotion",
+   "fen": "7K/2P2k2/3Q4/8/8/8/8/8",
+   "stip": "#2",
+   "author": "found by enumeration",
+   "source": "session 24, chesscomp.compose.minimal over all K+X+P v K",
+   "themes": [
+    "Knight promotion key",
+    "Miniature",
+    "Flight-giving key"
+   ],
+   "note": "The knight twin of Evgeni's four-unit bishop promotion: the pawn on c7 instead of d7. 1.c8=Q/R? stalemate (e8 covered on the rank), 1.c8=B? Ke8! (the bishop on c8 does not protect e7), 1.c8=S! Ke8 2.Qe7# (the knight on c8 protects e7). Four units; three cannot mate. 146 four-unit positions have a unique knight-promotion key, 20 with a real dual-free variation, 19 of them with a queen.",
+   "solution": "#2 (3+1)   FEN 7K/2P2k2/3Q4/8/8/8/8/8 w - - 0 1\nTry: 1.Kh7? (zugzwang)\n   but 1...Ke8!\nTry: 1.c8=Q? (stalemate)\n   but stalemate!\nTry: 1.c8=R? (stalemate)\n   but stalemate!\nTry: 1.c8=B? (zugzwang)\n   but 1...Ke8!\nKey: 1.c8=S! (zugzwang)\n   1...Ke8 2.Qe7#\n(652 nodes, 0.03s)",
+   "keys": [
+    "c8=S"
+   ],
+   "cooked": false
+  },
+  {
+   "id": "minimal-knight-promotion-rook",
+   "fen": "1R6/2P5/k7/8/2K5/8/8/8",
+   "stip": "#2",
+   "author": "found by enumeration",
+   "source": "session 24",
+   "themes": [
+    "Knight promotion key",
+    "Miniature"
+   ],
+   "note": "The one four-unit knight promotion without a queen: 1.c8=S! Ka5 2.Ra8#, the promoted knight on c8 covering a7 and b6 so the rook mates on the a-file. The other promotions fail with two refutations each.",
+   "solution": "#2 (3+1)   FEN 1R6/2P5/k7/8/2K5/8/8/8 w - - 0 1\nTry: 1.Rb5? (zugzwang)\n   but 1...Ka7!\nTry: 1.Kc5? (zugzwang)\n   1...Ka5 2.Ra8#\n   but 1...Ka7!\nTry: 1.Kb4? (zugzwang)\n   but 1...Ka7!\nKey: 1.c8=S! (zugzwang)\n   1...Ka5 2.Ra8#\n(416 nodes, 0.02s)",
+   "keys": [
+    "c8=S"
+   ],
+   "cooked": false
   }
  ]
 }
