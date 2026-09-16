@@ -8,7 +8,9 @@ description: Write what a session learned into the repository so the next sessio
 1. `knowledge/problems.json` (and the identical `docs/problems.json`): every position worth keeping, with
    id, FEN, author, themes, a note that says what it is and what is wrong with it, the solver output, the
    key(s). Rejected positions stay, marked rejected with the reason.
-2. `knowledge/lessons.jsonl`: one line per generalisable fact: `{date, source, topic, kind, text,
+2. `knowledge/lessons.jsonl`: one line per RULE that predicts something in a new position, per dead end, or per
+   process step (E. Bourd: facts are infinite; an enumeration's counts are a check on a claim, not a lesson -
+   record the mechanism it confirmed, once, with one example): `{date, source, topic, kind, text,
    example}`; dead ends are lessons too (kind: negative result).
 3. `knowledge/session_log.md`: the story of the session, including what failed and why.
 4. Fold anything that changes how to compose or judge into the skills' references (compose, judge,
