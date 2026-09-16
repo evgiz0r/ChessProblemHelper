@@ -1,0 +1,513 @@
+<title>Composing Bench</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#F3EFE6; --surface:#FBF9F4; --ink:#1E1B17; --muted:#6B6257; --line:#D9D1C2;
+  --sq-light:#EAE0C8; --sq-dark:#B39B72; --accent:#1F6F8B; --accent-ink:#FFFFFF; --accent-soft:#D6E7ED;
+  --danger:#B4432F; --good:#3B7A3A; --warn:#9A6B12;
+  --sel:#E3B23C; --piece-w:#FFFFFF; --piece-b:#1A1714;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --ground:#1B1915; --surface:#24211B; --ink:#EDE7DA; --muted:#A99F90; --line:#3A362E;
+  --sq-light:#C9B58F; --sq-dark:#7E6849; --accent:#63B3CF; --accent-ink:#0F1A1F; --accent-soft:#233A44;
+  --danger:#E07A66; --good:#7FBF7A; --warn:#D9A441; --sel:#F0C35A;
+}}
+:root[data-theme="dark"]{
+  --ground:#1B1915; --surface:#24211B; --ink:#EDE7DA; --muted:#A99F90; --line:#3A362E;
+  --sq-light:#C9B58F; --sq-dark:#7E6849; --accent:#63B3CF; --accent-ink:#0F1A1F; --accent-soft:#233A44;
+  --danger:#E07A66; --good:#7FBF7A; --warn:#D9A441; --sel:#F0C35A;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;font-size:15px;line-height:1.4;padding:16px;padding-block:14px 32px}
+h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:26px;margin:0;letter-spacing:.01em}
+.top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.top .sub{color:var(--muted)}
+.status{margin-left:auto;font-size:13px;color:var(--muted)}
+.status b{color:var(--good);font-weight:600}
+.status .off{color:var(--warn)}
+.layout{display:grid;grid-template-columns:minmax(300px,420px) minmax(280px,1fr) minmax(280px,1fr);gap:18px;align-items:start}
+@media (max-width:1000px){.layout{grid-template-columns:minmax(280px,420px) minmax(280px,1fr)}}
+@media (max-width:720px){.layout{grid-template-columns:1fr}}
+.pane{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
+.pane h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 8px;font-weight:600}
+.board{touch-action:none;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:100%;max-width:400px;aspect-ratio:1;border:2px solid var(--sq-dark);user-select:none}
+.sq{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;overflow:hidden;aspect-ratio:1;font-size:clamp(22px,5.2vw,34px);line-height:1;cursor:pointer;border:0;padding:0;background:var(--sq-light);color:var(--ink)}
+.sq.dark{background:var(--sq-dark)}
+.sq.sel{box-shadow:inset 0 0 0 4px var(--sel);filter:brightness(1.08)}
+.sq.over{box-shadow:inset 0 0 0 3px var(--accent)}
+.ghost{position:fixed;pointer-events:none;z-index:50;font-size:34px;line-height:1;transform:translate(-50%,-50%);font-family:"DejaVu Sans","Segoe UI Symbol","Noto Sans Symbols2","Apple Symbols",sans-serif;opacity:.9}
+.ghost.w{color:var(--piece-w);text-shadow:0 0 1px #000,0 0 2px #000,0 1px 1px #000}.ghost.b{color:var(--piece-b);text-shadow:0 0 1px #fff}
+.selinfo{font-size:13px;margin-top:6px;min-height:18px;color:var(--ink)}.selinfo b{color:var(--accent)}
+.sq.last{box-shadow:inset 0 0 0 3px var(--accent)}
+.sq .p{font-family:"DejaVu Sans","Segoe UI Symbol","Noto Sans Symbols2","Apple Symbols",sans-serif}
+.sq .p.w{color:var(--piece-w);text-shadow:0 0 1px #000,0 0 2px #000,0 1px 1px #000}
+.sq .p.b{color:var(--piece-b);text-shadow:0 0 1px #fff}
+.sq .coord{position:absolute;font-size:9px;font-family:"JetBrains Mono",monospace;color:var(--muted);opacity:.8}
+.sq .coord.f{right:2px;bottom:1px}.sq .coord.r{left:2px;top:1px}
+.palette{touch-action:none;display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;max-width:400px}
+.palette button{width:38px;height:38px;font-size:24px;line-height:1;border:1px solid var(--line);background:var(--ground);border-radius:4px;cursor:pointer;color:var(--ink);font-family:"DejaVu Sans","Segoe UI Symbol","Noto Sans Symbols2","Apple Symbols",sans-serif}
+.palette button.w{color:var(--piece-w);text-shadow:0 0 1px #000,0 0 2px #000}
+.palette button.b{color:var(--piece-b)}
+.palette button.on{outline:3px solid var(--sel);outline-offset:-1px}
+.palette button.tool{font-family:"Source Sans 3",sans-serif;font-size:13px;width:auto;padding:0 10px}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;max-width:400px}
+button.act{font:inherit;font-size:13px;padding:5px 10px;border:1px solid var(--line);background:var(--ground);color:var(--ink);border-radius:4px;cursor:pointer}
+button.act:hover{border-color:var(--accent)}
+button.act.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.fenrow{display:flex;gap:6px;margin-top:10px;max-width:400px}
+.fenrow input{flex:1;min-width:0;font-family:"JetBrains Mono",monospace;font-size:12px;padding:5px 7px;border:1px solid var(--line);border-radius:4px;background:var(--ground);color:var(--ink)}
+.count{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);margin-top:6px}
+.solverow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+select{font:inherit;font-size:13px;padding:4px 6px;border:1px solid var(--line);border-radius:4px;background:var(--ground);color:var(--ink)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;padding:4px 10px;border:0;background:var(--ground);color:var(--ink);cursor:pointer}
+.seg button.on{background:var(--accent);color:var(--accent-ink)}
+pre.report{font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:1.45;white-space:pre-wrap;margin:0;min-height:120px;max-height:60vh;overflow:auto;background:var(--ground);padding:10px;border-radius:4px;border:1px solid var(--line)}
+.flag{font-weight:600}
+.flag.bad{color:var(--danger)}.flag.ok{color:var(--good)}.flag.warn{color:var(--warn)}
+.noterow{display:flex;gap:6px;margin-bottom:8px}
+.noterow input{flex:1;min-width:0;font:inherit;padding:5px 7px;border:1px solid var(--line);border-radius:4px;background:var(--ground);color:var(--ink)}
+.journal{list-style:none;margin:0;padding:0;max-height:70vh;overflow:auto;display:flex;flex-direction:column;gap:6px}
+.journal li{border-left:3px solid var(--line);padding:4px 8px;font-size:13px}
+.journal li.note{border-left-color:var(--accent);background:var(--accent-soft)}
+.journal li.solve{border-left-color:var(--warn)}
+.journal .t{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);margin-right:6px}
+.journal .a{font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.06em;margin-right:6px}
+.journal .fen{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);cursor:pointer;word-break:break-all}
+.journal .fen:hover{color:var(--accent)}
+.hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px;background:var(--ground)}
+</style>
+
+<div class="top">
+  <h1>Composing Bench</h1>
+  <span class="sub">drag pieces on, around and off the board; transform; solve; every step is written to the journal</span>
+  <span class="status" id="status">journal: local only</span>
+</div>
+
+<div class="layout">
+  <section class="pane">
+    <h2>Board</h2>
+    <div class="board" id="board" aria-label="chess board"></div>
+    <div class="palette" id="palette"></div>
+    <div class="selinfo" id="selinfo"></div>
+    <div class="tools">
+      <button class="act" id="rotl" title="rotate the whole position 90° counter-clockwise">&#8634; rotate</button>
+      <button class="act" id="rotr" title="rotate 90° clockwise">&#8635; rotate</button>
+      <button class="act" id="mirh" title="mirror left-right">&#8660; mirror</button>
+      <button class="act" id="mirv" title="mirror up-down">&#8661; mirror</button>
+      <button class="act" id="shl">&#8592;</button><button class="act" id="shr">&#8594;</button>
+      <button class="act" id="shu">&#8593;</button><button class="act" id="shd">&#8595;</button>
+      <button class="act" id="undo" title="undo the last board change">undo</button>
+      <button class="act" id="clear">clear</button>
+      <button class="act" id="refresh" title="empty the board and start a new journal session (earlier sessions stay saved, hidden)">refresh</button>
+    </div>
+    <div class="fenrow">
+      <input id="fen" aria-label="FEN piece placement" spellcheck="false">
+      <button class="act" id="loadfen">load</button>
+      <button class="act" id="copyfen">copy</button>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="hint">Pick a piece below and click a square to place it. Click a piece on the board, then its destination, to move it. <kbd>Del</kbd> or right-click removes. Transforms move the whole position.</div>
+  </section>
+
+  <section class="pane">
+    <h2>Solve</h2>
+    <div class="solverow">
+      <span class="seg" role="group" aria-label="mode">
+        <button id="modepre" class="on">pre-key: keys and tries</button>
+        <button id="modepost">post-key: Black to move</button>
+      </span>
+      <select id="stip" aria-label="stipulation"><option>#2</option><option>s#2</option><option>h#2</option></select>
+      <button class="act primary" id="solve">Solve</button>
+    </div>
+    <pre class="report" id="report">Set up a position and press Solve.
+Pre-key: the diagram is White to move; you get set play, tries with refutations, keys, duals and changed mates.
+Post-key: the diagram is the position after the key, Black to move; you get the threat, every Black move with its mates, duals and holes.</pre>
+  </section>
+
+  <section class="pane">
+    <h2>Journal</h2>
+    <div class="noterow">
+      <input id="note" placeholder="what you are trying, in your words" aria-label="note">
+      <button class="act" id="addnote">note</button>
+    </div>
+    <label class="sub" style="display:block;margin:4px 0"><input type="checkbox" id="storyonly" checked> story only: solves, notes, transforms, loads (hide single piece moves)</label>
+    <label class="sub" style="display:block;margin:4px 0"><input type="checkbox" id="allsessions"> show earlier sessions too</label>
+    <ul class="journal" id="journal"></ul>
+  </section>
+</div>
+
+<script src="chess.js"></script>
+<script src="../analysis.js"></script>
+<script>
+(function(){
+  const GLYPH = {K:'♔',Q:'♕',R:'♖',B:'♗',N:'♘',P:'♙',k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟'};
+  const FILES = 'abcdefgh';
+  const START = '8/3r4/8/8/1R1Pk3/8/8/6b1';
+  let session = Date.now().toString(36);
+  let seq = 0;
+
+  // ---------- state
+  const state = { grid: parse(START), brush: null, sel: null, last: null, hist: [], mode: 'pre', stip: '#2' };
+  function parse(pl){
+    const g = Array.from({length:8}, () => Array(8).fill(null));
+    const rows = pl.trim().split(/\s+/)[0].split('/');
+    if (rows.length !== 8) return null;
+    for (let r = 0; r < 8; r++){
+      let f = 0;
+      for (const ch of rows[r]){
+        if (/[1-8]/.test(ch)) f += +ch;
+        else if (GLYPH[ch]) { if (f > 7) return null; g[7-r][f++] = ch; }
+        else return null;
+      }
+      if (f !== 8) return null;
+    }
+    return g;
+  }
+  function fenOf(g){
+    const rows = [];
+    for (let r = 7; r >= 0; r--){
+      let s = '', n = 0;
+      for (let f = 0; f < 8; f++){ const p = g[r][f]; if (p){ if (n){ s += n; n = 0; } s += p; } else n++; }
+      if (n) s += n;
+      rows.push(s);
+    }
+    return rows.join('/');
+  }
+  function clone(g){ return g.map(r => r.slice()); }
+  function counts(g){
+    let w = 0, b = 0;
+    for (const row of g) for (const p of row){ if (!p) continue; if (p === p.toUpperCase()) w++; else b++; }
+    return `(${w}+${b})`;
+  }
+
+  // ---------- board rendering
+  const boardEl = document.getElementById('board');
+  const squares = [];
+  for (let r = 7; r >= 0; r--) for (let f = 0; f < 8; f++){
+    const btn = document.createElement('button');
+    btn.className = 'sq' + (((r + f) % 2 === 0) ? ' dark' : '');
+    btn.dataset.r = r; btn.dataset.f = f;
+    btn.setAttribute('aria-label', FILES[f] + (r + 1));
+    btn.addEventListener('pointerdown', e => startDrag(e, state.grid[r][f], [r, f]));
+    btn.addEventListener('contextmenu', e => { e.preventDefault(); removeAt(r, f); });
+    boardEl.appendChild(btn); squares.push(btn);
+  }
+  function draw(){
+    for (const btn of squares){
+      const r = +btn.dataset.r, f = +btn.dataset.f, p = state.grid[r][f];
+      btn.innerHTML = '';
+      if (p){ const s = document.createElement('span'); s.className = 'p ' + (p === p.toUpperCase() ? 'w' : 'b'); s.textContent = GLYPH[p]; btn.appendChild(s); }
+      if (r === 0){ const c = document.createElement('span'); c.className = 'coord f'; c.textContent = FILES[f]; btn.appendChild(c); }
+      if (f === 0){ const c = document.createElement('span'); c.className = 'coord r'; c.textContent = r + 1; btn.appendChild(c); }
+      btn.classList.toggle('sel', !!state.sel && state.sel[0] === r && state.sel[1] === f);
+      btn.classList.toggle('last', !!state.last && state.last[0] === r && state.last[1] === f);
+    }
+    document.getElementById('fen').value = fenOf(state.grid);
+    document.getElementById('count').textContent = fenOf(state.grid) + '   ' + counts(state.grid);
+    for (const b of document.querySelectorAll('#palette button')) b.classList.toggle('on', b.dataset.piece === state.brush);
+    const info = document.getElementById('selinfo');
+    if (state.sel){ const p = state.grid[state.sel[0]][state.sel[1]]; info.innerHTML = 'selected: <b>' + pieceName(p) + ' ' + sqName(state.sel[0], state.sel[1]) + '</b> - drag it, click a square to move it, Delete or right-click to remove, Esc to deselect'; }
+    else if (state.brush === 'x') info.innerHTML = 'eraser: click a piece to remove it';
+    else if (state.brush) info.innerHTML = 'brush: <b>' + pieceName(state.brush) + '</b> - click squares to place; Esc to stop';
+    else info.textContent = 'drag a piece from the palette or the board; drag off the board to remove; click to select';
+  }
+
+  // ---------- palette
+  const pal = document.getElementById('palette');
+  for (const p of ['K','Q','R','B','N','P','k','q','r','b','n','p']){
+    const btn = document.createElement('button');
+    btn.className = p === p.toUpperCase() ? 'w' : 'b'; btn.dataset.piece = p; btn.textContent = GLYPH[p];
+    btn.title = (p === p.toUpperCase() ? 'White ' : 'Black ') + {k:'king',q:'queen',r:'rook',b:'bishop',n:'knight',p:'pawn'}[p.toLowerCase()];
+    btn.addEventListener('pointerdown', e => startDrag(e, p, null));
+    pal.appendChild(btn);
+  }
+  const eraser = document.createElement('button'); eraser.className = 'tool'; eraser.dataset.piece = 'x'; eraser.textContent = 'erase';
+  eraser.addEventListener('click', () => { state.brush = state.brush === 'x' ? null : 'x'; state.sel = null; draw(); });
+  pal.appendChild(eraser);
+
+  // ---------- editing
+  function commit(action, detail){
+    state.hist.push(clone(state.grid));
+    if (state.hist.length > 200) state.hist.shift();
+  }
+  function sqName(r, f){ return FILES[f] + (r + 1); }
+  function onSquare(r, f){
+    const p = state.grid[r][f];
+    if (state.brush === 'x'){ if (p) removeAt(r, f); return; }
+    if (state.brush){ placeAt(r, f, state.brush); return; }
+    if (state.sel){
+      const [sr, sf] = state.sel;
+      if (sr === r && sf === f){ state.sel = null; draw(); return; }
+      moveTo(sr, sf, r, f);
+      return;
+    }
+    if (p){ state.sel = [r, f]; draw(); }
+  }
+  function placeAt(r, f, piece){
+    const before = clone(state.grid);
+    state.grid[r][f] = piece; state.last = [r, f]; state.sel = null;
+    state.hist.push(before); draw();
+    log('place', pieceName(piece) + ' on ' + sqName(r, f));
+  }
+  function moveTo(sr, sf, r, f){
+    if (sr === r && sf === f) return;
+    const mover = state.grid[sr][sf]; if (!mover) return;
+    const before = clone(state.grid);
+    const captured = state.grid[r][f];
+    state.grid[r][f] = mover; state.grid[sr][sf] = null; state.sel = null; state.last = [r, f];
+    state.hist.push(before); draw();
+    log('move', pieceName(mover) + ' ' + sqName(sr, sf) + '-' + sqName(r, f) + (captured ? ' (replacing ' + pieceName(captured) + ')' : ''));
+  }
+  // ---------- drag and drop (pointer events: mouse, touch and pen alike)
+  let drag = null;
+  function startDrag(e, piece, from){
+    if (e.button !== undefined && e.button !== 0) return;
+    if (drag) return;
+    e.preventDefault();
+    drag = { piece, from, x0: e.clientX, y0: e.clientY, moved: false, ghost: null, over: null };
+  }
+  function squareAt(x, y){
+    const el = document.elementFromPoint(x, y);
+    const btn = el && el.closest ? el.closest('.sq') : null;
+    return btn ? [+btn.dataset.r, +btn.dataset.f, btn] : null;
+  }
+  document.addEventListener('pointermove', e => {
+    if (!drag) return;
+    if (!drag.moved){
+      if (Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) < 5) return;
+      drag.moved = true;
+      if (!drag.piece){ drag = null; return; }             // dragging from an empty square: nothing to carry
+      const g = document.createElement('span'); g.className = 'ghost ' + (drag.piece === drag.piece.toUpperCase() ? 'w' : 'b');
+      g.textContent = GLYPH[drag.piece]; document.body.appendChild(g); drag.ghost = g;
+    }
+    drag.ghost.style.left = e.clientX + 'px'; drag.ghost.style.top = e.clientY + 'px';
+    const sq = squareAt(e.clientX, e.clientY);
+    if (drag.over && (!sq || sq[2] !== drag.over)) drag.over.classList.remove('over');
+    if (sq){ sq[2].classList.add('over'); drag.over = sq[2]; } else drag.over = null;
+  });
+  function endDrag(e){
+    if (!drag) return;
+    const d = drag; drag = null;
+    if (d.ghost) d.ghost.remove();
+    if (d.over) d.over.classList.remove('over');
+    if (!d.moved){                                            // a plain click: select / place with brush / move selected
+      if (d.from) onSquare(d.from[0], d.from[1]);
+      else { state.brush = state.brush === d.piece ? null : d.piece; state.sel = null; draw(); }
+      return;
+    }
+    const sq = squareAt(e.clientX, e.clientY);
+    if (d.from){
+      if (sq) moveTo(d.from[0], d.from[1], sq[0], sq[1]);
+      else removeAt(d.from[0], d.from[1]);                    // dragged off the board: remove
+    } else if (sq) placeAt(sq[0], sq[1], d.piece);
+  }
+  document.addEventListener('pointerup', endDrag);
+  document.addEventListener('pointercancel', () => { if (drag){ if (drag.ghost) drag.ghost.remove(); if (drag.over) drag.over.classList.remove('over'); drag = null; } });
+  function removeAt(r, f){
+    const p = state.grid[r][f]; if (!p) return;
+    state.hist.push(clone(state.grid));
+    state.grid[r][f] = null; state.sel = null; state.last = null; draw();
+    log('remove', pieceName(p) + ' from ' + sqName(r, f));
+  }
+  function pieceName(p){ return (p === p.toUpperCase() ? 'w' : 'b') + {k:'K',q:'Q',r:'R',b:'B',n:'S',p:'P'}[p.toLowerCase()]; }
+  document.addEventListener('keydown', e => {
+    if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+    if ((e.key === 'Delete' || e.key === 'Backspace') && state.sel){ removeAt(state.sel[0], state.sel[1]); e.preventDefault(); }
+    if (e.key === 'Escape'){ state.sel = null; state.brush = null; draw(); }
+  });
+
+  // ---------- transforms
+  function transform(name, fn){
+    const g = state.grid, n = Array.from({length:8}, () => Array(8).fill(null));
+    for (let r = 0; r < 8; r++) for (let f = 0; f < 8; f++){
+      const p = g[r][f]; if (!p) continue;
+      const t = fn(r, f);
+      if (!t){ report('That ' + name + ' would push a piece off the board. Nothing changed.', 'warn'); return; }
+      n[t[0]][t[1]] = p;
+    }
+    state.hist.push(clone(g)); state.grid = n; state.sel = null; state.last = null; draw();
+    log(name, fenOf(n));
+  }
+  document.getElementById('rotr').addEventListener('click', () => transform('rotate cw', (r, f) => [f, 7 - r]));
+  document.getElementById('rotl').addEventListener('click', () => transform('rotate ccw', (r, f) => [7 - f, r]));
+  document.getElementById('mirh').addEventListener('click', () => transform('mirror left-right', (r, f) => [r, 7 - f]));
+  document.getElementById('mirv').addEventListener('click', () => transform('mirror up-down', (r, f) => [7 - r, f]));
+  document.getElementById('shl').addEventListener('click', () => transform('shift left', (r, f) => f > 0 ? [r, f - 1] : null));
+  document.getElementById('shr').addEventListener('click', () => transform('shift right', (r, f) => f < 7 ? [r, f + 1] : null));
+  document.getElementById('shu').addEventListener('click', () => transform('shift up', (r, f) => r < 7 ? [r + 1, f] : null));
+  document.getElementById('shd').addEventListener('click', () => transform('shift down', (r, f) => r > 0 ? [r - 1, f] : null));
+  document.getElementById('undo').addEventListener('click', () => {
+    const prev = state.hist.pop(); if (!prev) return;
+    state.grid = prev; state.sel = null; state.last = null; draw(); log('undo', fenOf(prev));
+  });
+  document.getElementById('clear').addEventListener('click', () => {
+    state.hist.push(clone(state.grid)); state.grid = parse('8/8/8/8/8/8/8/8'); state.sel = null; state.last = null; draw(); log('clear', '');
+  });
+  document.getElementById('loadfen').addEventListener('click', () => {
+    const g = parse(document.getElementById('fen').value);
+    if (!g){ report('That FEN could not be read. Only the piece placement is needed, e.g. 8/3r4/8/8/1R1Pk3/8/8/6b1', 'bad'); return; }
+    state.hist.push(clone(state.grid)); state.grid = g; state.sel = null; state.last = null; draw(); log('load', fenOf(g));
+  });
+  document.getElementById('copyfen').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(fenOf(state.grid)); setStatus('FEN copied'); } catch (e) { setStatus('copy blocked here; select the FEN box instead'); }
+  });
+
+  // ---------- solving
+  const reportEl = document.getElementById('report');
+  function report(text, flag){ reportEl.textContent = text; reportEl.className = 'report' + (flag ? ' flag ' + flag : ''); }
+  document.getElementById('modepre').addEventListener('click', () => setMode('pre'));
+  document.getElementById('modepost').addEventListener('click', () => setMode('post'));
+  function setMode(m){ state.mode = m; document.getElementById('modepre').classList.toggle('on', m === 'pre'); document.getElementById('modepost').classList.toggle('on', m === 'post'); }
+  document.getElementById('stip').addEventListener('change', e => { state.stip = e.target.value; });
+  document.getElementById('solve').addEventListener('click', solve);
+
+  function kingsOk(fen){
+    const p = fen.split(' ')[0]; return (p.match(/K/g) || []).length === 1 && (p.match(/k/g) || []).length === 1;
+  }
+  function solve(){
+    const fen = fenOf(state.grid);
+    if (!kingsOk(fen)){ report('Place exactly one White king and one Black king first.', 'bad'); return; }
+    report('Solving...');
+    setTimeout(() => {
+      try {
+        const text = state.mode === 'pre' ? solvePre(fen) : solvePost(fen);
+        reportEl.className = 'report'; reportEl.textContent = text;
+        log('solve', (state.mode === 'pre' ? state.stip + ' pre-key: ' : 'post-key: ') + firstLines(text));
+      } catch (err) { report('That position could not be analysed: ' + err.message, 'bad'); }
+    }, 20);
+  }
+  function firstLines(t){
+    // verdict first (cooked / keys / no solution), then threat and holes, then tries: the journal keeps only this line
+    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes)/i.test(l));
+    const rank = l => /^COOKED/i.test(l) ? 0 : /^(Key|No solution)/i.test(l) ? 1 : /^(threat|holes|unprovided)/i.test(l) ? 2 : /^Try/i.test(l) ? 3 : 4;
+    return L.map((l, i) => [rank(l), i, l]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 8).map(x => x[2]).join(' | ');
+  }
+  function solvePre(fen){
+    const res = ChessComp.analyse(fen, state.stip);
+    let out = ChessComp.formatReport(res);
+    if (state.stip === '#2' && res.phases){
+      const sp = res.phases.find(p => p.type === 'set');
+      const checks = sp ? sp.unprovided.filter(u => u.endsWith('+')) : [];
+      if (checks.length) out += '\n\nUNPROVIDED CHECK in the set play: ' + checks.join(', ') + '  (fatal)';
+      if (res.keys.length === 1){
+        const kp = res.phases.find(p => p.type === 'key');
+        if (kp && kp.threat.length > 1) out += '\nDouble threat after the key: ' + kp.threat.map(t => t.san).join('/');
+      }
+    }
+    return out;
+  }
+  function solvePost(fen){
+    // the diagram is the post-key position, Black to move
+    let c; try { c = new Chess(fen + ' w - - 0 1'); } catch (e) { return 'Not a legal position: ' + e.message; }
+    const threats = []; for (const m of c.moves({verbose:true})){ c.move(m); if (c.isCheckmate()) threats.push(m.san); c.undo(); }
+    const sp = ChessComp.setPlay(fen);
+    if (!sp) return 'With Black to move this position is illegal (Black in check, or no moves).';
+    const lines = [];
+    lines.push('Post-key view (Black to move)   ' + fen + '   ' + counts(state.grid));
+    lines.push('Threat (if Black passes): ' + (threats.length ? threats.map(s => s.replace(/^N/, 'S')).join(' / ') : 'none, a zugzwang key would be needed') + (threats.length > 1 ? '   <- double threat' : ''));
+    const tset = new Set(threats.map(s => s.replace(/^N/, 'S')));
+    const defs = sp.variations.filter(v => !v.conts.some(x => tset.has(x.san)));   // a defence: the threat no longer mates
+    const allow = sp.variations.length - defs.length;
+    lines.push('');
+    lines.push('Defences (moves that stop the threat) and their mates:');
+    const groups = {};
+    for (const v of defs){ const k = v.conts.map(x => x.san).join('/'); (groups[k] = groups[k] || []).push(v.defence); }
+    for (const v of defs){
+      const k = v.conts.map(x => x.san).join('/');
+      if (!groups[k]) continue;
+      lines.push('   1...' + groups[k].join('/') + '  2.' + k + (v.conts.length > 1 ? '   [dual]' : ''));
+      delete groups[k];
+    }
+    if (allow) lines.push('   (' + allow + ' further Black moves allow the threat)');
+    lines.push('');
+    lines.push(sp.unprovided.length ? 'HOLES, no mate after: ' + sp.unprovided.join(', ') : 'No holes: every Black move is answered.');
+    const checks = sp.unprovided.filter(u => u.endsWith('+'));
+    if (checks.length) lines.push('Unanswered CHECKS: ' + checks.join(', '));
+    return lines.join('\n');
+  }
+
+  // ---------- journal (local list + shared db when available)
+  const journalEl = document.getElementById('journal');
+  const entries = [];
+  let db = null, unsubscribed = false;
+  function setStatus(t, cls){ const s = document.getElementById('status'); s.textContent = t; s.className = 'status' + (cls ? ' ' + cls : ''); }
+  function render(){
+    journalEl.innerHTML = '';
+    const storyOnly = document.getElementById('storyonly').checked;
+    const quiet = new Set(['place', 'move', 'remove', 'undo']);
+    let list = entries.slice().sort((a, b) => (b.id > a.id ? 1 : -1));
+    if (storyOnly) list = list.filter(e => !quiet.has(e.action));
+    if (!document.getElementById('allsessions').checked) list = list.filter(e => e.session === session);
+    for (const e of list){
+      const li = document.createElement('li');
+      li.className = e.action === 'note' ? 'note' : (e.action === 'solve' ? 'solve' : '');
+      const t = document.createElement('span'); t.className = 't'; t.textContent = (e.t || '').slice(11, 19);
+      const a = document.createElement('span'); a.className = 'a'; a.textContent = e.action;
+      const d = document.createElement('span');
+      const full = e.detail || '';
+      // a solve report is long: show its first line (threat / key / cook) and expand on click
+      const firstLine = full.split(' | ').slice(0, 2).join(' | ');
+      d.textContent = firstLine; d.title = full; d.style.cursor = full.length > firstLine.length ? 'pointer' : '';
+      d.addEventListener('click', () => { d.textContent = d.textContent === full ? firstLine : full; });
+      const f = document.createElement('span'); f.className = 'fen'; f.textContent = e.fen || ''; f.title = 'load this position';
+      f.addEventListener('click', () => { const g = parse(e.fen); if (g){ state.hist.push(clone(state.grid)); state.grid = g; state.sel = null; state.last = null; draw(); log('back to', e.fen); } });
+      li.append(t, a, d, f); journalEl.appendChild(li);
+    }
+  }
+  function log(action, detail){
+    seq++;
+    const e = { id: session + '-' + String(seq).padStart(4, '0'), session, n: seq, t: new Date().toISOString(), action, detail: String(detail || '').slice(0, 400), fen: fenOf(state.grid) };
+    entries.push(e); render();
+    if (db){
+      db.collection('journal').doc(e.id).set(e).catch(err => setStatus('journal write failed: ' + err.code, 'off'));
+      db.doc('state/current').set({ fen: e.fen, mode: state.mode, stip: state.stip, updated: e.t, session }).catch(() => {});
+    }
+  }
+  document.getElementById('storyonly').addEventListener('change', render);
+  document.getElementById('allsessions').addEventListener('change', render);
+  document.getElementById('refresh').addEventListener('click', () => {
+    // new journal session: the old one stays in the db (hidden unless "show earlier sessions"), the board empties
+    session = Date.now().toString(36); seq = 0;
+    state.hist = []; state.grid = parse('8/8/8/8/8/8/8/8'); state.sel = null; state.last = null; draw();
+    log('refresh', 'new session ' + session);
+  });
+  document.getElementById('addnote').addEventListener('click', addNote);
+  document.getElementById('note').addEventListener('keydown', e => { if (e.key === 'Enter') addNote(); });
+  function addNote(){
+    const inp = document.getElementById('note'); const v = inp.value.trim(); if (!v) return;
+    log('note', v); inp.value = '';
+  }
+
+  async function connect(){
+    try { db = await claude.use('db'); } catch (e) { db = null; }
+    if (!db){ setStatus('journal: this page only (not saved)', 'off'); return; }
+    setStatus('journal: saved', '');
+    // existing entries from earlier sessions
+    db.collection('journal').orderBy('t').limit(1000).onSnapshot(snap => {
+      const seen = new Set(entries.map(e => e.id));
+      for (const d of snap.docs){ const body = d.data(); if (body && !seen.has(d.id)){ entries.push({ ...body, id: d.id }); seen.add(d.id); } }
+      render();
+    }, err => setStatus('journal: read failed (' + err.code + ')', 'off'));
+    // resume the last position if nothing was set up in this view yet
+    if (!state.hist.length && fenOf(state.grid) === START){
+      try { const s = await db.doc('state/current').get(); const body = s.exists ? s.data() : null;
+        if (body && body.fen){ const g = parse(body.fen); if (g){ state.grid = g; draw(); if (body.stip){ state.stip = body.stip; document.getElementById('stip').value = body.stip; } if (body.mode) setMode(body.mode); } }
+      } catch (e) {}
+    }
+  }
+
+  // ---------- boot
+  function start(data){
+    if (data && data.fen){ const g = parse(data.fen); if (g) state.grid = g; }
+    if (data && data.mode) setMode(data.mode);
+    if (data && data.stip){ state.stip = data.stip; document.getElementById('stip').value = data.stip; }
+    draw();
+    if (window.claude && window.claude.hot && window.claude.hot.snapshot) window.claude.hot.snapshot(() => ({ fen: fenOf(state.grid), mode: state.mode, stip: state.stip }));
+    if (window.claude && window.claude.use) connect(); else setStatus('journal: this page only (not saved)', 'off');
+  }
+  (window.claude && window.claude.hot && window.claude.hot.ready) ? window.claude.hot.ready(start) : start((window.claude && window.claude.hot && window.claude.hot.data) || {});
+})();
+</script>

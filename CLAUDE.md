@@ -1,40 +1,29 @@
-# ChessProblemHelper - read this first
+# ChessProblemHelper: an agentic composing entity
 
-Evgeni Bourd (IM for chess compositions) is teaching an AI to compose #2 problems. Nothing learned in a
-session survives except what is written into this repository. Before composing or judging anything:
+Evgeni Bourd (IM for chess compositions) is teaching this repository to compose #2 problems, with him or
+alone. Nothing learned survives a session except what is written here. This file is the constitution;
+the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; the enforcement is code.
 
-1. Read `knowledge/bourd_principles.md` end to end. It is his judgement, in his words, consolidated per session.
-2. Skim `knowledge/lessons.jsonl` (one JSON object per line: topic, kind, text, example FEN). These are
-   the specific, solver-verified facts, including dead ends. Do not repeat a recorded dead end.
-3. `knowledge/session_log.md` has every session's story; `knowledge/problems.json` every position with its
-   solution and critique (`docs/problems.json` is the copy the web page reads; keep them identical).
+## Fatal flaws (never show a position with one of these)
+- A cook, a dual in a thematic variation, or a double threat.
+- A promoted piece in the diagram: a third knight or rook, a second queen, two bishops on one colour.
+- An unprovided check in the set play.
+- A black king with a flight in the diagram (a flight GIVEN by the key is a plus).
+- A key that gives check or captures without a thematic reason; a try refuted by a king move.
 
-## Hard rules he has given (fatal flaws)
-
-- Build around a boxed black king; a flight in the diagram is a flaw, a flight-giving key is a plus.
-- An unprovided check in the set play is fatal.
-- A promoted piece in the diagram (3rd knight or rook, 2nd queen, two bishops of one colour) is fatal
-  unless the idea cannot exist without it. Count the force before showing a position.
-- Every claim about a position goes through the solver first:
-  `python -m chesscomp.report --fen "<FEN> w - - 0 1" "#2" --critique`. Hand analysis has been wrong
-  every time it was not checked.
-- Mating squares and lines close to the king; every White line piece near the king adds checks and cooks.
-
-## How to work with him
-
-- Iterate at the composer's level: cause -> remedy -> verify, one small change per solve. Do not launch an
-  enumeration per micro-question. The kernel (mechanism, box, reason for the key) is hand work; only the
-  last layer (defenders around a sound kernel) is for `chesscomp.compose.kernel_search`, run in parallel
-  with a time budget, never a long sequential chain.
-- Draw boards as SVG images with every diagram and give the FEN with each.
-- Be direct and critical, like a judge. He wants flaws named, not praise.
-- Record everything generalisable: a lesson line, a session-log entry, the problem in `problems.json`,
-  and a regression test (`tests/test_regression.py` re-solves every stored key).
-- The Composing Bench (an artifact with a journal in its database) is where he composes; its journal can be
-  read back to reconstruct his process. Journal solve lines start with the cook/key verdict.
+## Working rules
+- The solver before any claim: `python -m chesscomp.report --fen "<FEN> w - - 0 1" "#2" --critique`.
+  Hand analysis has been wrong every time it was not checked.
+- One change per solve. Cause -> remedy -> verify. Enumerate only the last layer (defenders around a
+  sound kernel) with `chesscomp.compose.kernel_search`, in parallel and under a time budget.
+- Boards as SVG with every diagram, FEN with every board (`tools/board_img.py`).
+- Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
+- Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
+  solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his
+  bench journal: load `bench`; before ending a session: load `record`.
 
 ## Layout
-
-`chesscomp/` solver, analysis, motives, critique, compose tools. `knowledge/` everything learned.
-`docs/` the web page and its JS solver (`analysis.js` mirrors `chesscomp/analysis.py`; a fix in one goes
-into the other). `tests/` regression.
+`chesscomp/` solver, analysis, motives, critique, compose tools. `knowledge/` principles, lessons,
+session log, problem collection (`docs/problems.json` must equal `knowledge/problems.json`). `docs/`
+web page and bench; `analysis.js` mirrors `chesscomp/analysis.py` and any fix goes into both.
+`tests/test_regression.py` re-solves every stored key.
