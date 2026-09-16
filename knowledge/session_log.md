@@ -447,3 +447,5 @@
 * Session 24 addition: bishop promotion by flight, not pin: 8/2K1P3/3P4/3kP3/7R/3N4/8/5R2 - 1.e8=B! Ke6 2.Bf7# (Q/R stalemate by covering e6 on the file; S has no mate after Ke6). 8 units. First draft cooked six ways (Sf4# in one, checks followed by e8=Q#); fixed by choosing box units that cannot check d5. Recorded as claude-underpromotion-B-flight.
 
 * Session 24, from Evgeni: bourd-four-promotions (all four promotions of the d-pawn as tries/key). Judging principle recorded: flaws are weighed against content; a tripled theme carries flaws that would be fatal in a simple problem. Solver fix: zugzwang and stalemating tries are now shown (they were hidden on the bench).
+
+* Session 24: Evgeni's four-unit 1.d8=B! (7K/3P1k2/3Q4/8/8/8/8/8, bourd-minimal-bishop-promotion) checked exhaustively with chesscomp.compose.minimal: 2.67M placements, 29 unique bishop-promotion keys, 11 with the flight variation, all queen-based, none with another extra unit. Lessons on his shrink-to-minimum method and on turning a cook between two promotions into a tripled theme are in lessons.jsonl and the compose skill.
