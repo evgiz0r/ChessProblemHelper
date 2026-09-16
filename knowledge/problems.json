@@ -654,6 +654,25 @@
     "e8=B"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-four-promotions",
+   "fen": "5K2/3P4/1N2p3/1P2k1NP/1P4P1/3p4/3B4/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 24 (bench)",
+   "themes": [
+    "Underpromotion",
+    "Promotion tries",
+    "Tripled theme",
+    "Zugzwang"
+   ],
+   "note": "1.d8=Q? stalemate; 1.d8=B? Kd6 2.Sf7# but Kd4!; 1.d8=S? Kf6 2.Sd7#, Kd4 2.Sc6# but Kd6!; 1.d8=R! Kf6 2.Sd7# (the rook covers d4 and d6). All four promotions tried, each failing for its own reason: the theme is tripled. Flaws that would be fatal on their own (three diagram flights, the key takes two, tries refuted by king moves, one king-flight variation, b4/b5 only to make tries fail) are balanced by the tripled content - his judgement: complex with some flaws usually beats clean and simple, though that is partly subjective. 12 units.",
+   "solution": "#2 (9+3)   FEN 5K2/3P4/1N2p3/1P2k1NP/1P4P1/3p4/3B4/8 w - - 0 1\nTry: 1.Ke7? (zugzwang)\n   but 1...Kd4!\nTry: 1.d8=Q? (stalemate)\n   but stalemate!\nTry: 1.d8=B? (zugzwang)\n   1...Kd6 2.Sf7#\n   but 1...Kd4!\nTry: 1.d8=S? (zugzwang)\n   1...Kf6 2.Sd7#\n   1...Kd4 2.Sc6#\n   but 1...Kd6!\nKey: 1.d8=R! (zugzwang)\n   1...Kf6 2.Sd7#\n(666 nodes, 0.03s)",
+   "keys": [
+    "d8=R"
+   ],
+   "cooked": false
   }
  ]
 }

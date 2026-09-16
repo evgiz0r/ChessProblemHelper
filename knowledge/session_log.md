@@ -445,3 +445,5 @@
   second variation - the stalemate motivation leaves Black nothing to move.
 
 * Session 24 addition: bishop promotion by flight, not pin: 8/2K1P3/3P4/3kP3/7R/3N4/8/5R2 - 1.e8=B! Ke6 2.Bf7# (Q/R stalemate by covering e6 on the file; S has no mate after Ke6). 8 units. First draft cooked six ways (Sf4# in one, checks followed by e8=Q#); fixed by choosing box units that cannot check d5. Recorded as claude-underpromotion-B-flight.
+
+* Session 24, from Evgeni: bourd-four-promotions (all four promotions of the d-pawn as tries/key). Judging principle recorded: flaws are weighed against content; a tripled theme carries flaws that would be fatal in a simple problem. Solver fix: zugzwang and stalemating tries are now shown (they were hidden on the bench).

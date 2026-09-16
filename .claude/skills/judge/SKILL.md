@@ -17,6 +17,8 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
      thin play (one mating move), defences that merely guard the threat square.
    - Pluses: flight-giving key, long key, unified defences, dual avoidance with one motive, tries whose
      refutation uses the theme, changed mates, economy.
-4. Say what the problem IS (theme, phases, changes) in two lines, then the flaws, then the pluses. No
+4. Weigh, do not count: a doubled or tripled theme can carry flaws that would be fatal in a simple
+   problem (see the checklist's last section). Say what content each flaw is buying.
+5. Say what the problem IS (theme, phases, changes) in two lines, then the flaws, then the pluses. No
    praise before the flaws. Give the FEN and draw the board.
-5. If a repair is obvious (one unit), test it with the solver and report it as verified, not proposed.
+6. If a repair is obvious (one unit), test it with the solver and report it as verified, not proposed.

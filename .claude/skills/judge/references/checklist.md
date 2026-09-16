@@ -23,3 +23,10 @@
 Judgement = thematic depth, novelty and complexity against the cost in units and aesthetics. Too simple
 plus big flaws is not worth it even if economical. Tries with unthematic refutations are much less
 interesting. Extra (non-thematic) variations are a necessary evil unless they carry something of their own.
+
+## Weighing, not counting (E. Bourd, session 24)
+
+Flaws are weighed against content. A tripled theme (all four promotions of one pawn tried, each failing for
+its own reason: 5K2/3P4/1N2p3/1P2k1NP/1P4P1/3p4/3B4/8) can carry three diagram flights, a flight-taking key,
+king-move refutations and a king-flight variation. Clean and simple is usually judged below complex with
+some flaws; the balance is partly subjective. So: name every flaw, then say what content it is buying.

@@ -149,3 +149,11 @@ solved it:
 - Tempo: one solve per minute; sixteen minutes of placing without solving produced nothing.
 - The White king is a construction resource, not only something to hide from checks: behind the threat
   piece on a line it turns captures on that line into pins.
+
+## Session 24: weighing flaws against content
+
+Evgeni's four-promotion problem 5K2/3P4/1N2p3/1P2k1NP/1P4P1/3p4/3B4/8 (1.d8=Q? stalemate, 1.d8=B? Kd4!,
+1.d8=S? Kd6!, 1.d8=R!) has three diagram flights, a flight-taking key, king-move refutations and one
+king-flight variation. His judgement: the theme is tripled, and that balances flaws that would be fatal
+in a simple problem; clean and simple is usually considered worse than complex with some flaws, though
+that is somewhat subjective. For composing: doubling the theme buys tolerance; economy alone buys little.
