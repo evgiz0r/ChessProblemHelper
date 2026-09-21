@@ -781,6 +781,25 @@
     "Qb8"
    ],
    "cooked": false
+  },
+  {
+   "id": "claude-knight-correction",
+   "fen": "b3N3/8/ppn1p3/4k3/3R2P1/4P3/7K/2Q5",
+   "stip": "#2",
+   "author": "Claude, steps set by E. Bourd",
+   "source": "session 26",
+   "themes": [
+    "Black correction",
+    "Knight correction",
+    "Line opening",
+    "Capture correction"
+   ],
+   "note": "Built in E. Bourd's order: threat first, then a defence by the knight moving away, then a correction. 1.Qc4! threatens 2.Re4#. Any move of the c6 knight opens a8-e4 for the bishop (Bxe4 parries) and at the same time opens the c-file: 2.Qc7#. The correction 1...Sxd4! removes the rook that covered e4, so 2.Qc7+ Ke4; the knight on d4 is then taken: 2.Qxd4#. Try 1.Qc2? (2.Qe4#) S~ 2.Qc7# fails only to 1...Sxd4!, because from c2 the queen cannot recapture. Pawns a6/b6 keep the threat single (Qb5/Qc5), e6 stops the queen and rook mating on d5, e3 blocks the e-file and protects d4, g4 covers f5, Se8 covers d6/f6. 12 units.",
+   "solution": "#2 (6+6)   FEN b3N3/8/ppn1p3/4k3/3R2P1/4P3/7K/2Q5 w - - 0 1\nSet play:\n   1...Sd8/Sb8/Se7/Sa7/Sa5/Sb4 2.Qc7#\n   1...b5 2.Qc5#\n   unprovided: Bb7, Sxd4, a5\nTry: 1.Qxc6? (threat: 2.Qc7#/Qd6#/Re4#)\n   (3 further moves allow the threat)\n   but 1...Bxc6!\nTry: 1.Qc2? (threat: 2.Qe4#)\n   1...Sd8/Sb8/Se7/Sa7/Sa5/Sb4 2.Qc7#\n   (3 further moves allow the threat)\n   but 1...Sxd4!\nTry: 1.Qg1? (threat: 2.Qg3#)\n   (9 further moves allow the threat)\n   but 1...Sxd4!\nTry: 1.Qf1? (threat: 2.Qf6#/Qf4#)\n   (9 further moves allow the threat)\n   but 1...Sxd4!\nTry: 1.Qe1? (threat: 2.Qg3#)\n   (9 further moves allow the threat)\n   but 1...Sxd4!\nKey: 1.Qc4! (threat: 2.Re4#)\n   1...Sd8/Sb8/Se7/Sa7/Sa5/Sb4 2.Qc7#\n   1...Sxd4 2.Qxd4#\n   (3 further moves allow the threat)\nPatterns:\n   changed threat: Qc7#/Qd6#/Re4# / Qe4#   [try Qxc6 vs try Qc2]\n   changed threat: Qc7#/Qd6#/Re4# / Qg3#   [try Qxc6 vs try Qg1]\n   changed threat: Qc7#/Qd6#/Re4# / Qf4#/Qf6#   [try Qxc6 vs try Qf1]\n   changed threat: Qc7#/Qd6#/Re4# / Qg3#   [try Qxc6 vs try Qe1]\n   changed threat: Qe4# / Qg3#   [try Qc2 vs try Qg1]\n   changed threat: Qe4# / Qf4#/Qf6#   [try Qc2 vs try Qf1]\n   changed threat: Qe4# / Qg3#   [try Qc2 vs try Qe1]\n   changed threat: Qe4# / Re4#   [try Qc2 vs key Qc4]\n   changed threat: Qg3# / Qf4#/Qf6#   [try Qg1 vs try Qf1]\n   changed threat: Qg3# / Re4#   [try Qg1 vs key Qc4]\n   changed threat: Qf4#/Qf6# / Qg3#   [try Qf1 vs try Qe1]\n   changed threat: Qf4#/Qf6# / Re4#   [try Qf1 vs key Qc4]\n   changed threat: Qg3# / Re4#   [try Qe1 vs key Qc4]\n(3346 nodes, 0.13s)",
+   "keys": [
+    "Qc4"
+   ],
+   "cooked": false
   }
  ]
 }

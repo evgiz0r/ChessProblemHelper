@@ -477,3 +477,18 @@
   a sound but thin 9-unit position (Q3b3/8/4p3/1P6/3k4/3N4/1N1K2P1/8, both flights met by the threat), and
   was enumerating around it when stopped. Recorded as claude-alone-two-flight-thin. Skill change: at the
   15-minute mark the agent writes its best sound position as the result instead of starting a search.
+
+## Session 26: a black knight correction, built in Evgeni's order (Claude)
+
+* His recipe: decide the threat; a defence by a knight moving away (a line opening makes any move a
+  defence); then a correction adding a plus and a minus (guarding or capturing a piece that creates a
+  self-block is the easiest).
+* Result: b3N3/8/ppn1p3/4k3/3R2P1/4P3/7K/2Q5 #2 (6+6). 1.Qc4! (2.Re4#) S~ 2.Qc7#, Sxd4 2.Qxd4#; try
+  1.Qc2? (2.Qe4#) S~ 2.Qc7# but Sxd4!. The random move opens a8-e4 for the bishop (defence) and the
+  c-file for the queen (error); the correction captures the rook that covered e4 and is captured with
+  mate. Recorded as claude-knight-correction. Flaws: the correction is a capture, not a self-block; the
+  four queen tries share the refutation Sxd4; thin (one correction, no other defence).
+* Method note: a knight cannot re-guard the square it left (parity), so knight corrections are captures,
+  interpositions or arrivals whose loss a mate exploits. Three mechanism searches (8M positions) found
+  nothing; the hand sequence with the solver reading set play at each step took about fourteen solves.
+  Dead ends and unit roles in themes/references/black_correction.md and lessons.jsonl.
