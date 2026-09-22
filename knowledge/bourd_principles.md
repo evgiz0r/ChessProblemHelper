@@ -174,3 +174,13 @@ When the discussion is about a mechanism, post a board per idea, with arrows for
 matter, and keep the prose to one line under each. A FEN is for the solver; a picture is for him.
 Also: he asks for the session review while he is still composing on his side. Write the record
 (lessons as rules, session log, themes reference) as soon as a pass ends, not when the problem is done.
+
+## Session 27: start small, keep it light, then extend
+
+"I started small, and if my mechanism is light enough, I have the freedom to try and extend something.
+More content. Not always possible of course, but if your original structure is heavy or too rigid, or
+too dependent on very specific flights, it may be hard to extend." His bench journal shows it: a random
+move and one mate on three units, the threat added, "that's 1 option", cleared and rebuilt as option 2,
+a second correction with a different mechanism, then cooks and economy last. Extension is a property of
+the mechanism, not of the position: a structure where every flight is covered by exactly one unit has no
+slack. Judge a kernel by how much can still be added to it.

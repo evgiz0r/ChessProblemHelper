@@ -30,6 +30,14 @@ the key piece moved one square per solve (E. Bourd: 12 units -> 4 in nine solves
 Add units only to add content, never to protect a structure that was already bigger than the idea. When two
 thematic moves both solve, choose the key and make the other fail for its own reason: that is a doubling.
 
+## Light enough to extend (E. Bourd, session 27)
+Start small: a random move and one mate on a near-empty board, then the threat, then one correction,
+then a second. A mechanism that is light (few units, no square that only one unit covers, no flight the
+whole structure depends on) leaves room to add content later; a heavy or rigid one, or one that hangs on
+very specific flights, cannot be extended without breaking. His b5-knight scheme grew from three units to
+a second self-block correction because every step was checked at its lightest form. My Bf2-g3 cell died
+because it needed every flight covered from the start: nothing could be added and nothing could move.
+
 ## Tempo
 One solve per change; never sixteen minutes of placing without a solve. If four or five posts of the
 key piece give only "double threat", "holes" or "no threat", the geometry has no line to exploit:
