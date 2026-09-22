@@ -514,3 +514,10 @@
 * Review while he composed: four diagrams (cell; Bg3# with e4/f5 guarding g3; the d-file rook duals;
   the shared a3-f8 diagonal) were what made the argument land ("finally got somewhere"). Principle
   recorded in bourd_principles.md: a board per idea, arrows for the moves that matter.
+* His own attempt on the bench (session mucy12up, about 320 journal steps in 45 minutes): bK c4,
+  bS b5 adjacent; the knight's departure GIVES the king b5 (that is why every knight move defends
+  against Qf7#), the error is leaving the b-file (Qb3#); corrections Sxd4 (guards b3, self-block d4,
+  Se5#) and Sc3 (cuts Rh3-b3, self-block c3, Se3#). B4BK1/1Q2R3/2N5/PnP5/2kP4/b6R/2rpP3/3N4, key
+  1.Re8! (2.Qf7#). Trim scan: the a8 bishop is removable and taking it out also removes the
+  Kd5 dual (Qf7#/Se3# becomes Se3# alone): 5BK1/1Q2R3/2N5/PnP5/2kP4/b6R/2rpP3/3N4 (11+5).
+  Left: three tries refuted by 1...Kd5 (his own rule), wPa5 a pure cook-stopper.
