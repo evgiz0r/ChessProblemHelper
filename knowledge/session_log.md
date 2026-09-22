@@ -530,3 +530,11 @@
   from both sides is "somewhat exponential in terms of chess". Moving the rook from e6 to e8 saved
   the c7 pawn and removed four same-refutation tries. Principles: start small and keep the mechanism
   light so it can be extended; draw the diagrams.
+* Second scheme the same evening (bench session mud7dke1, ~300 steps): bK c4, bS c5 next to the king
+  on the file. 4Q1B1/b3K3/p2B1p2/PPnP3b/2kN1p2/8/1R1R4/1N6 #2 (11+7): 1.Sf5! (2.Rd4#, the knight
+  opens the d-file). Any knight move opens a7-d4 for the black bishop (defence) and d6-b4 for the white
+  bishop (error): 2.Rb4#. Corrections Sd3 (blocks d3, attacks b4) 2.Rdc2#, Sb3 (blocks b3, covers d4)
+  2.Rbc2#: two rooks mating on one square, the choice made by the blocked flight. Tries Se6? (cuts
+  Bg8-d5) Sd3!, Sc6? (cuts Qe8-b5) Sb3!, Sf3? Bxf3, Se2? Bxe2: the white knight's posts refuted by the
+  black corrections again. Checks: wPf4 stops a second threat Se3# (not removable); wPa5 is set-play
+  filler and comes off (17 units, same play); b5 stops Qa4+/Sb5; d5 exists for legality (Bg8).
