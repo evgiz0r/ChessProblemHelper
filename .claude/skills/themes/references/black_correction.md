@@ -48,3 +48,19 @@ Cell: bK e5, bS d6, wPd3, 1...Se4 2.d4# (the pawn gives up e4, the knight fills 
   queen reaches d5# once d5 is protected.
 - Open directions: enable the random mate by an UNGUARD (d6 guards c4 and f7, both knight-mate
   squares), or use the other cell (knight on d5, self-blocks on the diagonal squares f4/f6).
+
+## The one that worked: E. Bourd's adjacent knight (session 27)
+`bourd-knight-double-correction`, BQ2R3/3K4/2N5/1np2p2/2k2P2/p4R1b/4P3/3Nb3 #2 (9+7).
+1.Re7! (2.Qg8#) 1...S~ 2.Qb3#, 1...Sd4 2.Se5#, 1...Sc3 2.Se3#. Tries 1.Rh8? Kd5!, 1.Re5? Sd4!,
+1.Ree3? Sc3!
+- The knight on b5 stands NEXT to the king. Its departure gives the king b5, so every knight move
+  defends against Qg8#: no line through the knight is needed. The error is leaving the b-file.
+- Two self-block corrections with different correction motives: Sd4 guards b3 (Se5# also unmasks
+  Ba8 on d5); Sc3 cuts the f3 rook's protection of b3 (Qb3+ Kxb3).
+- The mirror: the key rook has no true random move (Rh8 loses e4 and fails to Kd5), its aggressive
+  corrections Re5/Ree3 are refuted by the black corrections Sd4/Sc3, and Re7 is the correction with
+  no negative effect. Two correction plays, one from each side; each could be a problem alone.
+- How it was built: random move + one mate on three units; the threat; option 1; cleared and rebuilt
+  as option 2 with a second correction; cooks (Re4+ by a discovered-check battery Kd7/Bh3/f5, f4
+  against the by-product f4+; a3, Be1) and economy last. Rook e6 -> e8 saved a pawn and turned four
+  same-refutation tries into three distinct ones.

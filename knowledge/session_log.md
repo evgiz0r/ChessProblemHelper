@@ -521,3 +521,12 @@
   1.Re8! (2.Qf7#). Trim scan: the a8 bishop is removable and taking it out also removes the
   Kd5 dual (Qf7#/Se3# becomes Se3# alone): 5BK1/1Q2R3/2N5/PnP5/2kP4/b6R/2rpP3/3N4 (11+5).
   Left: three tries refuted by 1...Kd5 (his own rule), wPa5 a pure cook-stopper.
+* FINAL (his verdict: "the result is good, the complex thematic play is strong"):
+  BQ2R3/3K4/2N5/1np2p2/2k2P2/p4R1b/4P3/3Nb3 #2 (9+7), recorded as bourd-knight-double-correction.
+  1.Re7! (2.Qg8#) S~ 2.Qb3#, Sd4 2.Se5#, Sc3 2.Se3#; tries Rh8? Kd5!, Re5? Sd4!, Ree3? Sc3!. His
+  reading: White has no true random move; Rh8 is the nearest and loses e4; the aggressive corrections
+  Re5/Ree3 are refuted by the opponent's corrections (a mirror); Re7 is the correction without a
+  negative effect; the black knight then plays the same random-plus-correction. Doubling the theme
+  from both sides is "somewhat exponential in terms of chess". Moving the rook from e6 to e8 saved
+  the c7 pawn and removed four same-refutation tries. Principles: start small and keep the mechanism
+  light so it can be extended; draw the diagrams.

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-13",
+ "generated": "2026-09-22",
  "note": "Positions from the composing sessions. POST-KEY entries are positions with Black to move.",
  "problems": [
   {
@@ -800,6 +800,23 @@
     "Qc4"
    ],
    "cooked": false
+  },
+  {
+   "id": "bourd-knight-double-correction",
+   "fen": "BQ2R3/3K4/2N5/1np2p2/2k2P2/p4R1b/4P3/3Nb3",
+   "stip": "#2",
+   "author": "E. Bourd",
+   "source": "session 27, composed on the bench in one sitting",
+   "themes": [
+    "Black correction",
+    "Knight correction",
+    "Self-block",
+    "White correction",
+    "Tries by the key piece",
+    "Line opening"
+   ],
+   "note": "Adjacent knight (bK c4, bS b5), built small and extended. The knight's departure gives the king b5, so every knight move defends against the threat; its error is leaving the b-file: 1.Re7! (2.Qg8#) S~ 2.Qb3#. Two self-block corrections by different motives: 1...Sd4 guards b3 and blocks d4, 2.Se5# (unmasking Ba8 on d5); 1...Sc3 cuts the f3 rook's protection of b3 and blocks c3, 2.Se3#. The same theme from White's side: the rook has no true random move; 1.Rh8? is the nearest and fails to Kd5! because e4 is lost; its 'aggressive corrections' 1.Re5? and 1.Ree3? (the latter cutting Rf3-c3) are each refuted by the corresponding black correction, Sd4! and Sc3!; 1.Re7! is the correction with no negative effect. Kd7+Bh3+f5+f4 stop 1.Re4+ (fxe4 is a discovered check) and its by-product 1...f4+; a3 stops Sb2+/Re5, Be1 stops Rd3/Rc3+/Re5. Flaws he weighs as small: 1...Kd5 2.Qg8#/Se3# after the key, Rh8? refuted by a king move, wPf4 a pure cook-stopper. 16 units.",
+   "solution": "#2 (9+7)   FEN BQ2R3/3K4/2N5/1np2p2/2k2P2/p4R1b/4P3/3Nb3 w - - 0 1\nSet play:\n   1...Sc7/Sa7/Sd6 2.Qb3#\n   1...Sd4 2.Se5#\n   1...Sc3 2.Se3#\n   1...Kd5 2.Se3#\n   unprovided: Bg4, Bg2, Bf1, Ba5, Bh4, Bb4, Bg3, Bc3, Bf2, Bd2, a2\nTry: 1.Rh8? (threat: 2.Qg8#)\n   1...Sc7/Sa7/Sd6 2.Qb3#\n   1...Sd4 2.Se5#\n   1...Sc3 2.Se3#\n   but 1...Kd5!\nTry: 1.Re5? (threat: 2.Qg8#)\n   1...Sc7/Sa7/Sd6 2.Qb3#\n   1...Sc3 2.Se3#\n   but 1...Sd4!\nTry: 1.Ree3? (threat: 2.Qg8#)\n   1...Sc7/Sa7/Sd6 2.Qb3#\n   1...Sd4 2.Se5#\n   but 1...Sc3!\nKey: 1.Re7! (threat: 2.Qg8#)\n   1...Sc7/Sa7/Sd6 2.Qb3#\n   1...Sd4 2.Se5#\n   1...Sc3 2.Se3#\nPatterns:\n   White interference try: 1.Ree3? cuts Rf3 -> c3; 1...Sc3!   [try Ree3]\n   Bristol: 1.Rh8 + 2.Qg8#   [try Rh8]\nTransferred continuations:\n   Se3#: after Kd5 -> after Sc3   [set play vs try Rh8]\n   Se3#: after Kd5 -> after Sc3   [set play vs try Re5]\n   Se3#: after Kd5 -> after Sc3   [set play vs key Re7]\n(5776 nodes, 0.24s)"
   }
  ]
 }
