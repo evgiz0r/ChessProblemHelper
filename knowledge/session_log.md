@@ -492,3 +492,22 @@
   interpositions or arrivals whose loss a mate exploits. Three mechanism searches (8M positions) found
   nothing; the hand sequence with the solver reading set play at each step took about fourteen solves.
   Dead ends and unit roles in themes/references/black_correction.md and lessons.jsonl.
+
+## Session 27: adjacent-knight self-block correction (Claude, not finished)
+
+* Task: "one more correction problem", knight adjacent to the king, the correction a self-block (not a
+  capture), the random move an unguard or line opening. Started with bK e5, bS d6, wPd3 so that 1...Se4
+  self-blocks for d4# (the pawn gave up e4, the knight fills it).
+* No sound position yet. About thirty hand-built settings were solved, each cooked or unsound; the
+  causes were recorded as rules (lessons.jsonl 2026-09-22, themes/references/black_correction.md).
+  The big ones: every knight destination attacks d6, so a line through d6 is interposed by every
+  move; the only mating line no far move touches is h2-e5, parried by e4/f5 guarding g3; a d-file rook
+  that enables d4/d5 after the knight leaves gives Bd4#/Rd5# for free; a 6th-rank rook gives Re6#;
+  once every flight is covered the queen may not have a single check; the defence line (Ba3-e7) and
+  the random-mate line (f8-c5) cannot share the a3-f8 diagonal.
+* Two mechanism searches around the fixed core (900 s, four jobs, ~1.8M positions) found nothing.
+  The hand sequence again did better at finding causes than the search did at finding positions.
+* Next step proposed to Evgeni: enable the random mate by an unguard (the knight on d6 guards c4 and
+  f7, both knight-mate squares) or start from the other cell (knight on d5, self-blocks on f4/f6).
+  Scratch notes: scratchpad corr/selfblock_notes.md and corr/why.py (lists black replies and mates
+  after a given key, faster than reading the full report when a threat problem has no solution).

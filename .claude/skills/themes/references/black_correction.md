@@ -30,3 +30,21 @@ built in E. Bourd's order.
 - Qc3 behind Rd4: battery, cooked by every rook move. Qc4: Qd5/Rd5 double threat until bPe6.
 - Sb4 interference on the b-file killed a b-file mate (Qb8): choose a mating line the knight cannot
   cross.
+
+## Adjacent knight, self-block correction (session 27, unsolved; the rules)
+Cell: bK e5, bS d6, wPd3, 1...Se4 2.d4# (the pawn gives up e4, the knight fills it).
+- Every destination of the knight attacks d6, so any white line through d6 is interposed by every
+  knight move (Qb8/Qc7 on b8-h2 never mate). The far squares also interpose on e3 (c4, f5), c5
+  (b7, e4) and g5 (e4, f5, f7). The one mating line no far move touches is h2-e5: Bg3/Bh2/Qg3/Qh2,
+  parried by the adjacent squares e4 and f5 (they guard g3). Pair the e4 self-block with that mate.
+- The random mate must be created by the knight's departure. Opening a white ROOK line does not
+  work here: a d-file rook covering d4/d5 gives Bd4# (bishop f2) and Rd5# (any second d5 guard);
+  a 6th-rank rook gives Re6#. Opening the queen's f8-c5 diagonal fails when the threat is Qe7#
+  defended by Ba3: the bishop takes on c5. A 6th-rank queen mate on f6 is parried by Se8 too.
+- Bishop f2 mating on g3 (it covered d4, so the mate fails in the diagram on d4) means every flight
+  is covered in the diagram; then any queen check is mate and each of the queen's lines needs a
+  blocker. A 7th-rank threat from a7 and a key rook arriving on d7 exclude each other.
+- Small: bPd7 jumps to d5 through the emptied d6 and interposes on 5th-rank checks; an 8th-rank
+  queen reaches d5# once d5 is protected.
+- Open directions: enable the random mate by an UNGUARD (d6 guards c4 and f7, both knight-mate
+  squares), or use the other cell (knight on d5, self-blocks on the diagonal squares f4/f6).
