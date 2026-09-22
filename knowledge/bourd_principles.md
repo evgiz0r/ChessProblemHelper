@@ -165,3 +165,12 @@ said "use the scheme on my board now, Se4 will give two flights". The scheme nam
 flight squares and leaves everything else open. Working from it reached a sound position in one sitting
 where a day of abstract searching had not: the composer's part is the mechanism and the key move; the
 builder's part is mates, threat, cooks. Result: claude-two-flight-knight-sacrifice (13 units, thin).
+
+## Session 27: draw the diagrams so we understand each other
+
+Two messages of prose about a cooked scheme got "what's up"; four board images with arrows (the
+cell, the random mate, and one board per structural dead end) got "not bad, finally got somewhere".
+When the discussion is about a mechanism, post a board per idea, with arrows for the moves that
+matter, and keep the prose to one line under each. A FEN is for the solver; a picture is for him.
+Also: he asks for the session review while he is still composing on his side. Write the record
+(lessons as rules, session log, themes reference) as soon as a pass ends, not when the problem is done.

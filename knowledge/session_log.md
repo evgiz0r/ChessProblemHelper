@@ -511,3 +511,6 @@
   f7, both knight-mate squares) or start from the other cell (knight on d5, self-blocks on f4/f6).
   Scratch notes: scratchpad corr/selfblock_notes.md and corr/why.py (lists black replies and mates
   after a given key, faster than reading the full report when a threat problem has no solution).
+* Review while he composed: four diagrams (cell; Bg3# with e4/f5 guarding g3; the d-file rook duals;
+  the shared a3-f8 diagonal) were what made the argument land ("finally got somewhere"). Principle
+  recorded in bourd_principles.md: a board per idea, arrows for the moves that matter.
