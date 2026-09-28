@@ -583,3 +583,6 @@
   2.Qd5#, Sd6 2.Qxc5#, Se3 2.Qe2#, no duals, every unit load-bearing. Recorded as
   `bourd-knight-ambush-correction`. The strict two-change search and his hand found the same repair
   (Pb4+pc5) within a minute of each other; he then improved it by hand.
+* His reservation on the finished form: Sd6 (two line cuts) is much stronger than Se3 (one), and in
+  a symmetrical theme the thematic variations should be roughly equal in effect. Recorded as a
+  principle in bourd_principles.md and as a lesson.

@@ -184,3 +184,14 @@ move and one mate on three units, the threat added, "that's 1 option", cleared a
 a second correction with a different mechanism, then cooks and economy last. Extension is a property of
 the mechanism, not of the position: a structure where every flight is covered by exactly one unit has no
 slack. Judge a kernel by how much can still be added to it.
+
+## Session 28: balance between thematic variations
+
+On the finished knight-ambush problem (3R4/4b3/K7/1Np2n2/2kPp2p/B1p4q/2P5/3Q4), the
+correction 1...Sd6 does two things at once (cuts the rook's guard of d5 and the bishop's guard
+of c5) while 1...Se3 does one (cuts the queen's h3-d3 line). He agrees the richer effect is
+nicer in itself, but calls the imbalance a drawback: "if the theme is symmetrical, we want the
+effect in all thematic variations to be roughly similar." Corrections are a symmetrical theme,
+so their motives should carry similar weight. Two ways to restore balance: give the other
+correction a matching double effect, or make both single. A lone strong variation reads as an
+accident, not a design.
