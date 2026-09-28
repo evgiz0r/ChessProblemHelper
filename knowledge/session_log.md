@@ -560,3 +560,8 @@
   key with its threat, the play grouped per piece as random move | corrections, duals on one line,
   "(n other moves allow the threat)", one line per try with its refutation, and the set play only as
   "differs: Se7 Sa5#->Qc5#" or "same mates". Python: `--compact`; JS: formatCompact/phaseCompact.
+* "Find me a key" on 5b2/2N5/p7/5n2/K1kPp2p/1Np4q/2P5/3Q4 (cooked by Sa5#): my one- and two-change
+  search (about 1,700 solves) and his hand reached the same wPa5 fix; he was faster. A one-unit
+  cook-stopper is a hand job: name the cook's reason (Qd1 protects d4, Sc7 holds d5) and block the
+  mating square. Search earns its keep only when the fix must also keep several variations intact.
+  Left: Sd6 2.Qd5#/Qc5# is structural (Sd6 cuts f8-c5 like Se7 but does not guard d5).
