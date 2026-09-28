@@ -586,3 +586,12 @@
 * His reservation on the finished form: Sd6 (two line cuts) is much stronger than Se3 (one), and in
   a symmetrical theme the thematic variations should be roughly equal in effect. Recorded as a
   principle in bourd_principles.md and as a lesson.
+* The Problemesis database from the other session (PR #1, merged) is now on this branch too. First use:
+  20 of his own problems are in it; by label, 25 black-correction and 7 Bristol twomovers, one with both
+  (Loustau, Phénix 1999, 2nd Prize: 4th-degree white bishop correction with anti-Bristol). A solver run
+  over all 815 orthodox twomovers (`python -m chesscomp.db run themes --stip '#2' --orthodox --no-twins
+  --jobs 4`, 90 seconds, run file `knowledge/runs/themes-2m.jsonl`) found 54 key-phase corrections, 12
+  by a knight, and no Bristol by our detector (the labelled ones are clearances the detector does not
+  see: worth a look). Closest to his work: Pilchenko & Shavyrin 2001 (adjacent knight b5 beside Kc4,
+  Sd4 2.Se5#), noted on his session-27 problem; Kapros 2002 (queen tries refuted by knight corrections,
+  1.Qh5!), the mirror idea he described in session 27.

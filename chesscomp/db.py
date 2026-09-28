@@ -166,7 +166,28 @@ def task_analyse(rec: dict, time_limit: float = 120) -> dict:
     return {'status': 'timeout' if res.get('timeout') else 'ok', 'analysis': res}
 
 
-TASKS = {'check': task_check, 'analyse': task_analyse}
+def task_themes(rec: dict, time_limit: float = 60) -> dict:
+    """What our solver sees: soundness, named patterns (Bristol, Le Grand, ...) and, per phase, the random
+    moves and corrections of each black piece (E. Bourd's rule, analysis._corrections)."""
+    from .analysis import analyse
+    p = to_problem(rec)
+    if p is None:
+        return {'status': 'unsupported'}
+    try:
+        res = analyse(p, time_limit=time_limit)
+    except Exception as e:  # noqa: BLE001
+        return {'status': 'error', 'error': str(e)[:200]}
+    keys = res.get('keys') or []
+    out = {'status': 'ok' if len(keys) == 1 else ('cooked' if len(keys) > 1 else 'unsound'), 'keys': keys,
+           'patterns': [f"{pt['name']} {pt.get('defence', '')} [{'/'.join(pt.get('phases', []))}]" for pt in res.get('patterns') or []],
+           'corrections': []}
+    for ph in res.get('phases') or []:
+        for info in ph.get('corrections') or []:
+            d = dict(info); d['phase'] = ph.get('type'); d['move'] = (ph.get('first_move') or {}).get('san')
+            out['corrections'].append(d)
+    return out
+
+TASKS = {'check': task_check, 'analyse': task_analyse, 'themes': task_themes}
 
 
 def _resolve(task):
