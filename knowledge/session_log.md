@@ -595,3 +595,10 @@
   see: worth a look). Closest to his work: Pilchenko & Shavyrin 2001 (adjacent knight b5 beside Kc4,
   Sd4 2.Se5#), noted on his session-27 problem; Kapros 2002 (queen tries refuted by knight corrections,
   1.Qh5!), the mirror idea he described in session 27.
+* "Did you solve all the problems?" Yes: all 815 orthodox untwinned twomovers, 90 seconds on four
+  processes, twice (`themes` and `check` runs, both committed under knowledge/runs/). Check against the
+  published keys: 789 agree, 1 mismatch (a castling key the FEN cannot express), 13 "cooked" that are
+  nearly all intentional multi-solution problems (his own Qa1/Qa2/Qa3/Qa4 among them; Zolotarev 1996
+  looks like a real cook or a misparsed diagram), 5 "unsound" that are parsing or fairy cases (castling,
+  a blind-rook fairy piece), 7 without a printed key. The FEN has no castling or en-passant rights, so
+  keys of that kind are invisible to the solver.
