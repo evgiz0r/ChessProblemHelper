@@ -602,3 +602,11 @@
   looks like a real cook or a misparsed diagram), 5 "unsound" that are parsing or fairy cases (castling,
   a blind-rook fairy piece), 7 without a printed key. The FEN has no castling or en-passant rights, so
   keys of that kind are invisible to the solver.
+* "Show me some Dombrovskis examples ... add a solution near those problems, in a clean format": four
+  cards (diagram, author and source, tries with A/B and a/b letters, key, themes) for Slesarenko &
+  Gvozdjak 1999, Veliky & Dyachuk 2003, Keller & Zirkwitz 2000 and his own Problemesis 2004 twomover.
+  The renderer is now `tools/card_png.py` (spec on stdin, or `--id` for a database record with its
+  printed solution). The themes run was rerun after a bug (patterns live under `relations`): by play
+  the solver sees Dombrovskis in 202 twomovers against 88 labelled (77 in both), Bristol in 12 against
+  7 labelled (4 in both). The solver-only Dombrovskis hits are mostly single-defence paradoxes the
+  magazine did not think worth naming.

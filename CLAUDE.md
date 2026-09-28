@@ -16,7 +16,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   Hand analysis has been wrong every time it was not checked.
 - One change per solve. Cause -> remedy -> verify. Enumerate only the last layer (defenders around a
   sound kernel) with `chesscomp.compose.kernel_search`, in parallel and under a time budget.
-- Boards as SVG with every diagram, FEN with every board (`tools/board_img.py`).
+- Boards as SVG with every diagram, FEN with every board (`tools/board_img.py`). A problem with its
+  solution beside it, for him or for a database record: `tools/card_png.py out.png --id psis-…`.
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his
