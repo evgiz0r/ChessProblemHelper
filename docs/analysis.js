@@ -281,9 +281,62 @@
     return sols.map(l => l.map((s, i) => (i % 2 === 0 ? `${i / 2 + 1}.${s}` : s)).join(' '));
   }
 
+
+  // E. Bourd s27: random move = the moves of one piece allowing one and the same mate; a correction is a
+  // move of that piece after which that mate no longer works and another does. A move with another mate
+  // that still allows the random mate is a random move with a dual, not a correction.
+  function corrections(ph) {
+    const out = [], by = new Map();
+    for (const v of ph.variations || []) {
+      if (v.refutes || v.threatRepeat || !v.conts || !v.conts.length) continue;
+      const s = v.defence || v.san || '';
+      if (!'QRBS'.includes(s[0])) continue;
+      const k = v.uci.slice(0, 2);
+      if (!by.has(k)) by.set(k, []);
+      by.get(k).push(v);
+    }
+    for (const [frm, vs] of by) {
+      if (vs.length < 3) continue;
+      const count = new Map();
+      for (const v of vs) for (const c of v.conts) count.set(c.id, (count.get(c.id) || 0) + 1);
+      let rid = null, n = 0;
+      for (const [id, c] of count) if (c > n) { rid = id; n = c; }
+      if (n < 2) continue;
+      const rnd = vs.filter(v => v.conts.some(c => c.id === rid));
+      const cor = vs.filter(v => !rnd.includes(v));
+      if (!cor.length) continue;
+      const rsan = rnd[0].conts.find(c => c.id === rid).san;
+      out.push({ piece: (vs[0].defence || vs[0].san)[0] + frm,
+                 random: { moves: rnd.map(v => v.defence || v.san), mate: rsan, duals: rnd.filter(v => v.conts.length > 1).map(v => v.defence || v.san) },
+                 corrections: cor.map(v => ({ move: v.defence || v.san, mates: v.conts.map(c => c.san) })) });
+    }
+    return out;
+  }
+  function correctionLines(ph) {
+    return corrections(ph).map(c => `   ${c.piece[0]}~ random ${c.random.moves.join('/')} 2.${c.random.mate}` +
+      (c.random.duals.length ? ` (dual after ${c.random.duals.join('/')})` : '') +
+      `; corrections ${c.corrections.map(x => `${x.move} 2.${x.mates.join('/')}`).join(', ')}`);
+  }
+  // Units beyond the original set (E. Bourd: a promoted piece in the diagram is fatal).
+  function promotedForce(fen) {
+    const rows = fen.split(' ')[0].split('/'), out = [];
+    for (const [side, name] of [['w', 'White'], ['b', 'Black']]) {
+      let q = 0, r = 0, n = 0, light = 0, dark = 0;
+      rows.forEach((row, ri) => { let f = 0; for (const ch of row) { if (/\d/.test(ch)) { f += +ch; continue; }
+        const isW = ch === ch.toUpperCase(); if ((side === 'w') === isW) { const u = ch.toUpperCase();
+          if (u === 'Q') q++; else if (u === 'R') r++; else if (u === 'N') n++; else if (u === 'B') { if ((f + (7 - ri)) % 2 === 1) light++; else dark++; } }
+        f++; } });
+      const parts = [];
+      if (q > 1) parts.push(q + ' queens'); if (r > 2) parts.push(r + ' rooks'); if (n > 2) parts.push(n + ' knights');
+      if (light > 1 || dark > 1) parts.push((light + dark) + ' bishops, ' + Math.max(light, dark) + ' on one colour');
+      if (parts.length) out.push(name + ' has ' + parts.join(', '));
+    }
+    return out;
+  }
   function formatReport(res) {
     if (res.error) return res.error;
     const L = [];
+    for (const line of promotedForce(res.fen || '')) L.push('PROMOTED FORCE: ' + line + '  (fatal)');
     if (res.solutions) {
       L.push(`${res.solutions.length} solution(s):`);
       res.solutions.forEach(s => L.push('   ' + s));
@@ -310,6 +363,7 @@
       for (const g of groups.values())
         L.push(`   1...${g.defs.join('/')} 2.${g.conts.map(x => x.san).join('/')}${g.dual ? '  [DUAL]' : ''}`);
       if (hidden) L.push(`   (${hidden} further moves allow the threat)`);
+      for (const line of correctionLines(ph)) L.push(line);
       if (ph.type === 'try' && ph.stalemate) L.push('   but stalemate!');
       else if (ph.type === 'try' && ph.refutations.length) L.push('   but ' + ph.refutations.map(r => `1...${r}!`).join(', '));
       if (ph.type === 'set' && ph.unprovided.length) L.push('   unprovided: ' + ph.unprovided.slice(0, 12).join(', '));
@@ -338,5 +392,5 @@
     return L.join('\n');
   }
 
-  return { analyse, formatReport, setPlay, dualAvoidance };
+  return { analyse, formatReport, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
 }));

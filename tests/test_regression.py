@@ -42,3 +42,31 @@ def test_stalemating_promotions_are_shown_as_tries():
     assert r['keys'] == ['e8=B']
     assert tries['e8=Q'].get('stalemate') and tries['e8=R'].get('stalemate')
     assert [x['san'] for x in tries['e8=S']['refutations']] == ['Ke6']
+
+
+def test_corrections_marked_per_piece_and_promoted_force_flagged():
+    """E. Bourd s27: mark the random move and its corrections; a correction must stop the random mate.
+    Sf5/Sc2 keep Bf4# (duals), so they are random moves, not corrections. Three knights = promoted force."""
+    from chesscomp.core import Problem, promoted_force
+    from chesscomp.analysis import analyse
+    from chesscomp.report import format_report
+    import chess
+    p = Problem.from_fen('8/KB3Q2/N2k4/3p4/pP1N4/4nN1b/3B2p1/2r3b1 w - - 0 1', '#2')
+    res = analyse(p, max_refutations=1, include_tries=False)
+    key = [ph for ph in res['phases'] if ph['type'] == 'key' and ph['first_move']['san'] == 'Ba8'][0]
+    knight = [c for c in key['corrections'] if c['piece'] == 'Se3'][0]
+    assert knight['random']['mate'] == 'Bf4#'
+    assert set(knight['random']['moves']) == {'Sf5', 'Sc2', 'Sf1', 'Sd1'}
+    assert [c['move'] for c in knight['corrections']] == ['Sg4', 'Sc4']
+    assert promoted_force(chess.Board(p.board.fen())) == ['White has 3 knights']
+    assert 'PROMOTED FORCE: White has 3 knights' in format_report(res)
+
+
+def test_bourd_double_correction_report_lines():
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.report import format_report
+    p = Problem.from_fen('BQ2R3/3K4/2N5/1np2p2/2k2P2/p4R1b/4P3/3Nb3 w - - 0 1', '#2')
+    out = format_report(analyse(p, max_refutations=1, include_tries=False))
+    assert 'S~ random Sc7/Sa7/Sd6 2.Qb3#; corrections Sd4 2.Se5#, Sc3 2.Se3#' in out
+    assert 'PROMOTED' not in out

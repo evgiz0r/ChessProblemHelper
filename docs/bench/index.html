@@ -381,13 +381,16 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   }
   function firstLines(t){
     // verdict first (cooked / keys / no solution), then threat and holes, then tries: the journal keeps only this line
-    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes)/i.test(l));
-    const rank = l => /^COOKED/i.test(l) ? 0 : /^(Key|No solution)/i.test(l) ? 1 : /^(threat|holes|unprovided)/i.test(l) ? 2 : /^Try/i.test(l) ? 3 : 4;
+    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|\s+[QRBS]~ random)/i.test(l));
+    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution)/i.test(l) ? 1 : /^(threat|holes|unprovided)/i.test(l) ? 2 : /^\s+[QRBS]~/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
     return L.map((l, i) => [rank(l), i, l]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 8).map(x => x[2]).join(' | ');
   }
   function solvePre(fen){
     const res = ChessComp.analyse(fen, state.stip);
     let out = ChessComp.formatReport(res);
+    // E. Bourd s27: a promoted piece in the diagram is fatal; say so at the top (formatReport also marks it)
+    const promo = ChessComp.promotedForce ? ChessComp.promotedForce(fen) : [];
+    if (promo.length && !/^PROMOTED FORCE/.test(out)) out = 'PROMOTED FORCE: ' + promo.join('; ') + '  (fatal)\n' + out;
     if (state.stip === '#2' && res.phases){
       const sp = res.phases.find(p => p.type === 'set');
       const checks = sp ? sp.unprovided.filter(u => u.endsWith('+')) : [];
@@ -407,6 +410,8 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     if (!sp) return 'With Black to move this position is illegal (Black in check, or no moves).';
     const lines = [];
     lines.push('Post-key view (Black to move)   ' + fen + '   ' + counts(state.grid));
+    const promo = ChessComp.promotedForce ? ChessComp.promotedForce(fen) : [];
+    if (promo.length) lines.push('PROMOTED FORCE: ' + promo.join('; ') + '  (fatal)');
     lines.push('Threat (if Black passes): ' + (threats.length ? threats.map(s => s.replace(/^N/, 'S')).join(' / ') : 'none, a zugzwang key would be needed') + (threats.length > 1 ? '   <- double threat' : ''));
     const tset = new Set(threats.map(s => s.replace(/^N/, 'S')));
     const defs = sp.variations.filter(v => !v.conts.some(x => tset.has(x.san)));   // a defence: the threat no longer mates
@@ -422,6 +427,12 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
       delete groups[k];
     }
     if (allow) lines.push('   (' + allow + ' further Black moves allow the threat)');
+    // random moves and corrections (E. Bourd s27): a correction must stop the random move's mate
+    if (ChessComp.correctionLines){
+      const dv = { variations: defs.map(v => ({ ...v, threatRepeat: false })) };
+      const cl = ChessComp.correctionLines(dv);
+      if (cl.length){ lines.push(''); lines.push('Random moves and corrections:'); for (const l of cl) lines.push(l); }
+    }
     lines.push('');
     lines.push(sp.unprovided.length ? 'HOLES, no mate after: ' + sp.unprovided.join(', ') : 'No holes: every Black move is answered.');
     const checks = sp.unprovided.filter(u => u.endsWith('+'));

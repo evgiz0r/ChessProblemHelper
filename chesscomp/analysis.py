@@ -57,6 +57,44 @@ def _variations(eng: Engine, board: chess.Board, n: int, mode: str, threat_ucis:
     return out
 
 
+def _corrections(ph):
+    """E. Bourd s27: for each Black piece (not king, not pawn) with several defences, the RANDOM move
+    is the set of its moves that allow one and the same mate; a CORRECTION is a move of the same piece
+    after which that mate no longer works and another mate does. A move with a different mate that
+    still allows the random mate is not a correction (it is a random move with a dual)."""
+    out = []
+    by_piece = {}
+    for v in ph.get('variations', []):
+        if v['refutes'] or v.get('goal_by_defence') or not v['continuations'] or v.get('threat_repeat'):
+            continue
+        san_ = v['defence']['san']
+        if san_[0] not in 'QRBS':
+            continue
+        by_piece.setdefault(v['defence']['uci'][:2], []).append(v)
+    for frm, vs in by_piece.items():
+        if len(vs) < 3:
+            continue
+        count = {}
+        for v in vs:
+            for c in v['continuations']:
+                count[c['id']] = count.get(c['id'], 0) + 1
+        if not count:
+            continue
+        rid, n = max(count.items(), key=lambda kv: (kv[1], -len(kv[0])))
+        if n < 2:
+            continue
+        rnd = [v for v in vs if any(c['id'] == rid for c in v['continuations'])]
+        cor = [v for v in vs if v not in rnd]
+        if not cor:
+            continue
+        rsan = next(c['san'] for v in rnd for c in v['continuations'] if c['id'] == rid)
+        out.append({'piece': vs[0]['defence']['san'][0] + frm,
+                    'random': {'moves': [v['defence']['san'] for v in rnd], 'mate': rsan,
+                               'duals': [v['defence']['san'] for v in rnd if len(v['continuations']) > 1]},
+                    'corrections': [{'move': v['defence']['san'], 'mates': [c['san'] for c in v['continuations']]} for v in cor]})
+    return out
+
+
 def _phase(eng, board, n, mode, first_move, kind, refs=None):
     """board is the position BEFORE first_move (White to move)."""
     ph = {'type': kind, 'first_move': {'uci': first_move.uci(), 'id': _mid(board, first_move), 'san': san(board, first_move)}}
@@ -82,6 +120,7 @@ def _phase(eng, board, n, mode, first_move, kind, refs=None):
         ph['check_key'] = board.is_check()
         ph['variations'] = _variations(eng, board, n, mode, {t['id'] for t in threat})
         ph['flights'] = _flights(board)
+        ph['corrections'] = _corrections(ph)
     finally:
         board.pop()
         _ORIGIN.clear()
@@ -106,6 +145,7 @@ def _set_play(eng, board, n, mode):
     ph['variations'] = _variations(eng, b, n, mode, set())
     ph['flights'] = _flights(b)
     ph['unprovided'] = [v['defence']['san'] for v in ph['variations'] if v['refutes']]
+    ph['corrections'] = _corrections(ph)
     return ph
 
 

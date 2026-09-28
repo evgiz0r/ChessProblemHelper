@@ -538,3 +538,14 @@
   Bg8-d5) Sd3!, Sc6? (cuts Qe8-b5) Sb3!, Sf3? Bxf3, Se2? Bxe2: the white knight's posts refuted by the
   black corrections again. Checks: wPf4 stops a second threat Se3# (not removable); wPa5 is set-play
   filler and comes off (17 units, same play); b5 stops Qa4+/Sb5; d5 exists for legality (Bg8).
+
+## Session 28: the report marks random moves, corrections and promoted force (Claude, for Evgeni)
+
+* His ask, on a 3-knight sketch (8/KB3Q2/N2k4/3p4/pP1N4/4nN1b/3B2p1/2r3b1): mark in the solution the
+  random moves and the corrections, counting as a correction only a move that stops the random move's
+  mate (Sf1/Sd1 random, Sg4/Sc4 corrections; Sf5/Sc2 keep Bf4# so they are random moves with a
+  dual); and flag a promoted piece, fatal and easy to see (three white knights).
+* Done in chesscomp (analysis.corrections per phase, report line "S~ random ... ; corrections ...",
+  core.promoted_force, critique major finding), in docs/analysis.js (same rule, exported), and in the
+  bench page (pre-key header line; post-key "Random moves and corrections" block; the journal's solve
+  line keeps PROMOTED and the S~ lines). Two regression tests; 44 pass. Bench republished.

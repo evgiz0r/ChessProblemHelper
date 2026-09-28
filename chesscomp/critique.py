@@ -9,7 +9,7 @@ judgement is taught.
 """
 from __future__ import annotations
 import chess
-from .core import Problem, san
+from .core import Problem, san, promoted_force
 from .analysis import analyse
 from .solver import Engine
 
@@ -177,6 +177,8 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     F = []
     add = lambda sev, rule, msg: F.append({'severity': sev, 'rule': rule, 'msg': msg})
     board = problem.board
+    for line in promoted_force(board):
+        add('major', 'promoted force', line + ' (fatal, E. Bourd)')
     if not res.get('keys'):
         add('major', 'unsound', 'no solution'); return {'findings': F}
     if res.get('cooked'):

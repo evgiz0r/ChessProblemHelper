@@ -107,3 +107,21 @@ def san(board: chess.Board, move: chess.Move) -> str:
     s = re.sub(r'^N', 'S', s)
     s = s.replace('=N', '=S')
     return s
+
+
+def promoted_force(board) -> list:
+    """Units beyond the original set: more than one queen, two rooks, two knights, or two bishops on
+    one colour. E. Bourd: a promoted piece in the diagram is a fatal flaw. Returns one line per side."""
+    import chess as _c
+    out = []
+    for col, name in ((_c.WHITE, 'White'), (_c.BLACK, 'Black')):
+        q = len(board.pieces(_c.QUEEN, col)); r = len(board.pieces(_c.ROOK, col)); n = len(board.pieces(_c.KNIGHT, col))
+        bs = board.pieces(_c.BISHOP, col)
+        light = sum(1 for sq in bs if (_c.square_file(sq) + _c.square_rank(sq)) % 2 == 1); dark = len(bs) - light
+        parts = []
+        if q > 1: parts.append(f'{q} queens')
+        if r > 2: parts.append(f'{r} rooks')
+        if n > 2: parts.append(f'{n} knights')
+        if light > 1 or dark > 1: parts.append(f'{len(bs)} bishops, {max(light, dark)} on one colour')
+        if parts: out.append(f"{name} has {', '.join(parts)}")
+    return out

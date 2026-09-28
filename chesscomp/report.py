@@ -1,7 +1,8 @@
 """Human-readable (album style) rendering of an analysis dict, plus a small CLI."""
 from __future__ import annotations
 import argparse, json, sys
-from .core import Problem
+from .core import Problem, promoted_force
+import chess
 from .analysis import analyse
 
 
@@ -43,6 +44,11 @@ def format_phase(ph, show_threat_repeats=False):
         lines.append(f"   1...{d} 2.{'/'.join(conts)}{dual}")
     if hidden:
         lines.append(f'   ({hidden} further moves allow the threat)')
+    for c in ph.get('corrections', []):
+        r = c['random']
+        dual = f" (dual after {'/'.join(r['duals'])})" if r['duals'] else ''
+        cors = ', '.join(f"{x['move']} 2.{'/'.join(x['mates'])}" for x in c['corrections'])
+        lines.append(f"   {c['piece'][0]}~ random {'/'.join(r['moves'])} 2.{r['mate']}{dual}; corrections {cors}")
     if ph['type'] == 'try':
         lines.append('   but stalemate!' if ph.get('stalemate') else '   but ' + ', '.join(f"1...{r['san']}!" for r in ph['refutations']))
     if ph['type'] == 'set' and ph.get('unprovided'):
@@ -52,6 +58,11 @@ def format_phase(ph, show_threat_repeats=False):
 
 def format_report(res):
     out = [f"{res['stipulation']} {res['count']}   FEN {res['fen']}"]
+    try:
+        for line in promoted_force(chess.Board(res['fen'])):
+            out.append(f"PROMOTED FORCE: {line}  (fatal)")
+    except Exception:
+        pass
     if res.get('timeout'):
         out.append('** time limit reached - analysis incomplete **')
     if res['kind'] == 'help':
