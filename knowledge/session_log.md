@@ -565,3 +565,14 @@
   cook-stopper is a hand job: name the cook's reason (Qd1 protects d4, Sc7 holds d5) and block the
   mating square. Search earns its keep only when the fix must also keep several variations intact.
   Left: Sd6 2.Qd5#/Qc5# is structural (Sd6 cuts f8-c5 like Se7 but does not guard d5).
+* He then rebuilt the sketch: knight f4 and bishop d4 instead of pawn d4 and knight f6, black knight
+  b1 to stop the second key 1.Be3 (c2! interposes on c3 after Qxc2+), pawn a6 kept to guard b5.
+  Result 5b2/8/p7/P4n2/K1kBpN1p/1Np4q/8/1n1Q4 #2 (6+9): 1.Qh5! (2.Qf7#) S~ 2.Qd5#, Se7 2.Qc5#, Se3
+  2.Qe2#; dual Sd6 2.Qd5#/Qc5#; try 1.Be3? c2!; set 1...Sxd4 2.Qxd4# changes to Qd5#. His view: the
+  position is airier, the key takes the queen from an active post to an ambush behind the knight and
+  the queen still plays every white move; no tries, no changes, but the raw play is good for the size.
+  My reading of the mechanism: the knight's departure unmasks Qh3-e6 (why every knight move defends)
+  and opens h5-d5 (the random mate); each correction closes another black line (f8-c5, h3-d3). The
+  Sd6 dual is the twin of Se7 on the a3-f8 diagonal; strict one- and two-unit searches around the
+  position found nothing, so it stays unless the scheme changes. The bench journal now keeps the
+  "[duals]" line in its solve summary, so a dual is visible in the timeline too.
