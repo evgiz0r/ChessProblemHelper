@@ -576,3 +576,10 @@
   Sd6 dual is the twin of Se7 on the a3-f8 diagonal; strict one- and two-unit searches around the
   position found nothing, so it stays unless the scheme changes. The bench journal now keeps the
   "[duals]" line in its solve summary, so a dual is visible in the timeline too.
+* He rebuilt the scheme once more, and this one is finished: bishop e7 (so d6 is the only interference
+  square on the diagonal), rook d8 guarding d5 so that 1...Sd6 cuts a white line and a black line at
+  once and Qd5 stops working, black pawn c5 and bishop a3 (his replacement for my Pa3+Pb4) to answer
+  1...Sxd4 2.Rxd4+ with cxd4. 3R4/4b3/K7/1Np2n2/2kPp2p/B1p4q/2P5/3Q4 #2 (7+8): 1.Qh5! (2.Qf7#) S~
+  2.Qd5#, Sd6 2.Qxc5#, Se3 2.Qe2#, no duals, every unit load-bearing. Recorded as
+  `bourd-knight-ambush-correction`. The strict two-change search and his hand found the same repair
+  (Pb4+pc5) within a minute of each other; he then improved it by hand.
