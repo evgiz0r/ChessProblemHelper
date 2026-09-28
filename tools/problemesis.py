@@ -9,7 +9,7 @@ usage:
     python tools/problemesis.py crawl  MIRROR_DIR              # fetch every HTML page of the site
     python tools/problemesis.py parse  MIRROR_DIR [-o OUT]     # -> knowledge/problemesis.json
 """
-import argparse, html, json, os, re, sys, time, urllib.parse, urllib.request
+import argparse, hashlib, html, json, os, re, sys, time, urllib.parse, urllib.request
 from collections import deque
 
 HOST = 'christian.poisson.free.fr'
@@ -176,7 +176,8 @@ def parse_block(block):
 
 def parse(mirror):
     out = []
-    for root, _, files in os.walk(mirror):
+    for root, dirs, files in os.walk(mirror):
+        dirs.sort()
         for fn in sorted(files):
             if not re.search(r'\.(html?|php)$', fn):
                 continue
@@ -206,12 +207,18 @@ def main():
         crawl(a.mirror)
         return
     recs = parse(a.mirror)
-    seen, uniq = set(), []
+    seen, uniq = {}, []
     for r in recs:                       # the same diagram is often repeated on comment/award pages
-        key = (r['position'], r['stip'], str(r.get('twins')), str(r.get('conditions')))
+        key = '|'.join((r['position'], r['stip'] or '', str(r.get('twins')), str(r.get('conditions'))))
         if key in seen:
+            first = seen[key]
+            first['pages'].append(r['page'])
+            for k in ('solution', 'solution_fr', 'number', 'source'):   # fill gaps from the repeat
+                if not first.get(k) and r.get(k):
+                    first[k] = r[k]
             continue
-        seen.add(key)
+        r = {'id': 'psis-' + hashlib.sha1(key.encode()).hexdigest()[:10], **r, 'pages': [r.pop('page')]}
+        seen[key] = r
         uniq.append(r)
     with open(a.out, 'w', encoding='utf-8') as f:
         json.dump({'source': 'http://' + HOST + '/', 'note': 'Problems extracted from the Problemesis web '

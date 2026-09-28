@@ -14,7 +14,7 @@ on the board or paste a FEN, pick a stipulation, and solve. Handles `#2` and `h#
 searches:
 
 ```bash
-pip install -r requirements.txt
+pip install --use-pep517 -r requirements.txt
 python -m chesscomp.report --fen "b3r3/2pQ2p1/4n1P1/1R6/4k1P1/2K1P2R/8/4n3" "#2" --critique
 python -m chesscomp.report --white "Kg1 Qd1 Sf3 e2" --black "Ke8 Rh8 f7" "#2" --json
 ```
@@ -28,7 +28,8 @@ print(format_report(analyse(p)))
 ## Layout
 
 ```
-chesscomp/            core model, solver, analysis, motives, critique, knowledge API, CLI
+chesscomp/            core model, solver, analysis, motives, critique, knowledge API, CLI;
+                      db.py: query / batch-run over the problem collections (see CLAUDE.md)
 chesscomp/compose/    composing searches: key candidates, post-key schemes, motif map,
                       pin geometry, self-pin and king-key searches
 knowledge/            problems, themes, principles, lessons, session log, motif map;
