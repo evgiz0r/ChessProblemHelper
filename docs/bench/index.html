@@ -121,6 +121,7 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(-
       </span>
       <select id="stip" aria-label="stipulation"><option>#2</option><option>s#2</option><option>h#2</option></select>
       <button class="act primary" id="solve">Solve</button>
+      <label class="sub" title="everything the solver knows: every set-play move, changed mates, patterns, dual avoidance"><input type="checkbox" id="fullreport"> full report</label>
     </div>
     <pre class="report" id="report">Set up a position and press Solve.
 Pre-key: the diagram is White to move; you get set play, tries with refutations, keys, duals and changed mates.
@@ -390,13 +391,15 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   }
   function firstLines(t){
     // verdict first (cooked / keys / no solution), then threat and holes, then tries: the journal keeps only this line
-    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|\s+[QRBS]~ random)/i.test(l));
-    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution)/i.test(l) ? 1 : /^(threat|holes|unprovided)/i.test(l) ? 2 : /^\s+[QRBS]~/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
+    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|1\.|\s+[QRBS]~)/i.test(l));
+    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution|1\.)/i.test(l) ? 1 : /^(threat|holes|unprovided)/i.test(l) ? 2 : /^\s+[QRBS]~/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
     return L.map((l, i) => [rank(l), i, l]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 8).map(x => x[2]).join(' | ');
   }
   function solvePre(fen){
     const res = ChessComp.analyse(fen, state.stip);
-    let out = ChessComp.formatReport(res);
+    const full = document.getElementById('fullreport').checked;
+    let out = (full || !ChessComp.formatCompact) ? ChessComp.formatReport(res) : ChessComp.formatCompact(res);
+    if (!full) return out;
     // E. Bourd s27: a promoted piece in the diagram is fatal; say so at the top (formatReport also marks it)
     const promo = ChessComp.promotedForce ? ChessComp.promotedForce(fen) : [];
     if (promo.length && !/^PROMOTED FORCE/.test(out)) out = 'PROMOTED FORCE: ' + promo.join('; ') + '  (fatal)\n' + out;
@@ -426,6 +429,18 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     const defs = sp.variations.filter(v => !v.conts.some(x => tset.has(x.san)));   // a defence: the threat no longer mates
     const allow = sp.variations.length - defs.length;
     lines.push('');
+    const full = document.getElementById('fullreport').checked;
+    if (!full && ChessComp.phaseCompact){
+      lines.push('Defences (moves that stop the threat) and their mates:');
+      const dv = { variations: defs.map(v => ({ ...v, threatRepeat: false })) };
+      for (const l of ChessComp.phaseCompact(dv)) lines.push(l);
+      if (allow) lines.push('   (' + allow + ' further Black moves allow the threat)');
+      lines.push('');
+      lines.push(sp.unprovided.length ? 'HOLES, no mate after: ' + sp.unprovided.join(', ') : 'No holes: every Black move is answered.');
+      const checks0 = sp.unprovided.filter(u => u.endsWith('+'));
+      if (checks0.length) lines.push('Unanswered CHECKS: ' + checks0.join(', '));
+      return lines.join('\n');
+    }
     lines.push('Defences (moves that stop the threat) and their mates:');
     const groups = {};
     for (const v of defs){ const k = v.conts.map(x => x.san).join('/'); (groups[k] = groups[k] || []).push(v.defence); }

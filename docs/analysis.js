@@ -333,6 +333,63 @@
     }
     return out;
   }
+
+  // Solution the way a composer reads it (E. Bourd s28): verdict, key with threat, play grouped per piece
+  // (random move / corrections), duals on one line, tries one line each, set play only where it differs.
+  function phaseCompact(ph, indent) {
+    indent = indent === undefined ? '   ' : indent;
+    const L = [];
+    const real = ph.variations.filter(v => v.conts.length && !v.refutes && !v.threatRepeat);
+    const used = new Set();
+    for (const c of corrections(ph)) {
+      const r = c.random;
+      const parts = [`${c.piece[0]}~ ${r.moves.filter(m => !r.duals.includes(m)).join('/')} 2.${r.mate}`];
+      for (const x of c.corrections) if (x.mates.length === 1) parts.push(`${x.move} 2.${x.mates[0]}`);
+      L.push(indent + parts.join('  |  '));
+      r.moves.forEach(m => used.add(m)); c.corrections.forEach(x => used.add(x.move));
+    }
+    const byMate = new Map(), duals = [];
+    for (const v of real) {
+      const d = v.defence;
+      if (used.has(d) && v.conts.length === 1) continue;
+      if (v.conts.length > 1) duals.push(`${d} 2.${v.conts.map(x => x.san).join('/')}`);
+      else if (!used.has(d)) { const m = v.conts[0].san; if (!byMate.has(m)) byMate.set(m, []); byMate.get(m).push(d); }
+    }
+    if (byMate.size) L.push(indent + [...byMate].map(([m, ds]) => `${ds.join('/')} 2.${m}`).join('  |  '));
+    if (duals.length) L.push(indent + '[duals] ' + duals.join('  '));
+    const hidden = ph.variations.filter(v => v.threatRepeat && !v.refutes).length;
+    if (hidden) L.push(indent + `(${hidden} other moves allow the threat)`);
+    return L;
+  }
+  function formatCompact(res) {
+    if (res.error) return res.error;
+    const L = [];
+    for (const line of promotedForce(res.fen || '')) L.push('PROMOTED FORCE: ' + line + '  (fatal)');
+    if (res.solutions) { L.push(`${res.solutions.length} solution(s): ` + res.solutions.join(' ; ')); return L.join('\n'); }
+    const sp = res.phases.find(p => p.type === 'set');
+    const keys = res.phases.filter(p => p.type === 'key'), tries = res.phases.filter(p => p.type === 'try');
+    if (!res.keys.length) L.push('No solution.');
+    else if (res.cooked) L.push(`COOKED: ${res.keys.length} keys: ${res.keys.join(', ')}`);
+    if (sp) { const checks = sp.unprovided.filter(u => u.endsWith('+')); if (checks.length) L.push('UNPROVIDED CHECK in the set play: ' + checks.join(', ') + '  (fatal)'); }
+    for (const k of keys) {
+      let h = `1.${k.first}!`;
+      if (k.threat.length) h += ` (2.${k.threat.map(t => t.san).join('/')})`;
+      else h += k.first.endsWith('#') ? ' (mate in one)' : (k.stalemate ? ' (stalemate)' : ' (zugzwang or check)');
+      L.push(h); L.push(...phaseCompact(k));
+    }
+    for (const t of tries) {
+      const th = t.threat.length ? ` (2.${t.threat.map(x => x.san).join('/')})` : '';
+      const ref = t.stalemate ? 'stalemate!' : t.refutations.map(r => r + '!').join(', ');
+      L.push(`Try 1.${t.first}?${th} but ${ref}`);
+    }
+    const ch = (res.relations.changed || []).filter(c => c.phases[0] === 'set play' && /^key/.test(c.phases[1]));
+    if (ch.length) {
+      const by = new Map();
+      for (const c of ch) { const k = c.from + '->' + c.to; if (!by.has(k)) by.set(k, []); by.get(k).push(c.defence); }
+      L.push('Set play differs: ' + [...by].map(([k, ds]) => `${ds.join('/')} ${k}`).join(', '));
+    } else if (sp && keys.length && sp.variations.some(v => v.conts.length)) L.push('Set play: same mates as after the key');
+    return L.join('\n');
+  }
   function formatReport(res) {
     if (res.error) return res.error;
     const L = [];
@@ -392,5 +449,5 @@
     return L.join('\n');
   }
 
-  return { analyse, formatReport, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
+  return { analyse, formatReport, formatCompact, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
 }));

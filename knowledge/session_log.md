@@ -555,3 +555,8 @@
   policy; general web search works. Plan once the hosts are allowed: a `search-db` skill using
   YACPDB's predicate language (Keyword/Stip/Text with AND, OR, NOT), then re-solve hits with our solver
   so the report marks random moves and corrections. Problemesis (Poisson) is a PDF archive to crawl.
+* "The solution is way too verbose": added a compact solution form, now the bench default (a "full
+  report" checkbox restores everything). Verdict first (cooks, promoted force, unprovided checks), the
+  key with its threat, the play grouped per piece as random move | corrections, duals on one line,
+  "(n other moves allow the threat)", one line per try with its refutation, and the set play only as
+  "differs: Se7 Sa5#->Qc5#" or "same mates". Python: `--compact`; JS: formatCompact/phaseCompact.

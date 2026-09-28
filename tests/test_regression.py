@@ -70,3 +70,18 @@ def test_bourd_double_correction_report_lines():
     out = format_report(analyse(p, max_refutations=1, include_tries=False))
     assert 'S~ random Sc7/Sa7/Sd6 2.Qb3#; corrections Sd4 2.Se5#, Sc3 2.Se3#' in out
     assert 'PROMOTED' not in out
+
+
+def test_compact_report_groups_random_and_corrections():
+    """E. Bourd s28: the full report was too verbose on the bench; the compact form is the solution as read."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.report import format_compact
+    p = Problem.from_fen('5b2/2N5/p7/5n2/K1kPp2p/1Np4q/2P5/3Q4 w - - 0 1', '#2')
+    out = format_compact(analyse(p, max_refutations=1))
+    assert 'COOKED: 2 keys: Sa5#, Qh5' in out
+    assert 'S~ Sg7/Sh6/Sg3 2.Qd5#  |  Se7 2.Qc5#  |  Se3 2.Qe2#' in out
+    assert '[duals] Sd6 2.Qd5#/Qc5#  Sxd4 2.Qd5#/Sa5#' in out
+    assert 'Try 1.Qg1? (2.Sa5#/Qg8#) but Se3!' in out
+    assert 'Set play differs: Se7 Sa5#->Qc5#' in out
+    assert 'Patterns' not in out and 'Transferred' not in out

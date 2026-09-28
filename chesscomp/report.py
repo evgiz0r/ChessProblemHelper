@@ -97,6 +97,87 @@ def format_report(res):
     return '\n'.join(out)
 
 
+def format_compact(res):
+    """Solution the way a composer reads it (E. Bourd s28): verdict first, key with threat, the thematic
+    play grouped per piece (random move / corrections), duals on one line, tries on one line each,
+    set play only where it differs. No patterns, no transfer lists, no move-by-move set play."""
+    out = [f"{res['stipulation']} {res['count']}   {res['fen']}"]
+    try:
+        for line in promoted_force(chess.Board(res['fen'])):
+            out.append(f"PROMOTED FORCE: {line}  (fatal)")
+    except Exception:
+        pass
+    if res['kind'] == 'help':
+        out.append(f"{res['n_solutions']} solution(s): " + ' ; '.join(s['line'] for s in res['solutions']))
+        return '\n'.join(out)
+    phases = res.get('phases', [])
+    setp = next((p for p in phases if p['type'] == 'set'), None)
+    keys = [p for p in phases if p['type'] == 'key']
+    tries = [p for p in phases if p['type'] == 'try']
+    if not res.get('keys'):
+        out.append('No solution.')
+    elif res.get('cooked'):
+        out.append(f"COOKED: {len(res['keys'])} keys: {', '.join(res['keys'])}")
+    if setp:
+        checks = [u for u in setp.get('unprovided', []) if u.endswith('+')]
+        if checks:
+            out.append('UNPROVIDED CHECK in the set play: ' + ', '.join(checks) + '  (fatal)')
+
+    def phase_lines(ph, indent='   '):
+        L = []
+        real = [v for v in ph['variations'] if v['continuations'] and not v['refutes'] and not v['threat_repeat'] and not v['goal_by_defence']]
+        used = set()
+        for c in ph.get('corrections', []):
+            r = c['random']
+            parts = [f"{c['piece'][0]}~ {'/'.join(m for m in r['moves'] if m not in r['duals'])} 2.{r['mate']}"]
+            parts += [f"{x['move']} 2.{'/'.join(x['mates'])}" for x in c['corrections'] if len(x['mates']) == 1]
+            L.append(indent + '  |  '.join(parts))
+            used.update(r['moves']); used.update(x['move'] for x in c['corrections'])
+        singles, duals = [], []
+        for v in real:
+            d = v['defence']['san']
+            if d in used and len(v['continuations']) == 1:
+                continue
+            if len(v['continuations']) > 1:
+                duals.append(f"{d} 2.{'/'.join(x['san'] for x in v['continuations'])}")
+            elif d not in used:
+                singles.append((v['continuations'][0]['san'], d))
+        by_mate = {}
+        for m, d in singles:
+            by_mate.setdefault(m, []).append(d)
+        if by_mate:
+            L.append(indent + '  |  '.join(f"{'/'.join(ds)} 2.{m}" for m, ds in by_mate.items()))
+        if duals:
+            L.append(indent + '[duals] ' + '  '.join(duals))
+        hidden = sum(1 for v in ph['variations'] if v['threat_repeat'] and not v['refutes'])
+        if hidden:
+            L.append(indent + f'({hidden} other moves allow the threat)')
+        return L
+
+    for k in keys:
+        head = f"1.{k['first_move']['san']}!"
+        if k.get('threat'): head += f" (2.{_conts(k['threat'])})"
+        elif k.get('check_key'): head += ' (mate in one)' if k['first_move']['san'].endswith('#') else ' (check)'
+        else: head += ' (zugzwang)'
+        out.append(head)
+        out += phase_lines(k)
+    if tries:
+        for t in tries:
+            th = f" (2.{_conts(t['threat'])})" if t.get('threat') else (' (check)' if t.get('check_key') else '')
+            ref = 'stalemate!' if t.get('stalemate') else ', '.join(f"{r['san']}!" for r in t['refutations'])
+            out.append(f"Try 1.{t['first_move']['san']}?{th} but {ref}")
+    rel = res.get('relations', {})
+    ch = [c for c in rel.get('changed', []) if c['phases'][0] == 'set play' and c['phases'][1].startswith('key')]
+    if ch:
+        by = {}
+        for c in ch:
+            by.setdefault((c['from'][0], c['to'][0]), []).append(c['defence'])
+        out.append('Set play differs: ' + ', '.join(f"{'/'.join(ds)} {a}->{b}" for (a, b), ds in by.items()))
+    elif setp and keys and not ch and any(v['continuations'] for v in setp['variations']):
+        out.append('Set play: same mates as after the key')
+    return '\n'.join(out)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description='Orthodox chess problem solver/analyser (#n, h#n, s#n)')
     ap.add_argument('--white', help='e.g. "Kg1 Qd1 Sf3 e2"')
@@ -108,13 +189,14 @@ def main(argv=None):
     ap.add_argument('--time', type=float, default=120)
     ap.add_argument('--json', action='store_true')
     ap.add_argument('--critique', action='store_true', help="composer's critique (flaws / merits)")
+    ap.add_argument('--compact', action='store_true', help='short solution: verdict, key, grouped play, tries')
     a = ap.parse_args(argv)
     if a.fen:
         p = Problem.from_fen(a.fen, a.stipulation)
     else:
         p = Problem.from_pieces(a.white.split(), a.black.split(), a.stipulation)
     res = analyse(p, max_refutations=a.tries, include_tries=a.tries > 0, include_set=not a.no_set, time_limit=a.time)
-    print(json.dumps(res, indent=1, ensure_ascii=False) if a.json else format_report(res))
+    print(json.dumps(res, indent=1, ensure_ascii=False) if a.json else (format_compact(res) if a.compact else format_report(res)))
     if a.critique and p.stip.kind != 'help':
         from .critique import critique, format_critique
         print('\nCritique:'); print(format_critique(critique(p, res)))
