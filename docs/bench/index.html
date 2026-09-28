@@ -367,12 +367,21 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   function kingsOk(fen){
     const p = fen.split(' ')[0]; return (p.match(/K/g) || []).length === 1 && (p.match(/k/g) || []).length === 1;
   }
+  // the solver scripts are loaded by <script src>; after a hot reload of a republished page they can be
+  // missing from the new document scope, so fetch them again on demand rather than fail with "not defined"
+  function loadScript(src){ return new Promise((ok, bad) => { const el = document.createElement('script'); el.src = src + '?v=' + Date.now(); el.onload = ok; el.onerror = () => bad(new Error('could not load ' + src)); document.head.appendChild(el); }); }
+  async function ensureSolver(){
+    if (typeof Chess === 'undefined') await loadScript('chess.js');
+    if (typeof ChessComp === 'undefined') await loadScript('analysis.js');
+    if (typeof ChessComp === 'undefined') throw new Error('analysis.js did not define ChessComp');
+  }
   function solve(){
     const fen = fenOf(state.grid);
     if (!kingsOk(fen)){ report('Place exactly one White king and one Black king first.', 'bad'); return; }
     report('Solving...');
-    setTimeout(() => {
+    setTimeout(async () => {
       try {
+        await ensureSolver();
         const text = state.mode === 'pre' ? solvePre(fen) : solvePost(fen);
         reportEl.className = 'report'; reportEl.textContent = text;
         log('solve', (state.mode === 'pre' ? state.stip + ' pre-key: ' : 'post-key: ') + firstLines(text));
