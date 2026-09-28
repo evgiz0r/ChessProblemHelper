@@ -11,11 +11,16 @@ The site is a frameset (content.htm + index0.htm) linking to ~350 HTML articles.
   * py2web articles (py2web/*.htm): <div class="p2w-diagram">white Kd1 QFa8a4h1 / black ...</div> in Popeye piece
     codes, caption lines below it, and <div class="p2w-solution"> with the Popeye solution.
 
-Diagrams drawn as a single picture (gustav/*.htm, end2008, fairyend, ...) and the PDF books/awards are not parsed.
+  * PDF books and awards (books/*.pdf, awards/, souteze/, riface/, ...): diagrams typed in a chess font - Poisson's
+    4Echecs in the Word books (U+F0xx code points), the same font mapped to Latin-1 in the InDesign awards of
+    Phénix, or Steve Smith's Linares fonts. See the PDF section below. Needs pypdf (optional import; without it
+    `parse` stops with a hint, `parse --no-pdf` skips the PDFs).
+
+Diagrams drawn as a single picture (gustav/*.htm, end2008, fairyend, ...) are not parsed.
 
 usage:
-    python tools/kotesovec.py crawl  MIRROR_DIR              # fetch every HTML page of the site (1 req/s)
-    python tools/kotesovec.py parse  MIRROR_DIR [-o OUT]     # -> knowledge/kotesovec.json
+    python tools/kotesovec.py crawl  MIRROR_DIR [--pdfs]     # fetch every HTML page (and the PDFs), 1 req/s
+    python tools/kotesovec.py parse  MIRROR_DIR [-o OUT] [--no-pdf]   # -> knowledge/kotesovec.json (PDFs need pypdf)
 """
 import argparse, gzip, html, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 from collections import deque
@@ -91,6 +96,40 @@ def crawl(out, delay=1.0):
     print(f'{len(seen)} urls visited, {fetched} newly fetched, {len(skipped)} failed', file=sys.stderr)
 
 
+def fetch_pdfs(out, delay=1.0):
+    """Download the on-host PDFs linked from the mirrored pages (books, awards; not the maths ones), 1 req/s."""
+    opener = urllib.request.build_opener(OnHostRedirects)
+    urls = {'http://' + HOST + p for p in PDF_EXTRA}
+    for root, _, files in os.walk(out):
+        for fn in files:
+            if not re.search(r'\.html?$', fn, re.I):
+                continue
+            rel = os.path.relpath(os.path.join(root, fn), out).replace(os.sep, '/')
+            text = open(os.path.join(root, fn), 'rb').read().decode('cp1250', 'replace')
+            for link in re.findall(r"""href\s*=\s*["']?([^"'>]+?\.pdf)\b""", text, re.I):
+                u = urllib.parse.urljoin('http://' + HOST + '/' + rel, link.strip().replace('\\', '/'))
+                p = urllib.parse.urlparse(u)
+                if p.netloc in HOSTS and not PDF_SKIP.search(p.path):
+                    urls.add('http://' + HOST + p.path)
+    got = 0
+    for u in sorted(urls):
+        dest = local_path(out, u)
+        if os.path.isfile(dest):
+            continue
+        try:
+            req = urllib.request.Request(u, headers={'User-Agent': UA})
+            with opener.open(req, timeout=120) as r:
+                body = r.read()
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            with open(dest, 'wb') as f:
+                f.write(body)
+            got += 1
+        except Exception as e:
+            print('skip', u, e, file=sys.stderr)
+        time.sleep(delay)
+    print(f'{len(urls)} PDFs linked, {got} downloaded', file=sys.stderr)
+
+
 # ---------------------------------------------------------------- parse
 
 EN = 'KQRBSP'
@@ -149,7 +188,8 @@ def english(s, pieces=None):
 
 
 def stipulation(s):
-    s = re.sub(r'\s+', ' ', s).strip()
+    s = re.sub(r'\s+', ' ', s.replace('‡', '#')).strip()
+    s = re.sub(r'=\s+=', '==', s)
     return re.sub(r'^([A-Za-z-]+)(?=[#=!+])', lambda m: m.group(1).lower(), s)
 
 
@@ -495,15 +535,456 @@ def parse_p2w(page, page_name=''):
     return recs
 
 
+# ---------------------------------------------------------------- PDF books and awards (needs pypdf)
+#
+# The PDFs were made with MS Word; diagrams are lines of text in Christian Poisson's "4Echecs" font (private-use
+# code points U+F020..U+F0FF). Each square advances 1000 font units: ' ' / ':' are empty light / dark squares, a
+# full-width glyph is a piece, two half-width glyphs make one piece (the white queen is 'd'+'e'), zero-width glyphs
+# are the hatching behind a piece on a dark square or the board edge, and width-60 glyphs ('/', '!', '$', U+F0CC)
+# are the left/right frame. Upper case = black, lower case = white; turned/rotated glyphs are fairy pieces whose
+# names the caption gives ("Rose {rose glyph}d1", "{glyphs}=Grasshopper").
+
+PDF_SKIP = re.compile(r'non_attacking|endings_on_an|leaper_and_hopper|math|/scanning/|asymptot', re.I)
+# PowerPoint / article layouts where the author and award follow the diagram in an order this parser cannot pair up
+PDF_LAYOUT_SKIP = re.compile(r'petkov_75jt_2017|bolero', re.I)
+PDF_EXTRA = ['/books/kotesovec_fairy_twomovers_2008-2010.pdf']     # on the host but linked only from a mirror site
+# glyph -> colour + piece + rotation (degrees, found by matching each glyph's outline against the turned base piece)
+G_FULL = {0x52: 'bK', 0x72: 'wK', 0x44: 'bQ', 0x54: 'bR', 0x74: 'wR', 0x46: 'bB', 0x66: 'wB', 0x43: 'bS', 0x63: 'wS',
+          0x50: 'bP', 0x70: 'wP', 0x53: 'bQ180', 0x4f: 'bR180', 0x6f: 'wR180', 0x42: 'bB180', 0x62: 'wB180',
+          0x4e: 'bS180', 0x6e: 'wS180', 0x55: 'bQ90', 0x57: 'bQ270', 0x59: 'bR90', 0x79: 'wR90', 0x4c: 'bB90',
+          0x4d: 'bB270', 0x6c: 'wB90', 0x6d: 'wB270', 0x47: 'bS90', 0x48: 'bS270', 0x67: 'wS90', 0x68: 'wS270',
+          0x7d: 'bP270', 0x7b: 'wP270', 0x5d: 'bP90', 0x5b: 'wP90', 0x80: 'bS45', 0xaa: 'bS135', 0x9d: 'bS225',
+          0xfd: 'bS315', 0x94: 'wS45', 0xbb: 'wS45', 0x81: 'wS135', 0x9e: 'wS225', 0xb8: 'wS315',
+          0x41: 'bX', 0x61: 'wX', 0x49: 'nI'}                        # X = bow-tie glyph, I = imitator (disc)
+G_HALF = {0x64: 'wQ', 0x65: 'wQ', 0x71: 'wQ180', 0x73: 'wQ180', 0x75: 'wQ90', 0x76: 'wQ90', 0x77: 'wQ270',
+          0x78: 'wQ270', 0xc1: 'wS', 0xee: 'bS', 0xcb: 'bQ'}
+G_FRAME = {0x21, 0x24, 0x2f, 0xcc}
+G_EDGE_ROW = {0x2d, 0x5f}                     # top / bottom frame lines of the newer books
+G_EMPTY = {0x20, 0x3a}
+DEFAULT_FAIRY = {'Q180': 'G', 'S180': 'N', 'I': 'I'}    # turned queen = grasshopper, turned knight = nightrider (usual convention)
+GLYPH_DESC = {'180': 'turned', '90': 'rotated', '270': 'rotated', '45': 'rotated', '135': 'rotated', '225': 'rotated',
+              '315': 'rotated'}
+FAIRY.update({'alfil': 'AL', 'dabbaba': 'DA', 'fers': 'FE', 'camel': 'CA', 'rook-lion': 'RL', 'bishop-lion': 'BL',
+              'queen-lion': 'QL', 'nightriderlion': 'NL', 'rose-lion': 'RL', 'royal': None, 'neutral': None,
+              'maximummer': None, 'circe': None, 'madrasi': None, 'rose-hopper': 'RH', 'rosehopper': 'RP',
+              'edgehog': 'EH', 'kamikaze': None, 'kangourou': 'KA', 'sauterelle': 'G', 'noctambule': 'N',
+              'beetle': 'BT', 'double-grasshopper': 'DG', 'kangaroo-lion': 'KL', 'berolina': 'BP', 'flamingo': 'FL',
+              'lancer': 'LN', 'bouncer': 'BO', 'wazirs': 'W', 'fou-sauterelle': 'BH', 'tour-sauterelle': 'RH',
+              'noctambule-sauterelle': 'NH', 'chameau': 'CA', 'zebre': 'Z', 'girafe': 'GI', 'amazone': 'AM',
+              'imperatrice': 'EM', 'princesse': 'PR', 'aigle': 'EA', 'moineau': 'SP', 'tour-lion': 'RL', 'fou-lion': 'BL',
+              'dame-lion': 'LI', 'cavalier-sauterelle': 'SH', 'elan': 'MO', 'pion': None, 'roi': None, 'moose': 'MO', 'eagle': 'EA', 'mao': 'MA', 'moa': 'MO'})
+POPEYE_NAME.update({'AL': 'Alfil', 'DA': 'Dabbaba', 'FE': 'Fers', 'RL': 'Rook-Lion', 'BL': 'Bishop-Lion'})
+
+
+def _pua(ch):
+    o = ord(ch)
+    return o - 0xf000 if 0xf000 <= o <= 0xf0ff else None
+
+
+# Steve Smith's Linares diagram fonts (Word awards): one character per square, 'w' / 'd' = empty light / dark,
+# PNBRQK / pnbrqk = white / black on a light square, )HG$!I / 0hg41i on a dark one. Turned and neutral pieces use the
+# same characters in sister fonts, so those PDFs are read with the font of every character (see pdf_lines).
+LIN_FONTS = ['LinaresDiagram', 'LinaresRotated90', 'LinaresRotated180', 'LinaresRotated270', 'LinaresNeutral',
+             'LinaresNeutralRotated90', 'LinaresNeutralRotated180', 'LinaresNeutralRotated270']
+LIN_PIECE = dict(zip('PNBRQK)HG$!Ipnbrqk0hg41i', ['w' + t for t in 'PSBRQK' * 2] + ['b' + t for t in 'PSBRQK' * 2]))
+
+
+def _lin(ch):
+    o = ord(ch) - 0xe000
+    return (o >> 8, chr(o & 0xff)) if 0 <= o < 0x100 * len(LIN_FONTS) else None
+
+
+def lin_piece(ch):
+    font, c = _lin(ch)
+    if c not in LIN_PIECE:
+        return None
+    name = LIN_FONTS[font]
+    rot = re.search(r'Rotated(\d+)', name)
+    col = 'n' if 'Neutral' in name else LIN_PIECE[c][0]
+    return col, LIN_PIECE[c][1] + (rot.group(1) if rot else '')
+
+
+def glyph_tokens(line):
+    """Split a text line into plain text and chess-font pieces: ['1.', ('w', 'S'), 'h5!', ...]."""
+    out, half = [], None
+    for ch in line:
+        c = _pua(ch)
+        if c is None:
+            if _lin(ch):
+                p = lin_piece(ch)
+                out.append(p if p else ' ')
+            else:
+                out.append(ch)
+            continue
+        if c in G_HALF:
+            if half is None:
+                half = G_HALF[c]
+            else:
+                a, b = half, G_HALF[c]
+                out.append(('n' if a[0] != b[0] else a[0], a[1:]))
+                half = None
+        elif c in G_FULL:
+            out.append((G_FULL[c][0], G_FULL[c][1:]))
+        elif c == 0x20:
+            out.append(' ')
+    return out
+
+
+def ascii_tokens(line):
+    """glyph_tokens for the Latin-1 mapped font: 'tg6' -> [('w','R'), 'g6'], 'yY=Pao' -> two rotated rooks, '='...;
+    French files ç / é (used where c / e would read as a piece) become c / e."""
+    line = re.sub(r'([çé])(?=[1-8])', lambda m: {'ç': 'c', 'é': 'e'}[m.group(1)], line).replace('×', 'x')
+    line = line.replace('‡', '#').replace('…', '...')
+    out, i = [], 0
+    sq = r'[x:]?[a-h][1-8]'
+    while i < len(line):
+        prev = line[i - 1] if i else ' '
+        m = re.match(r'([A-Za-z]{1,4})=', line[i:]) if not prev.isalpha() else None
+        if m and all(ord(c) in G_FULL or ord(c) in G_HALF for c in m.group(1)):
+            out += [t for t in glyph_tokens(''.join(chr(0xf000 + ord(c)) for c in m.group(1))) if t != ' ']
+            i += len(m.group(1))
+            continue
+        m = re.match(r'(de|sq|[DTFCRSYNOBtcrynoGHLMUW])(?=%s)' % sq, line[i:]) if not prev.isalpha() else None
+        if m:
+            code = m.group(1)
+            out += glyph_tokens(''.join(chr(0xf000 + ord(c)) for c in code))
+            i += len(code)
+            continue
+        out.append(line[i])
+        i += 1
+    return out
+
+
+def pdf_board_row(line):
+    lin = [_lin(ch) for ch in line if _lin(ch)]
+    if lin:                                       # Linares: '[wdRdNGwd]'
+        cs = [c for _, c in lin]
+        if set(cs) & set('_-'):
+            return None
+        chars = [ch for ch in line if _lin(ch)]
+        if '[' in cs and ']' in cs:
+            chars = chars[cs.index('[') + 1:len(cs) - 1 - cs[::-1].index(']')]
+        return [None if _lin(ch)[1] in 'wd' else lin_piece(ch) for ch in chars]
+    cs = [c for c in map(_pua, line) if c is not None]
+    fr = [i for i, c in enumerate(cs) if c in G_FRAME]
+    if len(fr) >= 2:
+        cs = cs[fr[0] + 1:fr[1]]
+    elif len(fr) == 1:
+        cs = cs[fr[0] + 1:] if fr[0] < len(cs) / 2 else cs[:fr[0]]
+    if any(c in G_EDGE_ROW for c in cs):
+        return None
+    squares, half = [], None
+    for c in cs:
+        if c in G_EMPTY:
+            squares.append(None)
+        elif c in G_FULL:
+            squares.append((G_FULL[c][0], G_FULL[c][1:]))
+        elif c in G_HALF:
+            if half is None:
+                half = G_HALF[c]
+            else:
+                squares.append(('n' if half[0] != G_HALF[c][0] else half[0], half[1:]))
+                half = None
+    return squares if half is None else None
+
+
+def is_board_line(line):
+    pua = sum(1 for ch in line if _pua(ch) is not None or _lin(ch))
+    return pua >= 4 and pua >= 0.8 * len(line.strip())
+
+
+def pdf_lines(path):
+    try:
+        import pypdf
+    except ImportError:
+        sys.exit('parsing the PDF books needs pypdf: pip install pypdf  (or run parse with --no-pdf)')
+    lines = []
+    reader = pypdf.PdfReader(path)
+    for n, page in enumerate(reader.pages, 1):
+        try:
+            fonts = [str(f.get_object().get('/BaseFont', '')) for f in
+                     page.get('/Resources', {}).get('/Font', {}).values()]
+            if any('Linares' in f for f in fonts):
+                chunks = []
+
+                def visit(text, cm, tm, font, size, chunks=chunks):
+                    name = str(font.get('/BaseFont', '')).split('+')[-1] if font else ''
+                    if name in LIN_FONTS:
+                        base = 0xe000 + 0x100 * LIN_FONTS.index(name)
+                        text = ''.join(chr(base + ord(c)) if ord(c) < 256 and c not in ' \n' else c for c in text)
+                    chunks.append(text)
+                page.extract_text(visitor_text=visit)
+                text = ''.join(chunks)
+            else:
+                text = page.extract_text() or ''
+        except Exception as e:                    # a broken page should not stop the whole book
+            print('pdf page skipped', path, n, e, file=sys.stderr)
+            continue
+        for l in text.split('\n'):
+            lines += [(n, x) for x in ascii_board(l.rstrip())]
+    return lines
+
+
+def ascii_board(line):
+    """InDesign PDFs (Phénix awards) map the chess font to plain Latin-1 instead of U+F0xx: '/ :de: : :/'. Move such
+    board rows, and the '!--------!' / '$________$' frames glued to the header or caption, back to U+F0xx."""
+    pua = lambda t: ''.join(chr(0xf000 + ord(c)) if ord(c) < 256 else c for c in t)
+    m = re.search(r'!-{8,}!|\$_{8,}\$', line)
+    if m:
+        return [x for x in (line[:m.start()].rstrip(), pua(m.group()), line[m.end():].strip()) if x]
+    if re.fullmatch(r'/[^/]{3,60}/\s*', line) and all(ord(c) < 256 for c in line) and \
+            not re.search(r'[a-z]{4}|[A-Z][a-z]{3}', line):
+        return [pua(line.strip()) + ASCII_MARK]
+    return [line]
+
+
+ASCII_MARK = '\u200b'                      # tags a board row that came through ascii_board()
+
+
+PDF_HEAD = re.compile(r'^\s*((?:[IVXLC]+|\d+[a-z]?)\.|\d+(?=\s\s))\s+([A-ZÀ-Ž][^\d]{2,60}?)\s*$')
+PDF_COUNT = re.compile(r'\((\d+)\s*\+\s*(\d+)(?:\s*\+\s*(\d+))?\)')
+PDF_AWARD = re.compile(r'(\d°|\bPrix|\bRecommand|\bMention|\bPrize|\bPreis|\bPlatz|\bPr\.|Mention|Commend|Lob|Place|Special|Hon\.?|H\.M\.|cena|uznání|Comm\.)', re.I)
+
+
+def is_head(line):
+    """'226. Václav Kotěšovec', 'IV. Dr. Zdeněk Mach', '12. J. Novák + V. Kotěšovec' - not '2. Honorable Mention'."""
+    m = PDF_HEAD.match(line)
+    if not m or PDF_AWARD.search(m.group(2)):
+        return False
+    words = m.group(2).split()
+    particles = {'+', '&', 'a', 'and', 'et', 'und', 'de', 'van', 'von', 'der', 'la', 'le', 'di', 'da', 'del', 'ten'}
+    return len(words) <= 8 and all(w[0].isupper() or w in particles for w in words)
+
+
+def is_person(line):
+    """'M. Caillaud', 'Juraj Lörinc', 'L. Salai Jr, E. Klemanič,' - an author line, not a fairy piece or condition."""
+    line = re.sub(r'\b([A-Z]) \.', r'\1.', line.strip().rstrip(','))
+    if re.search(r'[\d()=/]', line) or not is_head('0. ' + line):
+        return False
+    words = [w for w in re.split(r'[\s,&+]+', line) if w]
+    if any(fairy_code(w) or ascii_fold(w).lower() in FAIRY for w in words) or any(_pua(c) is not None for c in line):
+        return False
+    return bool(re.search(r'\b[A-Z]\.', line))              # needs an initial: 'M. Caillaud', 'J.-M. Loustau'
+
+
+def glyph_text(tokens, names):
+    """Tokens back to text, pieces as letters (K Q R B S; pawns dropped, fairy pieces by their resolved code)."""
+    out, last = [], None
+    for t in tokens:
+        if isinstance(t, tuple):
+            typ = t[1]
+            code = '' if typ == 'P' else names.get(typ, DEFAULT_FAIRY.get(typ, typ))
+            if code != last:                      # '{white G}{black G}=Grasshopper' -> 'G=Grasshopper'
+                out.append(code)
+            last = code
+        else:
+            out.append(t)
+            last = None
+    return re.sub(r'[ \t]+', ' ', ''.join(out)).strip()
+
+
+def name_code(name):
+    """Code for a piece name from the caption: the table, else initials ('Pawn+Grasshopper' -> 'PG')."""
+    name = name.strip(' .,:;()')
+    n = ascii_fold(name).lower()
+    code = next((FAIRY[x] for x in (n, n[:-1], n[:-2]) if x in FAIRY), None)
+    if code is None and name and ' ' not in name:
+        code = fairy_code(name)                   # plural / German / Czech spellings of a one-word name
+    if code or not name or not name[0].isalpha() or name.lower() in ('c', 'b', 'a', 'and', 'or', 'with'):
+        return code
+    parts = [p for p in re.split(r'[-+ ]+', ascii_fold(name)) if p and p[0].isalpha()]
+    if not parts or not parts[0][0].isupper():
+        return None
+    return (''.join(p[0] for p in parts) if len(parts) > 1 else parts[0][:2]).upper()
+
+
+def fairy_names(caption_tokens, board_types=()):
+    """{'S45': 'RO', ...} from 'Rose {glyph}d1', '{glyph}{glyph}=Grasshopper', 'Nightriderhopper {glyph}b5/{glyph}b2'
+    and, when one fairy glyph and one fairy name are left over, from a bare 'Wazirs' line."""
+    flat, types = [], []
+    for t in caption_tokens:
+        if isinstance(t, tuple):
+            flat.append('\x01%d\x02' % len(types))
+            types.append(t[1])
+        else:
+            flat.append(t)
+    s = ''.join(flat)
+    found, used = {}, set()
+    for m in re.finditer(r'((?:\x01\d+\x02\s*)+)=\s*([A-Za-z][\w+-]*(?: [A-Za-z][\w-]*)?)', s):
+        code = name_code(m.group(2))
+        used.add(m.start(2))
+        for i in re.findall(r'\x01(\d+)\x02', m.group(1)):
+            if code and types[int(i)] not in EN:
+                found[types[int(i)]] = code
+    for m in re.finditer(r"([A-Za-z][\w'+-]*)\s*((?:(?:\x01\d+\x02)+[a-h]?\d{0,2}(?:\s*[,/]\s*[a-h]\d{1,2})*\s*[,/]?\s*)+)", s):
+        code = name_code(m.group(1))
+        used.add(m.start(1))
+        for i in re.findall(r'\x01(\d+)\x02', m.group(2)):
+            if code and types[int(i)] not in EN:
+                found.setdefault(types[int(i)], code)
+    for m in re.finditer(r'((?:\x01\d+\x02)+)\s+([A-Z][\w+-]*(?: [A-Z][\w-]*)?)', s):   # '{G}{g}  Grasshopper'
+        code = name_code(m.group(2))
+        for i in re.findall(r'\x01(\d+)\x02', m.group(1)):
+            if code and types[int(i)] not in EN:
+                found.setdefault(types[int(i)], code)
+    left = {t for t in list(types) + list(board_types) if t not in EN and t not in found and t not in DEFAULT_FAIRY}
+    words = {fairy_code(w) for w in re.findall(r'[A-Za-z][\w-]+', re.sub(r'\x01\d+\x02', ' ', s))} - {None}
+    words -= set(found.values()) | set(DEFAULT_FAIRY.values())
+    if len(left) == 1 and len(words) == 1:
+        found[left.pop()] = words.pop()
+    return found
+
+
+def parse_pdf(path, url):
+    lines = pdf_lines(path)
+    recs, i, n = [], 0, len(lines)
+    boards = []                                   # (start, end) of every board in the text
+    while i < n:
+        if is_board_line(lines[i][1]):
+            j = i + 1                             # a new top edge (U+F0F0 overlays) starts a new board
+            while j < n and is_board_line(lines[j][1]) and '\uf0f0' not in lines[j][1]:
+                j += 1
+            boards.append((i, j))
+            i = j
+        else:
+            i += 1
+    heads = [k for k, (_, l) in enumerate(lines) if is_head(l)]
+    # figurines in the running text are chess-font glyphs (U+F0xx) in Word books, plain letters in InDesign awards
+    ascii_doc = any(ASCII_MARK in l for _, l in lines)
+
+    def tokens(line):
+        return glyph_tokens(line) if not ascii_doc or any(_pua(c) is not None for c in line) else ascii_tokens(line)
+    for bi, (i, j) in enumerate(boards):
+        rows = [r for r in (pdf_board_row(lines[k][1]) for k in range(i, j)) if r is not None]
+        if len(rows) < 3 or len({len(r) for r in rows}) != 1 or len(rows[0]) < 3:
+            continue
+        # header: 'number. Author' at most 8 lines above, after the previous board
+        prev_end = boards[bi - 1][1] if bi else 0
+        hk = [k for k in heads if max(prev_end, i - 8) <= k < i]
+        if hk:
+            h = hk[-1]
+            m = PDF_HEAD.match(lines[h][1])
+            rec = {'number': m.group(1).rstrip('.'), 'author': m.group(2).strip()}
+        else:                   # articles and awards: 'Author' / source / award right above the board, no number
+            above = [k for k in range(max(prev_end, i - 7), i) if lines[k][1].strip()]
+            last_text = max([k for k in above if PDF_COUNT.search(lines[k][1]) or re.search(r'\d\.', lines[k][1])
+                             and not PDF_AWARD.search(lines[k][1])] + [-1])
+            h, label = None, None
+            for k in above:
+                m = re.match(r'\s*(?:(Annexe\s+\w+|Ann\d+|[A-Z]{0,3}\d+[a-z]?)\s+[-–]\s+)?(.+)$', lines[k][1])
+                if k > last_text and is_head('0. ' + re.sub(r'\b([A-Z]) \.', r'\1.', m.group(2).strip())):
+                    h, label = k, m.group(1)
+                    break
+            if h is None:
+                continue                          # a scheme or a final position, not a problem
+            name = re.sub(r'\b([A-Z]) \.', r'\1.', m.group(2).strip())
+            while h + 1 < i and re.match(r'\s*[&+]\s+\S', lines[h + 1][1]):      # 'G. Doukhan' / '& J.-M. Loustau'
+                h += 1
+                name += ' ' + re.sub(r'\b([A-Z]) \.', r'\1.', lines[h][1].strip())
+            rec = {'author': re.sub(r'\s*\+\s*', ' & ', name)}
+            if label:
+                rec['number'] = label
+        meta = [lines[k][1].strip() for k in range(h + 1, i) if lines[k][1].strip() and not
+                re.fullmatch(r'\d+', lines[k][1].strip()) and not is_board_line(lines[k][1])]
+        award = [x for x in meta if PDF_AWARD.search(x) and not re.match(r'\d', x) or re.match(r'\d+\.\s*(Prize|Hon|Comm|Place|Lob|Special)', x)]
+        src = [x for x in meta if x not in award]
+        if src:
+            rec['source'] = ' '.join(src)
+        if award:
+            rec['award'] = ' '.join(award)
+        # caption: the non-empty lines right below the board
+        cap, k = [], j
+        while k < n and len(cap) < 10:
+            t = lines[k][1].strip()
+            if not t or all(_pua(c) == 0x20 for c in t):
+                if cap:
+                    break
+                k += 1
+                continue
+            if is_board_line(lines[k][1]) or is_head(lines[k][1]) or is_person(t) or t.endswith(':') or \
+                    re.match(r'(?:[a-zA-Z]\)\s*)?\d+\.(?:\.\.|…)?\s*[-A-Za-z\uf020-\uf0ff]', t) and not PDF_COUNT.search(t) or \
+                    (len(t) > 50 and len(t.split()) >= 6 and not PDF_COUNT.search(t)):
+                break                             # awards run the caption straight into the next text
+            cap.append(lines[k][1])
+            k += 1
+        cap_tokens = [tokens(c) for c in cap]
+        names = fairy_names([t for c in cap_tokens for t in c + [' ']], {sq[1] for r in rows for sq in r if sq})
+        cap_text = [glyph_text(c, names) for c in cap_tokens]
+        joined = ' '.join(cap_text)
+        cm = PDF_COUNT.search(joined)
+        if not cm:
+            continue
+        first = cap_text[0]
+        st = re.match(r'\s*((?:[a-zA-Z-]*!?[#=+]\s?=?\s?\d*(?:[.,]\d)?)|[+=]|\S+)', first)
+        rec['stip'] = stipulation(st.group(1)) if st else None
+        rest = (first[st.end():] if st else first) + '\n' + '\n'.join(cap_text[1:])
+        rest = PDF_COUNT.sub('\n', rest)
+        items = []
+        for l in rest.split('\n'):
+            l = l.strip()
+            if not l:
+                continue
+            l = re.sub(r'\bC\+(?=\s|$)', '\nC+\n', l)
+            l = re.sub(r'\s(?=[a-z]\)\s)', '\n', ' ' + l)
+            items += [x.strip() for x in l.split('\n') if x.strip()]
+        conds = classify_extra(items, rec)
+        board, height = {}, len(rows)
+        for r_i, row in enumerate(rows):
+            for f, sq in enumerate(row):
+                if sq:
+                    col, typ = sq
+                    code = typ if typ in EN else names.get(typ, DEFAULT_FAIRY.get(typ))
+                    if code is None:
+                        code = typ
+                        desc = '%s=unidentified fairy piece (%s %s glyph)' % (
+                            typ, GLYPH_DESC.get(typ[1:], ''), {'Q': 'queen', 'R': 'rook', 'B': 'bishop', 'S': 'knight',
+                                                               'P': 'pawn'}.get(typ[0], 'special'))
+                        if desc not in conds:
+                            conds.append(desc)
+                    board[(f, height - r_i)] = (col, code)
+        w_cnt = sum(1 for c, _ in board.values() if c == 'w')
+        b_cnt = sum(1 for c, _ in board.values() if c == 'b')
+        n_cnt = sum(1 for c, _ in board.values() if c == 'n')
+        rec['count'] = '+'.join(x for x in cm.groups() if x)
+        found = '%d+%d' % (w_cnt, b_cnt) + ('+%d' % n_cnt if n_cnt else '')
+        if found != rec['count']:                 # the caption's count disagrees with the decoded board: a glyph
+            print(f'{path} p.{lines[i][0]}: board {found} != caption ({rec["count"]}), skipped', file=sys.stderr)
+            continue                              # was lost or misread, so do not trust this position
+        # solution / commentary: text up to the next problem header or board
+        stop = min([x for x in heads if x > k] + [b[0] for b in boards[bi + 1:bi + 2]] + [n])
+        body = []
+        for x in range(k, stop):
+            t = glyph_text(tokens(lines[x][1]), names)
+            if t and not re.fullmatch(r'\d+', t):
+                body.append(t)
+        sol, com = split_solution('\n'.join(body))
+        if sol:
+            rec['solution'] = english(sol)
+        if com:
+            rec['comment'] = com[:4000]
+        rec['page'] = url
+        rec['pdf_page'] = lines[i][0]
+        recs.append(finish(rec, board, conds, len(rows[0]), height))
+    return recs
+
+
 # conditions stated only in the article text, not in the diagram caption
 PAGE_CONDITIONS = {'kotesovec_abc_endings.htm': ['AlphabeticChess']}
 
 
-def parse(mirror):
+def parse(mirror, pdf=True):
     out, pages = [], 0
     for root, dirs, files in os.walk(mirror):
         dirs.sort()
         for fn in sorted(files):
+            if fn.lower().endswith('.pdf') and pdf:
+                rel = os.path.relpath(os.path.join(root, fn), mirror).replace(os.sep, '/')
+                if not PDF_SKIP.search('/' + rel) and not PDF_LAYOUT_SKIP.search(rel):
+                    got = parse_pdf(os.path.join(root, fn), 'http://' + HOST + '/' + rel)
+                    print(f'{rel}: {len(got)} problems', file=sys.stderr)
+                    out += got
+                    pages += 1
+                continue
             if not re.search(r'\.html?$', fn, re.I):
                 continue
             path = os.path.join(root, fn)
@@ -522,8 +1003,8 @@ def parse(mirror):
 
 
 FIELDS = ['number', 'position', 'fen', 'stip', 'count', 'author', 'author_note', 'source', 'source_note', 'award',
-          'play', 'twins', 'conditions', 'test', 'solution', 'solution_orig', 'solution_notes', 'comment',
-          'orthodox', 'page', 'page_title']
+          'play', 'twins', 'conditions', 'test', 'solution', 'solution_orig', 'solution_notes',
+          'comment', 'orthodox', 'page', 'pdf_page', 'page_title']
 
 
 def main():
@@ -531,24 +1012,37 @@ def main():
     ap.add_argument('cmd', choices=['crawl', 'parse'])
     ap.add_argument('mirror')
     ap.add_argument('-o', '--out', default=os.path.join(os.path.dirname(__file__), '..', 'knowledge', 'kotesovec.json'))
+    ap.add_argument('--pdfs', action='store_true', help='crawl: also download the linked on-host PDFs')
+    ap.add_argument('--no-pdf', action='store_true', help='parse: skip the PDFs (they need pypdf)')
     a = ap.parse_args()
     if a.cmd == 'crawl':
         crawl(a.mirror)
+        if a.pdfs:
+            fetch_pdfs(a.mirror)
         return
-    recs, pages = parse(a.mirror)
-    seen, uniq = set(), []
-    for r in recs:                       # the same diagram is often repeated on several articles
-        key = (r['position'], r['stip'], str(r.get('twins')), str(r.get('conditions')))
-        if key in seen:
+    recs, pages = parse(a.mirror, pdf=not a.no_pdf)
+    seen, uniq = {}, []
+    for r in recs:                       # the same problem is often repeated in several articles and books
+        key = (r['position'], r['stip'])
+        if key in seen:                  # keep the first copy, fill in what it lacks from the later one
+            first = seen[key]
+            for k in FIELDS:
+                if first.get(k) is None and r.get(k) is not None:
+                    first[k] = r[k]
+            first.setdefault('also_in', [])
+            if r['page'] != first['page'] and r['page'] not in first['also_in']:
+                first['also_in'].append(r['page'])
             continue
-        seen.add(key)
-        uniq.append({k: r[k] for k in FIELDS if r.get(k) is not None or k == 'fen'})
-    doc = {'source': 'http://' + HOST + '/', 'note': 'Problems extracted from the HTML articles on Vaclav '
-           'Kotesovec\'s website (mostly fairy chess). Positions are in English notation (K Q R B S P) as '
-           '"white + black"; fairy pieces use Popeye-style codes (G grasshopper, N nightrider, ...) named in '
-           '"conditions". Solutions are converted from German/Czech figurines to English; solution_orig keeps '
-           'the original when it differed. Problems published only in the site\'s PDF books and diagrams '
-           'shown as whole images are not included.', 'count': len(uniq), 'problems': uniq}
+        seen[key] = r
+        uniq.append(r)
+    uniq = [{k: r[k] for k in FIELDS + ['also_in'] if r.get(k) or k in ('fen', 'orthodox')} for r in uniq]
+    doc = {'source': 'http://' + HOST + '/', 'note': 'Problems from Vaclav Kotesovec\'s website (mostly fairy '
+           'chess): the HTML articles and the PDF books/awards (234 best chess problems, 360 fairy echoes, Fairy '
+           'twomovers 2008-2010, tourney awards). Positions are in English notation (K Q R B S P) as "white + black" '
+           '[+ neutral]; fairy pieces use Popeye-style codes (G grasshopper, N nightrider, ...) named in '
+           '"conditions". Solutions are converted to English figurines; solution_orig keeps an HTML original that '
+           'differed. PDF records carry pdf_page; comment holds the book\'s commentary (Czech/English, cut at '
+           '4000 characters). PDF diagrams whose decoded piece count disagreed with the printed count were left out.', 'count': len(uniq), 'problems': uniq}
     data = json.dumps(doc, ensure_ascii=False, indent=1)
     out = a.out
     if len(data.encode('utf-8')) > 50_000_000:
