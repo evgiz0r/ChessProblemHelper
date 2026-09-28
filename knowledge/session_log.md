@@ -549,3 +549,9 @@
   core.promoted_force, critique major finding), in docs/analysis.js (same rule, exported), and in the
   bench page (pre-key header line; post-key "Random moves and corrections" block; the journal's solve
   line keeps PROMOTED and the S~ lines). Two regression tests; 44 pass. Bench republished.
+* He asked for an online problem database searchable by our themes. Nothing reachable from this
+  environment: yacpdb.org, pdb.dieschwalbe.de, meson.co.uk, kotesovec.cz, phenix-echecs.fr,
+  selivanov.world (Problemesis mirror) and christian.poisson.free.fr are all denied by the network
+  policy; general web search works. Plan once the hosts are allowed: a `search-db` skill using
+  YACPDB's predicate language (Keyword/Stip/Text with AND, OR, NOT), then re-solve hits with our solver
+  so the report marks random moves and corrections. Problemesis (Poisson) is a PDF archive to crawl.
