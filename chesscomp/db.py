@@ -179,7 +179,9 @@ def task_themes(rec: dict, time_limit: float = 60) -> dict:
         return {'status': 'error', 'error': str(e)[:200]}
     keys = res.get('keys') or []
     out = {'status': 'ok' if len(keys) == 1 else ('cooked' if len(keys) > 1 else 'unsound'), 'keys': keys,
-           'patterns': [f"{pt['name']} {pt.get('defence', '')} [{'/'.join(pt.get('phases', []))}]" for pt in res.get('patterns') or []],
+           'patterns': [f"{pt['name']} {pt.get('defence') or ', '.join(pt.get('defences', [])) or ' / '.join('/'.join(t) for t in pt.get('threats', []))} [{' vs '.join(pt.get('phases', []))}]"
+                        for pt in (res.get('relations') or {}).get('patterns') or []],
+           'changed': [f"{c['defence']}: {'/'.join(c['from'])} -> {'/'.join(c['to'])} [{' vs '.join(c['phases'])}]" for c in (res.get('relations') or {}).get('changed') or []],
            'corrections': []}
     for ph in res.get('phases') or []:
         for info in ph.get('corrections') or []:
