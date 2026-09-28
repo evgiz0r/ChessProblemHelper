@@ -31,7 +31,9 @@ print(format_report(analyse(p)))
 chesscomp/            core model, solver, analysis, motives, critique, knowledge API, CLI
 chesscomp/compose/    composing searches: key candidates, post-key schemes, motif map,
                       pin geometry, self-pin and king-key searches
-knowledge/            problems, themes, principles, lessons, session log, motif map
+knowledge/            problems, themes, principles, lessons, session log, motif map;
+                      problemesis.json: ~7,900 problems from the Problemesis web magazine
+tools/                problemesis.py: crawler/parser for christian.poisson.free.fr
 docs/                 the browser version (index.html, analysis.js, problems.json)
 tests/                validation against a yacpdb export of published problems
 ```
