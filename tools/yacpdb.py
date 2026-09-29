@@ -102,14 +102,14 @@ def source_str(s):
         bits.append(f"no. {s['problemid']}")
     if 'date' in s:
         bits.append(date_str(s['date']))
-    return ', '.join(b for b in bits if b)
+    return ', '.join(str(b) for b in bits if b)
 
 
 def award_str(a):
     if not a:
         return None
     t = a.get('tourney', {}).get('name')
-    return ' '.join(x for x in (a.get('distinction'), t and f'({t})') if x) or None
+    return ' '.join(str(x) for x in (a.get('distinction'), t and f'({t})') if x) or None
 
 
 def solution_text(s):
@@ -132,7 +132,7 @@ def record(e):
     rec = {'id': e['id'], 'url': f"https://www.yacpdb.org/#{e['id']}",
            'position': ' '.join(white) + ' + ' + ' '.join(black), 'fen': fen,
            'stip': e.get('stipulation'), 'count': f'{len(white)}+{len(black)}',
-           'author': ' & '.join(e.get('authors', [])) or None,
+           'author': ' & '.join(map(str, e.get('authors', []))) or None,
            'source': source_str(e.get('source')), 'award': award_str(e.get('award'))}
     if extra:
         rec['other_pieces'] = extra

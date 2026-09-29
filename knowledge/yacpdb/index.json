@@ -1,0 +1,51 @@
+{
+ "source": "https://www.yacpdb.org/",
+ "note": "Problems pulled from YACPDB through its query gateway (tools/yacpdb.py). Each shard is gzipped JSON lines, one problem per line, sorted by YACPDB id.",
+ "collections": {
+  "twomovers": {
+   "query": "Stip(\"#2\")",
+   "fetched": "2026-09-29",
+   "count": 217505,
+   "reported_count": 217524,
+   "orthodox": 187633,
+   "shards": [
+    {
+     "file": "twomovers-01.jsonl.gz",
+     "first_id": 4,
+     "last_id": 105683,
+     "count": 40000
+    },
+    {
+     "file": "twomovers-02.jsonl.gz",
+     "first_id": 105709,
+     "last_id": 210204,
+     "count": 40000
+    },
+    {
+     "file": "twomovers-03.jsonl.gz",
+     "first_id": 210255,
+     "last_id": 332693,
+     "count": 40000
+    },
+    {
+     "file": "twomovers-04.jsonl.gz",
+     "first_id": 332697,
+     "last_id": 467838,
+     "count": 40000
+    },
+    {
+     "file": "twomovers-05.jsonl.gz",
+     "first_id": 467839,
+     "last_id": 627502,
+     "count": 40000
+    },
+    {
+     "file": "twomovers-06.jsonl.gz",
+     "first_id": 627503,
+     "last_id": 686062,
+     "count": 17505
+    }
+   ]
+  }
+ }
+}

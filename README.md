@@ -31,9 +31,32 @@ print(format_report(analyse(p)))
 chesscomp/            core model, solver, analysis, motives, critique, knowledge API, CLI
 chesscomp/compose/    composing searches: key candidates, post-key schemes, motif map,
                       pin geometry, self-pin and king-key searches
-knowledge/            problems, themes, principles, lessons, session log, motif map
+knowledge/            problems, themes, principles, lessons, session log, motif map,
+                      and problem collections crawled from the web (see below)
+tools/                crawlers/parsers for those collections
 docs/                 the browser version (index.html, analysis.js, problems.json)
 tests/                validation against a yacpdb export of published problems
+```
+
+## Problem collections
+
+| File | Source | Problems | Tool |
+|---|---|---|---|
+| `knowledge/yacpdb/` | [YACPDB](https://www.yacpdb.org/), every `#2` (gzipped JSON lines, 6 shards) | 217,505 (187,633 orthodox) | `tools/yacpdb.py` |
+| `knowledge/phenix.json` | [Phénix](https://www.phenix-echecs.fr/) magazine PDFs and award pages | 6,233 (3,612 orthodox) | `tools/phenix.py` |
+| `knowledge/selivanov.json` | [selivanov.world](https://selivanov.world/) (Уральский проблемист) award and magazine PDFs | 17,632 | `tools/selivanov.py` |
+| `knowledge/kotesovec.json` | [V. Kotěšovec](http://www.kotesovec.cz/) articles and PDF books | 1,217 (230 orthodox) | `tools/kotesovec.py` |
+
+Records share one shape: `position` (English algebraic, `white + black`), `fen` (orthodox 8x8 only), `stip`,
+`count`, `author`, `source`, `award`, `twins`/`conditions`, `solution`, `orthodox`, and a link back to the
+source. `tools/yacpdb.py query 'Keyword("Le Grand") AND Stip("#2")'` runs any YACPDB query live.
+Not crawled: the Schwalbe PDB (robots.txt disallows it) and Meson (moved to bstephen.me.uk, not reachable
+from the build environment).
+
+```python
+import sys; sys.path.insert(0, 'tools')
+from yacpdb import load
+twomovers = list(load('knowledge/yacpdb', 'twomovers'))
 ```
 
 ## What the analysis reports
