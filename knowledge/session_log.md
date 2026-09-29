@@ -624,3 +624,9 @@
   "impure" if the mate after dxe5 already exists in the set play, the paradox then lives only in the
   tries; therefore the key itself should take control of d6. Stopped at 8/4B3/3p4/1P1kP3/1PN5/8/8/3K4
   with no key yet (e4, e6, c4 still open after the capture).
+* "What do you think, any ideas" on his dxe5 sketch: two searches around it (bare and with guards) found
+  no key in two added units, so the missing part is structural. Twelve hand versions later, a sound
+  skeleton: 2b4R/3p4/3p4/3kPP2/BP1p2NB/3P4/8/6K1 (9+5), 1.Rh6! (2.Rxd6#, protected only by e5) dxe5
+  2.Bb3#; tries 1.Rxc8? (2.Bb3#) dxe5!, 1.Bg3?/1.Re8? (2.Sf6#) dxe5!. The Dombrovskis on dxe5 goes
+  through the capturing try only, because no quiet move can newly cover c6 (knight symmetry, light
+  bishop hits d5, rook on the 6th hits d6). Recorded as lessons; not recorded as a problem.

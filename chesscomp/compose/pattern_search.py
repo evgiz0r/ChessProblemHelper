@@ -13,10 +13,11 @@ JOB, JOBS, MODE = int(sys.argv[1]), int(sys.argv[2]), sys.argv[3]
 BASE = os.environ.get('BASE', '6K1/1N6/4p3/1P1k3p/8/8/4Q3/8')
 DEF = os.environ.get('DEF', 'e5')
 PATTERN = os.environ.get('PATTERN', 'Dombrovskis (refutation)')
+PURE = os.environ.get('PURE', '0') == '1'   # DEF must have no mate in the set play (the key creates it)
 BUDGET = float(os.environ.get('BUDGET_S', '1500'))
 base = chess.Board(BASE + ' w - - 0 1')
 empty = [s for s in chess.SQUARES if not base.piece_at(s)]
-W = [chess.Piece(t, chess.WHITE) for t in (chess.ROOK, chess.BISHOP, chess.KNIGHT, chess.PAWN)]
+W = [chess.Piece(t, chess.WHITE) for t in ((chess.QUEEN,) if os.environ.get('QUEEN') == '1' else ()) + (chess.ROOK, chess.BISHOP, chess.KNIGHT, chess.PAWN)]
 B = [chess.Piece(t, chess.BLACK) for t in (chess.ROOK, chess.BISHOP, chess.KNIGHT, chess.PAWN)]
 def okp(s, p):
     r = chess.square_rank(s)
@@ -48,6 +49,11 @@ def judge(b):
     if not pats: return None
     v = [v for v in ph['variations'] if v['defence']['san'] == DEF]
     if not v or v[0]['dual'] or v[0].get('threat_repeat'): return None
+    if PURE:
+        for sp in r['phases']:
+            if sp['type'] == 'set':
+                for sv in sp['variations']:
+                    if sv['defence']['san'] == DEF and sv['continuations']: return None
     return keys[0], [(p['defence'], p['phases']) for p in pats], v[0]['continuations'][0]['san']
 def cands():
     wa = [(s, p) for s in empty for p in W if okp(s, p)]
