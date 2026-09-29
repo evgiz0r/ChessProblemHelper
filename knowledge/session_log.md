@@ -610,3 +610,10 @@
   the solver sees Dombrovskis in 202 twomovers against 88 labelled (77 in both), Bristol in 12 against
   7 labelled (4 in both). The solver-only Dombrovskis hits are mostly single-defence paradoxes the
   magazine did not think worth naming.
+* "Can you try to compose a Dombrovskis, one variation": five hand kernels around bKd5/bPe6 with a queen on
+  the e-file all died to mates in one (a boxed king makes every protected check a mate). Rebuilt with
+  Slesarenko's trick (queen as the sole guard of e4 and e5, king key covering e6) and let a new search,
+  `chesscomp.compose.pattern_search`, add the last two units with the solver's own Dombrovskis detector
+  as the judge: 14 hits in seven minutes, lightest 6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1 (6+3): 1.Sf3? (2.Qd3#)
+  e5!; 1.Kf7! (2.Qxe6#) e5 2.Qd3#. Recorded as `claude-dombrovskis-one` with its flaws (one variation,
+  two tries one refutation, try-only knight, tempo pawn). Judged before showing.

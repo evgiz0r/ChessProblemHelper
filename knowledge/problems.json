@@ -834,6 +834,21 @@
    ],
    "note": "Queen ambush behind the knight: 1.Qh5! (2.Qf7#). The knight's departure from f5 unmasks Qh3-e6 (so every knight move defends, Qe6 parries the threat) and opens h5-d5 for the random mate: S~ 2.Qd5#. Corrections close a second line on arrival: 1...Sd6 cuts both the rook's guard of d5 (so Qd5 fails) and the bishop's e7-c5 line, 2.Qxc5#; 1...Se3 cuts h3-d3, 2.Qe2#. The bishop on e7 leaves d6 as the only interference square, which is what removed the Sd6/Se7 twin dual of the earlier versions. The rook d8 is the point of the scheme and its price: 1...Sxd4 gave 2.Rxd4#/Qd5# until bPc5 (cxd4) was added with c5 covered by Ba3, which replaced two pawns (Pa3, Pb4). The queen plays key, threat and all three mates, from an active post to the ambush. No tries worth the name (1.Qb1?/1.Qa1? both fail to Sxd4!), no changed mates, no duals; every unit load-bearing. 15 units. His reservation: Sd6 carries a double effect and Se3 a single one; in a symmetrical theme the thematic variations should be roughly equal in effect, so the imbalance is a drawback.",
    "solution": "#2 (7+8)   FEN 3R4/4b3/K7/1Np2n2/2kPp2p/B1p4q/2P5/3Q4 w - - 0 1\nSet play:\n   1...Se3 2.Qe2#\n   1...Qh1 2.Qe2#\n   1...Qf1 2.Qxf1#\n   1...e3 2.Qd3#/Qe2#  [dual]\n   unprovided: Bf8, Bxd8, Bf6, Bd6, Bg5, Sg7, Sh6, Sd6, Sxd4, Sg3, Qg4, Qg3, Qf3, Qe3, Qd3, Qh2, Qg2, cxd4\nTry: 1.Qb1? (threat: 2.Qb3#/Qa2#)\n   (21 further moves allow the threat)\n   but 1...Sxd4!\nTry: 1.Qa1? (threat: 2.Qa2#)\n   (21 further moves allow the threat)\n   but 1...Sxd4!\nKey: 1.Qh5! (threat: 2.Qf7#)\n   1...Sg7/Sh6/Sxd4/Sg3 2.Qd5#\n   1...Sd6 2.Qxc5#\n   1...Se3 2.Qe2#\n   (16 further moves allow the threat)\n   S~ random Sg7/Sh6/Sxd4/Sg3 2.Qd5#; corrections Sd6 2.Qxc5#, Se3 2.Qe2#\nPatterns:\n   changed threat: Qa2#/Qb3# / Qf7#   [try Qb1 vs key Qh5]\n   changed threat: Qa2# / Qf7#   [try Qa1 vs key Qh5]\nTransferred continuations:\n   Qe2#: after Qh1 -> after Se3   [set play vs key Qh5]\n(3830 nodes, 0.13s)"
+  },
+  {
+   "id": "claude-dombrovskis-one",
+   "fen": "6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1",
+   "stip": "#2",
+   "author": "Claude (session 28)",
+   "source": "composed on request ('try to compose a Dombrovskis, one variation'); kernel by hand, last two units by chesscomp.compose.pattern_search",
+   "themes": [
+    "Dombrovskis",
+    "King key",
+    "Interposition",
+    "Self-block"
+   ],
+   "note": "One-variation Dombrovskis, 6+3. Try 1.Sf3? (2.Qd3#): the knight covers e5, the square the queen leaves when it goes to d3; 1...e5! refutes because the pawn vacates e6 and Qd3+ meets Ke6 (Qxe5+ meets Kc4, c4 being covered by the queen from e2 only). Key 1.Kf7! (2.Qxe6#) covers e6; now 1...e5 blocks the queen's file and self-blocks e5, so the knight is not needed and 2.Qd3# is the mate the same move had refused. Second try 1.Sh3? (2.Sf4#) e5! (Kc4). The mechanism is the pawn side of Slesarenko & Gvozdjak 1999 (psis-8687c07e99): queen sole guard of e4/e5 on its file, pawn interposes and self-blocks, king key covers the vacated square. Flaws: one variation (black has only e5 and h4), two tries with the same refutation, Sg1 plays only the try, Ph5 is a tempo pawn. Pluses: king key, 9 units, no cook-stopper, the paradox has one clear reason on each side.",
+   "solution": "#2 (6+3)   FEN 6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1 w - - 0 1\nTry: 1.Sh3? (threat: 2.Sf4#)\n   (1 further moves allow the threat)\n   but 1...e5!\nTry: 1.Sf3? (threat: 2.Qd3#)\n   (1 further moves allow the threat)\n   but 1...e5!\nKey: 1.Kf7! (threat: 2.Qxe6#)\n   1...e5 2.Qd3#\n   (1 further moves allow the threat)\nPatterns:\n   changed threat: Sf4# / Qd3#   [try Sh3 vs try Sf3]\n   changed threat: Sf4# / Qxe6#   [try Sh3 vs key Kf7]\n   changed threat: Qd3# / Qxe6#   [try Sf3 vs key Kf7]\n   Dombrovskis (refutation): e5   [try Sf3 vs key Kf7]\n(1246 nodes, 0.07s)"
   }
  ]
 }
