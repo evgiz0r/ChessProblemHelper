@@ -617,3 +617,10 @@
   as the judge: 14 hits in seven minutes, lightest 6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1 (6+3): 1.Sf3? (2.Qd3#)
   e5!; 1.Kf7! (2.Qxe6#) e5 2.Qd3#. Recorded as `claude-dombrovskis-one` with its flaws (one variation,
   two tries one refutation, try-only knight, tempo pawn). Judged before showing.
+* His own Dombrovskis sketch on the bench (session mulzjgkr, five minutes, 38 steps, 3 solves, 3 notes):
+  bKd5, wPe5, bPd6, the capture dxe5 as the paradox defence; a try that guards e5 but unguards d6
+  (Be7-f6, threat Sb6#) so dxe5 refutes by the d6 flight; a key that controls d6 so the same capture
+  self-blocks e5 and allows the mate. His notes: doubling with a second capturable guard near the king;
+  "impure" if the mate after dxe5 already exists in the set play, the paradox then lives only in the
+  tries; therefore the key itself should take control of d6. Stopped at 8/4B3/3p4/1P1kP3/1PN5/8/8/3K4
+  with no key yet (e4, e6, c4 still open after the capture).
