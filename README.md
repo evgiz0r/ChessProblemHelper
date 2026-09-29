@@ -44,7 +44,7 @@ tests/                validation against a yacpdb export of published problems
 |---|---|---|---|
 | `knowledge/yacpdb/` | [YACPDB](https://www.yacpdb.org/), every `#2` (gzipped JSON lines, 6 shards) | 217,505 (187,633 orthodox) | `tools/yacpdb.py` |
 | `knowledge/phenix.json` | [Phénix](https://www.phenix-echecs.fr/) magazine PDFs and award pages | 6,233 (3,612 orthodox) | `tools/phenix.py` |
-| `knowledge/selivanov.json` | [selivanov.world](https://selivanov.world/) (Уральский проблемист) award and magazine PDFs | 17,632 | `tools/selivanov.py` |
+| `knowledge/selivanov.json` | [selivanov.world](https://selivanov.world/) (Уральский проблемист) award and magazine PDFs | 22,700 (19,811 orthodox) | `tools/selivanov.py` |
 | `knowledge/kotesovec.json` | [V. Kotěšovec](http://www.kotesovec.cz/) articles and PDF books | 1,217 (230 orthodox) | `tools/kotesovec.py` |
 
 Records share one shape: `position` (English algebraic, `white + black`), `fen` (orthodox 8x8 only), `stip`,

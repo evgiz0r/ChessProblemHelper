@@ -10,6 +10,11 @@ the glyphs with their coordinates, rebuilds the 8x8 boards and reads the text ar
 (number, author, place/source, award), footer below (stipulation, piece count, twins, fairy conditions) and
 the solution paragraph "№N. 1.…" further on, with figurine fonts turned into K Q R B S P.
 
+Every board is checked against the printed piece count "(w+b)": glyphs the tool cannot identify (fairy pieces)
+are kept as a third group "+ ?e4" when they fill exactly the printed total; boards with more of them than that
+were misread (frame rows, overlay marks) and are dropped; any other disagreement is kept but flagged with
+count_mismatch (the decoded count).  Copies of one diagram (same position and stipulation) are merged.
+
 Not read: diagrams embedded as pictures (some PDFs, the Word .doc awards), the 1Echecs fairy-diagram font
 (pieces are built from overlaid glyph fragments) and PDFs with anonymous Type3 fonts.
 
@@ -817,7 +822,7 @@ DIAGRAM_FONTS = [   # (font-name regex, pieces, empty squares, frame characters)
     (re.compile(r'^Ches($|,)', re.I), {**ISDIAGRAM, **{ord(c): ('w', p) for c, p in zip('moqsu', 'SBRQK')}},
      {0x39, 0x3A, 0x3F, 0x40}, set(range(0x3B, 0x3F)) | {0x41, 0x42} | set(range(0x49, 0x51))),
     (re.compile(r'GC2004[DY]', re.I), GC2004, {0x4F, 0x50, 0xA3, 0xA4}, set(range(0x4B, 0x4F)) | set(range(0x51, 0x55))),
-    (re.compile(r'Merida|Chess ?Usual|Chess ?Cases', re.I), MARROQUIN, {0x20, 0x2B, 0x2D},
+    (re.compile(r'Merida|Chess ?Usual|Chess ?Cases', re.I), MARROQUIN, {0x20, 0x2B, 0x2D, 0x40},
      set(range(0x21, 0x2B)) | {0x2C, 0x2E, 0x2F} | set(range(0x30, 0x3A)) | set(range(0xC0, 0xF0))),
 ]
 # 1Echecs (fairy sections): French letters, lower case white, upper case black; digits overlay a piece to turn it
@@ -867,6 +872,10 @@ def classify(glyph):
                 return 'frame', None
             if rx.pattern == 'Echecs' and 0x30 <= ch <= 0x39:
                 return 'mod', None                               # zero-width marks drawn over a piece
+            if rx.pattern == 'Echecs' and glyph[6] < size * 0.02:
+                return 'ignore', None                            # board edge lines drawn over the outer squares
+            if rx.pattern == 'Echecs' and ch == 0x65:
+                return 'square', 'half'                          # right half of the white queen ('d' + 'e')
             if ch in (0x20, 0xA0):
                 return 'space', None
             return 'square', '?'
@@ -939,8 +948,12 @@ def line_rows(ln):
                 marks = any(g[3] == 'mod' for g in gl)
                 pieces = {g[4] for g in gl if g[3] == 'square' and g[4] is not None}
                 parts = all(g[6] < step * 0.7 for g in gl)          # built from fragments: not a known glyph
-                piece = '?' if marks or len(pieces) > 1 or '?' in pieces or (parts and gl) else \
-                    (pieces.pop() if pieces else None)
+                whole = [g for g in gl if g[4] != 'half']
+                if len(whole) == 1 and len(gl) == 2 and whole[0][4] not in (None, '?', 'half') and not marks:
+                    piece = whole[0][4]                              # a piece drawn in two halves
+                else:
+                    piece = '?' if marks or len(pieces) > 1 or '?' in pieces or 'half' in pieces or \
+                        (parts and gl) else (pieces.pop() if pieces else None)
                 sq = [g for g in gl if g[3] == 'square']
                 if not sq:
                     return
@@ -1029,14 +1042,15 @@ def fen_of(cells):
 
 
 def position_of(cells):
-    side = {'w': [], 'b': []}
+    side = {'w': [], 'b': [], '?': []}
     for r, row in enumerate(cells):
         for f, c in enumerate(row):
             if c and c != '?':
                 side[c[0]].append(('KQRBSP'.index(c[1]), c[1] + 'abcdefgh'[f] + str(8 - r)))
             elif c == '?':
-                side['w'].append((9, '?' + 'abcdefgh'[f] + str(8 - r)))
-    return ' '.join(t for _, t in sorted(side['w'])) + ' + ' + ' '.join(t for _, t in sorted(side['b']))
+                side['?'].append((9, '?' + 'abcdefgh'[f] + str(8 - r)))
+    out = ' '.join(t for _, t in sorted(side['w'])) + ' + ' + ' '.join(t for _, t in sorted(side['b']))
+    return out + (' + ' + ' '.join(t for _, t in sorted(side['?'])) if side['?'] else '')
 
 
 COUNT = re.compile(r'\(?\b(\d{1,2})\s*\+\s*(\d{1,2})(?:\s*\+\s*(\d{1,2}))?\)?')
@@ -1108,6 +1122,10 @@ def ftr_like(t):
     return bool(PLAY.search(t.strip()) or FAIRY.search(t))
 
 
+MOVEY = re.compile(r'(?<![\d.])\d{1,2}\s*(?:\.|…)+\s*\S{0,3}[a-h:]|[KQRBS]:?[a-h][1-8]')
+FIRST_PUB = re.compile(r'^(публикуется впервые|published for the first time|original)\W*$', re.I)
+
+
 def parse_header(lines):
     rec = {}
     lines = [l for l in lines if l.strip()]
@@ -1139,6 +1157,8 @@ def parse_header(lines):
                 continue
             if PLACE.fullmatch(seg) and not NOT_PLACE.search(seg):
                 place.append(seg.strip('()'))
+            elif MOVEY.search(seg):
+                continue                                         # solution text of a neighbouring column
             else:
                 source.append(seg)
     if place:
@@ -1151,6 +1171,35 @@ def parse_header(lines):
 
 
 # ---------------------------------------------------------------- one PDF -> records
+
+def count_check(count, w, b, unk):
+    """Printed piece count vs decoded board -> 'ok' / 'mismatch' / 'unchecked' (nothing printed) / 'drop'.
+    Unrecognised glyphs ('?') are fine when they fill exactly the printed total (fairy pieces); more of them
+    than that means the board grid was misread (frame rows, overlay marks), and the record is dropped."""
+    m = re.fullmatch(r'(\d+)\+(\d+)(?:\+(\d+))?', count or '')
+    if not m:
+        return 'drop' if unk > 6 else 'unchecked'
+    pw, pb, pn = int(m.group(1)), int(m.group(2)), int(m.group(3) or 0)
+    if unk:
+        return 'ok' if w + b + unk == pw + pb + pn and w <= pw + pn and b <= pb + pn else \
+            'drop' if w + b + unk > pw + pb + pn else 'mismatch'
+    if (w, b) == (pw, pb) or (pn and w + b == pw + pb + pn):   # neutrals may be drawn in either colour
+        return 'ok'
+    return 'mismatch'
+
+
+def clean_title(lines):
+    """Document heading from its first lines: skips epigraphs, cuts solution text run into the same line."""
+    for t in lines:
+        t = re.split(r'\s№\s*\d', t)[0]
+        t = re.split(r'\s(?=\(?\S{0,6}\d{1,2}\s*(?:\.|…|\.\.\.)+\s*\S{0,3}[a-h][1-8])', t)[0]
+        t = re.sub(r'\s*\([^)]*$', '', t).strip(' _-–—,;')
+        if len(t) <= 3 or NUMBER.match(t) or t[0].islower() or t.endswith(',') or \
+                (t[0] in '«"“' and not re.search(r'[»"”]', t[1:])) or re.search(r'[a-h][1-8]', t) and len(t) > 60:
+            continue
+        return t[:150]
+    return None
+
 
 def pdf_records(path, url):
     data = open(path, 'rb').read()
@@ -1197,12 +1246,8 @@ def pdf_records(path, url):
                 text.append((sq[0], sq[1], sq[2], ' ', g[6]))
         stats['boards'] += len(boards)
         lines = text_lines(text)
-        if title is None:
-            for l in lines:
-                t = re.split(r'\s№\s*\d', l[4])[0].strip()
-                if len(t) > 3 and not NUMBER.match(t):
-                    title = t
-                    break
+        if title is None and lines:
+            title = clean_title([l[4] for l in lines[:6]]) or ''
         # column limits for boards that share a band
         for b in boards:
             peers = sorted((o for o in boards if not (o['bottom'] > b['top'] or o['top'] < b['bottom'])),
@@ -1252,11 +1297,18 @@ def pdf_records(path, url):
                         count = COUNT.fullmatch(h.strip()).group(0).strip('()').replace(' ', '')
             cells = b['cells']
             fen = fen_of(cells)
-            if count is None:
-                w = sum(1 for row in cells for c in row if c and c[0] == 'w')
-                bl = sum(1 for row in cells for c in row if c and c[0] == 'b')
-                count = f'{w}+{bl}'
-            r = {'position': position_of(cells), 'fen': fen, 'stip': stip, 'count': count}
+            w = sum(1 for row in cells for c in row if c and c != '?' and c[0] == 'w')
+            bl = sum(1 for row in cells for c in row if c and c != '?' and c[0] == 'b')
+            unk = sum(1 for row in cells for c in row if c == '?')
+            check = count_check(count, w, bl, unk)
+            if check == 'drop':                                  # the board was misread (frames, overlays)
+                stats['dropped'] = stats.get('dropped', 0) + 1
+                zones.append((pn, ztop, zbot, b['cx0'], b['cx1']))
+                continue
+            r = {'position': position_of(cells), 'fen': fen, 'stip': stip, 'count': count or f'{w}+{bl}'}
+            if check == 'mismatch':
+                r['count_mismatch'] = f'{w}+{bl}' + (f'+{unk}?' if unk else '')
+            r['_checked'] = check == 'ok'
             r.update(rec)
             if twins:
                 r['twins'] = [english(t) for t in twins]
@@ -1312,9 +1364,8 @@ def pdf_records(path, url):
                 r['solution_de'] = sol
             r['solution'] = conv(sol)
     for r in recs:
-        r['source_doc'] = title
-        if not r.get('source') and title:
-            r['source'] = title
+        if title:
+            r['source_doc'] = title
         r['page'] = url + '#page=%d' % (r.pop('_page') + 1)
         r.pop('_pos')
     return recs, stats
@@ -1482,7 +1533,7 @@ def solution_paragraphs(lines):
 FAIRY = re.compile(r'circe|цирце|madras|мадрас|grassh|кузнеч|nightrider|ночн|andernach|андернах|isardam|patrol|'
                    r'maxi|mini|kamikaze|ghost|take ?& ?make|zero|нуль|koko|coco|anti|функцион|functionar|ser-?|'
                    r'sat\b|masand|transmut|vao|pao|leo|lion|equihopper|royal|neutral|нейтрал', re.I)
-FIELDS = ('position', 'fen', 'stip', 'count', 'author', 'place', 'source', 'award', 'number', 'twins', 'conditions',
+FIELDS = ('position', 'fen', 'stip', 'count', 'count_mismatch', 'author', 'place', 'source', 'award', 'number', 'twins', 'conditions',
           'play', 'solution', 'solution_ru', 'solution_de', 'solution_page', 'orthodox', 'page', 'also_on', 'source_doc',
           'listed_as')
 ORTHO_STIP = r'(ser-)?(h|s|r)?#\d+(\.5)?\*?|[+=]'
@@ -1490,7 +1541,9 @@ NOTE = ('Problems extracted from the PDF awards and magazine issues on selivanov
         '"Уральский проблемист"). The site shows diagrams as pictures, but its PDFs are typeset with chess '
         'diagram fonts, so boards are rebuilt from the font glyphs. Positions and solutions use English '
         'piece letters (K Q R B S P); solution_ru keeps the original where Russian letters were converted. '
-        'page is the PDF URL with #page=N; also_on lists other documents showing the same diagram.')
+        'page is the PDF URL with #page=N; also_on lists other documents showing the same diagram. '
+        'Unrecognised (fairy) pieces form a third group "+ ?e4" of position. count is the printed piece '
+        'count; count_mismatch (decoded count) marks diagrams whose decoded board disagrees with it.')
 
 
 def parse(mirror):
@@ -1501,18 +1554,22 @@ def parse(mirror):
         if st == '200' and lp:
             index[lp] = u
     anchors = link_texts(mirror, index)
-    out, stats = [], {'documents': 0, 'with_problems': 0, 'boards': 0, 'no_boards': [], 'errors': []}
+    out, stats = [], {'documents': 0, 'with_problems': 0, 'boards': 0, 'no_boards': [], 'errors': [], 'dropped': 0}
     # Word files (.doc) are mirrored too, but their diagrams are embedded pictures: only PDFs are read
     docs = [(lp, os.path.join(mirror, lp), index[lp]) for lp in sorted(index) if lp.lower().endswith('.pdf')]
     with multiprocessing.Pool() as pool:                         # documents are independent: use all cores
         results = pool.map(doc_records, docs, chunksize=1)
     solutions = {}                                               # (series, number) -> [(url, solution)]
-    for (lp, _, url), (recs, numbered, err) in zip(docs, results):
+    for (lp, _, url), (recs, numbered, err, _) in zip(docs, results):
         for num, sol in numbered:
             solutions.setdefault((series(lp), num), []).append((url, sol))
-    for (lp, _, url), (recs, numbered, err) in zip(docs, results):
+    for (lp, _, url), (recs, numbered, err, dropped) in zip(docs, results):
         stats['documents'] += 1
+        stats['dropped'] += dropped
+        label = doc_label(lp, recs[0].get('source_doc') if recs else None, anchors.get(url))
         for r in recs:
+            if label and (not r.get('source') or FIRST_PUB.match(r['source'])):
+                r['source'] = label + (' (original)' if r.get('source') else '')
             if not r.get('solution') and r.get('number') and r['fen']:
                 link_solution(r, solutions.get((series(lp), r['number']), []), url)
         if err:
@@ -1527,6 +1584,36 @@ def parse(mirror):
         else:
             stats['no_boards'].append(lp)
     return out, stats
+
+
+MAGAZINES = {'UrPro': 'Уральский проблемист', 'UP': 'Уральский проблемист', 'SK': 'Шахматная композиция',
+             'Kudesnik': 'Кудесник', 'Matplus': 'Mat Plus', 'Umenie': 'Umenie 64', 'Leopolis': 'Chess Leopolis',
+             'Best': 'The Best Problems', 'Feenschach': 'Feenschach', 'FinalesTemas': 'Finales y Temas',
+             'Vratnica': 'Vratnica 64', 'Poezia': 'Шахматная поэзия', 'Problemecho': 'Problemecho',
+             'Kosatska': 'Козацька шахівниця', 'Kronica': 'Kronika', 'Azerbaijan': 'Каспий',
+             'OlympiaD': 'Olympia Dergisi', 'CHBS': 'CHBS', 'Mistezki': 'Мистецтво шахів',
+             'RozmajtoskiScachowe': 'Rozmajtosći Šachowe', 'Chesscomposition': 'Шахматная композиция'}
+
+
+def doc_label(lp, title, listed):
+    """A source for records whose header names none: magazine + issue file, else the document heading, else
+    the text of the site link to the document."""
+    parts = lp.split('/')
+    stem = os.path.splitext(parts[-1])[0]
+    if len(parts) > 2 and parts[:2] == ['download', 'Magazins'] and parts[2] in MAGAZINES:
+        return f'{MAGAZINES[parts[2]]}, {stem}'
+    if len(parts) > 1 and parts[0] == 'download' and parts[1] in ('UP', 'SK'):
+        return f'{MAGAZINES[parts[1]]}, {stem}'
+    first = bool(title and FIRST_PUB.match(title))           # 'ПУБЛИКУЕТСЯ ВПЕРВЫЕ': the magazine's originals
+    if title and not first:
+        return title
+    if listed:
+        listed = re.sub(r'\s+', ' ', listed)
+        head, _, text = listed.partition(': ')
+        if head.startswith('Обновления') and len(text) >= 12:   # "site updates: <what was added>"
+            listed = text
+        return listed[:150] + (' (original)' if first else '')
+    return title
 
 
 def series(lp):
@@ -1567,9 +1654,9 @@ def doc_records(job):
     lp, path, url = job
     try:
         recs, stats = pdf_records(path, url)
-        return recs, stats.get('numbered', []), None
+        return recs, stats.get('numbered', []), None, stats.get('dropped', 0)
     except Exception as e:                                       # one broken file must not stop the run
-        return [], [], f'{type(e).__name__}: {e}'
+        return [], [], f'{type(e).__name__}: {e}', 0
 
 
 def link_texts(mirror, index):
@@ -1611,7 +1698,7 @@ def text_of(fragment):
 def best(recs):
     """Among copies of one diagram keep the most informative one, remember where the others are."""
     def score(r):
-        return (bool(r.get('solution')), bool(r.get('award')), bool(r.get('author')), bool(r.get('stip')),
+        return ('count_mismatch' not in r, bool(r.get('solution')), bool(r.get('award')), bool(r.get('author')), bool(r.get('stip')),
                 len(r.get('solution') or ''))
     recs = sorted(recs, key=score, reverse=True)
     keep = dict(recs[0])
@@ -1640,7 +1727,8 @@ def main():
     recs, stats = parse(a.mirror)
     groups = {}
     for r in recs:                      # the same diagram reappears in originals, awards and reprints
-        key = (r['fen'] or r['position'], str(r.get('conditions', '')).lower())
+        key = (r['fen'] or r['position'],           # conditions only by their fairy keywords (headers leak in)
+               tuple(sorted({m.group(0).lower() for c in r.get('conditions', []) for m in FAIRY.finditer(c)})))
         groups.setdefault(key, {}).setdefault(r.get('stip'), []).append(r)
     merged = []
     for by_stip in groups.values():     # a copy whose stipulation was not read joins the most common one
@@ -1655,8 +1743,9 @@ def main():
         r = best(g)
         r['orthodox'] = bool(r['fen']) and not r.get('conditions') and \
             not any(FAIRY.search(t) for t in r.get('twins', [])) and bool(re.fullmatch(ORTHO_STIP, r.get('stip') or '#2'))
-        uniq.append({k: r[k] for k in FIELDS if k in r})
-    doc = {'source': BASE + '/', 'note': NOTE, 'count': len(uniq), 'problems': uniq}
+        uniq.append({k: r[k] for k in FIELDS + ('_checked',) if k in r})
+    doc = {'source': BASE + '/', 'note': NOTE, 'count': len(uniq),
+           'problems': [{k: v for k, v in r.items() if k != '_checked'} for r in uniq]}
     text = json.dumps(doc, ensure_ascii=False, indent=1)
     out = a.out
     if len(text.encode('utf-8')) > 50 << 20:
@@ -1669,7 +1758,11 @@ def main():
     orth = [r for r in uniq if r['orthodox']]
     print(f"{stats['documents']} documents, {stats['with_problems']} with diagrams, {len(recs)} diagrams, "
           f"{len(uniq)} unique, {len(orth)} orthodox, {sum(1 for r in uniq if r.get('solution'))} with solution "
-          f"-> {out}", file=sys.stderr)
+          f"-> {out} ({os.path.getsize(out) / 1e6:.1f} MB)", file=sys.stderr)
+    print(f"piece counts: {sum(1 for r in uniq if r.get('_checked'))} match the printed count, "
+          f"{sum(1 for r in uniq if 'count_mismatch' in r)} flagged count_mismatch, {stats['dropped']} misread "
+          f"boards dropped; {sum(1 for r in uniq if ' + ?' in r['position'])} with unrecognised (fairy) pieces",
+          file=sys.stderr)
     for e in stats['errors']:
         print('error:', e, file=sys.stderr)
     if a.verbose:
