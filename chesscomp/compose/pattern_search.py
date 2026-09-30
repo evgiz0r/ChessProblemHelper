@@ -3,7 +3,7 @@ that a unique quiet non-capturing key exists and the solver reports PATTERN on d
 after DEF in the key phase. Default pattern: 'Dombrovskis (refutation)' (a try threatens A, DEF refutes
 it, after the key DEF allows A).
     BASE="6K1/1N6/4p3/1P1k3p/8/8/4Q3/8" DEF=e5 BUDGET_S=1500 python -m chesscomp.compose.pattern_search JOB JOBS MODE
-MODE: w1 | w2 | w1b1 | w2b1 (which units to add). Run JOBS copies with JOB=0..JOBS-1 in parallel.
+MODE: w1 | w2 | w1b1 | w2b1 (which units to add) | m1 (move one White unit). DEF may list several defences. Run JOBS copies with JOB=0..JOBS-1 in parallel.
 The one-variation Dombrovskis 6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1 came out of this in seven minutes (w2 mode),
 after five hand-made kernels had died to mates in one."""
 import sys, os, itertools, time, chess
@@ -11,7 +11,7 @@ from chesscomp.core import Problem
 from chesscomp.analysis import analyse
 JOB, JOBS, MODE = int(sys.argv[1]), int(sys.argv[2]), sys.argv[3]
 BASE = os.environ.get('BASE', '6K1/1N6/4p3/1P1k3p/8/8/4Q3/8')
-DEF = os.environ.get('DEF', 'e5')
+DEFS = os.environ.get('DEF', 'e5').split(',')   # every listed defence must carry the pattern
 PATTERN = os.environ.get('PATTERN', 'Dombrovskis (refutation)')
 PURE = os.environ.get('PURE', '0') == '1'   # DEF must have no mate in the set play (the key creates it)
 BUDGET = float(os.environ.get('BUDGET_S', '1500'))
@@ -45,21 +45,28 @@ def judge(b):
     if len(keys) != 1: return None
     ph = [p for p in r['phases'] if p['type'] == 'key'][0]
     if ph.get('check_key') or 'x' in keys[0]: return None
-    pats = [p for p in (r.get('relations') or {}).get('patterns', []) if p['name'] == PATTERN and p.get('defence') == DEF]
-    if not pats: return None
-    v = [v for v in ph['variations'] if v['defence']['san'] == DEF]
-    if not v or v[0]['dual'] or v[0].get('threat_repeat'): return None
-    if PURE:
-        for sp in r['phases']:
-            if sp['type'] == 'set':
-                for sv in sp['variations']:
-                    if sv['defence']['san'] == DEF and sv['continuations']: return None
+    pats = [p for p in (r.get('relations') or {}).get('patterns', []) if p['name'] == PATTERN and p.get('defence') in DEFS]
+    if {p['defence'] for p in pats} != set(DEFS): return None
+    for DEF in DEFS:
+        v = [v for v in ph['variations'] if v['defence']['san'] == DEF]
+        if not v or v[0]['dual'] or v[0].get('threat_repeat'): return None
+        if PURE:
+            for sp in r['phases']:
+                if sp['type'] == 'set':
+                    for sv in sp['variations']:
+                        if sv['defence']['san'] == DEF and sv['continuations']: return None
     return keys[0], [(p['defence'], p['phases']) for p in pats], v[0]['continuations'][0]['san']
 def cands():
     wa = [(s, p) for s in empty for p in W if okp(s, p)]
     ba = [(s, p) for s in empty for p in B if okp(s, p)]
     if MODE == 'w1':
         for s, p in wa: yield [(s, p)]
+    elif MODE == 'm1':
+        for s0 in chess.SQUARES:
+            pc = base.piece_at(s0)
+            if not pc or pc.color != chess.WHITE or pc.piece_type == chess.KING: continue
+            for t in empty:
+                if okp(t, pc): yield [(s0, None), (t, pc)]
     elif MODE == 'w2':
         for (s1, p1), (s2, p2) in itertools.combinations(wa, 2):
             if s1 != s2: yield [(s1, p1), (s2, p2)]
@@ -77,11 +84,13 @@ for i, adds in enumerate(cands()):
     if i % JOBS != JOB: continue
     if time.time() - t0 > BUDGET: print('budget'); break
     b = base.copy()
-    for s, p in adds: b.set_piece_at(s, p)
+    for s, p in adds:
+        if p is None: b.remove_piece_at(s)
+        else: b.set_piece_at(s, p)
     if not pre(b): continue
     n += 1
     res = judge(b)
     if res:
         hits += 1
-        print(' '.join(p.symbol() + chess.square_name(s) for s, p in adds), '|', b.fen().split(' ')[0], '|', res, flush=True)
+        print(' '.join(('-' if p is None else p.symbol()) + chess.square_name(s) for s, p in adds), '|', b.fen().split(' ')[0], '|', res, flush=True)
 print('done', n, 'judged', hits, 'hits', round(time.time() - t0), 's')

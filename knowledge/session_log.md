@@ -637,3 +637,9 @@
   the key bishop takes over d5 (and d3 for the threat) by capturing c4. Pure: fxe4 has no set mate.
   Solver confirms Dombrovskis by refutation on fxe4 against both tries. Flaws: capture key, two tries
   with one refutation, one thematic variation plus a knight check, 17 units, Bh8 idle.
+* Sept 30, third sitting (steps 40-124 of session mun61h87): he rebuilt the scheme into a doubled
+  Dombrovskis on two different captures, 2b1KB2/3p4/4N1N1/1P1kPBp1/1P4R1/1P1pp3/pbrr4/q1R5 (11+11):
+  1.Bc5! (2.Sc7#) dxe6 2.Be4#, Bxe5 2.Se7#, Rxc5 2.Rxc5#; tries Ke7? dxe6!, Bg7?/Bd6?/Re4? Bxe5!.
+  Quiet key covering d4 and d6 at once; both paradoxes of equal weight (his balance rule). Recorded
+  as `bourd-double-dombrovskis`. Trim: d3 and e3 each removable for soundness but both carry the
+  Ke7 try, so the position is tight at 22.
