@@ -630,3 +630,10 @@
   2.Bb3#; tries 1.Rxc8? (2.Bb3#) dxe5!, 1.Bg3?/1.Re8? (2.Sf6#) dxe5!. The Dombrovskis on dxe5 goes
   through the capturing try only, because no quiet move can newly cover c6 (knight symmetry, light
   bishop hits d5, rook on the 6th hits d6). Recorded as lessons; not recorded as a problem.
+* His Dombrovskis, two more sittings (Sept 29 evening, 470 steps, and Sept 30, 39 steps; 147 solves, 28
+  cooked, 7 no-solution reports): 7b/4K2b/3N1p2/n3Np2/1PpkPBp1/6R1/BP6/8 #2 (9+8), 1.Bxc4! (2.Rd3#)
+  fxe4 2.Sb5#, Sc6+ 2.Sxc6#; tries 1.Re3? and 1.Bb1? (2.Sb5#) fxe4! The paradox defence is a capture
+  that removes a white guard: the e4 pawn holds d5, so fxe4 opens d5 and Sb5+ meets Kd5 in the tries;
+  the key bishop takes over d5 (and d3 for the threat) by capturing c4. Pure: fxe4 has no set mate.
+  Solver confirms Dombrovskis by refutation on fxe4 against both tries. Flaws: capture key, two tries
+  with one refutation, one thematic variation plus a knight check, 17 units, Bh8 idle.
