@@ -40,5 +40,11 @@
   "Would you publish a single-variation Dombrovskis at this size, or is one variation below the bar for a twomover today?",
   "The h5 pawn only supplies a tempo so the key threatens. Would you rather have a waiting-move (block) key without it, if one existed?"
  ],
- "stats": {"minutes": 45, "solves": 60, "kernels": 6, "searches": 2}
+ "stats": {
+  "minutes": 45,
+  "solves": 60,
+  "kernels": 6,
+  "searches": 2
+ },
+ "mentor_issue": 2
 }
