@@ -77,6 +77,11 @@ pre.report{font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:1
 .journal .fen{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);cursor:pointer;word-break:break-all}
 .journal .fen:hover{color:var(--accent)}
 .hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+.lookbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;max-width:400px}
+.lookbar.on #lookbtn{background:var(--accent);color:var(--accent-ink)}
+.lookline{font-family:"JetBrains Mono",monospace;font-size:13px;flex-basis:100%}
+.board.looking{outline:3px solid var(--accent);outline-offset:3px}
+.journal li.lookup{border-left-color:var(--accent)}
 kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px;background:var(--ground)}
 </style>
 
@@ -102,6 +107,16 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(-
       <button class="act" id="undo" title="undo the last board change">undo</button>
       <button class="act" id="clear">clear</button>
       <button class="act" id="refresh" title="empty the board and start a new journal session (earlier sessions stay saved, hidden)">refresh</button>
+    </div>
+    <div class="lookbar" id="lookbar">
+      <button class="act" id="lookbtn" title="play legal moves from the diagram to try a line; the diagram comes back when you press done, and every line goes into the journal">look-up</button>
+      <span id="lookctl" hidden>
+        <button class="act" id="lookback">step back</button>
+        <button class="act" id="looknew" title="back to the diagram and start another line">new line</button>
+        <label class="sub">promote to <select id="lookpromo"><option value="q">Q</option><option value="r">R</option><option value="b">B</option><option value="n">S</option></select></label>
+        <button class="act" id="lookdone" title="end the look-up and restore the diagram">done</button>
+      </span>
+      <span class="lookline" id="lookline"></span>
     </div>
     <div class="fenrow">
       <input id="fen" aria-label="FEN piece placement" spellcheck="false">
@@ -210,7 +225,9 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     document.getElementById('count').textContent = fenOf(state.grid) + '   ' + counts(state.grid);
     for (const b of document.querySelectorAll('#palette button')) b.classList.toggle('on', b.dataset.piece === state.brush);
     const info = document.getElementById('selinfo');
-    if (state.sel){ const p = state.grid[state.sel[0]][state.sel[1]]; info.innerHTML = 'selected: <b>' + pieceName(p) + ' ' + sqName(state.sel[0], state.sel[1]) + '</b> - drag it, click a square to move it, Delete or right-click to remove, Esc to deselect'; }
+    document.getElementById('board').classList.toggle('looking', !!state.look);
+    if (state.look){ const g = state.look.game; info.innerHTML = 'look-up from the diagram: <b>' + (g.turn() === 'w' ? 'White' : 'Black') + '</b> to move' + (g.isCheckmate() ? ' - <b>mate</b>' : g.isStalemate() ? ' - stalemate' : g.inCheck() ? ' - check' : '') + '. Click a piece, then its square (or drag). Only legal moves.'; }
+    else if (state.sel){ const p = state.grid[state.sel[0]][state.sel[1]]; info.innerHTML = 'selected: <b>' + pieceName(p) + ' ' + sqName(state.sel[0], state.sel[1]) + '</b> - drag it, click a square to move it, Delete or right-click to remove, Esc to deselect'; }
     else if (state.brush === 'x') info.innerHTML = 'eraser: click a piece to remove it';
     else if (state.brush) info.innerHTML = 'brush: <b>' + pieceName(state.brush) + '</b> - click squares to place; Esc to stop';
     else info.textContent = 'drag a piece from the palette or the board; drag off the board to remove; click to select';
@@ -237,6 +254,11 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   function sqName(r, f){ return FILES[f] + (r + 1); }
   function onSquare(r, f){
     const p = state.grid[r][f];
+    if (state.look){
+      if (state.sel){ const [sr, sf] = state.sel; if (sr === r && sf === f){ state.sel = null; draw(); return; } lookMove(sr, sf, r, f); return; }
+      if (p){ state.sel = [r, f]; draw(); }
+      return;
+    }
     if (state.brush === 'x'){ if (p) removeAt(r, f); return; }
     if (state.brush){ placeAt(r, f, state.brush); return; }
     if (state.sel){
@@ -248,12 +270,14 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     if (p){ state.sel = [r, f]; draw(); }
   }
   function placeAt(r, f, piece){
+    if (busy()) return;
     const before = clone(state.grid);
     state.grid[r][f] = piece; state.last = [r, f]; state.sel = null;
     state.hist.push(before); draw();
     log('place', pieceName(piece) + ' on ' + sqName(r, f));
   }
   function moveTo(sr, sf, r, f){
+    if (state.look) return lookMove(sr, sf, r, f);
     if (sr === r && sf === f) return;
     const mover = state.grid[sr][sf]; if (!mover) return;
     const before = clone(state.grid);
@@ -308,6 +332,7 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   document.addEventListener('pointerup', endDrag);
   document.addEventListener('pointercancel', () => { if (drag){ if (drag.ghost) drag.ghost.remove(); if (drag.over) drag.over.classList.remove('over'); drag = null; } });
   function removeAt(r, f){
+    if (busy()) return;
     const p = state.grid[r][f]; if (!p) return;
     state.hist.push(clone(state.grid));
     state.grid[r][f] = null; state.sel = null; state.last = null; draw();
@@ -320,8 +345,70 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     if (e.key === 'Escape'){ state.sel = null; state.brush = null; draw(); }
   });
 
+  // ---------- look-up: play legal moves from the diagram without changing it (E. Bourd: "I scheme up a lot of
+  // things without actual mates" - each step is journalled as 'look', each finished line as 'lookup')
+  function busy(){ if (!state.look) return false; report('A look-up is open: press done (or new line) first. The diagram is safe.', 'warn'); return true; }
+  function lookLine(){
+    const L = state.look; let s = '', n = 1, white = L.first === 'w';
+    L.moves.forEach((m, i) => { if (white) s += n + '.' + m + ' '; else { s += (i === 0 ? n + '...' : '') + m + ' '; n++; } white = !white; });
+    return s.trim();
+  }
+  function lookTail(){ const g = state.look.game; return g.isStalemate() ? ' (stalemate)' : (!g.isCheckmate() && g.moves().length === 0 ? ' (no moves)' : ''); }
+  function lookUi(){
+    const on = !!state.look;
+    document.getElementById('lookbar').classList.toggle('on', on);
+    document.getElementById('lookctl').hidden = !on;
+    document.getElementById('lookbtn').textContent = on ? 'looking...' : 'look-up';
+    const lines = on ? state.look.lines.concat(state.look.moves.length ? [lookLine()] : []) : [];
+    document.getElementById('lookline').textContent = on ? (lines.length ? lines.join('  |  ') : (state.look.first === 'w' ? 'White' : 'Black') + ' to move: play a line') : '';
+  }
+  function lookStart(){
+    if (state.look) return;
+    if (typeof Chess === 'undefined'){ ensureSolver().then(lookStart).catch(() => report('The move generator did not load; reload the page.', 'bad')); return; }
+    const first = state.mode === 'post' ? 'b' : 'w';
+    let game;
+    try { game = new Chess(fenOf(state.grid) + ' ' + first + ' - - 0 1'); } catch (e){ report('This position cannot be played out: ' + e.message, 'bad'); return; }
+    state.look = { base: clone(state.grid), baseFen: fenOf(state.grid), game, moves: [], lines: [], first };
+    state.sel = null; state.brush = null; state.last = null; lookUi(); draw();
+    log('look', 'start (' + (first === 'w' ? 'White' : 'Black') + ' to move)', state.look.baseFen);
+  }
+  function lookMove(sr, sf, r, f){
+    const L = state.look, from = sqName(sr, sf), to = sqName(r, f), piece = state.grid[sr][sf];
+    const promotion = piece && piece.toLowerCase() === 'p' && (r === 7 || r === 0) ? document.getElementById('lookpromo').value : undefined;
+    let mv = null;
+    try { mv = L.game.move({ from, to, promotion }); } catch (e){ mv = null; }
+    state.sel = null;
+    if (!mv){ draw(); setStatus('not legal here: ' + from + '-' + to, 'off'); return; }
+    L.moves.push(mv.san.replace(/N/g, 'S')); state.grid = parse(L.game.fen().split(' ')[0]); state.last = [r, f];
+    draw(); lookUi();
+    log('look', lookLine() + lookTail(), L.baseFen);
+  }
+  function lookBack(){
+    const L = state.look; if (!L || !L.moves.length) return;
+    L.game.undo(); L.moves.pop(); state.grid = parse(L.game.fen().split(' ')[0]); state.last = null; state.sel = null;
+    draw(); lookUi(); log('look', 'step back: ' + (lookLine() || 'diagram'), L.baseFen);
+  }
+  function lookReset(){
+    const L = state.look;
+    if (L.moves.length) L.lines.push(lookLine() + lookTail());
+    L.game = new Chess(L.baseFen + ' ' + L.first + ' - - 0 1'); L.moves = [];
+    state.grid = clone(L.base); state.sel = null; state.last = null; draw(); lookUi();
+  }
+  function lookDone(){
+    const L = state.look; if (!L) return;
+    if (L.moves.length) L.lines.push(lookLine() + lookTail());
+    state.grid = clone(L.base); state.look = null; state.sel = null; state.last = null;
+    draw(); lookUi();
+    log('lookup', L.lines.length ? L.lines.join(' | ') : '(no moves played)', L.baseFen);
+  }
+  document.getElementById('lookbtn').addEventListener('click', lookStart);
+  document.getElementById('lookback').addEventListener('click', lookBack);
+  document.getElementById('looknew').addEventListener('click', () => { if (state.look) lookReset(); });
+  document.getElementById('lookdone').addEventListener('click', lookDone);
+
   // ---------- transforms
   function transform(name, fn){
+    if (busy()) return;
     const g = state.grid, n = Array.from({length:8}, () => Array(8).fill(null));
     for (let r = 0; r < 8; r++) for (let f = 0; f < 8; f++){
       const p = g[r][f]; if (!p) continue;
@@ -341,13 +428,16 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   document.getElementById('shu').addEventListener('click', () => transform('shift up', (r, f) => r < 7 ? [r + 1, f] : null));
   document.getElementById('shd').addEventListener('click', () => transform('shift down', (r, f) => r > 0 ? [r - 1, f] : null));
   document.getElementById('undo').addEventListener('click', () => {
+    if (busy()) return;
     const prev = state.hist.pop(); if (!prev) return;
     state.grid = prev; state.sel = null; state.last = null; draw(); log('undo', fenOf(prev));
   });
   document.getElementById('clear').addEventListener('click', () => {
+    if (busy()) return;
     state.hist.push(clone(state.grid)); state.grid = parse('8/8/8/8/8/8/8/8'); state.sel = null; state.last = null; draw(); log('clear', '');
   });
   document.getElementById('loadfen').addEventListener('click', () => {
+    if (busy()) return;
     const g = parse(document.getElementById('fen').value);
     if (!g){ report('That FEN could not be read. Only the piece placement is needed, e.g. 8/3r4/8/8/1R1Pk3/8/8/6b1', 'bad'); return; }
     state.hist.push(clone(state.grid)); state.grid = g; state.sel = null; state.last = null; draw(); log('load', fenOf(g));
@@ -472,13 +562,13 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   function render(){
     journalEl.innerHTML = '';
     const storyOnly = document.getElementById('storyonly').checked;
-    const quiet = new Set(['place', 'move', 'remove', 'undo']);
+    const quiet = new Set(['place', 'move', 'remove', 'undo', 'look']);
     let list = entries.slice().sort((a, b) => (b.id > a.id ? 1 : -1));
     if (storyOnly) list = list.filter(e => !quiet.has(e.action));
     if (!document.getElementById('allsessions').checked) list = list.filter(e => e.session === session);
     for (const e of list){
       const li = document.createElement('li');
-      li.className = e.action === 'note' ? 'note' : (e.action === 'solve' ? 'solve' : '');
+      li.className = e.action === 'note' ? 'note' : (e.action === 'solve' ? 'solve' : (e.action === 'lookup' ? 'lookup' : ''));
       const t = document.createElement('span'); t.className = 't'; t.textContent = (e.t || '').slice(11, 19);
       const a = document.createElement('span'); a.className = 'a'; a.textContent = e.action;
       const d = document.createElement('span');
@@ -488,13 +578,13 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
       d.textContent = firstLine; d.title = full; d.style.cursor = full.length > firstLine.length ? 'pointer' : '';
       d.addEventListener('click', () => { d.textContent = d.textContent === full ? firstLine : full; });
       const f = document.createElement('span'); f.className = 'fen'; f.textContent = e.fen || ''; f.title = 'load this position';
-      f.addEventListener('click', () => { const g = parse(e.fen); if (g){ state.hist.push(clone(state.grid)); state.grid = g; state.sel = null; state.last = null; draw(); log('back to', e.fen); } });
+      f.addEventListener('click', () => { if (busy()) return; const g = parse(e.fen); if (g){ state.hist.push(clone(state.grid)); state.grid = g; state.sel = null; state.last = null; draw(); log('back to', e.fen); } });
       li.append(t, a, d, f); journalEl.appendChild(li);
     }
   }
-  function log(action, detail){
+  function log(action, detail, fen){
     seq++;
-    const e = { id: session + '-' + String(seq).padStart(4, '0'), session, n: seq, t: new Date().toISOString(), action, detail: String(detail || '').slice(0, 400), fen: fenOf(state.grid) };
+    const e = { id: session + '-' + String(seq).padStart(4, '0'), session, n: seq, t: new Date().toISOString(), action, detail: String(detail || '').slice(0, 400), fen: fen || fenOf(state.grid) };
     entries.push(e); render();
     if (db){
       db.collection('journal').doc(e.id).set(e).catch(err => setStatus('journal write failed: ' + err.code, 'off'));
