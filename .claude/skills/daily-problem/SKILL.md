@@ -47,7 +47,13 @@ simpler form exists first; otherwise publish the simpler form and say so.
 Follow `compose`: mechanism, box, reason for the key, defenders, cleaning, trimming. One change per solve.
 Shrink before you grow. Use the machine for the last layer only:
 `chesscomp.compose.pattern_search` (any pattern the solver detects: Dombrovskis, Le Grand, changed mates;
-PURE=1, several DEF, MODE w1|w2|w1b1|w2b1|m1) and `chesscomp.compose.kernel_search`. Keep counts as you go:
+PURE=1, several DEF, MODE w1|w2|w1b1|w2b1|m1) and `chesscomp.compose.kernel_search`. When there is no kernel yet, sketch the
+theme's core (the black king and the thematic units) and let `chesscomp.compose.evolve` grow it: it mutates
+the rest of the board and scores every candidate with the solver (DEFS = the thematic defences, CHANGED=1 for
+set-play changes, PATTERN for a detected pattern on each defence, TRYCHANGE=1 for changes against a try).
+Run one job per CPU with different king squares or seeds; read its HIT lines with the gate, never blindly.
+Its score decides what it finds: a spec that rewards two mates returns miniatures with flaws, so put the
+whole competition idea into the spec. Keep counts as you go:
 solves, kernels tried, searches run, minutes.
 
 ## 5. Gate and judge (15 min)
