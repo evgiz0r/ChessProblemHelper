@@ -10,7 +10,7 @@ The point is not only the diagram: every run must leave the composer (tools, ski
 better than it found it, and say so. Budget about three hours of wall clock; check `date` at each stage.
 
 ## 0. Setup (10 min)
-- `pip install -q --use-pep517 -r requirements.txt` if `import chess` fails.
+- `pip install -q --use-pep517 -r requirements.txt pytest` (the tests need pytest; fresh sessions lack it).
 - Read `CLAUDE.md` (the constitution), the `compose`, `judge` and `stop-cooks` skills,
   `knowledge/bourd_principles.md`, the last 40 lines of `knowledge/lessons.jsonl`, and the last five entries
   of `knowledge/daily_log.md` (what earlier runs said to try next, and the open proposals).

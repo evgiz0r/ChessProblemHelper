@@ -29,6 +29,9 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 `main`. `tools/blog.py check "<FEN>"` is the publishing gate (fatal flaws and anticipations). A routine runs
 the `daily-problem` skill once a day: compose, gate, judge, publish, ask the mentor (GitHub issues labelled
 `mentor`), act on his answers, log the run in `knowledge/daily_log.md` and make one tested improvement.
+How it starts: a nightly routine (02:57 Asia/Jerusalem) wakes the session that set it up, which starts a
+new session with this repository attached, `main` as its branch, and `blog/routine_prompt.md` as its
+prompt. Routines cannot attach a repository by themselves; a session without it cannot push or use issues.
 
 ## Unattended runs
 Every subagent gets a watchdog: a background timer of at most 20 minutes, after which it is stopped whatever
