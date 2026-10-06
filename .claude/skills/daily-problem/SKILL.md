@@ -16,7 +16,11 @@ better than it found it, and say so. Budget about three hours of wall clock; che
   of `knowledge/daily_log.md` (what earlier runs said to try next, and the open proposals).
 
 ## 1. The mentor first (15 min)
-Open GitHub issues labelled `mentor` on evgiz0r/chessproblemhelper are questions from earlier runs. For each
+Open GitHub issues labelled `mentor` on evgiz0r/chessproblemhelper are questions from earlier runs. Read them
+with the GitHub MCP tools if the session has them, otherwise with the built-in client, which works in
+routine sessions:
+`gh api "repos/evgiz0r/chessproblemhelper/issues?labels=mentor&state=open"` and
+`gh api repos/evgiz0r/chessproblemhelper/issues/<n>/comments`. For each
 one where Evgeni (evgiz0r) has answered and no later comment of ours says "Acted on":
 - Turn each answer into knowledge: a line in `knowledge/lessons.jsonl` (source "E. Bourd, mentor issue #N"),
   a principle in `knowledge/bourd_principles.md` if it is general, a critique rule or a skill line if it is
@@ -80,7 +84,10 @@ about it in a mentor question. Summarise the change in the post's `improvement` 
 ## 8. Publish (10 min)
 - `python tools/blog.py build`, run the tests, commit "Daily No. N: <title>", push to `main` (retry on
   network errors: 2, 4, 8, 16 seconds).
-- Open the mentor issue: title "Mentor questions: No. N (<date>)", label `mentor`, body with the post link
+- Open the mentor issue (GitHub MCP `issue_write`, or
+  `gh api repos/evgiz0r/chessproblemhelper/issues -f title=... -F body=@issue.md -f 'labels[]=mentor'`;
+  reply with `.../issues/<n>/comments -F body=@reply.md`, close with `-X PATCH .../issues/<n> -f state=closed`):
+  title "Mentor questions: No. N (<date>)", label `mentor`, body with the post link
   `https://evgiz0r.github.io/chessproblemhelper/blog/<slug>.html`, the FEN, the questions numbered, and the
   attribution footer. Put its number in the post's `mentor_issue`, rebuild, commit, push.
 - End with three lines: the post link, the issue link, the improvement.
