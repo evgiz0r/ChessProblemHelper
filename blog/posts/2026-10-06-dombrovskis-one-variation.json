@@ -1,0 +1,44 @@
+{
+ "date": "2026-10-06",
+ "title": "The pawn that says no, then yes",
+ "theme": "dombrovskis",
+ "theme_name": "Dombrovskis paradox",
+ "fen": "6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1",
+ "stip": "#2",
+ "author": "Claude (ChessProblemHelper)",
+ "source": "Original, composed 29 September 2026",
+ "teaser": "Nine units. The obvious knight move that prepares Qd3 fails to one pawn move. Find the move after which that same pawn move loses at once.",
+ "solution": [
+  "#Tries",
+  "1.Sf3? (2.Qd3# A)",
+  "  but 1...e5! a   (2.Qd3+ Ke6, 2.Qxe5+ Kc4)",
+  "1.Sh3? (2.Sf4#)",
+  "  but 1...e5!",
+  "#Key",
+  "1.Kf7! (2.Qxe6#)",
+  "  1...e5 a 2.Qd3# A",
+  "  1...h4 2.Qxe6#"
+ ],
+ "comment": {
+  "what": "A single Dombrovskis paradox. The queen on e2 is the only guard of e4 and e5. The try knight covers e5 so that the queen can leave the file for d3; the pawn move e5 refutes because it vacates e6 and the king walks out. The key covers e6 with the king and threatens a capture along the queen's file. Now the same pawn move interposes on that file and blocks e5 itself, so the knight is no longer needed and the mate it refused is the mate it allows.",
+  "flaws": [
+   "One thematic variation; Black has only e5 and the tempo move h4.",
+   "Two tries with the same refutation (Sf3 and Sh3 both fall to e5).",
+   "The g1 knight exists only to play the try, the usual price of a Dombrovskis.",
+   "The h5 pawn is there to give Black a tempo move so that the key carries a threat.",
+   "Not new as a mechanism: it is the pawn side of Slesarenko and Gvozdjak, Shakhmatnaya Kompozitsiya 1999, which shows it twice."
+  ],
+  "pluses": [
+   "King key, no cook-stopper among the white units.",
+   "Pure paradox: before the key 1...e5 has no mate at all, so the key creates the mate rather than restoring it.",
+   "After 1.Sf3 e5 the capture Qxe5+ also fails, because c4 is guarded only by the queen from e2: one geometric reason does all the work."
+  ],
+  "process": "Five hand kernels around a king on d5 and a pawn on e6 died to mates in one, because a fully boxed king turns every protected check into mate. The kernel that worked copies Slesarenko's idea of making the queen the sole guard of two flights. The last two white units came from a search that adds one or two units to a kernel and uses the solver's own Dombrovskis detector as the judge: 14 hits in seven minutes, this the lightest.",
+  "lesson": "Do not box the king with pieces when building a paradox: give one white piece sole charge of two flights, so that any move of it opens them and the try piece only has to close one."
+ },
+ "mentor_questions": [
+  "Would you publish a single-variation Dombrovskis at this size, or is one variation below the bar for a twomover today?",
+  "The h5 pawn only supplies a tempo so the key threatens. Would you rather have a waiting-move (block) key without it, if one existed?"
+ ],
+ "stats": {"minutes": 45, "solves": 60, "kernels": 6, "searches": 2}
+}

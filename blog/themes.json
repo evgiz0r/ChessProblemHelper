@@ -1,0 +1,146 @@
+{
+ "note": "Rotation for the daily problem. tools/blog.py next-theme picks the theme used least recently (ties by order). Add a theme by adding an entry; 'reference' is the kit's own notes, 'db_text' the label Problemesis prints (use it to read examples, never to copy). 'stretch' themes are attempted only when the run has time left after a sound simpler version.",
+ "themes": [
+  {
+   "id": "black-correction",
+   "order": 1,
+   "name": "Black correction",
+   "definition": "A black piece's random move allows one mate; its corrections stop that mate but commit a new error that allows another.",
+   "reference": ".claude/skills/themes/references/black_correction.md",
+   "db_text": "Correction noire"
+  },
+  {
+   "id": "changed-mates",
+   "order": 2,
+   "name": "Changed mates",
+   "definition": "The same black defences are answered by different mates in the set play (or a try) and after the key.",
+   "reference": ".claude/skills/themes/references/changed_mates.md",
+   "db_text": "Mats changés"
+  },
+  {
+   "id": "dombrovskis",
+   "order": 3,
+   "name": "Dombrovskis paradox",
+   "definition": "A try threatens mate A and is refuted by defence a; after the key, the same defence a allows mate A.",
+   "reference": "knowledge/lessons.jsonl (topic Dombrovskis); chesscomp/compose/pattern_search.py",
+   "db_text": "Dombrovskis"
+  },
+  {
+   "id": "flight-giving-key",
+   "order": 4,
+   "name": "Flight-giving key",
+   "definition": "The key gives the black king a new square; the flight is answered by a mate of its own.",
+   "reference": ".claude/skills/themes/references/flight_giving_key.md",
+   "db_text": "Clé ampliative"
+  },
+  {
+   "id": "self-blocks",
+   "order": 5,
+   "name": "Self-blocks",
+   "definition": "Black defences that occupy a square next to their own king, each allowing a different mate.",
+   "reference": ".claude/skills/compose/references/construction.md",
+   "db_text": "Mats modèles"
+  },
+  {
+   "id": "grimshaw",
+   "order": 6,
+   "name": "Grimshaw",
+   "definition": "A black rook and bishop interfere with each other on one square; each interference allows a different mate.",
+   "reference": null,
+   "db_text": "Grimshaw"
+  },
+  {
+   "id": "half-pin",
+   "order": 7,
+   "name": "Half-pin",
+   "definition": "Two black units on a line to their king; when one moves, the other is pinned and the mate exploits it.",
+   "reference": ".claude/skills/themes/references/half_pin_king_key.md",
+   "db_text": "half-pin"
+  },
+  {
+   "id": "self-pin",
+   "order": 8,
+   "name": "Self-pin",
+   "definition": "A black defence pins itself against its king, and the mate exploits the pin.",
+   "reference": ".claude/skills/themes/references/self_pin.md",
+   "db_text": "Selfpins"
+  },
+  {
+   "id": "underpromotion-key",
+   "order": 9,
+   "name": "Underpromotion key",
+   "definition": "The key promotes to a minor piece or rook; the other promotions fail for stated reasons.",
+   "reference": ".claude/skills/themes/references/underpromotion.md",
+   "db_text": "=S"
+  },
+  {
+   "id": "white-correction",
+   "order": 10,
+   "name": "White correction",
+   "definition": "The key piece's random move fails to one defence; its corrections fix that but fail to another; the key is the correction with no negative effect.",
+   "reference": ".claude/skills/themes/references/black_correction.md (the mirror section)",
+   "db_text": "Correction blanche"
+  },
+  {
+   "id": "bristol",
+   "order": 11,
+   "name": "Bristol clearance",
+   "definition": "The key piece travels along a line to clear it for another piece that follows in the threat or the mate.",
+   "reference": "chesscomp/analysis.py (Bristol detector) and knowledge/bourd_principles.md",
+   "db_text": "Bristol"
+  },
+  {
+   "id": "corner-key",
+   "order": 12,
+   "name": "Corner key",
+   "definition": "The key goes to a corner square, the least natural post on the board, for a precise reason.",
+   "reference": ".claude/skills/themes/references/corner_key.md",
+   "db_text": ""
+  },
+  {
+   "id": "novotny",
+   "order": 13,
+   "name": "Novotny",
+   "definition": "A white piece sacrifices itself on the intersection of two black lines; each capture interferes with the other line.",
+   "reference": null,
+   "db_text": "Novotny",
+   "stretch": true
+  },
+  {
+   "id": "le-grand",
+   "order": 14,
+   "name": "Le Grand",
+   "definition": "Threat and variation mate swap between a try and the solution for the same pair of defences.",
+   "reference": "chesscomp/analysis.py (Le Grand detector)",
+   "db_text": "Le Grand",
+   "stretch": true
+  },
+  {
+   "id": "zagoruiko",
+   "order": 15,
+   "name": "Zagoruiko",
+   "definition": "Two black defences each get different mates in at least three phases.",
+   "reference": ".claude/skills/themes/references/changed_mates.md",
+   "db_text": "Zagorou",
+   "stretch": true
+  },
+  {
+   "id": "reciprocal-change",
+   "order": 16,
+   "name": "Reciprocal change",
+   "definition": "Two defences swap their mates between two phases: a A, b B in one; a B, b A in the other.",
+   "reference": ".claude/skills/themes/references/changed_mates.md",
+   "db_text": "Reciprocal change",
+   "stretch": true
+  },
+  {
+   "id": "rudenko",
+   "order": 17,
+   "name": "Rudenko",
+   "definition": "Several tries with double threats; each defence that stops one threat allows the other, and the key shows the cycle.",
+   "reference": null,
+   "db_text": "Rudenko",
+   "stretch": true
+  }
+ ]
+}
