@@ -147,3 +147,12 @@ def test_static_key_is_noted():
     assert 'static key' in rules('2N1B3/p1R5/p3pK2/3k1n2/8/2P1pP2/8/8')
     assert 'static key' not in rules('2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8')
     assert 'static key' not in rules('8/2N2p2/8/4pK2/3k1n2/8/6N1/1RQ5')
+
+
+def test_king_flight_threat_mate_counts_for_participation():
+    """Session 29: 1.Qc2! Kd4 2.Qc5# uses wKb6 (guards c5); the king is not passive."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    p = Problem.from_fen('8/5n1B/1K6/8/5PRN/3Pk1N1/1Q1p1p2/6n1 w - - 0 1', '#2')
+    assert 'passive king' not in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}

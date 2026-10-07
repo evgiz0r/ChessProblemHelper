@@ -42,8 +42,12 @@ def _mate_positions(problem, res):
             b2 = b1.copy(); b2.push(chess.Move.null())
             om = after(t['uci'], b2)
             yield f"threat 2.{t['san']}", b2, om
+        bk = b1.king(chess.BLACK)
         for v in ph['variations']:
-            if v['threat_repeat'] or not v['continuations']:
+            # a king flight answered by the threat mate is still a different mate position (session 29:
+            # 1.Qc2! Kd4 2.Qc5# needs wKb6), so king moves count even when they only repeat the threat
+            kmove_def = bk is not None and chess.Move.from_uci(v['defence']['uci']).from_square == bk
+            if (v['threat_repeat'] and not kmove_def) or not v['continuations']:
                 continue
             for c in v['continuations']:
                 b2 = b1.copy(); b2.push(chess.Move.from_uci(v['defence']['uci']))
