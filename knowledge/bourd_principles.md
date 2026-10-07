@@ -208,9 +208,11 @@ accident, not a design.
 ## Session 29: keys that activate idle pieces, and changes that need their own mechanism
 
 On the pawn-step problem (1r2k3/1N1p3p/7n/8/8/B7/Q1B1K3/7R, 1.Rf1! 2.Rf8#; d6 Qe6#, d5 Ba4#): "the Rf1 is
-really bad as it is a piece out of play". A rook standing idle on h1 and brought to the f-file by the key is
-an obvious key, even though after the key it guards f7 and f8 in both mates. The critique now flags a key
-that brings an idle piece into the game (softer when the key piece also plays thematic tries).
+really bad as it is a piece out of play", and, sharpened: "the key piece is always in play; the issue is that
+on the initial diagram it has no role - not guarding, not delivering mates, not blocking pieces. So its only
+role is to come out of thin air and place itself obviously on the key square." The critique rule `idle key
+piece` checks those three in the diagram (a guard of the black king's field, a set-play mate, a line it
+blocks for any line piece); softer when the key piece also plays thematic tries.
 Asked whether set-play mates for the two steps were worth two or three units: "obviously, but it will not
 cost 2 or 3 units. A complete mechanism has to be thought; it will not be a small change to the existing
 mechanism, as the gameplay is somewhat rigid." A change of mates is designed from the start.
