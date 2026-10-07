@@ -85,3 +85,16 @@ def test_compact_report_groups_random_and_corrections():
     assert 'Try 1.Qg1? (2.Sa5#/Qg8#) but Se3!' in out
     assert 'Set play differs: Se7 Sa5#->Qc5#' in out
     assert 'Patterns' not in out and 'Transferred' not in out
+
+
+def test_idle_key_piece_is_flagged():
+    """E. Bourd, session 29: 1.Rf1 from h1 brings a piece out of play into the game; his own 1.Re7 is not
+    flagged (the rook was not idle in that sense and its tries are the content)."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    def rules(fen):
+        p = Problem.from_fen(fen + ' w - - 0 1', '#2')
+        return {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+    assert 'idle key piece' in rules('1r2k3/1N1p3p/7n/8/8/B7/Q1B1K3/7R')
+    assert 'idle key piece' not in rules('3R4/4b3/K7/1Np2n2/2kPp2p/B1p4q/2P5/3Q4')

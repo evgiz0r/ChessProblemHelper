@@ -204,3 +204,15 @@ accident, not a design.
 | A White unit that takes no part in the solution, there only for a thematic try | fatal: "way too big of a price" | `try-only unit` (gate), `superfluous piece` (gate) |
 | A known mechanism with nothing added, or reduced from the published original | not a problem | anticipation check (identical only); judge by hand |
 | Corrections: few and strong, errors subtle; remove the weaker of two weak ones; no fake blocker that only stops the random move from allowing the correction's mate | flaw | not yet |
+
+## Session 29: keys that activate idle pieces, and changes that need their own mechanism
+
+On the pawn-step problem (1r2k3/1N1p3p/7n/8/8/B7/Q1B1K3/7R, 1.Rf1! 2.Rf8#; d6 Qe6#, d5 Ba4#): "the Rf1 is
+really bad as it is a piece out of play". A rook standing idle on h1 and brought to the f-file by the key is
+an obvious key, even though after the key it guards f7 and f8 in both mates. The critique now flags a key
+that brings an idle piece into the game (softer when the key piece also plays thematic tries).
+Asked whether set-play mates for the two steps were worth two or three units: "obviously, but it will not
+cost 2 or 3 units. A complete mechanism has to be thought; it will not be a small change to the existing
+mechanism, as the gameplay is somewhat rigid." A change of mates is designed from the start.
+What he liked: the dual avoidance, two mates that both seem possible after any pawn move, each killed by
+one landing square.

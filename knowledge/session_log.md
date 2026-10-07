@@ -655,3 +655,6 @@
   The working mechanism came by hand: king e8, pawn d7, both steps free d7; d6 cuts Ba3-e7, d5 cuts the
   queen's road a2-e6. Result 1r2k3/1N1p3p/7n/8/8/B7/Q1B1K3/7R (6+5): 1.Rf1! (2.Rf8#) d6 2.Qe6#, d5 2.Ba4#,
   Sf5 2.Qg8#, Sf7 2.Qxf7#; try 1.Ba4? Rxb7!. Recorded as `claude-pawn-steps`. The key is plain; asked.
+* His verdict on the pawn-step problem: play not bad, nice dual avoidance; 1.Rf1 really bad (a piece out of
+  play); set-play changes need a whole new mechanism, not a few units. New critique rule `idle key piece`
+  (major, minor when the key piece has thematic tries), with a regression test.

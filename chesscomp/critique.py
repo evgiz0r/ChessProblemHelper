@@ -192,6 +192,22 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         add('major', 'check key', 'the key gives check')
     if board.is_capture(kmove):
         add('minor', 'capture key', 'the key captures')
+    # E. Bourd (session 29): "the Rf1 is really bad as it is a piece out of play". A key that brings an idle
+    # piece into the game (in the diagram it reaches no square of the black king's field; after the key it
+    # does) is an obvious key. Softer when the key piece also plays thematic tries (a white correction, as in
+    # his own 1.Re7 with 1.Rh8?/1.Re5?/1.Ree3?): then its moves are the content.
+    kp = board.piece_at(kmove.from_square)
+    ksq_b = board.king(chess.BLACK)
+    if kp and ksq_b is not None and kp.piece_type != chess.KING:
+        field = chess.SquareSet(chess.BB_KING_ATTACKS[ksq_b]) | chess.SquareSet.from_square(ksq_b)
+        before = board.attacks(kmove.from_square) & field
+        ab = board.copy(); ab.push(kmove)
+        after = ab.attacks(kmove.to_square) & field
+        own_tries = [t for t in tries if t['first_move']['uci'][:2] == key['first_move']['uci'][:2]]
+        if not before and after:
+            add('minor' if own_tries else 'major', 'idle key piece',
+                f"1.{key['first_move']['san']} brings a piece that was out of play into the game" +
+                (' (its tries make the move thematic)' if own_tries else ' (E. Bourd: a piece out of play)'))
     b = board.copy(); b.turn = chess.BLACK
     flights_before = set(m.to_square for m in b.legal_moves if m.from_square == b.king(chess.BLACK)) if b.is_valid() else set()
     after = board.copy(); after.push(kmove)
