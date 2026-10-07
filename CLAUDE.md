@@ -10,6 +10,9 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 - An unprovided check in the set play.
 - A black king with a flight in the diagram (a flight GIVEN by the key is a plus).
 - A key that gives check or captures without a thematic reason; a try refuted by a king move.
+- A key by a piece out of play (a knight on the edge far from the king): the key is obvious (E. Bourd, 7 Oct 2026).
+- A White unit that takes no part in the solution, there only for a try or for soundness (E. Bourd, 7 Oct 2026).
+- A known mechanism with nothing added, or a reduced form of a published problem: not a problem (E. Bourd).
 
 ## Working rules
 - The solver before any claim: `python -m chesscomp.report --fen "<FEN> w - - 0 1" "#2" --critique`.

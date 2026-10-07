@@ -55,5 +55,9 @@
   "searches": 12
  },
  "improvement": "chesscomp/compose/evolve.py gained a Black correction mode: CORR=<square> scores the solver's S~ lines for the piece on that square (a random move with one mate, corrections with their own single mates, every move of the piece defending) and NCORR sets how many corrections a HIT needs; NOFLIGHT=1 (default) penalises every diagram flight and refuses it in a HIT, as the constitution requires. Tested in tests/test_evolve.py on Marin y Llovet 1921. Today's problem came out of it.",
- "mentor_issue": 3
+ "mentor_issue": 3,
+ "feedback": [
+  "E. Bourd (7 Oct): the random mechanism (line opening) is decent. The corrections are slightly weak: remove one. The random moves almost allow the corrected mate, and the c3 pawn is a somewhat fake blocker for them; the error of the correction is not subtle enough.",
+  "E. Bourd (7 Oct): the main weakness is fatal: the key is made by a white knight out of play, which makes the solution obvious."
+ ]
 }

@@ -195,7 +195,8 @@ def build():
         f.write(feed_xml(posts))
     print(f'built {len(posts)} posts into docs/blog/')
 
-FATAL = {'unsound', 'cook', 'promoted force', 'unprovided check', 'check key'}
+FATAL = {'unsound', 'cook', 'promoted force', 'unprovided check', 'check key',
+         'out-of-play key', 'try-only unit', 'superfluous piece'}   # the last three: E. Bourd, 7 Oct 2026
 
 def check(fen, stip='#2'):
     """Publishing gate. Fatal: unsound, cooked, promoted force, unprovided check in the set play, checking

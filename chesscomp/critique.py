@@ -54,7 +54,7 @@ def _mate_positions(problem, res):
 def mate_participation(problem, res):
     """For each White piece (by diagram square): the mates in which it takes part.
     Takes part = gives check, guards a square of the king's field (incl. the square of an adjacent
-    White piece), or pins a Black piece. Also records squares guarded more than once (impurity)."""
+    White piece), stands on a square of the field (a guarded blocker), or pins a Black piece. Also records squares guarded more than once (impurity)."""
     use = {}
     for label, b, om in _mate_positions(problem, res):
         k = b.king(chess.BLACK)
@@ -70,7 +70,7 @@ def mate_participation(problem, res):
         checkers = b.checkers()
         for sq in chess.SquareSet(b.occupied_co[chess.WHITE]):
             att = int(b.attacks(sq))
-            if (att & fmask) or (sq in checkers) or (chess.BB_SQUARES[sq] & pinned_lines and b.piece_type_at(sq) != chess.PAWN):
+            if (att & fmask) or (sq in checkers) or (sq in field) or (chess.BB_SQUARES[sq] & pinned_lines and b.piece_type_at(sq) != chess.PAWN):
                 use.setdefault(chess.square_name(om.get(sq, sq)), []).append(label)
     return use
 
@@ -200,6 +200,17 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         add('plus', 'flight-giving key', 'key gives flight(s): ' + ', '.join(chess.square_name(s) for s in flights_after - flights_before))
     if flights_before - flights_after:
         add('minor', 'flight-taking key', 'key takes flight(s): ' + ', '.join(chess.square_name(s) for s in flights_before - flights_after))
+    # E. Bourd (7 Oct 2026, on daily No. 2): a key by a piece out of play makes the solution obvious - fatal.
+    # Out of play: a knight or bishop on the edge of the board, three or more squares from the Black king,
+    # guarding no square of the king's field. Queens and rooks are left out: corner keys are a theme.
+    kp = board.piece_type_at(kmove.from_square)
+    bk = board.king(chess.BLACK)
+    kfield = chess.BB_KING_ATTACKS[bk] | chess.BB_SQUARES[bk]
+    f0, r0 = chess.square_file(kmove.from_square), chess.square_rank(kmove.from_square)
+    if (kp in (chess.KNIGHT, chess.BISHOP) and (f0 in (0, 7) or r0 in (0, 7))
+            and chess.square_distance(kmove.from_square, bk) >= 3 and not int(board.attacks(kmove.from_square)) & kfield):
+        add('major', 'out-of-play key', f"the key piece {_pname(board, kmove.from_square)} stands out of play "
+                                        "(edge, far from the king, guarding nothing near it): the key is obvious (fatal, E. Bourd)")
     dist = chess.square_distance(kmove.from_square, kmove.to_square)
     if dist >= 4:
         add('plus', 'long key', f'long key move ({dist} squares)')
@@ -377,10 +388,14 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                 my_tries = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == chess.square_name(sq)
                             and f"try {t['first_move']['san']}" in changed_phases]
                 if my_tries:
-                    add('plus', 'thematic unit', f"{_pname(board, sq)} takes part in no mate but plays the thematic try "
-                                                 + ', '.join('1.' + t + '?' for t in my_tries) + ' (changed mates)')
+                    add('major', 'try-only unit', f"{_pname(board, sq)} takes part in no mate of the solution; it only plays "
+                                                  + ', '.join('1.' + t + '?' for t in my_tries) + ' (fatal, E. Bourd)')
                 else:
                     add('minor', 'cook-stopper', f"{_pname(board, sq)} takes part in no mate; needed for soundness ({why})")
+        elif [t for t in tries if t['first_move']['uci'][:2] == name]:
+            own = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == name]
+            add('major', 'try-only unit', f"{_pname(board, sq)} takes part in no mate of the solution; it only plays "
+                                          + ', '.join('1.' + t + '?' for t in own) + ' (fatal, E. Bourd)')
         else:
             add('major', 'superfluous piece', f"{_pname(board, sq)} takes part in no mate and is not needed for soundness")
     for sq, verdict in nec.items():

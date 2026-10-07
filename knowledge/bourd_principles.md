@@ -195,3 +195,12 @@ effect in all thematic variations to be roughly similar." Corrections are a symm
 so their motives should carry similar weight. Two ways to restore balance: give the other
 correction a matching double effect, or make both single. A lone strong variation reads as an
 accident, not a design.
+
+## Verdicts on the first daily problems (7 October 2026, chat)
+
+| Principle | Weight | Tool rule |
+|---|---|---|
+| A key by a piece out of play (a knight on the edge, far from the king) makes the solution obvious | fatal | `out-of-play key` (gate) |
+| A White unit that takes no part in the solution, there only for a thematic try | fatal: "way too big of a price" | `try-only unit` (gate), `superfluous piece` (gate) |
+| A known mechanism with nothing added, or reduced from the published original | not a problem | anticipation check (identical only); judge by hand |
+| Corrections: few and strong, errors subtle; remove the weaker of two weak ones; no fake blocker that only stops the random move from allowing the correction's mate | flaw | not yet |

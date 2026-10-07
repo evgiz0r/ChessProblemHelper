@@ -46,5 +46,8 @@
   "kernels": 6,
   "searches": 2
  },
- "mentor_issue": 2
+ "mentor_issue": 2,
+ "feedback": [
+  "E. Bourd (7 Oct): almost a non-problem. The mechanism is the Slesarenko-Gvozdjak one with nothing added, and reduced to a single Dombrovskis. The g1 knight takes no part in the solution and exists only for the thematic try: a fatal flaw, far too high a price for the content."
+ ]
 }

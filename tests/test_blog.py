@@ -41,3 +41,18 @@ def test_gate_refuses_an_anticipation():
 def test_gate_passes_a_sound_original():
     code, out = _gate('3R4/4b3/K7/1Np2n2/2kPp2p/B1p4q/2P5/3Q4')  # E. Bourd, session 28
     assert code == 0, out
+
+
+def _rules(fen):
+    from chesscomp import Problem
+    from chesscomp.critique import critique
+    return {f['rule'] for f in critique(Problem.from_fen(fen + ' w - - 0 1', '#2'))['findings']}
+
+
+def test_mentor_fatal_rules_7_october():
+    # E. Bourd on daily No. 2: a key by a knight out of play is fatal
+    assert 'out-of-play key' in _rules('3R4/8/6K1/4P3/3bk3/N1p3Q1/8/8')
+    # E. Bourd on daily No. 1: a unit that only plays the thematic try is fatal
+    assert 'try-only unit' in _rules('6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1')
+    for rule in ('out-of-play key', 'try-only unit', 'superfluous piece'):
+        assert rule in blog.FATAL
