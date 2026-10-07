@@ -698,3 +698,5 @@
   six times, wPe2 and bBb1 four times). Transforms: three rotations to orient the scheme, then shift down
   (19:53, already sound with 1.Qc2), back up for eight minutes of attempts in the old geometry, down again
   (20:01) for the final version.
+* Studied with the must/can't lens: his own reciprocal (Problemesis 2005, 8+4) is the same mechanism with one
+  bishop line doing both jobs; Kovalic's three-phase Lacny is a Latin square of three gates (d4/d5/d6).

@@ -37,3 +37,9 @@ what the next run should try. "Proposals" collects improvements too big for one 
   the solver sees them (today only a Grimshaw on the key phase is reported).
 - evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
 - A theme reference for Grimshaw, Novotny, Le Grand and Rudenko (none yet).
+
+## Data note (7 October 2026)
+Problemesis records psis-0c3747b09e (Caillaud, Microweb 2000) and psis-cb0ecb6471 (Poisson, Lacny-50) do not
+solve to their published solutions: the source pages carry diagram errors (in Caillaud's, Ta8 checks Ka6).
+28 of 102 Lacny/reciprocal #2 records fail the same check; a cleaning pass should flag records whose unique
+key differs from the published one before they are used as study material.
