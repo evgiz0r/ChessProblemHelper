@@ -223,6 +223,10 @@ His own changed-mate version (2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8, 1.Ke4! c6 Sf5#, 
 "at first I just had two mates, then I somehow had to separate, that's obviously the hard part. Here it's
 square vacations and line changes for the queen. Not so simple geometrically." He shifted the scheme one file
 to make it work, and on why that is the only freedom: "Pawn move themes are limiting by nature, can't rotate
-or move the board up or down. It does make the mechanism more rigid and less open for enhancements." The
-bench now refuses rotations and the up-down mirror while pawns stand, refuses up/down shifts that put a pawn
-on the first or last rank, and warns when a shift gains or loses a double step.
+or move the board up or down. It does make the mechanism more rigid and less open for enhancements." He narrowed it: "By no rotations, it applies mostly to themes themselves involving pawns. If there are
+pawns, then it's not impossible to rearrange so rotation works. Again unless a pawn move is critical
+thematically then it might be more difficult." So the bench rotates with a warning naming the pawns to
+re-place, refuses up/down shifts that put a pawn on the first or last rank, and warns when a shift gains or
+loses a double step.
+On the edge, asked whether a thematic pawn on the b or g file is worse than on c-f: "Just by the freedom, the
+edge seems very limiting. Much less mates or freedoms to play with." Keep the thematic play central.

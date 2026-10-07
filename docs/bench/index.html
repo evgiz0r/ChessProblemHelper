@@ -423,13 +423,21 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     report(pw.warn || '', pw.warn ? 'warn' : '');
   }
   // E. Bourd, session 29: pawn themes cannot be rotated or moved up and down; only left-right shifts and the
-  // left-right mirror keep the pawns' play. Rotations and the up-down mirror are refused when pawns stand;
-  // an up/down shift is refused if a pawn would reach the first or last rank and warned if a pawn gains or
-  // loses its double step.
+  // left-right mirror keep the pawns' play. But incidental pawns (cook-stoppers, blocks) can be rearranged
+  // after a rotation, so rotations and the up-down mirror are made with a warning naming the pawns to
+  // re-place; an up/down shift is refused if a pawn would reach the first or last rank and warned if a pawn
+  // gains or loses its double step.
   function pawnCheck(name, g, n){
     const has = (grid) => grid.some(row => row.some(p => p === 'P' || p === 'p'));
     if (!has(g)) return {};
-    if (/rotate|up-down/.test(name)) return {stop: 'Pawns fix the direction of the board: a ' + name + ' would make them move sideways or backwards. Only left-right shifts and the left-right mirror keep a pawn mechanism. Nothing changed.'};
+    if (/rotate|up-down/.test(name)){
+      const sq = [], bad = [];
+      for (let r = 0; r < 8; r++) for (let f = 0; f < 8; f++){
+        const p = n[r][f]; if (p !== 'P' && p !== 'p') continue;
+        const s = 'abcdefgh'[f] + (r + 1); sq.push(s); if (r === 0 || r === 7) bad.push(s);
+      }
+      return {warn: 'Done, but the pawns (' + sq.join(' ') + ') now move in a different direction: fine if they only stop cooks or block, rearrange them; undo if a pawn move is thematic.' + (bad.length ? ' Illegal now, re-place first: ' + bad.join(' ') + '.' : '')};
+    }
     if (!/shift (up|down)/.test(name)) return {};
     if ([0, 7].some(r => n[r].some(p => p === 'P' || p === 'p'))) return {stop: 'That ' + name + ' puts a pawn on the first or last rank. Nothing changed.'};
     const home = (grid) => grid[1].filter(p => p === 'P').length + grid[6].filter(p => p === 'p').length;

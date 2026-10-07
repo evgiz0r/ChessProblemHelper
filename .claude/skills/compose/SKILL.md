@@ -32,6 +32,9 @@ Read `references/construction.md` now (the order and the rules with their exampl
    the board up or down. It does make the mechanism more rigid and less open for enhancements" (E. Bourd).
    A double step ties the pawn to its home rank, so only file shifts and the left-right mirror remain; plan
    the selectors with that in mind from the start, since the board will not rescue a pawn mechanism later.
+   This binds only pawns whose moves are thematic; cook-stopper pawns can be rearranged after a rotation.
+   Keep the thematic play central: "Just by the freedom, the edge seems very limiting. Much less mates or
+   freedoms to play with."
 4. **Defenders.** Add Black units whose moves defend for the reasons chosen; each thematic defence gets
    one mate. Here the enumerator earns its keep: `KERNEL=... KEY_UCI=... KEY_SAN=... BUDGET_S=300 JOBS=4
    python -m chesscomp.compose.kernel_search <n_black> <n_white>` around the SOUND kernel only.

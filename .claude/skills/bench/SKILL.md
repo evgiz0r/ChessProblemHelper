@@ -27,6 +27,8 @@ Solve details start with the verdict (COOKED / Key / No solution), then threat a
 5. Read the process, not only the result: sittings that ended nowhere, transformations that only made
    room, the change that supplied the reason, how many solves per minute.
 
-Transforms respect pawns (session 29): with pawns on the board rotations and the up-down mirror are refused,
-an up/down shift that puts a pawn on rank 1 or 8 is refused, and one that gains or loses a double step is
-made with a warning. Left-right shifts and the left-right mirror always work.
+Transforms respect pawns (session 29): with pawns on the board a rotation or the up-down mirror is made with
+a warning naming the pawns to re-place (fine for cook-stoppers and blocks, undo when a pawn move is
+thematic; pawns landing on rank 1 or 8 are named as illegal). An up/down shift that puts a pawn on rank 1
+or 8 is refused, and one that gains or loses a double step is made with a warning. Left-right shifts and the
+left-right mirror always work.
