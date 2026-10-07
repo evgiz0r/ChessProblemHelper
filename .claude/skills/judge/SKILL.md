@@ -22,3 +22,7 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
 5. Say what the problem IS (theme, phases, changes) in two lines, then the flaws, then the pluses. No
    praise before the flaws. Give the FEN and draw the board.
 6. If a repair is obvious (one unit), test it with the solver and report it as verified, not proposed.
+7. Describe choices, do not bless them. Say what a choice achieved and what else could have done the job;
+   never call it "right" because it worked. E. Bourd (session 29), on "using self-blocks twice was right":
+   "It worked. Not that it was right, many other things could be 'right' as well. And if not I'll change so
+   it was wrong?!"

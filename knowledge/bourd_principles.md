@@ -239,3 +239,8 @@ breakthrough was adding the black pawn, which eliminated the rest of the mates a
 Maybe it was a bit lucky this worked, otherwise I would have to find a different reason for splitting. And
 it's not easy inserting two effects in each of the keys." `chesscomp/compose/keepkill.py` now searches for
 that unit (one addition that keeps the wanted mate and kills the rivals in every phase); it ranks bPe5 first.
+
+On my verdict "using self-blocks twice was right": "I think it's not the correct framing. It worked. Not that
+it was right, many other things could be 'right' as well. And if not I'll change so it was wrong?!" A
+critique reports what a choice achieved and what the alternatives were; it does not bless the choice after
+the fact, which would make the verdict follow the outcome.
