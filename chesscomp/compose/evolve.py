@@ -33,6 +33,8 @@ TRYCHANGE = os.environ.get('TRYCHANGE', '0') == '1'  # reward tries whose mates 
 CORR = os.environ.get('CORR', '')                  # Black correction mode: square of the correcting piece
 NCORR = int(os.environ.get('NCORR', '2'))
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram flight is fatal, so no HIT has one
+RECIP = os.environ.get('RECIP', '0') == '1'          # set play and key swap the mates of the two DEFS
+TARGET = dict(x.split(':') for x in os.environ.get('TARGET', '').split(',') if ':' in x)   # exact mates, e.g. d6:Qe6#,d5:Ba4#
 BUDGET = float(os.environ.get('BUDGET_S', '900'))
 MAXU = int(os.environ.get('MAX_UNITS', '16'))
 random.seed(int(os.environ.get('SEED_RNG', str(JOB * 7919 + int(time.time()) % 1000))))
@@ -135,19 +137,31 @@ def score(b):
             else:
                 t -= 6 * (len(v['continuations']) - 1)
             mates.append(v['continuations'][0]['san'])
+            if d in TARGET:
+                t += 20 if TARGET[d] in [c['san'] for c in v['continuations']] else -10
             if CHANGED:
                 sv = setmap.get(d)
                 if sv and sv['continuations']:
                     sm = {c['san'] for c in sv['continuations']}
                     t += 12 if v['continuations'][0]['san'] not in sm else 3
         real = [m for m in mates if m]
+        if len(real) == len(DEFS) and len(set(real)) < len(real):
+            t -= 30                                  # the same mate after two thematic defences is no theme
         if len(real) == len(DEFS) and len(set(real)) == len(real):
             t += 15
+            if RECIP and len(DEFS) == 2:
+                s0, s1 = setmap.get(DEFS[0]), setmap.get(DEFS[1])
+                if s0 and s1 and s0['continuations'] and s1['continuations']:
+                    m0 = {c['san'] for c in s0['continuations']}; m1 = {c['san'] for c in s1['continuations']}
+                    if real[1] in m0 and real[0] in m1:
+                        t += 30 - 4 * (len(m0) + len(m1) - 2)
         if ph.get('check_key'):
             t -= 25
         if 'x' in ph['first_move']['san']:
-            t -= 8
-        if ph.get('threat') == 1:
+            t -= 20
+        if len(ph.get('threat') or []) > 1:
+            t -= 8 * (len(ph['threat']) - 1)
+        if len(ph.get('threat') or []) == 1:
             t += 4
         t -= 3 * sum(1 for v in ph['variations'] if v['dual'] and v['defence']['san'].rstrip('+#') not in DEFS)
         ct, csum, _ = corr_score(ph)
@@ -193,11 +207,20 @@ def score(b):
         ph = cands[0]; vm = var_map(ph)
         ok = all(d in vm and vm[d]['continuations'] and len(vm[d]['continuations']) == 1 and not vm[d]['threat_repeat'] for d in DEFS)
         ok = ok and len({vm[d]['continuations'][0]['san'] for d in DEFS}) == len(DEFS) and not ph.get('check_key')
+        # a hit is a publishable shape: one threat (or a block), a quiet non-capturing key (session 29: the
+        # search learned to plant a black unit for the key to take, and to accept triple threats)
+        ok = ok and len(ph.get('threat') or []) <= 1 and 'x' not in ph['first_move']['san']
         if ok and PATTERN:
             got = {pt.get('defence') for pt in (r.get('relations') or {}).get('patterns', []) if pt['name'] == PATTERN}
             ok = all(d in got for d in DEFS)
+        if ok and RECIP and len(DEFS) == 2:
+            s0, s1 = setmap.get(DEFS[0]), setmap.get(DEFS[1])
+            k0, k1 = vm[DEFS[0]]['continuations'][0]['san'], vm[DEFS[1]]['continuations'][0]['san']
+            ok = bool(s0 and s1 and [c['san'] for c in s0['continuations']] == [k1] and [c['san'] for c in s1['continuations']] == [k0])
         if ok and CHANGED:
             ok = all(d in setmap and setmap[d]['continuations'] and vm[d]['continuations'][0]['san'] not in {c['san'] for c in setmap[d]['continuations']} for d in DEFS)
+        if ok and TARGET:
+            ok = all(vm[d]['continuations'][0]['san'] == TARGET[d] for d in TARGET if d in vm)
         ok = ok and corr_score(ph)[2] and not (NOFLIGHT and kmoves)
         hit = ok
     return s, f"keys={keys} {best_sum}", hit
