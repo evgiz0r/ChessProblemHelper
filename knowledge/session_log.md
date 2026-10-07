@@ -700,3 +700,10 @@
   (20:01) for the final version.
 * Studied with the must/can't lens: his own reciprocal (Problemesis 2005, 8+4) is the same mechanism with one
   bishop line doing both jobs; Kovalic's three-phase Lacny is a Latin square of three gates (d4/d5/d6).
+* Attempt: #2 with two changes (his request, no other requirement), 22:21-22:31, log in
+  knowledge/timelog_s29_two_changes.tsv. Requirement table first: Kd4, bSf4 (Sd3/Sd5 self-blocks), white Se1 and
+  Se7 whose two mates differ only on e3/e5 (Sc2 e3, Sf3 e5; Sf5 e3, Sc6 e5); a queen on h6 covers e3 through
+  the vacated f4, on h2 covers e5, so 1.Qh2 switches both pairs (set Sf3/Sc6, after the key Sc2/Sf5).
+  Confirmed on a sketch with illegal force. Obstacle: e4. Every line to e4 runs through a mating or
+  self-block square, and the two usable ones (a8-e4 via d5, b1-e4 via d3) need two light bishops. Evolve
+  (7 min x2, CHANGED=1) found nothing with changes.

@@ -1,0 +1,5 @@
+22:21:09	START compose #2 with 2 changed mates
+22:21:41	SEARCH evolve x2 (CHANGED=1, knight core) started, 7 min
+22:22:52	THINK requirement table by hand (Qa3->c1 switch; d5 line via rook on 5th cut by Sd5)
+22:29:45	THINK e3/e5 symmetric knight pairs, queen h6->h2 switch through f4; obstacle e4
+22:30:47	SOLVE sketch with two light bishops (illegal force) to confirm the switch
