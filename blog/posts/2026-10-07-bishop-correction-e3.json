@@ -54,5 +54,6 @@
   "kernels": 7,
   "searches": 12
  },
- "improvement": "chesscomp/compose/evolve.py gained a Black correction mode: CORR=<square> scores the solver's S~ lines for the piece on that square (a random move with one mate, corrections with their own single mates, every move of the piece defending) and NCORR sets how many corrections a HIT needs; NOFLIGHT=1 (default) penalises every diagram flight and refuses it in a HIT, as the constitution requires. Tested in tests/test_evolve.py on Marin y Llovet 1921. Today's problem came out of it."
+ "improvement": "chesscomp/compose/evolve.py gained a Black correction mode: CORR=<square> scores the solver's S~ lines for the piece on that square (a random move with one mate, corrections with their own single mates, every move of the piece defending) and NCORR sets how many corrections a HIT needs; NOFLIGHT=1 (default) penalises every diagram flight and refuses it in a HIT, as the constitution requires. Tested in tests/test_evolve.py on Marin y Llovet 1921. Today's problem came out of it.",
+ "mentor_issue": 3
 }

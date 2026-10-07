@@ -51,7 +51,8 @@ PURE=1, several DEF, MODE w1|w2|w1b1|w2b1|m1) and `chesscomp.compose.kernel_sear
 theme's core (the black king and the thematic units) and let `chesscomp.compose.evolve` grow it: it mutates
 the rest of the board and scores every candidate with the solver (DEFS = the thematic defences, CHANGED=1 for
 set-play changes, PATTERN for a detected pattern on each defence, TRYCHANGE=1 for changes against a try).
-Run one job per CPU with different king squares or seeds; read its HIT lines with the gate, never blindly.
+Run one job per CPU with different king squares or seeds (start them from a script file and stop them
+by PID: `pkill -f compose.evolve` also kills the shell that runs it, as its command line matches); read its HIT lines with the gate, never blindly.
 Its score decides what it finds: a spec that rewards two mates returns miniatures with flaws, so put the
 whole competition idea into the spec. Keep counts as you go:
 solves, kernels tried, searches run, minutes.
