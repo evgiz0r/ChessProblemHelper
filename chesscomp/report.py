@@ -166,16 +166,53 @@ def format_compact(res):
             th = f" (2.{_conts(t['threat'])})" if t.get('threat') else (' (check)' if t.get('check_key') else '')
             ref = 'stalemate!' if t.get('stalemate') else ', '.join(f"{r['san']}!" for r in t['refutations'])
             out.append(f"Try 1.{t['first_move']['san']}?{th} but {ref}")
+            # E. Bourd (s29): the changes are the content; the short solution must show them under the try
+            chg = _changes(res, 'try ' + t['first_move']['san'])
+            if chg:
+                out.append('   changed: ' + chg)
     rel = res.get('relations', {})
     ch = [c for c in rel.get('changed', []) if c['phases'][0] == 'set play' and c['phases'][1].startswith('key')]
     if ch:
-        by = {}
-        for c in ch:
-            by.setdefault((c['from'][0], c['to'][0]), []).append(c['defence'])
-        out.append('Set play differs: ' + ', '.join(f"{'/'.join(ds)} {a}->{b}" for (a, b), ds in by.items()))
-    elif setp and keys and not ch and any(v['continuations'] for v in setp['variations']):
-        out.append('Set play: same mates as after the key')
+        out.append('Set play differs: ' + _changes(res, 'set play'))
+    if setp and keys and any(v['continuations'] for v in setp['variations']):
+        km = {v['defence']['san']: [c['san'] for c in v['continuations']] for v in keys[0]['variations']
+              if v['continuations'] and not v['threat_repeat']}
+        changed_defs = {c['defence'] for c in ch}
+        other = []
+        for v in setp['variations']:
+            if not v['continuations'] or v['defence']['san'] in changed_defs:
+                continue
+            sm = [c['san'] for c in v['continuations']]
+            if v['defence']['san'] in km and sm != km[v['defence']['san']]:
+                other.append(f"{v['defence']['san']} 2.{'/'.join(sm)}" + (' [dual]' if len(sm) > 1 else ''))
+        if other:
+            out.append('Set play also: ' + '  '.join(other))
+        elif not ch and all([c['san'] for c in v['continuations']] == km.get(v['defence']['san'])
+                            for v in setp['variations'] if v['continuations']):
+            out.append('Set play: same mates as after the key')
+    pats = [p_ for p_ in rel.get('patterns', []) if p_['name'] not in ('changed threat',)]
+    if pats:
+        seen = []
+        for p_ in pats:
+            what = p_.get('defence') or ', '.join(p_.get('defences', [])) or ''
+            line = f"{p_['name']}{(': ' + what) if what else ''} [{' vs '.join(p_.get('phases', []))}]"
+            if line not in seen:
+                seen.append(line)
+        out.append('Patterns: ' + '; '.join(seen[:6]))
     return '\n'.join(out)
+
+
+def _changes(res, phase_label):
+    """'c6 Sc8#->Sf5#, c5 Qxe5#->Qh6#' for one phase against the key (relations.changed)."""
+    out = []
+    for c in res.get('relations', {}).get('changed', []):
+        if c['phases'][0] == phase_label and c['phases'][1].startswith('key'):
+            f = '/'.join(c['from']) if isinstance(c['from'], list) else c['from']
+            t = '/'.join(c['to']) if isinstance(c['to'], list) else c['to']
+            item = f"{c['defence']} {f}->{t}"
+            if item not in out:
+                out.append(item)
+    return ', '.join(out)
 
 
 def main(argv=None):

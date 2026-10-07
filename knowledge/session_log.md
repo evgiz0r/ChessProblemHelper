@@ -658,3 +658,11 @@
 * His verdict on the pawn-step problem: play not bad, nice dual avoidance; 1.Rf1 really bad (a piece out of
   play); set-play changes need a whole new mechanism, not a few units. New critique rule `idle key piece`
   (major, minor when the key piece has thematic tries), with a regression test.
+* His own problem on the theme with changes, 2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8 (6+4): 1.Ke4! (zugzwang)
+  c6 2.Sf5#, c5 2.Qh6#; try 1.Be6? (c6 2.Sc8#, c5 2.Qxe5#) but e4!. Each self-block releases a different
+  white piece; try and key each vacate a knight square and close a queen line. Recorded as
+  `bourd-pawn-steps-changed`. He found the short solution silent on the changes: the compact report (Python
+  and bench) now prints `changed:` under each try and `Set play also:` for set duals; bench v15.
+  Journal muy1hp6i: 20 minutes to the mate pairs, a long dual-killing stretch, then after a break the
+  selectors (bishop f6/d8, king g5/f4), the shift one file left, the post-key position first and the key
+  retracted. New tool `chesscomp/compose/separate.py` (dual separator) from that process.

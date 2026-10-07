@@ -98,3 +98,23 @@ def test_idle_key_piece_is_flagged():
         return {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
     assert 'idle key piece' in rules('1r2k3/1N1p3p/7n/8/8/B7/Q1B1K3/7R')
     assert 'idle key piece' not in rules('3R4/4b3/K7/1Np2n2/2kPp2p/B1p4q/2P5/3Q4')
+
+
+def test_compact_report_shows_changes_under_try():
+    """E. Bourd, session 29: the short solution must name the changes, not only the full report."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.report import format_compact
+    p = Problem.from_fen('2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8 w - - 0 1', '#2')
+    out = format_compact(analyse(p))
+    assert 'changed: c5 Qxe5#->Qh6#, c6 Sc8#->Sf5#' in out
+    assert 'Set play also: c5 2.Qxe5#/Qh6# [dual]' in out
+
+
+def test_separator_finds_try_key_pair():
+    """The dual separator finds 1.Be6 / 1.Ke4 in his pawn-step problem and nothing before the e5 pawn."""
+    from chesscomp.compose.separate import table, pairs
+    _, prs = pairs(table('2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8', ['c6', 'c5']), ['c6', 'c5'])
+    assert [(a, b) for a, b, *_ in prs] == [('Be6', 'Ke4')]
+    _, prs = pairs(table('2B5/2p1N3/3k4/3N1K2/8/4Q3/8/8', ['c6', 'c5']), ['c6', 'c5'])
+    assert prs == []

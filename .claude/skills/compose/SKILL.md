@@ -23,6 +23,11 @@ Read `references/construction.md` now (the order and the rules with their exampl
    For a Black correction use `CORR=<square of the correcting piece>` (and `DEFS=`): it scores the
    solver's S~ lines. Seed it with a hand sketch of the mechanism, not a bare king: from a blank core it found
    corrections but no key in 20 minutes; from a sketch, a sound eight-unit problem in two (daily No. 2).
+3c. **Two mates per defence and you want changed mates?** Separate before you add blockers. Run
+   `python3 -m chesscomp.compose.separate FEN DEF DEF` on the scheme: it lists the mates left after each
+   named defence for every white first move, and the pairs of moves that give one distinct mate per defence
+   with every mate changed (a try/key pair). No pair means the selectors are on different pieces: change the
+   geometry (E. Bourd shifted his whole scheme one file) rather than piling on cook-stoppers.
 4. **Defenders.** Add Black units whose moves defend for the reasons chosen; each thematic defence gets
    one mate. Here the enumerator earns its keep: `KERNEL=... KEY_UCI=... KEY_SAN=... BUDGET_S=300 JOBS=4
    python -m chesscomp.compose.kernel_search <n_black> <n_white>` around the SOUND kernel only.

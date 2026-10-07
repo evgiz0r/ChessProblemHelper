@@ -377,17 +377,29 @@
       else h += k.first.endsWith('#') ? ' (mate in one)' : (k.stalemate ? ' (stalemate)' : ' (zugzwang or check)');
       L.push(h); L.push(...phaseCompact(k));
     }
+    // E. Bourd (s29): the changes are the content, so the short solution shows them under each try
+    const changes = lab => [...new Set((res.relations.changed || []).filter(c => c.phases[0] === lab && /^key/.test(c.phases[1]))
+      .map(c => `${c.defence} ${c.from}->${c.to}`))].join(', ');
     for (const t of tries) {
       const th = t.threat.length ? ` (2.${t.threat.map(x => x.san).join('/')})` : '';
       const ref = t.stalemate ? 'stalemate!' : t.refutations.map(r => r + '!').join(', ');
       L.push(`Try 1.${t.first}?${th} but ${ref}`);
+      const chg = changes(`try ${t.first}`);
+      if (chg) L.push('   changed: ' + chg);
     }
     const ch = (res.relations.changed || []).filter(c => c.phases[0] === 'set play' && /^key/.test(c.phases[1]));
-    if (ch.length) {
-      const by = new Map();
-      for (const c of ch) { const k = c.from + '->' + c.to; if (!by.has(k)) by.set(k, []); by.get(k).push(c.defence); }
-      L.push('Set play differs: ' + [...by].map(([k, ds]) => `${ds.join('/')} ${k}`).join(', '));
-    } else if (sp && keys.length && sp.variations.some(v => v.conts.length)) L.push('Set play: same mates as after the key');
+    if (ch.length) L.push('Set play differs: ' + changes('set play'));
+    if (sp && keys.length && sp.variations.some(v => v.conts.length)) {
+      const km = new Map(keys[0].variations.filter(v => v.conts.length && !v.threatRepeat).map(v => [v.defence, v.conts.map(c => c.san).join('/')]));
+      const chDefs = new Set(ch.map(c => c.defence));
+      const other = sp.variations.filter(v => v.conts.length && !chDefs.has(v.defence) && km.has(v.defence) && km.get(v.defence) !== v.conts.map(c => c.san).join('/'))
+        .map(v => `${v.defence} 2.${v.conts.map(c => c.san).join('/')}` + (v.conts.length > 1 ? ' [dual]' : ''));
+      if (other.length) L.push('Set play also: ' + other.join('  '));
+      else if (!ch.length && sp.variations.filter(v => v.conts.length).every(v => km.get(v.defence) === v.conts.map(c => c.san).join('/')))
+        L.push('Set play: same mates as after the key');
+    }
+    const rec = res.relations.reciprocal || [];
+    if (rec.length) L.push('Reciprocal: ' + [...new Set(rec.map(r => `${r.defences.join('/')} [${r.phases.join(' vs ')}]`))].join('; '));
     return L.join('\n');
   }
   function formatReport(res) {

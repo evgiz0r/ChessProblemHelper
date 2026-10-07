@@ -897,6 +897,27 @@
    "keys": [
     "Sc4"
    ]
+  },
+  {
+   "id": "bourd-pawn-steps-changed",
+   "fen": "2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 29 (7 October 2026), on the bench, his answer to the theme 'Black defends by a pawn single and double step' with changed mates; journal session muy1hp6i",
+   "themes": [
+    "Pawn single and double step",
+    "Self-block",
+    "Changed mates (try vs solution)",
+    "Zugzwang",
+    "Square vacation",
+    "White line closing",
+    "Dual avoidance"
+   ],
+   "keys": [
+    "Ke4"
+   ],
+   "note": "1.Ke4! (zugzwang) c6 2.Sf5#, c5 2.Qh6#; try 1.Be6? c6 2.Sc8#, c5 2.Qxe5# but 1...e4!. Both steps are self-blocks, each on a square guarded by a different white piece: c6 was the knight e7's square (so the knight is released), c5 the queen's (e3-c5, so the queen is released). That gives the split of the mates between knight and queen. Try and key each do two things at once: 1.Be6 vacates c8 for Sc8 and closes the queen's 6th rank (no Qh6); 1.Ke4 vacates f5 for Sf5 and closes the queen's e-file (no Qxe5). In the set position both queen mates work after c5 (dual) and each phase kills one of them. His words: 'at first I just had two mates, then I somehow had to separate, that's obviously the hard part. Here it's square vacations and line changes for the queen. Not so simple geometrically.' Process (journal): 20 minutes on the d7/Ke6 setting found the pair of mates per step quickly; the selectors were bishop f6/d8 (knight mate) and king g5/f4 (queen mate), two different pieces, so no single move could switch both. He shifted the whole scheme one file left, after which one king move and one bishop move each carry both switches; he built the post-key position first (king on e4) and retracted the king to f5. The e5 pawn then refutes Be6 and cut the cooks from 11 keys to 4; wPd2 + bPd3 stop Qa3+, Qc3 and Qc1 (a search found no single unit that does it). Flaws: set play c6 and e4 unprovided, c5 set dual; the key takes the e4 move away from Black; zugzwang means the steps do not defend against anything; thin content (two variations, Black has two moves after the key); king key.",
+   "solution": "#2 (6+4)   FEN 2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8 w - - 0 1\nSet play:\n   1...c5 2.Qxe5#/Qh6#  [dual]\n   unprovided: c6, e4\nTry: 1.Be6? (zugzwang)\n   1...c6 2.Sc8#\n   1...c5 2.Qxe5#\n   but 1...e4!\nTry: 1.Qa7? (threat: 2.Qxc7#)\n   (2 further moves allow the threat)\n   but 1...c6!\nTry: 1.Qe4? (zugzwang)\n   1...Kc5 2.Qb4#\n   1...c5 2.Qxe5#\n   but 1...c6!\nKey: 1.Ke4! (zugzwang)\n   1...c6 2.Sf5#\n   1...c5 2.Qh6#\nChanged continuations:\n   1...c5: Qxe5# -> Qh6#   [try Be6 vs key Ke4]\n   1...c6: Sc8# -> Sf5#   [try Be6 vs key Ke4]\n   1...c5: Qxe5# -> Qh6#   [try Qe4 vs key Ke4]\n(992 nodes, 0.06s)\n"
   }
  ]
 }
