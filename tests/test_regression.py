@@ -118,3 +118,10 @@ def test_separator_finds_try_key_pair():
     assert [(a, b) for a, b, *_ in prs] == [('Be6', 'Ke4')]
     _, prs = pairs(table('2B5/2p1N3/3k4/3N1K2/8/4Q3/8/8', ['c6', 'c5']), ['c6', 'c5'])
     assert prs == []
+
+
+def test_keepkill_finds_his_e5_pawn():
+    """E. Bourd, session 29: the black pawn e5 killed the rival queen mates and kept 2.Qh6#; the tool ranks it first."""
+    from chesscomp.compose.keepkill import search, parse_phase
+    hits = search('2B5/2p1N3/3k4/3N1K2/8/4Q3/8/8', [parse_phase('Ke4: c6=Sf5 c5=Qh6'), parse_phase('Be6: c6=Sc8 c5=Qe5')])
+    assert hits[0][1] == 'bPe5'

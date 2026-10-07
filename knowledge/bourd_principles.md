@@ -230,3 +230,12 @@ re-place, refuses up/down shifts that put a pawn on the first or last rank, and 
 loses a double step.
 On the edge, asked whether a thematic pawn on the b or g file is worse than on c-f: "Just by the freedom, the
 edge seems very limiting. Much less mates or freedoms to play with." Keep the thematic play central.
+
+His answers on the pawn-step problem. Set duals: "not important imo, they are not part of the intended
+thematic play" (the critique does not flag them; the report shows them as information). Threat or zugzwang:
+"a threat, yes, it makes the problem richer. Zugzwang is limited and a bit less interesting by nature." How
+the split came: "I wanted to find mate on h6, but stopping the mate on the diagonal was hard. The
+breakthrough was adding the black pawn, which eliminated the rest of the mates and I could keep my h6 mate.
+Maybe it was a bit lucky this worked, otherwise I would have to find a different reason for splitting. And
+it's not easy inserting two effects in each of the keys." `chesscomp/compose/keepkill.py` now searches for
+that unit (one addition that keeps the wanted mate and kills the rivals in every phase); it ranks bPe5 first.

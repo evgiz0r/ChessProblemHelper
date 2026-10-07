@@ -28,6 +28,11 @@ Read `references/construction.md` now (the order and the rules with their exampl
    named defence for every white first move, and the pairs of moves that give one distinct mate per defence
    with every mate changed (a try/key pair). No pair means the selectors are on different pieces: change the
    geometry (E. Bourd shifted his whole scheme one file) rather than piling on cook-stoppers.
+   Have the mates you want but rivals remain? `python3 -m chesscomp.compose.keepkill FEN "Ke4: c6=Sf5 c5=Qh6"
+   "Be6: c6=Sc8 c5=Qe5"` tries every single unit and lists those that leave only the wanted mate per defence
+   in every named phase, fewest new black moves first. On his pawn-step scheme it ranks his bPe5 first.
+   Prefer a threat to a zugzwang when you can: "it makes the problem richer. Zugzwang is limited and a bit
+   less interesting by nature" (E. Bourd).
    With pawns the geometry has little room: "Pawn move themes are limiting by nature, can't rotate or move
    the board up or down. It does make the mechanism more rigid and less open for enhancements" (E. Bourd).
    A double step ties the pawn to its home rank, so only file shifts and the left-right mirror remain; plan
