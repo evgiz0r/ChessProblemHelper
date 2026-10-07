@@ -16,7 +16,7 @@ sys.path.insert(0, ROOT)
 POSTS = os.path.join(ROOT, 'blog', 'posts')
 OUT = os.path.join(ROOT, 'docs', 'blog')
 THEMES = os.path.join(ROOT, 'blog', 'themes.json')
-SITE = 'https://evgiz0r.github.io/chessproblemhelper/blog/'
+SITE = 'https://evgiz0r.github.io/ChessProblemHelper/blog/'
 BLOG_TITLE = 'A #2 a day'
 
 GLYPH = {'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
