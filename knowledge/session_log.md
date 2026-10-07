@@ -679,3 +679,14 @@
   (6+6) 1.Ba4! (2.Bb3#) Sd6 2.Se7#, Sd4 2.c4#; tries Bf7?/Bd7? Sg7!, Bb5? axb5!. No queen, the threat
   bishop in play, every guard of a self-block square is also its mating unit. Recorded as
   `bourd-knight-selfblocks-sketch`.
+* His next problem (bench muyhjkp8, 19:13-19:35), K e4 with black knight g2: Sxf4 and Se3. His notes: "I'm
+  trying changes, one time I will have to guard a king's flight, and one time I cannot as the square is not
+  possible to mate on"; "I need to think what releases e5, and what makes mates on f3 impossible"; then eight
+  minutes with no moves, the scheme placed in one minute, rotated three times; "the mechanism is basically
+  ready, but no threat of course. I will try to find a threat that these knight moves defend. A diagonal
+  one usually works." Position 7B/1K5B/1p2P3/5P1N/3PkPN1/pQ1p4/p3P1n1/1b6: set 1...Sxf4 2.Sg3#, 1...Se3
+  2.Sf2# (Qb3 guards d5, Bh8 protects d4 through f6); 1.Qc3! (2.Qc6#, gives d5: Kd5 Qc6#) Sxf4 2.Shf6#,
+  Se3 2.Sgf6# (the queen protects d4 itself, the f6 knights cover d5). Cooks 1.Kc6, 1.e7, 1.Be5. Finishing
+  attempt: a white pawn b5 protects c6 so the king can leave b7 (1.Kc6 gone, 1...Kd5 2.Qc6# kept). 1.Be5
+  protects d4 from e5, past f6: inherent while the guard of d4 runs h8-e5-d4. 1.e7 comes from the e6 pawn
+  that stops 1.Qe6#. No single added unit fixes either (searched).
