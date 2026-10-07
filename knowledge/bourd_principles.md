@@ -255,3 +255,10 @@ On the second black knight (f7) in his must/can't problem, which I had called th
 f7, it's a black knight stopping a lot of white play. I find it fine adding such black pieces, even if it's
 the same type of the thematic piece." A black unit that holds back a lot of White's play is a legitimate
 construction choice; a second unit of the thematic type is not a flaw in itself.
+
+On the promotions in the must/can't problem: "the promotions, the fact that d1 also has the same effect as the
+self-block, these are not great. Could almost remove the Se2 defence, and the content somewhat remains, but not
+clean. But that d1=R stops big cooks like Qc3, so I accepted it in the construction limits (the improvements
+could be infinite, extending more, cleaning etc.)." Verified: 1.Qc3? (2.Qc5#/d4#) fails only to 1...d1=Q/R/S.
+Knowing where to stop is part of composing: a flaw that pays for soundness against a strong cook is accepted
+once further cleaning stops paying.
