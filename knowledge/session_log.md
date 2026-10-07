@@ -675,3 +675,7 @@
   takes d3; Se6 fails only to fxe6). Two king keys looked sound but the king stood in check: new critique
   rule `white in check` (fatal in the blog gate), and `retract` skips such diagrams. Tool:
   chesscomp/compose/retract.py.
+* His answer to my two drafts, three minutes on the bench from draft B: 2N1B3/p1R5/p3pK2/3k1n2/8/2P1pP2/8/8
+  (6+6) 1.Ba4! (2.Bb3#) Sd6 2.Se7#, Sd4 2.c4#; tries Bf7?/Bd7? Sg7!, Bb5? axb5!. No queen, the threat
+  bishop in play, every guard of a self-block square is also its mating unit. Recorded as
+  `bourd-knight-selfblocks-sketch`.
