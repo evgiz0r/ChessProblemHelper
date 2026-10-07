@@ -21,6 +21,8 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
    problem (see the checklist's last section). Say what content each flaw is buying.
 5. Say what the problem IS (theme, phases, changes) in two lines, then the flaws, then the pluses. No
    praise before the flaws. Give the FEN and draw the board.
+   Every post that names a position shows it as a diagram (`python tools/card_png.py out.png < spec.json`,
+   sent as an image), not only as a FEN: E. Bourd, session 29, "please keep showing diagrams when posting".
 6. If a repair is obvious (one unit), test it with the solver and report it as verified, not proposed.
 7. Describe choices, do not bless them. Say what a choice achieved and what else could have done the job;
    never call it "right" because it worked. E. Bourd (session 29), on "using self-blocks twice was right":

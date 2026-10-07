@@ -262,3 +262,5 @@ clean. But that d1=R stops big cooks like Qc3, so I accepted it in the construct
 could be infinite, extending more, cleaning etc.)." Verified: 1.Qc3? (2.Qc5#/d4#) fails only to 1...d1=Q/R/S.
 Knowing where to stop is part of composing: a flaw that pays for soundness against a strong cook is accepted
 once further cleaning stops paying.
+
+Presentation: "Please keep showing diagrams when posting." Every position discussed gets a diagram card, not only a FEN.
