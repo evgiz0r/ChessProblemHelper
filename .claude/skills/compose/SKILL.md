@@ -31,6 +31,12 @@ Read `references/construction.md` now (the order and the rules with their exampl
    Have the mates you want but rivals remain? `python3 -m chesscomp.compose.keepkill FEN "Ke4: c6=Sf5 c5=Qh6"
    "Be6: c6=Sc8 c5=Qe5"` tries every single unit and lists those that leave only the wanted mate per defence
    in every named phase, fewest new black moves first. On his pawn-step scheme it ranks his bPe5 first.
+   These are implementation aids, not ideas (E. Bourd: "add one unit that eliminates mates? That's not an
+   idea, that's a specific implementation"). Decide the reason for every split first; use a tool to place it.
+3d. **Key last is too late.** `python3 -m chesscomp.compose.retract POSTKEY` undoes every white move of a
+   finished post-key position and solves each diagram (his habit: post-key position first, then take the key
+   back). It only finds the keys the position already allows: in session 29 two good mechanisms gave only
+   idle or flight-taking keys. Think about the key's role while the mechanism is still soft.
    Prefer a threat to a zugzwang when you can: "it makes the problem richer. Zugzwang is limited and a bit
    less interesting by nature" (E. Bourd).
    With pawns the geometry has little room: "Pawn move themes are limiting by nature, can't rotate or move

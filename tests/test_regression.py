@@ -125,3 +125,12 @@ def test_keepkill_finds_his_e5_pawn():
     from chesscomp.compose.keepkill import search, parse_phase
     hits = search('2B5/2p1N3/3k4/3N1K2/8/4Q3/8/8', [parse_phase('Ke4: c6=Sf5 c5=Qh6'), parse_phase('Be6: c6=Sc8 c5=Qe5')])
     assert hits[0][1] == 'bPe5'
+
+
+def test_white_in_check_diagram_is_fatal():
+    """Session 29: 1.Kf5 from e6 'solved' a diagram where the f4 knight and f7 pawn already checked the king."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    p = Problem.from_fen('8/2N2p2/4K3/8/3k1n2/8/8/1RQ1N3 w - - 0 1', '#2')
+    assert 'white in check' in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}

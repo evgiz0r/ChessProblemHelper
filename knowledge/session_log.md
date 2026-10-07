@@ -666,3 +666,12 @@
   Journal muy1hp6i: 20 minutes to the mate pairs, a long dual-killing stretch, then after a break the
   selectors (bishop f6/d8, king g5/f4), the shift one file left, the post-key position first and the key
   retracted. New tool `chesscomp/compose/separate.py` (dual separator) from that process.
+* Composing exercise with timing (his request): "two self-blocks by the same black knight". 13.5 minutes,
+  log in knowledge/timelog_s29_knight_selfblocks.tsv; solver and searches 94 s of it, the rest thinking.
+  Concept: Kd4, bSf4; only Sd3/Sd5 guard b4 (threat Rb4); each self-block frees the white knight that guarded
+  the square; each rival mate fails by White self-interference (Sc2 cuts Qc1's file, Se6 cuts the e-rook).
+  Mechanism right twice, key wrong twice: 8/2N3R1/8/8/3k1n2/4p3/7B/1RQ1N2K 1.Re7! (2.Rb4#) Sd5 Sb5#, Sd3
+  Sf3# (idle rook, key takes e4/e5); lighter 8/2N2p2/8/4pK2/3k1n2/8/6N1/1RQ5 1.Se1! (key piece has a role,
+  takes d3; Se6 fails only to fxe6). Two king keys looked sound but the king stood in check: new critique
+  rule `white in check` (fatal in the blog gate), and `retract` skips such diagrams. Tool:
+  chesscomp/compose/retract.py.

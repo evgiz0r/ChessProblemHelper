@@ -179,6 +179,8 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     board = problem.board
     for line in promoted_force(board):
         add('major', 'promoted force', line + ' (fatal, E. Bourd)')
+    if board.turn == chess.WHITE and board.is_check():
+        add('major', 'white in check', 'White is in check in the diagram: the key only escapes the check (illegal for a problem)')
     if not res.get('keys'):
         add('major', 'unsound', 'no solution'); return {'findings': F}
     if res.get('cooked'):

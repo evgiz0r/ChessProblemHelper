@@ -1,0 +1,35 @@
+18:46:45	START theme: two self-blocks by the same black knight	0	-
+18:47:41	THINK concept: Kd4+Sf4, Sd3/Sd5 guard b4 (threat Rb4), released knights mate, rival mates fail by white interference	0	-
+18:47:41	SOLVE post-key mates check	0.14	1R2R3/2N5/8/8/3k1n2/8/8/2Q1N2K
+18:52:23	THINK flight table by hand: which released-knight mates cover which flights; e-file rook vs black Se6 interference problem	0	-
+18:52:23	SOLVE two post-key variants (Rb1, Bh2)	0.3	-
+18:53:17	SEARCH retract key (tool written then run)	22.9	8/2N1R3/8/8/3k1n2/8/7B/1RQ1N2K
+18:54:23	THINK too many checking keys (bare knight, central king); try key that unblocks the b-file	0	-
+18:54:23	SOLVE Qb3 diagram	0.33	8/2N1R3/8/8/3k1n2/1Q6/7B/1R2N2K
+18:54:54	THINK redesign: black blockers c5,e5 cut flights; White 5 units; pf7 for Se6 dual	0	-
+18:54:54	SOLVE post-key mates (blockers)	0.09	8/2N2p2/8/2p1pK2/3k1n2/8/8/1RQ1N3
+18:55:08	SOLVE post-key mates (no c5)	0.09	8/2N2p2/8/4pK2/3k1n2/8/8/1RQ1N3
+18:55:23	SEARCH retract key (blockers)	5.8	-
+18:55:38	JUDGE critique	0.77	8/2N2p2/8/4pK2/3k1n2/8/6N1/1RQ5
+18:55:38	JUDGE critique	0.31	8/2N2p2/4K3/4p3/3k1n2/8/8/1RQ1N3
+18:55:38	JUDGE critique	0.24	8/2N2p2/6K1/4p3/3k1n2/8/8/1RQ1N3
+18:55:39	JUDGE critique	0.64	N7/5p2/8/4pK2/3k1n2/8/8/1RQ1N3
+18:55:44	JUDGE critique	0.77	8/2N2p2/8/4pK2/3k1n2/8/6N1/1RQ5
+18:55:45	JUDGE critique	0.32	8/2N2p2/4K3/4p3/3k1n2/8/8/1RQ1N3
+18:55:45	JUDGE critique	0.35	8/2N2p2/6K1/4p3/3k1n2/8/8/1RQ1N3
+18:55:46	JUDGE critique	0.72	N7/5p2/8/4pK2/3k1n2/8/8/1RQ1N3
+18:55:56	SOLVE king keys without e5	0.20	8/2N2p2/4K3/8/3k1n2/8/8/1RQ1N3
+18:55:57	SOLVE king keys without e5	0.23	8/2N2p2/6K1/8/3k1n2/8/8/1RQ1N3
+18:57:20	TOOLFIX white-in-check diagrams (critique rule, retract filter, blog gate) + test	0	-
+18:57:40	SOLVE rook-switch key	1.56	8/2N2p2/8/4pK2/3k1n2/8/2R5/2Q1N3
+18:57:42	SOLVE rook-switch key	2.52	8/2N2p2/8/5K2/3k1n2/8/2R5/2Q1N3
+18:58:31	THINK back to double-interference version; add black pawns e3/d6 to stop checks	0	-
+18:59:02	SEARCH retract on 4 black-pawn variants	30.9	-
+18:59:20	JUDGE rook-to-e-file keys	1.58	8/2N3R1/8/8/3k1n2/4p3/7B/1RQ1N2K
+18:59:22	JUDGE rook-to-e-file keys	1.21	8/2NR4/3p4/8/3k1n2/4p3/7B/1RQ1N2K
+18:59:23	JUDGE rook-to-e-file keys	1.48	3R4/2N5/3p4/8/3k1n2/4p3/7B/1RQ1N2K
+18:59:25	JUDGE rook-to-e-file keys	2.19	6R1/2N5/3p4/8/3k1n2/4p3/7B/1RQ1N2K
+18:59:52	SEARCH retract all pieces, e3 version	14.2	-
+19:00:06	SOLVE Rf7/Rf8 key with bPg5	1.85	8/2N2R2/8/6p1/3k1n2/4p3/7B/1RQ1N2K
+19:00:08	SOLVE Rf7/Rf8 key with bPg5	2.33	5R2/2N5/8/6p1/3k1n2/4p3/7B/1RQ1N2K
+19:00:16	STOP	0	-
