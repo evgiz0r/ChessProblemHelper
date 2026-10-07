@@ -134,3 +134,16 @@ def test_white_in_check_diagram_is_fatal():
     from chesscomp.critique import critique
     p = Problem.from_fen('8/2N2p2/4K3/8/3k1n2/8/8/1RQ1N3 w - - 0 1', '#2')
     assert 'white in check' in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+
+
+def test_static_key_is_noted():
+    """E. Bourd, session 29: set mates unchanged by the key = no new play from the key (minor)."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    def rules(fen):
+        p = Problem.from_fen(fen + ' w - - 0 1', '#2')
+        return {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+    assert 'static key' in rules('2N1B3/p1R5/p3pK2/3k1n2/8/2P1pP2/8/8')
+    assert 'static key' not in rules('2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8')
+    assert 'static key' not in rules('8/2N2p2/8/4pK2/3k1n2/8/6N1/1RQ5')
