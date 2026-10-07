@@ -1,0 +1,58 @@
+{
+ "date": "2026-10-07",
+ "title": "The diagonal that keeps e3",
+ "theme": "black-correction",
+ "theme_name": "Black correction",
+ "fen": "3R4/8/6K1/4P3/3bk3/N1p3Q1/8/8",
+ "stip": "#2",
+ "author": "Claude (ChessProblemHelper)",
+ "source": "Original, composed 7 October 2026",
+ "teaser": "Eight units and a quiet first move. Almost every move of the black bishop loses to the same mate; two of them stop it and pay for it differently. Look at where the bishop's random moves all land.",
+ "solution": [
+  "#Tries",
+  "1.Sb5? (2.Rxd4#)",
+  "  1...B~ 2.Sxc3#",
+  "  but 1...Bxe5!",
+  "1.Sb1? (zugzwang)",
+  "  1...B~ 2.Sxc3#",
+  "  1...c2 2.Sd2#",
+  "  but 1...Bxe5!",
+  "#Key",
+  "1.Sc4! (zugzwang)",
+  "  1...B~ (Ba7, Bb6, Bc5, Bf2, Bg1) 2.Qg4#",
+  "  1...Bxe5 2.Qe3#",
+  "  1...Be3 2.Qxe3#",
+  "  1...c2 2.Sd2#"
+ ],
+ "comment": {
+  "what": "A black bishop correction in a zugzwang. Any move of the bishop opens the d-file for the rook, which then guards d3, d4 and d5, so the queen can leave the third rank: 2.Qg4#, with the key knight covering e3 and e5. The two corrections both stop Qg4 the same way, by guarding f4 so that the bishop can interpose there, and each commits its own error: 1...Bxe5 leaves the a7-g1 diagonal on which every random move stands, so e3 is no longer guarded and 2.Qe3# works; 1...Be3 stands where the queen takes it with mate. In the tries the knight on b5 or b1 answers the random moves with 2.Sxc3# instead, a change of the random mate, and the capture correction 1...Bxe5 is the refutation because from e5 the bishop guards c3.",
+  "flaws": [
+   "Both corrections are answered on the same square: 2.Qe3# and 2.Qxe3# are different moves but one mating picture, so the second correction is weaker than its motive deserves.",
+   "The two tries have the same refutation (1...Bxe5).",
+   "No set play: in the diagram the bishop's moves have no mates, so the key is not a waiting move but adds the guards of e3 and e5 that the random mate needs. A knight on a3 is also an obvious candidate for the first move.",
+   "The c3 pawn's own move 1...c2 is a by-play (2.Sd2#), not part of the theme; the pawn earns its place through the tries (Sxc3#) and by blocking the a1-d4 diagonal.",
+   "The critique notes that the dual-avoidance reasons differ from move to move (the random moves keep e3; the corrections guard f4), so there is no single second-layer motive.",
+   "The anticipation check covers only the Problemesis collection (7,912 problems); a bishop correction with Qe3/Qxe3 may exist elsewhere."
+  ],
+  "pluses": [
+   "Eight units, no diagram flight, no check or capture in the key, every unit in at least one mate or try.",
+   "One unified correction motive: both corrections guard f4 and turn 2.Qg4+ into an interposition (Bf4).",
+   "A clear dual avoidance in the random moves: all five land on the a7-g1 diagonal, so all of them keep e3 guarded and 2.Qe3 never works after a random move.",
+   "Changed random mate between the tries and the solution (Sxc3# to Qg4#), and the correction 1...Bxe5 doubles as the refutation of the tries."
+  ],
+  "process": "The black-correction reference had only knights, so the run tried bishops and rooks. A new correction mode for the evolutionary search (score the solver's S~ lines for the piece on one square) ran four blank cores for twenty minutes and found sketches with three rook corrections but no key, and one bishop setting with two diagram flights. Hand work then gave the mechanism: bishop d4 between the king and an open d-file, queen g3 on the third rank, random mate Qf4 (later Qg4), correction Be5. Boxing the king by hand produced mates in one at every attempt. Seeded with the hand sketch (bishop d4, queen g3, rook d8), the search returned this position in two minutes, with a superfluous pawn on h4 that the critique removed.",
+  "lesson": "Read the random squares as a set: when every random move of a line piece lands on one line through a mating square, that square stays guarded after any random move, and the correction that leaves the line is the one that allows the mate there (here a7-g1 and e3)."
+ },
+ "mentor_questions": [
+  "The two corrections are answered by Qe3# and Qxe3#. Do you count that as two corrections, or would you rather have one correction with a clearly different mate?",
+  "Would you add set mates for the bishop's moves (making it a mutate) at the price of one or two units, or is a zugzwang key with no set play acceptable here?",
+  "The tries Sb5?/Sb1? change the random mate (Sxc3# to Qg4#) but share the refutation Bxe5. Worth printing, or noise?"
+ ],
+ "stats": {
+  "minutes": 60,
+  "solves": 45,
+  "kernels": 7,
+  "searches": 12
+ },
+ "improvement": "chesscomp/compose/evolve.py gained a Black correction mode: CORR=<square> scores the solver's S~ lines for the piece on that square (a random move with one mate, corrections with their own single mates, every move of the piece defending) and NCORR sets how many corrections a HIT needs; NOFLIGHT=1 (default) penalises every diagram flight and refuses it in a HIT, as the constitution requires. Tested in tests/test_evolve.py on Marin y Llovet 1921. Today's problem came out of it."
+}

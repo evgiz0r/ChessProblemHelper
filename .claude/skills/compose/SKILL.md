@@ -20,6 +20,9 @@ Read `references/construction.md` now (the order and the rules with their exampl
 3b. **No kernel yet?** Sketch the theme's core and let `chesscomp.compose.evolve` grow candidates (see its
    docstring); it found a sound five-unit pawn-step mutate in a minute where hand kernels took hours. Treat
    its output as sketches to judge and refine, not as finished problems.
+   For a Black correction use `CORR=<square of the correcting piece>` (and `DEFS=`): it scores the
+   solver's S~ lines. Seed it with a hand sketch of the mechanism, not a bare king: from a blank core it found
+   corrections but no key in 20 minutes; from a sketch, a sound eight-unit problem in two (daily No. 2).
 4. **Defenders.** Add Black units whose moves defend for the reasons chosen; each thematic defence gets
    one mate. Here the enumerator earns its keep: `KERNEL=... KEY_UCI=... KEY_SAN=... BUDGET_S=300 JOBS=4
    python -m chesscomp.compose.kernel_search <n_black> <n_white>` around the SOUND kernel only.

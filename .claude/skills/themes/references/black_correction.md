@@ -64,3 +64,20 @@ Cell: bK e5, bS d6, wPd3, 1...Se4 2.d4# (the pawn gives up e4, the knight fills 
   as option 2 with a second correction; cooks (Re4+ by a discovered-check battery Kd7/Bh3/f5, f4
   against the by-product f4+; a3, Be1) and economy last. Rook e6 -> e8 saved a pawn and turned four
   same-refutation tries into three distinct ones.
+
+## Bishop correction by line opening (daily No. 2, 7 October 2026)
+`claude-bishop-correction-e3`, 3R4/8/6K1/4P3/3bk3/N1p3Q1/8/8 #2 (5+3).
+1.Sc4! (zugzwang) B~ 2.Qg4#, 1...Bxe5 2.Qe3#, 1...Be3 2.Qxe3#, 1...c2 2.Sd2#. Tries 1.Sb5?/1.Sb1? B~ 2.Sxc3#
+but 1...Bxe5!
+- Random error: the bishop on d4 sits between the king and the white rook's file; any move opens d3-d5,
+  so the queen may leave the third rank (it guarded d3 and e3; the key knight takes e3 and e5).
+- Correction motive, one for both: guard f4, so that 2.Qg4+ is met by Bf4.
+- Dual avoidance read from the random squares: all five (a7, b6, c5, f2, g1) lie on a7-g1 and keep e3,
+  so Qe3 never mates after a random move; Bxe5 leaves that line and allows it. Be3 errs by standing where
+  the queen takes with mate (as Sxd4 Qxd4 in the knight setting above).
+- Weak point: both corrections are answered on e3. Next: a second correction whose mate is elsewhere.
+- Rook version (no key found): bK e4, bR d4, wB a7 behind it, wQ b5, wS f3: R~ 2.Sg5# (a7-e3 opened),
+  Rd5 2.Qe2#, Rc4 2.Qxc4#, Rd3 2.Qe5# - three corrections, but the error needs e3 open, i.e. a diagram
+  flight, and every attempt to give e3 with the key failed (8/B7/8/1Q3p2/3rk3/2p2NK1/8/8 is a zugzwang
+  set refuted only by pawn tempo moves).
+- Tool: `CORR=d4 NCORR=2 DEFS= SEED=<hand sketch> python -m chesscomp.compose.evolve JOB OUT` (see docstring).

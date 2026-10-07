@@ -17,9 +17,23 @@ what the next run should try. "Proposals" collects improvements too big for one 
   can do all of it. So the nightly routine (02:57 Asia/Jerusalem) wakes the setup session, which starts the
   daily session that way with `blog/routine_prompt.md` as its prompt.
 
+## 2026-10-07, No. 2: Black correction (bishop)
+- Result: 3R4/8/6K1/4P3/3bk3/N1p3Q1/8/8 (5+3), 1.Sc4! B~ Qg4#, Bxe5 Qe3#, Be3 Qxe3#. Gate: PASS with warnings
+  (same refutation of the two tries; dual-avoidance reasons differ), all named in the post. Mentor issue #2 had
+  no answer yet; nothing to act on.
+- Minutes: setup and reading 10, mentor 2, study 5, kit change (evolve CORR mode) 15, search and hand work 40,
+  gate/judge/post 15. The container restarted once mid-run; work in the tree survived.
+- What wasted time: `pkill -f compose.evolve` kills the shell that runs it (its own command line matches), so
+  two batches of searches never started; launch them from a script file and stop them by PID. Twenty minutes of
+  blank-core searches (king + piece + queen) found correction sets but no key. Hand boxing gave mates in one.
+- What was missing: a way to say "mates on different squares" in the score (both corrections here mate on e3).
+- Next run: theme "Changed mates". Seed evolve with a hand sketch from the start; for corrections try
+  `CORR` with a second-correction mate on another square (a score term for distinct mating squares).
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
 - A detector for Grimshaw and Novotny in `chesscomp/analysis.py`, so those themes can be claimed only when
   the solver sees them (today only a Grimshaw on the key phase is reported).
+- evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
 - A theme reference for Grimshaw, Novotny, Le Grand and Rudenko (none yet).
