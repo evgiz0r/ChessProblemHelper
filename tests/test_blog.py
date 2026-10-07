@@ -56,3 +56,8 @@ def test_mentor_fatal_rules_7_october():
     assert 'try-only unit' in _rules('6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1')
     for rule in ('out-of-play key', 'try-only unit', 'superfluous piece'):
         assert rule in blog.FATAL
+
+
+def test_try_only_unit_even_when_its_tries_carry_changes():
+    # c7 pawn: no part in the solution, only promotion tries (with a changed mate) - still fatal
+    assert 'try-only unit' in _rules('4K3/2Pp3B/4k3/8/3Q4/8/8/8')

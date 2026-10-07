@@ -364,6 +364,13 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         if name in use:
             continue
         verdict = nec.get(name, '')
+        own = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == name]
+        if p.piece_type != chess.KING and sq != kmove.from_square and own:
+            # E. Bourd (7 Oct 2026): a unit in no mate of the solution that only plays tries is fatal,
+            # whatever content the tries carry
+            add('major', 'try-only unit', f"{_pname(board, sq)} takes part in no mate of the solution; it only plays "
+                                          + ', '.join('1.' + t + '?' for t in own) + ' (fatal, E. Bourd)')
+            continue
         if p.piece_type == chess.KING:
             anchors = king_pin_anchor(problem, res)
             if anchors:
