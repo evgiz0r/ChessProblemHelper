@@ -18,6 +18,9 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   sound kernel) with `chesscomp.compose.kernel_search`, in parallel and under a time budget.
 - Boards as SVG with every diagram, FEN with every board (`tools/board_img.py`). A problem with its
   solution beside it, for him or for a database record: `tools/card_png.py out.png --id psis-…`.
+- Every problem shown in chat goes with its diagram (E. Bourd, 7 Oct 2026): render the card with
+  `tools/card_png.py` (diagram, solution, and the mentor questions when asking) and send the image; text alone
+  is never enough.
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his
