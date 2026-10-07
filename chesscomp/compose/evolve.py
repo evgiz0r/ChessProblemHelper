@@ -11,7 +11,11 @@ CORE). DEFS: the thematic Black defences (SAN as the solver prints them) that mu
 all different, after a unique key. CHANGED=1 also rewards set mates for DEFS that the key changes.
 Score (higher is better): soundness first (unique key; for unsound positions, fewer refutations of the
 best try is better), then the thematic variations, then purity (no duals, quiet key, single threat),
-then economy. A line starting HIT is a position that meets the whole specification; check it with
+then economy. CORR=d4 (Black correction mode) rewards, for the Black piece on that square, a random move with
+one mate and corrections each with their own single mate (the solver's S~ lines); NCORR (default 2) corrections
+are needed for a HIT, every move of that piece must defend, and DEFS may be empty. NOFLIGHT=1 (default) penalises
+every diagram flight and refuses it in a HIT (the constitution makes it fatal); NOFLIGHT=0 restores the old
+score, where only an unprovided flight costs. A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
 """
 import os, sys, random, time, json, chess
@@ -26,6 +30,9 @@ DEFS = [d for d in os.environ.get('DEFS', 'd6,d5').split(',') if d]
 CHANGED = os.environ.get('CHANGED', '0') == '1'
 PATTERN = os.environ.get('PATTERN', '')            # e.g. 'Dombrovskis (refutation)': every DEF must carry it
 TRYCHANGE = os.environ.get('TRYCHANGE', '0') == '1'  # reward tries whose mates for DEFS differ (or swap: reciprocal)
+CORR = os.environ.get('CORR', '')                  # Black correction mode: square of the correcting piece
+NCORR = int(os.environ.get('NCORR', '2'))
+NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram flight is fatal, so no HIT has one
 BUDGET = float(os.environ.get('BUDGET_S', '900'))
 MAXU = int(os.environ.get('MAX_UNITS', '16'))
 random.seed(int(os.environ.get('SEED_RNG', str(JOB * 7919 + int(time.time()) % 1000))))
@@ -71,6 +78,28 @@ def var_map(ph):
     for v in ph['variations']:
         out[v['defence']['san'].rstrip('+#')] = v
     return out
+
+def corr_score(ph):
+    """(score, summary, ok) of the correction play of the piece on CORR in phase ph."""
+    if not CORR:
+        return 0.0, '', True
+    mine = [v for v in ph['variations'] if v['defence']['uci'][:2] == CORR]
+    t = -4.0 * sum(1 for v in mine if v['threat_repeat'] or not v['continuations'])   # moves that do not defend
+    c = next((c for c in ph.get('corrections', []) if c['piece'][1:] == CORR), None)
+    if not c:
+        return t - 30, 'no S~', False
+    r = c['random']
+    t += 20 - 8 * len(r['duals'])
+    single = [x for x in c['corrections'] if len(x['mates']) == 1]
+    mates = [x['mates'][0] for x in single]
+    t += 18 * len(set(mates) - {r['mate']}) - 8 * (len(c['corrections']) - len(single))
+    distinct = len(set(mates)) == len(mates) and r['mate'] not in mates
+    if distinct and len(single) >= NCORR:
+        t += 15
+    ok = (not r['duals'] and len(single) == len(c['corrections']) >= NCORR and distinct
+          and all(v['continuations'] and not v['threat_repeat'] for v in mine))
+    return t, f"S~ {r['mate']} | " + ' '.join(f"{x['move']}:{'/'.join(x['mates'])}" for x in c['corrections']), ok
+
 
 def score(b):
     """(score, summary, hit)"""
@@ -121,8 +150,10 @@ def score(b):
         if ph.get('threat') == 1:
             t += 4
         t -= 3 * sum(1 for v in ph['variations'] if v['dual'] and v['defence']['san'].rstrip('+#') not in DEFS)
+        ct, csum, _ = corr_score(ph)
+        t += ct
         if t > best_theme:
-            best_theme, best_sum = t, f"{ph['type']} {ph['first_move']['san']} " + ' '.join(f'{d}:{m}' for d, m in zip(DEFS, mates))
+            best_theme, best_sum = t, f"{ph['type']} {ph['first_move']['san']} " + ' '.join(f'{d}:{m}' for d, m in zip(DEFS, mates)) + (' ' + csum if CORR else '')
     s += best_theme
     s -= 1.5 * max(0, units(b) - 10)
     # flights in the diagram need set mates (E. Bourd: a diagram flight is fatal unless provided)
@@ -132,6 +163,8 @@ def score(b):
         sv = setmap.get(n.san(m).rstrip('+#'))
         if not (sv and sv['continuations']):
             s -= 10
+        if NOFLIGHT:
+            s -= 15
     pats = (r.get('relations') or {}).get('patterns', [])
     if PATTERN:
         got = {pt.get('defence') for pt in pats if pt['name'] == PATTERN}
@@ -165,6 +198,7 @@ def score(b):
             ok = all(d in got for d in DEFS)
         if ok and CHANGED:
             ok = all(d in setmap and setmap[d]['continuations'] and vm[d]['continuations'][0]['san'] not in {c['san'] for c in setmap[d]['continuations']} for d in DEFS)
+        ok = ok and corr_score(ph)[2] and not (NOFLIGHT and kmoves)
         hit = ok
     return s, f"keys={keys} {best_sum}", hit
 
