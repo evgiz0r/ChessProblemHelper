@@ -690,3 +690,11 @@
   attempt: a white pawn b5 protects c6 so the king can leave b7 (1.Kc6 gone, 1...Kd5 2.Qc6# kept). 1.Be5
   protects d4 from e5, past f6: inherent while the guard of d4 runs h8-e5-d4. 1.e7 comes from the e6 pawn
   that stops 1.Qe6#. No single added unit fixes either (searched).
+* Process profile of his must/can't problem (bench muyhjkp8 + muyiuskd, 19:13-20:04, 260 actions): 85 solves,
+  half of them after a single edit ("touch and listen"); 32 solves of post-key positions; long pauses (8 min
+  at the start, 6 min at 19:44, 2-3 min twice) come before structural changes, small edits happen on the
+  board. Toggles the key piece to read both phases (queen b3<->c3 six times each, king b7<->c6) and probes
+  with try-and-revert (29 returns to a position within three edits). Recycles a small set of stoppers (bPb5
+  six times, wPe2 and bBb1 four times). Transforms: three rotations to orient the scheme, then shift down
+  (19:53, already sound with 1.Qc2), back up for eight minutes of attempts in the old geometry, down again
+  (20:01) for the final version.
