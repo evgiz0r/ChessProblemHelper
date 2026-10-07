@@ -28,6 +28,10 @@ Read `references/construction.md` now (the order and the rules with their exampl
    named defence for every white first move, and the pairs of moves that give one distinct mate per defence
    with every mate changed (a try/key pair). No pair means the selectors are on different pieces: change the
    geometry (E. Bourd shifted his whole scheme one file) rather than piling on cook-stoppers.
+   With pawns the geometry has little room: "Pawn move themes are limiting by nature, can't rotate or move
+   the board up or down. It does make the mechanism more rigid and less open for enhancements" (E. Bourd).
+   A double step ties the pawn to its home rank, so only file shifts and the left-right mirror remain; plan
+   the selectors with that in mind from the start, since the board will not rescue a pawn mechanism later.
 4. **Defenders.** Add Black units whose moves defend for the reasons chosen; each thematic defence gets
    one mate. Here the enumerator earns its keep: `KERNEL=... KEY_UCI=... KEY_SAN=... BUDGET_S=300 JOBS=4
    python -m chesscomp.compose.kernel_search <n_black> <n_white>` around the SOUND kernel only.

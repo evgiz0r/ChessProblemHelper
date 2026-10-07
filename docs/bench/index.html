@@ -416,8 +416,25 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
       if (!t){ report('That ' + name + ' would push a piece off the board. Nothing changed.', 'warn'); return; }
       n[t[0]][t[1]] = p;
     }
+    const pw = pawnCheck(name, g, n);
+    if (pw.stop){ report(pw.stop, 'warn'); return; }
     state.hist.push(clone(g)); state.grid = n; state.sel = null; state.last = null; draw();
     log(name, fenOf(n));
+    report(pw.warn || '', pw.warn ? 'warn' : '');
+  }
+  // E. Bourd, session 29: pawn themes cannot be rotated or moved up and down; only left-right shifts and the
+  // left-right mirror keep the pawns' play. Rotations and the up-down mirror are refused when pawns stand;
+  // an up/down shift is refused if a pawn would reach the first or last rank and warned if a pawn gains or
+  // loses its double step.
+  function pawnCheck(name, g, n){
+    const has = (grid) => grid.some(row => row.some(p => p === 'P' || p === 'p'));
+    if (!has(g)) return {};
+    if (/rotate|up-down/.test(name)) return {stop: 'Pawns fix the direction of the board: a ' + name + ' would make them move sideways or backwards. Only left-right shifts and the left-right mirror keep a pawn mechanism. Nothing changed.'};
+    if (!/shift (up|down)/.test(name)) return {};
+    if ([0, 7].some(r => n[r].some(p => p === 'P' || p === 'p'))) return {stop: 'That ' + name + ' puts a pawn on the first or last rank. Nothing changed.'};
+    const home = (grid) => grid[1].filter(p => p === 'P').length + grid[6].filter(p => p === 'p').length;
+    if (home(g) !== home(n)) return {warn: 'Shifted, but a pawn ' + (home(n) < home(g) ? 'lost' : 'gained') + ' its double step: the pawn play has changed.'};
+    return {};
   }
   document.getElementById('rotr').addEventListener('click', () => transform('rotate cw', (r, f) => [f, 7 - r]));
   document.getElementById('rotl').addEventListener('click', () => transform('rotate ccw', (r, f) => [7 - f, r]));

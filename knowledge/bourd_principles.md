@@ -218,3 +218,11 @@ cost 2 or 3 units. A complete mechanism has to be thought; it will not be a smal
 mechanism, as the gameplay is somewhat rigid." A change of mates is designed from the start.
 What he liked: the dual avoidance, two mates that both seem possible after any pawn move, each killed by
 one landing square.
+
+His own changed-mate version (2B5/2p1N3/3k4/3NpK2/8/3pQ3/3P4/8, 1.Ke4! c6 Sf5#, c5 Qh6#; try 1.Be6? e4!):
+"at first I just had two mates, then I somehow had to separate, that's obviously the hard part. Here it's
+square vacations and line changes for the queen. Not so simple geometrically." He shifted the scheme one file
+to make it work, and on why that is the only freedom: "Pawn move themes are limiting by nature, can't rotate
+or move the board up or down. It does make the mechanism more rigid and less open for enhancements." The
+bench now refuses rotations and the up-down mirror while pawns stand, refuses up/down shifts that put a pawn
+on the first or last rank, and warns when a shift gains or loses a double step.
