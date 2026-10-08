@@ -21,9 +21,9 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   sound kernel) with `chesscomp.compose.kernel_search`, in parallel and under a time budget.
 - Boards as SVG with every diagram, FEN with every board (`tools/board_img.py`). A problem with its
   solution beside it, for him or for a database record: `tools/card_png.py out.png --id psis-…`.
-- Every problem shown in chat goes with its diagram, inline (E. Bourd, 7 Oct 2026): render the card with
-  `tools/card_png.py --portrait` (diagram above the solution: he reads on a phone, which crops wide cards; diagram,
-  solution, and the mentor questions when asking) into `docs/blog/cards/<name>.png`,
+- Every problem shown in chat goes with its diagram, inline (E. Bourd, 7 Oct 2026): render the diagram with
+  `tools/card_png.py --board` (a square board only: he reads on a phone, which crops wide cards and overlaps tall
+  ones) and write the FEN, solution and questions as text under it; `--portrait` makes a full card for files into `docs/blog/cards/<name>.png`,
   commit and push it, then embed it in the reply as
   `![title](https://raw.githubusercontent.com/evgiz0r/ChessProblemHelper/main/docs/blog/cards/<name>.png)`.
   He sees it inline. Text alone is never enough.

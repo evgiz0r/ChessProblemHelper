@@ -12,6 +12,11 @@ out = sys.argv[1]
 PORTRAIT = '--portrait' in sys.argv
 if PORTRAIT:
     sys.argv.remove('--portrait')
+# --board: a square diagram only, nothing else. Chat apps show square images whole and render the solution
+# best as text under them (E. Bourd, 8 Oct 2026: wide cards were cropped, tall ones overlapped the text)
+BOARD = '--board' in sys.argv
+if BOARD:
+    sys.argv.remove('--board')
 if len(sys.argv) > 3 and sys.argv[2] == '--id':
     sys.path.insert(0, __import__('os').path.join(__import__('os').path.dirname(__file__), '..'))
     from chesscomp import db
@@ -48,7 +53,10 @@ for l in spec['lines']:
 count = spec.get('count', '')
 count = f" &nbsp; ({html.escape(count.strip('()'))})" if count else ''
 layout = 'display:block;padding:14px;width:400px' if PORTRAIT else 'display:flex;gap:22px;padding:14px;width:760px'
-page = f'''<html><body style="margin:0;background:#fff;font-family:Georgia,serif">
+if BOARD:
+    page = f'<html><body style="margin:0;background:#fff"><div id="c" style="width:360px;height:360px">{svg}</div></body></html>'
+else:
+  page = f'''<html><body style="margin:0;background:#fff;font-family:Georgia,serif">
 <div id="c" style="{layout};box-sizing:border-box">
  <div style="flex:none"><div style="width:360px;height:360px">{svg}</div>
   <div style="font:13px Georgia;color:#333;margin-top:6px;text-align:center">{html.escape(spec.get('stip','#2'))}{count}</div></div>
@@ -63,7 +71,7 @@ with sync_playwright() as p:
     import glob
     exe = next(iter(sorted(glob.glob('/opt/pw-browsers/chromium-*/chrome-linux/chrome'))), None)  # web-session Chromium
     br = p.chromium.launch(executable_path=exe, args=['--no-sandbox']) if exe else p.chromium.launch(args=['--no-sandbox'])
-    pg = br.new_page(viewport={'width': 440 if PORTRAIT else 780, 'height': 420}, device_scale_factor=2)
+    pg = br.new_page(viewport={'width': 360 if BOARD else (440 if PORTRAIT else 780), 'height': 360 if BOARD else 420}, device_scale_factor=2)
     pg.set_content(page); pg.wait_for_timeout(300)
     pg.locator('#c').screenshot(path=out); br.close()
 print(out)
