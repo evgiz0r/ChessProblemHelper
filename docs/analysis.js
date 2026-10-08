@@ -457,5 +457,36 @@
     return L.join('\n');
   }
 
-  return { analyse, formatReport, formatCompact, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
+  /* Key readiness (E. Bourd, 8 Oct 2026: "most of the part is just finding the key"). With White to move in a
+     post-key position, every first move that forces mate in two (mates in one included) except the threat would
+     cook any key that leaves it alone; a key piece must be needed by all of them. Returns
+     { solutions: [san], units: [{unit, left: [san]}] } where `left` is what still solves without that unit. */
+  function solutionsOf(c) {
+    const out = [];
+    for (const w of legal(c)) {
+      c.move(w);
+      const ok = c.isCheckmate() || blackAllAnswered(c);
+      c.undo();
+      if (ok) out.push(S(w.san));
+    }
+    return out;
+  }
+  function keyReadiness(fen, withUnits) {
+    const c = boardFrom(fen, 'w');
+    if (!c || c.isCheck()) return null;
+    const res = { solutions: solutionsOf(c), units: [] };
+    if (!withUnits) return res;
+    for (const sq of c.board().flat().filter(p => p && p.color === 'w' && p.type !== 'k').map(p => p.square)) {
+      const d = boardFrom(fen, 'w'); d.remove(sq);
+      const name = (c.get(sq).type === 'n' ? 'S' : c.get(sq).type.toUpperCase()) + sq;
+      if (d.isCheck()) continue;
+      // a removal that opens a flight for the Black king kills every mate for the wrong reason: flag it
+      const bl = boardFrom(d.fen().split(' ')[0], 'b');
+      const flight = !!bl && bl.moves({ verbose: true }).some(m => m.piece === 'k');
+      res.units.push({ unit: name, left: solutionsOf(d), flight });
+    }
+    return res;
+  }
+
+  return { analyse, keyReadiness, formatReport, formatCompact, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
 }));

@@ -137,6 +137,7 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(-
       <select id="stip" aria-label="stipulation"><option>#2</option><option>s#2</option><option>h#2</option></select>
       <button class="act primary" id="solve">Solve</button>
       <label class="sub" title="everything the solver knows: every set-play move, changed mates, patterns, dual avoidance"><input type="checkbox" id="fullreport"> full report</label>
+      <label class="sub" title="post-key view: also find which White unit every other mate in two depends on (one solve per unit, slower)"><input type="checkbox" id="keyunits"> key check by unit</label>
     </div>
     <pre class="report" id="report">Set up a position and press Solve.
 Pre-key: the diagram is White to move; you get set play, tries with refutations, keys, duals and changed mates.
@@ -506,8 +507,8 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   }
   function firstLines(t){
     // verdict first (cooked / keys / no solution), then threat and holes, then tries: the journal keeps only this line
-    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|1\.|\s+[QRBS]~|\s+\[duals\]|\s+changed|Reciprocal|Patterns)/i.test(l));
-    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution|1\.)/i.test(l) ? 1 : /^(threat|holes|unprovided)/i.test(l) ? 2 : /^\s+([QRBS]~|\[duals\]|changed)/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
+    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|Also solves|Key-piece|1\.|\s+[QRBS]~|\s+\[duals\]|\s+changed|Reciprocal|Patterns)/i.test(l));
+    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution|1\.)/i.test(l) ? 1 : /^(threat|holes|unprovided|Also solves|Key-piece)/i.test(l) ? 2 : /^\s+([QRBS]~|\[duals\]|changed)/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
     return L.map((l, i) => [rank(l), i, l]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 8).map(x => x[2]).join(' | ');
   }
   function solvePre(fen){
@@ -544,6 +545,21 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     // threat Qf4# is played as Qxf4#, which is still the threat (E. Bourd: a move that does not stop it is no dual)
     const defs = sp.variations.filter(v => !v.conts.some(x => threatIds.has(x.id)));
     const allow = sp.variations.length - defs.length;
+    // key readiness: other first moves that already force mate with White to move cook every key that leaves them
+    if (ChessComp.keyReadiness){
+      const kr = ChessComp.keyReadiness(fen, document.getElementById('keyunits').checked);
+      if (kr){
+        const tsan = new Set(threats.map(s => s.replace(/^N/, 'S')));
+        const others = kr.solutions.filter(s => !tsan.has(s));
+        lines.push(others.length ? 'Also solves with White to move (' + others.length + '): ' + others.join(', ') + '  <- a key must break all of these'
+                                 : 'Key readiness: nothing else solves with White to move');
+        if (kr.units.length){
+          const cand = kr.units.filter(u => !u.flight && !u.left.filter(s => !tsan.has(s)).length).map(u => u.unit);
+          lines.push('Key-piece candidates (every other solution needs them): ' + (cand.length ? cand.join(', ') : 'none - remove White force or add Black guards first'));
+          for (const u of kr.units) lines.push('   without ' + u.unit + ': ' + (u.flight ? 'the king gets a flight' : u.left.filter(s => !tsan.has(s)).length + ' left'));
+        }
+      }
+    }
     lines.push('');
     const full = document.getElementById('fullreport').checked;
     if (!full && ChessComp.phaseCompact){
