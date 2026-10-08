@@ -68,7 +68,8 @@ Read `references/construction.md` now (the order and the rules with their exampl
    one mate. Here the enumerator earns its keep: `KERNEL=... KEY_UCI=... KEY_SAN=... BUDGET_S=300 JOBS=4
    python -m chesscomp.compose.kernel_search <n_black> <n_white>` around the SOUND kernel only.
 5. **Clean.** Every cook or dual has a one-unit remedy: load `stop-cooks`. One change, one solve.
-6. **Trim.** Remove each unit and re-solve; remove pairs too. The critique lists what is not needed.
+6. **Trim, recursively.**  removes units in every order until nothing more
+   can go with the same key and play: some units are artifacts of others (E. Bourd: bPh6 only stopped bRh5's checks).
 7. **Judge before showing**: load `judge`. Draw the board, give the FEN, name the flaws first.
 
 ## Shrink before you grow
