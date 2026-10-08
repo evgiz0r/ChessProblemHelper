@@ -173,6 +173,18 @@ def main(argv=None):
                       time_limit=15).get('keys') or []
     except Exception:
         own = []
+    # E. Bourd (8 Oct 2026): in a post-key position every move that leaves the threat standing solves (Kg8 as a
+    # waiting move): that is the solution being sound, not a cook. Only the moves after which the threat no
+    # longer mates, yet White still forces mate (checks, captures, new threats), say anything about the key.
+    def keeps_threat(san):
+        b = chess.Board(post.board_fen() + ' w - - 0 1'); b.push_san(san)
+        if b.is_checkmate():
+            return move_id(chess.Board(post.board_fen() + ' w - - 0 1'), b.peek()) in spec[0]   # the threat itself
+        if b.is_check():
+            return False
+        b.push(chess.Move.null())
+        return any(move_id(b, m) in spec[0] and (b.push(m) or True) and (b.is_checkmate(), b.pop())[0] for m in list(b.legal_moves))
+    own = [x for x in own if not keeps_threat(x.replace('S', 'N') if x[0] == 'S' else x)]
     if own:
         print(f"White to move in the post-key position also solves by: {', '.join(own)} (each cooks keys that leave it)")
         # a key piece must be needed by every one of them: without it (taken back) none may still solve
@@ -186,6 +198,10 @@ def main(argv=None):
                                include_set=False, time_limit=15).get('keys') or []
             except Exception:
                 continue
+            left = [x for x in left if x in own]
+            bk = b.copy(); bk.turn = chess.BLACK
+            if any(m.from_square == bk.king(chess.BLACK) for m in bk.legal_moves):
+                print(f"   without {pc.symbol()}{chess.square_name(sq)}: the king gets a flight"); continue
             print(f"   without {pc.symbol()}{chess.square_name(sq)}: {len(left)} left" + (f" ({', '.join(left[:6])})" if left else '  <- candidate'))
     tasks = [(pre.fen(), key.uci(), None) for pre, key in retractions(post)]
     print(f"{len(tasks)} retractions")

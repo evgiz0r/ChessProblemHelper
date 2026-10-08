@@ -8,7 +8,7 @@
 | Unprovided check in the set play | fatal | `unprovided check` |
 | Promoted piece in the diagram | fatal unless unavoidable | count it yourself |
 | Black king flight in the diagram | big flaw | `king escape in diagram` |
-| Key by a piece out of play (edge, far, guarding nothing near the king) | fatal (E. Bourd, 7 Oct) | `out-of-play key` |
+| Key by a piece out of play (edge, far, guarding nothing near the king; queens and rooks too, 8 Oct) | fatal (E. Bourd, 7 Oct) | `out-of-play key` |
 | White unit in no mate of the solution, there only for a try | fatal (E. Bourd, 7 Oct) | `try-only unit`, `superfluous piece` |
 | Same mechanism as a published problem with nothing added, or reduced | not a problem (E. Bourd, 7 Oct) | anticipation (gate: identical only) |
 | Try refuted by a king move | big flaw | `king refutes try` |

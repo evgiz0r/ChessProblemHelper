@@ -471,10 +471,26 @@
     }
     return out;
   }
+  // E. Bourd (8 Oct 2026): a move that leaves the threat standing solves in any sound post-key position
+  // (Kg8 as a waiting move) - that is the solution, not a cook. Keep only moves after which the threat no
+  // longer mates, and drop the threat itself.
+  function realSolutions(c) {
+    const threat = new Set(matesIn1(c).map(mid));
+    return solutionsOf(c).filter(san => {
+      const m = c.move(san.replace(/^S/, 'N').replace('=S', '=N'));
+      let keeps = false;
+      if (!threat.has(mid(m)) && !c.isCheck()) {
+        const nc = new Chess(c.fen().replace(' b ', ' w '));
+        keeps = matesIn1(nc).some(x => threat.has(mid(x)));
+      }
+      c.undo();
+      return !threat.has(mid(m)) && !keeps;
+    });
+  }
   function keyReadiness(fen, withUnits) {
     const c = boardFrom(fen, 'w');
     if (!c || c.isCheck()) return null;
-    const res = { solutions: solutionsOf(c), units: [] };
+    const res = { solutions: realSolutions(c), units: [] };
     if (!withUnits) return res;
     for (const sq of c.board().flat().filter(p => p && p.color === 'w' && p.type !== 'k').map(p => p.square)) {
       const d = boardFrom(fen, 'w'); d.remove(sq);
@@ -483,7 +499,7 @@
       // a removal that opens a flight for the Black king kills every mate for the wrong reason: flag it
       const bl = boardFrom(d.fen().split(' ')[0], 'b');
       const flight = !!bl && bl.moves({ verbose: true }).some(m => m.piece === 'k');
-      res.units.push({ unit: name, left: solutionsOf(d), flight });
+      res.units.push({ unit: name, left: solutionsOf(d).filter(x => res.solutions.includes(x)), flight });
     }
     return res;
   }

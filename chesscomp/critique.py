@@ -230,7 +230,8 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         add('minor', 'flight-taking key', 'key takes flight(s): ' + ', '.join(chess.square_name(s) for s in flights_before - flights_after))
     # E. Bourd (7 Oct 2026, on daily No. 2): a key by a piece out of play makes the solution obvious - fatal.
     # Out of play: a knight or bishop on the edge of the board, three or more squares from the Black king,
-    # guarding no square of the king's field. Queens and rooks are left out: corner keys are a theme.
+    # guarding no square of the king's field. Queens and rooks too (E. Bourd, 8 Oct 2026, on 1.Qb1 from h1: "very
+    # bad key, queen completely out of play").
     if out_of_play_key(board, kmove):
         add('major', 'out-of-play key', f"the key piece {_pname(board, kmove.from_square)} stands out of play "
                                         "(edge, far from the king, guarding nothing near it): the key is obvious (fatal, E. Bourd)")
@@ -472,11 +473,11 @@ def idle_key_piece(board, kmove, phases):
 
 
 def out_of_play_key(board, kmove):
-    """E. Bourd (7 Oct 2026, daily No. 2): a knight or bishop on the edge, three or more squares from the
-    black king, guarding no square of its field, makes the key obvious (fatal). Queens and rooks are left
-    out: corner keys are a theme."""
+    """E. Bourd (7 Oct 2026, daily No. 2): a piece on the edge, three or more squares from the black king,
+    guarding no square of its field, makes the key obvious (fatal). Knights and bishops first; queens and rooks
+    since 8 Oct 2026 ("very bad key, queen completely out of play", on 1.Qb1 from h1)."""
     bk = board.king(chess.BLACK)
     kfield = chess.BB_KING_ATTACKS[bk] | chess.BB_SQUARES[bk]
     f0, r0 = chess.square_file(kmove.from_square), chess.square_rank(kmove.from_square)
-    return (board.piece_type_at(kmove.from_square) in (chess.KNIGHT, chess.BISHOP) and (f0 in (0, 7) or r0 in (0, 7))
+    return (board.piece_type_at(kmove.from_square) in (chess.KNIGHT, chess.BISHOP, chess.ROOK, chess.QUEEN) and (f0 in (0, 7) or r0 in (0, 7))
             and chess.square_distance(kmove.from_square, bk) >= 3 and not int(board.attacks(kmove.from_square)) & kfield)
