@@ -25,7 +25,10 @@ Solve details start with the verdict (COOKED / Key / No solution), then threat a
    bench's JavaScript solver (same keys, less critique) and it was truncated in early sessions.
 4. Draw the stages as boards; write the story in his terms; record the finished problem with `record`.
 5. Read the process, not only the result: sittings that ended nowhere, transformations that only made
-   room, the change that supplied the reason, how many solves per minute.
+   room, the change that supplied the reason, how many solves it took.
+6. Timestamps are not thinking time (E. Bourd, 8 Oct 2026): he composes between food, family and errands, so a
+   gap between two steps is usually a break, not deliberation. Count steps and solves, not minutes; never
+   report a sitting's length or a pause as effort, and never infer that a step was hard from the gap before it.
 
 Transforms respect pawns (session 29): with pawns on the board a rotation or the up-down mirror is made with
 a warning naming the pawns to re-place (fine for cook-stoppers and blocks, undo when a pawn move is
