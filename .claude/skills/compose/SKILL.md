@@ -33,7 +33,12 @@ Read `references/construction.md` now (the order and the rules with their exampl
    in every named phase, fewest new black moves first. On his pawn-step scheme it ranks his bPe5 first.
    These are implementation aids, not ideas (E. Bourd: "add one unit that eliminates mates? That's not an
    idea, that's a specific implementation"). Decide the reason for every split first; use a tool to place it.
-3d. **Key last is too late.** `python3 -m chesscomp.compose.retract POSTKEY` undoes every white move of a
+3d. **Find the key with `python3 -m chesscomp.compose.keyfind POSTKEY [--patch]`.** It takes back every White
+   unit one move, keeps the diagrams where that move is the only key and the post-key play is unchanged, and ranks
+   them (sacrifice, flight given, changed set play high; check, capture, idle or out-of-play key piece low).
+   --patch adds one unit to near-misses. It first prints the other mates in two that the post-key position already
+   has with White to move, and which unit they all need: no shared unit = no key until the position is tightened.
+   **Key last is too late.** `python3 -m chesscomp.compose.retract POSTKEY` undoes every white move of a
    finished post-key position and solves each diagram (his habit: post-key position first, then take the key
    back). It only finds the keys the position already allows: in session 29 two good mechanisms gave only
    idle or flight-taking keys. Think about the key's role while the mechanism is still soft.
