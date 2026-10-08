@@ -192,7 +192,7 @@ def main(argv=None):
             return False
         b.push(chess.Move.null())
         return any(move_id(b, m) in spec[0] and (b.push(m) or True) and (b.is_checkmate(), b.pop())[0] for m in list(b.legal_moves))
-    own = [x for x in own if not keeps_threat(x.replace('S', 'N') if x[0] == 'S' else x)]
+    own = [x for x in own if not keeps_threat(x.replace('S', 'N'))]
     if own:
         print(f"White to move in the post-key position also solves by: {', '.join(own)} (each cooks keys that leave it)")
         # a key piece must be needed by every one of them: without it (taken back) none may still solve

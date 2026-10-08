@@ -4,8 +4,36 @@ the named defences must each get one mate, all different, with no holes and no d
     python3 -m chesscomp.compose.postsearch CORE SEED THREAT_IDS DEFS BUDGET_S RNG
     e.g. CORE=3R4/8/8/8/4k3/r7/3PP3/b1Q5 THREAT_IDS=Qc1c6 DEFS=Rc3,Bc3
 """
-import sys, random, time, chess
-from chesscomp.compose.keyfind import post_spec
+import sys, os, random, time, chess
+from chesscomp.compose.keyfind import post_spec, move_id
+from chesscomp.core import Problem
+from chesscomp.analysis import analyse
+READY = os.environ.get('READY', '0') == '1'   # also minimise White's other real mates in two (key readiness)
+
+
+def other_solutions(fen, threat):
+    """White first moves that force mate although the threat no longer mates after them (E. Bourd: waiting moves
+    that keep the threat are the solution being sound, not cooks)."""
+    try:
+        keys = analyse(Problem.from_fen(fen + ' w - - 0 1', '#2'), include_tries=False, include_set=False, time_limit=8).get('keys') or []
+    except Exception:
+        return 99
+    n = 0
+    for san in keys:
+        b = chess.Board(fen + ' w - - 0 1')
+        try:
+            m = b.parse_san(san.replace('S', 'N'))
+        except ValueError:
+            n += 1; continue
+        if move_id(b, m) in threat:
+            continue
+        b.push(m)
+        if not b.is_check():
+            b.push(chess.Move.null())
+            if any(move_id(b, x) in threat and (b.push(x) or True) and (b.is_checkmate(), b.pop())[0] for x in list(b.legal_moves)):
+                continue
+        n += 1
+    return n
 CORE = sys.argv[1]; SEED = sys.argv[2]; THREAT = set(sys.argv[3].split(','))
 DEFS = sys.argv[4].split(','); BUDGET = float(sys.argv[5]); random.seed(int(sys.argv[6]))
 core = chess.Board(CORE + ' b - - 0 1'); CSQ = {s: core.piece_at(s) for s in chess.SQUARES if core.piece_at(s)}
@@ -34,7 +62,10 @@ def score(fen):
     if len(mates) == len(DEFS) and len(set(mates)) == len(mates): s += 15
     s -= 0.7 * len(b.piece_map())
     ok = t == THREAT and not holes and not duals and len(mates) == len(DEFS) and len(set(mates)) == len(DEFS)
-    return s + (100 if ok else 0), f"holes={holes} duals={duals} {dict((k, sorted(names.get(k, []))) for k in DEFS)}"
+    extra = ''
+    if ok and READY:
+        o = other_solutions(fen, THREAT); s -= 8 * o; extra = f' others={o}'
+    return s + (100 if ok else 0), f"holes={holes} duals={duals} {dict((k, sorted(names.get(k, []))) for k in DEFS)}{extra}"
 def mutate(fen):
     b = chess.Board(fen + ' b - - 0 1')
     free = [s for s in chess.SquareSet(b.occupied) if s not in CSQ]
@@ -58,7 +89,7 @@ while time.time() - t0 < BUDGET:
     for _ in range(random.choice((1, 1, 2))): ch = mutate(ch)
     if ch in seen: continue
     seen.add(ch); sc, info = score(ch); pop.append((sc, ch))
-    if sc > 100: print('HIT', round(sc, 1), ch, info, flush=True)
+    if sc > 100 and (not READY or sc > best[0]): best = (sc, ch); print('HIT', round(sc, 1), ch, info, flush=True)
 pop.sort(key=lambda x: -x[0])
 for sc, f in pop[:3]: print('TOP', round(sc, 1), f, score(f)[1])
 print('evaluated', len(seen))

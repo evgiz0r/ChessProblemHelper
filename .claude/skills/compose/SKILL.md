@@ -41,6 +41,10 @@ Read `references/construction.md` now (the order and the rules with their exampl
    Write the choice down: "1...Se4: self-block e4 -> a mate that needs e4 blocked; must fail after Bb5, which
    opens Qb4-e4". Only then search, and only to place the unit that the named mate needs. A search with no named
    error is a guess; a one-unit search cannot supply a missing error.
+3c'''. **Threat first, then the post-key position** (E. Bourd, 8 Oct 2026): fix the threat that makes the thematic
+   moves defend, then  builds the
+   post-key position (threat fixed, named defences single and distinct, no holes, White's other mates minimised),
+   then keyfind and trim. Grimshaw on c3 (claude-grimshaw-c3-qc1) came out this way after 20 failed diagram searches.
 3c''. **Coverage claims by tool, not by eye**: `python3 -m chesscomp.compose.matecheck FEN "MOVE"` lists each square of
    the king's field with its White guards (or FREE), the interpositions and the captures of the checker. Decide the
    threat line and its interpositions before the mates.
