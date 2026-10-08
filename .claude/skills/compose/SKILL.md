@@ -33,6 +33,14 @@ Read `references/construction.md` now (the order and the rules with their exampl
    in every named phase, fewest new black moves first. On his pawn-step scheme it ranks his bPe5 first.
    These are implementation aids, not ideas (E. Bourd: "add one unit that eliminates mates? That's not an
    idea, that's a specific implementation"). Decide the reason for every split first; use a tool to place it.
+3c'. **Errors before any search** (E. Bourd, 8 Oct 2026: "this small thing cannot be just search"). For every
+   defence, and every hole, run `python3 -m chesscomp.compose.effects POSTKEY [MOVE ...]`: it lists what the move's
+   departure and arrival change (self-block, lines opened/closed with the squares, guards lost/gained, pins) and
+   marks each error as `only this move` or `[also ...]`. Choose each mate from an error that is only that move's
+   (or a shared one that every other defence cancels by a property of its own, like a knight on d4 guarding e6).
+   Write the choice down: "1...Se4: self-block e4 -> a mate that needs e4 blocked; must fail after Bb5, which
+   opens Qb4-e4". Only then search, and only to place the unit that the named mate needs. A search with no named
+   error is a guess; a one-unit search cannot supply a missing error.
 3d. **Find the key with `python3 -m chesscomp.compose.keyfind POSTKEY [--patch]`.** It takes back every White
    unit one move, keeps the diagrams where that move is the only key and the post-key play is unchanged, and ranks
    them (sacrifice, flight given, changed set play high; check, capture, idle or out-of-play key piece low).
