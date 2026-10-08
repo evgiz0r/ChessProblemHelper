@@ -8,6 +8,10 @@ label (TRIES, KEY, THEMES), a line starting with two spaces is an indented varia
 import sys, json, re, html, chess, chess.svg
 from playwright.sync_api import sync_playwright
 out = sys.argv[1]
+# --portrait: diagram above the text, narrow (phone chat apps crop wide images: E. Bourd, 8 Oct 2026)
+PORTRAIT = '--portrait' in sys.argv
+if PORTRAIT:
+    sys.argv.remove('--portrait')
 if len(sys.argv) > 3 and sys.argv[2] == '--id':
     sys.path.insert(0, __import__('os').path.join(__import__('os').path.dirname(__file__), '..'))
     from chesscomp import db
@@ -41,11 +45,14 @@ for l in spec['lines']:
         rows.append(f'<div class="var">{html.escape(l.strip())}</div>')
     else:
         rows.append(f'<div class="main">{html.escape(l)}</div>')
+count = spec.get('count', '')
+count = f" &nbsp; ({html.escape(count.strip('()'))})" if count else ''
+layout = 'display:block;padding:14px;width:400px' if PORTRAIT else 'display:flex;gap:22px;padding:14px;width:760px'
 page = f'''<html><body style="margin:0;background:#fff;font-family:Georgia,serif">
-<div id="c" style="display:flex;gap:22px;padding:14px;width:760px;box-sizing:border-box">
+<div id="c" style="{layout};box-sizing:border-box">
  <div style="flex:none"><div style="width:360px;height:360px">{svg}</div>
-  <div style="font:13px Georgia;color:#333;margin-top:6px;text-align:center">{html.escape(spec.get('stip','#2'))} &nbsp; ({html.escape(spec.get('count',''))})</div></div>
- <div style="flex:1;min-width:0">
+  <div style="font:13px Georgia;color:#333;margin-top:6px;text-align:center">{html.escape(spec.get('stip','#2'))}{count}</div></div>
+ <div style="flex:1;min-width:0;{'margin-top:10px' if PORTRAIT else ''}">
   <div style="font:bold 17px Georgia;margin-top:4px">{html.escape(spec['author'])}</div>
   <div style="font:13px Georgia;color:#555;margin-bottom:12px">{html.escape(spec['source'])}</div>
   <style>.sec{{font:bold 12px Helvetica,Arial;letter-spacing:.08em;color:#777;text-transform:uppercase;margin:10px 0 3px}}
@@ -56,7 +63,7 @@ with sync_playwright() as p:
     import glob
     exe = next(iter(sorted(glob.glob('/opt/pw-browsers/chromium-*/chrome-linux/chrome'))), None)  # web-session Chromium
     br = p.chromium.launch(executable_path=exe, args=['--no-sandbox']) if exe else p.chromium.launch(args=['--no-sandbox'])
-    pg = br.new_page(viewport={'width': 780, 'height': 420}, device_scale_factor=2)
+    pg = br.new_page(viewport={'width': 440 if PORTRAIT else 780, 'height': 420}, device_scale_factor=2)
     pg.set_content(page); pg.wait_for_timeout(300)
     pg.locator('#c').screenshot(path=out); br.close()
 print(out)

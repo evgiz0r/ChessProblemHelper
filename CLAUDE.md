@@ -22,7 +22,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 - Boards as SVG with every diagram, FEN with every board (`tools/board_img.py`). A problem with its
   solution beside it, for him or for a database record: `tools/card_png.py out.png --id psis-…`.
 - Every problem shown in chat goes with its diagram, inline (E. Bourd, 7 Oct 2026): render the card with
-  `tools/card_png.py` (diagram, solution, and the mentor questions when asking) into `docs/blog/cards/<name>.png`,
+  `tools/card_png.py --portrait` (diagram above the solution: he reads on a phone, which crops wide cards; diagram,
+  solution, and the mentor questions when asking) into `docs/blog/cards/<name>.png`,
   commit and push it, then embed it in the reply as
   `![title](https://raw.githubusercontent.com/evgiz0r/ChessProblemHelper/main/docs/blog/cards/<name>.png)`.
   He sees it inline. Text alone is never enough.
