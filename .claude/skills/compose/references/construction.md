@@ -48,6 +48,10 @@ that interposes can step back (Q1K5/1B6/8/8/5p1p/R1n5/4NN1k/8: f4-f3 opens b8-h2
 - Set play is content: a unit may exist only to answer one Black move in the set.
 
 ## Dual avoidance
+- Common effect = defence, distinct effects = mates (E. Bourd, 8 Oct 2026). When several defences share an effect (all
+  capture on e5, all self-block e5), a mate that needs only that shared effect works after each of them: the dual is in
+  the logic. Before placing anything, list each defence's effects and give every mate an effect only its defence has
+  (8/3n4/8/1K1kPB2/1P6/1NQ1r3/8/b7: Qc6 needs only the e5 self-block, so Rxe5 and Bxe5 both allow it).
 Motivations in rising order of unity: a sibling mate refuted by a unit that never moved (incidental);
 the king escaping (weak); the defender itself keeping hold of the line or capturing the mating square;
 interference by the defence (line opened/closed). A dual in a thematic variation is unacceptable.
