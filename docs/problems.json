@@ -1030,6 +1030,24 @@
    "keys": [
     "Qe6"
    ]
+  },
+  {
+   "id": "bourd-three-captures-e4",
+   "fen": "1K6/1B6/8/p1N2Qnp/1b1k4/3P1bN1/1PPn1P2/7q",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "bench, 8 October 2026 (session muzupg2i), about 6 minutes from an empty board, on the theme 'three defences on the same square'",
+   "themes": [
+    "Defences on the same square",
+    "Sacrificial key",
+    "Unguard",
+    "Dual avoidance"
+   ],
+   "note": "1.Be4! (2.Qd5#) Sgxe4 2.Se6#, Bxe4 2.Se2#, Sdxe4 2.Sb3#. The key piece is the one captured and it supplies the threat (Be4 guards d5), so every capture defends for the same reason; each capture's departure unguards one white knight's mating square (g5 left e6, f3 left e2, d2 left b3), and each sibling mate fails because the other capturers still guard their squares (unified dual avoidance). All captures self-block e4, but no mate relies on it. His order: threat -> pieces that can capture -> arrange mates -> find the key ('most of the part is just finding the key'). Not needed: bPa5 (16-unit version 1K6/1B6/8/2N2Qnp/1b1k4/3P1bN1/1PPn1P2/7q). Flaws: passive wK, bQh1 and bBb4 exist to refute tries (Bxf3, Qxg5, Sce4) and cooks, set duals after Sge4/Sde4/Bxc5 (unimportant), sacrificial-key-onto-the-square is the theme's classic form (Strebkovs 2003, his own Problemesis 2003 with Se6).",
+   "solution": "#2 (9+8)   FEN 1K6/1B6/8/p1N2Qnp/1b1k4/3P1bN1/1PPn1P2/7q w - - 0 1\nSet play:\n   1...Sh7/Sf7/Sh3 2.Se6#\n   1...Se6 2.Sxe6#\n   1...Sge4 2.Qd5#/Se6#  [dual]\n   1...Bxc5 2.Qf6#/c3#  [dual]\n   1...Ba3 2.c3#\n   1...Bxb7/Bc6/Be4/Bg2 2.Se2#\n   1...Be2 2.Sxe2#\n   1...Sde4 2.Qd5#/Sb3#  [dual]\n   1...Sc4/Sf1/Sb1 2.Sb3#\n   1...Sb3 2.Sxb3#\n   unprovided: Bc3, Bd5, Bg4, Bd1, Qh4, Qh3, Qh2, Qg2, Qg1, Qf1, Qe1, Qd1, Qc1, Qb1, Qa1, h4, a4\nTry: 1.Bxf3? (threat: 2.Qd5#/Se2#)\n   (28 further moves allow the threat)\n   but 1...Qxf3!\nTry: 1.Qxg5? (threat: 2.Qe3#/Se6#)\n   (28 further moves allow the threat)\n   but 1...Qe1!\nTry: 1.Sce4? (threat: 2.Qf6#/Qd5#)\n   1...Bxe4 2.Se2#\n   (32 further moves allow the threat)\n   but 1...Bd6+!\nKey: 1.Be4! (threat: 2.Qd5#)\n   1...Sgxe4 2.Se6#\n   1...Bxe4 2.Se2#\n   1...Sdxe4 2.Sb3#\n   (28 further moves allow the threat)\nPatterns:\n   changed threat: Qd5#/Se2# / Qe3#/Se6#   [try Bxf3 vs try Qxg5]\n   changed threat: Qe3#/Se6# / Qd5#/Qf6#   [try Qxg5 vs try Sce4]\n   changed threat: Qe3#/Se6# / Qd5#   [try Qxg5 vs key Be4]\n(8544 nodes, 0.4s)\n",
+   "keys": [
+    "Be4"
+   ]
   }
  ]
 }
