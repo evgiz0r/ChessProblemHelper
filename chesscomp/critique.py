@@ -465,6 +465,18 @@ def idle_key_piece(board, kmove, phases):
     if any(c['uci'][:2] == chess.square_name(fsq) for ph in phases if ph['type'] == 'set'
            for v in ph['variations'] for c in v['continuations']):
         return False
+    # E. Bourd (8 Oct 2026, 1.d7! in 8/4K3/2pP1P2/2rpk3/1Qbp1RP1/2np4/6N1/8): a key piece that stands on the
+    # line or the square of the threat or of a mate after the key has a role - it vacates it (the d6 pawn blocks
+    # Qb8-e5 and occupies d6 for Qd6#)
+    for ph in phases:
+        if ph['type'] != 'key':
+            continue
+        conts = list(ph.get('threat') or []) + [c for v in ph['variations'] for c in v['continuations']]
+        for c in conts:
+            m = chess.Move.from_uci(c['uci'])
+            if fsq == m.to_square or fsq in chess.SquareSet(chess.between(m.from_square, m.to_square)) \
+                    or fsq in chess.SquareSet(chess.between(m.to_square, bk)):
+                return False
     empty = board.copy(); empty.remove_piece_at(fsq)
     for sq in chess.SquareSet(board.occupied):
         if sq != fsq and board.piece_type_at(sq) in (chess.BISHOP, chess.ROOK, chess.QUEEN) and empty.attacks(sq) != board.attacks(sq):

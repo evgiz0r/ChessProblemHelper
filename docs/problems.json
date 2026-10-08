@@ -1062,10 +1062,29 @@
     "Clearance key",
     "Sacrificial key"
    ],
-   "note": "1.Ra6! (2.Qb8#) Rb5 2.Qd6#, Bb5 2.Qxd4#, Sb5 2.Qe1#, Se4 2.Rf5#. Three defences close the b-file on b5; each departure opens a queen line (c5: b4-d6, c4: 4th rank, c3: b4-e1). The hole Se4 was filled the structured way: its only own error is the self-block of e4 (effects tool), so the mate is Rf5 (e4 the escape); his bPd4 stops the queen's 4th rank after Bb5 so that Rf5 is no dual there; the g3 pawn went to g4 to guard f5 and Sg2 boxes the king. The key was found by a new-unit search: a white rook on b6 blocking the threat line clears it, offering itself to Bc4. Flaws: static key (every variation set with the same mate), the rook takes part in no mate after the key, passive wKe7 (boxing), unthematic tries. Gate: PASS. Every unit needed.",
+   "note": "REJECTED by E. Bourd (8 Oct 2026): \"Ra6 is unacceptable\". The rook exists only to be taken off the threat line; after the key it does nothing. See bourd-b5-three-blocks-d7 for his key. 1.Ra6! (2.Qb8#) Rb5 2.Qd6#, Bb5 2.Qxd4#, Sb5 2.Qe1#, Se4 2.Rf5#. Three defences close the b-file on b5; each departure opens a queen line (c5: b4-d6, c4: 4th rank, c3: b4-e1). The hole Se4 was filled the structured way: its only own error is the self-block of e4 (effects tool), so the mate is Rf5 (e4 the escape); his bPd4 stops the queen's 4th rank after Bb5 so that Rf5 is no dual there; the g3 pawn went to g4 to guard f5 and Sg2 boxes the king. The key was found by a new-unit search: a white rook on b6 blocking the threat line clears it, offering itself to Bc4. Flaws: static key (every variation set with the same mate), the rook takes part in no mate after the key, passive wKe7 (boxing), unthematic tries. Gate: PASS. Every unit needed.",
    "solution": "#2 (6+8)   FEN 8/4K3/1Rp5/2rpk3/1Qbp1RP1/2np4/6N1/8 w - - 0 1\nSet play:\n   1...Rb5/Ra5 2.Qd6#\n   1...Ba6/Bb5/Bb3/Ba2 2.Qxd4#\n   1...Sb5/Sa4/Sa2/Sb1 2.Qe1#\n   1...Se4 2.Rf5#\n   S~ random Sb5/Sa4/Sa2/Sb1 2.Qe1#; corrections Se4 2.Rf5#\n   unprovided: Se2, Sd1, d2\nTry: 1.Rxc6? (threat: 2.Re6#/Qb8#)\n   (14 further moves allow the threat)\n   but 1...Rxc6!\nTry: 1.Qxc5? (threat: 2.Qxd4#/Qd6#)\n   1...Se4 2.Rf5#\n   (10 further moves allow the threat)\n   but 1...Sb5!\nTry: 1.Qxc3? (threat: 2.Qxd4#/Qe1#)\n   (7 further moves allow the threat)\n   but 1...dxc3!\nTry: 1.Rf6? (threat: 2.Re6#)\n   (14 further moves allow the threat)\n   but 1...Ke4!\nTry: 1.Sh4? (threat: 2.Sg6#)\n   (14 further moves allow the threat)\n   but 1...Kxf4!\nKey: 1.Ra6! (threat: 2.Qb8#)\n   1...Rb5 2.Qd6#\n   1...Bb5 2.Qxd4#\n   1...Sb5 2.Qe1#\n   1...Se4 2.Rf5#\n   (10 further moves allow the threat)\nPatterns:\n   changed threat: Qb8#/Re6# / Qd6#/Qxd4#   [try Rxc6 vs try Qxc5]\n   changed threat: Qb8#/Re6# / Qe1#/Qxd4#   [try Rxc6 vs try Qxc3]\n   changed threat: Qb8#/Re6# / Re6#   [try Rxc6 vs try Rf6]\n   changed threat: Qb8#/Re6# / Sg6#   [try Rxc6 vs try Sh4]\n   changed threat: Qd6#/Qxd4# / Re6#   [try Qxc5 vs try Rf6]\n   changed threat: Qd6#/Qxd4# / Sg6#   [try Qxc5 vs try Sh4]\n   changed threat: Qd6#/Qxd4# / Qb8#   [try Qxc5 vs key Ra6]\n   changed threat: Qe1#/Qxd4# / Re6#   [try Qxc3 vs try Rf6]\n   changed threat: Qe1#/Qxd4# / Sg6#   [try Qxc3 vs try Sh4]\n   changed threat: Qe1#/Qxd4# / Qb8#   [try Qxc3 vs key Ra6]\n   changed threat: Re6# / Sg6#   [try Rf6 vs try Sh4]\n   changed threat: Re6# / Qb8#   [try Rf6 vs key Ra6]\n   changed threat: Sg6# / Qb8#   [try Sh4 vs key Ra6]\n(4251 nodes, 0.24s)\n",
    "keys": [
     "Ra6"
+   ],
+   "rejected": true
+  },
+  {
+   "id": "bourd-b5-three-blocks-d7",
+   "fen": "8/4K3/2pP1P2/2rpk3/1Qbp1RP1/2np4/6N1/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd (with Claude: Rf5# for Se4)",
+   "source": "bench, 8 October 2026 (session muzxlx4q), his key for scheme C",
+   "themes": [
+    "Defences on the same square",
+    "Line closing",
+    "Self-block",
+    "Clearance key"
+   ],
+   "note": "1.d7! (2.Qb8#) Rb5 2.Qd6#, Bb5 2.Qxd4#, Sb5 2.Qe1#, Se4 2.Rf5#. The d6 pawn blocks the threat's line b8-e5 and occupies d6, the mating square of Rb5 Qd6#: the key clears both, so it adds the Rb5 variation (unprovided in the set). wPf6 stops 1.Qb8 (2.Qh8#/d7#). His word: 'simple and easy', acceptable where 1.Ra6 (a rook placed on b6 only to leave it) is not. Flaws: simple pawn key, passive wKe7, 7 pawns.",
+   "solution": "#2 (7+8)   FEN 8/4K3/2pP1P2/2rpk3/1Qbp1RP1/2np4/6N1/8 w - - 0 1\nSet play:\n   1...Ba6/Bb5/Bb3/Ba2 2.Qxd4#\n   1...Sb5/Sa4/Sa2/Sb1 2.Qe1#\n   1...Se4 2.Rf5#\n   S~ random Sb5/Sa4/Sa2/Sb1 2.Qe1#; corrections Se4 2.Rf5#\n   unprovided: Rb5, Ra5, Se2, Sd1, d2\nTry: 1.Qxc3? (threat: 2.Qxd4#/Qe1#)\n   (7 further moves allow the threat)\n   but 1...dxc3!\nTry: 1.Sh4? (threat: 2.Sg6#)\n   (14 further moves allow the threat)\n   but 1...Kxf4!\nKey: 1.d7! (threat: 2.Qb8#)\n   1...Rb5 2.Qd6#\n   1...Bb5 2.Qxd4#\n   1...Sb5 2.Qe1#\n   1...Se4 2.Rf5#\n   (10 further moves allow the threat)\nPatterns:\n   changed threat: Qe1#/Qxd4# / Sg6#   [try Qxc3 vs try Sh4]\n   changed threat: Qe1#/Qxd4# / Qb8#   [try Qxc3 vs key d7]\n   changed threat: Sg6# / Qb8#   [try Sh4 vs key d7]\n(1980 nodes, 0.15s)\n",
+   "keys": [
+    "d7"
    ]
   }
  ]
