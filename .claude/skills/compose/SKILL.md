@@ -46,6 +46,11 @@ Read `references/construction.md` now (the order and the rules with their exampl
    them (sacrifice, flight given, changed set play high; check, capture, idle or out-of-play key piece low).
    --patch adds one unit to near-misses. It first prints the other mates in two that the post-key position already
    has with White to move, and which unit they all need: no shared unit = no key until the position is tightened.
+   His way when no unit can be taken back (8 Oct 2026): take the key piece from the units that already play,
+   never a new one. Put a unit with a role on the threat's line or a mating square, give it a job it must keep
+   from its new square (rook d6 -> g6 still guards e6/f6), so one clearance square works and the others are
+   tries; then clean cooks one at a time (bourd-b5-three-blocks-rg6). A new officer placed only to clear a line
+   is fatal ('useless key piece').
    **Key last is too late.** `python3 -m chesscomp.compose.retract POSTKEY` undoes every white move of a
    finished post-key position and solves each diagram (his habit: post-key position first, then take the key
    back). It only finds the keys the position already allows: in session 29 two good mechanisms gave only
