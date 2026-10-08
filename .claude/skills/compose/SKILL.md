@@ -41,6 +41,9 @@ Read `references/construction.md` now (the order and the rules with their exampl
    Write the choice down: "1...Se4: self-block e4 -> a mate that needs e4 blocked; must fail after Bb5, which
    opens Qb4-e4". Only then search, and only to place the unit that the named mate needs. A search with no named
    error is a guess; a one-unit search cannot supply a missing error.
+3c''. **Coverage claims by tool, not by eye**: `python3 -m chesscomp.compose.matecheck FEN "MOVE"` lists each square of
+   the king's field with its White guards (or FREE), the interpositions and the captures of the checker. Decide the
+   threat line and its interpositions before the mates.
 3d. **Find the key with `python3 -m chesscomp.compose.keyfind POSTKEY [--patch]`.** It takes back every White
    unit one move, keeps the diagrams where that move is the only key and the post-key play is unchanged, and ranks
    them (sacrifice, flight given, changed set play high; check, capture, idle or out-of-play key piece low).
