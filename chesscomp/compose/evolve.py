@@ -15,12 +15,15 @@ then economy. CORR=d4 (Black correction mode) rewards, for the Black piece on th
 one mate and corrections each with their own single mate (the solver's S~ lines); NCORR (default 2) corrections
 are needed for a HIT, every move of that piece must defend, and DEFS may be empty. NOFLIGHT=1 (default) penalises
 every diagram flight and refuses it in a HIT (the constitution makes it fatal); NOFLIGHT=0 restores the old
-score, where only an unprovided flight costs. A line starting HIT is a position that meets the whole specification; check it with
+score, where only an unprovided flight costs. KEYROLE=1 (default) penalises a key piece out of play (fatal, E. Bourd on
+daily No. 2) or idle in the diagram (guards nothing near the king, no set mate, blocks no line) and refuses both in a
+HIT; KEYROLE=0 restores the old score. A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
 """
 import os, sys, random, time, json, chess
 from chesscomp.core import Problem
 from chesscomp.analysis import analyse
+from chesscomp.critique import idle_key_piece, out_of_play_key
 
 JOB = int(sys.argv[1]) if len(sys.argv) > 1 else 0
 OUT = sys.argv[2] if len(sys.argv) > 2 else f'evolve_{JOB}.txt'
@@ -33,6 +36,7 @@ TRYCHANGE = os.environ.get('TRYCHANGE', '0') == '1'  # reward tries whose mates 
 CORR = os.environ.get('CORR', '')                  # Black correction mode: square of the correcting piece
 NCORR = int(os.environ.get('NCORR', '2'))
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram flight is fatal, so no HIT has one
+KEYROLE = os.environ.get('KEYROLE', '1') == '1'     # E. Bourd: no HIT whose key piece is out of play or idle in the diagram
 RECIP = os.environ.get('RECIP', '0') == '1'          # set play and key swap the mates of the two DEFS
 TARGET = dict(x.split(':') for x in os.environ.get('TARGET', '').split(',') if ':' in x)   # exact mates, e.g. d6:Qe6#,d5:Ba4#
 BUDGET = float(os.environ.get('BUDGET_S', '900'))
@@ -157,6 +161,12 @@ def score(b):
                         t += 30 - 4 * (len(m0) + len(m1) - 2)
         if ph.get('check_key'):
             t -= 25
+        if KEYROLE and not ph.get('check_key'):
+            km = chess.Move.from_uci(ph['first_move']['uci'])
+            if out_of_play_key(b, km):
+                t -= 30
+            elif b.piece_type_at(km.from_square) != chess.KING and idle_key_piece(b, km, phases):
+                t -= 12
         if 'x' in ph['first_move']['san']:
             t -= 20
         if len(ph.get('threat') or []) > 1:
@@ -222,6 +232,9 @@ def score(b):
         if ok and TARGET:
             ok = all(vm[d]['continuations'][0]['san'] == TARGET[d] for d in TARGET if d in vm)
         ok = ok and corr_score(ph)[2] and not (NOFLIGHT and kmoves)
+        if ok and KEYROLE:
+            km = chess.Move.from_uci(ph['first_move']['uci'])
+            ok = not out_of_play_key(b, km) and (b.piece_type_at(km.from_square) == chess.KING or not idle_key_piece(b, km, phases))
         hit = ok
     return s, f"keys={keys} {best_sum}", hit
 

@@ -1,0 +1,55 @@
+{
+ "date": "2026-10-08",
+ "title": "Two captures on e5",
+ "theme": "changed-mates",
+ "theme_name": "Changed mates",
+ "fen": "2R5/3n1p2/1B6/1K1kP1Q1/1P4B1/4rP2/8/8",
+ "stip": "#2",
+ "author": "Claude (ChessProblemHelper)",
+ "source": "Original, composed 8 October 2026",
+ "teaser": "Twelve units, no flight. Black has two ways to take the e5 pawn, and both already have a mate in the diagram. Find the quiet first move after which both captures are answered again, by different mates.",
+ "solution": [
+  "#Set play",
+  "  1...Sxe5 a 2.Rd8# A",
+  "  1...Rxe5 b 2.Qd2# B",
+  "#Key",
+  "1.Qe7! (2.Qd6#)",
+  "  1...Sxe5 a 2.Qc5# C",
+  "  1...Rxe5 b 2.Qxd7# D",
+  "  1...Rxf3 2.Bxf3#"
+ ],
+ "comment": {
+  "what": "Two changed mates on one Black square. Both black units capture the e5 pawn, and both captures defend for the same reason: the pawn is the only guard of d6, the threat's mating square. In the set play each capture is answered by the White line its departure opens: the knight leaves the d-file (2.Rd8#), the rook leaves the g5-d2 diagonal (2.Qd2#). After 1.Qe7 the queen no longer reaches d2, and both mates change: the knight's departure unguards c5 (2.Qc5#), the rook's arrival blocks the king's capture on e5 (2.Qxd7#). The dual avoidance is crisp: after 1...Sxe5 the queen has nothing to take on d7 and the e5 knight guards it; after 1...Rxe5 the knight still guards c5.",
+  "flaws": [
+   "The rook c8 is there for the set mate 2.Rd8#: in the solution its guards on the c-file are duplicated by the king. It carries one of the two changes, but it plays no part after the key that another unit does not also do.",
+   "The b4 pawn's main job is to shield the White king from 1...Rb3+ (it also guards c5, as the bishop does). The king itself is placed actively and guards c4 and c6 in every mate; the alternative setting with the king on h4 and a knight on a5 (2R5/3n1p2/1B6/N2kP1Q1/6BK/4rP2/8/8, also sound) has three pawns but a passive king and a knight that is needed only for the set mate.",
+   "Only two thematic variations, plus the by-play 1...Rxf3 2.Bxf3#. Many black moves (15 in the set) are unprovided in the diagram; the threat answers them after the key.",
+   "The key is a queen move that takes away the set mate 2.Qd2#; a queen key is the natural candidate in a position where the queen guards the e5 pawn.",
+   "The critique's dual-avoidance note: the reasons differ from move to move (knight still guards c5; nothing on d7), so there is no single second-layer motive.",
+   "The tries 1.Qf4? and 1.Qxe3? change the threat but both fail to the pawn move 1...f5, which has nothing to do with the theme; they are not printed.",
+   "The anticipation check covers only the Problemesis collection (7,912 problems)."
+  ],
+  "pluses": [
+   "Two changed mates between set play and solution, both on the same defending effect (capture of the d6 guard on e5), with the selector in the key itself: the queen leaves the g5-d2 diagonal.",
+   "Unified defences: both captures remove the threat's only protector and both self-block e5.",
+   "Unified set mates (each by the line the departing unit opens) and post-key mates that use the other half of each capture (departure for the knight, arrival for the rook).",
+   "Quiet threat key by a piece in play (it guards e5 and gives a set mate), no diagram flight, no check in the set play left unanswered, every White unit in at least one mate."
+  ],
+  "process": "Four evolutionary searches from bare cores (king plus the defending pieces plus a queen, 15 minutes each) found nothing sound: checking keys, promotions, or no key. Seeded instead with the reference's fast start for two defences on one square (8/3n4/8/3kP3/8/4r3/8/8: a knight and a rook that can both capture e5), the changed-mate search returned a sound setting in under ten minutes: 1.Qe7 with the same two changes but an unprovided check 1...Rxf3+ and a second rook on g8 that only gave the set mate. Moving the White king to h4 stopped the check; putting the c-rook on c8 let it give the set mate itself, at the cost of a knight on a5 to cover c4 and c6; finally the king on b5 took over c4 and c6, and the pawn b4 shields it from the rook. Today's run also taught the search to refuse out-of-play and idle keys, so its hits no longer need that check by hand. 31 minutes, about 30 solves.",
+  "lesson": "Two units that capture the threat's only guard on one square give a natural changed-mate pair: the set mates use the lines their departures open, the mates after the key use the departure (an unguard) for one and the arrival (a self-block) for the other. The selector can be the key piece itself, leaving the line of one set mate."
+ },
+ "mentor_questions": [
+  "Rc8 exists for the set mate 1...Sxe5 2.Rd8#; after the key its guards are duplicated. In a set-play change, is a unit that serves only the set mate acceptable, or as bad as a unit that serves only a try?",
+  "Kb5 with a pawn b4 that shields it from 1...Rb3+, or Kh4 (passive) with a knight on a5 for the set mate (2R5/3n1p2/1B6/N2kP1Q1/6BK/4rP2/8/8): which would you print?",
+  "Two changes on one effect, with no tries: is this enough content for a changed-mates problem, or would you rather see a try phase with a third pair of mates even at the cost of several units?"
+ ],
+ "stats": {
+  "minutes": 31,
+  "solves": 30,
+  "kernels": 8,
+  "searches": 8
+ },
+ "improvement": "chesscomp/compose/evolve.py now penalises a key piece that is out of play (fatal, E. Bourd on daily No. 2) or idle in the diagram (guards nothing near the king, no set mate, blocks no line) and refuses both in a HIT (KEYROLE=1, the default). The two checks moved from the critique's body into reusable functions (chesscomp/critique.py: out_of_play_key, idle_key_piece), so critique and search judge the key the same way. Tested in tests/test_evolve.py: daily No. 2, which the search returned as a HIT, is no longer one.",
+ "mentor_issue": null,
+ "feedback": []
+}

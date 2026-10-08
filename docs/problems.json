@@ -955,6 +955,25 @@
    ],
    "note": "Set 1...Sf3 2.Sg2#, 1...Se2 2.Sf1#; 1.Qc2! (2.Qc5#) Kd4 2.Qc5#, Sf3 2.Shf5#, Se2 2.Sgf5#, d1=Q/R/B/S 2.Sgf5#. His 'must / can't' mechanism: the g2/f1 mates must have d4 guarded (Qb2 does it in the diagram); the f5 mates can't work while the h7 bishop alone protects d3, because the knight on f5 cuts h7-d3. 1.Qc2 protects d3 and gives up d4 (flight 1...Kd4 2.Qc5#, wKb6 guards c5): one queen move switches both pairs. Try 1.Kc5? (2.Qd4#) keeps the set mates, refuted by 1...d1=Q!/d1=R!. 1.Be4 (the old Be5 cook, now one rank down) fails to the f-pawn promotions. bPe7 is not needed (8+5 version 8/5n1B/1K6/8/5PRN/3Pk1N1/1Q1p1p2/6n1 sound with the same play). bSf7 stops a lot of White's play (1.Qe5# among it) and gives set mates on e5; his view: such a black piece is fine, even of the thematic type. Built from 7B/1K5B/1p2P3/5P1N/3PkPN1/pQ1p4/p3P1n1/1b6 (Ke4, key Qc3) by a shift down one rank.",
    "solution": "#2 (8+6)   FEN 8/4pn1B/1K6/8/5PRN/3Pk1N1/1Q1p1p2/6n1 w - - 0 1\nSet play:\n   1...Sh8/Sd8/Sh6 2.Qe5#\n   1...Se5 2.Qxe5#\n   1...Sf3 2.Sg2#\n   1...Se2 2.Sf1#\n   1...d1=B/d1=S 2.Sf1#\n   unprovided: Sd6, Sg5, Sh3, e6, f1=Q, f1=R, f1=B, f1=S, d1=Q, d1=R, e5\nKey: 1.Qc2! (threat: 2.Qc5#)\n   1...Sf3 2.Shf5#\n   1...Se2 2.Sgf5#\n   1...d1=Q/d1=R/d1=B/d1=S 2.Sgf5#\n   (14 further moves allow the threat)\nChanged continuations:\n   1...d1=B: Sf1# -> Sgf5#   [set play vs key Qc2]\n   1...d1=S: Sf1# -> Sgf5#   [set play vs key Qc2]\n   1...Se2: Sf1# -> Sgf5#   [set play vs key Qc2]\n   1...Sf3: Sg2# -> Shf5#   [set play vs key Qc2]\n(3749 nodes, 0.45s)\n"
+  },
+  {
+   "id": "claude-two-captures-e5",
+   "fen": "2R5/3n1p2/1B6/1K1kP1Q1/1P4B1/4rP2/8/8",
+   "stip": "#2",
+   "author": "Claude (ChessProblemHelper)",
+   "source": "daily problem No. 3, 8 October 2026 (blog)",
+   "themes": [
+    "Changed mates (set vs solution)",
+    "Self-block",
+    "Unguard",
+    "Line opening",
+    "Capture of the threat's guard"
+   ],
+   "note": "Set 1...Sxe5 2.Rd8#, 1...Rxe5 2.Qd2# (each departure opens a white line: d-file, g5-d2). 1.Qe7! (2.Qd6#) Sxe5 2.Qc5# (knight left d7: c5 unguarded), Rxe5 2.Qxd7# (rook self-blocks e5), Rxf3 2.Bxf3#. Both captures remove d6's only guard. Flaws: Rc8 serves only the set mate (its solution guards are duplicated by the king); Pb4 shields Kb5 from Rb3+; two variations; tries Qf4?/Qxe3? fail to f5. Alternative 2R5/3n1p2/1B6/N2kP1Q1/6BK/4rP2/8/8 (Kh4 passive, Sa5 for the set mate). Found by evolve CHANGED=1 seeded with the reference's two-captures core 8/3n4/8/3kP3/8/4r3/8/8, then king and rook moved by hand.",
+   "solution": "#2 (8+4)   FEN 2R5/3n1p2/1B6/1K1kP1Q1/1P4B1/4rP2/8/8 w - - 0 1\nSet play:\n   1...Sxe5 2.Rd8#\n   1...Rxe5 2.Qd2#\n   unprovided: Sf8, Sb8, Sf6, Sxb6, Sc5, Re4, Rxf3, Rd3, Rc3, Rb3, Ra3, Re2, Re1, f6, f5\nTry: 1.Qxe3? (threat: 2.Qe4#/Qd4#)\n   1...Sc5 2.Rxc5#/Qxc5#  [dual]\n   (6 further moves allow the threat)\n   but 1...f5!\nTry: 1.Qf4? (threat: 2.Qd4#)\n   1...Sxb6 2.Rc5#\n   1...Sc5 2.Rxc5#\n   1...Re4 2.Qxe4#/fxe4#  [dual]\n   1...Rd3 2.Qe4#\n   (12 further moves allow the threat)\n   but 1...f5!\nKey: 1.Qe7! (threat: 2.Qd6#)\n   1...Sxe5 2.Qc5#\n   1...Rxe5 2.Qxd7#\n   1...Rxf3 2.Bxf3#\n   (14 further moves allow the threat)\nChanged continuations:\n   1...Rxe5: Qd2# -> Qxd7#   [set play vs key Qe7]\n   1...Sxe5: Rd8# -> Qc5#   [set play vs key Qe7]\nPatterns:\n   changed threat: Qd4#/Qe4# / Qd6#   [try Qxe3 vs key Qe7]\n   changed threat: Qd4# / Qd6#   [try Qf4 vs key Qe7]\n(3575 nodes, 0.2s)\n",
+   "keys": [
+    "Qe7"
+   ]
   }
  ]
 }

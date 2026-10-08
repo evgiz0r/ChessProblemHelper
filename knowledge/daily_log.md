@@ -30,6 +30,20 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme "Changed mates". Seed evolve with a hand sketch from the start; for corrections try
   `CORR` with a second-correction mate on another square (a score term for distinct mating squares).
 
+## 2026-10-08, No. 3: Changed mates
+- Result: 2R5/3n1p2/1B6/1K1kP1Q1/1P4B1/4rP2/8/8 (8+4). Set 1...Sxe5 2.Rd8#, 1...Rxe5 2.Qd2#; 1.Qe7! (2.Qd6#)
+  Sxe5 2.Qc5#, Rxe5 2.Qxd7#. Gate: PASS with warnings (same refutation of two unprinted tries; dual-avoidance
+  reasons differ), both named in the post. Mentor issues #2 and #3 were already acted on and closed.
+- Minutes: setup and reading 5, mentor 1, study 3, kit change (KEYROLE in evolve) 8, searches and hand work 15,
+  post and records 15. About 30 solves, 8 search jobs.
+- What wasted time: four bare-core evolve runs (15 minutes) again found nothing; the reference's seeded core worked at
+  once. The search's hits all carried a unit that served only the set mate (Rg8); the critique counts a unit with
+  duplicated guards as taking part in a mate, so it does not flag the knight/rook that exists only for the set play.
+- What was missing: a critique tag for a "set-only unit" (not needed for soundness, every solution guard duplicated);
+  waiting on the mentor's answer (question 1) before making it a flaw or a fatal flaw.
+- Next run: theme from `next-theme`. Always seed evolve with a theme core from the reference; never start bare.
+  For changed mates, try a try phase with a third pair on the same two captures (TRYCHANGE=1 with the No. 3 core).
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
@@ -37,6 +51,8 @@ what the next run should try. "Proposals" collects improvements too big for one 
   the solver sees them (today only a Grimshaw on the key phase is reported).
 - evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
 - A theme reference for Grimshaw, Novotny, Le Grand and Rudenko (none yet).
+- critique: a 'set-only unit' tag (not needed for soundness, every guard in the solution mates duplicated), once the
+  mentor says how much it weighs (No. 3, question 1).
 
 ## Data note (7 October 2026)
 Problemesis records psis-0c3747b09e (Caillaud, Microweb 2000) and psis-cb0ecb6471 (Poisson, Lacny-50) do not

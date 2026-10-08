@@ -205,23 +205,9 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # any other line piece (either colour)? None of the three: an idle key piece. Softer when the key piece
     # also plays thematic tries (his 1.Re7 with 1.Rh8?/1.Re5?/1.Ree3?): then its moves are the content.
     kp = board.piece_at(kmove.from_square)
-    ksq_b = board.king(chess.BLACK)
-    if kp and ksq_b is not None and kp.piece_type != chess.KING:
-        fsq = kmove.from_square
-        field = chess.SquareSet(chess.BB_KING_ATTACKS[ksq_b]) | chess.SquareSet.from_square(ksq_b)
-        guards = bool(board.attacks(fsq) & field)
-        setph = [ph for ph in res['phases'] if ph['type'] == 'set']
-        mates_set = any(c['uci'][:2] == chess.square_name(fsq) for ph in setph for v in ph['variations'] for c in v['continuations'])
-        empty = board.copy(); empty.remove_piece_at(fsq)
-        blocks = False
-        for sq in chess.SquareSet(board.occupied):
-            pc = board.piece_at(sq)
-            if sq == fsq or pc.piece_type not in (chess.BISHOP, chess.ROOK, chess.QUEEN):
-                continue
-            if empty.attacks(sq) != board.attacks(sq):
-                blocks = True; break
+    if kp and board.king(chess.BLACK) is not None and kp.piece_type != chess.KING:
         own_tries = [t for t in tries if t['first_move']['uci'][:2] == key['first_move']['uci'][:2]]
-        if not (guards or mates_set or blocks):
+        if idle_key_piece(board, kmove, res['phases']):
             add('minor' if own_tries else 'major', 'idle key piece',
                 f"1.{key['first_move']['san']}: in the diagram the key piece guards nothing near the king, gives no set mate and blocks no line" +
                 (' (its tries make the move thematic)' if own_tries else ' - it comes out of thin air onto the key square (E. Bourd)'))
@@ -245,12 +231,7 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # E. Bourd (7 Oct 2026, on daily No. 2): a key by a piece out of play makes the solution obvious - fatal.
     # Out of play: a knight or bishop on the edge of the board, three or more squares from the Black king,
     # guarding no square of the king's field. Queens and rooks are left out: corner keys are a theme.
-    kp = board.piece_type_at(kmove.from_square)
-    bk = board.king(chess.BLACK)
-    kfield = chess.BB_KING_ATTACKS[bk] | chess.BB_SQUARES[bk]
-    f0, r0 = chess.square_file(kmove.from_square), chess.square_rank(kmove.from_square)
-    if (kp in (chess.KNIGHT, chess.BISHOP) and (f0 in (0, 7) or r0 in (0, 7))
-            and chess.square_distance(kmove.from_square, bk) >= 3 and not int(board.attacks(kmove.from_square)) & kfield):
+    if out_of_play_key(board, kmove):
         add('major', 'out-of-play key', f"the key piece {_pname(board, kmove.from_square)} stands out of play "
                                         "(edge, far from the king, guarding nothing near it): the key is obvious (fatal, E. Bourd)")
     dist = chess.square_distance(kmove.from_square, kmove.to_square)
@@ -471,3 +452,31 @@ def format_critique(c):
     icon = {'major': '✗✗', 'minor': '✗ ', 'plus': '✓ '}
     lines = [f"{icon[f['severity']]} [{f['rule']}] {f['msg']}" for f in sorted(c['findings'], key=lambda f: order[f['severity']])]
     return '\n'.join(lines)
+
+
+def idle_key_piece(board, kmove, phases):
+    """E. Bourd (session 29): in the diagram the key piece guards no square of the black king's field, gives
+    no set mate and blocks no line of another line piece. phases: the analysis phases (for the set play)."""
+    fsq, bk = kmove.from_square, board.king(chess.BLACK)
+    field = chess.SquareSet(chess.BB_KING_ATTACKS[bk]) | chess.SquareSet.from_square(bk)
+    if board.attacks(fsq) & field:
+        return False
+    if any(c['uci'][:2] == chess.square_name(fsq) for ph in phases if ph['type'] == 'set'
+           for v in ph['variations'] for c in v['continuations']):
+        return False
+    empty = board.copy(); empty.remove_piece_at(fsq)
+    for sq in chess.SquareSet(board.occupied):
+        if sq != fsq and board.piece_type_at(sq) in (chess.BISHOP, chess.ROOK, chess.QUEEN) and empty.attacks(sq) != board.attacks(sq):
+            return False
+    return True
+
+
+def out_of_play_key(board, kmove):
+    """E. Bourd (7 Oct 2026, daily No. 2): a knight or bishop on the edge, three or more squares from the
+    black king, guarding no square of its field, makes the key obvious (fatal). Queens and rooks are left
+    out: corner keys are a theme."""
+    bk = board.king(chess.BLACK)
+    kfield = chess.BB_KING_ATTACKS[bk] | chess.BB_SQUARES[bk]
+    f0, r0 = chess.square_file(kmove.from_square), chess.square_rank(kmove.from_square)
+    return (board.piece_type_at(kmove.from_square) in (chess.KNIGHT, chess.BISHOP) and (f0 in (0, 7) or r0 in (0, 7))
+            and chess.square_distance(kmove.from_square, bk) >= 3 and not int(board.attacks(kmove.from_square)) & kfield)
