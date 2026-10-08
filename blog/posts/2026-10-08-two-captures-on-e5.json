@@ -50,6 +50,6 @@
   "searches": 8
  },
  "improvement": "chesscomp/compose/evolve.py now penalises a key piece that is out of play (fatal, E. Bourd on daily No. 2) or idle in the diagram (guards nothing near the king, no set mate, blocks no line) and refuses both in a HIT (KEYROLE=1, the default). The two checks moved from the critique's body into reusable functions (chesscomp/critique.py: out_of_play_key, idle_key_piece), so critique and search judge the key the same way. Tested in tests/test_evolve.py: daily No. 2, which the search returned as a HIT, is no longer one.",
- "mentor_issue": null,
+ "mentor_issue": 4,
  "feedback": []
 }
