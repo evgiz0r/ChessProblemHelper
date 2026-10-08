@@ -532,7 +532,7 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   function solvePost(fen){
     // the diagram is the post-key position, Black to move
     let c; try { c = new Chess(fen + ' w - - 0 1'); } catch (e) { return 'Not a legal position: ' + e.message; }
-    const threats = []; for (const m of c.moves({verbose:true})){ c.move(m); if (c.isCheckmate()) threats.push(m.san); c.undo(); }
+    const threats = [], threatIds = new Set(); for (const m of c.moves({verbose:true})) if (m.san.endsWith('#')){ threats.push(m.san); threatIds.add(m.piece.toUpperCase() + m.from + m.to + (m.promotion || '')); }
     const sp = ChessComp.setPlay(fen);
     if (!sp) return 'With Black to move this position is illegal (Black in check, or no moves).';
     const lines = [];
@@ -540,8 +540,9 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     const promo = ChessComp.promotedForce ? ChessComp.promotedForce(fen) : [];
     if (promo.length) lines.push('PROMOTED FORCE: ' + promo.join('; ') + '  (fatal)');
     lines.push('Threat (if Black passes): ' + (threats.length ? threats.map(s => s.replace(/^N/, 'S')).join(' / ') : 'none, a zugzwang key would be needed') + (threats.length > 1 ? '   <- double threat' : ''));
-    const tset = new Set(threats.map(s => s.replace(/^N/, 'S')));
-    const defs = sp.variations.filter(v => !v.conts.some(x => tset.has(x.san)));   // a defence: the threat no longer mates
+    // a defence: the threat no longer mates. Compare moves (piece, from, to), not notation: after 1...f4 the
+    // threat Qf4# is played as Qxf4#, which is still the threat (E. Bourd: a move that does not stop it is no dual)
+    const defs = sp.variations.filter(v => !v.conts.some(x => threatIds.has(x.id)));
     const allow = sp.variations.length - defs.length;
     lines.push('');
     const full = document.getElementById('fullreport').checked;
