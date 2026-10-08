@@ -974,6 +974,43 @@
    "keys": [
     "Qe7"
    ]
+  },
+  {
+   "id": "bourd-e4-selfpins",
+   "fen": "8/2R1p3/Kp1n3p/1p2p3/pBpkP1Q1/N2q1P2/5P2/1BR5",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "bench, 8 October 2026 (sessions muz8ry7t, muzc0s9b), work in progress, from Claude's daily No. 3",
+   "themes": [
+    "Changed mates (set vs solution)",
+    "Self-pin",
+    "Pin-mate",
+    "Unguard",
+    "Black line opening"
+   ],
+   "note": "Set 1...Sxe4 2.Rd7#, 1...Qxe4 2.Rd1#: each capture self-pins on the 4th rank against Qg4 and opens the d-file, so the pinned unit cannot block again (pin-mates, rooks from both ends of the file). 1.Qe6! (2.Qd5#) gives up the pin and guards d5: Sxe4 2.Sxb5# (d6 knight unguarded b5), Qxe4 2.Bc3# (d3 queen unguarded c3). In the set Sxb5+/Bc3+ fail to Kd5; after the key Rd7+/Rd1+ fail to Sd6/Qd3. Both captures take d5's only guard. His aims (notes): fix daily No. 3's motivations, a pin on the rook capture, a more coherent Black error than unguard + self-block; a flight-giving key on e4 (dropped: Kxe4 needs a mate). Process: built on No. 3's core, the black rook became a queen, the White rooks went to the c-file (symmetric d-file mates appeared at once), then a shift DOWN one rank put the capture square e4 on the queen's rank: the captures became self-pins. Lighter version found by Claude (same play, 17 units): 1K6/2R1p3/1p1n4/4p3/1BpkP1Q1/N2q1P2/5P2/1BR5 (wK b8, g8 or h2; a4, b5, h6 not needed, the mate becomes Sb5#). Flaws: heavy pawn mass, passive king, defences only take the threat's guard, the black queen's other moves are holes in the set.",
+   "solution": "#2 (10+10)   FEN 8/2R1p3/Kp1n3p/1p2p3/pBpkP1Q1/N2q1P2/5P2/1BR5 w - - 0 1\nSet play:\n   1...Se8/Sc8/Sf7/Sb7/Sf5 2.Sxb5#\n   1...Sxe4 2.Rd7#\n   1...Qxe4 2.Rd1#\n   1...Qc3 2.Bxc3#\n   1...Qe2/Qf1 2.Bc3#\n   1...Qd1 2.Rxd1#/Bc3#  [dual]\n   S~ random Se8/Sc8/Sf7/Sb7/Sf5 2.Sxb5#; corrections Sxe4 2.Rd7#\n   Q~ random Qc3/Qe2/Qf1/Qd1 2.Bxc3# (dual after Qd1); corrections Qxe4 2.Rd1#\n   unprovided: Qxf3, Qe3, Qb3, Qxa3, Qd2, Qc2, Qxb1, e6, h5, c3\nTry: 1.Qg8? (threat: 2.Qd5#)\n   1...Sf7/Sxe4 2.Sxb5#\n   1...Qxe4 2.Bc3#\n   (17 further moves allow the threat)\n   but 1...e6!\nTry: 1.Rd1? (threat: 2.Sc2#)\n   1...Sxe4 2.Qxe4#/Rd7#  [dual]\n   1...Qd2 2.Rxd2#\n   (8 further moves allow the threat)\n   but 1...Qxd1!\nKey: 1.Qe6! (threat: 2.Qd5#)\n   1...Sxe4 2.Sxb5#\n   1...Qxe4 2.Bc3#\n   (18 further moves allow the threat)\nChanged continuations:\n   1...Qxe4: Rd1# -> Bxc3#   [set play vs try Qg8]\n   1...Sxe4: Rd7# -> Sxb5#   [set play vs try Qg8]\n   1...Qxe4: Rd1# -> Bxc3#   [set play vs key Qe6]\n   1...Sxe4: Rd7# -> Sxb5#   [set play vs key Qe6]\nPatterns:\n   changed threat: Qd5# / Sc2#   [try Qg8 vs try Rd1]\n   changed threat: Sc2# / Qd5#   [try Rd1 vs key Qe6]\n(4879 nodes, 0.36s)\n",
+   "keys": [
+    "Qe6"
+   ]
+  },
+  {
+   "id": "bourd-e4-selfpins-light",
+   "fen": "1K6/2R1p3/1p1n4/4p3/1BpkP1Q1/N2q1P2/5P2/1BR5",
+   "stip": "#2",
+   "author": "Evgeni Bourd (lightened by Claude)",
+   "source": "8 October 2026, bourd-e4-selfpins with the king moved and a4, b5, h6 removed",
+   "themes": [
+    "Changed mates (set vs solution)",
+    "Self-pin",
+    "Pin-mate",
+    "Unguard"
+   ],
+   "note": "Same play as bourd-e4-selfpins in 17 units (10+7): set Sxe4 Rd7#, Qxe4 Rd1#; 1.Qe6! Sxe4 Sb5#, Qxe4 Bc3#. Also 1...b5 2.Bc5# in the set. wK b8/g8/h2 all work (g8 loses the try 1.Qg8? e6!).",
+   "solution": "#2 (10+7)   FEN 1K6/2R1p3/1p1n4/4p3/1BpkP1Q1/N2q1P2/5P2/1BR5 w - - 0 1\nSet play:\n   1...Se8/Sc8/Sf7/Sb7/Sf5 2.Sb5#\n   1...Sb5 2.Sxb5#\n   1...Sxe4 2.Rd7#\n   1...Qxe4 2.Rd1#\n   1...Qc3 2.Bxc3#\n   1...Qe2/Qf1 2.Bc3#\n   1...Qd1 2.Rxd1#/Bc3#  [dual]\n   1...b5 2.Bc5#\n   S~ random Se8/Sc8/Sf7/Sb7/Sf5/Sb5 2.Sb5#; corrections Sxe4 2.Rd7#\n   Q~ random Qc3/Qe2/Qf1/Qd1 2.Bxc3# (dual after Qd1); corrections Qxe4 2.Rd1#\n   unprovided: Qxf3, Qe3, Qb3, Qxa3, Qd2, Qc2, Qxb1, e6, c3\nTry: 1.Qg8? (threat: 2.Qd5#)\n   1...Sf7/Sxe4 2.Sb5#\n   1...Qxe4 2.Bc3#\n   (18 further moves allow the threat)\n   but 1...e6!\nTry: 1.Rd1? (threat: 2.Sc2#)\n   1...Sxe4 2.Qxe4#/Rd7#  [dual]\n   1...Qd2 2.Rxd2#\n   (9 further moves allow the threat)\n   but 1...Qxd1!\nKey: 1.Qe6! (threat: 2.Qd5#)\n   1...Sxe4 2.Sb5#\n   1...Qxe4 2.Bc3#\n   (19 further moves allow the threat)\nChanged continuations:\n   1...Qxe4: Rd1# -> Bxc3#   [set play vs try Qg8]\n   1...Sxe4: Rd7# -> Sb5#   [set play vs try Qg8]\n   1...Qxe4: Rd1# -> Bxc3#   [set play vs key Qe6]\n   1...Sxe4: Rd7# -> Sb5#   [set play vs key Qe6]\nPatterns:\n   changed threat: Qd5# / Sc2#   [try Qg8 vs try Rd1]\n   changed threat: Sc2# / Qd5#   [try Rd1 vs key Qe6]\n(5014 nodes, 0.41s)\n",
+   "keys": [
+    "Qe6"
+   ]
   }
  ]
 }

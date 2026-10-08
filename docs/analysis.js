@@ -19,13 +19,9 @@
   function legal(c) { return c.moves({ verbose: true }); }
 
   function matesIn1(c) {                       // side to move mates at once
-    const out = [];
-    for (const m of legal(c)) {
-      c.move(m);
-      if (c.isCheckmate()) out.push(m);
-      c.undo();
-    }
-    return out;
+    // chess.js already marks a mating move with '#' in its SAN (it plays every move to write the SAN),
+    // so playing each move again to test for mate doubled the cost of every solve
+    return legal(c).filter(m => m.san.endsWith('#'));
   }
 
   // identity of a move: piece + origin + destination, so the same unit is tracked across phases

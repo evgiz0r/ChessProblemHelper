@@ -20,6 +20,10 @@ the lines the departures open (Rd8#, Qd2# through e3); 1.Qe7 leaves the g5-d2 li
 knight's unguard of c5 (Qc5#) and the rook's self-block of e5 (Qxd7#). Evolve CHANGED=1 seeded with the core
 8/3n4/8/3kP3/8/4r3/8/8 found it in ten minutes; bare cores found nothing. Its hits put a unit on the board only
 for a set mate (Rg8 for Rd8#): give that mate to a unit that also works after the key where you can.
+His answer to No. 3 (bourd-e4-selfpins, 8 Oct): the same two captures, but on e4 under the queen's rank, so in the
+set they self-pin (pin-mates Rd7#/Rd1#, the pinned unit cannot block again) and after 1.Qe6 they unguard b5/c3
+(Sxb5#/Bc3#). One Black error per phase. The reason came from a one-rank shift, not from a new unit. A flight on e4
+was not possible: its mate needed d5, the phase selector (lessons.jsonl, 8 Oct).
 Traps: the try threat and the key duals coming from the same resource (2Rn1N2/7K/3P4/3k4/pB1p1P2/3n1P2/1p1Q1p2/8);
 a set+solution block cooked by any waiting move; a diagram flight that the change needs (queen on g5/h5).
 Dead end: blind enumeration for same-piece changes (5M positions, nothing); the composer's 3-unit scheme
