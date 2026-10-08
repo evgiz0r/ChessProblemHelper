@@ -84,6 +84,13 @@ def retractions(post: chess.Board):
             yield pre, key
 
 
+def _promoted(b: chess.Board) -> bool:
+    if len(b.pieces(chess.QUEEN, chess.WHITE)) > 1 or len(b.pieces(chess.ROOK, chess.WHITE)) > 2 or len(b.pieces(chess.KNIGHT, chess.WHITE)) > 2:
+        return True
+    bs = list(b.pieces(chess.BISHOP, chess.WHITE))
+    return len(bs) > 2 or (len(bs) == 2 and (sum(divmod(bs[0], 8)) % 2) == (sum(divmod(bs[1], 8)) % 2))
+
+
 def diagram_ok(pre: chess.Board) -> bool:
     n = pre.copy(); n.push(chess.Move.null())
     if not n.is_valid():
@@ -161,6 +168,7 @@ def solve_one(args):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument('post'); ap.add_argument('--patch', action='store_true')
+    ap.add_argument('--newunit', action='store_true', help='also try a NEW white unit as the key piece (e.g. a clearance key)')
     ap.add_argument('--jobs', type=int, default=os.cpu_count() or 2); ap.add_argument('--top', type=int, default=15)
     a = ap.parse_args(argv)
     post = chess.Board(a.post.split()[0] + ' b - - 0 1')
@@ -204,6 +212,25 @@ def main(argv=None):
                 print(f"   without {pc.symbol()}{chess.square_name(sq)}: the king gets a flight"); continue
             print(f"   without {pc.symbol()}{chess.square_name(sq)}: {len(left)} left" + (f" ({', '.join(left[:6])})" if left else '  <- candidate'))
     tasks = [(pre.fen(), key.uci(), None) for pre, key in retractions(post)]
+    if a.newunit:
+        # a new white unit lands on an empty square of the post-key position (its play unchanged) and is taken
+        # back one move: 1.Rb6-a6! clearing the threat line b4-b8 was found this way (8 Oct 2026)
+        n0 = len(tasks)
+        for sq in chess.SQUARES:
+            if post.piece_at(sq):
+                continue
+            for sym in 'NBRQP':
+                pc = chess.Piece.from_symbol(sym)
+                if sym == 'P' and chess.square_rank(sq) in (0, 1, 7):
+                    continue
+                b = post.copy(); b.set_piece_at(sq, pc)
+                if not b.is_valid() or _promoted(b):
+                    continue
+                t, d = post_spec(b.board_fen())
+                if t != spec[0] or set(d) != set(spec[1]) or any(d[u] != m for u, m in spec[1].items()):
+                    continue
+                tasks += [(pre.fen(), key.uci(), None) for pre, key in retractions(b) if key.to_square == sq]
+        print(f"{len(tasks) - n0} keys by a new unit")
     print(f"{len(tasks)} retractions")
     with ProcessPoolExecutor(a.jobs) as ex:
         results = [r for r in ex.map(solve_one, tasks, chunksize=4) if r]

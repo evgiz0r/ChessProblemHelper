@@ -19,3 +19,10 @@ def test_retraction_b7_is_sound_sacrifice():
 def test_king_retraction_is_cooked():
     pre = next(p for p, k in retractions(chess.Board(POST + ' b - - 0 1')) if k.uci() == 'c8b8')
     assert solve_one((pre.fen(), 'c8b8', None))[0] == 'cooked'
+
+
+def test_newunit_finds_the_clearance_key():
+    import subprocess, sys
+    r = subprocess.run([sys.executable, '-m', 'chesscomp.compose.keyfind', '8/4K3/2p5/2rpk3/1Qbp1RP1/2np4/6N1/8',
+                        '--newunit', '--jobs', '2', '--top', '5'], capture_output=True, text=True, timeout=600)
+    assert '1.Ra6!' in r.stdout
