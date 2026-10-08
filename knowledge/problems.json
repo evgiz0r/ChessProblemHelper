@@ -1011,6 +1011,25 @@
    "keys": [
     "Qe6"
    ]
+  },
+  {
+   "id": "bourd-e4-selfpins-2",
+   "fen": "3n4/N1R1p3/1p1n4/4p3/1BpkP1Q1/3q1P2/5P1K/1BR5",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "bench, 8 October 2026 (session muzcxw3i), third version of bourd-e4-selfpins",
+   "themes": [
+    "Changed mates (set vs solution)",
+    "Self-pin",
+    "Pin-mate",
+    "Unguard",
+    "Sacrificial key"
+   ],
+   "note": "Set Sxe4 2.Rd7#, Qxe4 2.Rd1# (self-pins on the 4th rank, d-file opened); 1.Qe6! (2.Qd5#) Sxe6 2.Sc6#, Sxe4 2.Sb5#, Qxe4 2.Bc3#. His aim: without the e4 flight, give the white knight more work so it is not tied to one thematic variation; he moved it a3-a7 and added bSd8. The knight now mates twice (Sc6#, Sb5#) and the key became a queen offer. All three post-key mates have one motive: a Black capture whose departure unguards the mating square (d8 left c6, d6 left b5, d3 left c3). Set: S8 moves 2.Sc6#. Fully economical: no single or paired removal keeps the play (wK b8/g8 also work). Flaws: wKh2 passive, 18 units (7 pawns), the tries are unthematic (1.Qg8? e6!).",
+   "solution": "#2 (10+8)   FEN 3n4/N1R1p3/1p1n4/4p3/1BpkP1Q1/3q1P2/5P1K/1BR5 w - - 0 1\nSet play:\n   1...S8f7/S8b7/Se6 2.Sc6#\n   1...Sc6 2.Sxc6#\n   1...Se8/Sc8/S6f7/S6b7/Sf5 2.Sb5#\n   1...Sb5 2.Sxb5#\n   1...Sxe4 2.Rd7#\n   1...Qxe4 2.Rd1#\n   1...Qc3 2.Bxc3#\n   1...Qe2/Qf1 2.Bc3#\n   1...Qd1 2.Rxd1#/Bc3#  [dual]\n   1...b5 2.Bc5#\n   S~ random Se8/Sc8/S6f7/S6b7/Sf5/Sb5 2.Sb5#; corrections Sxe4 2.Rd7#\n   Q~ random Qc3/Qe2/Qf1/Qd1 2.Bxc3# (dual after Qd1); corrections Qxe4 2.Rd1#\n   unprovided: Qxf3, Qe3, Qb3, Qa3, Qd2, Qc2, Qxb1, e6, c3\nTry: 1.Qg8? (threat: 2.Qd5#)\n   1...S8f7/Se6 2.Sc6#\n   1...S6f7/Sxe4 2.Sb5#\n   1...Qxe4 2.Bc3#\n   (20 further moves allow the threat)\n   but 1...e6!\nKey: 1.Qe6! (threat: 2.Qd5#)\n   1...Sxe6 2.Sc6#\n   1...Sxe4 2.Sb5#\n   1...Qxe4 2.Bc3#\n   (22 further moves allow the threat)\nChanged continuations:\n   1...Qxe4: Rd1# -> Bxc3#   [set play vs try Qg8]\n   1...Sxe4: Rd7# -> Sb5#   [set play vs try Qg8]\n   1...Qxe4: Rd1# -> Bxc3#   [set play vs key Qe6]\n   1...Sxe4: Rd7# -> Sb5#   [set play vs key Qe6]\n(5365 nodes, 0.39s)\n",
+   "keys": [
+    "Qe6"
+   ]
   }
  ]
 }
