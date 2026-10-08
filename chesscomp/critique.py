@@ -403,7 +403,13 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
             else:
                 add('minor', 'passive king', f"{_pname(board, sq)} takes part in no mate (acceptable if placed only to avoid checks)")
         elif sq == kmove.from_square:
-            add('minor', 'passive piece', f"{_pname(board, sq)} takes part in no mate (forgivable: it plays the key)")
+            # E. Bourd (8 Oct 2026): "it's more that it's a pawn compared to a rook. A completely useless
+            # rook/bishop/knight/queen is usually fatal." A pawn that only plays the key is cheap; an officer is not.
+            if p.piece_type == chess.PAWN:
+                add('minor', 'passive piece', f"{_pname(board, sq)} takes part in no mate (forgivable: a pawn that plays the key)")
+            else:
+                add('major', 'useless key piece', f"{_pname(board, sq)} takes part in no mate: an officer whose only job is "
+                                                  "the key is usually fatal (E. Bourd); a pawn would be forgivable")
         elif verdict.startswith('needed'):
             if 'SET PLAY' in verdict:
                 add('minor', 'set-play filler', f"{_pname(board, sq)} takes part in no mate; it only completes the set play "
