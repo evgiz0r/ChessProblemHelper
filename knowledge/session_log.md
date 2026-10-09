@@ -760,3 +760,11 @@
   1.Bd3? Sxd3!, 1.Bg2? Kc4!. Critique clean. Lessons: every guard I add gives the queen another mate
   (Sf2 -> Qe4#, a rook on the 3rd rank -> Rd3#); pick guards that cannot mate themselves (Bf1, Se7 + Pc6).
   New tool chesscomp/compose/shift.py (translate / mirror a scheme), his request.
+- He rejected the b2/b6 queen version: "the thematic play is completely duplicated by other defenses of the
+  same knights" (any knight move unguards). Fix = unguard AND self-block together: the queen's mating square
+  must not see the block square, and White must leave the block square unguarded, so another knight move
+  unguards but leaves the flight. geom.py/geom2.py enumerate this: only 16 geometries for Kd4, all mates from
+  both ends of a diagonal through the king. FINAL (sound, keyed) 7K/8/N3P3/7R/n1Nk4/P2P4/2P1n3/1Q6:
+  1.Sa6-c7! (2.Sb5#) Sac3 [a] 2.Qb6#, Sec3 [b] 2.Qg1#; Kc3 2.Sb5#; every other knight move only the threat.
+  Flaws: c3 flight unprovided in the diagram, set play = solution (static). Sd5-c7 (flight exchange c5->c3)
+  is cooked by 1.Sa5; Ba1 fixed the cook only via a discovered check from Kh8.
