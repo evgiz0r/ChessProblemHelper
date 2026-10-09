@@ -718,3 +718,9 @@
   logical challenge" (d5 first, then e3: "noticing the squares I just cannot guard as part of the mechanism,
   to fail early"); "get something sound at least before pushing for better content"; switched to zugzwang.
   Bench v23: theme box + since-last-solve diff.
+- Two non-capturing self-blocks next to the king (his request). Kept my knight scheme (Sf4-d3/d5 both guard b4
+  against Rb4#) and let a hill-climb (tools/compose_scratch/selfblock_hillclimb.py) find the mates: each white
+  mating piece leaves a guard of the block square (Rc3-c4 drops d3, Se3-c2 drops d5). Post-key 7 units, but every
+  retracted key took the d5 flight; one added unit (add_unit_for_key.py) gave 8/8/1p6/5K2/3k1n2/2R1N3/8/2RN4,
+  1.Rc1-b1! no flight change, pb6 refutes the zz tries 1.Sf2?/Sb2?/R1c2? (changed mates) by b5. Flaw kept off the
+  official solution: static key (set play = post-key play).
