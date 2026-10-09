@@ -748,3 +748,9 @@
   leaves e4, so the block is needed); Sge4 [b] Rh5-d5# (5th rank opens). Fixes on the way: pawn c2->e2 (c3#
   dual), Ba2 -> Sb6 (Sb3 shut the bishop), Pb2 protects c3 (Sd3 cut the rank), black pa4 takes a4 from the
   knight (Sa4 guarded c3). Every retracted key is Sb6 arriving and takes c4+d5: key still open.
+- He: move the thematic knights around. Rule found: each knight may only stop ITS OWN variation's mate (guard
+  or block it); if it guards the other line's mate square it kills that mate (c3 knight vs Rd5, c5 knight vs
+  Rd3). Best pair: d2 + g5 -> e4. Sound post-key K7/8/1N6/6nR/1P1k1P2/5P2/1PPnR3/2B1N3: threat c3#,
+  Sde4 [a] Bc1-e3# (c1-e3 opens), Sge4 [b] Rh5-d5# (5th rank opens). Pf3 (from add1.py) answers Sb1 but
+  covers e4, so no block is needed. Hand building beat six 95 s pair searches (best scores 15-34). Key: only
+  Sb6 arrivals, taking c4+d5; a 95 s diagram climb found nothing.
