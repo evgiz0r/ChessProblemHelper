@@ -734,3 +734,4 @@
   Sac4 [b] 2.Sb3# (each knight leaves the square that becomes the mate), Bh6 2.Qxe5# (set Qa7#), S~ 2.Qd6#.
   Dual left: 1...Sd3 2.Qd6#/c3# (keepkill found no single unit). His remarks: the searches wait too long;
   start smaller, run related searches in parallel.
+- He asked for diagrams of the process, schemes included (tools/scheme_png.py: arrows + tinted squares).
