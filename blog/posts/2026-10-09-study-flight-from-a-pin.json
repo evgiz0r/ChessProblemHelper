@@ -51,6 +51,6 @@
   "searches": 18
  },
  "improvement": "chesscomp/critique.py no longer lists the variation of a flight GIVEN by the key as the minor flaw 'king flight variation (easy to see)': the constitution makes a given flight a plus, and the critique was calling it a plus and a flaw at once. A flight the king already had in the diagram is still flagged. Tested in tests/test_regression.py on the two-flight reference problem and on Maslov 1992, where 1...Kb6 (diagram flight) stays flagged and 1...Kxd5 (given by 1.Re6!) does not. The routine prompt also says how to start when the local main has diverged from origin.",
- "mentor_issue": null,
+ "mentor_issue": 5,
  "feedback": []
 }
