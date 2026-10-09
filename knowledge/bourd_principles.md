@@ -291,3 +291,7 @@ Presenting a problem (session 30): "in official solutions that we present, it's 
 ones. We can mention them to ourselves, but as part of the solution write what's needed." The solution block
 carries the play (set, tries, key, variations, theme); minor flaws (a dual outside the thematic play, a passive
 king, a provided diagram flight) go in our own notes or the mentor issue, not in the solution.
+
+"I think king specifically as cook-stopper is not a flaw, it's ok." (critique: a king whose square matters for
+soundness is a note, `cook-stopping king`, not `passive king`.) On the presented solution: "I would probably add
+the [a], [b] for the mates that change thematically."

@@ -176,6 +176,31 @@ def piece_necessity(problem, res, time_limit=20):
     return out
 
 
+def _king_stops_cooks(problem, res, ksq, tries=16) -> bool:
+    """True when the White king's square matters: moving it to some other legal square spoils the problem
+    (cooked or unsound), so it stands where it does to stop cooks (E. Bourd s30: not a flaw)."""
+    board = problem.board
+    key = next((ph for ph in res['phases'] if ph['type'] == 'key'), None)
+    if key is None:
+        return False
+    bk = board.king(chess.BLACK)
+    cands = sorted((s for s in chess.SQUARES if not board.piece_at(s) and chess.square_distance(s, bk) >= 2),
+                   key=lambda s: chess.square_distance(s, ksq))[:tries]     # the nearby squares tell most
+    tested = 0
+    for s in cands:
+        b = board.copy(); b.remove_piece_at(ksq); b.set_piece_at(s, chess.Piece(chess.KING, chess.WHITE))
+        if not b.is_valid() or b.is_check():
+            continue
+        tested += 1
+        try:
+            r = analyse(Problem.from_fen(b.fen(), '#2'), max_refutations=0, include_tries=False, include_set=False, time_limit=5)
+        except Exception:
+            continue
+        if r.get('keys') != res.get('keys') or r.get('cooked'):
+            return True           # placed elsewhere it lets a cook in (or breaks the key): a cook-stopper
+    return False
+
+
 def critique(problem: Problem, res: dict | None = None, necessity: bool = True) -> dict:
     res = res or analyse(problem, max_refutations=1)
     F = []
@@ -415,6 +440,9 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
             if anchors:
                 add('plus', 'thematic king', f"{_pname(board, sq)} takes part in no mate but anchors a pin the defence creates: "
                                              + ', '.join(anchors))
+            elif _king_stops_cooks(problem, res, sq):
+                # E. Bourd (s30): "king specifically as cook-stopper is not a flaw, it's ok"
+                add('note', 'cook-stopping king', f"{_pname(board, sq)} takes part in no mate but stops cooks where it stands")
             else:
                 add('minor', 'passive king', f"{_pname(board, sq)} takes part in no mate (acceptable if placed only to avoid checks)")
         elif sq == kmove.from_square:

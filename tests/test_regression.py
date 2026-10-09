@@ -193,3 +193,13 @@ def test_attacked_key_piece_is_flagged():
     from chesscomp.critique import critique
     p = Problem.from_fen('6bK/2r3n1/5p2/6Qn/1BBk1P2/3Pp1N1/3qp3/8 w - - 0 1', '#2')
     assert 'attacked key piece' in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+
+
+def test_cook_stopping_king_is_no_flaw():
+    """E. Bourd s30: 'king specifically as cook-stopper is not a flaw, it's ok' (wKa3 in his correction problem)."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    p = Problem.from_fen('2Q1N3/1p6/1p1BPpP1/1B1knn1R/8/K3p3/4N1P1/8 w - - 0 1', '#2')
+    rules = {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+    assert 'passive king' not in rules and 'cook-stopping king' in rules
