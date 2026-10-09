@@ -724,3 +724,9 @@
   retracted key took the d5 flight; one added unit (add_unit_for_key.py) gave 8/8/1p6/5K2/3k1n2/2R1N3/8/2RN4,
   1.Rc1-b1! no flight change, pb6 refutes the zz tries 1.Sf2?/Sb2?/R1c2? (changed mates) by b5. Flaw kept off the
   official solution: static key (set play = post-key play).
+- Corrected: he meant TWO DIFFERENT black pieces to the SAME square next to the king. same_sq.py (post-key
+  hill-climb) found the scheme, diag.py (whole-diagram hill-climb, key may not take flights) found the key:
+  8/3N3b/3n4/3B4/3k4/1R4p1/4K1Q1/8, 1.Bd5-e6! (2.Qd5#) Be4 [a] 2.Qg1#, Se4 [b] 2.Rd3#, Bd3+ 2.Rxd3#.
+  Both blocks cut the queen's g2-d5 line and fill e4; each blocker stops the other's mate (Be4 guards d3,
+  Se4 interposes on f2). Flaw kept off the official solution: key piece attacked by the king (it is protected).
+  Also good: 5b2/1n6/8/1Q1p4/3k4/4R3/3K4/7B post-key (Bc5/Sc5, Qd3#/Qb4#) but every key took 2 flights.
