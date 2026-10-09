@@ -230,7 +230,9 @@
         if (!mv) continue;
         pre.move(mv);
         if (pre.fen().split(' ')[0] !== post) continue;
-        out.push({ san: S(mv.san), fen, check: mv.san.includes('+') });
+        const letter = { k: 'K', q: 'Q', r: 'R', b: 'B', n: 'S', p: '' }[pc.type];
+        out.push({ san: S(mv.san), fen, check: mv.san.includes('+'), from: frm, to: sq,
+                   long: letter + frm + '-' + sq + (mv.san.includes('+') ? '+' : '') });
       }
     }
     return out;
