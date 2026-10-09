@@ -707,3 +707,9 @@
   Confirmed on a sketch with illegal force. Obstacle: e4. Every line to e4 runs through a mating or
   self-block square, and the two usable ones (a8-e4 via d5, b1-e4 via d3) need two light bishops. Evolve
   (7 min x2, CHANGED=1) found nothing with changes.
+* Session 30 (9 Oct): he worked from my two-changes sketch (bench mv0mvey7, 07:17-07:35, 10 notes) to
+  2Q1N3/8/3PPpP1/1B1knn1R/8/K3p3/4N1PB/8: bSf5 random S~ 2.Qc4#, corrections Sxd6/Sd4 change from set
+  2.Sxf6#/2.Sc3# to 2.Sc7#/2.Sf4# after 1.Qc2! (zugzwang). "The solution is way too cluttered for me to figure."
+  New chesscomp/thematic.py (and the same table at the top of the short report and of the bench, v22):
+  thematic rows only, phase columns, everything else folded; same-mate "changes" (Qc4#->Qc4#) dropped; tries
+  that change nothing or only keep the set play folded into one line per refutation.

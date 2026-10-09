@@ -173,3 +173,14 @@ def test_given_flight_is_not_an_easy_king_variation():
     p = Problem.from_fen('6Q1/3K4/P2b4/1PkP4/R4P2/4R3/8/5B2 w - - 0 1', '#2')
     kv = [f['msg'] for f in critique(p, analyse(p), necessity=False)['findings'] if f['rule'] == 'king flight variation']
     assert len(kv) == 1 and 'Kb6' in kv[0]
+
+
+def test_thematic_table_shows_only_the_theme():
+    """E. Bourd, session 29: 'the solution is so cluttered it's hard to figure if the thematic play is there'."""
+    from chesscomp.thematic import table, format_table
+    res, t = table('2Q1N3/8/3PPpP1/1B1knn1R/8/K3p3/4N1PB/8')
+    out = format_table(res, t)
+    assert 'Sxd6  *' in out and 'Sxf6#  Sc7#' in out and 'Sc3#   Sf4#' in out
+    assert '1.Ba6?' not in out          # tries that repeat the set play get no column
+    res, t = table('2K2BB1/8/5P2/8/2pkP1R1/Q3p3/6b1/2r1N3')
+    assert '1.f7? Bxe4!' in format_table(res, t)

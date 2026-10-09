@@ -107,6 +107,15 @@ def format_compact(res):
             out.append(f"PROMOTED FORCE: {line}  (fatal)")
     except Exception:
         pass
+    if res['kind'] != 'help':
+        try:   # E. Bourd s29: the theme first, phase against phase, before the clutter
+            from .thematic import build, format_table
+            t = build(res)
+            if t and (t['groups'] or t['rows']):
+                out.append('Thematic play:')
+                out += ['   ' + l for l in format_table(res, t).split('\n')]
+        except Exception:
+            pass
     if res['kind'] == 'help':
         out.append(f"{res['n_solutions']} solution(s): " + ' ; '.join(s['line'] for s in res['solutions']))
         return '\n'.join(out)
@@ -210,7 +219,7 @@ def _changes(res, phase_label):
             f = '/'.join(c['from']) if isinstance(c['from'], list) else c['from']
             t = '/'.join(c['to']) if isinstance(c['to'], list) else c['to']
             item = f"{c['defence']} {f}->{t}"
-            if item not in out:
+            if f != t and item not in out:      # the same mate played by another unit or from elsewhere is no change
                 out.append(item)
     return ', '.join(out)
 

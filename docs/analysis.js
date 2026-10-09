@@ -357,12 +357,58 @@
     if (hidden) L.push(indent + `(${hidden} other moves allow the threat)`);
     return L;
   }
+  // Thematic table (E. Bourd s29: "the solution is so cluttered it's hard to figure if the thematic play is
+  // there"): one row per thematic defence, one column per phase (set, tries that change the theme, key).
+  // Mirrors chesscomp/thematic.py.
+  function thematicTable(res) {
+    if (!res.phases) return null;
+    const key = res.phases.find(p => p.type === 'key'); if (!key || res.cooked) return null;
+    const sp = res.phases.find(p => p.type === 'set');
+    const cellsOf = ph => { const m = new Map(); for (const v of ph.variations || []) {
+      if (v.refutes) continue;
+      const ms = (v.conts || []).map(c => c.san);
+      m.set(v.defence, v.threatRepeat ? 'threat' : (ms.length ? ms.join('/') + (ms.length > 1 ? ' DUAL' : '') : '-')); } return m; };
+    const C = new Map(res.phases.filter(p => p.type !== 'try' || (p.refutations || []).length === 1).map(p => [p, cellsOf(p)]));
+    const real = c => c !== undefined && c !== '-' && c !== 'threat' && !c.includes('DUAL');
+    const groups = corrections(key).length ? corrections(key) : (sp ? corrections(sp) : []);
+    const grouped = new Set(groups.flatMap(g => [...g.random.moves, ...g.corrections.map(x => x.move)]));
+    const kc = C.get(key);
+    const cand = [...C.keys()].filter(p => p !== key);
+    const rows = [...kc.keys()].filter(d => !grouped.has(d) && real(kc.get(d)) && cand.some(p => real(C.get(p).get(d)) && C.get(p).get(d) !== kc.get(d)));
+    const ts = [...rows, ...groups.flatMap(g => [g.random.moves[0], ...g.corrections.map(x => x.move)])];
+    const tries = cand.filter(p => p.type === 'try' && ts.every(d => C.get(p).has(d))
+      && ts.some(d => real(C.get(p).get(d)) && C.get(p).get(d) !== kc.get(d))
+      && !(sp && ts.every(d => !real(C.get(p).get(d)) || C.get(p).get(d) === C.get(sp).get(d)))).slice(0, 3);
+    const cols = [...(sp ? [['set', sp]] : []), ...tries.map(t => [`1.${t.first}? ${t.refutations[0]}!`, t]), [`1.${key.first}!`, key]];
+    if (!rows.length && !groups.length) return null;
+    const grid = [['', ...cols.map(([n, p]) => n + (p.type === 'set' ? '' : (p.threat.length ? ` (${p.threat.map(t => t.san).join('/')})` : ' (zz)')))]];
+    const shown = new Set();
+    const row = (label, d) => { const vals = cols.map(([, p]) => C.get(p).get(d) || '?');
+      const changed = new Set(vals.filter(v => !['-', '?', 'threat'].includes(v))).size > 1;
+      grid.push([label + (changed ? '  *' : ''), ...vals]); shown.add(d); };
+    for (const g of groups) { row(`${g.piece[0]}~ (${g.random.moves.length})`, g.random.moves[0]); g.random.moves.forEach(m => shown.add(m));
+      for (const x of g.corrections) row('  ' + x.move, x.move); }
+    const merged = new Map();
+    for (const d of rows) if (!shown.has(d)) { const k = cols.map(([, p]) => C.get(p).get(d) || '?').join('|'); if (!merged.has(k)) merged.set(k, []); merged.get(k).push(d); }
+    for (const ds of merged.values()) { row(ds.join('/'), ds[0]); ds.forEach(d => shown.add(d)); }
+    const w = grid[0].map((_, i) => Math.max(...grid.map(r => r[i].length)));
+    const L = ['Thematic play (* = mate changes):', ...grid.map(r => '   ' + r.map((x, i) => x.padEnd(w[i])).join('  ').trimEnd())];
+    const rest = [...kc.keys()].filter(d => !shown.has(d));
+    const duals = rest.filter(d => (kc.get(d) || '').includes('DUAL')), holes = rest.filter(d => kc.get(d) === '-');
+    let s = `   other Black play after the key: ${rest.length} moves`;
+    if (duals.length) s += `; duals after ${duals.join(', ')}`;
+    if (holes.length) s += `; NO MATE after ${holes.join(', ')}`;
+    L.push(s);
+    return L.join('\n');
+  }
   function formatCompact(res) {
     if (res.error) return res.error;
     const L = [];
     for (const line of promotedForce(res.fen || '')) L.push('PROMOTED FORCE: ' + line + '  (fatal)');
     if (res.solutions) { L.push(`${res.solutions.length} solution(s): ` + res.solutions.join(' ; ')); return L.join('\n'); }
     const sp = res.phases.find(p => p.type === 'set');
+    const tt = thematicTable(res);
+    if (tt) L.push(tt);
     const keys = res.phases.filter(p => p.type === 'key'), tries = res.phases.filter(p => p.type === 'try');
     if (!res.keys.length) L.push('No solution.');
     else if (res.cooked) L.push(`COOKED: ${res.keys.length} keys: ${res.keys.join(', ')}`);
@@ -374,16 +420,21 @@
       L.push(h); L.push(...phaseCompact(k));
     }
     // E. Bourd (s29): the changes are the content, so the short solution shows them under each try
-    const changes = lab => [...new Set((res.relations.changed || []).filter(c => c.phases[0] === lab && /^key/.test(c.phases[1]))
+    const changes = lab => [...new Set((res.relations.changed || []).filter(c => c.phases[0] === lab && /^key/.test(c.phases[1]) && c.from !== c.to)
       .map(c => `${c.defence} ${c.from}->${c.to}`))].join(', ');
+    const folded = new Map();   // tries that change nothing: one line per refutation (E. Bourd s29: clutter)
     for (const t of tries) {
       const th = t.threat.length ? ` (2.${t.threat.map(x => x.san).join('/')})` : '';
       const ref = t.stalemate ? 'stalemate!' : t.refutations.map(r => r + '!').join(', ');
-      L.push(`Try 1.${t.first}?${th} but ${ref}`);
       const chg = changes(`try ${t.first}`);
+      const setChg = new Set(changes('set play').split(', ').filter(Boolean));
+      const onlySet = chg && chg.split(', ').every(x => setChg.has(x));   // the try just keeps the set play
+      if ((!chg || onlySet) && !t.threat.length) { if (!folded.has(ref)) folded.set(ref, []); folded.get(ref).push(`1.${t.first}?`); continue; }
+      L.push(`Try 1.${t.first}?${th} but ${ref}`);
       if (chg) L.push('   changed: ' + chg);
     }
-    const ch = (res.relations.changed || []).filter(c => c.phases[0] === 'set play' && /^key/.test(c.phases[1]));
+    for (const [ref, ts] of folded) L.push(`${ts.length > 1 ? 'Tries' : 'Try'} ${ts.join(' ')} but ${ref}`);
+    const ch = (res.relations.changed || []).filter(c => c.phases[0] === 'set play' && /^key/.test(c.phases[1]) && c.from !== c.to);
     if (ch.length) L.push('Set play differs: ' + changes('set play'));
     if (sp && keys.length && sp.variations.some(v => v.conts.length)) {
       const km = new Map(keys[0].variations.filter(v => v.conts.length && !v.threatRepeat).map(v => [v.defence, v.conts.map(c => c.san).join('/')]));
@@ -504,5 +555,5 @@
     return res;
   }
 
-  return { analyse, keyReadiness, formatReport, formatCompact, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
+  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
 }));
