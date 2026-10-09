@@ -730,3 +730,7 @@
   Both blocks cut the queen's g2-d5 line and fill e4; each blocker stops the other's mate (Be4 guards d3,
   Se4 interposes on f2). Flaw kept off the official solution: key piece attacked by the king (it is protected).
   Also good: 5b2/1n6/8/1Q1p4/3k4/4R3/3K4/7B post-key (Bc5/Sc5, Qd3#/Qb4#) but every key took 2 flights.
+- Two knights to the same square: 8/6bQ/4K3/n3n3/3kN3/8/2PN2p1/4R3, 1.Qh7-h2! (2.Qg1#) Sec4 [a] 2.Sf3#,
+  Sac4 [b] 2.Sb3# (each knight leaves the square that becomes the mate), Bh6 2.Qxe5# (set Qa7#), S~ 2.Qd6#.
+  Dual left: 1...Sd3 2.Qd6#/c3# (keepkill found no single unit). His remarks: the searches wait too long;
+  start smaller, run related searches in parallel.
