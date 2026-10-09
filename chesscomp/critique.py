@@ -504,8 +504,8 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
 
 
 def format_critique(c):
-    order = {'major': 0, 'minor': 1, 'plus': 2}
-    icon = {'major': '✗✗', 'minor': '✗ ', 'plus': '✓ '}
+    order = {'major': 0, 'minor': 1, 'note': 2, 'plus': 3}
+    icon = {'major': '✗✗', 'minor': '✗ ', 'note': '· ', 'plus': '✓ '}
     lines = [f"{icon[f['severity']]} [{f['rule']}] {f['msg']}" for f in sorted(c['findings'], key=lambda f: order[f['severity']])]
     return '\n'.join(lines)
 
