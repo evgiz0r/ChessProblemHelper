@@ -713,3 +713,8 @@
   New chesscomp/thematic.py (and the same table at the top of the short report and of the bench, v22):
   thematic rows only, phase columns, everything else folded; same-mate "changes" (Qc4#->Qc4#) dropped; tries
   that change nothing or only keep the set play folded into one line per refutation.
+  His notes this morning, in order: my sketch's d3/d5 were guarded (no self-block, so no differentiation);
+  a threat for two specific knight moves is too hard, so drop it; "prioritizing things according to the
+  logical challenge" (d5 first, then e3: "noticing the squares I just cannot guard as part of the mechanism,
+  to fail early"); "get something sound at least before pushing for better content"; switched to zugzwang.
+  Bench v23: theme box + since-last-solve diff.

@@ -264,3 +264,9 @@ Knowing where to stop is part of composing: a flaw that pays for soundness again
 once further cleaning stops paying.
 
 Presentation: "Please keep showing diagrams when posting." Every position discussed gets a diagram card, not only a FEN.
+
+Session 30, on the tools: "I know it's hard to make a program find my thematic desired content, especially if
+it's not ready. But I think you should incrementally realize what we want to see in the solution, as I'm
+solving, as I'm iterating: what operations could be sped up, what information is valuable, according to the
+goal, and improve the solution view." First steps (bench v23): a theme box (pinned thematic defences, kept in
+the table even while broken) and "since the last solve" (cooks, theme cells, holes, duals that the edit changed).

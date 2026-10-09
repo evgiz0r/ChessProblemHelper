@@ -136,6 +136,7 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(-
       </span>
       <select id="stip" aria-label="stipulation"><option>#2</option><option>s#2</option><option>h#2</option></select>
       <button class="act primary" id="solve">Solve</button>
+      <input id="theme" placeholder="theme: e.g. Sxd6,Sd4 (empty = guess)" aria-label="thematic defences" style="font:inherit;font-size:13px;padding:4px 6px;border:1px solid var(--line);border-radius:4px;background:var(--ground);color:var(--ink);min-width:170px">
       <label class="sub" title="everything the solver knows: every set-play move, changed mates, patterns, dual avoidance"><input type="checkbox" id="fullreport"> full report</label>
       <label class="sub" title="post-key view: also find which White unit every other mate in two depends on (one solve per unit, slower)"><input type="checkbox" id="keyunits"> key check by unit</label>
     </div>
@@ -480,6 +481,7 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   function setMode(m){ state.mode = m; document.getElementById('modepre').classList.toggle('on', m === 'pre'); document.getElementById('modepost').classList.toggle('on', m === 'post'); }
   document.getElementById('stip').addEventListener('change', e => { state.stip = e.target.value; });
   document.getElementById('solve').addEventListener('click', solve);
+  document.getElementById('theme').addEventListener('change', e => log('theme', e.target.value || '(guess)'));
 
   function kingsOk(fen){
     const p = fen.split(' ')[0]; return (p.match(/K/g) || []).length === 1 && (p.match(/k/g) || []).length === 1;
@@ -507,14 +509,22 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   }
   function firstLines(t){
     // verdict first (cooked / keys / no solution), then threat and holes, then tries: the journal keeps only this line
-    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|Also solves|Key-piece|1\.|\s+[QRBS]~|\s+\[duals\]|\s+changed|Reciprocal|Patterns|Thematic|\s{3}\S.*\s\*\s)/i.test(l));
-    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution|1\.)/i.test(l) ? 1 : /^(threat|holes|unprovided|Also solves|Key-piece)/i.test(l) ? 2 : /^(Thematic|\s{3}\S.*\s\*\s)/.test(l) ? 1 : /^\s+([QRBS]~|\[duals\]|changed)/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
+    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|Also solves|Key-piece|1\.|\s+[QRBS]~|\s+\[duals\]|\s+changed|Reciprocal|Patterns|Thematic|Since the last|\s{3}\S.*\s\*\s)/i.test(l));
+    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution|1\.)/i.test(l) ? 1 : /^(threat|holes|unprovided|Also solves|Key-piece)/i.test(l) ? 2 : /^(Since the last|Thematic|\s{3}\S.*\s\*\s)/.test(l) ? 1 : /^\s+([QRBS]~|\[duals\]|changed)/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
     return L.map((l, i) => [rank(l), i, l]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 8).map(x => x[2]).join(' | ');
   }
   function solvePre(fen){
     const res = ChessComp.analyse(fen, state.stip);
     const full = document.getElementById('fullreport').checked;
-    let out = (full || !ChessComp.formatCompact) ? ChessComp.formatReport(res) : ChessComp.formatCompact(res);
+    const theme = document.getElementById('theme').value.split(/[ ,]+/).map(x => x.trim().replace(/^N/, 'S')).filter(Boolean);
+    let out = (full || !ChessComp.formatCompact) ? ChessComp.formatReport(res) : ChessComp.formatCompact(res, { theme });
+    // E. Bourd s30: say what the last edit did, against the previous solve in this session
+    if (ChessComp.solveSummary && state.stip === '#2'){
+      const cur = ChessComp.solveSummary(res, theme);
+      const diff = state.prevSolve && state.prevSolve.session === session ? ChessComp.diffSummary(state.prevSolve.sum, cur) : [];
+      state.prevSolve = { session, sum: cur };
+      if (diff.length) out = diff.join('\n') + '\n\n' + out;
+    }
     if (!full) return out;
     // E. Bourd s27: a promoted piece in the diagram is fatal; say so at the top (formatReport also marks it)
     const promo = ChessComp.promotedForce ? ChessComp.promotedForce(fen) : [];

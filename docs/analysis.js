@@ -360,7 +360,7 @@
   // Thematic table (E. Bourd s29: "the solution is so cluttered it's hard to figure if the thematic play is
   // there"): one row per thematic defence, one column per phase (set, tries that change the theme, key).
   // Mirrors chesscomp/thematic.py.
-  function thematicTable(res) {
+  function thematicTable(res, defs) {
     if (!res.phases) return null;
     const key = res.phases.find(p => p.type === 'key'); if (!key || res.cooked) return null;
     const sp = res.phases.find(p => p.type === 'set');
@@ -374,25 +374,28 @@
     const grouped = new Set(groups.flatMap(g => [...g.random.moves, ...g.corrections.map(x => x.move)]));
     const kc = C.get(key);
     const cand = [...C.keys()].filter(p => p !== key);
-    const rows = [...kc.keys()].filter(d => !grouped.has(d) && real(kc.get(d)) && cand.some(p => real(C.get(p).get(d)) && C.get(p).get(d) !== kc.get(d)));
-    const ts = [...rows, ...groups.flatMap(g => [g.random.moves[0], ...g.corrections.map(x => x.move)])];
+    const pinned = (defs || []).filter(Boolean);
+    const rows = pinned.length ? pinned
+      : [...kc.keys()].filter(d => !grouped.has(d) && real(kc.get(d)) && cand.some(p => real(C.get(p).get(d)) && C.get(p).get(d) !== kc.get(d)));
+    const ts = pinned.length ? rows : [...rows, ...groups.flatMap(g => [g.random.moves[0], ...g.corrections.map(x => x.move)])];
     const tries = cand.filter(p => p.type === 'try' && ts.every(d => C.get(p).has(d))
       && ts.some(d => real(C.get(p).get(d)) && C.get(p).get(d) !== kc.get(d))
       && !(sp && ts.every(d => !real(C.get(p).get(d)) || C.get(p).get(d) === C.get(sp).get(d)))).slice(0, 3);
     const cols = [...(sp ? [['set', sp]] : []), ...tries.map(t => [`1.${t.first}? ${t.refutations[0]}!`, t]), [`1.${key.first}!`, key]];
     if (!rows.length && !groups.length) return null;
+    if (pinned.length) cols.forEach(([, p]) => { for (const d of pinned) if (!C.get(p).has(d)) C.get(p).set(d, 'not legal'); });
     const grid = [['', ...cols.map(([n, p]) => n + (p.type === 'set' ? '' : (p.threat.length ? ` (${p.threat.map(t => t.san).join('/')})` : ' (zz)')))]];
     const shown = new Set();
     const row = (label, d) => { const vals = cols.map(([, p]) => C.get(p).get(d) || '?');
       const changed = new Set(vals.filter(v => !['-', '?', 'threat'].includes(v))).size > 1;
       grid.push([label + (changed ? '  *' : ''), ...vals]); shown.add(d); };
-    for (const g of groups) { row(`${g.piece[0]}~ (${g.random.moves.length})`, g.random.moves[0]); g.random.moves.forEach(m => shown.add(m));
+    for (const g of (pinned.length ? [] : groups)) { row(`${g.piece[0]}~ (${g.random.moves.length})`, g.random.moves[0]); g.random.moves.forEach(m => shown.add(m));
       for (const x of g.corrections) row('  ' + x.move, x.move); }
     const merged = new Map();
     for (const d of rows) if (!shown.has(d)) { const k = cols.map(([, p]) => C.get(p).get(d) || '?').join('|'); if (!merged.has(k)) merged.set(k, []); merged.get(k).push(d); }
     for (const ds of merged.values()) { row(ds.join('/'), ds[0]); ds.forEach(d => shown.add(d)); }
     const w = grid[0].map((_, i) => Math.max(...grid.map(r => r[i].length)));
-    const L = ['Thematic play (* = mate changes):', ...grid.map(r => '   ' + r.map((x, i) => x.padEnd(w[i])).join('  ').trimEnd())];
+    const L = [(pinned.length ? 'Thematic play (your theme' : 'Thematic play (guessed') + '; * = mate changes):', ...grid.map(r => '   ' + r.map((x, i) => x.padEnd(w[i])).join('  ').trimEnd())];
     const rest = [...kc.keys()].filter(d => !shown.has(d));
     const duals = rest.filter(d => (kc.get(d) || '').includes('DUAL')), holes = rest.filter(d => kc.get(d) === '-');
     let s = `   other Black play after the key: ${rest.length} moves`;
@@ -401,13 +404,46 @@
     L.push(s);
     return L.join('\n');
   }
-  function formatCompact(res) {
+  // What one edit did (E. Bourd s30: "incrementally realize what we want to see, as I'm iterating"): a small
+  // summary of a solve, and the difference to the previous solve of the same session.
+  function solveSummary(res, defs) {
+    const out = { keys: (res.keys || []).slice(), cooked: !!res.cooked, theme: {}, holes: [], duals: [] };
+    const key = (res.phases || []).find(p => p.type === 'key');
+    const sp = (res.phases || []).find(p => p.type === 'set');
+    const cell = v => !v ? 'not legal' : v.threatRepeat ? 'threat' : (v.conts.length ? v.conts.map(c => c.san).join('/') + (v.conts.length > 1 ? ' DUAL' : '') : 'no mate');
+    const pick = ph => new Map((ph ? ph.variations : []).filter(v => !v.refutes).map(v => [v.defence, v]));
+    if (key && !res.cooked) {
+      const km = pick(key), sm = pick(sp);
+      for (const d of defs || []) out.theme[d] = { set: sp ? cell(sm.get(d)) : '', key: cell(km.get(d)) };
+      for (const v of key.variations) { if (v.refutes) continue;
+        if (!v.threatRepeat && !v.conts.length) out.holes.push(v.defence);
+        if (v.conts.length > 1) out.duals.push(v.defence); }
+    }
+    return out;
+  }
+  function diffSummary(prev, cur) {
+    if (!prev) return [];
+    const L = [], gone = prev.keys.filter(k => !cur.keys.includes(k)), came = cur.keys.filter(k => !prev.keys.includes(k));
+    if (prev.cooked !== cur.cooked || gone.length || came.length) {
+      const v = s => s.keys.length === 0 ? 'no solution' : s.cooked ? `cooked (${s.keys.length} keys)` : `sound, 1.${s.keys[0]}!`;
+      L.push(`was ${v(prev)}, now ${v(cur)}` + (gone.length ? `; gone: ${gone.join(', ')}` : '') + (came.length ? `; new: ${came.join(', ')}` : ''));
+    }
+    for (const d of Object.keys(cur.theme)) { const a = prev.theme[d], b = cur.theme[d];
+      if (a && (a.key !== b.key || a.set !== b.set)) L.push(`${d}: set ${a.set || '-'} -> ${b.set || '-'}, key ${a.key} -> ${b.key}`); }
+    const plus = (a, b) => b.filter(x => !a.includes(x)), minus = (a, b) => a.filter(x => !b.includes(x));
+    if (plus(prev.holes, cur.holes).length) L.push('new holes: ' + plus(prev.holes, cur.holes).join(', '));
+    if (minus(prev.holes, cur.holes).length) L.push('holes closed: ' + minus(prev.holes, cur.holes).join(', '));
+    if (plus(prev.duals, cur.duals).length) L.push('new duals: ' + plus(prev.duals, cur.duals).join(', '));
+    if (minus(prev.duals, cur.duals).length) L.push('duals gone: ' + minus(prev.duals, cur.duals).join(', '));
+    return L.length ? ['Since the last solve: ' + L[0], ...L.slice(1).map(l => '   ' + l)] : ['Since the last solve: no change in verdict, theme, holes or duals'];
+  }
+  function formatCompact(res, opts) {
     if (res.error) return res.error;
     const L = [];
     for (const line of promotedForce(res.fen || '')) L.push('PROMOTED FORCE: ' + line + '  (fatal)');
     if (res.solutions) { L.push(`${res.solutions.length} solution(s): ` + res.solutions.join(' ; ')); return L.join('\n'); }
     const sp = res.phases.find(p => p.type === 'set');
-    const tt = thematicTable(res);
+    const tt = thematicTable(res, opts && opts.theme);
     if (tt) L.push(tt);
     const keys = res.phases.filter(p => p.type === 'key'), tries = res.phases.filter(p => p.type === 'try');
     if (!res.keys.length) L.push('No solution.');
@@ -555,5 +591,5 @@
     return res;
   }
 
-  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
+  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, solveSummary, diffSummary, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
 }));
