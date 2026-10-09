@@ -1122,6 +1122,23 @@
    "keys": [
     "Qc1"
    ]
+  },
+  {
+   "id": "bourd-correction-two-changes",
+   "fen": "2Q1N3/1p6/1p1BPpP1/1B1knn1R/8/K3p3/4N1P1/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd",
+   "source": "session 30 (8-9 October 2026), bench sessions mv0mvey7 and later, from Claude's two-changes sketch",
+   "themes": [
+    "Black correction",
+    "Changed mates (set vs solution)",
+    "Zugzwang",
+    "Flight exchange"
+   ],
+   "keys": [
+    "Qc2"
+   ],
+   "note": "Set: 1...S~ 2.Qc4#, 1...Sxd6! 2.Sxf6#, 1...Sd4! 2.Sc3#, 1...Ke4 2.Sxf6#. 1.Qc2! (zz) 1...S~ 2.Qc4#, 1...Sxd6! 2.Sc7#, 1...Sd4! 2.Sf4#, 1...Kxe6 2.Sf4#, 1...Sc4+ 2.Qxc4#. Two changed mates on the f5 knight's corrections; the key exchanges the flight e4 for e6 (1 -> 1, not flight-taking: his count rule). His order of work: threat against two flights first, then the guard near the king, two phases, switch to zugzwang (defences became corrections), mates around the flight, construction (Pg2 for the set mate after Ke4, Ka3 so tries giving room fail to Qc4+), last the unthematic dual. Notes for ourselves (not in the official solution): dual 1...Sc6 2.Bc4#/Qc4#; Kxe6 by-play; Ka3 passive except as cook-stopper; 7 pawns."
   }
  ]
 }

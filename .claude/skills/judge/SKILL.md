@@ -28,3 +28,6 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
    never call it "right" because it worked. E. Bourd (session 29), on "using self-blocks twice was right":
    "It worked. Not that it was right, many other things could be 'right' as well. And if not I'll change so
    it was wrong?!"
+8. Official solution vs notes (E. Bourd s30): the published solution shows what is needed - set play, tries,
+   key, variations, theme - and may leave out minor flaws (an unthematic dual, a passive king, a provided
+   flight). Keep those in our own notes or the mentor issue. Major flaws are never hidden.

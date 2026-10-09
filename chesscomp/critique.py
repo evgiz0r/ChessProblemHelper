@@ -230,10 +230,15 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     flights_before = set(m.to_square for m in b.legal_moves if m.from_square == b.king(chess.BLACK)) if b.is_valid() else set()
     after = board.copy(); after.push(kmove)
     flights_after = set(m.to_square for m in after.legal_moves if m.from_square == after.king(chess.BLACK))
-    if flights_after - flights_before:
-        add('plus', 'flight-giving key', 'key gives flight(s): ' + ', '.join(chess.square_name(s) for s in flights_after - flights_before))
-    if flights_before - flights_after:
-        add('minor', 'flight-taking key', 'key takes flight(s): ' + ', '.join(chess.square_name(s) for s in flights_before - flights_after))
+    # E. Bourd (s30): count the flights, not the squares - 1.Qc8-c2 trades e4 for e6 (1 -> 1) and takes nothing
+    gained = ', '.join(chess.square_name(s) for s in flights_after - flights_before)
+    lost = ', '.join(chess.square_name(s) for s in flights_before - flights_after)
+    if len(flights_after) > len(flights_before):
+        add('plus', 'flight-giving key', f'key gives flight(s): {gained} ({len(flights_before)} -> {len(flights_after)})')
+    elif len(flights_after) < len(flights_before):
+        add('minor', 'flight-taking key', f'key takes flight(s): {lost} ({len(flights_before)} -> {len(flights_after)})')
+    elif gained:
+        add('plus', 'flight exchange', f'key changes the flight: {lost} -> {gained}')
     # E. Bourd (7 Oct 2026, on daily No. 2): a key by a piece out of play makes the solution obvious - fatal.
     # Out of play: a knight or bishop on the edge of the board, three or more squares from the Black king,
     # guarding no square of the king's field. Queens and rooks too (E. Bourd, 8 Oct 2026, on 1.Qb1 from h1: "very

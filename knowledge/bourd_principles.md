@@ -286,3 +286,8 @@ On 1.Qg5-f5 (Muralidharan, Problemesis 2002, an alternative to the published 1.Q
 The queen is attacked. An attacked piece moving is counted as a flaw. Here it's debatable, as h3 is so out of
 play, where it's obvious. I would probably go for g5 here, but not much of an improvement." Critique rule
 `attacked key piece` (minor); the key finder marks such keys and lists them after clean ones.
+
+Presenting a problem (session 30): "in official solutions that we present, it's ok to hide some flaws, the minor
+ones. We can mention them to ourselves, but as part of the solution write what's needed." The solution block
+carries the play (set, tries, key, variations, theme); minor flaws (a dual outside the thematic play, a passive
+king, a provided diagram flight) go in our own notes or the mentor issue, not in the solution.
