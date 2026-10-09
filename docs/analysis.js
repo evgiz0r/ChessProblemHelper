@@ -207,6 +207,46 @@
     return out;
   }
 
+  // Find the key (E. Bourd s30: "given a post-key play that works, find a move getting to that position where
+  // it is the only key; mention the moves that are close"). retractions(): every non-capturing White move that
+  // could have produced this position (Black to move); keysOf(): the keys of a diagram, stopping past `limit`.
+  function retractions(postFen) {
+    const post = postFen.trim().split(/\s+/)[0], out = [];
+    let pb; try { pb = new Chess(post + ' b - - 0 1'); } catch (e) { return out; }
+    const files = 'abcdefgh';
+    const squares = []; for (let r = 1; r <= 8; r++) for (const f of files) squares.push(f + r);
+    for (const sq of squares) {
+      const pc = pb.get(sq); if (!pc || pc.color !== 'w') continue;
+      for (const frm of squares) {
+        if (pb.get(frm)) continue;
+        if (pc.type === 'p' && /[18]$/.test(frm)) continue;
+        let g; try { g = new Chess(post + ' w - - 0 1'); } catch (e) { continue; }
+        g.remove(sq); if (!g.put({ type: pc.type, color: 'w' }, frm)) continue;
+        let fen = g.fen().split(' ')[0], pre;
+        try { pre = new Chess(fen + ' w - - 0 1'); } catch (e) { continue; }
+        if (pre.isCheck()) continue;                                   // White may not stand in check
+        let bl; try { bl = new Chess(fen + ' b - - 0 1'); if (bl.isCheck()) continue; } catch (e) { continue; }
+        const mv = pre.moves({ verbose: true }).find(m => m.from === frm && m.to === sq && !m.captured && !m.promotion);
+        if (!mv) continue;
+        pre.move(mv);
+        if (pre.fen().split(' ')[0] !== post) continue;
+        out.push({ san: S(mv.san), fen, check: mv.san.includes('+') });
+      }
+    }
+    return out;
+  }
+  function keysOf(fen, limit) {
+    const c = boardFrom(fen, 'w'); if (!c) return null;
+    const keys = [];
+    for (const w of legal(c)) {
+      let ok;
+      if (solvesShort(c, w)) ok = true;
+      else { c.move(w); ok = blackAllAnswered(c); c.undo(); }
+      if (ok) { keys.push(S(w.san)); if (keys.length > limit) break; }
+    }
+    return keys;
+  }
+
   /* main entry */
   function analyse(fen, stip, opts) {
     opts = opts || {};
@@ -630,5 +670,5 @@
     return res;
   }
 
-  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, albumNotation, solveSummary, diffSummary, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
+  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, albumNotation, retractions, keysOf, solveSummary, diffSummary, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
 }));

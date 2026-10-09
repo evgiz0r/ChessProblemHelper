@@ -136,6 +136,7 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(-
       </span>
       <select id="stip" aria-label="stipulation"><option>#2</option><option>s#2</option><option>h#2</option></select>
       <button class="act primary" id="solve">Solve</button>
+      <button class="act" id="findkey" title="treat the board as the position after the key (Black to move): undo every White move that could lead here, solve each diagram, list the moves that are the only key and the near misses">find #2 key</button>
       <input id="theme" placeholder="theme: e.g. Sxd6,Sd4 (empty = guess)" aria-label="thematic defences" style="font:inherit;font-size:13px;padding:4px 6px;border:1px solid var(--line);border-radius:4px;background:var(--ground);color:var(--ink);min-width:170px">
       <label class="sub" title="everything the solver knows: every set-play move, changed mates, patterns, dual avoidance"><input type="checkbox" id="fullreport"> full report</label>
       <label class="sub" title="post-key view: also find which White unit every other mate in two depends on (one solve per unit, slower)"><input type="checkbox" id="keyunits"> key check by unit</label>
@@ -481,6 +482,39 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   function setMode(m){ state.mode = m; document.getElementById('modepre').classList.toggle('on', m === 'pre'); document.getElementById('modepost').classList.toggle('on', m === 'post'); }
   document.getElementById('stip').addEventListener('change', e => { state.stip = e.target.value; });
   document.getElementById('solve').addEventListener('click', solve);
+  // E. Bourd s30: "a button find #2 key: given a post-key play that works, find a move getting to that position
+  // where it is the only key; mention the moves that are close - just a few more solutions".
+  document.getElementById('findkey').addEventListener('click', async () => {
+    const post = fenOf(state.grid);
+    if (!kingsOk(post)){ report('Place exactly one White king and one Black king first.', 'bad'); return; }
+    try { await ensureSolver(); } catch (e) { report('The solver did not load: ' + e.message, 'bad'); return; }
+    const rs = ChessComp.retractions(post);
+    if (!rs.length){ report('No White move can lead to this position (Black to move): check that it is legal with Black to move.', 'warn'); return; }
+    const found = [], close = [], LIMIT = 3;
+    let i = 0;
+    const step = () => {
+      const t0 = Date.now();
+      while (i < rs.length && Date.now() - t0 < 120){
+        const r = rs[i++]; const keys = ChessComp.keysOf(r.fen, LIMIT) || [];
+        if (keys.length === 1 && keys[0] === r.san) found.push(r);
+        else if (keys.includes(r.san) && keys.length <= LIMIT) close.push({ ...r, others: keys.filter(k => k !== r.san) });
+      }
+      report(`Finding the key: ${i} of ${rs.length} diagrams solved...`);
+      if (i < rs.length){ setTimeout(step, 0); return; }
+      const L = [`Find the key for this post-key position (Black to move): ${rs.length} White moves can lead here (captures and promotions not tried).`, ''];
+      if (found.length){ L.push('Only key:'); for (const r of found) L.push(`   1.${r.san}!${r.check ? '  (check!)' : ''}   diagram ${r.fen}`); }
+      else L.push('No move is the only key.');
+      if (close.length){ L.push(''); L.push('Close (one or two more keys):');
+        close.sort((a, b) => a.others.length - b.others.length);
+        for (const r of close) L.push(`   1.${r.san}  also ${r.others.join(', ')}   diagram ${r.fen}`); }
+      L.push(''); L.push('Each diagram is also in the journal: click its FEN there to load it.');
+      report(L.join('\n'));
+      for (const r of found) log('findkey', `only key 1.${r.san}!`, r.fen);
+      for (const r of close.slice(0, 6)) log('findkey', `close: 1.${r.san} (also ${r.others.join(', ')})`, r.fen);
+      if (!found.length && !close.length) log('findkey', 'no key found from ' + rs.length + ' retractions', post);
+    };
+    report('Finding the key...'); setTimeout(step, 20);
+  });
   document.getElementById('theme').addEventListener('change', e => log('theme', e.target.value || '(guess)'));
 
   function kingsOk(fen){
