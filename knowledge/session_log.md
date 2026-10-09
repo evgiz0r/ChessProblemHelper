@@ -774,3 +774,12 @@
   8/1B6/3K3R/r2N4/3pk3/2R1N2r/QP3P2/8 1.Rh6-f6! (2.Rf4#) R~ 2.f3#, Rf3 2.Re6#, Ra6+ 2.Sb6#, dxc3 2.Qc4#,
   (Rxd5+ dual). Sound, but key out of play / takes f3 flight / unprovided checks. Mistake: my key ranker
   (rrank.py) counted cooks but did not check the key itself works (Rxb5+ refuted a "key").
+- His method (no battery): strong pieces around the king -> many mates; add black units to stop those
+  "cooks"; the stoppers' moves become the variations. Tools: box.py (boxes with many mates, no battery),
+  stoppers.py (black stopper sets giving a complete block), lm.py (every black move and its mates),
+  rrank.py (keys, now checks the key works). Queen boxes give huge duals; queenless works.
+  Box 3N4/B3N3/7R/4k3/8/4K3/8/8 (mates Bb8 Bd4 Sc6 Sf7 Re6) + stoppers Sd7 (b8), Pc5 (d4), Bd5 (c6/e6/f7)
+  -> block 3N4/B2nN3/6R1/2pbk3/8/4K3/8/8, 1.Rg6-h6! zz: S~ Bb8#, Sb8 Bxb8#, c4 Bd4#, B(a2-g8) Sdc6#,
+  Be6 Rxe6#, B(a8-h1) Sf7#/Re6# dual. No flights anywhere. Flaws: that dual group, waiting key.
+  Second-level stoppers tried for the dual: Sh8 (its g6 move blocks the rook's rank), Sg7 (Nf5+ checks),
+  Rf8 (f7 also guarded by Bd5, so rook moves release nothing).
