@@ -754,3 +754,9 @@
   Sde4 [a] Bc1-e3# (c1-e3 opens), Sge4 [b] Rh5-d5# (5th rank opens). Pf3 (from add1.py) answers Sb1 but
   covers e4, so no block is needed. Hand building beat six 95 s pair searches (best scores 15-34). Key: only
   Sb6 arrivals, taking c4+d5; a 95 s diagram climb found nothing.
+- His brief: both thematic mates by the queen, simple unguard, finish with a key. Hand-built in ~8 checker
+  steps: knights b2 (guards d3) and b6 (guards d5) both to c4. FINAL 7K/4N2Q/1nP5/8/1P1k1P2/8/1n1P4/5B2:
+  1.Qh7-f5! (2.Qe5#) S2c4 [a] 2.Qd3#, S6c4 [b] 2.Qd5#, Sd3 2.Qxd3#, Sd7 2.Qd5#. Tries 1.Qh1? Sd3!,
+  1.Bd3? Sxd3!, 1.Bg2? Kc4!. Critique clean. Lessons: every guard I add gives the queen another mate
+  (Sf2 -> Qe4#, a rook on the 3rd rank -> Rd3#); pick guards that cannot mate themselves (Bf1, Se7 + Pc6).
+  New tool chesscomp/compose/shift.py (translate / mirror a scheme), his request.

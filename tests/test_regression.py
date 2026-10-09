@@ -210,3 +210,13 @@ def test_key_piece_attacked_only_by_king_and_protected_is_fine():
     from chesscomp.critique import critique
     p = Problem.from_fen('8/3N3b/3n4/3B4/3k4/1R4p1/4K1Q1/8 w - - 0 1', '#2')
     assert 'attacked key piece' not in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+
+
+def test_shift_scheme():
+    """E. Bourd s30: moving a scheme a row up so a black pawn can stand on a square that was on rank 1."""
+    from chesscomp.compose.shift import shifted, placements
+    assert shifted('7K/4N2Q/1nP5/8/1P1k1P2/8/1n1P4/5B2', 0, 1) is None          # Kh8 would leave the board
+    assert shifted('8/4N2Q/1nP5/8/1P1k1P2/8/1n1P4/5B2', 0, 1) == '4N2Q/1nP5/8/1P1k1P2/8/1n1P4/5B2/8'
+    assert shifted('8/8/8/8/8/8/P7/8', 0, -1) is None                             # pawn may not reach rank 1
+    assert shifted('8/8/8/8/8/8/P7/8', 0, 0, mirror=True) == '8/8/8/8/8/8/7P/8'
+    assert len(list(placements('8/8/8/3k4/8/8/8/8'))) == 128
