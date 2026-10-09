@@ -509,8 +509,8 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   }
   function firstLines(t){
     // verdict first (cooked / keys / no solution), then threat and holes, then tries: the journal keeps only this line
-    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|Also solves|Key-piece|1\.|\s+[QRBS]~|\s+\[duals\]|\s+changed|Reciprocal|Patterns|Thematic|Since the last|\s{3}\S.*\s\*\s)/i.test(l));
-    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution|1\.)/i.test(l) ? 1 : /^(threat|holes|unprovided|Also solves|Key-piece)/i.test(l) ? 2 : /^(Since the last|Thematic|\s{3}\S.*\s\*\s)/.test(l) ? 1 : /^\s+([QRBS]~|\[duals\]|changed)/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
+    const L = t.split('\n').filter(l => /^(Key|Try|COOKED|No solution|threat|Set|unprovided|holes|PROMOTED|Also solves|Key-piece|1\.|\s+[QRBS]~|\s+\[duals\]|\s+changed|Reciprocal|Patterns|Thematic|Since the last|Set:|Solution:|Duals:|\s{3}\S.*\s\*\s)/i.test(l));
+    const rank = l => /^(COOKED|PROMOTED)/i.test(l) ? 0 : /^(Key|No solution|1\.)/i.test(l) ? 1 : /^(threat|holes|unprovided|Also solves|Key-piece)/i.test(l) ? 2 : /^(Since the last|Solution:|Set:|Duals:|Thematic|\s{3}\S.*\s\*\s)/.test(l) ? 1 : /^\s+([QRBS]~|\[duals\]|changed)/.test(l) ? 3 : /^Try/i.test(l) ? 4 : 5;
     return L.map((l, i) => [rank(l), i, l]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 8).map(x => x[2]).join(' | ');
   }
   function solvePre(fen){

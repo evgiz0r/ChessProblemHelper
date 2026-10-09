@@ -112,6 +112,8 @@ def format_compact(res):
             from .thematic import build, format_table
             t = build(res)
             if t and (t['groups'] or t['rows']):
+                from .thematic import format_album
+                out += format_album(res, t).split('\n')
                 out.append('Thematic play:')
                 out += ['   ' + l for l in format_table(res, t).split('\n')]
         except Exception:

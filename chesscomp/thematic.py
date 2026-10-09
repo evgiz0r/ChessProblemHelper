@@ -144,13 +144,81 @@ def format_table(res, t) -> str:
     return '\n'.join(lines)
 
 
+def format_album(res, t) -> str:
+    """FIDE Album style, as E. Bourd asked (session 30):
+    Set: 1...S~ 2.Qc4#, 1...Sxd6! [a] 2.Sxf6#, 1...Sd4! [b] 2.Sc3#
+    Solution: 1.Qc2! zz, 1...S~ 2.Qc4#, 1...Sxd6! [a] 2.Sc7#, 1...Sd4! [b] 2.Sf4#
+    Corrections carry '!', thematic defences a letter; other play follows on its own line."""
+    if t is None:
+        return ''
+    cols, cells, key = t['cols'], t['cells'], t['key']
+    items, corr = [], set()
+    for _, rnd, cor in t['groups']:
+        items.append(('S~' if True else '', rnd[0], None)); corr.update(cor)
+        for m in cor:
+            items.append((m, m, None))
+    merged = {}
+    for san in t['rows']:
+        if san not in [i[1] for i in items]:
+            vec = tuple(cells[id(ph)].get(san) for _, ph in cols)
+            merged.setdefault(vec, []).append(san)
+    for sans in merged.values():          # c1=Q/c1=R with the same mates in every phase: one defence
+        items.append(('/'.join(sans), sans[0], None))
+    letters, n = {}, 0
+    for label, san, _ in items:
+        if not label.endswith('~'):
+            letters[san] = 'abcdefghij'[n]; n += 1
+    def cell(ph, san):
+        c = cells[id(ph)].get(san)
+        if c is None: return None
+        if c == '-': return 'no mate'
+        if c == '(threat)': return '2.threat'
+        if c.endswith(' DUAL'): return '2.' + c[:-5] + ' (dual)'
+        return '2.' + c
+    def line(ph):
+        out = []
+        for label, san, _ in items:
+            c = cell(ph, san)
+            if c is None: continue
+            if label.endswith('~'):
+                piece = next(g[0] for g in t['groups'] if g[1][0] == san)
+                out.append(f"1...{piece[0]}~ {c}")
+            else:
+                out.append(f"1...{label}{'!' if san in corr else ''} [{letters[san]}] {c}")
+        return ', '.join(out)
+    lines = []
+    for name, ph in cols:
+        thr = ph.get('threat') or []
+        head = '' if ph['type'] == 'set' else (f"(2.{'/2.'.join(x['san'] for x in thr)})" if thr else 'zz')
+        if ph['type'] == 'set':
+            lines.append('Set: ' + line(ph))
+        elif ph['type'] == 'try':
+            lines.append(f"Try: 1.{ph['first_move']['san']}? {head}, {line(ph)}, but 1...{ph['refutations'][0]['san']}!")
+        else:
+            lines.append(f"Solution: 1.{ph['first_move']['san']}! {head}, {line(ph)}")
+    shown = {m for i in items for m in i[0].split('/')} | {i[1] for i in items} | {m for g in t['groups'] for m in g[1]}
+    kc = cells[id(key)]
+    by, duals = {}, []
+    for san, c in kc.items():
+        if san in shown or c in ('(threat)',):
+            continue
+        if c.endswith(' DUAL'): duals.append(f"1...{san} 2.{c[:-5]}")
+        elif c == '-': duals.append(f"1...{san} NO MATE")
+        else: by.setdefault(c, []).append(san)
+    if by:
+        lines.append('Also: ' + ', '.join(f"1...{'/'.join(v)} 2.{k}" for k, v in by.items()))
+    if duals:
+        lines.append('Duals: ' + ', '.join(duals))
+    return '\n'.join(lines)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('fen'); ap.add_argument('--defs'); ap.add_argument('--tries', type=int, default=3)
     a = ap.parse_args(argv)
     res, t = table(a.fen, a.defs.split(',') if a.defs else None, a.tries)
     print(f"#2 {res['count']}  {res['fen']}")
-    print(format_table(res, t))
+    print(format_album(res, t)); print(); print(format_table(res, t))
 
 
 if __name__ == '__main__':

@@ -360,7 +360,7 @@
   // Thematic table (E. Bourd s29: "the solution is so cluttered it's hard to figure if the thematic play is
   // there"): one row per thematic defence, one column per phase (set, tries that change the theme, key).
   // Mirrors chesscomp/thematic.py.
-  function thematicTable(res, defs) {
+  function thematicTable(res, defs, asData) {
     if (!res.phases) return null;
     const key = res.phases.find(p => p.type === 'key'); if (!key || res.cooked) return null;
     const sp = res.phases.find(p => p.type === 'set');
@@ -384,6 +384,7 @@
     const cols = [...(sp ? [['set', sp]] : []), ...tries.map(t => [`1.${t.first}? ${t.refutations[0]}!`, t]), [`1.${key.first}!`, key]];
     if (!rows.length && !groups.length) return null;
     if (pinned.length) cols.forEach(([, p]) => { for (const d of pinned) if (!C.get(p).has(d)) C.get(p).set(d, 'not legal'); });
+    if (asData) return { cols, C, groups: pinned.length ? [] : groups, rows, key };
     const grid = [['', ...cols.map(([n, p]) => n + (p.type === 'set' ? '' : (p.threat.length ? ` (${p.threat.map(t => t.san).join('/')})` : ' (zz)')))]];
     const shown = new Set();
     const row = (label, d) => { const vals = cols.map(([, p]) => C.get(p).get(d) || '?');
@@ -402,6 +403,42 @@
     if (duals.length) s += `; duals after ${duals.join(', ')}`;
     if (holes.length) s += `; NO MATE after ${holes.join(', ')}`;
     L.push(s);
+    return L.join('\n');
+  }
+  // FIDE Album style (E. Bourd s30): "Set: 1...S~ 2.Qc4#, 1...Sxd6! [a] 2.Sxf6#, ..." - corrections carry '!',
+  // thematic defences a letter, other play on an "Also" line, duals on their own line.
+  function albumNotation(res, defs) {
+    const d = thematicTable(res, defs, true); if (!d) return null;
+    const { cols, C, groups, rows, key } = d;
+    const items = [], corr = new Set();
+    for (const g of groups) { items.push({ label: g.piece[0] + '~', san: g.random.moves[0], rnd: true });
+      for (const x of g.corrections) { items.push({ label: x.move, san: x.move }); corr.add(x.move); } }
+    const merged = new Map();
+    for (const r of rows) { if (items.some(i => i.san === r)) continue;
+      const k = cols.map(([, p]) => C.get(p).get(r) || '?').join('|'); if (!merged.has(k)) merged.set(k, []); merged.get(k).push(r); }
+    for (const sans of merged.values()) items.push({ label: sans.join('/'), san: sans[0], all: sans });
+    let n = 0; for (const i of items) if (!i.rnd) i.letter = 'abcdefghij'[n++];
+    const cell = (p, s) => { const c = C.get(p).get(s); if (c === undefined) return null;
+      if (c === '-') return 'no mate'; if (c === 'threat') return '2.threat';
+      return '2.' + (c.endsWith(' DUAL') ? c.slice(0, -5) + ' (dual)' : c); };
+    const line = p => items.map(i => { const c = cell(p, i.san); if (c === null) return null;
+      return i.rnd ? `1...${i.label} ${c}` : `1...${i.label}${corr.has(i.san) ? '!' : ''} [${i.letter}] ${c}`; }).filter(Boolean).join(', ');
+    const L = [];
+    for (const [, p] of cols) {
+      const head = p.type === 'set' ? '' : (p.threat.length ? `(2.${p.threat.map(t => t.san).join('/')})` : 'zz');
+      if (p.type === 'set') L.push('Set: ' + line(p));
+      else if (p.type === 'try') L.push(`Try: 1.${p.first}? ${head}, ${line(p)}, but 1...${p.refutations[0]}!`);
+      else L.push(`Solution: 1.${p.first}! ${head}, ${line(p)}`);
+    }
+    const shown = new Set(items.flatMap(i => i.all || [i.san]));
+    for (const g of groups) g.random.moves.forEach(m => shown.add(m));
+    const kc = C.get(key), by = new Map(), duals = [];
+    for (const [s, c] of kc) { if (shown.has(s) || c === 'threat') continue;
+      if (c.endsWith(' DUAL')) duals.push(`1...${s} 2.${c.slice(0, -5)}`);
+      else if (c === '-') duals.push(`1...${s} NO MATE`);
+      else { if (!by.has(c)) by.set(c, []); by.get(c).push(s); } }
+    if (by.size) L.push('Also: ' + [...by].map(([c, ss]) => `1...${ss.join('/')} 2.${c}`).join(', '));
+    if (duals.length) L.push('Duals: ' + duals.join(', '));
     return L.join('\n');
   }
   // What one edit did (E. Bourd s30: "incrementally realize what we want to see, as I'm iterating"): a small
@@ -443,6 +480,8 @@
     for (const line of promotedForce(res.fen || '')) L.push('PROMOTED FORCE: ' + line + '  (fatal)');
     if (res.solutions) { L.push(`${res.solutions.length} solution(s): ` + res.solutions.join(' ; ')); return L.join('\n'); }
     const sp = res.phases.find(p => p.type === 'set');
+    const al = albumNotation(res, opts && opts.theme);
+    if (al) { L.push(al); L.push(''); }
     const tt = thematicTable(res, opts && opts.theme);
     if (tt) L.push(tt);
     const keys = res.phases.filter(p => p.type === 'key'), tries = res.phases.filter(p => p.type === 'try');
@@ -591,5 +630,5 @@
     return res;
   }
 
-  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, solveSummary, diffSummary, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
+  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, albumNotation, solveSummary, diffSummary, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
 }));
