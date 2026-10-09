@@ -768,3 +768,9 @@
   1.Sa6-c7! (2.Sb5#) Sac3 [a] 2.Qb6#, Sec3 [b] 2.Qg1#; Kc3 2.Sb5#; every other knight move only the threat.
   Flaws: c3 flight unprovided in the diagram, set play = solution (static). Sd5-c7 (flight exchange c5->c3)
   is cooked by 1.Sa5; Ba1 fixed the cook only via a discovered check from Kh8.
+- His brief: 4 distinct variations, 4 distinct mates, no king flights ("you struggle constructing mates").
+  Free searches (v4*.py) collapsed to tiny positions or king flights; a hand core (Ke4, black rooks a5/h3 that
+  self-block on the 3rd/5th ranks) + search of the white units found it in 3 min:
+  8/1B6/3K3R/r2N4/3pk3/2R1N2r/QP3P2/8 1.Rh6-f6! (2.Rf4#) R~ 2.f3#, Rf3 2.Re6#, Ra6+ 2.Sb6#, dxc3 2.Qc4#,
+  (Rxd5+ dual). Sound, but key out of play / takes f3 flight / unprovided checks. Mistake: my key ranker
+  (rrank.py) counted cooks but did not check the key itself works (Rxb5+ refuted a "key").
