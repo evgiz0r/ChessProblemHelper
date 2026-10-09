@@ -42,3 +42,14 @@ three added units around it: about 10M positions, no hit. The mates after the tw
 vacated square covered by the mating move itself (rank or diagonal x-ray) and that fixes the queen's
 mating squares before any unit is placed; the search cannot discover that, a scheme with the key move
 named gives it for free.
+
+## The vacated square (daily No. 4, 9 October 2026)
+
+After the flight, the square the king left must be covered by the mating move itself: a line piece aimed at
+it would already check the king in the diagram, and every knight that guards it checks too. So the flight's
+mate is chosen first. Near-miss to finish: 2R5/8/5K2/1N1kp3/R7/2B1p1P1/4P3/8, 1.Bd4! cuts the a4 rook from
+e4 (self-interference, flight 1...Ke4 2.Sc3#, the knight covering d5), 1...exd4 2.Rxd4#, and the set mate
+1...e4 2.Rd4# changes to 2.Rc5#. It is a complete block, so waiting moves also solve: it needs a threat or
+one Black tempo move unanswered in the set. Study example of the theme: J. M. Rice, The Problemist 2002-03
+(R7/4N3/4p3/1k1nR3/3B3Q/1PP5/8/5K2): 1.Bc5! interposes on the pin line Re5-Kb5, unpins the knight and offers
+itself (1...Kxc5 2.Qb4#); the tries Bb6?/Ba7? give flights with no mate.

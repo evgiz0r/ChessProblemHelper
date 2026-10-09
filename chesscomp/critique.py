@@ -295,7 +295,11 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     kv = [v for v in real if v['defence']['uci'][:2] == ksq]
     if len(nk) < 2:
         add('major', 'thin play', f'only {len(nk)} non-king defence(s)')
+    # a flight GIVEN by the key is the flight-giving theme (constitution: a plus), not an easy variation;
+    # only a flight the king already had in the diagram is 'easy to see'
     for v in kv:
+        if chess.parse_square(v['defence']['uci'][2:4]) in flights_after - flights_before:
+            continue
         add('minor', 'king flight variation', f"1...{v['defence']['san']} is a king flight (easy to see)")
     mates = {c['id'] for v in real for c in v['continuations']}
     if len(real) >= 3 and len(mates) >= 3:

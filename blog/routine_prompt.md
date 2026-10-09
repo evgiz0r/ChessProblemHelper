@@ -7,6 +7,9 @@ not end your turn until the final report is written.
 
 1. `git fetch origin main && git checkout main && git pull --ff-only origin main`.
    `pip install -q --use-pep517 -r requirements.txt pytest`.
+   If the pull refuses because the local `main` has diverged (a stale checkout: on 9 Oct 2026 it held 54
+   commits of an old history), do not reset or delete it: `git checkout -b daily-run origin/main`, work there,
+   and publish with `git push origin HEAD:main`.
 2. Read CLAUDE.md (the constitution), then read and follow `.claude/skills/daily-problem/SKILL.md` from start
    to end, reading every skill and reference file it names: act on answered mentor issues first, then theme,
    study, compose, gate, judge, write the post, self-review with one tested improvement to the kit, publish,

@@ -156,3 +156,20 @@ def test_king_flight_threat_mate_counts_for_participation():
     from chesscomp.critique import critique
     p = Problem.from_fen('8/5n1B/1K6/8/5PRN/3Pk1N1/1Q1p1p2/6n1 w - - 0 1', '#2')
     assert 'passive king' not in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+
+
+def test_given_flight_is_not_an_easy_king_variation():
+    """Constitution: a flight GIVEN by the key is a plus. The critique listed its variation as 'king flight
+    variation (easy to see)' too; only a flight the king already had in the diagram is that minor flaw."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    def rules(fen):
+        p = Problem.from_fen(fen + ' w - - 0 1', '#2')
+        return {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+    given = rules('2R2B1b/8/4P1bN/2Nkp3/p4p2/2Q5/3K4/8')     # 1.Se4! Kxe6 / Kxe4: both flights given
+    assert 'flight-giving key' in given and 'king flight variation' not in given
+    # Maslov 1992: b6 is a diagram flight (still the minor flaw), d5 is given by 1.Re6! (not flagged)
+    p = Problem.from_fen('6Q1/3K4/P2b4/1PkP4/R4P2/4R3/8/5B2 w - - 0 1', '#2')
+    kv = [f['msg'] for f in critique(p, analyse(p), necessity=False)['findings'] if f['rule'] == 'king flight variation']
+    assert len(kv) == 1 and 'Kb6' in kv[0]
