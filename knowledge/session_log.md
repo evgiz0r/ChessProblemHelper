@@ -742,3 +742,9 @@
   (Sc5/Sg5 -> e4: Sc5 leaving frees d3 for Ra3-d3#, Sg5 leaving opens h6-e3 for Bh6-e3#), guards by hand,
   checked in seconds (chk.py). Open problem: a threat. A 4th-rank rook check fails because the knights
   interpose on e4 directly.
+- His advice: put the threat on a square next to the king (contact mate): the knights cannot interpose, they
+  can only guard it from e4 (c3/c5). Built by hand with chk.py, seconds per step:
+  K7/8/1N4N1/2n3nR/pP1k4/4R3/1P1BPP2/8 (post-key, Black to move): threat Bd2-c3#; Sce4 [a] Re3-d3# (rook
+  leaves e4, so the block is needed); Sge4 [b] Rh5-d5# (5th rank opens). Fixes on the way: pawn c2->e2 (c3#
+  dual), Ba2 -> Sb6 (Sb3 shut the bishop), Pb2 protects c3 (Sd3 cut the rank), black pa4 takes a4 from the
+  knight (Sa4 guarded c3). Every retracted key is Sb6 arriving and takes c4+d5: key still open.
