@@ -226,8 +226,14 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # E. Bourd (s30): a key that moves a White piece Black attacks is a flaw (the piece "escapes"), milder when
     # the alternative is a piece out of play
     kp0 = board.piece_at(kmove.from_square)
-    if kp0 and kp0.piece_type != chess.KING and board.is_attacked_by(chess.BLACK, kmove.from_square):
-        att = [chess.square_name(a) for a in board.attackers(chess.BLACK, kmove.from_square)]
+    # Not when the only attacker is the black king and the piece is protected: "the king is not really
+    # attacking the piece, it's defended, so it's not a flaw" (E. Bourd s30, 1.Bd5-e6 next to Kd4)
+    att_sq = [a for a in board.attackers(chess.BLACK, kmove.from_square)] if kp0 else []
+    if att_sq and all(board.piece_at(a).piece_type == chess.KING for a in att_sq) and \
+            board.is_attacked_by(chess.WHITE, kmove.from_square):
+        att_sq = []
+    if kp0 and kp0.piece_type != chess.KING and att_sq:
+        att = [chess.square_name(a) for a in att_sq]
         add('minor', 'attacked key piece', f"the key piece stands attacked in the diagram (from {', '.join(att)}): the key looks like an escape")
     # E. Bourd (session 29): "the key piece is always in play; the issue is that on the initial diagram it
     # has no role - not guarding, not delivering mates, not blocking pieces. So its only role is to come out

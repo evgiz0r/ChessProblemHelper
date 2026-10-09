@@ -235,7 +235,11 @@
         if (pre.fen().split(' ')[0] !== post) continue;
         const letter = { k: 'K', q: 'Q', r: 'R', b: 'B', n: 'S', p: '' }[pc.type];
         const before = flights(bl);
-        const attacked = pc.type !== 'k' && bl.isAttacked(frm, 'b');   // E. Bourd s30: an attacked piece moving is a flaw
+        // E. Bourd s30: an attacked piece moving is a flaw - but not when only the king attacks it and it is protected
+        const g2 = new Chess(fen + ' b - - 0 1');
+        let kingOnly = false;
+        for (const f of 'abcdefgh') for (const r of '12345678') { const p = g2.get(f + r); if (p && p.type === 'k' && p.color === 'b') { g2.remove(f + r); kingOnly = !g2.isAttacked(frm, 'b'); } }
+        const attacked = pc.type !== 'k' && bl.isAttacked(frm, 'b') && !(kingOnly && bl.isAttacked(frm, 'w'));
         const note = [mv.san.includes('+') ? 'check' : '', before > after ? `takes a flight (${before} -> ${after})` : '',
                       before < after ? `gives a flight (${before} -> ${after})` : '', attacked ? 'the piece was attacked' : ''].filter(Boolean).join(', ');
         out.push({ san: S(mv.san), fen, check: mv.san.includes('+'), from: frm, to: sq, before, after, note,

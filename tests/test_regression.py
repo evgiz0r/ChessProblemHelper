@@ -203,3 +203,10 @@ def test_cook_stopping_king_is_no_flaw():
     p = Problem.from_fen('2Q1N3/1p6/1p1BPpP1/1B1knn1R/8/K3p3/4N1P1/8 w - - 0 1', '#2')
     rules = {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
     assert 'passive king' not in rules and 'cook-stopping king' in rules
+
+
+def test_key_piece_attacked_only_by_king_and_protected_is_fine():
+    """E. Bourd s30: Bd5 next to Kd4 but protected by Qg2 - 'the king is not really attacking the piece'."""
+    from chesscomp.critique import critique
+    p = Problem.from_fen('8/3N3b/3n4/3B4/3k4/1R4p1/4K1Q1/8 w - - 0 1', '#2')
+    assert 'attacked key piece' not in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
