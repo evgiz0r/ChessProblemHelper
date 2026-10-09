@@ -198,6 +198,12 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         add('major', 'check key', 'the key gives check')
     if board.is_capture(kmove):
         add('minor', 'capture key', 'the key captures')
+    # E. Bourd (s30): a key that moves a White piece Black attacks is a flaw (the piece "escapes"), milder when
+    # the alternative is a piece out of play
+    kp0 = board.piece_at(kmove.from_square)
+    if kp0 and kp0.piece_type != chess.KING and board.is_attacked_by(chess.BLACK, kmove.from_square):
+        att = [chess.square_name(a) for a in board.attackers(chess.BLACK, kmove.from_square)]
+        add('minor', 'attacked key piece', f"the key piece stands attacked in the diagram (from {', '.join(att)}): the key looks like an escape")
     # E. Bourd (session 29): "the key piece is always in play; the issue is that on the initial diagram it
     # has no role - not guarding, not delivering mates, not blocking pieces. So its only role is to come out
     # of thin air and place itself obviously on the key square" (his 1.Rf1 from h1). Three checks in the

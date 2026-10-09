@@ -281,3 +281,8 @@ mate after Ke4 is ready in the set play and 1.Qc2 does not take an unprovided fl
 so tries that give room fail to Qc4 with check; (7) last, the dual outside the thematic play ("least important,
 but still annoying"), which forced rearranging the guard of e5. "I am very limited due to zugzwang and flights,
 hard to manoeuvre much more."
+
+On 1.Qg5-f5 (Muralidharan, Problemesis 2002, an alternative to the published 1.Qh3-f5): "G5 to f5 is also bad.
+The queen is attacked. An attacked piece moving is counted as a flaw. Here it's debatable, as h3 is so out of
+play, where it's obvious. I would probably go for g5 here, but not much of an improvement." Critique rule
+`attacked key piece` (minor); the key finder marks such keys and lists them after clean ones.

@@ -503,7 +503,8 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
       if (i < rs.length){ setTimeout(step, 0); return; }
       const L = [`Find the key for this post-key position (Black to move): ${rs.length} White moves can lead here (captures and promotions not tried). Black king flights after the key: ${rs[0].after}.`, ''];
       // flight-taking keys last: they are fatal
-      found.sort((a, b) => (a.before > a.after) - (b.before > b.after));
+      const flaw = r => (r.before > r.after ? 4 : 0) + (r.check ? 2 : 0) + (/attacked/.test(r.note) ? 1 : 0);
+      found.sort((a, b) => flaw(a) - flaw(b));
       if (found.length){ L.push('Only key:'); for (const r of found) L.push(`   1.${r.long}!${r.note ? '   ' + r.note.toUpperCase() : ''}`); }
       else L.push('No move is the only key.');
       if (close.length){ L.push(''); L.push('Close (one or two more keys):');

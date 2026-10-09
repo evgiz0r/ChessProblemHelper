@@ -235,8 +235,9 @@
         if (pre.fen().split(' ')[0] !== post) continue;
         const letter = { k: 'K', q: 'Q', r: 'R', b: 'B', n: 'S', p: '' }[pc.type];
         const before = flights(bl);
+        const attacked = pc.type !== 'k' && bl.isAttacked(frm, 'b');   // E. Bourd s30: an attacked piece moving is a flaw
         const note = [mv.san.includes('+') ? 'check' : '', before > after ? `takes a flight (${before} -> ${after})` : '',
-                      before < after ? `gives a flight (${before} -> ${after})` : ''].filter(Boolean).join(', ');
+                      before < after ? `gives a flight (${before} -> ${after})` : '', attacked ? 'the piece was attacked' : ''].filter(Boolean).join(', ');
         out.push({ san: S(mv.san), fen, check: mv.san.includes('+'), from: frm, to: sq, before, after, note,
                    long: letter + frm + '-' + sq + (mv.san.includes('+') ? '+' : '') });
       }

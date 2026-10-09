@@ -184,3 +184,12 @@ def test_thematic_table_shows_only_the_theme():
     assert '1.Ba6?' not in out          # tries that repeat the set play get no column
     res, t = table('2K2BB1/8/5P2/8/2pkP1R1/Q3p3/6b1/2r1N3')
     assert '1.f7? Bxe4!' in format_table(res, t)
+
+
+def test_attacked_key_piece_is_flagged():
+    """E. Bourd s30: 1.Qg5-f5 moves a queen attacked by the f6 pawn - a flaw (milder than an out-of-play queen)."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    p = Problem.from_fen('6bK/2r3n1/5p2/6Qn/1BBk1P2/3Pp1N1/3qp3/8 w - - 0 1', '#2')
+    assert 'attacked key piece' in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
