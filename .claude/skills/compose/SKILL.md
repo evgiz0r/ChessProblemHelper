@@ -102,3 +102,9 @@ clear the board and rebuild from the idea. Rotation and shifting only make room;
 - Pre-key solve returns only checking tries: no quiet threat exists in this structure. Restart.
 - The solve names one thing (one cook with a line, one hole, one dual): fix it, one unit, one minute.
 - The solver's necessity check says a unit is not needed: remove it unless it carries a try or set mate.
+
+## Order of work (E. Bourd, session 30)
+Hardest constraint first: whatever may force a change of scheme or geometry (a threat against two flights, a
+square next to the king, getting two phases) before the mates, the mates before the construction, and the
+non-thematic duals last. If a requirement keeps resisting, consider a level switch (threat to zugzwang), which
+can turn the same Black moves into corrections. Give every construction unit a stated purpose.

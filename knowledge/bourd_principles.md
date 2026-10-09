@@ -270,3 +270,14 @@ it's not ready. But I think you should incrementally realize what we want to see
 solving, as I'm iterating: what operations could be sped up, what information is valuable, according to the
 goal, and improve the solution view." First steps (bench v23): a theme box (pinned thematic defences, kept in
 the table even while broken) and "since the last solve" (cooks, theme cells, holes, duals that the edit changed).
+
+Session 30, his ordering of the work on the corrections problem (2Q1N3/1p6/1p1BPpP1/1B1knn1R/8/K3p3/4N1P1/8):
+"prioritizing more challenging things first, so I need to change geometry or the scheme, only later getting to
+the trivial." In order: (1) the threat, hardest with two flights; (2) guarding the square near the king;
+(3) how to make two phases; (4) the threat was too hard, so zugzwang, which turned the original moves into
+corrections ("a rather high level step; maybe I could have gone in the previous direction but I decided that
+way"); (5) arranging the mates around the king flight; (6) construction with a purpose for each unit: Pg2 so the
+mate after Ke4 is ready in the set play and 1.Qc2 does not take an unprovided flight; Ka3 as a cook-stopper,
+so tries that give room fail to Qc4 with check; (7) last, the dual outside the thematic play ("least important,
+but still annoying"), which forced rearranging the guard of e5. "I am very limited due to zugzwang and flights,
+hard to manoeuvre much more."
