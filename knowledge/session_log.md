@@ -735,3 +735,10 @@
   Dual left: 1...Sd3 2.Qd6#/c3# (keepkill found no single unit). His remarks: the searches wait too long;
   start smaller, run related searches in parallel.
 - He asked for diagrams of the process, schemes included (tools/scheme_png.py: arrows + tinted squares).
+- Queenless knight pair: K7/1p3p2/2B5/n3n1B1/N2k4/4R3/3N1R2/8, 1.Rf2-f6! (2.Rd6#) Sec4 2.Sf3#, Sac4 2.Sb3#
+  (static, idle key piece). Fixed format_critique crash on 'note' findings.
+- He: "the waits are killing it", make searches iterative. Lesson from this round: random-start climbs scored
+  20-40 after minutes; seeded climbs get stuck on knight mates (local optimum). What worked: a hand scheme
+  (Sc5/Sg5 -> e4: Sc5 leaving frees d3 for Ra3-d3#, Sg5 leaving opens h6-e3 for Bh6-e3#), guards by hand,
+  checked in seconds (chk.py). Open problem: a threat. A 4th-rank rook check fails because the knights
+  interpose on e4 directly.
