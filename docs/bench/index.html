@@ -501,12 +501,14 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
       }
       report(`Finding the key: ${i} of ${rs.length} diagrams solved...`);
       if (i < rs.length){ setTimeout(step, 0); return; }
-      const L = [`Find the key for this post-key position (Black to move): ${rs.length} White moves can lead here (captures and promotions not tried).`, ''];
-      if (found.length){ L.push('Only key:'); for (const r of found) L.push(`   1.${r.long}!${r.check ? '  (check!)' : ''}`); }
+      const L = [`Find the key for this post-key position (Black to move): ${rs.length} White moves can lead here (captures and promotions not tried). Black king flights after the key: ${rs[0].after}.`, ''];
+      // flight-taking keys last: they are fatal
+      found.sort((a, b) => (a.before > a.after) - (b.before > b.after));
+      if (found.length){ L.push('Only key:'); for (const r of found) L.push(`   1.${r.long}!${r.note ? '   ' + r.note.toUpperCase() : ''}`); }
       else L.push('No move is the only key.');
       if (close.length){ L.push(''); L.push('Close (one or two more keys):');
         close.sort((a, b) => a.others.length - b.others.length);
-        for (const r of close) L.push(`   1.${r.long}  also ${r.others.join(', ')}`); }
+        for (const r of close) L.push(`   1.${r.long}  also ${r.others.join(', ')}${r.note ? '   ' + r.note : ''}`); }
       L.push(''); L.push('To load a diagram: click its entry in the journal.');
       report(L.join('\n'));
       for (const r of found) log('findkey', `only key 1.${r.long}!`, r.fen);

@@ -213,6 +213,9 @@
   function retractions(postFen) {
     const post = postFen.trim().split(/\s+/)[0], out = [];
     let pb; try { pb = new Chess(post + ' b - - 0 1'); } catch (e) { return out; }
+    // E. Bourd s30: a key that takes a flight is fatal; count the king's moves before and after (Qc8-c2 keeps 1 -> 1)
+    const flights = g => g.moves({ verbose: true }).filter(m => m.piece === 'k').length;
+    const after = flights(pb);
     const files = 'abcdefgh';
     const squares = []; for (let r = 1; r <= 8; r++) for (const f of files) squares.push(f + r);
     for (const sq of squares) {
@@ -231,7 +234,10 @@
         pre.move(mv);
         if (pre.fen().split(' ')[0] !== post) continue;
         const letter = { k: 'K', q: 'Q', r: 'R', b: 'B', n: 'S', p: '' }[pc.type];
-        out.push({ san: S(mv.san), fen, check: mv.san.includes('+'), from: frm, to: sq,
+        const before = flights(bl);
+        const note = [mv.san.includes('+') ? 'check' : '', before > after ? `takes a flight (${before} -> ${after})` : '',
+                      before < after ? `gives a flight (${before} -> ${after})` : ''].filter(Boolean).join(', ');
+        out.push({ san: S(mv.san), fen, check: mv.san.includes('+'), from: frm, to: sq, before, after, note,
                    long: letter + frm + '-' + sq + (mv.san.includes('+') ? '+' : '') });
       }
     }
