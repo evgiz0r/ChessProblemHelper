@@ -1186,6 +1186,22 @@
     "Sg6"
    ],
    "note": "1.Sg6! (2.Qe5#) Rfc7/Re7 2.Sf6#, Rcc7 2.d3#. Tries 1.d4? Rc7! (the pawn guards e5 but no longer mates on d3), 1.Sc6? bxc6!. The key knight arrives to guard e5 and opens rank 7 for the f7 rook. Built post-key first, then a features pass, then the key: e5 knight start failed (every knight move from e5 still guards e5; it attacked f7), f4 start cooked by 1.d3+ Rxd3 2.exd3# (the f4 knight guarded d3), f8 start out of play. Version with bPe6 (1Q4N1/1p2Nr2/4p3/3p1pp1/4k3/2r1P3/3PPK2/8) stops 1...Re7 as an extra defence at the cost of a pawn. Flaw: the key piece stands attacked by the f7 rook."
+  },
+  {
+   "id": "bourd-bench-two-rooks-c7-bf4",
+   "fen": "1Q6/5r2/4P3/3p1pBN/4k2p/2r1Pp1n/3P1P2/2b1NK2",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench sitting mv2kniqz, 10 Oct 2026)",
+   "source": "Composing Bench",
+   "themes": [
+    "Two rooks defend on one square",
+    "Thematic tries (each refuted by one rook)",
+    "Dual avoidance"
+   ],
+   "keys": [
+    "Bf4"
+   ],
+   "note": "1.Bf4! (2.Qe5#). 1.Bf6? (2.Qe5#) refuted only by 1...Rfc7!; 1.d4? (2.Qe5#) refuted only by 1...Rcc7!. Key mates: 1...Rfc7 2.Sf6#, 1...Sxf4 2.Qxf4#, 1...Rcc7 2.d3#. The bishop key guards e5 from f4 and takes the f6 square's job. Flaws (solver): key piece attacked by the h3 knight, wPe6 needed against Qe8+, bBc1 idle, 18 units, 8 pawns. Gate PASS."
   }
  ]
 }

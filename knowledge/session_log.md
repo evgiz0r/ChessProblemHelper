@@ -740,3 +740,7 @@
   an f-pawn mate (f3#) instead brings back 1...Rf5 (R2 can always stop on f5 and guard e5). Second try refuted by Rcc7 needs a
   second e3 guard that can move to guard e5: f2-f4 fails to gxf3 e.p. (with bPg4), Bg1-h2 fails to 1...f4 as well. Current:
   1Q4N1/1p2Nr2/4p3/3p1pp1/4k3/2r1P3/3PP1K1/6B1, 1.Sg6!, gate PASS; 1.Bh2? Rc7!/f4! not yet pure.
+* Two rooks, bench sitting mv2kniqz (10 Oct, 17:00-17:02, E. Bourd): the second try is the bishop on f6 (1.Bf6? with 2.Qe5#),
+  refuted ONLY by 1...Rfc7! because it takes the f6 square from 2.Sf6#; the first try stays 1.d4? (Rcc7 only). Key 1.Bf4!
+  (bishop guards e5 from f4). Checked: gate PASS, two single-refutation tries, three distinct mates. My earlier searches
+  never tried a bishop on f6 as a try: the lesson is to test the thematic tries the user names before searching.
