@@ -79,6 +79,50 @@ def mate_participation(problem, res):
     return use
 
 
+def set_play_only_units(problem, res):
+    """White units (diagram squares) that take part in a set-play mate but are redundant in every mate of the
+    key phase: removed there, the mate still stands (E. Bourd, mentor issue #4: Rc8 of Daily No. 3 gave only
+    the set mate 1...Sxe5 2.Rd8#; after the key the king duplicates its guards. "If completely redundant,
+    it's bad")."""
+    board = problem.board
+    sp = next((ph for ph in res.get('phases', []) if ph['type'] == 'set'), None)
+    key = next((ph for ph in res.get('phases', []) if ph['type'] == 'key'), None)
+    if not sp or not key:
+        return []
+    in_set = set()
+    for v in sp.get('variations', []):
+        for c in v.get('continuations', []):
+            b2 = board.copy(); b2.turn = chess.BLACK
+            b2.push(chess.Move.from_uci(v['defence']['uci']))
+            m = chess.Move.from_uci(c['uci'])
+            b2.push(m)
+            k = b2.king(chess.BLACK)
+            for sq in chess.SquareSet(b2.occupied_co[chess.WHITE]):
+                if sq == m.to_square:
+                    in_set.add(m.from_square); continue
+                t = b2.copy(); t.remove_piece_at(sq)
+                if not t.is_checkmate():
+                    in_set.add(sq)
+    kfrom = chess.Move.from_uci(key['first_move']['uci']).from_square
+    out = []
+    for sq in sorted(in_set):
+        if sq == kfrom or board.piece_type_at(sq) == chess.KING:
+            continue
+        needed = False
+        for label, b2, om in _mate_positions(problem, res):
+            cur = [c for c, o in om.items() if o == sq]
+            if cur:                                   # it moved: it is the mating piece
+                needed = True; break
+            if b2.piece_at(sq) is None:               # captured on the way: no claim
+                continue
+            t = b2.copy(); t.remove_piece_at(sq)
+            if not t.is_checkmate():
+                needed = True; break
+        if not needed:
+            out.append(chess.square_name(sq))
+    return out
+
+
 def king_pin_anchor(problem, res):
     """Defences of the key phase that PIN a White piece against the White king (E. Bourd s20: the White
     king is thematic when it anchors the pin a defence creates - 1...Rxe4 pinning Qe2 is why the threat
@@ -444,7 +488,9 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                 # E. Bourd (s30): "king specifically as cook-stopper is not a flaw, it's ok"
                 add('note', 'cook-stopping king', f"{_pname(board, sq)} takes part in no mate but stops cooks where it stands")
             else:
-                add('minor', 'passive king', f"{_pname(board, sq)} takes part in no mate (acceptable if placed only to avoid checks)")
+                # E. Bourd (mentor issue #4): "passive king is ok, it's usually a piece that is hard to give a role
+                # when many black pieces exist" - a note, not a flaw
+                add('note', 'passive king', f"{_pname(board, sq)} takes part in no mate (acceptable, E. Bourd)")
         elif sq == kmove.from_square:
             # E. Bourd (8 Oct 2026): "it's more that it's a pawn compared to a rook. A completely useless
             # rook/bishop/knight/queen is usually fatal." A pawn that only plays the key is cheap; an officer is not.
@@ -455,7 +501,7 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                                                   "the key is usually fatal (E. Bourd); a pawn would be forgivable")
         elif verdict.startswith('needed'):
             if 'SET PLAY' in verdict:
-                add('minor', 'set-play filler', f"{_pname(board, sq)} takes part in no mate; it only completes the set play "
+                add('major', 'set-play filler', f"{_pname(board, sq)} takes part in no mate; it only completes the set play "
                                                 f"({verdict.split('SET PLAY: ', 1)[1]})")
             elif 'CONTENT' in verdict:
                 add('plus', 'thematic unit', f"{_pname(board, sq)} takes part in no mate but carries content: "
@@ -478,6 +524,18 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                                           + ', '.join('1.' + t + '?' for t in own) + ' (fatal, E. Bourd)')
         else:
             add('major', 'superfluous piece', f"{_pname(board, sq)} takes part in no mate and is not needed for soundness")
+    for name in set_play_only_units(problem, res):
+        if name in use:     # in the key mates only as a duplicate guard
+            sq = chess.parse_square(name)
+            verdict = nec.get(name, '')
+            msg = f"{_pname(board, sq)} gives set-play mates only; in every mate after the key its guards are duplicated"
+            if verdict.startswith('needed') and 'SET PLAY' not in verdict:
+                # not completely redundant: it also holds soundness or the tries
+                add('minor', 'set-play-only unit', msg + ' (still ' + verdict + ')')
+            elif verdict:
+                add('major', 'set-play-only unit', msg + ' and nothing else needs it (big flaw, E. Bourd)')
+            else:
+                add('minor', 'set-play-only unit', msg + ' (necessity not checked)')
     for sq, verdict in nec.items():
         p = board.piece_at(chess.parse_square(sq))
         if p.color == chess.BLACK and verdict.startswith('not needed'):

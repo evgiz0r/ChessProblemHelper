@@ -70,6 +70,8 @@ solves, kernels tried, searches run, minutes.
 - Fallback, in this order: a sound simpler form of the theme (fewer variations) is a normal post that says
   what it lacks. If nothing passes the gate, publish a study post: an archive problem of the theme with full
   credit, titled "Study: ...", author and source as printed, and a comment on why today's attempt failed.
+  The study post also shows today's failed attempt (E. Bourd, mentor issue #5): its diagram (a board card
+  in `docs/blog/cards/`), its FEN and the solver's cook or flaw named, the near-misses each with a diagram.
   Never publish a cooked or unchecked diagram.
 
 ## 6. The post (15 min)

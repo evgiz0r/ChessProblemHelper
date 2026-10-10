@@ -26,7 +26,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   ones) and write the FEN, solution and questions as text under it; `--portrait` makes a full card for files into `docs/blog/cards/<name>.png`,
   commit and push it, then embed it in the reply as
   `![title](https://raw.githubusercontent.com/evgiz0r/ChessProblemHelper/main/docs/blog/cards/<name>.png)`.
-  He sees it inline. Text alone is never enough.
+  He sees it inline. Text alone is never enough. In a Claude Code session (not GitHub), send the PNG with `SendUserFile`
+  (`display: "render"`) instead: a markdown image link opens in a new tab on his computer (E. Bourd, 10 Oct 2026).
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his
