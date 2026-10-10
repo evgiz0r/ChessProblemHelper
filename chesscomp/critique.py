@@ -371,6 +371,13 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     duals = [v for v in real if v['dual']]
     for v in duals:
         add('major' if len(real) <= 2 else 'minor', 'dual', f"1...{v['defence']['san']} allows {'/'.join(c['san'] for c in v['continuations'])}")
+    # non-defences (the threat still works) that also allow other mates: duals outside the thematic play.
+    # report hides them under 'further moves allow the threat' (E. Bourd's knight-cuts scheme, 10 Oct 2026)
+    loose = [v for v in key['variations'] if v['threat_repeat'] and len(v['continuations']) > 1]
+    if loose:
+        ex = loose[0]
+        add('minor', 'random-move duals', f"{len(loose)} move(s) that allow the threat also allow other mates "
+            f"(1...{ex['defence']['san']} {'/'.join(c['san'] for c in ex['continuations'])})")
     nk = [v for v in real if v['defence']['uci'][:2] != ksq]
     kv = [v for v in real if v['defence']['uci'][:2] == ksq]
     if len(nk) < 2:

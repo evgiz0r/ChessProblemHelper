@@ -761,3 +761,9 @@
   15 units. About 12 solves after the restart, no searches. Not for the blog (dailies only).
 * Process (E. Bourd, 10 Oct): an hour with no visible progress was a chained 3x5-minute solver command plus an output cutoff.
   New rules in CLAUDE.md: 5-minute cap on every search, one solve per command, a progress line before each.
+* Same theme, his scheme (10 Oct): a threat through f4 with the knight closing b8-f4 on d6 and e5. About 25 solves, no
+  searches. Dead ends: rank mate after Sd6 interposed by Sd6-c4; Bg6# interposed by Sd6-f5; Sxd6 capture-mate duplicates
+  Sd6# after random moves; a pinned Be7 guards nothing (Sc5 mate in one); the black line piece behind d6 closes the line
+  itself (Bd6/Rd6); a key knight from e5 protects e5 from every square (Re5 dual); a rook on e5 checks the king. Result:
+  1B6/7p/B7/3p3R/2n1k3/2P5/4K3/6N1, 1.Sh3! (2.Sf2#) Sd6 2.Bd3#, Se5 2.Rxe5#, gate PASS, 10 units, but random knight moves
+  allow three mates (threat, Bd3, Re5) and the critique did not report it (hidden under 'further moves allow the threat').
