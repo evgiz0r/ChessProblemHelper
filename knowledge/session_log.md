@@ -751,3 +751,13 @@
   out-of-play 1.Sa3-b1 (fatal) with a cook 1.Sb5, the double threat Sc3#/d3# created by Bd4 protecting e3 (cured by bSf2
   attacking d3, which adds 1...Sd1 2.d3#), and 'e5 via the bishop' was redundant (f4 covered it). Final
   8/8/1r6/5p1N/2P1kPpK/2B1P2P/3PPn2/1N4r1, 1.Bd4!, gate PASS, trim-minimal, 16 units. 9 solves, 0 searches.
+* Theme 'black knight closes the same white line twice, different mates' (10 Oct, alone). Rank line a5-e5 cut by a c7 knight
+  failed: a queen behind the knight restores e5 after any knight move, queens nearer gave mates in one or Qe5/Re5 double threats.
+  d-file version: Rd8 guards d4 through d7/d5, Sb6 cuts on d7 (2.Rb4#, b-file opened, knight cannot return) and d5 (2.Bxd5#).
+  Corrections: Bxd5 re-blocks the rook's line, so the key must guard d4 itself (1.Sf3, threat Sg5 vacates f3); bare position
+  cooked by 1.c3/1.e3 (pawn guards d4, then Re8/Rd4 threats) until bPe5 guarded d4 and blocked the e-file; bishop a2/e6 had a
+  mate in one along its other diagonal (Bb1#, Bf5#) because the rook covers d5: wKc2 blocks it; 1.Rxb6 cooked once bPe7 gave
+  Black tempo (bPa7 answers it). Final 1R1R4/p3p3/1n6/4p3/4kPP1/6P1/B1KPP3/6N1, 1.Sf3!, three mates, gate PASS, trim-minimal,
+  15 units. About 12 solves after the restart, no searches. Not for the blog (dailies only).
+* Process (E. Bourd, 10 Oct): an hour with no visible progress was a chained 3x5-minute solver command plus an output cutoff.
+  New rules in CLAUDE.md: 5-minute cap on every search, one solve per command, a progress line before each.

@@ -1234,6 +1234,22 @@
     "Bd4"
    ],
    "note": "1.Bd4! (2.Sc3#) Rbxb1/Rb3 2.Sf6#, Rgxb1/Rc1 2.Sg3#, Sd1 2.d3#. The threatening knight is captured on b1 by both rooks: the b6 rook down the file loses the 6th rank (its guard of f6), the g1 rook along the 1st rank loses the g-file (its guard of g3); one knight on h5 mates on both squares; each rook keeps guarding the other mate square, so no duals. The key clears c3, blocks d4 and protects e3 (so 2.d3# answers 1...Sd1, the knight leaving its guard of d3). Gate PASS, trim-minimal (16 units, 8 pawns). Flaws: the bishop's seven other moves are tries all refuted by 1...Sd1 (same refutation; not thematic tries); wPh3 and wKh4 only stop rook checks; dual-avoidance reasons differ. No pure thematic try exists (1.Bf6? Rbxb1! but also Rb3!, Sd1!)."
+  },
+  {
+   "id": "claude-knight-cuts-d-file-twice",
+   "fen": "1R1R4/p3p3/1n6/4p3/4kPP1/6P1/B1KPP3/6N1",
+   "stip": "#2",
+   "author": "Claude (alone, 10 Oct 2026)",
+   "source": "session 10 Oct 2026, theme set by E. Bourd",
+   "themes": [
+    "Black knight closes the same white line twice",
+    "Interference",
+    "Line opening by the defender"
+   ],
+   "keys": [
+    "Sf3"
+   ],
+   "note": "1.Sf3! (2.Sg5#) Sd7 2.Rb4#, Sd5 2.Bxd5#, exf4 2.Rd4#. The rook d8 guards d4 along d7-d6-d5; the threat 2.Sg5# needs that guard because the key knight leaves f3 and its own cover of d4. The b6 knight closes the line twice: on d7 the mate comes from the line its departure opens (Rb4#, and the knight on d7 cannot return to b4 or d5), on d5 the bishop takes the blocker (Bxd5#, legal only because Sf3 still covers d4 while the rook's line is shut). The third variation uses the whole line: 1...exf4 unguards d4 and the rook travels it (2.Rd4#, e5 covered by Sf3). Gate PASS, trim-minimal, 15 units (8 pawns). Flaws: the black pawns e5 and e7 are plugs (e5 guards d4 and blocks the e-file against 1.c3/1.e3 and 2.Re8#, e7 blocks the e-file after exf4 so 2.Re8 is not a dual); the white king c2 only blocks the bishop's b1-e4 diagonal; the only try, 1.Sh3?, has a double threat (Sg5#/Sf2#) and is refuted by 1...Sd5! (d4 then unguarded) and 1...exf4!; set 1...Sd7 2.Rb4# is already there, so the key adds one thematic variation rather than changing play; dual-avoidance reasons differ."
   }
  ]
 }

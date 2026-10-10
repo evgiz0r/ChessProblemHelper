@@ -42,6 +42,11 @@ How it starts: a nightly routine (02:57 Asia/Jerusalem) wakes the session that s
 new session with this repository attached, `main` as its branch, and `blog/routine_prompt.md` as its
 prompt. Routines cannot attach a repository by themselves; a session without it cannot push or use issues.
 
+## Time caps (E. Bourd, 10 Oct 2026: "cap all searches to like 5 minutes")
+- Every search, solver or gate command runs under `timeout 300`; one solve per shell command, never a chain.
+- A one-line progress message in chat before each solve or search: the position and what is being tested.
+  Thirty minutes without a line is a failure of the process, whatever the search found.
+
 ## Unattended runs
 Every subagent gets a watchdog: a background timer of at most 20 minutes, after which it is stopped whatever
 it is doing, plus a tool-call cap in its prompt. It writes a notes line per solve so a stall is visible.
