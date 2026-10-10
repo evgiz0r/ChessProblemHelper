@@ -51,5 +51,9 @@
  },
  "improvement": "chesscomp/compose/evolve.py now penalises a key piece that is out of play (fatal, E. Bourd on daily No. 2) or idle in the diagram (guards nothing near the king, no set mate, blocks no line) and refuses both in a HIT (KEYROLE=1, the default). The two checks moved from the critique's body into reusable functions (chesscomp/critique.py: out_of_play_key, idle_key_piece), so critique and search judge the key the same way. Tested in tests/test_evolve.py: daily No. 2, which the search returned as a HIT, is no longer one.",
  "mentor_issue": 4,
- "feedback": []
+ "feedback": [
+  "E. Bourd (10 Oct): Rc8, a unit that serves only the set mate, is a big flaw when completely redundant.",
+  "E. Bourd (10 Oct): the passive king (Kh4 version) is acceptable; a king is hard to give a role when Black has many pieces.",
+  "E. Bourd (10 Oct): two changes on one effect are enough content, but he always looks to extend the content at the cost of pieces."
+ ]
 }

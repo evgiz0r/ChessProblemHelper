@@ -52,5 +52,9 @@
  },
  "improvement": "chesscomp/compose/evolve.py has a self-block mode (SELFBLOCK=N, no DEFS needed). It scores every variation whose defence is a functional self-block (the motive 'self-block on ..': the defender stands next to its king and the mate would fail without it), rewards distinct single mates and refuses a HIT with fewer than N or with a dual. The same check showed that only one of today's three defences is a real self-block, so the post says so. Tested in tests/test_evolve.py: daily No. 3 has one self-block (1...Rxe5 2.Qxd7#), Ceskova 1901 none. Also fixed: `report --critique` crashed on the critique's 'note' findings (KeyError); regression test in tests/test_regression.py.",
  "mentor_issue": 6,
- "feedback": []
+ "feedback": [
+  "E. Bourd (10 Oct): a unified defence (guard of e6) is better than self-blocks with one real one; always look to unify the scheme, the defence squares and the tries.",
+  "E. Bourd (10 Oct): 1.Sg7 is a good key; the escape look is no flaw here.",
+  "E. Bourd (10 Oct): the cook-stopper pawns h4 and h5 are acceptable."
+ ]
 }

@@ -295,3 +295,21 @@ king, a provided diagram flight) go in our own notes or the mentor issue, not in
 "I think king specifically as cook-stopper is not a flaw, it's ok." (critique: a king whose square matters for
 soundness is a note, `cook-stopping king`, not `passive king`.) On the presented solution: "I would probably add
 the [a], [b] for the mates that change thematically."
+
+## Mentor answers, 10 Oct 2026 (issues #4, #5, #6)
+
+- A unit that serves only the set play: "a big flaw, if it's completely redundant." (critique
+  `set-play-only unit`: major when nothing else needs it, minor when it also holds soundness or the tries.)
+- "Passive king is ok, it's usually a piece that is hard to give a role when many black pieces exist."
+  (critique: `passive king` is a note.)
+- Two changed mates on one effect without tries: "it's enough content, but I am always looking for extending
+  for more content at the cost of pieces."
+- A complete block where many White moves keep the set play: "seems hard to finish... blocking all of them
+  will probably not be worth it."
+- A failed daily run: he wants the failed report too, with diagrams, not only a study post.
+- A try refuted by a king flight, even when the flight is the theme: "it's a big flaw." The rule stands.
+- Several defences that guard the threat square, one of them a self-block: "unified is better... improving is
+  always nice: unifying the scheme, the squares of the defences, the tries and so on."
+- A protected key piece attacked by the king, whose key gives a flight, opens a line and guards the threat
+  square (1.Sg7! in Daily No. 5): "no, it's a good key."
+- Cook-stopper pawns: "acceptable, a lot more material is usually added to stop cooks and move stuff around."

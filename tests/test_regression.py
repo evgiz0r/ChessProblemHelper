@@ -233,3 +233,22 @@ def test_gate_and_trim_treat_a_double_threat_as_changed_play():
     assert '[double threat]' in r.stdout and 'GATE: FAIL' in r.stdout
     from chesscomp.compose.trim import trim
     assert trim('Q5N1/5r2/4p3/3p1pp1/1N1Pk3/2r1P3/3P1K2/8')[2] == []
+
+
+def test_set_play_only_unit_is_flagged():
+    """E. Bourd, mentor issue #4: a unit that serves only the set play is a big flaw if completely redundant.
+    Daily No. 3: wRc8 gives only the set mate 1...Sxe5 2.Rd8#; after 1.Qe7! the king duplicates its guards."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique, set_play_only_units
+    p = Problem.from_fen('2R5/3n1p2/1B6/1K1kP1Q1/1P4B1/4rP2/8/8 w - - 0 1', '#2')
+    res = analyse(p)
+    assert set_play_only_units(p, res) == ['c8']
+    assert 'set-play-only unit' in {f['rule'] for f in critique(p, res, necessity=False)['findings']}
+
+
+def test_passive_king_is_a_note():
+    """E. Bourd, mentor issue #4: 'passive king is ok, it's usually a piece that is hard to give a role'."""
+    from chesscomp.critique import format_critique
+    out = format_critique({'findings': [{'severity': 'note', 'rule': 'passive king', 'msg': 'wKh4'}]})
+    assert 'passive king' in out and not out.startswith('✗')

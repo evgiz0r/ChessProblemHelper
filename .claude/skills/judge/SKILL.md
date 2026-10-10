@@ -13,16 +13,19 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
    - Fatal: cook, dual in a thematic variation, double threat, unprovided check in set play, promoted
      piece, diagram flight, key by check or capture without thematic reason, try refuted by a king move.
    - Flaws: same refutation of several tries, passive units (the key piece is forgivable; a king that
-     anchors a pin a defence creates is thematic), cook-stoppers, unprovided moves, heavy pawn count,
+     anchors a pin a defence creates is thematic; a passive king is acceptable, E. Bourd), a unit that serves
+     only the set play (big flaw when completely redundant), cook-stoppers (acceptable: usual cost), unprovided moves, heavy pawn count,
      thin play (one mating move), defences that merely guard the threat square.
    - Pluses: flight-giving key, long key, unified defences, dual avoidance with one motive, tries whose
-     refutation uses the theme, changed mates, economy.
+     refutation uses the theme, changed mates, economy. Unified play beats a mixed set (defences that all
+     guard one square, tries on one scheme), E. Bourd. A protected key piece the king attacks is no flaw
+     when the key has several jobs (gives a flight, opens a line, guards the threat square).
 4. Weigh, do not count: a doubled or tripled theme can carry flaws that would be fatal in a simple
    problem (see the checklist's last section). Say what content each flaw is buying.
 5. Say what the problem IS (theme, phases, changes) in two lines, then the flaws, then the pluses. No
    praise before the flaws. Give the FEN and draw the board.
-   Every post that names a position shows it as a diagram (`python tools/card_png.py out.png < spec.json`,
-   sent as an image), not only as a FEN: E. Bourd, session 29, "please keep showing diagrams when posting".
+   Every post that names a position shows it as a diagram (`python tools/show.py <name> "<FEN>"`,
+   sent as an image, with the bench link), not only as a FEN: E. Bourd, session 29, "please keep showing diagrams when posting".
 6. If a repair is obvious (one unit), test it with the solver and report it as verified, not proposed.
 7. Describe choices, do not bless them. Say what a choice achieved and what else could have done the job;
    never call it "right" because it worked. E. Bourd (session 29), on "using self-blocks twice was right":

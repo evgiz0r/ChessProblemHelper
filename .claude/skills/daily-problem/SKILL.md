@@ -70,6 +70,8 @@ solves, kernels tried, searches run, minutes.
 - Fallback, in this order: a sound simpler form of the theme (fewer variations) is a normal post that says
   what it lacks. If nothing passes the gate, publish a study post: an archive problem of the theme with full
   credit, titled "Study: ...", author and source as printed, and a comment on why today's attempt failed.
+  The study post also shows today's failed attempt (E. Bourd, mentor issue #5): its diagram (a board card
+  in `docs/blog/cards/`), its FEN and the solver's cook or flaw named, the near-misses each with a diagram.
   Never publish a cooked or unchecked diagram.
 
 ## 6. The post (15 min)
@@ -93,7 +95,7 @@ about it in a mentor question. Summarise the change in the post's `improvement` 
 
 ## 8. Publish (10 min)
 - Render the post's card (diagram, solution, questions) with `tools/card_png.py` into
-  `docs/blog/cards/<slug>.png`; the final report embeds it inline (see CLAUDE.md).
+  `docs/blog/cards/<slug>.png`; the final report shows the square board from `tools/show.py` (see CLAUDE.md).
 - `python tools/blog.py build`, run the tests, commit "Daily No. N: <title>", push to `main` (retry on
   network errors: 2, 4, 8, 16 seconds).
 - Open the mentor issue (GitHub MCP `issue_write`, or
@@ -102,4 +104,5 @@ about it in a mentor question. Summarise the change in the post's `improvement` 
   title "Mentor questions: No. N (<date>)", label `mentor`, body with the post link
   `https://evgiz0r.github.io/ChessProblemHelper/blog/<slug>.html`, the FEN, the questions numbered, and the
   attribution footer. Put its number in the post's `mentor_issue`, rebuild, commit, push.
-- End with three lines: the post link, the issue link, the improvement.
+- End with the diagram (`tools/show.py`, sent with `SendUserFile`) and four lines: the post link, the issue
+  link, the improvement, the Composing Bench link.
