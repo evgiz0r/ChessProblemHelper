@@ -8,7 +8,8 @@ description: Read back Evgeni's Composing Bench journal (the artifact database) 
 The bench is the artifact "Composing Bench" (https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916);
 its database collection `journal` holds one document per step: `{session, n, t, action, detail, fen}`.
 Actions: place, move, remove, undo, clear, refresh, rotate cw/ccw, mirror, shift, back to, note, solve,
-findkey, theme. Old entries (7-10 Oct 2026) may also hold `look`/`lookup`, from a look-up feature (playing
+findkey. Old entries (7-10 Oct 2026) may also hold `theme` (a removed box for the thematic defences),
+`look`/`lookup`, from a look-up feature (playing
 legal lines from the diagram) and a "key check by unit" option; he never used them and both were removed on
 10 Oct 2026 ("not sure what it is, probably a mistake"). Do not add bench features he has not asked for.
 Solve details start with the verdict (COOKED / Key / No solution), then threat and holes, then tries.

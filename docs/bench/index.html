@@ -122,7 +122,6 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(-
       <select id="stip" aria-label="stipulation"><option>#2</option><option>s#2</option><option>h#2</option></select>
       <button class="act primary" id="solve">Solve</button>
       <button class="act" id="findkey" title="treat the board as the position after the key (Black to move): undo every White move that could lead here, solve each diagram, list the moves that are the only key and the near misses">find #2 key</button>
-      <input id="theme" placeholder="theme: e.g. Sxd6,Sd4 (empty = guess)" aria-label="thematic defences" style="font:inherit;font-size:13px;padding:4px 6px;border:1px solid var(--line);border-radius:4px;background:var(--ground);color:var(--ink);min-width:170px">
       <label class="sub" title="everything the solver knows: every set-play move, changed mates, patterns, dual avoidance"><input type="checkbox" id="fullreport"> full report</label>
     </div>
     <pre class="report" id="report">Set up a position and press Solve.
@@ -427,7 +426,6 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     };
     report('Finding the key...'); setTimeout(step, 20);
   });
-  document.getElementById('theme').addEventListener('change', e => log('theme', e.target.value || '(guess)'));
 
   function kingsOk(fen){
     const p = fen.split(' ')[0]; return (p.match(/K/g) || []).length === 1 && (p.match(/k/g) || []).length === 1;
@@ -462,7 +460,7 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   function solvePre(fen){
     const res = ChessComp.analyse(fen, state.stip);
     const full = document.getElementById('fullreport').checked;
-    const theme = document.getElementById('theme').value.split(/[ ,]+/).map(x => x.trim().replace(/^N/, 'S')).filter(Boolean);
+    const theme = [];   // the theme box was removed (E. Bourd, 10 Oct 2026): the thematic table guesses
     let out = (full || !ChessComp.formatCompact) ? ChessComp.formatReport(res) : ChessComp.formatCompact(res, { theme });
     // E. Bourd s30: say what the last edit did, against the previous solve in this session
     if (ChessComp.solveSummary && state.stip === '#2'){
