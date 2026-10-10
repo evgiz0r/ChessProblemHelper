@@ -13,6 +13,8 @@ feedback (his answers, summarised by a later run), improvement (what the run cha
 import sys, os, json, glob, html, re, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+sys.path.insert(0, os.path.join(ROOT, 'tools'))
+from bench_link import bench_url
 POSTS = os.path.join(ROOT, 'blog', 'posts')
 OUT = os.path.join(ROOT, 'docs', 'blog')
 THEMES = os.path.join(ROOT, 'blog', 'themes.json')
@@ -138,7 +140,8 @@ def post_html(p, prev, nxt):
 <div class="meta">{p['date']}<span class="tag">{html.escape(p.get('theme_name', p.get('theme', '')))}</span></div>
 <div class="cols"><div><figure><figcaption><span class="who">{html.escape(p['author'])}</span><br>{html.escape(p['source'])}</figcaption>
 {board_svg(p['fen'])}<div class="under"><span>{html.escape(p['stip'].replace('#', 'Mate in ') if p['stip'] == '#2' else p['stip'])}</span><span class="count">{count(p['fen'])}</span></div>
-<div class="fen">{html.escape(p['fen'])}</div></figure></div>
+<div class="fen">{html.escape(p['fen'])}</div>
+<div class="fen"><a href="{html.escape(bench_url(p['fen'], p['stip'], f"Daily No. {p['number']}"))}">Send to bench</a>: set it up, try your own changes, solve</div></figure></div>
 <div><p>{html.escape(p.get('teaser', ''))}</p>
 <details><summary>Solution</summary>{sol_html(p['solution'])}</details>
 <details><summary>Comment</summary>

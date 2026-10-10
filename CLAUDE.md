@@ -27,6 +27,9 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   commit and push it, then embed it in the reply as
   `![title](https://raw.githubusercontent.com/evgiz0r/ChessProblemHelper/main/docs/blog/cards/<name>.png)`.
   He sees it inline. Text alone is never enough.
+- Under every problem shown, a "send to bench" link (E. Bourd, 10 Oct 2026): `python tools/bench_link.py "<FEN>"
+  [--stip "#2"] [--from "<label>"]` prints a URL that opens the bench with that diagram loaded, ready to edit and solve.
+  Blog posts carry it automatically; put it in chat replies and mentor issues as `[Send to bench](<url>)`.
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his

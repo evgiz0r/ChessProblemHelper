@@ -718,7 +718,14 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     if (data && data.fen){ const g = parse(data.fen); if (g) state.grid = g; }
     if (data && data.mode) setMode(data.mode);
     if (data && data.stip){ state.stip = data.stip; document.getElementById('stip').value = data.stip; }
+    // "send to bench": a link ?fen=<FEN>&stip=%232 (or #fen=...) loads that diagram, over any saved position
+    const sent = new URLSearchParams(location.search || location.hash.slice(1));
+    const sentFen = sent.get('fen'), sentGrid = sentFen ? parse(sentFen.replace(/_/g, ' ')) : null;
+    if (sentGrid){ state.hist.push(clone(state.grid)); state.grid = sentGrid; state.sel = null; state.last = null; }
+    if (sentGrid && ['#2', 's#2', 'h#2'].includes(sent.get('stip'))){ state.stip = sent.get('stip'); document.getElementById('stip').value = state.stip; }
     draw();
+    if (sentGrid){ log('sent', 'loaded from a link' + (sent.get('from') ? ' (' + sent.get('from').slice(0, 80) + ')' : '')); report('Loaded from a link: ' + fenOf(state.grid) + '. Press solve.'); }
+    else if (sentFen) report('The link carried a FEN that could not be read: ' + sentFen, 'bad');
     if (window.claude && window.claude.hot && window.claude.hot.snapshot) window.claude.hot.snapshot(() => ({ fen: fenOf(state.grid), mode: state.mode, stip: state.stip }));
     if (window.claude && window.claude.use) connect(); else setStatus('journal: this page only (not saved)', 'off');
   }

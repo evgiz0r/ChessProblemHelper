@@ -7,7 +7,7 @@ description: Read back Evgeni's Composing Bench journal (the artifact database) 
 
 The bench is the artifact "Composing Bench" (https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916);
 its database collection `journal` holds one document per step: `{session, n, t, action, detail, fen}`.
-Actions: place, move, remove, undo, clear, refresh, rotate cw/ccw, mirror, shift, back to, note, solve,
+Actions: sent (the diagram arrived by a "send to bench" link, `?fen=`; detail names its source), place, move, remove, undo, clear, refresh, rotate cw/ccw, mirror, shift, back to, note, solve,
 look, lookup. `look` is one step of a look-up (since 2026-10-07): he plays legal moves forward from the
 diagram to try a line without editing it; detail is the line so far ("1.Kf7 e5 2.Qd3#", "step back: ...",
 "start (White to move)"), fen is the diagram. `lookup` closes a look-up with every line tried, joined by

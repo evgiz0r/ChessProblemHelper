@@ -99,7 +99,7 @@ about it in a mentor question. Summarise the change in the post's `improvement` 
 - Open the mentor issue (GitHub MCP `issue_write`, or
   `gh api repos/evgiz0r/chessproblemhelper/issues -f title=... -F body=@issue.md -f 'labels[]=mentor'`;
   reply with `.../issues/<n>/comments -F body=@reply.md`, close with `-X PATCH .../issues/<n> -f state=closed`):
-  title "Mentor questions: No. N (<date>)", label `mentor`, body with the post link
+  title "Mentor questions: No. N (<date>)", label `mentor`, body with the post link, the "Send to bench" link (`tools/bench_link.py`),
   `https://evgiz0r.github.io/ChessProblemHelper/blog/<slug>.html`, the FEN, the questions numbered, and the
   attribution footer. Put its number in the post's `mentor_issue`, rebuild, commit, push.
-- End with three lines: the post link, the issue link, the improvement.
+- End with four lines: the post link, the issue link, the "Send to bench" link, the improvement.

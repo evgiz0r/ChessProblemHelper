@@ -18,8 +18,9 @@ not end your turn until the final report is written.
    time budget, use the skill's fallback.
 4. Publish by committing on `main` and pushing to origin main; if the push is rejected, `git pull --rebase
    origin main` and push again; retry network errors after 2, 4, 8 and 16 seconds.
-5. Finish with four lines: the post URL (https://evgiz0r.github.io/ChessProblemHelper/blog/<slug>.html), the
-   mentor issue URL, the gate result, and the improvement made to the kit.
+5. Finish with five lines: the post URL (https://evgiz0r.github.io/ChessProblemHelper/blog/<slug>.html), the
+   mentor issue URL, the "Send to bench" link (`python tools/bench_link.py "<FEN>"`), the gate result, and the
+   improvement made to the kit.
 
 This file is the run's own prompt: a run may improve it like any other part of the kit, and must keep it
 working for the next run.
