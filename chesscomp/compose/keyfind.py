@@ -22,7 +22,7 @@ from concurrent.futures import ProcessPoolExecutor
 import chess
 from ..core import Problem
 from ..analysis import analyse
-from ..critique import out_of_play_key, idle_key_piece
+from ..critique import out_of_play_key, idle_key_piece, black_captures
 
 
 def mates_after(board: chess.Board) -> list[str]:
@@ -110,7 +110,7 @@ def judge(pre: chess.Board, key: chess.Move, res: dict):
     if pre.piece_type_at(key.from_square) != chess.KING and idle_key_piece(pre, key, res['phases']):
         s -= 5; notes.append('idle key piece')
     after = pre.copy(); after.push(key)
-    if after.is_attacked_by(chess.BLACK, key.to_square):
+    if black_captures(after, key.to_square):           # a legal capture: a king attack on a protected unit is none
         s += 6; notes.append('sacrifice')
     bk = pre.king(chess.BLACK)
     b0 = pre.copy(); b0.turn = chess.BLACK

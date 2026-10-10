@@ -226,8 +226,8 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # E. Bourd (s30): a key that moves a White piece Black attacks is a flaw (the piece "escapes"), milder when
     # the alternative is a piece out of play
     kp0 = board.piece_at(kmove.from_square)
-    if kp0 and kp0.piece_type != chess.KING and board.is_attacked_by(chess.BLACK, kmove.from_square):
-        att = [chess.square_name(a) for a in board.attackers(chess.BLACK, kmove.from_square)]
+    att = black_captures(board, kmove.from_square)
+    if kp0 and kp0.piece_type != chess.KING and att:
         add('minor', 'attacked key piece', f"the key piece stands attacked in the diagram (from {', '.join(att)}): the key looks like an escape")
     # E. Bourd (session 29): "the key piece is always in play; the issue is that on the initial diagram it
     # has no role - not guarding, not delivering mates, not blocking pieces. So its only role is to come out
@@ -495,6 +495,14 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     if res['relations'].get('reciprocal'):
         add('plus', 'theme', 'reciprocal change')
     return {'findings': F, 'participation': use, 'necessity': nec}
+
+
+def black_captures(board, sq):
+    """Squares of the Black units that can legally capture on sq (Black to move). A king attack on a protected
+    unit is no attack, nor is one by a pinned unit (E. Bourd, bench 10 Oct 2026: 1.Se6-f4 with Bg4 guarding e6
+    was flagged as an attacked key piece)."""
+    b = board.copy(stack=False); b.turn = chess.BLACK; b.ep_square = None
+    return sorted({chess.square_name(m.from_square) for m in b.legal_moves if m.to_square == sq})
 
 
 def format_critique(c):

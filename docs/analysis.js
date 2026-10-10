@@ -235,7 +235,9 @@
         if (pre.fen().split(' ')[0] !== post) continue;
         const letter = { k: 'K', q: 'Q', r: 'R', b: 'B', n: 'S', p: '' }[pc.type];
         const before = flights(bl);
-        const attacked = pc.type !== 'k' && bl.isAttacked(frm, 'b');   // E. Bourd s30: an attacked piece moving is a flaw
+        // E. Bourd s30: an attacked piece moving is a flaw; only a legal capture counts (bench 10 Oct 2026: a king
+        // attack on a protected knight is no attack)
+        const attacked = pc.type !== 'k' && bl.moves({ verbose: true }).some(m => m.to === frm);
         const note = [mv.san.includes('+') ? 'check' : '', before > after ? `takes a flight (${before} -> ${after})` : '',
                       before < after ? `gives a flight (${before} -> ${after})` : '', attacked ? 'the piece was attacked' : ''].filter(Boolean).join(', ');
         out.push({ san: S(mv.san), fen, check: mv.san.includes('+'), from: frm, to: sq, before, after, note,

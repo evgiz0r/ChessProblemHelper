@@ -211,3 +211,14 @@ def test_format_critique_prints_notes():
     out = format_critique({'findings': [{'severity': 'note', 'rule': 'cook-stopping king', 'msg': 'wKh2'},
                                         {'severity': 'major', 'rule': 'cook', 'msg': 'x'}]})
     assert out.splitlines()[0].startswith('✗✗') and 'cook-stopping king' in out.splitlines()[1]
+
+
+def test_protected_key_piece_next_to_king_is_not_attacked():
+    """E. Bourd, bench 10 Oct 2026: 1.Se6-f4 (Bg4 guards e6) was flagged 'attacked key piece' because the king
+    touches e6; the king cannot take a protected unit. Daily No. 5 (Sf5, guarded by Qh3) had the same false flag."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    for fen in ('1K2n3/pp1R2pb/4N1p1/2Bpk1P1/r3P1B1/4nP2/4N3/1q6', '3r1r2/4p3/5pR1/3PkNBp/2R4P/5B1Q/4n2K/8'):
+        p = Problem.from_fen(fen + ' w - - 0 1', '#2')
+        assert 'attacked key piece' not in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}

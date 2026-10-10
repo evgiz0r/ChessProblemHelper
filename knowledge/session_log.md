@@ -718,3 +718,11 @@
   logical challenge" (d5 first, then e3: "noticing the squares I just cannot guard as part of the mechanism,
   to fail early"); "get something sound at least before pushing for better content"; switched to zugzwang.
   Bench v23: theme box + since-last-solve diff.
+* Bench sitting mv2hz0tu (10 Oct, 222 steps, 37 solves, 71 find-key lines, 7 notes): five defences without a White
+  queen ("just to prove a point"). Random position with all mates visible (8/2R4p/4p3/1BBkp3/4N3/3PP3/8/7K), Rd7#
+  chosen as the threat ("rather easy to defend"), defenders added so each mate follows a defence; first sound
+  3n4/2R5/4p2r/1BBkp1N1/8/r6p/1n1N3K/8 (1.Sge4!) at step 70. Then shift right, new defenders (bQ, bB, bS), 3 knights
+  for a while (promoted force flagged), trimmed to 1K2n3/pp1R2pb/4N1p1/2Bpk1P1/r3P1B1/4nP2/4N3/1q6, 1.S6f4! (2.Re7#)
+  with five defences and five mates, gate PASS. Bug he found: find-key and critique called a protected key piece
+  next to the king 'attacked'; now only a legal Black capture counts (critique.black_captures, analysis.js, keyfind
+  'sacrifice'; bench v29; tests in test_regression.py).
