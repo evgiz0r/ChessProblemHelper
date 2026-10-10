@@ -1154,7 +1154,7 @@
    "keys": [
     "S6f4"
    ],
-   "note": "1.S6f4! (2.Re7#) Sc7 2.Bd6#, Bg8 2.Sxg6#, Ra6 2.Bd4#, Sf5 2.Rxd5#, Qb6 2.Sd3#. Tries 1.Sf8? Qb6!, 1.Sd8? Bg8!. Gate PASS. Flaws: 20 units (8 pawns), wKb8 in no mate. Built post-key first: a random position showing all mates, one chosen as the threat (Rd7#, 'rather easy to defend'), Black defenders placed so each other mate appears after a defence, then 'find #2 key'. First sound version 3n4/2R5/4p2r/1BBkp1N1/8/r6p/1n1N3K/8 (1.Sge4!, 6 defences, 4 mates) in 52 steps, then extended to five distinct mates. The bench flagged 1.Se6-f4 as 'attacked' although Bg4 guards e6: fixed (only a legal Black capture counts)."
+   "note": "1.S6f4! (2.Re7#) Sc7 2.Bd6#, Bg8 2.Sxg6#, Ra6 2.Bd4#, Sf5 2.Rxd5#, Qb6 2.Sd3#. Tries 1.Sf8? Qb6!, 1.Sd8? Bg8!. Gate PASS. Flaws: 20 units (8 pawns), wKb8 in no mate. Built post-key first: a random position showing all mates, one chosen as the threat (Rd7#, 'rather easy to defend'), Black defenders placed so each other mate appears after a defence, then 'find #2 key'. First sound version 3n4/2R5/4p2r/1BBkp1N1/8/r6p/1n1N3K/8 (1.Sge4!, 6 defences, 4 mates) in 52 steps, then extended to five distinct mates. The bench flagged 1.Se6-f4 as 'attacked' although Bg4 guards e6: fixed (only a legal Black capture counts). His verdict: not the best mechanism to construct a problem; a demonstration of handling cooks and creating variety."
   }
  ]
 }
