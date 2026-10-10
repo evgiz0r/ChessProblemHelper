@@ -64,6 +64,22 @@ what the next run should try. "Proposals" collects improvements too big for one 
   the vacated square), then a threat, then the box. The Bd4 matrix (2R5/8/5K2/1N1kp3/R7/2B1p1P1/4P3/8) needs only a
   cure for its complete block: a threat or one tempo move left unanswered in the set.
 
+## 2026-10-10, No. 5: Self-blocks (simpler form)
+- Result: 3r1r2/4p3/5pR1/3PkNBp/2R4P/5B1Q/4n2K/8 (9+7), 1.Sg7! (2.Qe6#) Rd6 2.Qf5#, Sd4 2.Qg3#, Sf4 2.Bxf4#, Kd6 2.Qe6#;
+  tries 1.Sh6?/Se3?/Sxe7? Rxd5!, 1.Sd6? Rxd6!. Gate: PASS with warnings (attacked key piece, same refutation, dual-avoidance
+  reasons, cook-stopper Ph4), all named in the post. Only Rd6 is a functional self-block; the post says so and asks the mentor.
+  Mentor issues #4 and #5 had no answers yet; nothing to act on.
+- Setup: local `main` had diverged again (the stale 54-commit history); worked on `daily-run` from origin/main, pushed HEAD:main.
+- Minutes: setup and reading 5, mentor 1, study 5, kit change (SELFBLOCK mode) 10, searches and hand work 55, post and records 15.
+  About 120 solves, 20 search jobs (8 evolve, 6 postsearch, brute force, one-unit searches).
+- What wasted time: bare-core evolve once more (checking keys only); a brute force of complete blocks (all with White mates in one);
+  `pkill -f` / `pgrep -f ... | xargs kill` twice killed my own shell (exit 144), because the pattern was in the command line.
+  Kill by PID from `ps -eo pid,comm,args | awk '$2 ~ /^python/ && /name/'`.
+- What was missing: a one-unit add/remove search around a nearly sound diagram that keeps a named key and named mates (written in
+  the scratchpad as one.py; it found the key 1.Sg7 by removing a knight). Worth adding to the kit as `compose.oneunit`.
+- Next run: theme from `next-theme` (Grimshaw has no reference: write one first). For self-blocks proper, start from a block or
+  a battery and use SELFBLOCK=3 on a seeded sketch; the guard-of-the-threat-square idea gives self-block-shaped moves, not self-blocks.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
@@ -73,6 +89,8 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - A theme reference for Grimshaw, Novotny, Le Grand and Rudenko (none yet).
 - evolve: FLIGHT=1, a score for a flight-giving key in the diagram (no flight before, given flight mated, two more
   distinct mates); the scratch scorer of 9 October is the model.
+- compose.oneunit: every single-unit addition or removal around a diagram, kept when one named key and the named mates
+  survive (the scratch one.py of 10 October found 1.Sg7 in daily No. 5).
 - critique: a 'set-only unit' tag (not needed for soundness, every guard in the solution mates duplicated), once the
   mentor says how much it weighs (No. 3, question 1).
 

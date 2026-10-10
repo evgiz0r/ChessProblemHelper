@@ -203,3 +203,11 @@ def test_cook_stopping_king_is_no_flaw():
     p = Problem.from_fen('2Q1N3/1p6/1p1BPpP1/1B1knn1R/8/K3p3/4N1P1/8 w - - 0 1', '#2')
     rules = {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
     assert 'passive king' not in rules and 'cook-stopping king' in rules
+
+
+def test_format_critique_prints_notes():
+    """Daily No. 5: a 'note' finding (cook-stopping king) crashed `report --critique` with KeyError."""
+    from chesscomp.critique import format_critique
+    out = format_critique({'findings': [{'severity': 'note', 'rule': 'cook-stopping king', 'msg': 'wKh2'},
+                                        {'severity': 'major', 'rule': 'cook', 'msg': 'x'}]})
+    assert out.splitlines()[0].startswith('✗✗') and 'cook-stopping king' in out.splitlines()[1]

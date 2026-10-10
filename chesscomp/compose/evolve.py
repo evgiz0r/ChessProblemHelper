@@ -17,13 +17,17 @@ are needed for a HIT, every move of that piece must defend, and DEFS may be empt
 every diagram flight and refuses it in a HIT (the constitution makes it fatal); NOFLIGHT=0 restores the old
 score, where only an unprovided flight costs. KEYROLE=1 (default) penalises a key piece out of play (fatal, E. Bourd on
 daily No. 2) or idle in the diagram (guards nothing near the king, no set mate, blocks no line) and refuses both in a
-HIT; KEYROLE=0 restores the old score. A line starting HIT is a position that meets the whole specification; check it with
+HIT; KEYROLE=0 restores the old score. SELFBLOCK=N (self-block mode, daily No. 5) needs no DEFS: it rewards every
+variation whose defence is a functional self-block (the motive 'self-block on ..': the defender stands next to its
+king and the mate would fail without it), with distinct single mates; a HIT needs N such mates and no dual after a
+self-block. A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
 """
 import os, sys, random, time, json, chess
 from chesscomp.core import Problem
 from chesscomp.analysis import analyse
 from chesscomp.critique import idle_key_piece, out_of_play_key
+from chesscomp.motives import mate_motives
 
 JOB = int(sys.argv[1]) if len(sys.argv) > 1 else 0
 OUT = sys.argv[2] if len(sys.argv) > 2 else f'evolve_{JOB}.txt'
@@ -35,6 +39,7 @@ PATTERN = os.environ.get('PATTERN', '')            # e.g. 'Dombrovskis (refutati
 TRYCHANGE = os.environ.get('TRYCHANGE', '0') == '1'  # reward tries whose mates for DEFS differ (or swap: reciprocal)
 CORR = os.environ.get('CORR', '')                  # Black correction mode: square of the correcting piece
 NCORR = int(os.environ.get('NCORR', '2'))
+SELFBLOCK = int(os.environ.get('SELFBLOCK', '0'))      # self-block mode: N distinct self-block mates for a HIT
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram flight is fatal, so no HIT has one
 KEYROLE = os.environ.get('KEYROLE', '1') == '1'     # E. Bourd: no HIT whose key piece is out of play or idle in the diagram
 RECIP = os.environ.get('RECIP', '0') == '1'          # set play and key swap the mates of the two DEFS
@@ -107,6 +112,39 @@ def corr_score(ph):
     return t, f"S~ {r['mate']} | " + ' '.join(f"{x['move']}:{'/'.join(x['mates'])}" for x in c['corrections']), ok
 
 
+def selfblocks(b, ph):
+    """(distinct single mates, dual count) of the functional self-blocks in phase ph of diagram b."""
+    bk = b.copy()
+    if ph['type'] != 'set':
+        bk.push(chess.Move.from_uci(ph['first_move']['uci']))
+    else:
+        bk.push(chess.Move.null())
+    k = bk.king(chess.BLACK)
+    mates, duals = set(), 0
+    for v in ph['variations']:
+        d = chess.Move.from_uci(v['defence']['uci'])
+        if (v['threat_repeat'] or not v['continuations'] or v['refutes'] or d.from_square == k
+                or not chess.BB_KING_ATTACKS[k] & chess.BB_SQUARES[d.to_square]):
+            continue
+        sb = [c for c in v['continuations']
+              if any(w.startswith('self-block') for w in mate_motives(bk, d, chess.Move.from_uci(c['uci'])))]
+        if not sb:
+            continue
+        if len(v['continuations']) == 1:
+            mates.add(sb[0]['san'])
+        else:
+            duals += 1
+    return mates, duals
+
+
+def sb_score(b, ph):
+    """(score, summary, ok) of the self-block play in phase ph (SELFBLOCK mode)."""
+    if not SELFBLOCK:
+        return 0.0, '', True
+    mates, duals = selfblocks(b, ph)
+    return 22 * len(mates) - 8 * duals, f"SB {'/'.join(sorted(mates))} duals={duals}", len(mates) >= SELFBLOCK and not duals
+
+
 def score(b):
     """(score, summary, hit)"""
     p = Problem.from_fen(b.fen(), '#2')
@@ -176,8 +214,11 @@ def score(b):
         t -= 3 * sum(1 for v in ph['variations'] if v['dual'] and v['defence']['san'].rstrip('+#') not in DEFS)
         ct, csum, _ = corr_score(ph)
         t += ct
+        st, ssum, _ = sb_score(b, ph)
+        t += st
+        csum = (csum + ' ' + ssum).strip()
         if t > best_theme:
-            best_theme, best_sum = t, f"{ph['type']} {ph['first_move']['san']} " + ' '.join(f'{d}:{m}' for d, m in zip(DEFS, mates)) + (' ' + csum if CORR else '')
+            best_theme, best_sum = t, f"{ph['type']} {ph['first_move']['san']} " + ' '.join(f'{d}:{m}' for d, m in zip(DEFS, mates)) + (' ' + csum if csum else '')
     s += best_theme
     s -= 1.5 * max(0, units(b) - 10)
     # flights in the diagram need set mates (E. Bourd: a diagram flight is fatal unless provided)
@@ -231,7 +272,7 @@ def score(b):
             ok = all(d in setmap and setmap[d]['continuations'] and vm[d]['continuations'][0]['san'] not in {c['san'] for c in setmap[d]['continuations']} for d in DEFS)
         if ok and TARGET:
             ok = all(vm[d]['continuations'][0]['san'] == TARGET[d] for d in TARGET if d in vm)
-        ok = ok and corr_score(ph)[2] and not (NOFLIGHT and kmoves)
+        ok = ok and corr_score(ph)[2] and sb_score(b, ph)[2] and not (NOFLIGHT and kmoves)
         if ok and KEYROLE:
             km = chess.Move.from_uci(ph['first_move']['uci'])
             ok = not out_of_play_key(b, km) and (b.piece_type_at(km.from_square) == chess.KING or not idle_key_piece(b, km, phases))

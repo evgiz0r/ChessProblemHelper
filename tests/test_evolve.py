@@ -48,3 +48,30 @@ def test_out_of_play_key_is_no_hit():
     old_hit, old_score = _keyrole('0')
     new_hit, new_score = _keyrole('1')
     assert old_hit and not new_hit and new_score < old_score - 20
+
+
+SB_PROBE = """
+import chess, chesscomp.compose.evolve as e
+for fen in ('2R5/3n1p2/1B6/1K1kP1Q1/1P4B1/4rP2/8/8', '8/3N3K/2b4p/kBR2p2/1p1Q4/8/8/5q2'):
+    s, summ, hit = e.score(chess.Board(fen + ' w - - 0 1'))
+    print(hit, summ)
+"""
+
+
+def _selfblock(n):
+    env = dict(os.environ, SELFBLOCK=str(n), DEFS='', PYTHONPATH=ROOT)
+    r = subprocess.run([sys.executable, '-c', SB_PROBE], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
+    assert r.returncode == 0, r.stderr
+    return r.stdout.splitlines()
+
+
+def test_selfblock_mode_counts_functional_self_blocks():
+    # daily No. 3: 1.Qe7! Rxe5 2.Qxd7# needs the rook on e5 (the king would take it); Sxe5 2.Qc5# is an unguard
+    no3, ceskova = _selfblock(1)
+    assert no3.startswith('True') and 'SB Qxd7#' in no3
+    # Ceskova 1901: the captures on b5 stand next to the king but Rc5 guards b5 anyway, so no self-block
+    assert ceskova.startswith('False') and 'SB  ' in ceskova
+
+
+def test_selfblock_mode_demands_n_mates():
+    assert _selfblock(2)[0].startswith('False')
