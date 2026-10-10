@@ -19,15 +19,16 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   Hand analysis has been wrong every time it was not checked.
 - One change per solve. Cause -> remedy -> verify. Enumerate only the last layer (defenders around a
   sound kernel) with `chesscomp.compose.kernel_search`, in parallel and under a time budget.
-- Boards as SVG with every diagram, FEN with every board (`tools/board_img.py`). A problem with its
-  solution beside it, for him or for a database record: `tools/card_png.py out.png --id psis-…`.
-- Every problem shown in chat goes with its diagram, inline (E. Bourd, 7 Oct 2026): render the diagram with
-  `tools/card_png.py --board` (a square board only: he reads on a phone, which crops wide cards and overlaps tall
-  ones) and write the FEN, solution and questions as text under it; `--portrait` makes a full card for files into `docs/blog/cards/<name>.png`,
-  commit and push it, then embed it in the reply as
+- Every position shown to him, in any session (chat, routine, issue, blog), goes with its diagram and its FEN,
+  one way (E. Bourd, 7 and 10 Oct 2026): `python tools/show.py <name> "<FEN>"` writes a square board to
+  `docs/blog/cards/<name>.png` and prints the three uses. In a Claude Code chat send the PNG with `SendUserFile`
+  (`display: "render"`): a markdown image link opens a new tab on his computer, and a wide card is cropped on
+  his phone. In a GitHub issue or a post, commit and push the PNG and embed
   `![title](https://raw.githubusercontent.com/evgiz0r/ChessProblemHelper/main/docs/blog/cards/<name>.png)`.
-  He sees it inline. Text alone is never enough. In a Claude Code session (not GitHub), send the PNG with `SendUserFile`
-  (`display: "render"`) instead: a markdown image link opens in a new tab on his computer (E. Bourd, 10 Oct 2026).
+  Under the diagram, as text: the FEN, the solution, the questions. Text alone is never enough. A full card
+  with the solution beside it, for a file or a database record: `tools/card_png.py out.png --portrait` or `--id psis-…`.
+- Every session gives him the link to the Composing Bench, in its first reply and with every diagram:
+  https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916 (E. Bourd, 10 Oct 2026).
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his

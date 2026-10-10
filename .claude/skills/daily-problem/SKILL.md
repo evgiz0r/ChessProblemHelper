@@ -95,7 +95,7 @@ about it in a mentor question. Summarise the change in the post's `improvement` 
 
 ## 8. Publish (10 min)
 - Render the post's card (diagram, solution, questions) with `tools/card_png.py` into
-  `docs/blog/cards/<slug>.png`; the final report embeds it inline (see CLAUDE.md).
+  `docs/blog/cards/<slug>.png`; the final report shows the square board from `tools/show.py` (see CLAUDE.md).
 - `python tools/blog.py build`, run the tests, commit "Daily No. N: <title>", push to `main` (retry on
   network errors: 2, 4, 8, 16 seconds).
 - Open the mentor issue (GitHub MCP `issue_write`, or
@@ -104,4 +104,5 @@ about it in a mentor question. Summarise the change in the post's `improvement` 
   title "Mentor questions: No. N (<date>)", label `mentor`, body with the post link
   `https://evgiz0r.github.io/ChessProblemHelper/blog/<slug>.html`, the FEN, the questions numbered, and the
   attribution footer. Put its number in the post's `mentor_issue`, rebuild, commit, push.
-- End with three lines: the post link, the issue link, the improvement.
+- End with the diagram (`tools/show.py`, sent with `SendUserFile`) and four lines: the post link, the issue
+  link, the improvement, the Composing Bench link.
