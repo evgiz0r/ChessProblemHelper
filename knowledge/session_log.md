@@ -735,3 +735,8 @@
   guard e5: g4 failed to fxg4 (feature I should have seen), e5 start failed (all knight moves keep guarding e5; Sxf7),
   f4 start cooked by 1.d3+ Rxd3 2.exd3#, f8 out of play; e7 works with bPb7 against 1.Sc6: 1Q4N1/1p2Nr2/8/3p1pp1/4k3/2r1P3/3PPK2/8,
   1.Sg6!, tries 1.d4? Rc7!, 1.Sc6? bxc6!. Gate PASS. One FEN typo (no black king) cost a solve: check legality first.
+* Two rooks v3 (his asks: kill 1...Re7, add a second try refuted only by Rc7): bPe6 kills Re7. Proven by reasoning: no try
+  refuted only by Rfc7 exists while R2's mate is Sf6 (no knight reaching f6 can also guard e5; a bishop on f6 is taken by Rxf6);
+  an f-pawn mate (f3#) instead brings back 1...Rf5 (R2 can always stop on f5 and guard e5). Second try refuted by Rcc7 needs a
+  second e3 guard that can move to guard e5: f2-f4 fails to gxf3 e.p. (with bPg4), Bg1-h2 fails to 1...f4 as well. Current:
+  1Q4N1/1p2Nr2/4p3/3p1pp1/4k3/2r1P3/3PP1K1/6B1, 1.Sg6!, gate PASS; 1.Bh2? Rc7!/f4! not yet pure.
