@@ -33,6 +33,8 @@ def key_play(fen: str):
     checks = [u for u in (sp or {}).get('unprovided', []) if u.endswith('+')]
     play = {v['defence']['san']: frozenset(c['san'] for c in v['continuations'])
             for v in (kp or {}).get('variations', []) if not v['threat_repeat']} if kp else {}
+    if kp:                                         # the threat is part of the play: a removal that adds a second
+        play['(threat)'] = frozenset(t['san'] for t in kp.get('threat') or [])   # threat is no trim (10 Oct 2026)
     return keys, play, checks
 
 

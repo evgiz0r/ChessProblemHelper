@@ -727,3 +727,7 @@
   to construct a problem, but it shows the general idea of handling cooks and creating some variety. Bug he found: find-key and critique called a protected key piece
   next to the king 'attacked'; now only a legal Black capture counts (critique.black_captures, analysis.js, keyfind
   'sacrifice'; bench v29; tests in test_regression.py).
+* Two rooks on one square, by reasoning (10 Oct): post-key mechanism first (Rc3, Rf7 to c7 against 2.Qe5#; mates d3 and Sf6 by
+  the line each rook leaves), errors caught by solves: a threat line through the king, Sg3 covering f5 itself, a knight on e8
+  checking from d6. I declared 'no key' too early; E. Bourd: iterate the cooks and block them. Three steps: bPd5, Qa8, bPe6 ->
+  sound 1.Qb8!. Tool gaps found and fixed: the gate did not flag a double threat; trim treated a changed threat as the same play.

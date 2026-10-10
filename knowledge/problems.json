@@ -1155,6 +1155,21 @@
     "S6f4"
    ],
    "note": "1.S6f4! (2.Re7#) Sc7 2.Bd6#, Bg8 2.Sxg6#, Ra6 2.Bd4#, Sf5 2.Rxd5#, Qb6 2.Sd3#. Tries 1.Sf8? Qb6!, 1.Sd8? Bg8!. Gate PASS. Flaws: 20 units (8 pawns), wKb8 in no mate. Built post-key first: a random position showing all mates, one chosen as the threat (Rd7#, 'rather easy to defend'), Black defenders placed so each other mate appears after a defence, then 'find #2 key'. First sound version 3n4/2R5/4p2r/1BBkp1N1/8/r6p/1n1N3K/8 (1.Sge4!, 6 defences, 4 mates) in 52 steps, then extended to five distinct mates. The bench flagged 1.Se6-f4 as 'attacked' although Bg4 guards e6: fixed (only a legal Black capture counts). His verdict: not the best mechanism to construct a problem; a demonstration of handling cooks and creating variety."
+  },
+  {
+   "id": "claude-two-rooks-c7",
+   "fen": "Q5N1/5r2/4p3/3p1pp1/1N1Pk3/2r1P3/3P1K2/8",
+   "stip": "#2",
+   "author": "Claude (by reasoning, with E. Bourd)",
+   "source": "session 10 Oct 2026",
+   "themes": [
+    "Two rooks defend on one square",
+    "Dual avoidance"
+   ],
+   "keys": [
+    "Qb8"
+   ],
+   "note": "1.Qb8! (2.Qe5#) Rfc7 2.Sf6#, Rcc7 2.d3#. Built by reasoning: both rooks interfere on c7 with the b8-e5 line; each leaves its other line (Rf7 the guard of f6, Rc3 the guard of d3), the rook that stays still guards the other mate. Cooks iterated: bPd5 shuts the long diagonal (Qa8+/Qb7+) and rank 5 (Rc5); Qa8 behind it reaches the threat diagonal only at b8; bPe6 protects d5 and shuts the e-file; bPg5 stops 2.Qf4. Flaws: static key (both thematic mates already set), the key unpins Pd5, 1...Rxe3 refutes both tries, four black pawns are construction."
   }
  ]
 }

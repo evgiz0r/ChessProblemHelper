@@ -222,3 +222,14 @@ def test_protected_key_piece_next_to_king_is_not_attacked():
     for fen in ('1K2n3/pp1R2pb/4N1p1/2Bpk1P1/r3P1B1/4nP2/4N3/1q6', '3r1r2/4p3/5pR1/3PkNBp/2R4P/5B1Q/4n2K/8'):
         p = Problem.from_fen(fen + ' w - - 0 1', '#2')
         assert 'attacked key piece' not in {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+
+
+def test_gate_and_trim_treat_a_double_threat_as_changed_play():
+    """10 Oct 2026: without bPg5, 1.Qb8 threatens 2.Qe5# and 2.Qf4#; the gate passed it and trim removed g5."""
+    import subprocess, sys, os
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    r = subprocess.run([sys.executable, 'tools/blog.py', 'check', 'Q5N1/5r2/4p3/3p1p2/1N1Pk3/2r1P3/3P1K2/8'],
+                       capture_output=True, text=True, cwd=root, timeout=300)
+    assert '[double threat]' in r.stdout and 'GATE: FAIL' in r.stdout
+    from chesscomp.compose.trim import trim
+    assert trim('Q5N1/5r2/4p3/3p1pp1/1N1Pk3/2r1P3/3P1K2/8')[2] == []
