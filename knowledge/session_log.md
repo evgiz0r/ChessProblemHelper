@@ -744,3 +744,10 @@
   refuted ONLY by 1...Rfc7! because it takes the f6 square from 2.Sf6#; the first try stays 1.d4? (Rcc7 only). Key 1.Bf4!
   (bishop guards e5 from f4). Checked: gate PASS, two single-refutation tries, three distinct mates. My earlier searches
   never tried a bishop on f6 as a try: the lesson is to test the thematic tries the user names before searching.
+* Theme 'two rooks capture a white knight' (10 Oct, alone, his instruction: full process, come back when ready). First
+  scheme (knight guards d4, queen threat) failed at the post-key table: f3 uncovered, e5 a flight. Rebuilt: the knight is the
+  threat (2.Sc3#), the rooks capture it on b1 and each loses the line that guarded a mate square of the h5 knight. Solver
+  corrections: diagram flight e3 (key protected it, so the diagram did not), 1.Sd2# mate in one once f2 protected e3,
+  out-of-play 1.Sa3-b1 (fatal) with a cook 1.Sb5, the double threat Sc3#/d3# created by Bd4 protecting e3 (cured by bSf2
+  attacking d3, which adds 1...Sd1 2.d3#), and 'e5 via the bishop' was redundant (f4 covered it). Final
+  8/8/1r6/5p1N/2P1kPpK/2B1P2P/3PPn2/1N4r1, 1.Bd4!, gate PASS, trim-minimal, 16 units. 9 solves, 0 searches.

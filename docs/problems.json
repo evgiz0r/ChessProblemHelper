@@ -1218,6 +1218,22 @@
     "Bf4"
    ],
    "note": "1.Bf4! (2.Qe5#). 1.Bf6? refuted only by 1...Rfc7! (2.Sf6# blocked); 1.Bd4? refuted only by 1...Rcc7! (2.Rd4# blocked). Mates: 1...Rfc7 2.Sf6#, 1...Rcc7 2.Rd4# (the c4 rook guarded d4 along the rank; Rcc7 unguards it, the e3 pawn protects d4). The d-file is open because the d2 pawn is gone. Gate PASS. Flaws: 1...f4 refutes 1.Bg3 and 1.Bh2 (extra refutations); bPh4 not needed; Qf4 is a second threat square on the try diagonal."
+  },
+  {
+   "id": "claude-two-rooks-capture-knight",
+   "fen": "8/8/1r6/5p1N/2P1kPpK/2B1P2P/3PPn2/1N4r1",
+   "stip": "#2",
+   "author": "Claude (alone, 10 Oct 2026)",
+   "source": "session 10 Oct 2026, theme set by E. Bourd",
+   "themes": [
+    "Two rooks capture a white knight",
+    "Unguard mates",
+    "Threat by the captured knight"
+   ],
+   "keys": [
+    "Bd4"
+   ],
+   "note": "1.Bd4! (2.Sc3#) Rbxb1/Rb3 2.Sf6#, Rgxb1/Rc1 2.Sg3#, Sd1 2.d3#. The threatening knight is captured on b1 by both rooks: the b6 rook down the file loses the 6th rank (its guard of f6), the g1 rook along the 1st rank loses the g-file (its guard of g3); one knight on h5 mates on both squares; each rook keeps guarding the other mate square, so no duals. The key clears c3, blocks d4 and protects e3 (so 2.d3# answers 1...Sd1, the knight leaving its guard of d3). Gate PASS, trim-minimal (16 units, 8 pawns). Flaws: the bishop's seven other moves are tries all refuted by 1...Sd1 (same refutation; not thematic tries); wPh3 and wKh4 only stop rook checks; dual-avoidance reasons differ. No pure thematic try exists (1.Bf6? Rbxb1! but also Rb3!, Sd1!)."
   }
  ]
 }
