@@ -1170,6 +1170,22 @@
     "Qb8"
    ],
    "note": "1.Qb8! (2.Qe5#) Rfc7 2.Sf6#, Rcc7 2.d3#. Built by reasoning: both rooks interfere on c7 with the b8-e5 line; each leaves its other line (Rf7 the guard of f6, Rc3 the guard of d3), the rook that stays still guards the other mate. Cooks iterated: bPd5 shuts the long diagonal (Qa8+/Qb7+) and rank 5 (Rc5); Qa8 behind it reaches the threat diagonal only at b8; bPe6 protects d5 and shuts the e-file; bPg5 stops 2.Qf4. Flaws: static key (both thematic mates already set), the key unpins Pd5, 1...Rxe3 refutes both tries, four black pawns are construction."
+  },
+  {
+   "id": "claude-two-rooks-c7-v2",
+   "fen": "1Q4N1/1p2Nr2/8/3p1pp1/4k3/2r1P3/3PPK2/8",
+   "stip": "#2",
+   "author": "Claude (with E. Bourd)",
+   "source": "session 10 Oct 2026",
+   "themes": [
+    "Two rooks defend on one square",
+    "Dual avoidance",
+    "Thematic tries"
+   ],
+   "keys": [
+    "Sg6"
+   ],
+   "note": "1.Sg6! (2.Qe5#) Rfc7/Re7 2.Sf6#, Rcc7 2.d3#. Tries 1.d4? Rc7! (the pawn guards e5 but no longer mates on d3), 1.Sc6? bxc6!. The key knight arrives to guard e5 and opens rank 7 for the f7 rook. Built post-key first, then a features pass, then the key: e5 knight start failed (every knight move from e5 still guards e5; it attacked f7), f4 start cooked by 1.d3+ Rxd3 2.exd3# (the f4 knight guarded d3), f8 start out of play. Version with bPe6 (1Q4N1/1p2Nr2/4p3/3p1pp1/4k3/2r1P3/3PPK2/8) stops 1...Re7 as an extra defence at the cost of a pawn. Flaw: the key piece stands attacked by the f7 rook."
   }
  ]
 }

@@ -731,3 +731,7 @@
   the line each rook leaves), errors caught by solves: a threat line through the king, Sg3 covering f5 itself, a knight on e8
   checking from d6. I declared 'no key' too early; E. Bourd: iterate the cooks and block them. Three steps: bPd5, Qa8, bPe6 ->
   sound 1.Qb8!. Tool gaps found and fixed: the gate did not flag a double threat; trim treated a changed threat as the same play.
+* Two rooks v2 (10 Oct, E. Bourd: reuse pieces, better key; post-key first, then features, then key). Key knight arriving to
+  guard e5: g4 failed to fxg4 (feature I should have seen), e5 start failed (all knight moves keep guarding e5; Sxf7),
+  f4 start cooked by 1.d3+ Rxd3 2.exd3#, f8 out of play; e7 works with bPb7 against 1.Sc6: 1Q4N1/1p2Nr2/8/3p1pp1/4k3/2r1P3/3PPK2/8,
+  1.Sg6!, tries 1.d4? Rc7!, 1.Sc6? bxc6!. Gate PASS. One FEN typo (no black king) cost a solve: check legality first.
