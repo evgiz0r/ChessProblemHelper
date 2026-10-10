@@ -1202,6 +1202,22 @@
     "Bf4"
    ],
    "note": "1.Bf4! (2.Qe5#). 1.Bf6? (2.Qe5#) refuted only by 1...Rfc7!; 1.d4? (2.Qe5#) refuted only by 1...Rcc7!. Key mates: 1...Rfc7 2.Sf6#, 1...Sxf4 2.Qxf4#, 1...Rcc7 2.d3#. The bishop key guards e5 from f4 and takes the f6 square's job. Flaws (solver): key piece attacked by the h3 knight, wPe6 needed against Qe8+, bBc1 idle, 18 units, 8 pawns. Gate PASS."
+  },
+  {
+   "id": "claude-two-rooks-bishop-scheme",
+   "fen": "1Q4N1/5r2/8/3pBp2/2r1k2p/4Pp2/5P2/3R1K2",
+   "stip": "#2",
+   "author": "Claude with E. Bourd",
+   "source": "session 10 Oct 2026",
+   "themes": [
+    "Two rooks defend on one square",
+    "Thematic tries (one rook each)",
+    "Unguarding (Rcc7 unguards d4)"
+   ],
+   "keys": [
+    "Bf4"
+   ],
+   "note": "1.Bf4! (2.Qe5#). 1.Bf6? refuted only by 1...Rfc7! (2.Sf6# blocked); 1.Bd4? refuted only by 1...Rcc7! (2.Rd4# blocked). Mates: 1...Rfc7 2.Sf6#, 1...Rcc7 2.Rd4# (the c4 rook guarded d4 along the rank; Rcc7 unguards it, the e3 pawn protects d4). The d-file is open because the d2 pawn is gone. Gate PASS. Flaws: 1...f4 refutes 1.Bg3 and 1.Bh2 (extra refutations); bPh4 not needed; Qf4 is a second threat square on the try diagonal."
   }
  ]
 }
