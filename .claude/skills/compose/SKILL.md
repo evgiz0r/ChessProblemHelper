@@ -139,6 +139,13 @@ cutting pieces at a distance with free paths (his 8/8/3P3R/3k4/8/2bb4/8/8: Rh6 g
 f6/g6 from anywhere on their diagonals). A unit inside the king's field (my Be5: guards d4, d6, f4, f6, sits on the
 e-file and the 5th rank) interferes with too much and takes the freedom; every change ripples. Not always possible;
 starting soft is a skill. Units may move into the field later, when a need puts them there (his bishop went to c5).
+Decide the line, not the square: the square the threat needs guarded may move along the guarded line (he went
+from d6 to e6). Put the error mates away from the cut line (his second sitting: cuts on f6/g6, mates Sb4#/Qb3# on
+the far side), so they do not tangle with the play around the cuts and need little patching:
+nK6/3B4/N2PP2R/2Bk2P1/5P2/2b2P2/2b1Q3/8, 1.Qb5! Bf6 Sb4#, Bg6 Qb3#. Among keys take the origin that gives the key a
+thematic job (Qe2 leaves the e-file guard of e6) over a bare only-key (Qf1), even at a cook-stopper's price.
+A cook-stopper can often move so that it also plays: `python3 -m chesscomp.compose.restop FEN KEY "Bf6=Sb4#,..." a8`
+(his Sa8 -> Se8: 1...Sf6 2.Sc7#, a third cut).
 
 ## Shifts and rotations (E. Bourd, 11 Oct 2026)
 "They do not ruin the base of the theme": the line pieces keep their geometry (the two bishops change colour together).

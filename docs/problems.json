@@ -1417,6 +1417,39 @@
     "Sg6"
    ],
    "note": "1.Sg6! (2.Se7#) Be2 2.Qxc6#, Be3 2.Qxd6#, fxg6 2.Qe6#, Sxf5/Sg8 2.Qxf7#; try 1.Sh7? (2.Sf6#) Be2! (Qxc6+ Kxe5: only the knight on g6 guards e5 after the cut). Re1 guards e5 (and e4 with Pf3); the threat Se7+ takes the knight's guard of e5 away, so the bishops defend by cutting the e-file on e2/e3, far from the king, which makes Kxe5 possible. Bb5 held c6, Bc5 held d6: Qxc6#/Qxd6#, and Qxd6 after Be2 or Qxc6 after Be3 is captured by the other bishop. Set play: Be3 Qxd6# set, Be2 unprovided (Kxe5 after Qxc6+), the key adds that mate. Every unit needed (trim); g5 stops the double threat Sf4#, Kc7 protects both mating queens. Gate PASS. Flaws: one try only (no try is refuted by Be3, since Qxd6 covers e5 itself); 7 pawns; Rc3 only guards c4; checking tries only otherwise. How he made it: scheme Kd5, Rh6, bishops c3/d3 cutting the 6th rank at f6/g6 (spread: line and cut squares away from the king); built the post-key with a knight threat; when the only key was the check 1.Rh4+ he moved the White king and queen, stripped Sa4, bQb1, bPb2, and turned the board a quarter (the black c2/c3/c4 chain that checked the king, captured on b3 and promoted became a static b6/c6/d6 chain, the targets of the mates); three changes later the post-key had no hole; findkey gave five unique keys (Sf8/Sh8/Sh4-g6, Rb3/Ra3-c3); he chose Sf8-g6 because f8 also gives the try Sh7?."
+  },
+  {
+   "id": "bourd-two-bishops-qb5",
+   "fen": "nK6/3B4/N2PP2R/2Bk2P1/5P2/2b2P2/2b1Q3/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench session mv4gmdxo, 11 Oct 2026), second demonstration on his theme",
+   "source": "theme 'two bishop defences by different bishops blocking a white line'; 48 bench steps from an empty board",
+   "themes": [
+    "Black interference with one white line by two different bishops (Rh6, cut on f6 and g6)",
+    "Key abandons a guard of the threat square (the queen leaves the e-file guard of e6)",
+    "Unguard errors far from the line (b4, b3)",
+    "Changed mate (set Bg6 Qa2#, solution Qb3#)"
+   ],
+   "keys": [
+    "Qb5"
+   ],
+   "note": "1.Qb5! (2.Bc6#) Bf6 2.Sb4#, Bg6 2.Qb3#. Set: Bf5/Bg6/Bh7 2.Qa2#, Ba4/Bb3/Bd1 2.Qe4#, Be4 2.Qxe4# (dual). Bc6 leaves the d7 guard of e6, so after the key only Rh6 holds the e6 pawn; in the diagram the queen also holds it down the e-file, and the key gives that up. The bishops cut the 6th rank (Kxe6 after Bc6+); Bc3 held b4, Bc2 held b3; the other bishop's guard stops the dual. Gate PASS, trim-minimal. Flaws: g5 only stops 1.Rh5+, Kb8 passive (any of h1, g2, h2, a7, b8), Sa8 only stops the second threat Sc7#, d6 stops Be5 (a check on b8, and a guard of d6), set dual after Be4, tries 1.Kb7?/1.Bc8? both refuted by Bd3, 11+4. How he made it: scheme Rh6, Pe6, Bd7, Kd5, bishops c3/c2 (the threat square moved from d6 to e6, on the same line; the light bishop on c2 so its error lands on b3, away from the line); post-key Qb5 with Sa6, Pd6 (stops Be5); findkey: only key 1.Qf1-b5! (10+4, sound, but no set play and no thematic weakening); he took 1.Qe2-b5 instead and paid with g5 against 1.Rh5+; a black rook f2/f1 gave an unprovided check Rb1+ and was removed. His words: 'i left freedom in my geometry around the threat, and what squares could be needed... i changed the mates with the bishops, putting them away from the line, they are less interfering with other play and dont need a lot of patching'."
+  },
+  {
+   "id": "bourd-two-bishops-qb5-se8",
+   "fen": "1K2n3/3B4/N2PP2R/2Bk2P1/5P2/2b2P2/2b1Q3/8",
+   "stip": "#2",
+   "author": "E. Bourd, version by Claude (session 0be7e202, 11 Oct 2026): the a8 knight moved to e8",
+   "source": "improvement of bourd-two-bishops-qb5 found by chesscomp.compose.restop (470 one-unit replacements of Sa8)",
+   "themes": [
+    "Black interference with one white line by three units (Bf6, Bg6, Sf6)",
+    "Unguard errors, three different mates",
+    "Changed mate (set Bg6 Qa2#, solution Qb3#)"
+   ],
+   "keys": [
+    "Qb5"
+   ],
+   "note": "1.Qb5! (2.Bc6#) Sf6 2.Sc7#, Bf6 2.Sb4#, Bg6 2.Qb3#. The knight still guards c7 (no second threat) and its cut on f6 unguards c7. Same unit count (11+4); gate PASS; trim-minimal. Remaining flaws: g5 cook-stopper (no single replacement does more), passive Kb8, set dual after Be4, no thematic try (only Qb5 makes the threat Bc6#). Not yet judged by E. Bourd: the knight's cut is a third, non-bishop defence of the same kind; whether it enriches or dilutes the two-bishop theme is his call."
   }
  ]
 }

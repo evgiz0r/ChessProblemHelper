@@ -330,3 +330,7 @@ the [a], [b] for the mates that change thematically."
   somewhat apart so its easier constructed. its not always possible, but starting on softer schemes is a skill."
 - Shifts and rotations (11 Oct 2026): "they do not ruin the base of the theme". His demonstration on the bench
   (mv4dvvuh): a quarter turn fixed the pawns and the White king's room; 1.Sg6! (bourd-two-bishops-sg6).
+- Freedom around the threat; mates away from the line (11 Oct 2026, second bench demonstration, 1.Qb5!): "i left
+  freedom in my geometry around the threat, and what squares could be needed (i switched from d6 to e6, on the same
+  line). and i changed the mates with the bishops, putting them away from the line, they are less interfering with
+  other play and dont need a lot of patching." The d6 pawn was added "to avoid the defense Be5".

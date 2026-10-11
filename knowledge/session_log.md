@@ -845,3 +845,11 @@
   1.Sg6! (2.Se7#) Be2 Qxc6#, Be3 Qxd6#, fxg6 Qe6#, Sxf5/Sg8 Qxf7#; try Sh7? Be2!. Re-solved: sound, gate PASS,
   trim-minimal. New tool chesscomp/compose/transform.py (shifts, rotations, rank all placements) with
   tests/test_transform.py; compose skill got 'Spread the scheme' and 'Shifts and rotations'.
+* E. Bourd's second demonstration (bench mv4gmdxo, 48 steps): scheme Rh6, Pe6, Bd7, Kd5, Bc3/Bc2; threat square e6
+  (moved from d6 along the line), error mates on b4/b3 away from the cut squares. Post-key Qb5 solved twice, findkey:
+  only key 1.Qf1-b5 (sound 10+4, no set play); he chose 1.Qe2-b5 (gives up the e-file guard of e6, set play, change
+  Bg6 Qa2# -> Qb3#) with g5 against Rh5+; a black rook gave an unprovided check and went. Final
+  nK6/3B4/N2PP2R/2Bk2P1/5P2/2b2P2/2b1Q3/8, 1.Qb5! Bf6 Sb4#, Bg6 Qb3#. Re-solved: sound, gate PASS, trim-minimal.
+  Improving it as he invited: replacements for Sa8 (470 tried) -> only Se8 also works and adds 1...Sf6 2.Sc7# (third
+  cut of the line, unguard error); g5 has no better replacement; the king is passive on every working square; no queen
+  try (only Qb5 makes Bc6# a threat). New tool chesscomp/compose/restop.py with tests/test_restop.py.
