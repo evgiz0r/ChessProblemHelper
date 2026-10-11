@@ -46,7 +46,7 @@
    "order": 6,
    "name": "Grimshaw",
    "definition": "A black rook and bishop interfere with each other on one square; each interference allows a different mate.",
-   "reference": null,
+   "reference": ".claude/skills/themes/references/grimshaw.md",
    "db_text": "Grimshaw"
   },
   {

@@ -80,13 +80,32 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme` (Grimshaw has no reference: write one first). For self-blocks proper, start from a block or
   a battery and use SELFBLOCK=3 on a seeded sketch; the guard-of-the-threat-square idea gives self-block-shaped moves, not self-blocks.
 
+## 2026-10-11, No. 6: Grimshaw
+- Result: 3Q1bb1/2N3r1/1N3Rpp/1pP1k3/3p4/3P4/5K2/8 (7+8), 1.Rf3! (2.Qf6#) Re7 2.Qd6#, Be7 2.Sd7#, Rf7 2.Qd5#; try 1.Qxf8? Re7!
+  Gate: PASS with warnings (king refutes the unprinted try 1.Rf4?, duals after six non-defences, 'bPh6 not needed', which is
+  false: without h6 the key threatens 2.Qg5# too), all named in the post. The set play already holds the Grimshaw with the
+  same mates. No open mentor issues (2-6 all closed and acted on).
+- Setup: the local `main` had diverged again (the stale 54-commit history); worked on `daily-run` from origin/main, pushed HEAD:main.
+  The playwright Python package was missing (installed requirements before switching branches): `pip install playwright`.
+- Minutes: setup and reading 5, mentor 1, study 3, evolve 5 (wasted), hand and postsearch work 20, post, reference and records 15.
+  About 35 solves, 14 searches (7 evolve, 3 postsearch, 3 keyfind, 1 trim).
+- What wasted time: three evolve seeds were illegal (a white piece already gave check) and died in 0 s; check every seed with
+  python-chess before launching. Bare evolve again gave checking keys only. The first threat (check down the e-file through
+  the crossing) could never work: interposition after a check is no defence.
+- What helped: a 10-line post-key printer (post_spec in SAN) for one solve per change; postsearch READY=1 found the g8-bishop
+  cure for the square beyond the crossing in five minutes; giving the key rook a single free square.
+- Next run: theme from `next-theme`. For a Grimshaw again, aim for a changed mate between set and solution (the mentor may
+  answer question 1). Fix the critique's 'black piece role' so it counts the threats (see Proposals).
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
 - A detector for Grimshaw and Novotny in `chesscomp/analysis.py`, so those themes can be claimed only when
   the solver sees them (today only a Grimshaw on the key phase is reported).
 - evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
-- A theme reference for Grimshaw, Novotny, Le Grand and Rudenko (none yet).
+- A theme reference for Novotny, Le Grand and Rudenko (none yet; Grimshaw done 11 Oct).
+- critique 'black piece role' (and the gate warning) calls a unit 'not needed' when the variations survive its removal, but
+  ignores a new threat: bPh6 in daily No. 6 stops 2.Qg5# as a second threat. Compare the threat set too before saying 'not needed'.
 - evolve: FLIGHT=1, a score for a flight-giving key in the diagram (no flight before, given flight mated, two more
   distinct mates); the scratch scorer of 9 October is the model.
 - compose.oneunit: every single-unit addition or removal around a diagram, kept when one named key and the named mates

@@ -23,6 +23,24 @@ def test_posts_name_a_known_theme():
         assert p['theme'] in themes, p['slug']
 
 
+def test_theme_references_exist_and_their_example_is_sound():
+    """Every theme reference named in blog/themes.json is a file; a reference .md that names a #2 FEN in its
+    'Reference:' line gives that position's key (daily No. 6: the Grimshaw reference)."""
+    import re, chess
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    for t in json.load(open(blog.THEMES))['themes']:
+        ref = t.get('reference')
+        if not ref:
+            continue
+        first = ref.split()[0].rstrip(';')
+        assert os.path.exists(os.path.join(ROOT, first)), (t['id'], first)
+    text = open(os.path.join(ROOT, '.claude/skills/themes/references/grimshaw.md')).read()
+    fen = re.search(r'Reference:.*?([1-8KQRBNPkqrbnp/]{15,})', text).group(1)
+    res = analyse(Problem.from_fen(fen + ' w - - 0 1', '#2'), include_tries=False, include_set=False, time_limit=60)
+    assert res['keys'] == ['Rf3'], res['keys']
+
+
 def _gate(fen):
     r = subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'blog.py'), 'check', fen], capture_output=True, text=True, timeout=600)
     return r.returncode, r.stdout
