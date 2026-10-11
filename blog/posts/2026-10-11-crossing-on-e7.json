@@ -52,6 +52,6 @@
   "searches": 14
  },
  "improvement": "A Grimshaw reference (.claude/skills/themes/references/grimshaw.md): the crossing on the threat piece's path, the square beyond the crossing, a bishop that leaves both lines, one retreat square for the key piece, the cooks met with their cures, dead ends and archive models. blog/themes.json now points to it, and the themes skill lists it. Tested in tests/test_blog.py: every theme reference named in themes.json exists, and the reference position solves to its key.",
- "mentor_issue": null,
+ "mentor_issue": 7,
  "feedback": []
 }
