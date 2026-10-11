@@ -820,3 +820,10 @@
   d5 is protected). The mask on b5, the interposition square, works: 8/p4B1K/1rp4R/QNn1k3/1rP2pP1/3n1P2/4N3/8,
   1.Sa3! (2.Re6#) R6b5 Qc7#, R4b5 Qc3#, Rxc4 Sxc4#; tries Sc7?/Sd6? R6b5!, Sc3? R4b5!, Sd4? R4b5!/Rxc4!, Sxa7? Rxc4!.
   Gate PASS, trim-minimal. unmask_search got an optional TRIES requirement.
+* E. Bourd on 1.Sa3!: acceptable, real tries, too symmetrical by design; publish tries as a pair; and 'compose a good
+  problem around the theme, not the simplest' (recorded in CLAUDE.md, compose 6b, judge checklist).
+* Theme 'two bishop defences by different bishops blocking a white line' (11 Oct). First mechanism (Qd6/Rd5 with a2 and
+  d-file lines) was impure: Bc4 also guarded the threat square d3. Rebuilt on the queen's two lines: Qb4 rank and
+  diagonal, Be6-c4 / Be3-c5, mates Qd6#/Qf4#. Stage 1 sound: 7K/4Np2/4b2R/4kP2/1Q4P1/4bPP1/7N/5r2, 1.g5! (2.Sg4#).
+  Key still weak (pawn clearance, static); thematic 1.Bh7-f5 cooked so far. freethreat.py got a PURE check (defender must
+  not guard the threat square after its move).
