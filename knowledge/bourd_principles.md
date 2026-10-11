@@ -313,3 +313,8 @@ the [a], [b] for the mates that change thematically."
 - A protected key piece attacked by the king, whose key gives a flight, opens a line and guards the threat
   square (1.Sg7! in Daily No. 5): "no, it's a good key."
 - Cook-stopper pawns: "acceptable, a lot more material is usually added to stop cooks and move stuff around."
+- Restructuring (11 Oct 2026, after finishing two of my abandoned sketches on the bench): "i am pretty open to just
+  switching a whole side around, the really small steps cant do it. i am reasoning over the reconstruction, and its
+  not step by step. its whole restructuring." In his two-knights unpin, everything around the thematic core changed
+  at once: the mate moved (Qh8 to Qf6), the queen took a second duty, Black self-blocks replaced White guards, and
+  the key became the pinner arriving.

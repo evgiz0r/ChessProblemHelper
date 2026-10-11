@@ -111,6 +111,11 @@ square next to the king, getting two phases) before the mates, the mates before 
 non-thematic duals last. If a requirement keeps resisting, consider a level switch (threat to zugzwang), which
 can turn the same Black moves into corrections. Give every construction unit a stated purpose.
 
+## Restructure, do not patch (E. Bourd, 11 Oct 2026)
+"The really small steps cant do it... its whole restructuring." When cooks keep returning or no key comes, keep the
+thematic core and rebuild a whole side at once from the mechanism's needs, then solve that as one change. One-unit
+steps are for cleaning a position that is already sound.
+
 ## Soften before searching for a key (E. Bourd, 11 Oct 2026)
 A sound post-key with no key is not a dead end. In this order: move each mate next to its piece's natural post
 (Qh8# -> Qf6# with the queen on g5); give each free White officer a duty it must keep (the queen guards a pawn); replace

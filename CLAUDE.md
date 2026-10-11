@@ -17,8 +17,13 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 ## Working rules
 - The solver before any claim: `python -m chesscomp.report --fen "<FEN> w - - 0 1" "#2" --critique`.
   Hand analysis has been wrong every time it was not checked.
-- One change per solve. Cause -> remedy -> verify. Enumerate only the last layer (defenders around a
-  sound kernel) with `chesscomp.compose.kernel_search`, in parallel and under a time budget.
+- One change per solve while cleaning a sound position. Cause -> remedy -> verify. Enumerate only the last layer
+  (defenders around a sound kernel) with `chesscomp.compose.kernel_search`, in parallel and under a time budget.
+- When a position resists (no key, cooks coming back), small steps cannot do it: restructure a whole side at once,
+  reasoning from what the mechanism needs (E. Bourd, 11 Oct 2026: "i am pretty open to just switching a whole side
+  around, the really small steps cant do it... its not step by step. its whole restructuring"). Keep the thematic
+  core, rebuild the guards: other mating squares, other pieces with double duties, Black self-blocks for White
+  guards, a different key piece. Solve the rebuilt position as one change.
 - Every position shown to him, in any session (chat, routine, issue, blog), goes with its diagram and its FEN,
   one way (E. Bourd, 7 and 10 Oct 2026): `python tools/show.py <name> "<FEN>"` writes a square board to
   `docs/blog/cards/<name>.png` and prints the three uses. In a Claude Code chat send the PNG with `SendUserFile`
