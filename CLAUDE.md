@@ -31,7 +31,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916 (E. Bourd, 10 Oct 2026).
 - Keep a development log while composing (E. Bourd, 11 Oct 2026): `knowledge/devlogs/<name>.md`, one row per
   solve or search (stage, FEN, card, the one change, solver verdict, decision), plus dead ends and open
-  questions. When a problem is finished and he asks, give a full review of the process from it, with diagrams.
+  questions. When a problem is finished and he asks, give a full review of the process from it as an Artifact page: a diagram for every stage and every
+  rejected search hit, FEN, change, solver verdict, decision (model: `docs/reviews/pawn-step-c3.html`).
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his

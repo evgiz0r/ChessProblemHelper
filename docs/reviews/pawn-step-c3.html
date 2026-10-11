@@ -1,0 +1,213 @@
+<title>Pawn-Step 1.c3 Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column; each stage is a row with the diagram on the left and the record on the right, stacking on phones. */
+:root {
+  --bg: #f7f7f4; --fg: #1d2420; --muted: #5d6862; --line: #d9ddd7; --panel: #ffffff;
+  --accent: #2f6b4f; --warn: #a3412a; --ok: #2f6b4f;
+  --display: "Libre Caslon Text", Georgia, serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141917; --fg: #e4e9e5; --muted: #9aa69f; --line: #2c3530; --panel: #1b211e;
+  --accent: #7cc2a0; --warn: #e48a72; --ok: #7cc2a0; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #141917; --fg: #e4e9e5; --muted: #9aa69f; --line: #2c3530; --panel: #1b211e;
+  --accent: #7cc2a0; --warn: #e48a72; --ok: #7cc2a0; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 15px/1.6 var(--body); }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 16px; padding-block: 32px 64px; }
+h1, h2 { font-family: var(--display); font-weight: 700; text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+h2 { font-size: 1.35rem; margin-block: 40px 16px; }
+.lede { color: var(--muted); max-width: 65ch; margin-top: 8px; }
+.eyebrow { font: 600 12px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+code, .fen { font-family: var(--mono); font-size: 13px; }
+.fen { display: inline-block; background: var(--panel); border: 1px solid var(--line); padding: 2px 6px; border-radius: 3px; overflow-wrap: anywhere; }
+a { color: var(--accent); }
+.final { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 28px; }
+.final img, .stage img, .hit img { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+.sol { font-family: var(--mono); font-size: 14px; line-height: 1.8; margin: 12px 0; padding: 0; list-style: none; }
+.sol li.var { padding-left: 2.2em; }
+.stages { display: grid; gap: 28px; }
+.stage { display: grid; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); gap: 22px; padding-top: 24px; border-top: 1px solid var(--line); }
+.stage.noimg { grid-template-columns: minmax(0, 1fr); }
+.stage h3 { font: 700 1.05rem/1.3 var(--display); margin: 4px 0 8px; }
+dl { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 4px 12px; margin: 10px 0 0; }
+dt { color: var(--muted); font-size: 13px; padding-top: 1px; }
+dd { margin: 0; min-width: 0; }
+.verdict { font-weight: 600; }
+.verdict.bad { color: var(--warn); }
+.verdict.good { color: var(--ok); }
+.hits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 14px; }
+.hit figcaption { font-size: 13px; margin-top: 6px; }
+.hit .tag { font: 600 11px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; }
+.hit .tag.no { color: var(--warn); } .hit .tag.yes { color: var(--ok); }
+ul.plain { padding-left: 1.2em; max-width: 70ch; }
+ul.plain li { margin-bottom: 6px; }
+.flaws li::marker { color: var(--warn); }
+footer { margin-top: 48px; color: var(--muted); font-size: 13px; }
+@media (max-width: 720px) {
+  .final, .stage { grid-template-columns: minmax(0, 1fr); }
+  .stage img { max-width: 300px; }
+  .hits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Development review · #2 · 11 Oct 2026</div>
+  <h1>A pawn single step as key: 1.c3!</h1>
+  <p class="lede">Task from E. Bourd: compose a simple two-mover whose key is a white pawn single step. From idea to gate in about 25 minutes, nine solver runs and one defender search (44 s). Every position below was solved; nothing in this review is hand analysis.</p>
+
+  <section class="final">
+    <img src="cards/pawnstep-c3.png" alt="Final diagram: White Kh8 Qc4 Rh5 Bb1 Se8 Pc2 Pf5; Black Ke5 Sf2 Sg7">
+    <div>
+      <div class="eyebrow">Final position · 7+3 · mate in 2</div>
+      <p><span class="fen">4N2K/6n1/8/4kP1R/2Q5/8/2P2n2/1B6 w - - 0 1</span></p>
+      <ul class="sol">
+        <li>1.c3! (threat 2.Qd4#)</li>
+        <li class="var">1…Se6 2.fxe6#</li>
+        <li class="var">1…Sxf5 2.Rxf5#</li>
+        <li class="var">1…Se4 2.Qxe4#</li>
+      </ul>
+      <p>The step has two jobs. The pawn on c3 protects d4, so the threat Qd4# works. Leaving c2, it opens the diagonal b1–f5 for two mates: Qxe4 and Rxf5. In the set play 1…Sxf5 has no mate. The knight g7 defends twice by guarding d4, and each time the half-battery Rh5/Pf5 answers.</p>
+      <p><a href="https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916">Open the Composing Bench</a></p>
+    </div>
+  </section>
+
+  <h2>Flaws, then pluses</h2>
+  <ul class="plain flaws">
+    <li>Random moves of Sf2 (Sg4, Sh3, Sh1, Sd1) unguard e4, so Qe4# mates as well as the threat. Duals after unthematic moves.</li>
+    <li>No tries. The planned 1.c4? never existed: the queen stands on c4.</li>
+    <li>wKh8 takes no part; it only stands off the knights' checks.</li>
+    <li>Mixed defences: two guard d4, one blocks e4. No common motive.</li>
+  </ul>
+  <ul class="plain">
+    <li>Quiet key with two reasons; three different mates; 10 units, nothing removable (trim).</li>
+    <li>One mate (Rxf5) is added by the key.</li>
+  </ul>
+
+  <h2>How it was made, stage by stage</h2>
+  <div class="stages">
+
+    <article class="stage noimg">
+      <div>
+        <div class="eyebrow">Stage 0 · idea on paper</div>
+        <h3>Why would a pawn step be the only key?</h3>
+        <p>Three possible reasons: it opens a line for a piece behind it, it gives a flight, or it guards a square the threat needs. Choice: a bishop b1 behind a pawn c2, black king e5. 1.c3 opens b1–f5 and guards d4. Planned threat 2.Qe4#, planned try 1.c4? (the double step guards d5 instead of d4).</p>
+      </div>
+    </article>
+
+    <article class="stage">
+      <img src="cards/pawnstep-k1.png" alt="Kernel 1 diagram">
+      <div>
+        <div class="eyebrow">Stage 1 · kernel 1</div>
+        <h3>Box the king, no Black men</h3>
+        <span class="fen">4N3/8/8/4kP2/2Q3P1/8/2P5/1B5K</span>
+        <dl>
+          <dt>Change</dt><dd>Se8 guards d6, f6; Pf5 guards e6; Pg4 protects f5; Qc4 holds d4, e4, f4, d5, e6.</dd>
+          <dt>Solver</dt><dd class="verdict bad">No solution: every White move stalemates or frees a square.</dd>
+          <dt>Decision</dt><dd>Black needs a unit whose moves defend against the threat.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="stage">
+      <img src="cards/pawnstep-k2-illegal.png" alt="Kernel 2 diagram, White king h1 in check">
+      <div>
+        <div class="eyebrow">Stage 2 · kernel 2</div>
+        <h3>Add a black knight f2</h3>
+        <span class="fen">4N3/8/8/4kP2/2Q3P1/8/2P2n2/1B5K</span>
+        <dl>
+          <dt>Change</dt><dd>+bSf2: Sd3 would cut b1–e4, Se4 blocks, Sxg4 unguards f5.</dd>
+          <dt>Solver</dt><dd class="verdict bad">Illegal: the knight checks Kh1.</dd>
+          <dt>Decision</dt><dd>Move the White king out of reach.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="stage">
+      <img src="cards/pawnstep-k2.png" alt="Kernel 2b diagram">
+      <div>
+        <div class="eyebrow">Stage 3 · kernel 2b</div>
+        <h3>King to h8: the kernel is sound</h3>
+        <span class="fen">4N2K/8/8/4kP2/2Q3P1/8/2P2n2/1B6</span>
+        <dl>
+          <dt>Change</dt><dd>Kh1 → h8.</dd>
+          <dt>Solver</dt><dd class="verdict good">1.c3! unique. Threat 2.Qd4#; 1…Se4 2.Qxe4#.</dd>
+          <dt>Decision</dt><dd>The planned threat Qe4# was wrong (Sf2 guards e4). The solver's threat is better: the pawn guards d4 for the threat and the opened line serves the mate after Se4. One defence only, so add defenders.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="stage noimg">
+      <div>
+        <div class="eyebrow">Stage 4 · defender search</div>
+        <h3>One Black and one White unit around the kernel</h3>
+        <p><code>kernel_search 1 1</code> with the key c2–c3 fixed: 39,090 positions, 74 hits, 44 seconds. The four kinds of hit:</p>
+        <div class="hits">
+          <figure class="hit" style="margin:0">
+            <img src="cards/pawnstep-hitA.png" alt="Hit A diagram">
+            <figcaption><span class="tag no">Rejected</span><br>A: +bBb4 +wRc8. Bc5 Rxc5#, Bxc3 Rc5#. The rook mates on c5 twice.</figcaption>
+          </figure>
+          <figure class="hit" style="margin:0">
+            <img src="cards/pawnstep-hitB.png" alt="Hit B diagram">
+            <figcaption><span class="tag no">Rejected</span><br>B: +bSc7 +wRf6. Se6 Rxe6#, Sb5 Re6#. Same square twice.</figcaption>
+          </figure>
+          <figure class="hit" style="margin:0">
+            <img src="cards/pawnstep-d3.png" alt="A wPd3 hit diagram">
+            <figcaption><span class="tag no">Rejected</span><br>Many hits with +wPd3: the pawn blocks b1–e4, so the key opens nothing.</figcaption>
+          </figure>
+          <figure class="hit" style="margin:0">
+            <img src="cards/pawnstep-c.png" alt="Hit C diagram">
+            <figcaption><span class="tag yes">Taken</span><br>C: +bSg7 +wRh5. Se6 fxe6#, Sxf5 Rxf5#, Se4 Qxe4#. Three different mates.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <article class="stage">
+      <img src="cards/pawnstep-c.png" alt="Candidate C diagram">
+      <div>
+        <div class="eyebrow">Stage 5 · candidate C</div>
+        <h3>Sound, with one redundant pawn</h3>
+        <span class="fen">4N2K/6n1/8/4kP1R/2Q3P1/8/2P2n2/1B6</span>
+        <dl>
+          <dt>Solver</dt><dd class="verdict bad">Sound, but critique: wPg4 serves only the set play (big flaw), and Sxg4 gives duals.</dd>
+          <dt>Decision</dt><dd>Remove g4. In the diagram Rh5 already protects f5; after the key Bb1 does.</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="stage">
+      <img src="cards/pawnstep-c3.png" alt="Final diagram">
+      <div>
+        <div class="eyebrow">Stage 6 · final</div>
+        <h3>Without g4</h3>
+        <span class="fen">4N2K/6n1/8/4kP1R/2Q5/8/2P2n2/1B6</span>
+        <dl>
+          <dt>Change</dt><dd>−Pg4.</dd>
+          <dt>Solver</dt><dd class="verdict good">Sound, 7+3, three different mates. Sxf5 Rxf5# now exists only after the key.</dd>
+          <dt>Checks</dt><dd>Publishing gate: PASS. Trim: no unit removable.</dd>
+        </dl>
+      </div>
+    </article>
+  </div>
+
+  <h2>What the process shows</h2>
+  <ul class="plain">
+    <li>The hand plan was wrong twice: the threat (Qe4 → Qd4) and the try (1.c4? impossible with the queen on c4). The second was only caught at judging time; the try should have been tested at stage 1.</li>
+    <li>The search's top hits looked richer (more defences) but mated on one square twice. The ranking needs a "distinct mating squares" criterion.</li>
+    <li>Critique caught the set-only unit at once; removing it also gave the key a second use of the opened line.</li>
+  </ul>
+
+  <h2>Open questions</h2>
+  <ul class="plain">
+    <li>Are the duals after Sf2's random moves acceptable in a simple problem?</li>
+    <li>Is the key's double job enough content?</li>
+    <li>Hunt the 1.c4? try with the queen elsewhere on the 4th rank, so the double step closes her road to d4?</li>
+  </ul>
+
+  <footer>Record: <code>knowledge/devlogs/claude-pawn-step-c3.md</code> · ChessProblemHelper</footer>
+</div>
