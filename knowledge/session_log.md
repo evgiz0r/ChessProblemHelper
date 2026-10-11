@@ -784,3 +784,9 @@
   His verdict: a nice flight-giving key, worth the static play unless a nicer scheme is found; unity preferable; 'a problem
   can push more'. He disliked the black e2 pawn attacking the queen. v2: 4N3/5p2/2R2P1p/4k1p1/3bP3/5P2/p5K1/2BQ4 (black a2 +
   white king g2 replace black e2), gate PASS, trim-minimal, 5 solves.
+* Theme 'a bishop and a knight defend by unpinning a black piece' (11 Oct, E. Bourd; he set aside the bishop-line
+  problem: 'would be hard adding the effect here'). Mechanism: Bb2 pins Sd4 (Ke5), threat Sf3#, Bb4-c3 and Sd5/Se2-c3
+  unpin on one square, the departures unguard d6 and f4/f6 (one dual-avoidance motive). Post-keys sound by postsearch.
+  No acceptable key after about 15 solves and 5 searches: the pinning bishop is idle or cooks f4, and threat-knight keys
+  bring f4+ or queen cooks. A new diagram search (key fixed, solver-scored) found sound diagrams, but each had an idle
+  key piece. Open; reported to him.
