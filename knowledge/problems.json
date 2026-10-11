@@ -1349,6 +1349,23 @@
     "Ra5"
    ],
    "note": "1.Ra5! (2.Bc3#) S7c5 2.Qf6#, S3c5 2.Qf4#; tries 1.Ra8? (2.Re8#) d4!, 1.Rxa2? d4! (the pawn is free before the pin). The key pins Pd5; both knights unpin it on c5; the d7 knight's departure gives up f6, the d3 knight's gives up f4, and the queen on g5 mates on both. From my sketch 8/3n4/2R1P1B1/R2pk3/7Q/3n4/3B2b1/K7 he switched the d7 mate from Qh8 to Qf6 (the queen on g5 sits next to both mating squares), gave the queen a second duty (guard of the f5 pawn) so she cannot wander, replaced White guards by black self-blocks (Pd6, Pe4), protected both mating squares with Sh5 and Pe3, and let the key be the pinning rook coming from a6, where it attacks d6. His verdict: the white bishop is still a bit weak, it only executes the threat. Critique: static key, the same refutation d4 for both tries, random knight moves allow the threat and a queen mate; dual avoidance unified; 7+7."
+  },
+  {
+   "id": "claude-two-rooks-unpin-bf7",
+   "fen": "6K1/1p6/1rp4R/Q1nBk3/1rp1Pp2/3n1P2/4N3/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 11 Oct 2026), theme set by E. Bourd",
+   "source": "theme 'two black rook defences unpin a black knight' (same square); post-key by a free-threat search, key by restructuring",
+   "themes": [
+    "Black unpinning (two rooks interpose on one square)",
+    "Black line opening: each interposition opens a diagonal of the pinning queen",
+    "Unmasking key (the pin appears with the key)",
+    "Dual avoidance (the other rook still closes its diagonal)"
+   ],
+   "keys": [
+    "Bf7"
+   ],
+   "note": "1.Bf7! (2.Re6#) R6b5 2.Qc7#, R4b5 2.Qc3#; try 1.Bxc4? (2.Re6#) Rxc4!. The bishop on d5 masks the pin; the key unmasks Qa5's pin on Sc5 and protects e6 for the threat. Each rook unpins the knight on b5 (so Sxe6 would refute Re6#) and its departure opens a diagonal of the pinner herself: b6 leaves a5-c7, b4 leaves a5-c3. The queen pins and gives both mates. Flaws (gate PASS, no fatal): static key (both mates already set, because they do not depend on the pin), key piece attacked by c6, Kg8 only stops 1.Bg8 (with Pb7 stopping Rb8+), random rook moves allow Re6#/Qc7#, 7+9 with 6 pawns. Rejected keys on the way: 1.Qa4-a5 (sound, set R4b5 Qd4# changed to Qc3#, but the queen is out of play and attacked); 1.Sd5-e7 (four tries Sc7? R6b5!, Sc3? R4b5!, Se3? fxe3!, Sxb6? Rxb6!, but a d5 or f5 flight in the diagram)."
   }
  ]
 }

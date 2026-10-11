@@ -808,3 +808,10 @@
 * Bench sitting mv41atcg (11 Oct, E. Bourd, 39 steps, 9 solves): finished the two-knights pawn unpin from my sketch:
   8/3n4/R2p4/3pkPQN/4p3/3nP3/b2B4/K7, 1.Ra5! (2.Bc3#) S7c5 Qf6#, S3c5 Qf4#. 'Not sure why you gave up... you are pretty
   weak at transforming, or finding softening of a position'. Lessons recorded (softening order); compose skill updated.
+* Theme 'two black rook defences unpin a black knight', same square (11 Oct, E. Bourd). Restructured three times:
+  rooks b8/b2 with queen mates on h8/h2 (too many guards), rooks b7/b3 with Qg7/Qg3, then the pinner as the mating
+  queen: Qa5 pins Sc5, rooks b6/b4 shut her diagonals, R6b5 Qc7#, R4b5 Qc3#. A free-threat search found the post-key
+  (threat Re6#). Keys tried: 1.Qa4-a5 (sound, changed set mate Qd4#->Qc3#, queen out of play), 1.Sd5-e7 unmasking
+  (four tries, but a diagram flight), 1.Bb5-d3 (Rxc4 hole). Finished: 6K1/1p6/1rp4R/Q1nBk3/1rp1Pp2/3n1P2/4N3/8,
+  1.Bf7! (2.Re6#) R6b5 Qc7#, R4b5 Qc3#; try Bxc4? Rxc4!. Gate PASS; flaws: static key, attacked key piece. New tool
+  chesscomp/compose/unmask_search.py.

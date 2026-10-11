@@ -64,6 +64,11 @@ Read `references/construction.md` now (the order and the rules with their exampl
    idle or flight-taking keys. Think about the key's role while the mechanism is still soft.
    **Whole-diagram search** (11 Oct 2026): `python3 -m chesscomp.compose.diagsearch CORE SEED DEFS BUDGET RNG` mutates
    everything outside CORE and scores by solver and critique. Put the theme's carriers in CORE, or it drops the theme.
+   **Unmasking-key search** (11 Oct 2026): `python3 -m chesscomp.compose.unmask_search CORE SEED KSQ FSQ PSQ WANT BUDGET RNG`
+   fixes the post-key core, lets the threat be free (one threat, not by the pinner on PSQ), and scores the diagram with the
+   key unit moved back from KSQ to FSQ: no flight, no check, key piece in play, no idle White unit, unique key. A pinner
+   that must come from the edge is out of play; mask the pin with a unit next to the king instead, and give it a new job
+   that only exists after the key (Bd5-f7 protecting the threat square, claude-two-rooks-unpin-bf7).
    Prefer a threat to a zugzwang when you can: "it makes the problem richer. Zugzwang is limited and a bit
    less interesting by nature" (E. Bourd).
    With pawns the geometry has little room: "Pawn move themes are limiting by nature, can't rotate or move
