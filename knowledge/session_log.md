@@ -836,3 +836,12 @@
   sketch (session mv4dvvuh) 8/8/3P3R/3k4/8/2bb4/8/8: Rh6 on the 6th rank, Bf6/Bg6 block, bishops free along their
   diagonals. Finished the mechanism on it: post-key 8/1NQ5/3B3R/3kb3/3p4/1P1b1P1N/8/K7, 2.Qc5# threat, Bf6 Sf4#,
   Bg6 Qc4#, Bxd6 Qxd6#; key 1.Qg7-c7 unique but a c6 flight in the diagram (fatal). Asked him about c6.
+* E. Bourd composed the two-bishops theme himself on the bench to show the process (session mv4dvvuh, 103 steps):
+  scheme 8/8/3P3R/3k4/8/2bb4/8/8 spread (line and cut squares away from the king); my Be5 was 'way too much
+  interfering'. Post-key with a knight threat; holes fixed unit by unit; the only key was 1.Rh4+ (check), then a pawn
+  killed it; he moved K and Q, removed Sa4, bQb1, bPb2, and turned the board a quarter (the c2/c3/c4 pawn chain that
+  checked Kb3 and promoted became a static b6/c6/d6 chain, the mates' targets). Three changes to a hole-free post-key;
+  findkey gave five unique keys, he chose the one with a try. Final 5N2/2KQ1p2/1ppp3n/1bbkBPp1/8/2R2P2/8/4R3,
+  1.Sg6! (2.Se7#) Be2 Qxc6#, Be3 Qxd6#, fxg6 Qe6#, Sxf5/Sg8 Qxf7#; try Sh7? Be2!. Re-solved: sound, gate PASS,
+  trim-minimal. New tool chesscomp/compose/transform.py (shifts, rotations, rank all placements) with
+  tests/test_transform.py; compose skill got 'Spread the scheme' and 'Shifts and rotations'.

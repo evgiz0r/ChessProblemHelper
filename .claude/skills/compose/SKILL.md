@@ -108,7 +108,8 @@ because it needed every flight covered from the start: nothing could be added an
 ## Tempo
 One solve per change; never sixteen minutes of placing without a solve. If four or five posts of the
 key piece give only "double threat", "holes" or "no threat", the geometry has no line to exploit:
-clear the board and rebuild from the idea. Rotation and shifting only make room; they never supply a reason.
+clear the board and rebuild from the idea. Rotation and shifting never supply a reason, but they keep the theme and
+change the pawns and the edges: see "Shifts and rotations" below.
 
 ## Signals
 - Pre-key solve returns only checking tries: no quiet threat exists in this structure. Restart.
@@ -131,3 +132,20 @@ A sound post-key with no key is not a dead end. In this order: move each mate ne
 (Qh8# -> Qf6# with the queen on g5); give each free White officer a duty it must keep (the queen guards a pawn); replace
 White guards by Black self-blocks; protect mating squares with short-range units; then retract the theme's carrier (the
 pinner) as the key. Example: 8/3n4/2R1P1B1/R2pk3/7Q/3n4/3B2b1/K7 -> 8/3n4/R2p4/3pkPQN/4p3/3nP3/b2B4/K7, 1.Ra5!.
+
+## Spread the scheme (E. Bourd, 11 Oct 2026)
+Place the scheme so the mechanism's parts are apart: the guarding line long, its cut squares away from the king, the
+cutting pieces at a distance with free paths (his 8/8/3P3R/3k4/8/2bb4/8/8: Rh6 guards the 6th rank, the bishops cut at
+f6/g6 from anywhere on their diagonals). A unit inside the king's field (my Be5: guards d4, d6, f4, f6, sits on the
+e-file and the 5th rank) interferes with too much and takes the freedom; every change ripples. Not always possible;
+starting soft is a skill. Units may move into the field later, when a need puts them there (his bishop went to c5).
+
+## Shifts and rotations (E. Bourd, 11 Oct 2026)
+"They do not ruin the base of the theme": the line pieces keep their geometry (the two bishops change colour together).
+What changes is the pawns (direction, captures, promotion) and the edges (room for the White king). Reach for it when
+the stuck point is a pawn or the White king's room, after the White king and queen have been moved and spare units
+stripped. `python3 -m chesscomp.compose.transform FEN --all --post` solves every legal placement of a post-key
+(`--pre` for a diagram; `--rot 90|180|270 --flip --shift dx,dy` for one). His sitting: a quarter turn made a black
+c2/c3/c4 chain (it checked Kb3, captured on b3, promoted) into a static b6/c6/d6 chain, the targets of the mates;
+three changes later 5N2/2KQ1p2/1ppp3n/1bbkBPp1/8/2R2P2/8/4R3, 1.Sg6! Be2 Qxc6#, Be3 Qxd6#; try Sh7? Be2!.
+Among several unique keys he took the origin with a try (Sf8: 1.Sh7?; from h4 none, from h8 only 1.Sxf7?).

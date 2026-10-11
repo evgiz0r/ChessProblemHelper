@@ -1400,6 +1400,23 @@
     "g5"
    ],
    "note": "1.g5! (2.Sg4#) Bc4 2.Qd6#, Bc5 2.Qf4#; by-play Bxf5 2.Qd6#. The queen on b4 guards d4 along the 4th rank and d6 along the diagonal. Be6-c4 cuts the rank, and its departure opens the 6th rank so that Rh6 protects Qd6# (x-ray guards f4). Be3-c5 cuts the diagonal, and its departure stops its guard of f4 so that Qf4# (protected by Pg3, x-ray guards d6) works. Each cut also stops the other mate. Gate PASS, trim-minimal. Flaws: static key (both mates set); the pawn key only clears g4 and has no tie to the theme; Bxf5 defends by guarding g4 and repeats Qd6#; Rf1 only stops 1.f4+, Kh8 only stops cooks; set-play duals; 5 pawns. Thematic key tried: 1.Bh7-f5 (White cuts the e6 bishop's guard of g4), cooked by 1.Sg4+ Bxg4 and 1.f4+, or refuted by Rh1 with the king on h5. Queen keys to b4 always leave d4 or d6 as a flight in the diagram."
+  },
+  {
+   "id": "bourd-two-bishops-sg6",
+   "fen": "5N2/2KQ1p2/1ppp3n/1bbkBPp1/8/2R2P2/8/4R3",
+   "stip": "#2",
+   "author": "E. Bourd (bench session mv4dvvuh, 11 Oct 2026), composed to show the process on his own theme",
+   "source": "theme 'two bishop defences by different bishops blocking a white line'; his demonstration sitting from scheme to sound problem (103 bench steps)",
+   "themes": [
+    "Black interference with one white line by two different bishops (Re1, cut on e2 and e3)",
+    "Unguard errors: each bishop drops its guard of a pawn the queen captures with mate",
+    "Dual avoidance: the other bishop still guards its pawn",
+    "Sacrificial key; try with changed threat refuted by a thematic defence"
+   ],
+   "keys": [
+    "Sg6"
+   ],
+   "note": "1.Sg6! (2.Se7#) Be2 2.Qxc6#, Be3 2.Qxd6#, fxg6 2.Qe6#, Sxf5/Sg8 2.Qxf7#; try 1.Sh7? (2.Sf6#) Be2! (Qxc6+ Kxe5: only the knight on g6 guards e5 after the cut). Re1 guards e5 (and e4 with Pf3); the threat Se7+ takes the knight's guard of e5 away, so the bishops defend by cutting the e-file on e2/e3, far from the king, which makes Kxe5 possible. Bb5 held c6, Bc5 held d6: Qxc6#/Qxd6#, and Qxd6 after Be2 or Qxc6 after Be3 is captured by the other bishop. Set play: Be3 Qxd6# set, Be2 unprovided (Kxe5 after Qxc6+), the key adds that mate. Every unit needed (trim); g5 stops the double threat Sf4#, Kc7 protects both mating queens. Gate PASS. Flaws: one try only (no try is refuted by Be3, since Qxd6 covers e5 itself); 7 pawns; Rc3 only guards c4; checking tries only otherwise. How he made it: scheme Kd5, Rh6, bishops c3/d3 cutting the 6th rank at f6/g6 (spread: line and cut squares away from the king); built the post-key with a knight threat; when the only key was the check 1.Rh4+ he moved the White king and queen, stripped Sa4, bQb1, bPb2, and turned the board a quarter (the black c2/c3/c4 chain that checked the king, captured on b3 and promoted became a static b6/c6/d6 chain, the targets of the mates); three changes later the post-key had no hole; findkey gave five unique keys (Sf8/Sh8/Sh4-g6, Rb3/Ra3-c3); he chose Sf8-g6 because f8 also gives the try Sh7?."
   }
  ]
 }

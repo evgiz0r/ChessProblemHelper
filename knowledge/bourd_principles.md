@@ -325,3 +325,8 @@ the [a], [b] for the mates that change thematically."
 - Static key with a thematic job (1.Bf7 pins): "acceptable here, a bit predictable, but not too bad."
 - Symmetry by design is a flaw in general; publish tries as a pair (one per thematic refutation), not 2+1.
 
+- Spread scheme placement (11 Oct 2026): "i try picking so that my scheme placement is somewhat spread, you put the
+  bishop on e5, its way too much interfering with too much. and takes a lot of freedom. you need the mechanism to be
+  somewhat apart so its easier constructed. its not always possible, but starting on softer schemes is a skill."
+- Shifts and rotations (11 Oct 2026): "they do not ruin the base of the theme". His demonstration on the bench
+  (mv4dvvuh): a quarter turn fixed the pawns and the White king's room; 1.Sg6! (bourd-two-bishops-sg6).
