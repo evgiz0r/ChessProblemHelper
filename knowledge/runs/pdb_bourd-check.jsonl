@@ -1,0 +1,56 @@
+{"id": "pdb-P1127135", "seconds": 0.03, "status": "no_published", "solver": ["e8=Q"], "published": []}
+{"id": "pdb-P1133425", "seconds": 0.03, "status": "no_published", "solver": ["e8=S"], "published": []}
+{"id": "pdb-P1261295", "seconds": 0.09, "status": "ok", "solver": ["Sa6"], "published": ["Sa6"]}
+{"id": "pdb-P1272979", "seconds": 0.13, "status": "ok", "solver": ["Sb3"], "published": ["Sb3"]}
+{"id": "pdb-P1273004", "seconds": 0.13, "status": "ok", "solver": ["Qxe7"], "published": ["Qxe7"]}
+{"id": "pdb-P1270476", "seconds": 0.19, "status": "ok", "solver": ["Rxh1"], "published": ["Rxh1"]}
+{"id": "pdb-P1314775", "seconds": 0.11, "status": "ok", "solver": ["Sf7"], "published": ["Sf7"]}
+{"id": "pdb-P1314774", "seconds": 0.17, "status": "ok", "solver": ["e5"], "published": ["e5"]}
+{"id": "pdb-P1376474", "seconds": 0.14, "status": "ok", "solver": ["Sbc3"], "published": ["Sbc3"]}
+{"id": "pdb-P1355834", "seconds": 0.23, "status": "ok", "solver": ["Rh4"], "published": ["Rh4"]}
+{"id": "pdb-P1376519", "seconds": 0.26, "status": "ok", "solver": ["Qxh4"], "published": ["Qxh4"]}
+{"id": "pdb-P1126501", "seconds": 0.29, "status": "no_published", "solver": ["Sa1"], "published": []}
+{"id": "pdb-P1320712", "seconds": 1.65, "status": "ok", "solver": ["Kg7"], "published": ["Kg7"]}
+{"id": "pdb-P1296886", "seconds": 2.16, "status": "ok", "solver": ["Bb7"], "published": ["Bb7"]}
+{"id": "pdb-P1320966", "seconds": 1.62, "status": "ok", "solver": ["d3"], "published": ["d3"]}
+{"id": "pdb-P1295683", "seconds": 4.46, "status": "ok", "solver": ["Ra4"], "published": ["Ra4"]}
+{"id": "pdb-P1343717", "seconds": 1.67, "status": "ok", "solver": ["Bf4"], "published": ["Bf4"]}
+{"id": "pdb-P1329658", "seconds": 3.46, "status": "ok", "solver": ["gxf3"], "published": ["gxf3"]}
+{"id": "pdb-P1273021", "seconds": 5.93, "status": "ok", "solver": ["b5"], "published": ["b5"]}
+{"id": "pdb-P1350565", "seconds": 2.65, "status": "ok", "solver": ["Bc8"], "published": ["Bc8"]}
+{"id": "pdb-P1354860", "seconds": 2.62, "status": "ok", "solver": ["Be3"], "published": ["Be3"]}
+{"id": "pdb-P1375052", "seconds": 0.52, "status": "ok", "solver": ["Rb8"], "published": ["Rb8"]}
+{"id": "pdb-P1373589", "seconds": 3.28, "status": "ok", "solver": ["Bf8"], "published": ["Bf8"]}
+{"id": "pdb-P1374967", "seconds": 2.31, "status": "ok", "solver": ["e7"], "published": ["e7"]}
+{"id": "pdb-P1388830", "seconds": 1.67, "status": "ok", "solver": ["Bf5"], "published": ["Bf5"]}
+{"id": "pdb-P1392371", "seconds": 2.2, "status": "ok", "solver": ["Ba7"], "published": ["Ba7"]}
+{"id": "pdb-P1391207", "seconds": 3.18, "status": "ok", "solver": ["Se6"], "published": ["Se6"]}
+{"id": "pdb-P1392374", "seconds": 2.71, "status": "ok", "solver": ["Qf5"], "published": ["Qf5"]}
+{"id": "pdb-P1369787", "seconds": 7.72, "status": "ok", "solver": ["f4"], "published": ["f4"]}
+{"id": "pdb-P1392388", "seconds": 3.51, "status": "ok", "solver": ["Rd6"], "published": ["Rd6"]}
+{"id": "pdb-P1393514", "seconds": 2.96, "status": "ok", "solver": ["Bxf6"], "published": ["Bxf6"]}
+{"id": "pdb-P1393517", "seconds": 2.65, "status": "ok", "solver": ["Rc8"], "published": ["Rc8"]}
+{"id": "pdb-P1393511", "seconds": 5.12, "status": "ok", "solver": ["Ba6"], "published": ["Ba6"]}
+{"id": "pdb-P1431283", "seconds": 2.76, "status": "ok", "solver": ["Kb4"], "published": ["Kb4"]}
+{"id": "pdb-P1429979", "seconds": 6.39, "status": "ok", "solver": ["Qf2"], "published": ["Qf2"]}
+{"id": "pdb-P1255895", "seconds": 7.99, "status": "no_published", "solver": ["Bg3"], "published": []}
+{"id": "pdb-P1193598", "seconds": 13.04, "status": "ok", "solver": ["Rxf7"], "published": ["Rxf7"]}
+{"id": "pdb-P1321149", "seconds": 24.87, "status": "ok", "solver": ["f5"], "published": ["f5"]}
+{"id": "pdb-P1391266", "seconds": 22.81, "status": "ok", "solver": ["Rc3"], "published": ["Rc3"]}
+{"id": "pdb-P1344010", "seconds": 40.46, "status": "ok", "solver": ["f3"], "published": ["f3"]}
+{"id": "pdb-P1375138", "seconds": 52.12, "status": "ok", "solver": ["Rd8"], "published": ["Rd8"]}
+{"id": "pdb-P1425200", "seconds": 35.81, "status": "ok", "solver": ["Sg3"], "published": ["Sg3"]}
+{"id": "pdb-P1391271", "seconds": 58.88, "status": "ok", "solver": ["b3"], "published": ["b3"]}
+{"id": "pdb-P1392597", "seconds": 60.07, "status": "timeout"}
+{"id": "pdb-P1425404", "seconds": 14.16, "status": "ok", "solver": ["Rd3"], "published": ["Rd3"]}
+{"id": "pdb-P1425206", "seconds": 34.92, "status": "ok", "solver": ["Rh3"], "published": ["Rh3"]}
+{"id": "pdb-P1425201", "seconds": 60.01, "status": "timeout"}
+{"id": "pdb-P1425205", "seconds": 58.73, "status": "ok", "solver": ["Kc6"], "published": ["Kc6"]}
+{"id": "pdb-P1425406", "seconds": 33.86, "status": "ok", "solver": ["Sc8"], "published": ["Sc8"]}
+{"id": "pdb-P1429993", "seconds": 32.03, "status": "ok", "solver": ["h6"], "published": ["h6"]}
+{"id": "pdb-P1261074", "seconds": 60.0, "status": "timeout"}
+{"id": "pdb-P1393601", "seconds": 60.02, "status": "timeout"}
+{"id": "pdb-P1350661", "seconds": 60.04, "status": "timeout"}
+{"id": "pdb-P1261067", "seconds": 60.1, "status": "timeout"}
+{"id": "pdb-P1393614", "seconds": 60.08, "status": "timeout"}
+{"id": "pdb-P1424892", "seconds": 60.11, "status": "timeout"}

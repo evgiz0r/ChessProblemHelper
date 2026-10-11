@@ -1,0 +1,2830 @@
+{
+ "source": "https://pdb.dieschwalbe.de",
+ "query": "[A='Bourd']",
+ "note": "PDB LaTeX export converted by tools/pdb_tex.py; skipped = records already in the database.",
+ "count": 186,
+ "skipped": [
+  {
+   "pdb_id": "P1073912",
+   "same_as": "psis-bd72f6fa4e"
+  },
+  {
+   "pdb_id": "P1073914",
+   "same_as": "psis-2e4a96dd3b"
+  },
+  {
+   "pdb_id": "P1084706",
+   "same_as": "psis-e14e819198"
+  },
+  {
+   "pdb_id": "P1084707",
+   "same_as": "psis-d3c73aaf10"
+  },
+  {
+   "pdb_id": "P1084708",
+   "same_as": "psis-3f48a850b1"
+  },
+  {
+   "pdb_id": "P1099602",
+   "same_as": "psis-f0331ac4b1"
+  },
+  {
+   "pdb_id": "P1099771",
+   "same_as": "psis-f3cc058fb8"
+  },
+  {
+   "pdb_id": "P1099772",
+   "same_as": "psis-da0d88a893"
+  },
+  {
+   "pdb_id": "P1099832",
+   "same_as": "psis-63c8d3c9d8"
+  },
+  {
+   "pdb_id": "P1099833",
+   "same_as": "psis-cad28e8152"
+  },
+  {
+   "pdb_id": "P1099869",
+   "same_as": "psis-c8b9f4da27"
+  },
+  {
+   "pdb_id": "P1099870",
+   "same_as": "psis-ea6664b149"
+  },
+  {
+   "pdb_id": "P1099898",
+   "same_as": "psis-2214029052"
+  },
+  {
+   "pdb_id": "P1099923",
+   "same_as": "psis-a4bc15310a"
+  },
+  {
+   "pdb_id": "P1099924",
+   "same_as": "psis-84069519a2"
+  },
+  {
+   "pdb_id": "P1099979",
+   "same_as": "psis-0fe2f875af"
+  },
+  {
+   "pdb_id": "P1100003",
+   "same_as": "psis-77599502f4"
+  },
+  {
+   "pdb_id": "P1100004",
+   "same_as": "psis-5f7ca4e971"
+  },
+  {
+   "pdb_id": "P1100050",
+   "same_as": "psis-a62b423ca9"
+  },
+  {
+   "pdb_id": "P1100051",
+   "same_as": "psis-c6b700b25b"
+  },
+  {
+   "pdb_id": "P1100056",
+   "same_as": "psis-ca56a03dae"
+  },
+  {
+   "pdb_id": "P1100077",
+   "same_as": "psis-8ea9bad7a8"
+  },
+  {
+   "pdb_id": "P1100078",
+   "same_as": "psis-ce5a175e39"
+  },
+  {
+   "pdb_id": "P1100195",
+   "same_as": "psis-91a58623a1"
+  },
+  {
+   "pdb_id": "P1100232",
+   "same_as": "psis-fde7060676"
+  },
+  {
+   "pdb_id": "P1100292",
+   "same_as": "psis-c00eaaaf7b"
+  },
+  {
+   "pdb_id": "P1100293",
+   "same_as": "psis-4a5dfe4853"
+  },
+  {
+   "pdb_id": "P1100312",
+   "same_as": "psis-e73c1eb4fc"
+  },
+  {
+   "pdb_id": "P1100314",
+   "same_as": "psis-ea90ebe000"
+  },
+  {
+   "pdb_id": "P1100380",
+   "same_as": "psis-cfab6d0764"
+  },
+  {
+   "pdb_id": "P1100381",
+   "same_as": "psis-779d9f34b6"
+  },
+  {
+   "pdb_id": "P1100402",
+   "same_as": "psis-bfa74a74b8"
+  },
+  {
+   "pdb_id": "P1100415",
+   "same_as": "psis-071c5bccbb"
+  },
+  {
+   "pdb_id": "P1100421",
+   "same_as": "psis-c45d4122bb"
+  },
+  {
+   "pdb_id": "P1100455",
+   "same_as": "psis-b68babc303"
+  },
+  {
+   "pdb_id": "P1100541",
+   "same_as": "psis-a4342ad520"
+  },
+  {
+   "pdb_id": "P1100542",
+   "same_as": "psis-6d17e92110"
+  },
+  {
+   "pdb_id": "P1100544",
+   "same_as": "psis-f622cc684f"
+  },
+  {
+   "pdb_id": "P1100560",
+   "same_as": "psis-26005da10b"
+  },
+  {
+   "pdb_id": "P1100607",
+   "same_as": "psis-3c946c8c3a"
+  },
+  {
+   "pdb_id": "P1100679",
+   "same_as": "psis-a801a953c2"
+  },
+  {
+   "pdb_id": "P1100713",
+   "same_as": "psis-f75a10cbd4"
+  },
+  {
+   "pdb_id": "P1136812",
+   "same_as": "psis-e2307f56cb"
+  },
+  {
+   "pdb_id": "P1181142",
+   "same_as": "psis-40a0e2c8b6"
+  },
+  {
+   "pdb_id": "P1208585",
+   "same_as": "psis-45add2a676"
+  },
+  {
+   "pdb_id": "P1272796",
+   "same_as": "psis-5cab11e30f"
+  },
+  {
+   "pdb_id": "P1294050",
+   "same_as": "psis-a9e6cca6e7"
+  },
+  {
+   "pdb_id": "P1294071",
+   "same_as": "psis-89c40f1893"
+  },
+  {
+   "pdb_id": "P1321045",
+   "same_as": "psis-5abbd43b6d"
+  },
+  {
+   "pdb_id": "P1321048",
+   "same_as": "psis-f7053476e5"
+  },
+  {
+   "pdb_id": "P1321049",
+   "same_as": "psis-fa21d712a0"
+  },
+  {
+   "pdb_id": "P1321054",
+   "same_as": "psis-2cbd3ef8ef"
+  },
+  {
+   "pdb_id": "P1321055",
+   "same_as": "psis-e2f3fed4c6"
+  },
+  {
+   "pdb_id": "P1321060",
+   "same_as": "psis-23ff35b550"
+  },
+  {
+   "pdb_id": "P1321061",
+   "same_as": "psis-18af1e6c02"
+  },
+  {
+   "pdb_id": "P1321072",
+   "same_as": "psis-c709df3484"
+  },
+  {
+   "pdb_id": "P1321077",
+   "same_as": "psis-94833e6028"
+  },
+  {
+   "pdb_id": "P1321093",
+   "same_as": "psis-ba30e7fea2"
+  },
+  {
+   "pdb_id": "P1321100",
+   "same_as": "psis-a193bd6390"
+  },
+  {
+   "pdb_id": "P1407781",
+   "same_as": "psis-999f66a89c"
+  }
+ ],
+ "problems": [
+  {
+   "id": "pdb-P1006437",
+   "pdb_id": "P1006437",
+   "fen": "8/8/8/3Q1p2/3p1k2/8/1N2p3/7K",
+   "stip": "h#2**",
+   "count": "3+4",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 3761 2001",
+   "solution": "*1) 1...Qc6 2.Ke5 Sd3#\n*2) 1...Qxf5+ 2.Ke3 Sc4#\n1) 1.e1=B Qc6 2.Ke5 Sd3#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1006450",
+   "pdb_id": "P1006450",
+   "fen": "5B2/8/7K/8/1q5k/PP6/RP6/N7",
+   "stip": "h#3",
+   "count": "7+2",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 3774 2001",
+   "solution": "1.Qxa3 Bb4 2.Qxb3 Ra4 3.Qh3 Be1#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1006497",
+   "pdb_id": "P1006497",
+   "fen": "8/1n1P4/1p6/1Pk5/3NP3/pP3P2/P3K3/8",
+   "stip": "h#2",
+   "count": "8+4",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 3865 2001",
+   "stip_note": [
+    "4.1..."
+   ],
+   "solution": "1) 1.Kd6 d8=R+ 2.Kc7 Se6#\n2) 1.Kxd4 d8=Q+ 2.Kc3 Qd2#\n3) 1.Kxd4 d8=B 2.Sc5 Bf6#\n4) 1.Kb4 d8=S 2.Ka5 Sc6#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1006511",
+   "pdb_id": "P1006511",
+   "fen": "8/pn1p4/k4pn1/4p3/3p3r/1pp3PB/5R1K/6r1",
+   "stip": "h#3",
+   "count": "4+12",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 3879 2001",
+   "twins": [
+    "b) sBf6 -> f5",
+    "c) sTg1 -> h5"
+   ],
+   "stip_note": [
+    "b) sBf6 nach f5",
+    "c) sTg1 nach h5"
+   ],
+   "solution": "a) 1.Re4 Be6 2.Ra1 Rxf6 3.Ra5 Bc4#\nb) 1.Rh6 Re2 2.Sh4 Bf1 3.Rb6 Ra2#\nc) 1.Kb5 Kg2 2.Kc4 Kf3 3.Kd3 Bf1#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1013112",
+   "pdb_id": "P1013112",
+   "fen": "8/6K1/2pp4/5k2/5p2/5p2/8/8",
+   "stip": "Schwarz nimmt einen Zug zurück, dann h#1",
+   "count": "1+5",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 4402 2003",
+   "conditions": [
+    "4 Lösungen"
+   ],
+   "solution": "1) R: 1...gxDf3, then 1.c5 Qd5#\n2) R: 1...exDf4, then 1.Ke6 Qf7#\n3) R: 1...dxDc6, then 1.Ke6 Qe4#\n4) R: 1...exDd6, then 1.e5 Qg6#",
+   "themes": "Help retractor; Kindergarten Problem; Rex solus (w)",
+   "comment": "2KK4BB",
+   "genre": "Retro",
+   "orthodox": false
+  },
+  {
+   "id": "pdb-P1072726",
+   "pdb_id": "P1072726",
+   "fen": "7K/7P/5k2/2pp1pbq/1Rp1b1p1/4p1n1/7R/2B5",
+   "stip": "h#2",
+   "count": "5+11",
+   "author": "Evgeni Bourd; Misha Shapiro",
+   "source": "Schach-Aktiv 3302 2007",
+   "twins": [
+    "b) sDh5 -> d3",
+    "c) sBf5 -> e5"
+   ],
+   "stip_note": [
+    "b) sDh5 nach d3",
+    "c) sBf5 nach e5"
+   ],
+   "solution": "a) 1.Kg6 Bxe3 2.Kh6 Rb6#\nb) 1.Ke5 Rd2 2.Kd4 Bb2#\nc) 1.Kf5 Rxc4 2.Kf4 Rf2#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1072900",
+   "pdb_id": "P1072900",
+   "fen": "b6r/B7/5n2/1R6/6p1/1K6/8/1B5k",
+   "stip": "h#2",
+   "count": "4+5",
+   "author": "Evgeni Bourd",
+   "source": "idee & form 1879 2005",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Bg2 Be4 2.Sh7 Rh5#\n2) 1.Rh2 Rh5 2.Sd5 Be4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073259",
+   "pdb_id": "P1073259",
+   "fen": "5n1r/1p5p/1p4p1/R1P1p1k1/2P2q1p/2pK3P/3P4/2B5",
+   "stip": "h#3",
+   "count": "7+11",
+   "author": "Evgeni Bourd",
+   "source": "Thema Danicum 9748 2005\n2. Prize",
+   "twins": [
+    "b) sDf4 tauschen mit sBe5"
+   ],
+   "stip_note": [
+    "0.2.1..."
+   ],
+   "solution": "a1) 1...Ra2 2.Qxd2+ Rxd2 3.h5 Rf2#\na2) 1...Ra8 2.Qg4 Rxf8 3.Qh5 dxc3#\nb1) 1...Ba3 2.Qxc5 Bxc5 3.h6 Be7#\nb2) 1...Bb2 2.Qg7 Bxc3 3.Qh6 cxb6#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073278",
+   "pdb_id": "P1073278",
+   "fen": "2bbn1q1/K7/p1Pp2p1/2nkrr1R/3NNP1p/2P4p/6B1/8",
+   "stip": "h#2",
+   "count": "8+13",
+   "author": "Evgeni Bourd",
+   "source": "Thema Danicum 9826 2005\n3. Prize",
+   "twins": [
+    "b) wBf4 -> f3"
+   ],
+   "stip_note": [
+    "b) wBf4 nach f3"
+   ],
+   "solution": "a) 1.Sc7 Bf1 2.Re7 Sf6#\nb) 1.Sd7 Bxh3 2.Rf7 Be6#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073370",
+   "pdb_id": "P1073370",
+   "fen": "2r5/4p3/r4p2/5k2/B7/4P1b1/1K1P2qP/8",
+   "stip": "h#3",
+   "count": "5+7",
+   "author": "Evgeni Bourd",
+   "source": "Probleemblad H543 2003",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Bc7 h3 2.Qg5 d4 3.e6 Bc2#\n2) 1.Bd6 h4 2.Qg6 d3 3.e5 Bd7#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073396",
+   "pdb_id": "P1073396",
+   "fen": "8/4R3/qr6/2nn1p2/2bN1k1B/8/5r2/2KB4",
+   "stip": "h#2",
+   "count": "5+8",
+   "author": "Evgeni Bourd",
+   "source": "Probleemblad H550 2003",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Rd2 Bh5 2.Rd3 Se2#\n2) 1.Sb7 Re1 2.Sd6 Se6#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073441",
+   "pdb_id": "P1073441",
+   "fen": "8/Kp5p/R4rpp/n5kn/3N2bp/pP1PP1pq/8/2bQr3",
+   "stip": "h#2",
+   "count": "7+15",
+   "author": "Evgeni Bourd",
+   "source": "Probleemblad H597 2004",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Bd2 Qa1 2.Rf5 Se6#\n2) 1.Sxb3 Ra4 2.Bf5 Sf3#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073454",
+   "pdb_id": "P1073454",
+   "fen": "5b2/n1PP2R1/3k4/1ppn4/8/K7/8/8",
+   "stip": "h#2",
+   "count": "4+6",
+   "author": "Evgeni Bourd",
+   "source": "Probleemblad H597 2004",
+   "stip_note": [
+    "1.2.1.1 + 2.1..."
+   ],
+   "solution": "1) 1.Kc6 d8=Q 2.Kb7 c8=Q#\n2) 1.Kc6 c8=S 2.Bd6 d8=S#\n3) 1.Sc6 d8=S 2.Se5 c8=S#\n4) 1.Bxg7 c8=Q 2.Be5 d8=Q#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073731",
+   "pdb_id": "P1073731",
+   "fen": "8/2R3B1/3p4/3n1rpb/1brqp3/1pkpp1pQ/6p1/4K3",
+   "stip": "h#2",
+   "count": "4+15",
+   "author": "Evgeni Bourd",
+   "source": "Sachova skladba 7268 2004",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Rf2 Qc8 2.Rb2 Rxc4#\n2) 1.Bd1 Qh8 2.Bc2 Bxd4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073738",
+   "pdb_id": "P1073738",
+   "fen": "3r1q2/3rb3/1N6/4pB1K/3R4/4k3/8/4B3",
+   "stip": "h#2",
+   "count": "5+6",
+   "author": "Evgeni Bourd",
+   "source": "Sachova skladba 7275 2004",
+   "twins": [
+    "b) wSb6 -> a6"
+   ],
+   "stip_note": [
+    "b) wSb6 nach a6"
+   ],
+   "solution": "a) 1.Bd6 Be4 2.Kf4 Sd5#\nb) 1.Rd6 Re4+ 2.Kd3 Sb4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073745",
+   "pdb_id": "P1073745",
+   "fen": "8/8/6B1/K2R4/5kb1/4n3/8/7q",
+   "stip": "h#3",
+   "count": "3+4",
+   "author": "Evgeni Bourd",
+   "source": "Sachova skladba 7282 2004",
+   "twins": [
+    "b) wKa5 -> f8"
+   ],
+   "stip_note": [
+    "b) wKa5 nach f8"
+   ],
+   "solution": "a) 1.Be2 Rf5+ 2.Ke4 Kb4 3.Kd3 Rd5#\nb) 1.Qh4 Bf5 2.Kg5 Kg7 3.Kh5 Bg6#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073768",
+   "pdb_id": "P1073768",
+   "fen": "8/3n4/4K3/2PR1pB1/3PpP2/2p5/2pkn3/1r3B2",
+   "stip": "h#3",
+   "count": "7+8",
+   "author": "Evgeni Bourd",
+   "source": "Sachova skladba 7551 2005",
+   "stip_note": [
+    "0.4.1..."
+   ],
+   "solution": "1) 1...Bh4 2.Rc1 Bf2 3.Sxd4+ Rxd4#\n2) 1...Bf6 2.Sxd4+ Bxd4 3.Rc1 Bf2#\n3) 1...Re5 2.Rd1 Rxe4 3.Sxf4+ Bxf4#\n4) 1...Rxf5 2.Sxf4+ Rxf4 3.Rd1 Rxe4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073841",
+   "pdb_id": "P1073841",
+   "fen": "1r6/8/2p1Bq2/3nB3/5b2/p1rN4/kP3K2/1bn5",
+   "stip": "h#2",
+   "count": "5+10",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1264 2004",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Rc5 b3 2.Sb6 Sb4#\n2) 1.Rc4 b4 2.Se3 Sxc1#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073863",
+   "pdb_id": "P1073863",
+   "fen": "8/3b4/7B/R1P2kP1/1bRKn3/8/8/1B1n4",
+   "stip": "h#2",
+   "count": "7+5",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1313 2005",
+   "twins": [
+    "b) wLh6 -> f6"
+   ],
+   "stip_note": [
+    "b) wLh6 nach f6"
+   ],
+   "solution": "a) 1.Kf4 Ra3 2.Sxg5 Kd5#\nb) 1.Be6 Kd3 2.Sxc5+ Ke2#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073892",
+   "pdb_id": "P1073892",
+   "fen": "7b/3pRbqk/1R2PP1N/3p1p2/3n1K2/8/8/8",
+   "stip": "h#2",
+   "count": "6+8",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1356 2005\n2. Prize",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Bxe6 fxg7 2.Bf7 g8=Q#\n2) 1.Qxf6 exf7 2.Qg7 f8=S#\nFA=8 switchbacks, Zilahi, opening of b6>h6 line",
+   "reprint": "FIDE Album 2004-2006 2013",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073908",
+   "pdb_id": "P1073908",
+   "fen": "r3nKbq/p1b1P2B/7p/7k/7r/8/5P2/8",
+   "stip": "h#3",
+   "count": "4+9",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1373 2005",
+   "stip_note": [
+    "0.2.1..."
+   ],
+   "solution": "1) 1...f3 2.Sf6+ e8=R 3.Bd8 Re5#\n2) 1...f4 2.Sg7+ e8=S 3.Bb8 Sf6#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1073925",
+   "pdb_id": "P1073925",
+   "fen": "8/8/4k3/3pBR1p/3p4/3p1p1p/7P/K7",
+   "stip": "h#4",
+   "count": "4+7",
+   "author": "Evgeni Bourd",
+   "source": "Shahmat 455 2003\n2. HM\n Israel Ring-Turnier",
+   "stip_note": [
+    "0.2.1..."
+   ],
+   "solution": "1) 1...Bg3 2.h4 Rf4 3.Ke5 Rf5+ 4.Ke4 Re5#\n2) 1...Rxf3 2.d2 Bf4 3.Kf5 Bh6+ 4.Kg4 Rf4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1074877",
+   "pdb_id": "P1074877",
+   "fen": "8/4n3/r1pN1k2/B3bP2/3R4/8/8/K7",
+   "stip": "h#2",
+   "count": "5+5",
+   "author": "Evgeni Bourd",
+   "source": "feenschach 9077 2004",
+   "twins": [
+    "b) sKf6 -> a8"
+   ],
+   "stip_note": [
+    "b) sKf6 nach a8"
+   ],
+   "solution": "a) 1.Bf4 Ra4 2.Bg5 Bc3#\nb) 1.Rb6 Bc3 2.Rb8 Ra4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1074879",
+   "pdb_id": "P1074879",
+   "fen": "8/8/2r4p/1R1np2k/4p1pp/4q3/B7/7K",
+   "stip": "h#2",
+   "count": "3+9",
+   "author": "Evgeni Bourd",
+   "source": "feenschach 9079 2004",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Sf4 Bf7+ 2.Rg6 Rxe5#\n2) 1.Sf6 Rxe5+ 2.Qg5 Bf7#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1074883",
+   "pdb_id": "P1074883",
+   "fen": "4Q3/4P3/R1nn3p/r4k1K/b1Pb1P2/8/4r3/6q1",
+   "stip": "h#2",
+   "count": "6+9",
+   "author": "Evgeni Bourd",
+   "source": "feenschach 9083 2004",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Se5 Qd7+ 2.Kf6 e8=S#\n2) 1.Sb5 Qf8+ 2.Ke6 e8=Q#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1074885",
+   "pdb_id": "P1074885",
+   "fen": "2r1QK2/2p1n3/R1b1Rp2/bq2pp2/BBk5/pp6/8/8",
+   "stip": "h#2",
+   "count": "6+12",
+   "author": "Evgeni Bourd",
+   "source": "feenschach 9085 2004",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Kxb4 Rxc6 2.Kxa4 Rc4#\n2) 1.Kd5 Bxb5 2.Kxe6 Bc4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1075582",
+   "pdb_id": "P1075582",
+   "fen": "8/rB6/8/3r4/1pNq4/Q1b2k2/K2PNpn1/8",
+   "stip": "h#2",
+   "count": "6+8",
+   "author": "Evgeni Bourd",
+   "source": "Best Problems 2005",
+   "twins": [
+    "b) wBd2 -> h3"
+   ],
+   "stip_note": [
+    "b) wBd2 nach h3"
+   ],
+   "solution": "a) 1.Qe4 Qa6 2.Rd4 Se5#\nb) 1.Qe3 Ba6 2.Bd4 Sd2#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1075584",
+   "pdb_id": "P1075584",
+   "fen": "8/1B6/7n/1R6/3k2n1/6B1/8/3K4",
+   "stip": "h#2",
+   "count": "4+3",
+   "author": "Evgeni Bourd",
+   "source": "Best Problems 2005",
+   "twins": [
+    "b) sKd4 -> f6"
+   ],
+   "stip_note": [
+    "b) sKd4 nach f6"
+   ],
+   "solution": "a) 1.Ke3 Rd5 2.Kf3 Rd3#\nb) 1.Kg6 Bd5 2.Kh5 Bf7#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1075878",
+   "pdb_id": "P1075878",
+   "fen": "1KB3b1/4p3/2pk4/6N1/7r/3n1q2/3R4/8",
+   "stip": "h#2",
+   "count": "4+7",
+   "author": "Evgeni Bourd",
+   "source": "Problem Online E0006 2004",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Qd5 Bg4 2.Se5 Se4#\n2) 1.Bd5 Bf5 2.Sc5 Sf7#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1077306",
+   "pdb_id": "P1077306",
+   "fen": "6r1/4pnb1/2pq4/2pPk3/5pR1/8/3P4/5BK1",
+   "stip": "h#2",
+   "count": "5+9",
+   "author": "Evgeni Bourd",
+   "source": "harmonie 2005\n3. HM",
+   "stip_note": [
+    "4.1..."
+   ],
+   "solution": "1) 1.Kf5 Rg6 2.Be5 Bd3#\n2) 1.Kxd5 Rxf4 2.e5 Bc4#\n3) 1.Kf6 Bd3 2.Qe5 Rg6#\n4) 1.Kd4 Bc4 2.Se5 Rxf4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1078631",
+   "pdb_id": "P1078631",
+   "fen": "5K2/3Rn3/1r2p3/1B1bq3/2pk3r/4nP2/2Rb1B2/8",
+   "stip": "h#2",
+   "count": "6+10",
+   "author": "Evgeni Bourd",
+   "source": "Shakhmatnaya Poeziya 1732 2004\n2. Prize",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Kd3 Rc1 2.Sg4 Bxc4#\n2) 1.Kc5 Ba6 2.Be4 Rxc4#\nFA=8.5 bivalves by unpinned black units, exchanged funtions of white pieces",
+   "reprint": "FIDE Album 2004-2006 2013",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1079283",
+   "pdb_id": "P1079283",
+   "fen": "8/7K/3QBp2/2Rp4/1r3n2/3nk3/8/8",
+   "stip": "h#2",
+   "count": "4+6",
+   "author": "Evgeni Bourd",
+   "source": "Umenie 64 1616 2005",
+   "twins": [
+    "b) wDd6 -> c6"
+   ],
+   "stip_note": [
+    "b) wDd6 nach c6"
+   ],
+   "solution": "a) 1.Kd4 Rxd5+ 2.Kc4 Rc5#\nb) 1.Ke4 Bxd5+ 2.Kf5 Be6#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1079439",
+   "pdb_id": "P1079439",
+   "fen": "3B3K/2n2p2/3bpP1R/2p1kr1r/3pBp2/8/8/8",
+   "stip": "h#2",
+   "count": "5+10",
+   "author": "Evgeni Bourd",
+   "source": "Uralsky Problemist 4203 2006",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Rh1 Bxh1 2.Rh5 Rxh5#\n2) 1.Sa8 Bxa8 2.Bc7 Bxc7#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1083357",
+   "pdb_id": "P1083357",
+   "fen": "b7/3prp2/3pB3/1p1r4/1P2K1p1/3N4/1P6/k5BR",
+   "stip": "h#2",
+   "count": "7+9",
+   "author": "Evgeni Bourd",
+   "source": "Orbit 2006\n4. Prize",
+   "stip_note": [
+    "3.1..."
+   ],
+   "solution": "1) 1.Rd4+ Kf5 2.Re4 Be3#\n2) 1.Rc5+ Kf4 2.Rc6 Bc5#\n3) 1.Rf5+ Kd4 2.Rf3 Bf2#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1087356",
+   "pdb_id": "P1087356",
+   "fen": "nBRK4/2ppn3/1pr1Pq2/3k3b/1p6/1P6/5P2/8",
+   "stip": "h#3",
+   "count": "6+10",
+   "author": "Evgeni Bourd",
+   "source": "Shakhmatna Misl 2005",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Rc4 f4 2.c5 Rc6 3.Re4 Rd6#\n2) 1.Rc5 f3 2.c6 Rc7 3.dxe6 Rd7#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1087357",
+   "pdb_id": "P1087357",
+   "fen": "5N2/4p1pN/4P2b/4qk1p/4br2/4K3/8/8",
+   "stip": "h#3",
+   "count": "4+8",
+   "author": "Evgeni Bourd",
+   "source": "harmonie 2006",
+   "stip_note": [
+    "0.2.1..."
+   ],
+   "solution": "1) 1...Sg5 2.Kf6 Ke2 3.Rf5 Sh7#\n2) 1...Sd7 2.Kg6 Kd2 3.Bf5 Sf8#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1090718",
+   "pdb_id": "P1090718",
+   "fen": "2R5/3pNp1k/r3PB1p/4pK1B/4Q1p1/3q1p2/5prb/1b4n1",
+   "stip": "s#2",
+   "count": "7+14",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1281 2004",
+   "solution": "1.Sg8 threat 2.Bg6+ fxg6#\n1.Sg8 Rg3 2.Kxe5+ Qxe4#\n1.Sg8 Bg3 2.Kxg4+ Qxe4#\n1.Sg8 g3 2.Kxe5+ Qxe4# / 2.Kg4+ Qxe4#",
+   "themes": "x pieces move to one square; x pieces defend on one square (3)",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1091242",
+   "pdb_id": "P1091242",
+   "fen": "1N3B2/5Pr1/Rb2k1P1/3p2Qp/1NB2K2/2rp1RP1/2q5/8",
+   "stip": "s#2",
+   "count": "11+8",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1324 2005\nIsrael Ringturnier 2005\n 2. HM",
+   "solution": "1...Qc1,Qd2+ 2.Re3+ Qxe3#\n1...Rxf7+ 2.Qf5+ Rxf5#\n1.Sxd5 threat 2.Sb4+ Rxc4#\n1.Sxd5 Qc1,Qd2+ 2.Se3+ Rxc4#\n1.Sxd5 Rxf7+ 2.Sf6+ Rxc4#82",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1091249",
+   "pdb_id": "P1091249",
+   "fen": "b3q3/2p4R/3p2R1/1Q1nk1p1/5pB1/BN1p1K1n/2p2p1r/2Nr4",
+   "stip": "s#2",
+   "count": "8+14",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1377 2005\nIsrael Ringturnier 2005\n 3. Prize",
+   "solution": "1.Qc6 threat 2.Qc3+ Sxc3#\n1.Qc6 Sb4 (bel) 2.Qe4+ Bxe4#\n1.Qc6 Sc3! 2.Sxd3+ Rxd3#\n1.Qc6 Sf6! 2.Rxg5+ Sxg5#\n1.Qc6 Bxc6 2.Bb2+ Sc3#\n1.Qc6 Qxc6 2.Re7+ Sxe7#",
+   "themes": "Black correction",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1091257",
+   "pdb_id": "P1091257",
+   "fen": "1RKN4/2P4p/1R1N2kP/5n1p/4B1bB/1p2pp2/1r6/8",
+   "stip": "s#2",
+   "count": "9+9",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1428 2005\n3. HM\n hochgestuft von 1. Comm.\n Israel Ringturnier 2005",
+   "solution": "1.Bd3? Rc2!\n1.Bb1? Rd2!\n1.Bc2! threat 2.Se4+ Sd6#\n1...Rxc2 2.Sc4+ Sd6#\n1...bxc2 2.Sb5+ Sd6#\n1...Kxh6 2.Se8+ Sd6#",
+   "comment": "Nightrider (2019-08-28): Wozu dient der sBe3? Scheint überflüssig zu sein.\n Henrik Juel (2019-08-29): Yes, Pe3 serves no obvious purpose",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1091635",
+   "pdb_id": "P1091635",
+   "fen": "BB4r1/7p/7Q/2bN4/3RnpP1/4Pk2/3pp2P/2q1rbKR",
+   "stip": "s#2",
+   "count": "10+11",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1748 2008",
+   "solution": "1.Sb4?\n1.Se7?\n1.Sf6?\n1.Sc3?\n1.Sc7?\n1.Sb6! threat 2.Qh3+ Bxh3#\n1.Sb6! Kxe3 2.Rd3+ Kxd3#\n1.Sb6! Kxg4 2.Qh5+ Kxh5#",
+   "themes": "Option key",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1091643",
+   "pdb_id": "P1091643",
+   "fen": "q1NbRnk1/pr4n1/1pKB4/1PppP1RQ/2Bp2P1/3P1r2/7p/7b",
+   "stip": "s#2*",
+   "count": "11+14",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1799 2008\n1. HM",
+   "solution": "1...dxc4 2.Rxf8+ Rxf8#\n1...Bf6 2.Bxd5+ Rf7#\n1.Kxd5 threat 2.Rxf8+ Rxf8#\n1.Kxd5 Bf6 2.Kc6+ Rf7#\n1.Kxd5 Be7 2.Ke4+ Rf7#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1091644",
+   "pdb_id": "P1091644",
+   "fen": "8/2prppR1/4bk1P/p1Pn1p1r/1p1K1p2/1P2Q1p1/2P3n1/B7",
+   "stip": "s#2",
+   "count": "8+14",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1800 2008\n3. Comm.",
+   "solution": "1.D bel? Rh1!\n1.Qg1? threat 2.Kc4+\n1.Qg1? Sge3 2.Kd3+\n1.Qg1? a4!\n1.Qe1? threat 2.Kd3+\n1.Qe1? Sxe1 2.Kc4+\n1.Qe1? Rd6!\n1.Qc1 threat 2.Kc4+ Sc3# / 2.Kd3+ Sc3#\n1.Qc1 Se1 2.Kc4+ Sc3#\n1.Qc1 Se3 2.Kd3+ Sc3#\n1.Qc1 a4 2.Kd3+ Sc3#\n1.Qc1 Rd6 2.Kc4+ Sc3#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1091645",
+   "pdb_id": "P1091645",
+   "fen": "8/3NN3/2QPP3/p5p1/PRpknRP1/2pp4/P2P2Pp/B4Kbr",
+   "stip": "s#3*",
+   "count": "14+10",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "Variantim 1801 2008",
+   "solution": "* 1...axb4 2.Qxc4+ Kxc4 3.Rxe4+ Bd4#\n* 1...gxf4 2.Qxe4+ Kxe4 3.Rxc4+ Bd4#\n1.Sf8 gxf4 2.Qxc4+ Ke5 3.Qd4+ Bxd4#\n1.Sf8 Ke5 2.Rxe4+ Kf6 3.Bxc3+ Bd4#\n1.Sf8 axb4 2.Qxe4+ Kc5 3.Qd4+ Bxd4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1091651",
+   "pdb_id": "P1091651",
+   "fen": "6N1/b3Q1Np/4p1kP/R1nb4/r1r1n1Kp/1qP1p2P/4P3/1B4R1",
+   "stip": "s#2",
+   "count": "11+12",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 1853 2008\n2. Comm.",
+   "solution": "1.Ba2 threat 2.Qf6+ Sxf6#\n1.Ba2 Qxc3 2.Kf3+ Sg3,Sg5#\n1.Ba2 Sd7 2.Kf4+ Sg3,Sg5#",
+   "themes": "Royal battery; Cross check",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1100407",
+   "pdb_id": "P1100407",
+   "fen": "4b3/1p1pKQ2/3PRBp1/1p1rr2n/3b1kP1/2nPqp2/2P5/8",
+   "stip": "h#2",
+   "count": "8+13",
+   "author": "Evgeni Bourd",
+   "source": "Bulletin IMSCORP-30 2004\n3. Prize",
+   "twins": [
+    "b) sKd5 tauschen mit sTf4"
+   ],
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Qf2 Bxe5+ 2.Ke3 Bf4#\n2) 1.Sxf6 Rxe5 2.Kxe5 Qxf6#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1109520",
+   "pdb_id": "P1109520",
+   "fen": "8/8/b1ppQ1B1/B1PR2r1/3bp1p1/1P1k2p1/5pN1/N4K1n",
+   "stip": "s#2",
+   "count": "9+11",
+   "author": "Evgeni Bourd",
+   "source": "Pat a Mat 625 2005",
+   "solution": "1.Qe5! threat 2.Qxg3+ Sxg3#\n1...Rxe5 2.Rxd4+ Kxd4#\n1...Rf5,Rxg6 2.Qxe4+ Kxe4#\n1...cxd5 2.Qxd4+ Kxd4#\n1...dxe5 2.Bxe4+ Kxe4#",
+   "reprint": "Pat a Mat 09/2005",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1126501",
+   "pdb_id": "P1126501",
+   "fen": "8/8/1K6/8/1Nk5/1N6/1P6/1R6",
+   "stip": "#3",
+   "count": "5+1",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 2002",
+   "solution": "1.Sa1 Kxb4 (1... Kd4 2.Re1 Kc4 3.Re4#) 2.Rc1 Ka4 3.Rc4#",
+   "themes": "Miniature Collection (0327908)",
+   "comment": "TX4 IM",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1127135",
+   "pdb_id": "P1127135",
+   "fen": "8/4P1Q1/1K1k4/8/8/8/8/8",
+   "stip": "#2",
+   "count": "3+1",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 2003",
+   "solution": "",
+   "themes": "Miniature Collection (0353296)",
+   "comment": "vf: a1<>h1, Hans Hilmar Staudte, 06.04.1964, Diagramme und Figuren, #255",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1133425",
+   "pdb_id": "P1133425",
+   "fen": "8/4P1Q1/3k4/8/2K5/5B2/8/8",
+   "stip": "#2",
+   "count": "4+1",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 2003",
+   "solution": "",
+   "themes": "Miniature Collection (0353297)",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1178562",
+   "pdb_id": "P1178562",
+   "fen": "n2Q3B/2P1pN2/B2NP1R1/P2k2pr/5p2/2Rp3P/P2P2pq/3K2br",
+   "stip": "s#3",
+   "count": "14+11",
+   "author": "Evgeni Bourd",
+   "source": "Sachova skladba 7524 2005",
+   "solution": "1.Rc4 threat 2.Sb5+ Kxc4 3.Qd4+ Bxd4#\n1.Rc4 f3 2.Sf5+ Qd6 3.Se3+ Bxe3#\n1.Rc4 Rxh8 2.Qxh8 nebst 3.Qd4+ Bxd4#\n1.Rc4 exd6 2.Qf6 nebst 3.Qd4+ Bxd4#\n1.Rc4 Sb6 2.Sc8+ Sd7 3.Sb6+ Bxb6#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1190822",
+   "pdb_id": "P1190822",
+   "fen": "1K6/1nn4B/4p3/4R3/1PPkNr1r/1bN2p2/5P2/4q3",
+   "stip": "h#2",
+   "count": "8+9",
+   "author": "Shaul Shamir; Evgeni Bourd",
+   "source": "Länderkampf Israel-Mazedonien 2005\n1. place",
+   "twins": [
+    "b) sKd4 -> c4 (-wBc4)"
+   ],
+   "stip_note": [
+    "b) sKd4 nach c4 (-wBc4)"
+   ],
+   "solution": "a) 1.Sd5 Sd6 2.Qxe5 Sb5#\nb) 1.Sc5 Sb5 2.Qxb4 Sd6#\nFA=9.5 anticipatory self-interferences on move B1, check prevention on W1, self-blocking captures by bQ, interchanged white moves",
+   "reprint": "FIDE Album 2004-2006 2013",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1192748",
+   "pdb_id": "P1192748",
+   "fen": "Q7/1K1p4/1p6/1p5R/rP1P4/2k1B3/pp1n4/Rq1b4",
+   "stip": "h#2",
+   "count": "7+10",
+   "author": "Evgeni Bourd; Misha Shapiro",
+   "source": "The Problemist H3112 2007",
+   "twins": [
+    "b) sSd2 -> a6"
+   ],
+   "stip_note": [
+    "b) sSd2 nach a6"
+   ],
+   "solution": "a) 1.Kc2 Rh1 2.Kc1 Qc8#\nb) 1.Kxb4 Rxa2 2.Ka5 Bd2#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1193598",
+   "pdb_id": "P1193598",
+   "fen": "6B1/N1p2pr1/K1N2Rp1/2k1P3/2pR1pP1/n1p1p3/3b1n2/8",
+   "stip": "#4",
+   "count": "8+12",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Gaudium 449 2010\n1. Prize\n PR Franz Pachl",
+   "solution": "1.Rxf7! threat 2.Rxg7 ... 3.Rd5#\n1...Sc2 2.Rxc4+ Kxc4 3.Rxf4+ Kc5 4.Rc4#\n3...Kd3 4.Bc4#\n1...Sd3 2.Rd5+ Kxd5 3.Rd7+ Kc5 4.Rd5#\n3...Ke4 4.Bd5#\n1...c2 2.Rxg7 c3 3.Tgd7 ... 4.T7d5#\n''Ein schöner Vierzüger mit zweimal Hineinziehungsopfer des wTd4 nach schwarzen Fernblocks und zweimal zwei Matts auf dem gleichen Feld (c4 & d5). Trotz des nahe liegenden Schlüsselzuges mit der rabiaten Drohung 2.Rxg7 ist dies die beste Aufgabe des Turniers.'' (Preisrichter)",
+   "themes": "Battery creation; Remote selfblock (2 x); Sacrifice of white pieces; Opferfeldwechsel; Capture key",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1194230",
+   "pdb_id": "P1194230",
+   "fen": "1qQ5/2b1P3/K7/1p1n4/1Pp3R1/1k3N1R/N1p1r1rp/2n2BBb",
+   "stip": "h#2**",
+   "count": "10+12",
+   "author": "Evgeni Bourd",
+   "source": "Mystetski shakhy 2003\n1. Prize",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "*1) 1...Rxc4 2.Kxc4 Sd2#\n*2) 1...Rxc4 2.Kxc4 Se5#\n1) 1.Re4 Bxc4+ 2.Kxc4 Se5#\n2) 1.Bf4 Qxc4+ 2.Kxc4 Sd2#",
+   "comment": "klären Jahr",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1201075",
+   "pdb_id": "P1201075",
+   "fen": "6R1/8/8/2Pk4/B5rr/5K2/1q6/b7",
+   "stip": "h#2",
+   "count": "4+5",
+   "author": "Evgeni Bourd",
+   "source": "Uralsky Problemist 2004",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Qe5 Rc8 2.Bd4 Bb3#\n2) 1.Rc4 Bd7 2.Rd4 Rg5#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1201938",
+   "pdb_id": "P1201938",
+   "fen": "8/1b6/8/5K2/1B1r4/1PPPRp2/1pkN1P1Q/3R1rnn",
+   "stip": "h#2",
+   "count": "10+8",
+   "author": "Evgeni Bourd",
+   "source": "Orbit 2005\n3. Prize\n Orbit 2005-II",
+   "twins": [
+    "b) sTd4 -> e4",
+    "c) wKf5 -> e5"
+   ],
+   "stip_note": [
+    "b) sTd4 nach e4",
+    "c) wKf5 nach e5"
+   ],
+   "solution": "a) 1.Rxd1 Qc7 2.Kxd2 cxd4#\nb) 1.Rxe3 fxe3 2.Kxd3 Sxf1#\nc) 1.Rxb4 Qh7 2.Kxc3 d4#\nFA=8.5 bR captures wB/wR/wR to permit bK moves; mating moves that fire indirect wQ battery and direct wB/wR/wR battery; 2x cyclic Zilahi (B/R/R & P/P/S)",
+   "reprint": "FIDE Album 2004-2006 2013",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1243643",
+   "pdb_id": "P1243643",
+   "fen": "5B2/8/1pB2p2/bbpP1P2/rrP2kPp/rpKP1P1P/pR6/R6Q",
+   "stip": "s#2",
+   "count": "13+12",
+   "author": "Evgeni Bourd",
+   "source": "Umenie 64 1390 2004",
+   "solution": "1.Bxb5 Ke5 2.Qc1 Rxb5,Rxc4#\n1.Bxb5 Kg5 2.Qh2 Rxb5,Rxc4#\n1.Bxb5 Kg3 2.Bh6 Rxb5,Rxc4#\n1.Bxb5 Ke3 2.Bd6 Rxb5,Rxc4#",
+   "themes": "X flights; Obvious promotion",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1243656",
+   "pdb_id": "P1243656",
+   "fen": "7b/3R1p1n/5p2/1BqN1KP1/2R3rr/1P1k1Ppb/2Nn2p1/4Q3",
+   "stip": "s#2",
+   "count": "10+12",
+   "author": "Evgeni Bourd",
+   "source": "Umenie 64 1573 2005",
+   "solution": "1.Qd1 threat 2.Rxc5+ Rc4#\n1...Qb4 2.Rxb4+ Rc4#\n1...Qd4 2.Sf4+ Rxf4#\n1...Qb6 2.Sxb6+ Rd4#\n1...Qxc4 2.Bxc4+ Rxc4#\n1...Qxb5 2.Rd4+ Rxd4#\n1...Qc6 2.Rxc6+ Rc4#\n1...Qxd5+ 2.Rxd5+ Rd4#",
+   "themes": "differenzierte Batterieabzüge",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1249129",
+   "pdb_id": "P1249129",
+   "fen": "4n3/2p3p1/2P1PpP1/5Kp1/6B1/1pQ1p3/pBR1N1N1/nbrk4",
+   "stip": "s#2",
+   "count": "10+12",
+   "author": "Evgeni Bourd",
+   "source": "harmonie 4 2004",
+   "solution": "1.Qxe3 Kxc2 2.Qd2+ Kxd2#\n1.Qxe3 Rxc2 2.Qc1+ Rxc1#\n1.Qxe3 Bxc2+ 2.Qd3+ Bxd3#\n1.Qxe3 Sxc2 2.Qd4+ Sxd4#\n1.Qxe3 bxc2 2.Bxa1 Sd6#",
+   "themes": "x pieces capture on one square (s5); Task - Häufung im s#2",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1249147",
+   "pdb_id": "P1249147",
+   "fen": "8/q2pp3/p2np1p1/3nK3/4p3/2r1k3/2pNB1QR/b1N5",
+   "stip": "s#2",
+   "count": "6+13",
+   "author": "Evgeni Bourd; Frank Richter",
+   "source": "harmonie 1053 2004",
+   "solution": "1.Bh5! threat 2.Sc4+ Rxc4,Sxc4#\n1.Bh5! Qc5 2.Qg5+ Sf4#\n1.Bh5! Qc7 2.Qxe4+ Sxe4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1255895",
+   "pdb_id": "P1255895",
+   "fen": "q7/2N1p3/p7/3NpPP1/1P1pk1P1/1P1p1R2/3P1BK1/8",
+   "stip": "#4",
+   "count": "11+7",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "Die Schwalbe 13842 2008",
+   "solution": "",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1261067",
+   "pdb_id": "P1261067",
+   "fen": "3n1K2/r1Rb4/1N2pp2/1PB1k3/1p5P/nN1BpR1P/2P1P3/b3q3",
+   "stip": "#5",
+   "count": "12+11",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Tehtäväniekka 2012\n1. HM",
+   "solution": "1.Be7! Sc6 2.Sxd7+[A] Kd5 3.Sb6+ Ke5 4.Bxf6+[B] Kd6 5.Rxc6#\n1.Be7 Rxc7 2.Bxf6+[B] Kd6 3.Be7+ Ke5 4.Rxe3+[C] Kf4 5.Bg5#\n1.Be7 Qc3 2.Rxe3+[C] Kf4 3.Rf3+ Ke5 4.Sxd7+[A] Kd5 5.e4#\n1.Be7 Bc6 2 Sd7+ Kd5 3.Rxe3 (4.Sb6#) 3.-Bd4\n4.Re5+ Bxe5/fxe5 5.Sb6/Sf6#, 3.-Ra6(b7)\n4.c 4+ Sxc4/bxc3 ep 5 .Be4/Sxf6#\n1.Be7 Bd4 2.Sxd7+ Kd5 3.Rf4 (4.Rxd4,Be4#)\n3.- Sc6 4.Rxd4+ Sxd4 5.Rc5#\nWhite move cycle AB?BC?CA on 2nd and 4th moves, switchbacks on 3rd moves. The idea is not new, but the realization has succeeded reasonably well. The short threat and different defence errors are slightly distracting.",
+   "comment": "Henrik Juel (2024-06-24): some late duals",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1261074",
+   "pdb_id": "P1261074",
+   "fen": "r4nbb/1pN1p2r/pP2p3/2p1k1PR/nP4P1/4P1P1/P2R2B1/K3N1B1",
+   "stip": "#5",
+   "count": "14+12",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Tehtäväniekka 2012\n3. Comm.",
+   "solution": "1.Rh6 (2.Rd5+ exd5 3.Sd3#)\n1.Rh6 Rxh6 2.Bxb7 Rf6 3.Sd3+ Kd6 4.Sb2+ Ke5 5.Sc4#\n1.Rh6 Sg6 2.Rd7 Sb2 3.Sf3+ Ke4 4.Sh4+ Ke5 5.Sxg6#\nEffective anticritical moves, but the\nheavy position and different errors in\nBlack's defences downgrade this problem.",
+   "comment": "Henrik Juel (2024-06-24): several late duals",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1261295",
+   "pdb_id": "P1261295",
+   "fen": "8/3pp3/4knB1/1K6/1N3Q1b/8/8/8",
+   "stip": "#2",
+   "count": "4+5",
+   "author": "Evgeni Bourd",
+   "source": "Troll 573 2002",
+   "solution": "1.Sa6!",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1270476",
+   "pdb_id": "P1270476",
+   "fen": "2b3n1/1n6/1p2NR2/b2QK2k/3pppNp/7P/1p3r1P/1B1r1R1q",
+   "stip": "#2",
+   "count": "9+14",
+   "author": "Evgeni Bourd",
+   "source": "idee & form 1802 2004",
+   "solution": "1.Rxh1! (threat 2.Kxe4#)",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1270671",
+   "pdb_id": "P1270671",
+   "fen": "B2RNNb1/3pQ1pp/P1r4n/3k2p1/1P1p2R1/2pPp3/Kb2P3/n1qr4",
+   "stip": "s#3",
+   "count": "11+15",
+   "author": "Evgeni Bourd; Uri Avner",
+   "source": "Länderkampf Israel-Mazedonien 2005\n1. place",
+   "solution": "1.Sg6! threat 2.Sf4+ gxf4 3.Qe5+ Kxe5#\n1...Sb3 2.Bxc6+ Kxc6 3.Qc5+ Sxc5#\n1...Rxd3 2.Qe5+ Kc4 3.Qb5+ Kxb5#\n1...Sxg4 2.Qc5+ Ke6 3.Qf5+ Kxf5#\n1...Sf7 2.Rxd4+ Kxd4 3.Qe5+ Sxe5#\n1...Be6 2.Sf6+ gxf6 3.Qd6+ Kxd6#\nPreisbericht publiziert in Variantim 03/2006, Orbit 04/2006 und The Macedonian Problemist 2006",
+   "reprint": "FIDE Album 2004-2006 2013",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1270675",
+   "pdb_id": "P1270675",
+   "fen": "2N2r1b/1npB1p2/R1b2k2/1p3NpQ/PP1Kp3/2B2rp1/8/q1n2R2",
+   "stip": "s#2",
+   "count": "10+14",
+   "author": "Evgeni Bourd",
+   "source": "Länderkampf Israel-Mazedonien 2005\n6. place",
+   "solution": "1.Sfe7! threat 2.Qxg5+ Kxg5#\n1...Rf2,Rxf1 2.Ke3+ Qxc3#\n1...bxa4 2.Kc4+ Qxc3#\n1...Kg7 2.Qh6+ Kxh6#\n1...Sa5,Sc5,Sd6 2.Kc5+ Qxc3#\n1...Rg8 2.Qxf7+ Kxf7#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1271376",
+   "pdb_id": "P1271376",
+   "fen": "3Nq1N1/2r1Q2r/2p1p3/bpP1kB1R/1p1nP3/3KPp2/1RPPn1p1/B4b2",
+   "stip": "s#2",
+   "count": "13+14",
+   "author": "Evgeni Bourd",
+   "source": "Orbit 1608 2005",
+   "solution": "1.Qd7 threat 2.Qxd4+ Sxd4#\n1.Qd7 Sb3 2.Rxb3+ Sd4,Sc3#\n1.Qd7 Sxc2 2.Rxc2+ Sd4,Sc3#\n1.Qd7 Tcxd7 2.Sxc6+ Sxc6#\n1.Qd7 Thxd7 2.Bg6+ Sf5#\n1.Qd7 Qxd7 2.Bxh7+ Sf5#\n1.Qd7 Qxd8 2.Qxe6+ Sxe6#",
+   "themes": "x pieces capture on one square",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1271387",
+   "pdb_id": "P1271387",
+   "fen": "b7/1r4N1/P1k3nR/Bnp1QP2/B1p1K3/2P1P3/8/8",
+   "stip": "s#2",
+   "count": "10+7",
+   "author": "Evgeni Bourd",
+   "source": "Orbit 1537 2005\nComm.",
+   "solution": "1.Sh5? Kd7!\n1.Qh2? Rxe7+!\n1.Bd8! Rb6,Ra7 (bel) 2.Qd6+ Kxd6#\n1.Bd8! Rd7! 2.Qxc5+ Kxc5#\n1.Bd8! Re7! 2.Bxb5+ Kxb5#\n1.Bd8! Kd7 2.Qc7+ Rxc7#",
+   "themes": "Black correction; half-battery, black",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1271400",
+   "pdb_id": "P1271400",
+   "fen": "6R1/R1n2k1P/4N1N1/Kp4P1/1P2PB2/3P4/B4q1r/5Qb1",
+   "stip": "s#2",
+   "count": "13+6",
+   "author": "Evgeni Bourd",
+   "source": "Orbit 1681 2005\nComm.",
+   "solution": "1.Be5? (2.Sef4+ Qxa2#) Qf5!\n1.Bd6? (threat 2.Sef4+ Qxa2#) Qf6!\n1.Bg3! threat 2.Sef4+ Qxa2#\n1.Bg3! Qf6 2.Sd4+ Rxa2#\n1.Bg3! Qf5 2.Sxc7+ Rxa2#",
+   "themes": "Schiffmann defence(s)",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1271402",
+   "pdb_id": "P1271402",
+   "fen": "3brB2/N1p1nPP1/2Pk1KPp/2p2p1r/2pn3p/3R1B2/3PQ1N1/q7",
+   "stip": "s#2",
+   "count": "12+13",
+   "author": "Evgeni Bourd",
+   "source": "Orbit 1684 2005",
+   "solution": "1...cxd3 2.Qe6+ Sxe6#\n1...Rxf8 2.Qxe7+ Bxe7#\n1.Se3! threat 2.Sxf5+ Rxf5#\n1.Se3! cxd3 2.Sb5+ Sxb5#\n1.Se3! Rxf8 2.Sc8+ Sxc8#",
+   "themes": "Changed continuation",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1271568",
+   "pdb_id": "P1271568",
+   "fen": "n4R1n/1P1BP3/1pK3p1/1P2kpN1/5p2/1p2Pp1q/1Nb2PP1/2rQ4",
+   "stip": "s#3",
+   "count": "12+12",
+   "author": "Evgeni Bourd",
+   "source": "Uralsky Problemist 4229 2006",
+   "solution": "1.Qd3 threat 2.Sxf3+ Qxf3+ 3.Qd5+ Qxd5#\n1.Qd3 Bb1,Bd1+ 2.Qc3+ Rxc3+ 3.Sc4+ Rxc4#\n1.Qd3 Bxd3+ 2.Sc4+ Bxc4 3.e8=Q+ (T) Be6#\n1.Qd3 Qh1,Qh2,Qh7 (bel) 2.Qxf5+ Bxf5+ 3.Sc4+ Rxc4#\n2...gxf5 3.Sd3+ Bxd3#\n1.Qd3 Sc7,Sf7 2.Qd5+ Sxd5 3.Sd3+ Bxd3#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1272083",
+   "pdb_id": "P1272083",
+   "fen": "8/3R1P1Q/1P1P4/2PkB1P1/8/1p4N1/pN1P4/rbK5",
+   "stip": "s#2",
+   "count": "12+5",
+   "author": "Evgeni Bourd",
+   "source": "Rochade Europa 2112 2006",
+   "twins": [
+    "a) Diagramm",
+    "b) -wBc5"
+   ],
+   "solution": "a) 1.Bd4? threat 2.Qe4+ Bxe4#\n1...Kxd4,Ke6 2.Qf5+ Bxf5#\n1...Kc6!\n1.Rc7! threat 2.Qf5 Bc2,Bd3,Be4,Bxf5#\n1...Kxe5 2.Qe4+ Bxe4#\n1...Ke6 2.Qe4 Bc2,Bd3,Bxe4#\nb) 1.Rc7? threat 2.Qf5+ Bxf5#\n1...Ke6 2.Qe4 Bxe4#\n1...Kxe5!\n1.Bd4! threat 2.Qe4+ Bxe4#\n1...Kc6,Kxd4 2.Qf5 Bc2,Bd3,Be4,Bxf5#\n1...Ke6 2.Qf5+ Bxf5#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1272288",
+   "pdb_id": "P1272288",
+   "fen": "8/8/8/6PK/3p2Q1/1q1k2P1/3p1P2/5rB1",
+   "stip": "h#2",
+   "count": "6+5",
+   "author": "Evgeni Bourd",
+   "source": "Rochade Europa 2168 2006",
+   "twins": [
+    "a) Diagramm",
+    "b) sBd4 -> f5"
+   ],
+   "stip_note": [
+    "b) sBd4 nach f5"
+   ],
+   "solution": "a) 1.Qd1 f3 2.Ke2 Qe4#\nb) 1.Qd5 f4 2.Qe4 Qe2#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1272331",
+   "pdb_id": "P1272331",
+   "fen": "3N4/8/8/R1nk2bR/1p1pr1p1/3Pp1B1/1P6/1BK1N2Q",
+   "stip": "s#2",
+   "count": "10+8",
+   "author": "Evgeni Bourd",
+   "source": "feenschach 9059 2004\nComm.",
+   "stip_note": [
+    "Zwei Lösungen"
+   ],
+   "solution": "1.Rb5? e2+!\n1.Qg2? b3!\n1) 1.Kd1! b3 2.Rb5 e2#\n1...e2+ 2.Kc2 b3#\n2) 1.Kc2! b3+ 2.Kd1 e2#\n1...e2 2.Qg2 b3#",
+   "themes": "Banny Theme; Reciproce Moves of Black",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1272332",
+   "pdb_id": "P1272332",
+   "fen": "8/R2N4/2kb1RP1/Pn4B1/Q1P1KpP1/1N2pn2/pPp1P1B1/qb5b",
+   "stip": "s#2",
+   "count": "14+11",
+   "author": "Evgeni Bourd",
+   "source": "feenschach 9060 2004",
+   "solution": "1.Kf5? Qxb2 2.Se5+ Qxe5#\n1.Kf5? Bxg2 2.Sd4+ Sfxd4#\n1.Kf5? c1!\n1.Kd3! Qxb2 2.Sd4+ Qxd4#\n1.Kd3! Bxg2 2.Se5+ Sxe5#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1272979",
+   "pdb_id": "P1272979",
+   "fen": "B4R2/2K5/1N2pP2/4k3/2Pr3p/2P2Q2/1b1N4/2B5",
+   "stip": "#2",
+   "count": "10+5",
+   "author": "Evgeni Bourd",
+   "source": "StrateGems T0601 2007\n2. HM",
+   "solution": "1.Sb3! (threat 2.Qh5#)\n1...Rd5 2.Qf4#\n1...Rd2 2.Qe4#",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1273004",
+   "pdb_id": "P1273004",
+   "fen": "2n5/p2Qp2P/P1p1Br1p/B1pbkP1N/2Rnp2N/3PR3/8/7K",
+   "stip": "#2",
+   "count": "12+11",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "StrateGems T0676 2009\n4. HM",
+   "solution": "1.Sg6+? Rxg6!\n1.Sf3+? Sxf3!\n1.Rxe4+? Bxe4+!\n1.h8=Q? Sxe6!\n1.Bc3? Rxe6!\n1.Rxc5? Sd6!\n1.Qxe7! zz\n1...Rf8,R~ 2.Sg6#\n1...Rxf5 2.Sg6#\n1...Rxe6 2.h8=Q#\n1...Bxc4 2.Rxe4#\n1...Bxe6 2.Rxc5#\n1...Sb3,Sd~ 2.Sf3#\n1...Sxe6 2.Bc3#\n1...Sb6 2.Qc7#\n1...Sxe7 2.Bc7#\n1...Sd6 2.Qxf6#",
+   "reprint": "Gmünder WochenBlatt-Lokal 10/2017",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1273021",
+   "pdb_id": "P1273021",
+   "fen": "4r3/P1BN1n1B/R4P2/K2kpp1P/RP4PQ/3PpP1b/4N1rb/3n4",
+   "stip": "#3",
+   "count": "15+10",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "StrateGems M0806 2009",
+   "solution": "1.b5!",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1279107",
+   "pdb_id": "P1279107",
+   "fen": "1rNN3n/2Q1p1rq/2P1Bb1p/Rbk3p1/P5p1/PPn1K3/3P1B2/2R5",
+   "stip": "s#4",
+   "count": "13+12",
+   "author": "Evgeni Bourd",
+   "source": "9. WCCT F54 2013\n14. place",
+   "solution": "1.Bf7 threat 2.Se6+ Kd5 3.Sf4+ Kc5 4.Sd3+ Qxd3#, 1...Qg8!\n1.Bg8! threat 2.Se6+ Kd5 3.Sf4+ Kc5 4.Sd3+ Qxd3#\n1...Rg6 2.Rxc3+ Bxc3 3.Ke4+ Bd4 4.Se6+ Rxe6#\n1...Sg6 2.Rxb5+ Rxb5 3.Kd3+ Bd4 4.Qe5+ Sxe5#\n1...Rf7,Sf7 2.Qa7+ Rb6 3.Qxb6+ Kd5 4.Qd4+ Bxd4#\n1...Qf5 2.Rxc3+ Bxc3 3.b4+ Bxb4 4.Qe5+ Qxe5#\n1...Qxg8,Rxg8 2.Qa7+ Rb6 3.Qxb6+ Kd5 4.Qd4+ Bxd4#\n1...Sf7 2.Qa7+ Rb6 3.Qxb6+ Kd5 4.Qd4+ Bxd4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1280266",
+   "pdb_id": "P1280266",
+   "fen": "8/1R6/2PkN3/3BRPP1/bp1Q4/1P3pBp/5p1P/4brnK",
+   "stip": "s#4",
+   "count": "12+9",
+   "author": "Evgeni Bourd",
+   "source": "WCCC Batumi 2013\nWodka-Turnier\n 3. Prize",
+   "solution": "1.Qd3 Bd2 2.Re2+ Bf4 3.Be4+ Ke5 4.Bxf3+ Sxe2#\n1...Bc3 2.Bxf3+ Bd4 3.Re4+ Kd5,Kxc6 4.Re2+ Sxf3#\n1...Bxb3 2.Bxb3+ Kxc6 3.Rb5 ... 4.Qxf3+ Sxf3#\n1...Bxc6 2.Bxc6+ Kxc6 3.Rb5 ... 4.Qxf3+ Sxf3#\n1...Bb5 2.Bxf3+ Bxd3 3.Rd5+ Kxc6 4.Rxd3+ Sxf3#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1280270",
+   "pdb_id": "P1280270",
+   "fen": "8/1p2PpP1/5K2/1B1RppP1/2Pbkrp1/Q2n1pn1/3PN3/4Nb2",
+   "stip": "s#3",
+   "count": "11+12",
+   "author": "Evgeni Bourd",
+   "source": "WCCC Batumi 2013\n2. HM\n Wodka-Turnier",
+   "solution": "1.Bd7 threat 2.Bxf5+ Sxf5 3.Sg3 Sxg3# AB\n1...Bf2 2.Sxg3+ Bxg3 3.Bxf5 Rxf5# BC\n1...fxe2 2.Rxe5+ Sxe5 3.Qd3 Sxd3# CD\n1...Bxe2 2.Qxd3+ Bxd3 3.Rxe5 Bxe5# DA\nso unlösbar",
+   "themes": "white move cycle",
+   "comment": "vermutlich verdruckt, Steinkontrolle 11+13\n Nightrider (2019-08-29): Es fehlt mit Sicherheit ein sTf8. Mit diesem ist die Aufgabe korrekt.",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1281755",
+   "pdb_id": "P1281755",
+   "fen": "2k5/3RP3/8/4B2p/3RQ2p/3Br3/pp1PpPP1/rb2K1nq",
+   "stip": "s#3",
+   "count": "10+11",
+   "author": "Evgeni Bourd",
+   "source": "Uralsky Problemist (4) 2013\nUralski Problemist 20 JT\n 4. Prize",
+   "solution": "1.Ra7 threat 2.Qg4+ hxg4 3.Bf5+ Bxf5#\n1...Qxg2 2.Qa8+ Qxa8 3.Bf5+ Bxf5#\n1...Qh3 2.Qf5+ Qxf5 3.Bxf5+ Bxf5#\n1...Rxd3 2.Rd8+ Rxd8 3.Qc2+ Bxc2#\n1...Rxe4 2.Rc4+ Rxc4 3.Bf5+ Bxf5#\n1...Rf3 2.Qf5+ Rxf5 3.Bxf5+ Bxf5#\nSiehe Version: P1366307",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1291715",
+   "pdb_id": "P1291715",
+   "fen": "B7/8/8/8/5PP1/2K3PN/3p2P1/6Bk",
+   "stip": "h#3",
+   "count": "8+2",
+   "author": "Menachem Witztum; Evgeni Bourd; Emanuel Navon; Ofer Comay",
+   "source": "SuperProblem (Website) 2014\nComm.\n 116. theme tourney",
+   "solution": "1.d1=Q g5 2.Qh5 g4 3.Qh4 g3#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1293386",
+   "pdb_id": "P1293386",
+   "fen": "kn6/8/2P3p1/3P1pPb/5Nrp/1p5P/pp1N4/qrbK4",
+   "stip": "h#3",
+   "count": "7+13",
+   "author": "Evgeni Bourd",
+   "source": "SuperProblem (Website) 2014\n1.-5. Prize\n 104. theme tourney",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Rxf4+ Ke1 2.Ra4 Sc4 3.Ra7 Sb6#\n2) 1.Bxd2+ Ke2 2.Be3 Se6 3.Ba7 Sc7#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1293396",
+   "pdb_id": "P1293396",
+   "fen": "8/8/k6p/1p6/2N2K2/3ppBN1/5r1b/8",
+   "stip": "h#3",
+   "count": "4+7",
+   "author": "Miodrag Mladenovic; Gabor Tar; Antal Harl; Vladislav Nefyodov; Evgeni Bourd; Mikhail Khramtsevich",
+   "source": "SuperProblem (Website) 2014\n4. Comm.\n 104. theme tourney",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Bxg3+ Ke4 2.Bb8 Bg4 3.Ba7 Bc8#\n2) 1.Rxf3+ Kg4 2.Rf7 Se4 3.Ra7 Sc5#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1295683",
+   "pdb_id": "P1295683",
+   "fen": "6b1/7p/r5p1/7R/2NN1k1P/R3pp1Q/PB2Pr1n/KB5n",
+   "stip": "#3",
+   "count": "11+10",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "Wola Gulowska 35 2011\nComm.",
+   "solution": "1.Ra4! threat 2.Se6+ Rxe6 3.Se5# 2...Bxe6 3.Be5#\n1...Sg4 2.Se5 Sxe5 3.Se6# 2...Bc4 3.Qxg4#\n1...Sg3 2.Sf5 Sxf5 3.Be5# 2...Bxc4 3.Qxg3#\n1...Bd5 2.Sb6 Rxb6 3.Se6# 2...Rxa4 3.Sxd5#\n1...Bxc4 2.Sc6 Rxc6 3.Be5# 2...Ra5 3.Rxc4#",
+   "themes": "half-battery, white",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1295854",
+   "pdb_id": "P1295854",
+   "fen": "4NK2/p2N4/4BRP1/5p2/p2k4/PprnnPb1/4-P3/Qb4B1",
+   "stip": "#2",
+   "count": "10+10",
+   "author": "Evgeni Bourd",
+   "source": "Phénix A4063 2006\n3. Prize \n Chess Composition Microweb 2005, Richter: Paul Raican",
+   "conditions": [
+    "Antisupercirce"
+   ],
+   "solution": "1.Rxf5[+wTd2]!\n1...e1=nD 2.Qxe3[+nDg4]#\n1...e1=nS 2.Sxd3[+nSc6]#\n1...e1=nT 2.Rxe3[+nTb4]#\n1...e1=nL 2.Bxg3[+nLh8]#",
+   "themes": "Allumwandlung; Circe (Antisuper-)",
+   "genre": "Fairies",
+   "orthodox": false
+  },
+  {
+   "id": "pdb-P1295975",
+   "pdb_id": "P1295975",
+   "fen": "kn5R/Nb5P/R7/3B4/8/8/P6P/6BK",
+   "stip": "s#5",
+   "count": "9+3",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 6997 2014",
+   "solution": "1.Rb6 Bc6 2.Rb1 Bb7 3.Sb5 Bc6 4.Sa3 Bb7 5.Bc6 Bxc6#\n1...Kxa7 2.Rc6+ Ka8 3.Rc1 Bc6 4.Rb1 Bb7 5.Bc6 Bxc6#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1296240",
+   "pdb_id": "P1296240",
+   "fen": "2Nn1R2/3p2Pb/P1p1k2-P/b1R2pP1/pN-P-PpK-P1/B2PP2P/7r/8",
+   "stip": "#2",
+   "count": "12+10",
+   "author": "Evgeni Bourd",
+   "source": "Phénix A4064 2006\n4. Prize, 17. TT \n Chess Composition Microweb 2005 \n Richter: Paul Raican",
+   "conditions": [
+    "Antisupercirce"
+   ],
+   "solution": "1.Rxf5[+wTe8]+!\n1...cxd3[+nBe7] 2.exd8=Q[+nDc4]#\n1...dxe3[+nBe7] 2.exd8=S[+nSd4]#\n1...gxh3[+nBe7] 2.exd8=B[+nLg4]#\n1...hxg5[+nBe7] 2.exd8=R[+nTh6]#\n1...Rxh3[+sTe7] 2.Sxc6[+wSc5]#\n1...Bxb4[+sLe7] 2.Sxe7[+wSc7]#\n1...exd3[+sBe7] 2.Sxc6[+wSc5]#",
+   "themes": "Allumwandlung; Circe (AntiSuper-)",
+   "comment": "Kommentare: Ein Monster, von dem ich nur hoffe, dass es NL ist und bleibt. Bei solchen Aufgaben wird mir schlecht. eb 3.3.2007",
+   "genre": "Fairies",
+   "orthodox": false
+  },
+  {
+   "id": "pdb-P1296886",
+   "pdb_id": "P1296886",
+   "fen": "8/K2Ppq2/B4p2/3PP1r1/3Bk1P1/1pPpNNQ1/3br1P1/3b4",
+   "stip": "#3",
+   "count": "12+10",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Wola Gulowska 19 2014\n3. Prize",
+   "solution": "1.Bb7! threat 2.d6+ Qd5 3.Bxd5#\n1...Bxe3 2.Sd2+ Rxd2 3.Qxe3# 2...Bxd2 3.Qf3#\n1...Rxe5 2.Sg5+ Rxg5 3.Qf3# 2...fxg5 3.Qxe5#",
+   "themes": "Umnov",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1298067",
+   "pdb_id": "P1298067",
+   "fen": "4R2N/1PP5/1RK2k1P/p3N1p1/Q3p1P1/2prqp2/2prb3/3n2b1",
+   "stip": "s#2",
+   "count": "10+13",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2572 2014",
+   "solution": "1.Qd4 threat 2.Qd6+ Rxd6#\n1...Rxd4 2.Kc5+ Rd6#\n1...Qxd4 2.Sd7+ Qxd7#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1307248",
+   "pdb_id": "P1307248",
+   "fen": "1q3r2/1B4N1/p1rp4/1b1k1n1R/p1n2PN1/B1pKQ3/2P1P3/b7",
+   "stip": "s#2",
+   "count": "10+12",
+   "author": "Evgeni Bourd; Yosi Retter; Arieh Grinblat",
+   "source": "WCCC Ostroda 2015\nUkrainian Folk Crafts TT\n 3. Prize",
+   "solution": "1...Qa7 2.Qd4+ Qxd4#\n1...Qe8 2.Qe4+ Qxe4#\n1.Qa7? threat 2.Se3+ Sxe3#\n1...Qe8 2.e4+\n1...Re8!\n1.Qe7! threat 2.Se3+ Sxe3#\n1...Qa7 2.Qxd6+ Sxd6#",
+   "themes": "White correction",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1307249",
+   "pdb_id": "P1307249",
+   "fen": "8/2b5/3B4/3P2pp/4Npkr/R5Nn/4nQP1/3B3K",
+   "stip": "s#2",
+   "count": "9+8",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "WCCC Ostroda 2015\nUkrainian Folk Crafts TT\n 4. Prize",
+   "solution": "1.Qf1? threat 2.Sf2+ Sxf2#\n1...fxg3 2.Bxc7 Shf4,Sh~ #\n1...Bb6!\n1.Qc5? threat 2.Sf2+ Sxf2#\n1...fxg3!\n1.Qd4!? threat 2.Sf2+ Sxf2#\n1...fxg3 2.Sxg3+ Sf4#\n1...f3!\n1.Qe3! threat 2.Sf2+ Sxf2#\n1...fxe3 2.Bxc7 Sf2,Sg1,Sf4#\n1...fxg3 2.Qxg5+ Sxg5#",
+   "themes": "White correction",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1307255",
+   "pdb_id": "P1307255",
+   "fen": "B1nR4/1q2PN2/3n3R/1P1kN1p1/6Pp/1PQ1PKbr/4Pprp/7b",
+   "stip": "s#2",
+   "count": "13+12",
+   "author": "Menachem Witztum; Evgeni Bourd; Emanuel Navon",
+   "source": "WCCC Ostroda 2015\nUkrainian Folk Crafts TT\n 1. Comm.",
+   "solution": "1.Se5??\n1.Sg6? threat 2.Qe5+ Bxe5#\n1...Ke6+!\n1.Sc4? threat 2.Qe5+ Bxe5#\n1...Kc5+!\n1.Sd3? threat 2.Qe5+ Bxe5#\n1...f1=Q,T!\n1.Sd7? threat 2.Qe5+ Bxe5#\n1...Sc4 2.Qd2+ Sxd2#\n1...Sxf7!\n1.Sc6! threat 2.Qe5+ Bxe5#\n1...Qxe7 2.e4+ Qxe4#",
+   "themes": "White correction",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1307256",
+   "pdb_id": "P1307256",
+   "fen": "B1R5/1r6/4p3/1N1kB3/2NPn3/p1Q1p3/P1Pp4/RK1n2br",
+   "stip": "s#2",
+   "count": "11+10",
+   "author": "Mark Erenburg; Menachem Witztum; Evgeni Bourd",
+   "source": "WCCC Ostroda 2015\n2. Comm.\n Ukrainian Folk Crafts TT",
+   "solution": "1.Se5??\n1.Qb2? threat 2.Sc3+ Sdxc3,Sexc3#\n1...Sc5!\n1.Qb3? threat 2.Sc3+ Sexc3,Sdxc3#\n1...Sb2!\n1.Qb4! threat 2.Sc3+ Sexc3,Sdxc3#\n1...Sb2 2.Sxe3+ Bxe3#",
+   "themes": "White correction",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1309390",
+   "pdb_id": "P1309390",
+   "fen": "1K1R2B1/4p3/1b3p2/1r1n1R2/1nk5/2p1p3/4P3/8",
+   "stip": "h#2",
+   "count": "5+9",
+   "author": "Vidadi Zamanov; Evgeni Bourd",
+   "source": "Die Schwalbe 15841 2014",
+   "stip_note": [
+    "4.1..."
+   ],
+   "solution": "1) 1.Sd3 Rxd5 2.Sc5 Rd4#\n2) 1.Ra5 Rxd5 2.Bd4 Rc5#\n3) 1.Kd4 Rc8 2.Sf4 Rc4#\n4) 1.Kc5 Rf4 2.Sc7 Rc4#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1311175",
+   "pdb_id": "P1311175",
+   "fen": "Q7/8/2N1p2B/p2b4/P1n3NR/pK1kPP2/P1nppr2/2bqr3",
+   "stip": "s#3",
+   "count": "10+13",
+   "author": "Evgeni Bourd",
+   "source": "The Problemist S2556 2015",
+   "solution": "1.Qc8! threat 2.Sb4+ axb4 3.Qxc4+ Bxc4#\n1...Rxf3 2.Sf2+ Rxf2 3.Rd4+ Sxd4#\n1...Bxf3 2.Sge5+ Sxe5 3.Rd4+ Sxd4#\n1...Be4 2.Sce5+ Sxe5 3.Qxc2+ Qxc2#\n1...Bxc6 2.Se5+ Sxe5 3.Rd4+ Sxd4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1314774",
+   "pdb_id": "P1314774",
+   "fen": "5Rq1/2p2b2/2Pp1Npn/2nQ2RP/4Pk1P/4N3/3rPPBK/2Brb3",
+   "stip": "#2",
+   "count": "14+11",
+   "author": "Evgeni Bourd",
+   "source": "Wola Gulowska 10 2015\n5. HM",
+   "solution": "1.Qd4? threat 2.Sd5#\n1...Rxd4 2.Sd5#\n1...Qxf8!\n1.Qe6? threat 2.Sd5#\n1...Bxe6 2.Sd5#\n1...Rxc1!\n1.e5! threat 2.Qf3#\n1...Bxd5 2.Sxd5#\n1...Rxd5 2.Sxd5#\n1...Se4 2.Qxe4#\n1...Sf5,g4+ 2.Rg4#",
+   "themes": "Pseudo-Le Grand theme",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1314775",
+   "pdb_id": "P1314775",
+   "fen": "5nr1/1B6/1p1P2pN/1PPRbpP1/bN1pk3/1p6/r1R2p1P/2B3nK",
+   "stip": "#2",
+   "count": "12+13",
+   "author": "Evgeni Bourd",
+   "source": "Wola Gulowska 11 2015\n1. Comm.",
+   "solution": "1.d7? threat 2.Rd6#\n1...Bxb5!\n1.cxb6? threat 2.Rc5#\n1...Rg7!\n1.Rc4? threat 2.Rxd4#\n1...Kf3 2.Rxe5#\n1...Bg3,Be5~ 2.Rxf5#\n1...Rd2!\n1.Sf7! threat 2.Rxe5#\n1...Kf3 2.Rxd4#\n1...d3 2.Rxd3#",
+   "themes": "le Grand theme; Turmkreuz",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1314931",
+   "pdb_id": "P1314931",
+   "fen": "2R1NB2/1p2R3/bpp1rp2/1nkP1p2/n7/2pKp3/2N1PP1p/7B",
+   "stip": "s#2",
+   "count": "10+13",
+   "author": "Evgeni Bourd",
+   "source": "Wola Gulowska 37 2015\n2.-4. Comm.",
+   "solution": "* 1...f4 2.Rxe6+ Sd6#\n* 1...Rxe7 2.f4 Sb2# 2...Sa3,Sb5~ #\n1.fxe3? threat 2.Rxe6+ Sd6#\n1...Rxe7 2.Bxe7+ Sd6#\n1...Rxe3+ 2.Rxe3+ Sd6#\n1...Rd6!\n1.f4!,zugzwang\n1...Rxe7 2.Rc7 Sb2# 2...Sa3,Sb5~ #\n1...Rd6 2.Rxe3 Sb2# 2...Sa3,Sb5~ #\n1...Re5 2.Re6+ Sd6#\n1...Re4 2.Re5+ Sd6#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1315006",
+   "pdb_id": "P1315006",
+   "fen": "1n2N3/1p1rpb2/P2NPr2/npk2p2/4p3/qp2p3/2p5/4K3",
+   "stip": "h#2",
+   "count": "5+15",
+   "author": "Evgeni Bourd",
+   "source": "Wola Gulowska 54 2015\nSpecial Prize",
+   "twins": [
+    "b) in Mattstellung a) sK -> c5",
+    "c) in Mattstellung b) sK -> c5",
+    "d) in Mattstellung c) sK -> c5"
+   ],
+   "stip_note": [
+    "b) in Mattstellung a) sK nach c5",
+    "c) in Mattstellung b) sK nach c5",
+    "d) in Mattstellung c) sK nach c5"
+   ],
+   "solution": "a) 1.Kb6 Sc7 2.Ka7 Sc8#\nb) 1.Kb4 Sd5+ 2.Ka4 Sb6#\nc) 1.Kd6 Sc4+ 2.Kxe6 Sf4#\nd) 1.Kd4 Se2+ 2.Kd3 Se5#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1318822",
+   "pdb_id": "P1318822",
+   "fen": "3r2R1/6Q1/3N2p1/n4P1N/2p5/2P2k1P/pp1P3p/qb3Kbr",
+   "stip": "s#2",
+   "count": "9+12",
+   "author": "Vidadi Zamanov; Evgeni Bourd",
+   "source": "PZSzach 678 2015",
+   "solution": "1.Qd4! threat 2.Qd5+ Be4#, 2.Qe4+ Bxe4#, 2.Qe3+ Bxe3#, 2.Qf2+ Bxf2#\n1...gxf5 2.Qd5+ Be4#\n1...gxh5 2.Qe4+ Bxe4#\n1...Rxd6 2.Qe3+ Bxe3#\n1...Re8 2.Qf2+ Bxf2#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1320712",
+   "pdb_id": "P1320712",
+   "fen": "5K2/2pp1P2/2p5/1n4NR/1PPkpP2/1P2R3/p2NbP2/4B3",
+   "stip": "#3",
+   "count": "12+8",
+   "author": "Evgeni Bourd",
+   "source": "Schach 18289 2016\n4. Comm.",
+   "solution": "1.Kg7! threat 2.f8=Q threat 3.Qc5#, 3.Qf6#, 2...Bxc4 3.Qc5#, 2...Bd3 3.Qf6#\n1...Bxc4 2.Sgf3+ exf3 3.Sxf3#\n1...Bd3 2.Sdf3+ exf3 3.Sxf3#\n1...Sd6 2.Sdf3+ Bxf3,exf3 3.Bc3#\n1...c5 2.Sgf3+ Bxf3,exf3 3.Rd5#",
+   "themes": "Clearance sacrifice",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1320771",
+   "pdb_id": "P1320771",
+   "fen": "6n1/b1B4q/2RN1pbp/1Pp2n2/1pPk3r/4NPpQ/2PK1P2/4R3",
+   "stip": "#3*",
+   "count": "12+12",
+   "author": "Evgeni Bourd",
+   "source": "\n1. HM\n Israel Ring-Turnier 2004",
+   "solution": "* 1...Sxe3 2.fxe3+ Ke5 3.Sf7#\n* 1...Sxd6 2.Rxd6+ Ke5 3.Rd5#, 3.Rd7#\n* 1...Ke5 2.Sexf5+ Kf4 3.Qxg3#, 2...Re4 3.Sf7#, 3.Rxe4#\n1.Qf1! threat 2.Qd3+ Ke5 3.Sf7#\n1...Sxd6 2.Sf5+ Sxf5 3.Qd3#\n2...Bxf5 3.Rxd6#\n1...Sxe3 2.Sf5+ Sxf5 3.Qd3#\n2...Bxf5 3.fxe3#\n1...Ke5 2.Sf7+ Kd4 3.Qd3#\n1...Sfe7,Sfg7 2.b6 ... 3.Sb5#\n1...Qxc7 2.Sxf5+ Bxf5 3.Sxf5#",
+   "reprint": "idee \\& form 128 10/2015",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1320966",
+   "pdb_id": "P1320966",
+   "fen": "nq6/2b2Pp1/2pNNQK1/1pBkpPp1/1P1P1r2/2P5/3P4/4r3",
+   "stip": "#3",
+   "count": "11+11",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "The Problemist C11395 2015",
+   "solution": "1.d3! threat 2.c4+ bxc4 3.dxc4#\n1...Sb6 2.Sxc7+ Qxc7 3.Qe6#\n1...Bxd6 2.Sc7+ Bxc7,Qxc7 3.Qe6#\n2...Sxc7 3.Qxd6#\n1...Rxd4 2.Sf4+ Rxf4,gxf4 3.Qe6#\n2...exf4 3.Qxd4#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1321149",
+   "pdb_id": "P1321149",
+   "fen": "7n/3p4/q1pP1pbQ/1B1p3p/pP1bkP2/4N1rp/1R2R1PN/2BK4",
+   "stip": "#4",
+   "count": "12+13",
+   "author": "Evgeni Bourd",
+   "source": "Die Schwalbe 16451 2015",
+   "solution": "1.f5! threat 2.Qf4+ Kxf4 3.Sxd5+ Kxf5 4.Se7#\n1...Be5 2.Sc2+ Re3 3.Qxe3+ Kxf5 4.Qxh3#\n2...Kxf5 3.Sd4+ Bxd4 4.Qf4#\n1...Rg5 2.Sef1+ Kxf5 3.Sg3+ Rxg3 4.Qf4#\n1...Bxe3 2.Rxe3+ Rxe3 3.Qxe3+ Kxf5 4.Rf2#\n2...Kxf5 3.Rf2+ Rf3 4.Tfxf3#\n1...Rxe3 2.Rxe3+ Bxe3 3.Qxe3+ Kxf5 4.Rf2#\n1...Rf3 2.gxf3+ Ke5 3.Sc4+ Kxf5 4.Qf4#\n1...Rg4 2.Sexg4+ Be3 3.Qxe3,Rxe3+ Kxf5 4.Qf4#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1322912",
+   "pdb_id": "P1322912",
+   "fen": "4K3/1BNp4/1n1P2p1/B2PP1R1/3pk2P/1Pn1P1P1/3Pp3/4N3",
+   "stip": "#3*",
+   "count": "14+7",
+   "author": "Evgeni Bourd",
+   "source": "Schach 18341 2016\n2. HM",
+   "solution": "* 1...Scxd5 2.Bxb6 ... 3.Bxd5#\n* 1...Sbxd5 2.Bxc3 ... 3.Bxd5#\n* 1...dxe3 2.d3+ Kd4 3.Bxb6#\n1.exd4! threat 2.Rg4+ Kf5 3.Rf4#\n1...Scxd5 2.Bc3 Sa4,Sc4,Sc8,Sa8 3.Bxd5#\n1...Sbxd5 2.Bb6 Sa2,Sb1,Sd1,Sb5,Sa4 3.Bxd5#\n1...Kxd4 2.Bxb6+ Ke4 3.d3#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1322970",
+   "pdb_id": "P1322970",
+   "fen": "4K1br/B1p1P2p/1NkpB2R/2N1R1pp/P6P/1P3r1P/6Q1/8",
+   "stip": "s#2",
+   "count": "13+9",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 7514 2016\nWCCI=7",
+   "solution": "1.Sc4? threat 2.Bd5+ Bxd5#\n1...dxe5!\n1.Sc8? threat 2.Bd5+ Bxd5#\n1...dxc5!\n1.Sa8! threat 2.Bd5+ Bxd5# 1\n1...gxh4 2.Bf7 Bxf7# 1\n1...d5 2.Bf5+ Be6# 1\n1...dxe5 2.Bc4+ Be6# 1\n1...dxc5 2.Bc8+ Be6# 1",
+   "reprint": "Polnische Lösemeisterschaft 03/2017",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1322978",
+   "pdb_id": "P1322978",
+   "fen": "N1k4N/2P2n2/b1P5/7K/r1p5/8/8/8",
+   "stip": "ser-r#18",
+   "count": "5+5",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 7568 2016",
+   "solution": "1.Kg6 2.Kf6 3.Ke7 4.Sg6 5.Se5 6.Ke6 7.Kd5 8.Kc5 9.Kb6 10.Sxc4 11.Se5 12.Kc5 13.Kd5 14.Ke6 15.Kf5 16.Kg6 17.Kh5 18.Sg6 Be2#",
+   "themes": "Seriesmover",
+   "genre": "Fairies",
+   "orthodox": false
+  },
+  {
+   "id": "pdb-P1323175",
+   "pdb_id": "P1323175",
+   "fen": "1BB1Kn2/r2r4/pR3pnb/2RNpkpb/2Q2PpP/2P3q1/8/8",
+   "stip": "s#2",
+   "count": "10+13",
+   "author": "Evgeni Bourd",
+   "source": "The Problemist S2575 2016",
+   "solution": "1.Qb4? threat 2.Se7+ Sxe7#\n1...e4!\n1.Qa4! threat 2.Se7+ Sxe7#\n1...e4 2.Sb4+ Se5#\n1...exf4 2.Sc7+ Se5#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1325781",
+   "pdb_id": "P1325781",
+   "fen": "8/3p4/p2p4/BkPQ2p1/2R3Pb/3p4/R1pNpnB1/3bK3",
+   "stip": "s#3",
+   "count": "9+11",
+   "author": "Evgeni Bourd",
+   "source": "WCCC Belgrade 2016\nWodka-Turnier\n 3. Prize\n WCCI=8.5",
+   "solution": "1.Re4! threat 2.Qc4+ Kc6 3.Re6+ Se4#\n1...c1=Q 2.Qb7+ Kxc5 3.Sb3+ Bxb3#\n1...c1=R 2.Rb2+ Kxa5 3.Qa2+ Ba4#\n1...dxc5 2.Re5 threat 3.Qxd3+ Sxd3#\n2...c1=Q 3.Qb3+ Bxb3#\nFIDE Album:\nBlack battery formations by pawn promotions, black correction by a minor promotion.",
+   "themes": "Battery creation",
+   "reprint": "StrateGems 2016",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1327058",
+   "pdb_id": "P1327058",
+   "fen": "RN3B2/KP6/B1NPn2R/2k1p3/p3p3/2p1bn2/Q1Pp4/3b2q1",
+   "stip": "s#3",
+   "count": "11+11",
+   "author": "Evgeni Bourd; Menachem Witztum",
+   "source": "WCCC Belgrade 2016\nUkrainian Folk Crafts\n 3. Prize",
+   "solution": "1.Se7 threat 2.Qa3+ Kd4 3.Qxc3+ Kxc3#\n1...Bd4 2.Qb1 threat 3.Qb4+ Kxb4#\n2...Kxd6+ 3.Qb6+ Bxb6#\n1...Sd4 2.Qc4+ Kxd6 3.Qc6+ Sxc6#\n1...Kd4 2.Qxa4+ Kc5 3.Qb4+ Kxb4#\n1...Sd4 2.Sd7+ Kb4 3.Sc6+ Sxc6#",
+   "reprint": "StrateGems 2016",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1329658",
+   "pdb_id": "P1329658",
+   "fen": "3b3q/2n1PBp1/1NpNn1R1/2B1k2r/1Pp5/2Pp1pP1/K2Rb1P1/8",
+   "stip": "#3",
+   "count": "12+12",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "Rozmaitosci szachowe 1096 2008\nTurnier Serock 2007\n 3. Prize",
+   "solution": "1.gxf3! threat 2.f4+ Sxf4 3.Sd7#,A 3.Sxc4#,B 3.Bd4#,C\n1...Rh4 2.Sd7+,A Kd5 3.Rg5#\n1...Bxf3 2.Sxc4+,B Kd5 3.Rxd3#\n1...Qh6 2.Bd4+,C Kxd6 3.exd8=Q# 2...Sxd4 3.Sxc4,d7#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1340098",
+   "pdb_id": "P1340098",
+   "fen": "3k2bR/1P5R/4Qr2/2K4B/1N5B/4pp1p/2prqppP/2Nbbbn1",
+   "stip": "s#2",
+   "count": "10+15",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2943 2017",
+   "solution": "1.Sbd3! Rxd3 2.Qd5+ Rxd5#\n1...Qxd3 2.Qd6+ Qxd6#",
+   "themes": "Obvious promotion",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1343717",
+   "pdb_id": "P1343717",
+   "fen": "BB3bq1/P2Rnbp1/6r1/2kP1p2/1Rp5/N1p1p1Pp/N1P1P2K/3r3n",
+   "stip": "#3",
+   "count": "12+14",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "The Problemist C11566 2017",
+   "solution": "1.Bf4! threat 2.Bxe3+ Rd4 3.Rb5# A\n1...Rxg3 2.Bd6+ Kd4 3.Rxc4# B\n1...Rd3 2.Be5 threat 3.Rb5# A\n2...Rb6 3.Rxc4# B\n1...Re6 2.Bc7 threat 3.Rxc4# B\n2...Rd4 3.Rb5# A\n2...Re4 3.Bb6#\n2...Kd4 3.Rxc4# B",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1344010",
+   "pdb_id": "P1344010",
+   "fen": "1K3k1r/1n1P1pNP/5Bp1/2p5/3p1R1N/1n5p/B2p1Pb1/6Rr",
+   "stip": "#4",
+   "count": "10+12",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Pat a Mat 2009\n2. Prize",
+   "solution": "1.Re4? Bxe4!\n1.f3! threat 2.Re4 Sd6 3.Re8+, 3.d8=Q+\n1...Bxf3 2.Se6+ fxe6 3.Sxg6+ Kf7+ 4.Bxh8#\n1...Sa5 2.Sxg6+ fxg6 3.Se6+ Kf7+ 4.Bd8#",
+   "reprint": "Gmünder WochenBlatt-Lokal 11/2017",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1347374",
+   "pdb_id": "P1347374",
+   "fen": "6q1/1p3b2/3k2rr/6P1/P2K1p2/8/8/3Q4",
+   "stip": "h#2",
+   "count": "4+7",
+   "author": "Vidadi Zamanov; Evgeni Bourd",
+   "source": "KoBulChess 234 2013",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Re6 Kc4+ 2.Ke5 Qd5#\n2) 1.Kc6 Ke5 2.Be6 Qd6#",
+   "comment": "A join helpmate with Grimshaw, open of line and white/ black Kings play by Vidadi Zamanov (Azerbaijan) and Evgeni Bourd - a warm welcome to Israeli composer!",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1347393",
+   "pdb_id": "P1347393",
+   "fen": "4r3/b7/8/3n1R2/1r3NK1/2k1p3/2B5/8",
+   "stip": "h#2",
+   "count": "4+6",
+   "author": "Vidadi Zamanov; Evgeni Bourd",
+   "source": "KoBulChess 244 2013",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Kc4,Sb6? Se6 B 2.Sb6 Rc5# A\n2) 1.Se7,Kd4? Rc5+ A 2.Kd4 Se6# B",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1350565",
+   "pdb_id": "P1350565",
+   "fen": "1K1R1N2/pp1BpP2/r3PP1R/2P1kp1Q/1Nb4p/3pPP2/4n2q/8",
+   "stip": "#3",
+   "count": "13+11",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "Andrey Selivanov 50 JT 2017\n6. Prize",
+   "solution": "1.Bc8! threat 2.Rd5+ Bxd5 3.Sxd3#\n1...Rd6 2.Sg6+ Kxf6 3.f8=Q#\n1...Sf4 2.Sd7+ Kxe6 3.f8=S#\n1...Sc3,Sc1 2.Qg5 ... 3.Sg6#\n1...Ra3 2.fxe7 threat 3.Sd7#\n2...Bb5 3.Rd5#, 2...Bxe6 3.Rxe6#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1350661",
+   "pdb_id": "P1350661",
+   "fen": "2BRr3/p3n3/qb3R2/PN3PPp/1P1PkP2/1K1Np1B1/2P1P3/3n3b",
+   "stip": "#5",
+   "count": "15+10",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Andrey Selivanov 50 JT 2017\nSpezialpreis",
+   "solution": "1.c4! threat 2.Bb7+ Qxb7 3.Sd6+ Kxd4 4.Se1 ... 5.Sc2#\n4...Qe4,Be4 5.Sb5#\n1...Qxc8 2.Sd6+ Kxd4 3.Sb5+ Ke4 4.Rd4+ Bxd4 5.Sd6#\n1...Rxd8 2.Re6+ Kxf5 3.Rf6+ Ke4 4.Bf5+ Sxf5 5.Re6#\n1...Qxb5 2.Re6+ Kxf5 3.Rxe7+ Qd7 4.Bxd7+ Kg6 5.Se5#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1354860",
+   "pdb_id": "P1354860",
+   "fen": "2q4b/n1N2R2/2pp3B/3Pkp1n/p7/rp3P2/1N6/1B1RKb2",
+   "stip": "#3",
+   "count": "9+12",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "Shakhmatnaya Kompozitsiya 2015\n1. Comm.",
+   "solution": "1.Be3! threat 2.f4+ Sxf4 3.Bd4#\n1...Sb5 2.Rd3 threat 3.Sc4#\n2...Bxd3 3.Sxd3#, 2...cxd5 3.Rxd5#\n1...c5 2.Bd3 threat 3.Sc4#\n2...Bxd3 3.Sxd3#, 2...Qa6,Qxc7 3.Rxf5#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1355834",
+   "pdb_id": "P1355834",
+   "fen": "BK1N2Q1/2B5/pp2Pp2/6nR/3kP3/N1R5/3P4/1qn5",
+   "stip": "#2",
+   "count": "11+7",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "WCCC Dresden 2017\n1. HM\n quick composing tourney 2# orthodox",
+   "solution": "1.Bd5? threat 2.Sc6#\n1...Qb5 2.Sc2#\n1...Qxe4!\n1.Sf7? A threat 2.Qd8# B\n1...Sxe4 a 2.Rd5# C\n1...Qxe4 b 2.Bxb6#\n1...Qb4,Qb5 2.Sc2#\n1...Sxf7,Sxe6 2.Qg1#\n1...Qb3!\n1.Rh4! C threat 2.Sc6# A\n1...Sxe4 b 2.Qg1# B\n1...Qxe4 b 2.Sc2#\n1...Qb5 2.Sc2#",
+   "reprint": "Die Schwalbe 288A 12/2017",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1355852",
+   "pdb_id": "P1355852",
+   "fen": "Q2b4/3K1b1r/7R/5Pk1/8/8/3n4/4q3",
+   "stip": "h#2",
+   "count": "4+6",
+   "author": "Evgeni Bourd; James Quah",
+   "source": "WCCC Dresden 2017\nComm.\n quick composing tourney h#2",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Qh1 Rg6+ 2.Kh4 Qxh1#\n2) 1.Qa1 Rh5+ 2.Kf6 Qxa1#",
+   "reprint": "Die Schwalbe 288A 12/2017",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1355869",
+   "pdb_id": "P1355869",
+   "fen": "4n3/1Pp4r/B1Kb2br/1p4Nq/1pk3pp/1R6/PQ6/8",
+   "stip": "s#2",
+   "count": "7+12",
+   "author": "Evgeni Bourd; Paz Einat; Arieh Grinblat",
+   "source": "WCCC Dresden 2017\n2. HM Sechs-Tage-Turnier s#2-3",
+   "solution": "1.Sf3! threat 2.Bxb5+ Qxb5#\n1...Bc5 2.Qc2+ Bxc2#\n1...Be5 2.Qe2+ Bd3#\n1...Bf5 2.Se5+ Bxe5#",
+   "reprint": "Die Schwalbe 288A 12/2017",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360697",
+   "pdb_id": "P1360697",
+   "fen": "6BN/1p1p4/1P1P3R/2pK1kpN/1ppQpqr1/3nb1P1/3nbR2/3r4",
+   "stip": "s#2",
+   "count": "10+15",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2016\nYosi Retter 80 JT\n 1. HM\n WCCI=7",
+   "solution": "1.Sf6? threat 2.Be6+ dxe6#\n1...Sf3!\n1.Sg6? threat 2.Be6+ dxe6#\n1...Sxf2!\n1.Rh7! threat 2.Be6+ dxe6#\n1...Sb1,S2~ 2.Qe5+ Sxe5#\n1...Sf3 2.Qxe4+ Qxe4#\n1...Sb2,S3~ 2.Qxe4+ Sxe4#\n1...Sxf2 2.Qe5+ Qxe5#",
+   "comment": "Stefan Felber (2019-02-05): Umwandlungsläufer e2!",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360700",
+   "pdb_id": "P1360700",
+   "fen": "2RB1nrq/4KPnp/2b2N1P/p1kB2P1/Pb2p3/p1p1r3/P1P1N3/6Q1",
+   "stip": "s#2",
+   "count": "13+13",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2016\nYosi Retter 80 JT\n 4.-5. HM",
+   "solution": "1.Bc4? threat 2.Rxc6+ Kxc6#\n1...Se6!\n1.Qf2? Sf5+!\n1.Sxc3? threat 2.Sxe4+ Kd4#\n1...Bxc3!\n1.Sg3? threat 2.Sxe4+ Kd4#\n1...Sf5+!\n1.Sf4? Sg6+!\n1.Sc1!\n1...Se6,Sf~ 2.Bb6+ Kxb6#\n1...Sd7 2.Sxe4+ Kd4#,Kxd5#\n1...Se8,Sg~ 2.Sxe4+ Kd4#,Kxd5#\n1...Se6 2.Bb6+ Kxb6#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360702",
+   "pdb_id": "P1360702",
+   "fen": "4B2Q/2r1p3/4p1N1/rn1PK1k1/3R1pq1/2n1P2b/4p2N/b7",
+   "stip": "s#2",
+   "count": "8+12",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2016\nYosi Retter 80 JT\n 6. HM",
+   "solution": "1.Sf8! threat 2.Qf6+ exf6#\n1...Sa3,Sb~ 2.Sxe6+ Qxe6#\n1...Sxd4 2.exf4+ Qxf4#\n1...Sa2,Sc~ 2.exf4+ Qxf4#\n1...Sxd5 2.Sxe6+ Qxe6#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360710",
+   "pdb_id": "P1360710",
+   "fen": "5b2/2p1nQp1/p1PkB1p1/Rp1p2P1/1K1R4/6r1/7B/8",
+   "stip": "s#2",
+   "count": "8+10",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2708 2015",
+   "solution": "1.Bh3,Bg4? Kxc6!\n1.Bc8!\n1...Ke5 2.Qxd5+ Sxd5#\n1...Kxc6 2.Qxg6+ Sxg6#\n1...Sf5,Sg8 2.Qxc7+ Kxc7#\n1...Sxc8 2.Qe6+ Kxe6#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360712",
+   "pdb_id": "P1360712",
+   "fen": "b3r3/2pN2nq/1pn1rP1b/1P1KpQ2/4ppP1/2pk4/2N4R/7B",
+   "stip": "s#2",
+   "count": "9+14",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2755 2015\nIsrael Ring Tourney 2015-2016\n 1. Comm.",
+   "solution": "* 1...Qxf5 2.Sxe5+ Rxe5,Sxe5,Qxe5#\n2.Bxe4+ Qxe4#\n1.Qg6? threat 2.Sxe5+ Sxe5#,Rxe5#\n1...Rd8!\n1.Qg5? threat 2.Bxe4+ Qxe4#\n1...Sf5 2.Sxe5+ Sxe5#,Rxe5#\n1...Qg8 2.Sxe5+ Sxe5#,Rxe5#\n1...Qh8!\n1.Qxf4! threat 2.Sb4+ Sxb4#\n1...exf4 2.Se5+ (2.Bxe4+? Rxe4!) Sxe5#,Rxe5#\n1...Bxf4 2.Bxe4+ (2.Sxe5? Bxe5!) Qxe4#\nDrohkorrektur (Drohwechsel) Sonderform:\nVerwandt mit der Thematik der Drohkorrektur (Drohwechsel), aber deutlich davon zu unterscheiden, sind Aufgaben folgender Art:\n(1) Ein weißer Zug 1.R hat einen Effekt e, der eine Drohung 2.D in Gang setzt, die aber von Schwarz pariert werden kann: 1.R?->e [2.D] x! 2.?\n(2) Ein anderer weißer Zug 1.S hat nicht den Effekt e und löst eine von D verschiedene Drohung D0 aus, gegen die Schwarz eine Parade u besitzt, durch die sich e als Begleiteffekt einstellt; es folgt 2.D:\n1.S [2.D0, nicht 2.D?] u->e 2.D\nWährend bei der Drohkorrektur (Drohwechsel-Normalform) in beiden Phasen der Effekt e auf einem weißen Zug beruht, wird dieser Effekt in Aufgaben mit dem K-Word-Anhang 'Sonderform' in der 2.Phase durch Schwarz hergestellt.",
+   "themes": "Threat correction (TC-Sonderform)",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360713",
+   "pdb_id": "P1360713",
+   "fen": "1N2R3/2b5/1RPk1Pp1/3B1pPp/r1bQ1Knr/1p2pP1p/8/5nq1",
+   "stip": "s#2",
+   "count": "10+14",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2805 2016",
+   "solution": "1.Rb5! threat 2.Qe5+ Sxe5#\n1...Be2,L4~ 2.Be6+ Rxd4#\n1...Bxd5 2.Re6+ Kxe6#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360721",
+   "pdb_id": "P1360721",
+   "fen": "7b/7B/3P1p2/p5B1/P5R1/K1kN3R/P7/N2Q4",
+   "stip": "s#4",
+   "count": "11+4",
+   "author": "Roy Erlich; Evgeni Bourd",
+   "source": "Variantim 2902 2016\nIsrael Ring Tourney 2015-2016\n 4. HM",
+   "solution": "1.Sb3! threat 2.Qa1+ Kc2 3.Sf2+ f5 4.Qb2+ Bxb2#\n1...f5 2.Qe1+ Kc2 3.Sa1+ Bxa1 4.Sb2 Bxb2#\n1...fxg5 2.Sf4+ Kc4 3.Sd5+ Bd4 4.Sb4 axb4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360851",
+   "pdb_id": "P1360851",
+   "fen": "8/2n2Ppr/p3p1PN/r1Q1N2K/b1p2kpR/3P1q1n/3p1R1P/4b3",
+   "stip": "s#2",
+   "count": "10+14",
+   "author": "Yosi Retter; Evgeni Bourd; Mark Erenburg",
+   "source": "Variantim 3046 2017",
+   "solution": "1.Sxg4! threat 2.Qe5+ Rxe5#\n1...Qxf2 2.Se5+ Qxh4#\n1...Sb5 2.Qd4+ Sxd4#\n1...Sd5 2.Qe3+ Sxe3#\n1...Sg5 2.Qxg5+ Rxg5#\n1...Bb5 2.Qxc4+ Bxc4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360852",
+   "pdb_id": "P1360852",
+   "fen": "3b4/2p1rpPp/q1PN1Kbr/6Np/2nn4/B1R5/1P1kp1Q1/2R5",
+   "stip": "s#2",
+   "count": "10+13",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 3047 2017\nWCCI=8",
+   "solution": "1.Qg3? threat 2.Qd3+ Bxd3#\n1...Sf3!\n1.Qf3? threat 2.Qd3+ Bxd3#\n1...e1=S!\n1.Qf2? threat 2.Qxd4+ Bd3#\n1...Sb3,Sd~ !\n1.Qg1! threat 2.Qxd4+ Bd3#\n1...Sxb2,Sc~ 2.Qe3+ Rxe3#\n1...Se5! 2.Se4+ Bxe4#\n1...Sb3,Sd~ 2.Rc2+ Bxc2#\n1...Sf5! 2.Se4+ Rxe4#\n1...e1=Q,~ 2.Qxe1+ Rxe1#\nFIDE Album:\nTwofold black correction where the secondary defence strategy\nof obstructing lines of front pieces of black batteries is exploited\nby White.",
+   "reprint": "FIDE Album 2016-2018 2022",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360904",
+   "pdb_id": "P1360904",
+   "fen": "8/2p5/2Q5/p7/2N2ppR/1BPk1pqb/1Ppp1Rrp/rNB2K2",
+   "stip": "s#3",
+   "count": "10+13",
+   "author": "Evgeni Bourd",
+   "source": "10. WCCT F044 2017\n15.-16. place\n WCCI=7",
+   "solution": "1.Rh6! threat 2.Rd6+ cxd6 3.Rxd2+ Rxd2#\n1...cxb1=S 2.Se5+ Ke3 3.Bxd2+ Sxd2#\n1...dxc1=B 2.Qd7+ Ke4 3.Sd2+ Bxd2#",
+   "themes": "under-promotion (s,l)",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1360984",
+   "pdb_id": "P1360984",
+   "fen": "7q/1B1N4/2rp1p2/R1pk1Pb1/2R3Q1/ppKN4/br3p2/6B1",
+   "stip": "s#3",
+   "count": "9+12",
+   "author": "Evgeni Bourd",
+   "source": "10. WCCT F032 2017\n32.-35. place\n WCCI=6.5",
+   "solution": "1.Rb4! threat 2.Rxc5+ dxc5 3.Qd4+ cxd4#\n1...Be3 2.Qg8+ Qxg8 3.Rd4+ Bxd4#\n1...Qh4 2.Qe4+ Qxe4 3.Rd4+ Qxd4#\n1...fxg1=Q 2.Sf4+ Bxf4 3.Rd4+ Qxd4#\n1...fxg1=B 2.Qg2+ Rxg2 3.Rd4+ Bxd4#\n1...Bf4 2.Sxf6+ Qxf6+ 3.Rd4+ Qxd4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1366307",
+   "pdb_id": "P1366307",
+   "fen": "4k3/1p1N2P1/7N/1n4B1/5RQ1/5Brp/2pp1PpP/2rb2K1",
+   "stip": "s#3",
+   "count": "10+10",
+   "author": "Evgeni Bourd",
+   "source": "Uralsky Problemist 2013\n4. Prize (Version)\n Uralski Problemist 20 JT",
+   "solution": "1.Sb8,Sd~ ? threat 2.Bc6+ bxc6 3.Qh5+ Bxh5#\n1...b6!\n1.Sb6! threat 2.Bc6+ bxc6 3.Qh5+ Bxh5#\n1...Sd6 2.Qc8+ Sxc8 3.Bh5+ Bxh5#\n1...Rxf3 2.Rf8+ Rxf8 3.Qe2+ Bxe2#\n1...Rxg4 2.Re4+ Rxe4 3.Bh5+ Bxh5#\nVerbesserte Version zu P1281755",
+   "comment": "Two pairs of line-opening combinations, both showing exchange of the roles of wB and wQ. (FA)",
+   "reprint": "FIDE Album 2013-2015 2019",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1366392",
+   "pdb_id": "P1366392",
+   "fen": "2N1Rn2/8/p3BNPQ/p3k1P1/K4RPP/nPp1p1B1/r1p5/q1r5",
+   "stip": "s#4",
+   "count": "13+11",
+   "author": "Evgeni Bourd",
+   "source": "SuperProblem (Website) 20) 2013\n1. Prize\n 102. theme tourney\n WCCI=8.5",
+   "solution": "1.Qg7! threat 2.Rf2+ Kd4 3.Qa7+ Kd3 4.Bc4+ Sxc4#\n1...Sxe6 2.Sg8+ Kd5 3.Se7+ Kc5 4.Rc4+ Sxc4#\n1...Sxg6 2.Bc4+ Se7 3.Sd5+ Ke6 4.Sb6+ Sxc4#\n1...Rg1 2.Rc4+ Rxg3 3.Se4+ Kf4 4.Sd2+ Sxc4#\n1...e2 2.Rf3+ Kd4 3.Qc7 ... 4.Qc4+ Sxc4#\n1...Sd7 2.Sd5+, 2.Se4+",
+   "comment": "On the second move, two front pieces of white batteries become rear pieces of new batteries, both on the same square. In two further variations, the same pieces force selfmate by direct check on the same square again, on the 4th move. (FA)",
+   "reprint": "FIDE Album 2013-2015 2019",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1366463",
+   "pdb_id": "P1366463",
+   "fen": "1B1N1brq/1p2p1pP/bp2P3/Rn1k4/N3np2/3K1B2/2R1P3/6Q1",
+   "stip": "s#2",
+   "count": "11+12",
+   "author": "Evgeni Bourd",
+   "source": "SuperProblem (Website) 2013\n1. Prize, 1. place\n 93. theme tourney",
+   "solution": "* 1...bxa5 2.Sc3+ Sxc3#\n* 1...g5,g6 2.Qd4+ Qxd4#\n1.Rd2!\n1...bxa5 2.Qd4+ Sxd4#\n1...g5,g6 2.Sc3+ Qxc3#\n1...Qxh7 2.Bxe4+ Qxe4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1366472",
+   "pdb_id": "P1366472",
+   "fen": "5NN1/2p3p1/R1nk1nQ1/2q4R/2p2K1p/B2P1B2/1p1r3B/1bb5",
+   "stip": "s#2",
+   "count": "10+12",
+   "author": "Evgeni Bourd",
+   "source": "SuperProblem (Website) 2013\nSpezielle HM\n 93. theme tourney",
+   "solution": "1.Rf5? threat 2.Kg5+ Rxh2#\n1...Qxa3 2.Ke3+ Rxh2#\n1...h3!\n1.d4! threat 2.Ke3+ Rxh2#\n1...Qxa3 2.Kg5+ Rxh2#",
+   "themes": "Obvious promotion (L)",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1366485",
+   "pdb_id": "P1366485",
+   "fen": "8/4N3/8/1p1N4/bPpP1p2/prqk4/3pRQ1R/2bK2BB",
+   "stip": "s#4",
+   "count": "10+10",
+   "author": "Evgeni Bourd",
+   "source": "SuperProblem (Website) 2013\n2. HM\n 94. theme tourney",
+   "solution": "1.Qf1! threat 2.Rg2+ Ke4 3.Rg4+ Qf3+ 4.Qe2+ Re3#\n1...Bb2 2.Re3+ Kxd4 3.Re6+ Qe3 4.Rxd2+ Rd3#\n1...Qxd4 2.Be4+ Qxe4 3.Rxe4+ Kxe4 4.Qe2+ Re3#\n1...f3 2.Re4+ Kxe4 3.Qe2+ Qe3 4.Qxe3+ Rxe3#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1366487",
+   "pdb_id": "P1366487",
+   "fen": "1r6/1rR5/5p2/5R2/k1N2K2/5Q2/BP1B4/8",
+   "stip": "s#5",
+   "count": "8+4",
+   "author": "Evgeni Bourd",
+   "source": "SuperProblem (Website) 2013\nComm.\n 94. theme tourney",
+   "solution": "1.Sb6+? Rxb6 2.Qd1+ Rb3 3.Rc4+ Rb4 4...?? Rxc4#\n1.Qc6+! Rb5 2.Sb6+ Rxb6 3.Qc2+ Rb3 4.Rc4+ Rb4 5.Qd1 Rxc4#",
+   "genre": "s#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1369787",
+   "pdb_id": "P1369787",
+   "fen": "8/pp2P1K1/qn2QR2/1pPpp1N1/1N1kp1n1/3P1P1b/1bRB1PB1/4r3",
+   "stip": "#3",
+   "count": "13+13",
+   "author": "Evgeni Bourd",
+   "source": "The Macedonian Problemist 2016\n1. place\n TMP League 2016\n WCCI=8.5",
+   "solution": "1.f4! threat 2.Qd6 A threat 3.Se6#\n2...Se3,Sg~ 3.Qxe5# C\n1...exf4 2.Qf5 B threat 3.Se6#\n2...Sa4,Sb~ 3.Qxd5# D\n2...exd3 3.Sf3# E\n1...Ba3,Bc3 2.Bc3+ Kxc5 3.Qd6# A\n1...exd3 2.Sf3+ E Ke4 3.Qf5# B\n1...Bxg2 2.Qxe5+ C Sxe5 3.Se6#\n1...Qa3,Qa4,Qa5 2.Qxd5+ D Sxd5 3.Se6#\nPR Aleksandr Sygurov",
+   "reprint": "FIDE Album 2016-2018 2022",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1373589",
+   "pdb_id": "P1373589",
+   "fen": "2R5/K3BB2/3pN1N1/pbpkPp2/4p2p/1r1P1rb1/1P5q/2n1R3",
+   "stip": "#3",
+   "count": "10+13",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "Marián Križovenský 55 JT 2017\n2. Prize",
+   "solution": "1.Bf8! threat 2.Se7+ Kxe5 3.Bg7#\n1...Bxd3 2.Sd8+ Kd4 3.Sc6#\n1...exd3 2.Sg5+ Kd4 3.Sxf3#\n1...Sxd3 2.Sxc5+ Kd4 3.Sxb3#\n1...Rxd3 2.Sg7+ Kd4 3.Sxf5#\n1...Rxd3 2.Sc7+ Kd4 3.Sxb5#\n2...Kc6 3.Be8#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1374967",
+   "pdb_id": "P1374967",
+   "fen": "q6r/3p4/1p1PP1R1/1Pbkp3/1p2N1Pp/6n1/p1R1P1Q1/B2K4",
+   "stip": "#3",
+   "count": "11+11",
+   "author": "Evgeni Bourd",
+   "source": "Rochade Europa 3127 2014\n2. Prize\n informal tourney 2014-2015",
+   "solution": "1.e7! threat 2.Sxg3+ e4 3.Qxe4#\n1...Qa3 2.Sf6+ Ke6 3.Qd5#\n2...Kxd6 3.Sd5#\n1...Qf8 2.Sc3+ Kc4 3.Qd5#\n2...Kd4 3.Sd5#\n1...Sxe4 2.Qf3 threat 3.Qb3#, 3.Qf7#\nPreisbericht in 'Problem-Forum' 12/2015\nPR Sven Trommler",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1375052",
+   "pdb_id": "P1375052",
+   "fen": "6N1/bRp1N1p1/n1QB2p1/1rRK3k/rp3P2/6PP/8/8",
+   "stip": "#3",
+   "count": "10+9",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "Rochade Europa 2648 2009",
+   "solution": "1.Rb8! threat 2.Sf6+ gxf6 3.Rh8#\n1...Rxb8 2.Kc4+ Sxc5 3.Qf3#\n2...Bxc5 3.Qf3#\n1...Rxc5+ 2.Bxc5 ... 3.Qxg6#\n1...Sxb8 2.Ke6+ Rxc5,g5,Bxc5 3.Qf3#\n1...Bxb8 2.Kd4+ Rxc5,Sxc5,g5 3.Qf3#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1375138",
+   "pdb_id": "P1375138",
+   "fen": "1n3R2/r3p1N1/3b1p2/1Qp4r/2P2p1n/1Pp1kPR1/3p1N2/3B1KB1",
+   "stip": "#4",
+   "count": "11+12",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Rochade Europa 2679 2009",
+   "solution": "1.Rd8! threat 2.Sh3+ Kd3 3.Sxf4#\n1...Sd7 2.Qc6 Re5 3.Sh3+ Kd3 4.Sxf4#\n1...Rd7 2.Qa5 Be5 3.Se4+ Kd3 4.Sxc5#\n2...Kd4 3.Se4+ Kd3,Ke5 4.Qxc3#\n2...fxg3 3.Qxc3+ Kf4 4.Sh3#\n1...Sxf3 2.Rxf3+ Kd4 3.Rd3+ Ke5 4.Rd5#\n1...Sg2 2.Qxc5+ Rxc5 3.Se4+ Kd3 4.Sxc5#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1376474",
+   "pdb_id": "P1376474",
+   "fen": "2K2Q2/5n2/3P4/1R3PP1/2p1Nk2/5p1P/3P4/BN2R2B",
+   "stip": "#2",
+   "count": "13+4",
+   "author": "Evgeni Bourd",
+   "source": "Rochade Europa 2280 2004",
+   "solution": "1.Bd4?\n1...Sd8,S~ 2.Be5#\n1...Sxd6+ 2.Qxd6#\n1...c3!\n1.Bc3?\n1...Sd8,S~ 2.Be5#\n1...Sxd6+ 2.Qxd6#\n1...f2!\n1.Sbc3!\n1...Sd8,S~ 2.Sd5#\n1...Sxd6+ 2.Qxd6#\n1...f2 2.Se2#",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1376519",
+   "pdb_id": "P1376519",
+   "fen": "5RKB/8/4B3/1N2p3/Rbr1kP1p/3nprp1/q1NPPP1Q/8",
+   "stip": "#2",
+   "count": "12+10",
+   "author": "Evgeni Bourd",
+   "source": "Rochade Europa 2292 2004",
+   "solution": "1.Rxb4? threat 2.Sc3# 2.Sd6#\n1...Qxc2!\n1.Qg2? threat 2.Qxf3# 2.exf3#\n1...Sxf4 2.Qxf3#\n1...Bxf8 2.Qxf3#\n1...Se1!\n1.Qxh4! threat 2.Qh7#\n1...Sxf4 2.d3#\n1...Bxf8 2.Sc3#\n1...Rc7 2.Sd6#\n1...Rxf4 2.f3#",
+   "themes": "Capture key",
+   "genre": "2#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1376631",
+   "pdb_id": "P1376631",
+   "fen": "8/1p3BK1/3r1Q1R/4ppp1/2bpkpn1/8/8/8",
+   "stip": "h#2",
+   "count": "4+10",
+   "author": "Evgeni Bourd",
+   "source": "Rochade Europa 2048 2005",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Be6 Qxf5+ 2.Kxf5 Bg6#\n2) 1.Rd5 Qxe5+ 2.Kxe5 Re6#",
+   "comment": "Henrik Juel (202{OO}6-05): C+ by Popeye 4.61 (also)",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1381823",
+   "pdb_id": "P1381823",
+   "fen": "b7/4n3/2B4q/3N3r/2kB4/2P5/6K1/2n5",
+   "stip": "h#2",
+   "count": "5+6",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 7070 2014\n4. HM\n section h#2",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Sd3 Ba4 2.Sc6 Sb6#\n2) 1.Sb3 Sc7 2.Sd5 Bb5#\nPR Yves Tallec 10/2016",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1381890",
+   "pdb_id": "P1381890",
+   "fen": "6n1/8/1KQ3N1/5k2/8/6r1/8/8",
+   "stip": "h#2",
+   "count": "3+3",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 7266 2015",
+   "twins": [
+    "b) in Mattstellung a) sK->f5"
+   ],
+   "solution": "a) 1.Kg4 Se5+ 2.Kh3 Qh1#\nb) 1.Ke6 Sg6 2.Kd6 Qc6#",
+   "themes": "Aristocrat",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1381898",
+   "pdb_id": "P1381898",
+   "fen": "8/8/5KB1/2P5/Pk1n1R2/3p1r2/1p1n4/N2qBb2",
+   "stip": "h#2",
+   "count": "7+8",
+   "author": "Menachem Witztum; Emanuel Navon; Evgeni Bourd",
+   "source": "Phénix 7274 2015",
+   "stip_note": [
+    "4.1..."
+   ],
+   "solution": "1) 1.Kc3 Bf7 2.Sf5 Rc4#\n2) 1.Ka5 Bxd3 2.Sc2 Sb3#\n3) 1.Kxa4 Sc2 2.Sb3 Be8#\n4) 1.Kc4 Sb3 2.Sb1 Bf7#",
+   "themes": "Capture key",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1381992",
+   "pdb_id": "P1381992",
+   "fen": "8/rrPqP2K/8/R2n4/1k6/8/8/8",
+   "stip": "h#2",
+   "count": "4+5",
+   "author": "Evgeni Bourd",
+   "source": "Phénix 7718 2016",
+   "twins": [
+    "b) in Mattstellung a1) wD=sD",
+    "c) in Mattstellung a2) wD=sD"
+   ],
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "a1) 1.Qa4 c8=Q 2.Qb3 Qc5#\na2) 1.Qc6 e8=Q 2.Qc3 Qa4#\nb) 1.Sc7 e8=Q 2.Qc3 Qa4#\nc) 1.Se7 c8=Q 2.Qb3 Qc5#",
+   "themes": "Promotion",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1388830",
+   "pdb_id": "P1388830",
+   "fen": "1n3N2/7p/pQ1P1p2/rpPk4/p5Np/1pPB3R/3P2K1/1rn5",
+   "stip": "#3",
+   "count": "10+12",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Sachmatija 2018\n1. HM\n M. Rimkus 75 JT 2017",
+   "solution": "1.Bf5! threat 2.Kf3 Kc4 3.Se3#\n1...Se2,Sc~ 2.Rd3+ Sd4 3.Rxd4#\n2...Kc4 3.Se3#\n1...b2 2.d4 Kc4 3.Be6#\n1...b4 2.Be6+ Ke4 3.Qxb4#\n1...h5 2.Se3+ Ke5 3.Sg6#\n1...Sc6,Sb~ 2.Sd7 ... 3.Se3#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1391207",
+   "pdb_id": "P1391207",
+   "fen": "8/1KNB4/Q1p2B1b/2pP2rn/1p1rkP1N/1P1pP3/5P2/8",
+   "stip": "#3",
+   "count": "11+9",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "8. WCCT B29 2008\n2. place",
+   "solution": "* 1...Rxd5 2.Bxc6 threat 3.Qc4#\n* 1...Rxd5 2.Bg4 threat 3.Bf3#\n1.Se8? threat 2.Sd6+ Kxd5 3.Qxc6#\n1...Rxd5 2.Qc4+ Rd4 3.Sd6#\n1...Rxd5 2.Qxc6 threat 3.Sd6# 3.Bf5#\n2...Bxf4,Bf8 3.Bf5#\n2...Sg3,Sg7 3.Sd6#\n1...Bf8!\n1.Se6! threat 2.Sxc5+ Kxd5 3.Qxc6#\n1...Rxd5 2.Qxc6 threat 3.Sxc5#\n2...Bf8 3.Sxg5#\n1...Rxd5 2.Bxc6 threat 3.Sxc5#\n2...Bf8 3.Sg5#\n2...Rc4 3.Qxc4#\n1...Bf8 2.Sxg5+ Kxd5 3.Qxc6#",
+   "reprint": "FIDE Album 2007-2009 2015",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1391266",
+   "pdb_id": "P1391266",
+   "fen": "b1R1N1n1/3p2p1/1p1P1PB1/1P1kp2R/8/P2p2P1/3K1B2/8",
+   "stip": "#4",
+   "count": "11+8",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "8. WCCT C31 2008\n10. place",
+   "solution": "1.Rc3! threat 2.Rxd3+ Kc4 3.Sc7 ... 4.Rc3#\n2...Ke6 3.f7 Sh6 4.f8=S#\n1...Se7 2.Sc7+ Kxd6 3.Bf7 threat 4.Se8#\n1...Sxf6 2.Bf7+ Ke4 3.Rxd3 threat 4.Bg6#\n1...Ke6 2.f7 Sf6 3.Sc7+ Kxd6 4.f8=Q#,B#\n2...Se7 3.f8=Q Kd5 4.Qf7#",
+   "themes": "Promotion in the mating move (D); under-promotion in mating move (L)",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1391271",
+   "pdb_id": "P1391271",
+   "fen": "1KN5/4p1p1/2pPNp2/2p2R2/1BB1k1P1/6R1/1P5r/1b1nr3",
+   "stip": "#4",
+   "count": "10+10",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "8. WCCT C25 2008\n14.-16. place",
+   "solution": "1.b3! threat 2.Bd3+ Bxd3 3.Sxc5+ Kd4 4.Rxd3#\n1...Rd2 2.Sxc5+ Kd4 3.Sa7 Be4 4.Se6#\n1...Rh3 2.Rf4+ Ke5 3.Bxc5 Re4 4.Rf5#\n1...Re3 2.Rf4+ Ke5 3.Rxe3+ Sxe3 4.Bc3#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1391352",
+   "pdb_id": "P1391352",
+   "fen": "1K1nR2n/1*3rPkqP2/1R1pN3/*3r2PBP2/p7/3PNPp1/*3bprP4/1bb5",
+   "stip": "#2",
+   "count": "13+14",
+   "author": "Uri Avner; Evgeni Bourd",
+   "source": "8. WCCT G16 2008\n5. place",
+   "conditions": [
+    "Anticirce type Cheylan",
+    "sTL=Turmlion",
+    "sLL=Läuferlion"
+   ],
+   "solution": "1.Bc3? threat 2.c8=Q#\n1...RLa5-a3 2.c8=B#\n1...RLb7-b3 2.Kc8#\n1...RLb7-b5!\n1.Sc4? threat 2.c8=B#\n1...RLa5-a3 2.Kc8#\n1...RLb7-b3 2.c8=Q#\n1...BLa2xd5[+sLLd1] 2.Kc8#\n1...Qf6,Q~ 2.Re7#\n1...Qh4!\n1.Sc5! threat 2.Kc8#\n1...RLa5-a3 2.c8=Q#\n1...RLb7-b3 2.c8=B#",
+   "themes": "Circe (Anti- Cheylan)",
+   "genre": "Fairies",
+   "orthodox": false
+  },
+  {
+   "id": "pdb-P1392371",
+   "pdb_id": "P1392371",
+   "fen": "BB2RR1K/3p4/3p2p1/3PP3/1p1nk3/p2pP2P/1n2NppP/1Q3br1",
+   "stip": "#3",
+   "count": "12+13",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "9. WCCT B69 2013\n3.-5. place",
+   "solution": "1.Ba7! threat 2.Bxd4 threat 3.Rf4# 3.exd6# 3.Sg3#\n1...Sc6 2.Rf4+ Kxd5 3.Rd4#\n1...Sf5 2.exd6+ Kf3 3.Sd4#\n2...Se7 3.Rxe7#\n1...Se6 2.Sg3+ Kxe5 3.Bd4#\n1...Kxe3 2.exd6+ Kd2 3.Qc1#",
+   "reprint": "FIDE Album 2013-2015 2019",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1392374",
+   "pdb_id": "P1392374",
+   "fen": "1N3nK1/B2rp3/N1RP1P2/n1pkp3/rp3pQ1/3BP2p/4P3/3bb3",
+   "stip": "#3",
+   "count": "11+13",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "9. WCCT B59 2013\n7.-8. place",
+   "solution": "1.Qf5! threat 2.Rxc5+ Kxd6 3.Qxe5#\n1...Bb3 2.Be4+ Kc4 3.Rxc5#\n1...Bc3 2.e4+ Kd4 3.Bxc5#\n1...exf6 2.Qe4+ Ke6 3.Sxc5#\n1...Sxc6 2.Bc4+ Kxc4 3.Qd3#\n2...Kxd6 3.Bxc5#\n1...Sb3,Sb7 2.Bc4+ Kxc4 3.Qd3#\n1...exd6 2.Qxd7 threat 3.Qxd6# 3.Rxc5# 3.Rxd6# 3.Sc7#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1392388",
+   "pdb_id": "P1392388",
+   "fen": "6bK/bPnR2pp/4p3/B1k1P3/p1PN1P2/2R3N1/3P4/nq6",
+   "stip": "#3",
+   "count": "11+10",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "9. WCCT B67 2013\n17.-22. place",
+   "solution": "1.Rd6! threat 2.Sc2 threat 3.Se4# 3.d4#\n1...Qxb7 2.Sc6 threat 3.Se4# 3.d4#\n1...Qe1 2.Se2 threat 3.Se4# 3.d4#\n1...Qh1 2.Sf3 threat 3.Se4# 3.d4#\n1...Qg6,Qf5 2.Sf5 threat 3.Se4# 3.d4#\n1...Qd3 2.Rxd3 threat 3.Rc6#\n2...Kxc4 3.Rc3#\n1...Se8 2.Sxe6+ Bxe6 3.d4#\n1...Sd5 2.cxd5+ Kxd4 3.dxe6#\n1...Sb3 2.Sxb3+ axb3 3.d4#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1392597",
+   "pdb_id": "P1392597",
+   "fen": "2brnb1r/Q1p1pRn1/p7/3p1Bq1/2pPNP2/4kPp1/4N1P1/2K1R3",
+   "stip": "#4",
+   "count": "11+14",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "9. WCCT C18 2013\n22.-25. place",
+   "solution": "1.Qc5! threat 2.Qa3+ c3 3.Qxc3#\n1...e6 2.Sg1+ Kxf4 3.Bh7+ Sf5,Sf6,Qf5,Qf6 4.Sh3#\n2...Kd3 3.Sf2+ Kc3 4.Re3#\n1...e5 2.Sc3+ Kxf4 3.Bd7+ Sf5,Sf6,Qf5,Qf6 4.Sxd5#\n2...Kd3 3.Sf2+ Kxc3 4.Re3#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1392612",
+   "pdb_id": "P1392612",
+   "fen": "K3R3/ppQ3p1/1PnNP1r1/3p1p1n/2NP1kBP/2r4P/2Pq1P2/B1bR3b",
+   "stip": "#6",
+   "count": "15+13",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "9. WCCT C73 2013\n33.-37. place",
+   "solution": "1.Rf8! threat 2.Rxf5#\n1...Rf6 2.Sb5+ Ke4 3.Sd6+ Kf4 4.Sf7+ Ke4 5.Sg5+ Qxg5 6.Sxc3#\n1...Sf6 2.Sxf5+ Ke4 3.Sd6+ Kf4 4.Sxb7+ Ke4 5.Sc5+ Rxc5 6.Sg3#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1393511",
+   "pdb_id": "P1393511",
+   "fen": "2B5/2rQn1q1/6p1/4p1Rp/1N1PkB1b/2r1PR1K/2PnP3/7N",
+   "stip": "#3",
+   "count": "12+10",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "10. WCCT B044 2017\n13. place\n FIDE Album 8",
+   "solution": "1.Ba6! threat 2.Bd3+ Rxd3 3.cxd3#\n1...Rc4 2.Rg3 threat 3.Sf2#\n2...Bxg3 3.Sxg3#\n1...Rc4 2.Rg3 threat 3.Sf2#\n2...Bxg3 3.Sxg3#\n1...Sc4 2.Bg3 threat 3.Sf2#\n2...Bxg3 3.Sxg3#",
+   "reprint": "FIDE Album 2016-2018 2022",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1393514",
+   "pdb_id": "P1393514",
+   "fen": "1r6/2n1P3/q1P2p2/1N1pB1p1/npPp1PNP/pP1k2KR/6QP/8",
+   "stip": "#3",
+   "count": "13+11",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "10. WCCT B062 2017\n14.-17. place",
+   "solution": "* 1...Qxb5 2.Sxf6 gxf4+ 3.Kxf4#\n* 1...fxe5 2.Sxe5+ Ke3 3.Kg4#\n1.Bxf6! threat 2.Se5+ Ke3 3.Kg4#\n1...Rxb5 2.hxg5 threat 3.Kh4# A\n1...Sxb5 2.fxg5 threat 3.Kf4# B\n1...Qxb5 2.Sh6 threat 3.Kg4# C\n2...gxf4+ 3.Kxf4#\n1...Qc8 2.Sxd4 threat 3.Qc2#\n2...gxh4+ 3.Kxh4# A\n2...gxf4+ 3.Kxf4# B\n2...Qxg4+ 3.Kxg4# C",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1393517",
+   "pdb_id": "P1393517",
+   "fen": "3K2R1/8/2RP4/P3N1p1/r1BkPBP1/1P1p2p1/2pP2Q1/2q1r3",
+   "stip": "#3",
+   "count": "13+8",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "10. WCCT B031 2017\n19. place",
+   "solution": "1.Rc8! threat 2.Sc6+ A Kc5 3.Rxg5# B\n1...gxf4 2.Sf3+ C Kxe4 3.Re8# D\n1...Qa1 2.Rxg5 B threat 3.Sc6# A\n2...Rxc4 3.Rxc4#\n1...Qb2 2.Re8 D threat 3.Sf3# B\n2...Re3,Rf1 3.Bxe3#\n1...Rxa5 2.Bd5 threat 3.Rc4# 3.Sf3#\n2...Rxe4 3.Qxe4#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1393601",
+   "pdb_id": "P1393601",
+   "fen": "3RR3/1p3Np1/4Pkp1/1K1P2pP/2p3p1/6nr/2NP1bP1/1B4nr",
+   "stip": "#5",
+   "count": "11+12",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "10. WCCT C040 2017\n8.-9. place\n FIDE Album 8.0",
+   "solution": "1.Rf8! threat 2.Sd6+ Ke5 3.Sxc4+ Ke4 4.Sa1+ Kd4 5.Sb3#\n1...Se2,S3~ 2.Sh8+ Ke5 3.Sxg6+ Ke4 4.Se3+ Kd4 5.Sf5#\n1...Se2,S1~ 2.Sh6+ Ke5 3.Sxg4+ Ke4 4.Se1+ Kd4 5.Sf3#\nFIDE Album:\nDouble Siers play in threat and two variations where the first Siers captures a guarding black pawn, allowing the secong Siers to checkmate.",
+   "reprint": "FIDE Album 2016-2018 2022",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1393607",
+   "pdb_id": "P1393607",
+   "fen": "2rbR3/Bn3K2/B1p2p2/1NPP3R/1pk1N1p1/2pbppP1/P5Q1/4nr2",
+   "stip": "#6",
+   "count": "12+14",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "10. WCCT C052 2017\n11.-13. place",
+   "solution": "1.Qc2! threat 2.Qb3#\n1...Bxc2 2.Sc7+ Kd4 3.Se6+ Kxe4 4.Sg5+ Kxd5 5.Sxf3+ Bf5 6.Rxf5#\n5...f5 6.Re5#\n4...Kd4 5.Re4+ Bxe4 6.Se6#\n5...Kxd5 6.Bc4#\n1...Sxc2 2.Sd6+ Kd4 3.Sf5+ Kxd5 4.Se7+ Kxe4 5.Sxc6+ Be7 6.Rxe7#\n4...Kd4 5.Rd5+ Kxe4 6.Bxd3#\n5...cxd5 6.Sf5#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1393614",
+   "pdb_id": "P1393614",
+   "fen": "RR5B/8/1N1K1N1P/1kp5/p2P4/2P3P1/2P1nP2/rb1n3r",
+   "stip": "#5",
+   "count": "12+8",
+   "author": "Evgeni Bourd",
+   "source": "10. WCCT C036 2017\n20.-21. place",
+   "solution": "1.Kc7! threat 2.Ra5+ Kxa5 3.Sc4+ Ka6 4.Ra8+ Kb5 5.Sd6#\n1...Sxc3 2.Sd5+ Kc4 3.Se3+ Kxd4 4.Sh7+ Ke4 5.Sg5#\n1...Sxc3 2.Sc8+ Kc4 3.Sd6+ Kxd4 4.Sh5+ Kd5 5.Sf4#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1393877",
+   "pdb_id": "P1393877",
+   "fen": "4r3/2rp1B2/1n1p4/3N3K/p1k5/p1N2p2/b1R4b/1n6",
+   "stip": "h#2",
+   "count": "5+12",
+   "author": "Menachem Witztum; Evgeni Bourd",
+   "source": "10. WCCT G057 2017\n26.-27. place",
+   "conditions": [
+    "take&make",
+    "2.1..."
+   ],
+   "solution": "1) 1.Kxd5-b4 Rxh2-e5 2.Bd5 Sxd5-a2#\n2) 1.Kxc3-b5 Bxe8-e1 2.Rc3 Sxc3-c7#",
+   "genre": "Fairies",
+   "orthodox": false
+  },
+  {
+   "id": "pdb-P1416476",
+   "pdb_id": "P1416476",
+   "fen": "5N2/b7/2rp4/1nBp1np1/1K3R1q/3k1Prb/6P1/8",
+   "stip": "h#3",
+   "count": "6+11",
+   "author": "Evgeni Bourd",
+   "source": "Variantim 2008\n2. HM\n Israel-Ringturnier",
+   "twins": [
+    "b) wKb4->f2"
+   ],
+   "stip_note": [
+    "0.1.1..."
+   ],
+   "solution": "a) 1...Rd4+ 2.Ke3 Rf4+ 3.Kxf4 Sg6#\nb) 1...Bd4 2.Kc4 Bc5+ 3.Kxc5 Sd7#",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1424892",
+   "pdb_id": "P1424892",
+   "fen": "1B6/1KN1p3/1P1k1p2/2pNb1p1/n1R3B1/1P2r1Q1/2nr2p1/4R1q1",
+   "stip": "#5",
+   "count": "10+12",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "The Royal Moroccan Chess Federation (FRME) 2017\n4. Comm.\n 3rd FRME Tourney\n Section 4-6#",
+   "solution": "1.Bc8! threat 2.Qg4! f5 3.Qxf5 threat 4.Qe6# 4.Qd7#\n1...Bxg3 2.Sc3! Sxc3 3.Sb5+ Kd5 4.Sxc3+ Rxc3 5.Be6#\n1...Rxg3 2.Sf4! gxf4 3.Se6+ Kd5 4.Sxf4+ Bxf4 5.Be6#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1425200",
+   "pdb_id": "P1425200",
+   "fen": "2rqr3/2pPp2P/b1pP2RK/6pN/BBk5/P2Rpn2/p3PP2/N7",
+   "stip": "#4",
+   "count": "13+12",
+   "author": "Evgeni Bourd",
+   "source": "SuperProblem (Website) 2013\n1. Prize\n 81. Thema-Turnier\n WCCI=8.5",
+   "solution": "1.Sb3? A threat 2.Sa5#\n1...cxd6! a\n1.Sc2? B threat 2.Sxe3#\n1...exd6! b\n1.Sg3! threat 2.Rc3+ Kd5 3.Rc5+ Kd4 4.Sb3# A, 4.Sc2# B\n2...Kd4 3.fxe3+ Kd5,Ke5 4.Rc5#\n1...cxd6 a 2.Sc2 B threat 3.Sxe3#\n2...Qb6 3.Bb3+ Kb5 4.a4#\n1...exd6 b 2.Sb3 B threat 3.Sa5#\n2...Re5 3.Rc3+ Kd5 4.Bxc6#\nFA: Banny with Dresden substitute defences, exploited as distant self-blocks.",
+   "reprint": "FIDE Album 2013-2015 2019",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1425201",
+   "pdb_id": "P1425201",
+   "fen": "5B2/5pK1/1bRQP1P1/r1pppp2/1p2k3/1N3b1N/1PP2Pn1/3Bn1R1",
+   "stip": "#4",
+   "count": "13+12",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Zadachi i etyudy 2015\n4. Prize FA=8.5\n Yuri Fokin 90 JT",
+   "solution": "1.Be2! threat 2.Qxd5+ B Kxd5 3.Rd6+ C Ke4 4.Sd2# A\n1...Bxe2 2.Sd2+ A Kd4 3.Qxd5+ B Kxd5 4.Rd6# C\n1...fxe6 2.Qxe5+ E Kxe5 3.Bd6+ F Ke4 4.Sg5# D\n1...Se3 2.Sg5+ D Kf4 3.Qxe5+ E Kxe5 4.Bd6# F\n1...Bc7 2.Sd2+ Kd4 3.Qxc5+ Rxc5 4.Bxc5#\n1...f4 2.Kf6 threat 3.Sg5#, 3.Qxe5#\n2...Bd8+ 3.Qxd8 threat 4.Sg5#\nFA: 2x2 main variations with sacrifices of wQ and shifts of white moves.",
+   "reprint": "FIDE Album 2013-2015 2019",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1425205",
+   "pdb_id": "P1425205",
+   "fen": "8/p1nKp3/pP1bP1Bp/Bn5Q/2pkpP2/1PR1Rp2/1N1rbP2/1q6",
+   "stip": "#4",
+   "count": "12+14",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "The Macedonian Problemist 2014\n1. HM\n FA=8.5",
+   "solution": "1.Sd3? threat 2.Rxc4#, 2.Rxe4#\n1...Bxd3 a 2.Rxe4+ A Bxe4 3.Rxc4+ B Kd3 4.Qxf3#\n1...Qxd3 b 2.Rxc4+ B Qxc4 3.Rxe4+ A Kd3 4.Rxc4#\n1...Sxc3!\n1.Kc6! threat 2.bxc7 threat 3.Qd5#\n2...Sxc7 3.Rxc4+ Bxc4 4.Bc3#\n1...Bd3 a 2.Qd5+ Sxd5 3.Rxe4+ A Bxe4 4.Rxc4# B\n1...Qd3 b 2.Qc5+ Bxc5 3.Rxc4+ B Qxc4 4.Rxe4# A\nFA: Two-phase problem with changes from Plachutta to Würzburg-Plachutta interferences, with shifts of white moves after preceding check-avoiding line-closures.",
+   "reprint": "FIDE Album 2013-2015 2019",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1425206",
+   "pdb_id": "P1425206",
+   "fen": "1R3B2/1p6/1p2P3/2P2pK1/r1PP1P1R/1nbr1kN1/3p1pNP/1bqn1B2",
+   "stip": "#4",
+   "count": "13+13",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "Problemist Ukrainy 2014\n1. Prize FA=10",
+   "solution": "1.Rh3! threat 2.Rd8 A threat 3.Sh5+ E Ke4 4.Sf6#\n2...Bxd4 3.Sxf5+ B Ke4 4.Sd6# C\n1...Sxc5 2.Sxf5+ B Ke4 3.Sd6+ C Kxd4 4.Bg7# D\n1...Ra8 2.Bg7 D threat 3.Sxf5+ B Ke4 4.Sd6# C\n2...Rxd4 3.Sh5+ E Ke4 4.Sf6# F\n1...Rxc4 2.Sh5+ E Ke4 3.Sf6+ F Kxd4 4.Rd8# A\n1...Sb2 2.Sxf5+ Ke4 3.Bxd3+ Sxd3,Bxd3 4.Re3#\nFA: 2x2 main variations with Siers mechanism; 2x2 self-blocks at different distances, cycle of White moves and pseudo le Grand.",
+   "reprint": "FIDE Album 2013-2015 2019",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1425255",
+   "pdb_id": "P1425255",
+   "fen": "5bq1/1R3P1r/1P1pb3/1Pk1Pp2/Pp4R1/1rp1N1P1/1nK2P2/5NBB",
+   "stip": "#6",
+   "count": "14+11",
+   "author": "Evgeni Bourd",
+   "source": "The Macedonian Problemist 2013\n1. HM\n WCCI=8",
+   "solution": "1.Sc4! threat 2.Rc7#\n1...Qxf7 2.f4+ Kxc4 3.Se3+ Kc5 4.Sxf5+ Kc4 5.Sxd6+ Bxd6 6.f5#\n1...Rxf7 2.f3+ Kd5 3.Rd4+ Kc5 4.Rxd6+ Kxc4 5.Rc6+ Kd5 6.f4#\n5...Bc5 6.Rxc5#\nFA: Successive battery play (10th WCCT moremover theme), with bivalve and inserted transformations to different Siers mechanisms.",
+   "reprint": "FIDE Album 2013-2015 2019",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1425404",
+   "pdb_id": "P1425404",
+   "fen": "B1r5/4B1p1/r6p/N2Pk2P/1P4KN/2p2P2/2n3pb/1bQR2nq",
+   "stip": "#4",
+   "count": "11+12",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "The Problemist C11323 2015\n3. HM",
+   "solution": "1.Rd3! threat 2.Re3+ Sxe3+ 3.Qxe3+ Be4 4.Qxe4#\n1...Rc6 2.Qf4+ Bxf4 3.Sc4+ Rxc4 4.Sg6#\n1...Rc6 2.Qg5+ hxg5 3.Sg6+ Rxg6 4.Sc4#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1425406",
+   "pdb_id": "P1425406",
+   "fen": "6b1/pRp1R1p1/1QpNP3/2pkP1r1/4pBp1/rP4P1/n3N3/2nB1K2",
+   "stip": "#4",
+   "count": "12+13",
+   "author": "Evgeni Bourd; Arieh Grinblat",
+   "source": "The Problemist C11341 2015\n1. Comm.",
+   "solution": "1.Sc8! threat 2.Rd7+ Kxe6 3.Qxc6+ Kf5 4.Se7#\n1...Rxe5 2.Qxc5+ Kxc5 3.Be3+ Kd5 4.Sf4#\n1...Bxe6 2.Qxc6+ Kxc6 3.Rxc7+ Kd5 4.Se7#\n1...Sb4 2.Sc3+ Kd4 3.Qxc5+ Kxc5 4.Be3#\n1...Ra6 2.Qxa6 Sxb3 3.Bxb3+ c4 4.Qxc4#",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1429979",
+   "pdb_id": "P1429979",
+   "fen": "8/5R2/1N1p1Pr1/1BPnnrb1/P1bPkPPp/3R1p1N/4P3/K3Q3",
+   "stip": "#3",
+   "count": "14+10",
+   "author": "Evgeni Bourd",
+   "source": "FIDE World Cup 2013\n3. HM",
+   "solution": "1.Qf2! threat 2.dxe5 threat 3.Rd4# 3.Qd4# 3.Qxf3#\n1...dxc5 2.Re7 threat 3.Qxf3# A\n2...Sxe7 3.Qe3# B\n2...Rxf4 3.Rxe5#\n1...Bxf6 2.Bc6 threat 3.Qe3# B\n2...Sxc6,Sxg4 3.Qxf3# A\n2...Sxd3 3.exf3#\n2...Bxd3 3.Bxd5#\n1...Bxf4 2.Qxf3+ A Sxf3 3.Sf2#\n1...Rxf4 2.Qe3+ B Sxe3 3.Sf2#\n1...fxe2 2.Qxe2+ Se3 3.Qxe3#\n1...Bxd3 2.Bxd3+ Sxd3 3.exf3#\n1...Sxb6 2.Bc6+ Bd5,Sd5,d5 3.Qe3#\n2...Sxc6 3.Qxf3#",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1429993",
+   "pdb_id": "P1429993",
+   "fen": "2r3r1/2pp1p1p/Pp1pkPp1/6QP/1PN3PP/2P1NP2/1K2n3/8",
+   "stip": "#4",
+   "count": "12+11",
+   "author": "Evgeni Bourd",
+   "source": "FIDE World Cup 2013\n3. Comm.",
+   "solution": "1.Sd5? threat 2.Qe3+ Kxd5 3.Qe4#\n1...Re8!\n1.Sf5? threat 2.Qe3+ Kd5 3.Qe4#\n2...Kxf6 3.Qe7#\n1...Re8!\n1.h6! threat 2.Qd5+ Kxf6 3.Qe4 threat 4.g5# 4.Sd5#\n1...Re8 2.Sd5 threat 3.Sxc7#\n2...Rc8 3.Qe3+ Kxd5 4.Qe4#\n1...Re8 2.Sf5 threat 3.Sg7#\n2...Rg8 3.Qe3+ Kd5 4.Qe4#\n3...Kxf6 4.Qe7#\n2...Kd5 3.Sd4+ Kxc4 4.Qb5#\n3...Re5 4.Se3#\n1...Sg3 2.Sd5 Se2 3.Qe3+ Kxd5 4.Qe4#\n1...Sf4 2.Qxf4 threat 3.Sd5 3.Qe4+ 3.g5\n1...Sxc3 2.Kxc3 threat 3.Sg2 3.Sd5\n1...Sc1 2.Kxc1 threat 3.Sg2 3.Sd5\n1...c6 2.Sf5 threat 3.Sxd6 3.Qe3+",
+   "genre": "n#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1431283",
+   "pdb_id": "P1431283",
+   "fen": "5qbr/P3p3/3Pp1n1/2P1k1P1/3R3P/P1K1ppbQ/B1P2Pn1/B7",
+   "stip": "#3",
+   "count": "13+11",
+   "author": "Arieh Grinblat; Evgeni Bourd",
+   "source": "? 2017\n5. Prize\n I. Kazimov 65 JT\n FIDE Album 8",
+   "solution": "1.Kb4! threat 2.Rg4+ Kf5 3.Rc4#\n1...Sf4 2.Rd3+ Ke4 3.Rxe3#\n1...Sf4 2.Rd5+ Ke4 3.Re5#\n1...Bf4 2.Rc4+ Kd5 3.Qxf3#\n1...Qf4 2.Re4+ Kxe4 3.a8=Q#\n1...Qb8+ 2.axb8=S threat 3.Sc6# 3.Sd7#",
+   "reprint": "FIDE Album 2016-2018 2022",
+   "genre": "3#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1438522",
+   "pdb_id": "P1438522",
+   "fen": "2r4b/8/1Q1p4/1PpnN2p/3kN2r/P2p1q1p/K1p1b3/3R4",
+   "stip": "h#2",
+   "count": "7+13",
+   "author": "Evgeni Bourd",
+   "source": "? 2004\n2. Prize\n Ecole Rudenko",
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "1) 1.Sf6 Sxd3 2.Kc4 Sb2#\n2) 1.Sf4 Sxc5 2.Kc3 Sa4#\nFA=8.5 creation of indirect white batteries, closure of doubly-masked lines (h8>b2, H4>a4)",
+   "reprint": "FIDE Album 2004-2006 2013",
+   "genre": "h#",
+   "orthodox": true
+  },
+  {
+   "id": "pdb-P1438615",
+   "pdb_id": "P1438615",
+   "fen": "3b4/2pKQ3/2PRBp2/p1kr2n1/p1b1rP2/1nPqp3/1P6/8",
+   "stip": "h#2",
+   "count": "8+13",
+   "author": "Evgeni Bourd",
+   "source": "Bulletin IMSCORP-30 2004\n2. Prize (v)",
+   "twins": [
+    "b) sKc5<->sTe4"
+   ],
+   "stip_note": [
+    "2.1..."
+   ],
+   "solution": "a1) 1.cxd6 Bxd5 2.Kxd5 Qxd6#\na2) 1.Bb5 Rxd5+ 2.Kc4 Rd4#\nb1) 1.Sxe6 Rxd5 2.Kxd5 Qxe6#\nb2) 1.Qe2 Bxd5+ 2.Kd3 Be4#\nFA=9.5 Zilahi, active and passive sacrifices, all W1 moves to d5",
+   "reprint": "FIDE Album 2004-2006 2013",
+   "genre": "h#",
+   "orthodox": true
+  }
+ ]
+}

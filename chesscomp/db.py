@@ -25,7 +25,7 @@ from functools import lru_cache
 
 from .knowledge import DIR
 
-COLLECTIONS = {'problemesis': 'problemesis.json'}
+COLLECTIONS = {'problemesis': 'problemesis.json', 'pdb_bourd': 'pdb_bourd.json'}
 RUNS = os.path.join(DIR, 'runs')
 
 
