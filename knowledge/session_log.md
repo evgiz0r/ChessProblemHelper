@@ -777,6 +777,8 @@
   captain 8 problems and PDB has 7 as entries; mail before 2010 is gone, so the 8th cannot be checked.
   Summary and table: knowledge/bourd_record.md. All 19 shown with diagrams (docs/blog/cards/wcct-*.png) and
   translated solutions.
+* Solver check (5-minute cap, resumable): 56 of the direct and self mates checked, 44 ok, 4 with no printed
+  key, 8 timeouts (moremovers and s#), no cook and no mismatch.
 * Process failure: the first notation conversion dropped origin squares, and the check reported a false
   mismatch (Sc3 for Sbc3); fixed by converting the first move to SAN from the diagram.
 * Open: the sixth joint 10th-WCCT candidate (in "Israeli problems for WCCT.pdf", mail 15-17 Apr 2016); the

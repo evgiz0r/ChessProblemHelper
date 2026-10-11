@@ -96,3 +96,6 @@ to keep. `check` statuses: ok, mismatch, cooked, unsound, timeout, unsupported, 
 To add or refresh a collection: `python tools/problemesis.py crawl DIR` then `parse DIR`
 (the parser is deterministic; ids are a hash of position + stipulation + twins + conditions).
 New collections are registered in `db.COLLECTIONS`.
+`knowledge/pdb_bourd.json` (`pdb_bourd`): his own PDB entries not in Problemesis, from a PDB LaTeX export
+via `python tools/pdb_tex.py <export.tex> knowledge/pdb_bourd.json --skip-known`; his record and WCCT
+history are in `knowledge/bourd_record.md`.

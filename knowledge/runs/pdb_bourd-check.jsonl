@@ -48,3 +48,9 @@
 {"id": "pdb-P1425205", "seconds": 58.73, "status": "ok", "solver": ["Kc6"], "published": ["Kc6"]}
 {"id": "pdb-P1425406", "seconds": 33.86, "status": "ok", "solver": ["Sc8"], "published": ["Sc8"]}
 {"id": "pdb-P1429993", "seconds": 32.03, "status": "ok", "solver": ["h6"], "published": ["h6"]}
+{"id": "pdb-P1261074", "seconds": 60.0, "status": "timeout"}
+{"id": "pdb-P1393601", "seconds": 60.02, "status": "timeout"}
+{"id": "pdb-P1350661", "seconds": 60.04, "status": "timeout"}
+{"id": "pdb-P1261067", "seconds": 60.1, "status": "timeout"}
+{"id": "pdb-P1393614", "seconds": 60.08, "status": "timeout"}
+{"id": "pdb-P1424892", "seconds": 60.11, "status": "timeout"}
