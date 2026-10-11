@@ -29,6 +29,9 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   with the solution beside it, for a file or a database record: `tools/card_png.py out.png --portrait` or `--id psis-…`.
 - Every session gives him the link to the Composing Bench, in its first reply and with every diagram:
   https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916 (E. Bourd, 10 Oct 2026).
+- Keep a development log while composing (E. Bourd, 11 Oct 2026): `knowledge/devlogs/<name>.md`, one row per
+  solve or search (stage, FEN, card, the one change, solver verdict, decision), plus dead ends and open
+  questions. When a problem is finished and he asks, give a full review of the process from it, with diagrams.
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his

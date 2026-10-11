@@ -8,6 +8,12 @@ description: Compose a #2 chess problem from a theme or a scheme, in Evgeni Bour
 Read `references/construction.md` now (the order and the rules with their example FENs) and
 `references/dead_ends.md` (what has already failed, with the reason). Do not repeat a dead end.
 
+## Development log (E. Bourd, 11 Oct 2026)
+Open `knowledge/devlogs/<name>.md` at the idea and add a row after every solve or search: stage, FEN, card
+(`tools/show.py`), the one change, the solver verdict, the decision and its reason. Record rejected hits and
+dead ends with the reason. On request, the finished log becomes his review of the process, with diagrams.
+Example: `knowledge/devlogs/claude-pawn-step-c3.md`.
+
 ## Order of work
 1. **Mechanism first, on paper.** Choose the Black effect that yields several mates (self-block, self-pin
    by capture, line closing/opening, unguard) and the squares it happens on. Mating squares and lines
