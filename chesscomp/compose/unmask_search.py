@@ -3,17 +3,19 @@ Post-key: exactly one threat (not by the pinner on PSQ), the named defences each
 no duals, no black checks; every white unit needed (removing it breaks the post-key spec); diagram: the key is unique.
 usage: python3 -m chesscomp.compose.unmask_search CORE SEED KSQ FSQ PSQ WANT_JSON BUDGET_S RNG
 The key unit may be any piece (a masking unit leaving the pin line, or the pinner arriving: KSQ=a5 FSQ=a2).
+Optional env TRIES='{"d5c7": "b6b5"}': tries by first move uci, each with exactly that refutation.
 The diagram must have no flight and no black check, and the key piece must guard a square of the king's field.
 e.g. (two black rooks unpin Sc5, 11 Oct 2026; found 1.Bd5-f7! by hand from its failures):
   CORE=8/8/1r6/Q1n1k3/1r6/8/8/8 WANT='{"R6b5":"Qa5c7","R4b5":"Qa5c3"}' KSQ=e7 FSQ=d5 PSQ=a5
 """
-import sys, random, time, json, chess
+import sys, os, random, time, json, chess
 from chesscomp.compose.keyfind import post_spec
 from chesscomp.core import Problem
 from chesscomp.analysis import analyse
 
 CORE, SEED = sys.argv[1], sys.argv[2]
 KSQ, FSQ, PSQ = (chess.parse_square(x) for x in sys.argv[3:6])
+TRIES = json.loads(os.environ.get('TRIES', '{}'))   # optional: {try uci: its one refutation uci}
 WANT = json.loads(sys.argv[6]); BUDGET = float(sys.argv[7]); random.seed(int(sys.argv[8]))
 core = chess.Board(CORE + ' b - - 0 1'); CSQ = {s: core.piece_at(s) for s in chess.SQUARES if core.piece_at(s)}
 
@@ -107,9 +109,21 @@ def score(fen):
     ksq = bb.king(chess.BLACK); field = chess.SquareSet(chess.BB_KING_ATTACKS[ksq])
     inplay = bool(chess.Board(D + ' w - - 0 1').attacks(FSQ) & field)
     s += 0 if inplay else -40
+    tinfo = ''
+    if good and TRIES:
+        try:
+            ph = analyse(Problem.from_fen(D + ' w - - 0 1', '#2'), include_set=False, max_refutations=3, time_limit=10)['phases']
+        except Exception:
+            ph = []
+        got = {p['first_move']['uci']: [r['uci'] for r in p['refutations']] for p in ph if p['type'] == 'try'}
+        for t, ref in TRIES.items():
+            g = got.get(t)
+            s += 30 if g == [ref] else (8 if g and ref in g else -12)
+        tinfo = f" tries={ {t: got.get(t) for t in TRIES} }"
+        good = good and all(got.get(t) == [r] for t, r in TRIES.items())
     if good and not idle and not dchecks and not dflights and inplay:
         s += 100
-    return s, f"{info} idle={idle} dchecks={dchecks} dflights={dflights} inplay={inplay} keys={keys} D={D}"
+    return s, f"{info} idle={idle} dchecks={dchecks} dflights={dflights} inplay={inplay} keys={keys}{tinfo} D={D}"
 
 
 def mutate(fen):

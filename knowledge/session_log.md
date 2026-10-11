@@ -815,3 +815,8 @@
   (four tries, but a diagram flight), 1.Bb5-d3 (Rxc4 hole). Finished: 6K1/1p6/1rp4R/Q1nBk3/1rp1Pp2/3n1P2/4N3/8,
   1.Bf7! (2.Re6#) R6b5 Qc7#, R4b5 Qc3#; try Bxc4? Rxc4!. Gate PASS; flaws: static key, attacked key piece. New tool
   chesscomp/compose/unmask_search.py.
+* E. Bourd on 1.Bf7: 'not bad... the static key is acceptable here, it's a bit predictable... the key pins'; asked for
+  tries where a knight makes the key and blocks the queen mates. A knight mask on d5 failed (Kxd5 flight, or 1.Qxc5 when
+  d5 is protected). The mask on b5, the interposition square, works: 8/p4B1K/1rp4R/QNn1k3/1rP2pP1/3n1P2/4N3/8,
+  1.Sa3! (2.Re6#) R6b5 Qc7#, R4b5 Qc3#, Rxc4 Sxc4#; tries Sc7?/Sd6? R6b5!, Sc3? R4b5!, Sd4? R4b5!/Rxc4!, Sxa7? Rxc4!.
+  Gate PASS, trim-minimal. unmask_search got an optional TRIES requirement.

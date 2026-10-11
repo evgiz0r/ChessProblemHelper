@@ -1366,6 +1366,24 @@
     "Bf7"
    ],
    "note": "1.Bf7! (2.Re6#) R6b5 2.Qc7#, R4b5 2.Qc3#; try 1.Bxc4? (2.Re6#) Rxc4!. The bishop on d5 masks the pin; the key unmasks Qa5's pin on Sc5 and protects e6 for the threat. Each rook unpins the knight on b5 (so Sxe6 would refute Re6#) and its departure opens a diagonal of the pinner herself: b6 leaves a5-c7, b4 leaves a5-c3. The queen pins and gives both mates. Flaws (gate PASS, no fatal): static key (both mates already set, because they do not depend on the pin), key piece attacked by c6, Kg8 only stops 1.Bg8 (with Pb7 stopping Rb8+), random rook moves allow Re6#/Qc7#, 7+9 with 6 pawns. Rejected keys on the way: 1.Qa4-a5 (sound, set R4b5 Qd4# changed to Qc3#, but the queen is out of play and attacked); 1.Sd5-e7 (four tries Sc7? R6b5!, Sc3? R4b5!, Se3? fxe3!, Sxb6? Rxb6!, but a d5 or f5 flight in the diagram)."
+  },
+  {
+   "id": "claude-two-rooks-unpin-sa3",
+   "fen": "8/p4B1K/1rp4R/QNn1k3/1rP2pP1/3n1P2/4N3/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 11 Oct 2026), theme and the knight-tries idea by E. Bourd",
+   "source": "extension of claude-two-rooks-unpin-bf7 on E. Bourd's request: 'tries where a knight performs the key instead of the bishop, and the tries will block the queen mates'",
+   "themes": [
+    "Black unpinning (two rooks interpose on one square)",
+    "Black line opening: each interposition opens a diagonal of the pinning queen",
+    "Unmasking key that vacates the interposition square",
+    "Knight wheel of tries refuted by the thematic defences",
+    "Dual avoidance (the other rook still closes its diagonal)"
+   ],
+   "keys": [
+    "Sa3"
+   ],
+   "note": "1.Sa3! (2.Re6#) R6b5 2.Qc7#, R4b5 2.Qc3#, Rxc4 2.Sxc4#. Tries by the masking knight: 1.Sc7? and 1.Sd6? (block the c7 mate) R6b5!; 1.Sc3? (blocks the c3 mate) R4b5!; 1.Sd4? R4b5!/Rxc4!; 1.Sxa7? Rxc4! (only a3 guards c4). Set: R6xb5 Qc7#, R4xb5 Qc3# (the rooks capture the masking knight, after the key they interpose on its square). The knight on b5 also stops 1.Qxc5 and leaves no flight, which a mask on d5 could not do. Gate PASS, trim-minimal, no fatal flaw. Flaws: the key piece attacked three times, R6b5 refutes two tries (and R4b5 two, one shared with Rxc4), the key goes to the edge (its job is the guard of c4), 9+8 with 6 pawns, Kh7 cook-stopper, Pa7 only stops 1.Qxb6 and 1.Qa8."
   }
  ]
 }
