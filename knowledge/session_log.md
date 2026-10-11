@@ -795,3 +795,7 @@
   f2 pawn and the Bd6 extra, added a black rook a4 and found the key 1.Bf5-d3 (shields f3 from Ra3); first sound
   6bK/5p2/Q6R/3nkB2/rbPn3N/6P1/1B6/8, final 2N5/3p1K1p/Q7/3nkB2/rbPn3N/6P1/1B6/8, 1.Bd3!. A third mate on e6 failed (the
   e6 square is not tied to the pin). 'Can improve much more, but the scheme works.'
+* Theme 'two black knights capture the same pawn' (11 Oct, E. Bourd): the mechanism came from postsearch in one run
+  (Kd5, Pe5, Sd3/Sf3; Sfxe5 Rd4#, Sdxe5 Ra5#, Kxe5 Qe6#; threat Qd6#). A new diagram search, keysearch.py
+  (solver + critique scored), found 1.Qe3-b6 as the only key, but with a c6 flight in the diagram. Covering c6 brings
+  knight-capture and check cooks. Reported to him with the post-key sketch.
