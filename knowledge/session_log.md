@@ -767,3 +767,14 @@
   itself (Bd6/Rd6); a key knight from e5 protects e5 from every square (Re5 dual); a rook on e5 checks the king. Result:
   1B6/7p/B7/3p3R/2n1k3/2P5/4K3/6N1, 1.Sh3! (2.Sf2#) Sd6 2.Bd3#, Se5 2.Rxe5#, gate PASS, 10 units, but random knight moves
   allow three mates (threat, Bd3, Re5) and the critique did not report it (hidden under 'further moves allow the threat').
+* Studies of published #2s (11 Oct, E. Bourd: "go over existing #2, starting with simple ones, understanding how the
+  mechanism works"). New `chesscomp/anatomy.py`: the king's field after each mate, field change of each first move,
+  why each try's threat fails after its refutation, essential pins, role table with idle units flagged; 4 tests in
+  tests/test_anatomy.py. Ten sound problems from the database (5-12 units) read in `knowledge/studies.md`: Bourd and
+  Labai turn out to be one Le Grand engine (contact/distant cross-geometry); Kazimov (two-job key); Milewski x2
+  (black correction; Boros with Bh2 whose only job is pinning self-pinned defenders: first tool version called it
+  idle, fixed by adding pins); Marin (focal at a crossing point); Velimirovic (black Albino); Slesarenko-Gvozdjak
+  (Dombrovskis by side effects); Rice (unpin key from a no-move position; stalemate tries were silent, fixed);
+  Velikÿ (focal rook, masked bishops behind mating knights). Tool bugs found on the way: 'K' marker collided with
+  the white king's name; variations by different units were merged in one drawing. Four problems carry a
+  try-only or plug unit, Bourd's own Pg2 among them: asked him how his 7 Oct rule weighs that.

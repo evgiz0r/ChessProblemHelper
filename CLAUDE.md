@@ -57,7 +57,9 @@ it is doing, plus a tool-call cap in its prompt. It writes a notes line per solv
 `chesscomp/` solver, analysis, motives, critique, compose tools. `knowledge/` principles, lessons,
 session log, problem collection (`docs/problems.json` must equal `knowledge/problems.json`). `docs/`
 web page and bench; `analysis.js` mirrors `chesscomp/analysis.py` and any fix goes into both.
-`tests/test_regression.py` re-solves every stored key.
+`tests/test_regression.py` re-solves every stored key. `chesscomp/anatomy.py` shows how a #2 works on the
+board (guard field of each mate, pins, why tries fail, role of each unit); `knowledge/studies.md` holds the
+published problems read with it and the structural lessons drawn from them (E. Bourd, 11 Oct 2026).
 
 ## Setup
 

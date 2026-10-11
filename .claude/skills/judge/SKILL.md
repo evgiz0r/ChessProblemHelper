@@ -7,7 +7,10 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
 
 1. Solve: `python -m chesscomp.report --fen "<FEN> w - - 0 1" "#2" --critique`. Read the whole report,
    including the "further moves allow the threat" counts and the try list.
-2. Count the force yourself (the critique does not): a third knight or rook, a second queen, two
+2. Roles: `python -m chesscomp.anatomy --fen "<FEN>" --tries 1` (king field per mate, essential pins, role
+   table). A unit flagged "no part" or "never needed alone" gets one solve without it: cook-stopper or
+   try-only unit (fatal by E. Bourd's rule of 7 Oct). The critique does not check this.
+   Count the force yourself (the critique does not): a third knight or rook, a second queen, two
    bishops on one colour = promoted piece = fatal unless the idea cannot exist without it.
 3. Verdict in this order, see `references/checklist.md`:
    - Fatal: cook, dual in a thematic variation, double threat, unprovided check in set play, promoted
