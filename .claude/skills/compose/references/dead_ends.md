@@ -18,3 +18,5 @@
 - A bishop on the pin diagonal of the promotion square captures the promoted piece; a knight pinned on
   f7 reaches h6 and blocks the mating file; on g6 it cannot.
 - Rotating and shifting a scheme whose captures stop nothing: 45 minutes, six transformations, no key.
+- Black line opening with the check along the opened line (battery behind the defender): the defender steps back to its
+  origin square and interposes. And a lone unprotected blocker in front of the queen: 1.Qx(blocker). See themes/line_opening.md.

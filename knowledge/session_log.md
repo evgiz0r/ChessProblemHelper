@@ -767,3 +767,17 @@
   itself (Bd6/Rd6); a key knight from e5 protects e5 from every square (Re5 dual); a rook on e5 checks the king. Result:
   1B6/7p/B7/3p3R/2n1k3/2P5/4K3/6N1, 1.Sh3! (2.Sf2#) Sd6 2.Bd3#, Se5 2.Rxe5#, gate PASS, 10 units, but random knight moves
   allow three mates (threat, Bd3, Re5) and the critique did not report it (hidden under 'further moves allow the threat').
+* Theme 'two black defences by the same bishop open a white line, with different mates' (11 Oct, E. Bourd's request).
+  Paper first: the opened line as the queen's path, with the mates on two squares beyond the vacated one, chosen by where the
+  bishop lands. Three schemes died. (1) Ke6, Bd3, Qd1 (Be4 guards d5 -> Qd7, Bb5 guards d7 -> Qd5, both guard c6 against
+  Rc6): sound post-key (postsearch gave 10 hits), but the lone bishop is unprotected, so 1.Qxd3/1.Sxd3, and every waiting
+  move works. (2) A Ra5-Sd5 battery opened by Bc5-d4/d6 (each cutting a rank rook): every battery check is interposed by the
+  bishop returning to c5. (3) Ke5, Bd4 protected by its king, Qd1, Bc1 guarding f4 through e3: 1...Bc5 2.Qd5# (Bxd6 kills
+  Qd6), 1...Be3 2.Qd6# (Kf4 kills Qd5); threat Re7 (Bc5 takes, Be3 opens f4). This mechanism held. postsearch READY=1
+  (seed 12) found a post-key with black Pe2/Pf5/Sg1 restraints; without its Pd7 it was sound,
+  4N1B1/8/6P1/4kp2/3bP3/5P2/4p2R/2BQ2nK, 1.Rh7! with fxe4 2.Rh5# as well, but the critique called Rh2 out of play (fatal).
+  About 15 solves chasing a better key (rook from h3-h6, Bf7-g8 clearance with Pc4, Sg3, Sf2, Sh3, Rb4) went in circles.
+  The way out was to drop the h-file. The rook stands on c6 guarding e6 (replacing the Bg8 cook-stopper), so 1.Rc7! gives the
+  flight and threatens Re7, with Pf6 protecting e7 so that 1...Ke6 2.Re7#. Black pawns g5+h6 kill 1.Qd3/1.Qd2 and f7 kills
+  1.Sc7/Sg7 + Re6. Final 4N2K/5p2/2R2P1p/4k1p1/3bP3/5P2/4p3/2BQ4, gate PASS, trim-minimal, 8+6. Flaws: static key, mixed
+  defence and dual-avoidance motives, random bishop moves allow three mates, four black pawn plugs. About 30 solves, 2 searches.

@@ -1266,6 +1266,38 @@
     "Sh3"
    ],
    "note": "1.Sh3! (2.Sf2#) Sd6 2.Bd3#, Se5 2.Rxe5#. The bishop b8 guards f4 and e5 along c7-d6-e5-f4; the threat Sf2# needs that guard of f4 (the key knight leaves h3). The c4 knight closes the line on d6 (far cut: the mate comes through the square it left, Ba6-d3#, protected by the king) and on e5 (near cut: Rxe5#, the capture reopening the line so the bishop protects the rook; the knight on e5 would take a bishop on d3). Gate PASS, 10 units. Flaws: the knight's six other moves (Sb6, Sa5, Se3, Sa3, Sd2 and Sb2) allow the threat together with Bd3# and Re5# (triple mates after random moves, a dual outside the thematic play); the black pawns d5 (blocks Bb7#, protects c4 against Bxc4) and h7 (a tempo move refuting the zugzwang tries 1.Bg3?/1.Bh2?) are plugs; the two tries are refuted by a pawn tempo, not thematically; the white king only protects d3. Dead ends on the way: a far-cut mate along a rank is interposed by the knight returning to c4; Bg6# is interposed by Sd6-f5; a bishop pinned on e7 does not guard c5 at all, so Sc5 became a mate in one; every square a key knight reaches from e5 guards e5, so Re5 became a dual after Sd6."
+  },
+  {
+   "id": "claude-bishop-opens-d-file",
+   "fen": "4N2K/5p2/2R2P1p/4k1p1/3bP3/5P2/4p3/2BQ4",
+   "stip": "#2",
+   "author": "Claude (11 Oct 2026, theme set by E. Bourd)",
+   "source": "session 11 Oct 2026: 'two black defences by the same bishop open a white line, with different mates'",
+   "themes": [
+    "Black line opening (the same bishop twice)",
+    "Different mates on the opened line",
+    "Interference",
+    "Flight-giving key"
+   ],
+   "keys": [
+    "Rc7"
+   ],
+   "note": "1.Rc7! (2.Re7#) Bc5 2.Qd5#, Be3 2.Qd6#; 1...Ke6 2.Re7#. Both bishop moves open the queen's d-file (the common error); the arrival square chooses the mate: Bc5 guards d6 (2.Qd6? Bxd6) and guards e7 against the threat; Be3 cuts Bc1 from f4 (2.Qd5? Kf4, while Qd6 covers f4 by x-ray through the king) and opens f4 against the threat. The bishop stands next to its king, which protects it against 1.Qxd4. Key: the rook leaves the 6th rank where it guarded e6 (flight given; the threat answers it, Pf6 protects e7). Gate PASS, trim-minimal, 8+6. Flaws: static (both mates already set); Bc5 merely guards the threat square while Be3 interferes, and the dual avoidance motives differ (control of d6 / king flight f4); the seven other bishop moves allow the threat and both queen mates; black pawns f7 (stops 1.Sc7/Sg7 and 2.Re6), g5 and h6 (stop 1.Qd3 with f4# and 1.Qd2 with Qg5/Qf4) and e2 (closes the e-file against Qe1+/Qe2+) are cook-stoppers; 7 pawns; the flight is not a separate variation; passive king h8; not searched for anticipations beyond identical positions."
+  },
+  {
+   "id": "claude-bishop-opens-d-file-rh2",
+   "fen": "4N1B1/8/6P1/4kp2/3bP3/5P2/4p2R/2BQ2nK",
+   "stip": "#2",
+   "author": "Claude (11 Oct 2026; post-key found by postsearch READY=1, seed 12)",
+   "source": "session 11 Oct 2026, same theme, earlier version",
+   "themes": [
+    "Black line opening (the same bishop twice)",
+    "Different mates on the opened line"
+   ],
+   "keys": [
+    "Rh7"
+   ],
+   "note": "REJECTED: sound, but the key piece Rh2 is out of play (edge, far, guarding nothing near the king: fatal, E. Bourd). 1.Rh7! (2.Re7#) Bc5 2.Qd5#, Be3 2.Qd6#, fxe4 2.Rh5#. The h-file rook is tied to Rh5# after fxe4; every other approach to h7 failed: from h3 1.f4+, from h4 Bf4#, from h5 Rxf5#, from h6 g7 (and still edge); 1.Bf7-g8 clearance cooked by Bc4/Bb3/Ba2, and Pc4 against those brought 1.f4+ Kxe4 2.Bd5# (Pc4 protects d5)."
   }
  ]
 }
