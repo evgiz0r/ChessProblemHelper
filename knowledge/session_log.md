@@ -832,3 +832,7 @@
   both bishops cut it; unguard errors everywhere. Post-key 8/4N1K1/1p5R/3bkBB1/7R/1N2b3/3P4/2Q5: Bc4 Re4#, Bc6 Re6#,
   Bc5 Bf4#, no by-play duplicates, pure. No key: the diagram allows deflection sacrifices (Re6+, Re4+, Bf4+) and
   long-diagonal checks (Qc3+, Qb2+, d4+). Earlier c2-queen versions (Qe4#/f4#) had the same cook family.
+* E. Bourd: Bc5 also guarded d6 (impure); the threats I pick use long lines and pieces outside the play; his bench
+  sketch (session mv4dvvuh) 8/8/3P3R/3k4/8/2bb4/8/8: Rh6 on the 6th rank, Bf6/Bg6 block, bishops free along their
+  diagonals. Finished the mechanism on it: post-key 8/1NQ5/3B3R/3kb3/3p4/1P1b1P1N/8/K7, 2.Qc5# threat, Bf6 Sf4#,
+  Bg6 Qc4#, Bxd6 Qxd6#; key 1.Qg7-c7 unique but a c6 flight in the diagram (fatal). Asked him about c6.
