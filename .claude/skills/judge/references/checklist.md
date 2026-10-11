@@ -43,3 +43,11 @@ some flaws; the balance is partly subjective. So: name every flaw, then say what
   corrections are slightly weak, remove one; the random move almost allows the corrected mate, and the c3 pawn is a
   somewhat fake blocker of those moves; the error of the correction is not subtle enough; the main weakness, fatal,
   is the white knight out of play making the key, which makes the solution obvious.
+
+## Symmetry and the published tries (E. Bourd, 11 Oct 2026, on 1.Sa3!)
+- "by design this is a bit too symmetrical, which is a flaw in general." Two mirror-image variations with the
+  same motive are less than two variations that differ.
+- When several tries share a refutation, publish one try per thematic refutation, as a pair (Sc7? R6b5!,
+  Sc3? R4b5!), not 2+1; keep the others in the notes.
+- An edge key is acceptable when the piece has a role in the solution and its other moves make real tries: "a3
+  is somewhat less obvious than the rest, making the tries more real."

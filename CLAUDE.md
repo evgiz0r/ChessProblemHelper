@@ -19,6 +19,10 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   Hand analysis has been wrong every time it was not checked.
 - One change per solve while cleaning a sound position. Cause -> remedy -> verify. Enumerate only the last layer
   (defenders around a sound kernel) with `chesscomp.compose.kernel_search`, in parallel and under a time budget.
+- A theme is a request for a good problem around it, not the simplest one that shows it (E. Bourd, 11 Oct 2026:
+  "what i actually mean is compose a good problem around it, not the simplest"). Once it works, ask yourself what
+  can be added - tries, changes, a cleaner position - and try it, in steps, before showing. Do not hand him the
+  question "is it worth it?": answer it by trying.
 - When a position resists (no key, cooks coming back), small steps cannot do it: restructure a whole side at once,
   reasoning from what the mechanism needs (E. Bourd, 11 Oct 2026: "i am pretty open to just switching a whole side
   around, the really small steps cant do it... its not step by step. its whole restructuring"). Keep the thematic

@@ -84,6 +84,11 @@ Read `references/construction.md` now (the order and the rules with their exampl
 5. **Clean.** Every cook or dual has a one-unit remedy: load `stop-cooks`. One change, one solve.
 6. **Trim, recursively.** `python3 -m chesscomp.compose.trim FEN` removes units in every order until nothing more
    can go with the same key and play: some units are artifacts of others (E. Bourd: bPh6 only stopped bRh5's checks).
+6b. **Extend before showing** (E. Bourd, 11 Oct 2026). The theme working is a stage, not the end: ask what can be
+   added and try it - tries by the key piece refuted by the thematic defences, changed mates, a cleaner position.
+   Example: 1.Bf7! (static, theme only) became 1.Sa3! with a knight wheel once the mask moved to b5 and the key
+   piece became a knight whose other moves block the queen's mates. Avoid symmetry for its own sake: it is a
+   flaw in general.
 7. **Judge before showing**: load `judge`. Draw the board, give the FEN, name the flaws first.
 
 ## Shrink before you grow

@@ -318,3 +318,10 @@ the [a], [b] for the mates that change thematically."
   not step by step. its whole restructuring." In his two-knights unpin, everything around the thematic core changed
   at once: the mate moved (Qh8 to Qf6), the queen took a second duty, Black self-blocks replaced White guards, and
   the key became the pinner arriving.
+- A theme means a good problem around it (11 Oct 2026): "i always try to add more content. i consider what i can
+  extend, almost at any point. maybe cleaner position, maybe making tries, maybe making changes. so even though i
+  give a theme, what i actually mean is compose a good problem around it, not the simplest. not only the one
+  fulfilling the theme... still you would want to make this in steps." Asking him "is it worth it?" is my job.
+- Static key with a thematic job (1.Bf7 pins): "acceptable here, a bit predictable, but not too bad."
+- Symmetry by design is a flaw in general; publish tries as a pair (one per thematic refutation), not 2+1.
+
