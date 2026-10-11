@@ -141,6 +141,15 @@
    "reference": null,
    "db_text": "Rudenko",
    "stretch": true
+  },
+  {
+   "id": "pawn-step-key",
+   "order": 18,
+   "name": "Pawn single-step key",
+   "definition": "The key is a white pawn single step with a stated reason: it opens a line for a piece behind it, gives a flight, or guards a square the threat needs; best when it does two of these.",
+   "reference": "knowledge/devlogs/claude-pawn-step-c3.md",
+   "db_text": "",
+   "stretch": false
   }
  ]
 }

@@ -8,7 +8,9 @@
 Post fields (see the daily-problem skill): date, slug, title, theme, fen, stip, author, source, teaser,
 solution (lines: '#Label' starts a section, two leading spaces indent a variation), comment {what, flaws,
 pluses, process, lesson}, mentor_questions, mentor_issue, stats {minutes, solves, kernels, searches},
-feedback (his answers, summarised by a later run), improvement (what the run changed in the kit).
+feedback (his answers, summarised by a later run), improvement (what the run changed in the kit),
+development (E. Bourd, 11 Oct 2026: the process with a diagram per stage): a list of stages
+{stage, title, fen?, change?, verdict?, ok? (true sound / false failed), decision?, hits? [{fen, caption, taken?}]}.
 """
 import sys, os, json, glob, html, re, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -96,6 +98,13 @@ ul{padding-left:22px} li{margin:3px 0}
 .list{list-style:none;padding:0;margin:0}.list li{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center;border-bottom:1px solid var(--hatch);padding:14px 0}
 .list a{color:var(--ink)} svg.mini{width:96px}
 table{border-collapse:collapse;font-size:14px;width:100%} th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--hatch)} th{color:var(--grey);font-weight:600}
+.dev{list-style:none;padding:0;margin:8px 0 0}.dev>li{display:grid;grid-template-columns:200px 1fr;gap:20px;border-top:1px solid var(--hatch);padding:16px 0}
+.dev>li.nofen{grid-template-columns:1fr}.dev .st{font:600 12px/1.4 Helvetica,Arial,sans-serif;letter-spacing:.08em;color:var(--grey);text-transform:uppercase}
+.dev h4{margin:2px 0 6px;font-size:17px}.dev dl{display:grid;grid-template-columns:76px 1fr;gap:3px 10px;margin:6px 0 0;font-size:15px}
+.dev dt{color:var(--grey)}.dev dd{margin:0;min-width:0}.dev .bad{color:var(--award)}.dev .good{font-weight:600}
+.hits{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:10px}.hits figure{font-size:14px;line-height:1.35}
+.hits .no{color:var(--award);font-weight:600}.hits .yes{font-weight:600}
+@media(max-width:720px){.dev>li{grid-template-columns:1fr}.dev>li svg.board{max-width:260px}}
 footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-size:14px;color:var(--grey)} a{color:var(--ink)}
 """
 
@@ -126,6 +135,32 @@ def sol_html(lines):
 def ul(items):
     return '<ul>' + ''.join(f'<li>{html.escape(i)}</li>' for i in items) + '</ul>' if items else '<p>None noted.</p>'
 
+def dev_html(stages):
+    """The process, one diagram per stage (E. Bourd, 11 Oct 2026: 'I want to see diagrams in the report')."""
+    if not stages:
+        return ''
+    e = html.escape
+    out = ['<details><summary>How it was made, stage by stage</summary><ol class="dev">']
+    for s in stages:
+        fen = s.get('fen')
+        rows = ''
+        for k, label in (('change', 'Change'), ('verdict', 'Solver'), ('decision', 'Decision')):
+            if s.get(k):
+                cls = {True: ' class="good"', False: ' class="bad"'}.get(s.get('ok'), '') if k == 'verdict' else ''
+                rows += f'<dt>{label}</dt><dd{cls}>{e(s[k])}</dd>'
+        hits = ''
+        if s.get('hits'):
+            hits = '<div class="hits">' + ''.join(
+                f'<figure>{board_svg(h["fen"])}<figcaption style="text-align:left;margin-top:4px">'
+                f'<span class="{"yes" if h.get("taken") else "no"}">{"Taken" if h.get("taken") else "Rejected"}</span> '
+                f'{e(h.get("caption", ""))}</figcaption></figure>' for h in s['hits']) + '</div>'
+        text = (f'<div><div class="st">{e(s.get("stage", ""))}</div><h4>{e(s.get("title", ""))}</h4>'
+                + (f'<div class="fen" style="margin:0 0 4px">{e(fen)}</div>' if fen else '')
+                + (f'<dl>{rows}</dl>' if rows else '') + hits + '</div>')
+        out.append(f'<li>{board_svg(fen)}{text}</li>' if fen else f'<li class="nofen">{text}</li>')
+    out.append('</ol></details>')
+    return ''.join(out)
+
 def post_html(p, prev, nxt):
     c = p.get('comment', {})
     st = p.get('stats', {})
@@ -152,6 +187,7 @@ def post_html(p, prev, nxt):
 {('<details open><summary>Questions for the mentor</summary><div class="q">' + ul(qs) + issue_link + '</div></details>') if qs else ''}
 {('<details><summary>Mentor feedback</summary>' + ul(fb) + '</details>') if fb else ''}
 </div></div>
+{dev_html(p.get('development'))}
 <p class="meta" style="margin-top:28px">{st.get('minutes', '?')} minutes, {st.get('solves', '?')} solves, {st.get('kernels', '?')} kernels tried.
 {' <a href="' + prev['slug'] + '.html">Previous</a>' if prev else ''}{' <a href="' + nxt['slug'] + '.html">Next</a>' if nxt else ''}</p>
 </article>"""

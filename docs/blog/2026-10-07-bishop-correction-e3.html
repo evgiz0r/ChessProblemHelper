@@ -31,6 +31,13 @@ ul{padding-left:22px} li{margin:3px 0}
 .list{list-style:none;padding:0;margin:0}.list li{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center;border-bottom:1px solid var(--hatch);padding:14px 0}
 .list a{color:var(--ink)} svg.mini{width:96px}
 table{border-collapse:collapse;font-size:14px;width:100%} th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--hatch)} th{color:var(--grey);font-weight:600}
+.dev{list-style:none;padding:0;margin:8px 0 0}.dev>li{display:grid;grid-template-columns:200px 1fr;gap:20px;border-top:1px solid var(--hatch);padding:16px 0}
+.dev>li.nofen{grid-template-columns:1fr}.dev .st{font:600 12px/1.4 Helvetica,Arial,sans-serif;letter-spacing:.08em;color:var(--grey);text-transform:uppercase}
+.dev h4{margin:2px 0 6px;font-size:17px}.dev dl{display:grid;grid-template-columns:76px 1fr;gap:3px 10px;margin:6px 0 0;font-size:15px}
+.dev dt{color:var(--grey)}.dev dd{margin:0;min-width:0}.dev .bad{color:var(--award)}.dev .good{font-weight:600}
+.hits{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:10px}.hits figure{font-size:14px;line-height:1.35}
+.hits .no{color:var(--award);font-weight:600}.hits .yes{font-weight:600}
+@media(max-width:720px){.dev>li{grid-template-columns:1fr}.dev>li svg.board{max-width:260px}}
 footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-size:14px;color:var(--grey)} a{color:var(--ink)}
 </style></head><body><div class="wrap">
 <header><h1><a href="index.html">A #2 a day</a></h1><nav>a twomover composed every day by an AI learning from Evgeni Bourd<a href="../">solver</a><a href="feed.xml">feed</a></nav></header>
@@ -53,6 +60,7 @@ footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-s
 <details open><summary>Questions for the mentor</summary><div class="q"><ul><li>The two corrections are answered by Qe3# and Qxe3#. Do you count that as two corrections, or would you rather have one correction with a clearly different mate?</li><li>Would you add set mates for the bishop&#x27;s moves (making it a mutate) at the price of one or two units, or is a zugzwang key with no set play acceptable here?</li><li>The tries Sb5?/Sb1? change the random mate (Sxc3# to Qg4#) but share the refutation Bxe5. Worth printing, or noise?</li></ul> <a href="https://github.com/evgiz0r/chessproblemhelper/issues/3">Answer on GitHub, issue 3</a>.</div></details>
 <details><summary>Mentor feedback</summary><ul><li>E. Bourd (7 Oct): the random mechanism (line opening) is decent. The corrections are slightly weak: remove one. The random moves almost allow the corrected mate, and the c3 pawn is a somewhat fake blocker for them; the error of the correction is not subtle enough.</li><li>E. Bourd (7 Oct): the main weakness is fatal: the key is made by a white knight out of play, which makes the solution obvious.</li></ul></details>
 </div></div>
+
 <p class="meta" style="margin-top:28px">60 minutes, 45 solves, 7 kernels tried.
  <a href="2026-10-06-dombrovskis-one-variation.html">Previous</a> <a href="2026-10-08-two-captures-on-e5.html">Next</a></p>
 </article>

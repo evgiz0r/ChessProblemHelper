@@ -79,3 +79,18 @@ def test_mentor_fatal_rules_7_october():
 def test_try_only_unit_even_when_its_tries_carry_changes():
     # c7 pawn: no part in the solution, only promotion tries (with a changed mate) - still fatal
     assert 'try-only unit' in _rules('4K3/2Pp3B/4k3/8/3Q4/8/8/8')
+
+
+def test_development_stages_draw_a_board_each_and_are_legal():
+    """E. Bourd, 11 Oct 2026: the process with a diagram per stage. Every stage FEN (and search hit) is a legal
+    placement with one king each, and the built page has one board per stage FEN, hit and main diagram."""
+    import chess
+    for p in blog.load_posts():
+        stages = p.get('development') or []
+        fens = [s['fen'] for s in stages if s.get('fen')] + [h['fen'] for s in stages for h in s.get('hits', [])]
+        for f in fens:
+            b = chess.Board(f + ' w - - 0 1')
+            assert len(b.pieces(chess.KING, chess.WHITE)) == 1 and len(b.pieces(chess.KING, chess.BLACK)) == 1, (p['slug'], f)
+        if fens:
+            page = blog.post_html(p, None, None)
+            assert page.count('<svg class="board"') == 1 + len(fens), p['slug']

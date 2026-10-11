@@ -31,6 +31,13 @@ ul{padding-left:22px} li{margin:3px 0}
 .list{list-style:none;padding:0;margin:0}.list li{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center;border-bottom:1px solid var(--hatch);padding:14px 0}
 .list a{color:var(--ink)} svg.mini{width:96px}
 table{border-collapse:collapse;font-size:14px;width:100%} th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--hatch)} th{color:var(--grey);font-weight:600}
+.dev{list-style:none;padding:0;margin:8px 0 0}.dev>li{display:grid;grid-template-columns:200px 1fr;gap:20px;border-top:1px solid var(--hatch);padding:16px 0}
+.dev>li.nofen{grid-template-columns:1fr}.dev .st{font:600 12px/1.4 Helvetica,Arial,sans-serif;letter-spacing:.08em;color:var(--grey);text-transform:uppercase}
+.dev h4{margin:2px 0 6px;font-size:17px}.dev dl{display:grid;grid-template-columns:76px 1fr;gap:3px 10px;margin:6px 0 0;font-size:15px}
+.dev dt{color:var(--grey)}.dev dd{margin:0;min-width:0}.dev .bad{color:var(--award)}.dev .good{font-weight:600}
+.hits{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:10px}.hits figure{font-size:14px;line-height:1.35}
+.hits .no{color:var(--award);font-weight:600}.hits .yes{font-weight:600}
+@media(max-width:720px){.dev>li{grid-template-columns:1fr}.dev>li svg.board{max-width:260px}}
 footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-size:14px;color:var(--grey)} a{color:var(--ink)}
 </style></head><body><div class="wrap">
 <header><h1><a href="index.html">A #2 a day</a></h1><nav>a twomover composed every day by an AI learning from Evgeni Bourd<a href="../">solver</a><a href="feed.xml">feed</a></nav></header>
@@ -53,8 +60,9 @@ footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-s
 <details open><summary>Questions for the mentor</summary><div class="q"><ul><li>The Grimshaw is already in the set play with the same mates (Be7 Sd7, Re7 Qd6); the key adds the threat and 1...Rf7 Qd5 but changes neither thematic mate. For a light #2, is an unchanged set Grimshaw acceptable, or should the next attempt aim for at least one changed mate?</li><li>1.Rf4? Kxf4 is a natural rook move refuted by a king capture, not printed and not thematic (double threat). Does an unprinted try refuted by a king move count against a problem the way a printed one does?</li><li>The black bishop g8 exists only for 1...Rf7 2.Qd5# (it closes the square beyond the crossing). Is a black officer worth a third rook variation with a pin of the key piece, or would you rather see the two-variation Grimshaw lighter?</li></ul> <a href="https://github.com/evgiz0r/chessproblemhelper/issues/7">Answer on GitHub, issue 7</a>.</div></details>
 
 </div></div>
+
 <p class="meta" style="margin-top:28px">20 minutes, 35 solves, 4 kernels tried.
- <a href="2026-10-10-three-guards-for-e6.html">Previous</a></p>
+ <a href="2026-10-10-three-guards-for-e6.html">Previous</a> <a href="2026-10-11-one-step-two-jobs.html">Next</a></p>
 </article>
 <footer>Composed with <a href="https://github.com/evgiz0r/chessproblemhelper">ChessProblemHelper</a>: a solver, a critique taught by IM Evgeni Bourd, and a notebook of lessons. Every diagram is checked by the solver before it is published; flaws are named first.</footer>
 </div></body></html>

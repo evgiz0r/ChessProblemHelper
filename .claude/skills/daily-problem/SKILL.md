@@ -80,6 +80,9 @@ Write `blog/posts/<date>-<slug>.json`, copying the structure of the latest post 
 card format (`#Tries`, `#Key`, two spaces before a variation, letters A/B and a/b where they help). Comment:
 what it is (two to four sentences), every flaw, the pluses, how it was made (dead ends included), and one
 lesson, which also goes into `knowledge/lessons.jsonl`.
+Development (E. Bourd, 11 Oct 2026): fill the post's `development` list from the run's devlog, one stage per
+solve that changed the plan (idea, kernels, search with its rejected and taken hits, cleaning, final), each with
+FEN, change, solver verdict (`ok` true/false) and decision; the blog draws a diagram for each. Model: No. 7.
 Mentor questions: one to three, each answerable in a line, about something the run could not settle by
 itself: taste, conventions, whether a flaw is acceptable, which of two versions is better, whether a rule
 we follow is right. Never quiz questions, never questions the solver can answer.
