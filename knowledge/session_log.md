@@ -799,3 +799,6 @@
   (Kd5, Pe5, Sd3/Sf3; Sfxe5 Rd4#, Sdxe5 Ra5#, Kxe5 Qe6#; threat Qd6#). A new diagram search, keysearch.py
   (solver + critique scored), found 1.Qe3-b6 as the only key, but with a c6 flight in the diagram. Covering c6 brings
   knight-capture and check cooks. Reported to him with the post-key sketch.
+* He asked for 'two knights unpinning a pawn on the same square' and I built captures (misread 'uping'); he asked
+  'where is the unpin'. Redone: Bb2 pins Pd4, threat Re3#, Sbc3 Qd6#, Sec3 f4# (post-key 3QN3/5R2/8/1n2k1N1/3p4/7R/1B2nP2/K7,
+  extras Sd6 Qxd6#, Sg3 f4#). Key not found yet (1.Ra6-f6 is unique but takes a diagram flight).
