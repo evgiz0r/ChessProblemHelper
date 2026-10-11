@@ -1332,6 +1332,23 @@
     "Bd3"
    ],
    "note": "1.Bd3! (2.Sf3#) Sc3 2.Qf6#, Bc3 2.Qd6#; tries 1.Bxh7?/Bc2?/Bb1? (same threat) Ra3!. Bb2 pins Sd4; both defences interpose on c3 and unpin it (Sxf3 possible). The bishop's departure from b4 gives up d6; the knight's from d5 gives up f6. The queen a6 mates on both along the 6th rank, so each sibling mate fails to the defender that stayed (Bxd6 / Sxf6). Key: the bishop leaves f5, where only Sh4 protected it (1.Sf3+? Kxf5), and from d3 it keeps e4/f5 and shields f3 from the black rook's 1...Ra3; the other retreats on b1-h7 fail to Ra3. His notes: he disliked 1...Bd6 also defending ('not clean'); he wanted the queen for both mates instead of an f2 pawn kept just for f4#; a third mate on e6 failed ('e6 is unpinned'). 'Can improve much more, but the scheme works.' Critique: same refutation Ra3 for three tries, static (both mates set), random knight moves allow Qf6 and Sf3; dual avoidance unified; 8+7."
+  },
+  {
+   "id": "bourd-bench-two-knights-unpin-ra5",
+   "fen": "8/3n4/R2p4/3pkPQN/4p3/3nP3/b2B4/K7",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, 11 Oct 2026, session mv41atcg), from Claude's post-key sketch",
+   "source": "bench sitting mv41atcg: 39 steps, 9 solves, 10 find-key lines",
+   "themes": [
+    "Black unpinning (two knights interpose on one square)",
+    "Pinning key",
+    "Dual avoidance (the other knight keeps its square)",
+    "Thematic tries (refuted by the unpinned pawn)"
+   ],
+   "keys": [
+    "Ra5"
+   ],
+   "note": "1.Ra5! (2.Bc3#) S7c5 2.Qf6#, S3c5 2.Qf4#; tries 1.Ra8? (2.Re8#) d4!, 1.Rxa2? d4! (the pawn is free before the pin). The key pins Pd5; both knights unpin it on c5; the d7 knight's departure gives up f6, the d3 knight's gives up f4, and the queen on g5 mates on both. From my sketch 8/3n4/2R1P1B1/R2pk3/7Q/3n4/3B2b1/K7 he switched the d7 mate from Qh8 to Qf6 (the queen on g5 sits next to both mating squares), gave the queen a second duty (guard of the f5 pawn) so she cannot wander, replaced White guards by black self-blocks (Pd6, Pe4), protected both mating squares with Sh5 and Pe3, and let the key be the pinning rook coming from a6, where it attacks d6. His verdict: the white bishop is still a bit weak, it only executes the threat. Critique: static key, the same refutation d4 for both tries, random knight moves allow the threat and a queen mate; dual avoidance unified; 7+7."
   }
  ]
 }

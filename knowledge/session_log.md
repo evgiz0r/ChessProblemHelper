@@ -805,3 +805,6 @@
   Continued 'till finished or giving up': rank-pin rebuild (Ra5 pins Pd5, threat Bc3#, S7c5 Qh8#, S3c5 Qf4#), clean
   post-key 8/3n4/2R1P1B1/R2pk3/7Q/3n4/3B2b1/K7. No fatal-free key in about 12 searches and solves; gave up for now.
   New tool chesscomp/compose/diagsearch.py.
+* Bench sitting mv41atcg (11 Oct, E. Bourd, 39 steps, 9 solves): finished the two-knights pawn unpin from my sketch:
+  8/3n4/R2p4/3pkPQN/4p3/3nP3/b2B4/K7, 1.Ra5! (2.Bc3#) S7c5 Qf6#, S3c5 Qf4#. 'Not sure why you gave up... you are pretty
+  weak at transforming, or finding softening of a position'. Lessons recorded (softening order); compose skill updated.

@@ -110,3 +110,9 @@ Hardest constraint first: whatever may force a change of scheme or geometry (a t
 square next to the king, getting two phases) before the mates, the mates before the construction, and the
 non-thematic duals last. If a requirement keeps resisting, consider a level switch (threat to zugzwang), which
 can turn the same Black moves into corrections. Give every construction unit a stated purpose.
+
+## Soften before searching for a key (E. Bourd, 11 Oct 2026)
+A sound post-key with no key is not a dead end. In this order: move each mate next to its piece's natural post
+(Qh8# -> Qf6# with the queen on g5); give each free White officer a duty it must keep (the queen guards a pawn); replace
+White guards by Black self-blocks; protect mating squares with short-range units; then retract the theme's carrier (the
+pinner) as the key. Example: 8/3n4/2R1P1B1/R2pk3/7Q/3n4/3B2b1/K7 -> 8/3n4/R2p4/3pkPQN/4p3/3nP3/b2B4/K7, 1.Ra5!.
