@@ -1315,6 +1315,23 @@
     "Rc7"
    ],
    "note": "1.Rc7! (2.Re7#) Bc5 2.Qd5#, Be3 2.Qd6#; 1...Ke6 2.Re7#. Same play as claude-bishop-opens-d-file. The black e2 pawn is gone. Its jobs were the e-file (not needed: Pe4 already closes it) and Black's spare force. The far black a2 pawn now refutes the waiting moves and 1.Be3 (a1=Q guards d4 against Qxd4), and the white king on g2 closes the 2nd rank against 1.Qd2 with Qh2#. Tried on the way: a white pawn on e2 (alone it allows 1.Qd2, 1.Be3 and 1.e3; with black a2 it is sound but 8 pawns), and the king on e2 (1.Qxd4+ Kxd4 2.Bb2#, the king boxing d3/e3). E. Bourd: the flight-giving key is worth the static play unless a nicer scheme is found; unity preferable. Gate PASS, trim-minimal, 8+6, 7 pawns. Flaws: static; mixed defence motives; random bishop moves allow three mates; black pawns a2, f7, g5, h6 are plugs; king g2 passive."
+  },
+  {
+   "id": "bourd-bench-unpin-c3-bd3",
+   "fen": "2N5/3p1K1p/Q7/3nkB2/rbPn3N/6P1/1B6/8",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, 11 Oct 2026, session mv3ukaxu), from Claude's post-key sketch",
+   "source": "bench sitting mv3ukaxu: 142 steps, 25 solves, 30 find-key lines, 5 notes",
+   "themes": [
+    "Black unpinning (bishop and knight interpose on one square)",
+    "Dual avoidance (the other defender keeps its square)",
+    "Anticipatory interference key",
+    "Thematic tries"
+   ],
+   "keys": [
+    "Bd3"
+   ],
+   "note": "1.Bd3! (2.Sf3#) Sc3 2.Qf6#, Bc3 2.Qd6#; tries 1.Bxh7?/Bc2?/Bb1? (same threat) Ra3!. Bb2 pins Sd4; both defences interpose on c3 and unpin it (Sxf3 possible). The bishop's departure from b4 gives up d6; the knight's from d5 gives up f6. The queen a6 mates on both along the 6th rank, so each sibling mate fails to the defender that stayed (Bxd6 / Sxf6). Key: the bishop leaves f5, where only Sh4 protected it (1.Sf3+? Kxf5), and from d3 it keeps e4/f5 and shields f3 from the black rook's 1...Ra3; the other retreats on b1-h7 fail to Ra3. His notes: he disliked 1...Bd6 also defending ('not clean'); he wanted the queen for both mates instead of an f2 pawn kept just for f4#; a third mate on e6 failed ('e6 is unpinned'). 'Can improve much more, but the scheme works.' Critique: same refutation Ra3 for three tries, static (both mates set), random knight moves allow Qf6 and Sf3; dual avoidance unified; 8+7."
   }
  ]
 }

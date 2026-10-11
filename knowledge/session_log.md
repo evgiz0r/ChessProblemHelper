@@ -790,3 +790,8 @@
   No acceptable key after about 15 solves and 5 searches: the pinning bishop is idle or cooks f4, and threat-knight keys
   bring f4+ or queen cooks. A new diagram search (key fixed, solver-scored) found sound diagrams, but each had an idle
   key piece. Open; reported to him.
+* Bench sitting mv3ukaxu (11 Oct, E. Bourd, 142 steps, 25 solves, 30 find-key lines, 5 notes): from my post-key sketch
+  3Q4/8/2R5/3nkp2/1b1n4/3P2P1/1B3P2/6NK. He moved both mates to the queen (a6 along the 6th rank: Qd6/Qf6), dropped the
+  f2 pawn and the Bd6 extra, added a black rook a4 and found the key 1.Bf5-d3 (shields f3 from Ra3); first sound
+  6bK/5p2/Q6R/3nkB2/rbPn3N/6P1/1B6/8, final 2N5/3p1K1p/Q7/3nkB2/rbPn3N/6P1/1B6/8, 1.Bd3!. A third mate on e6 failed (the
+  e6 square is not tied to the pin). 'Can improve much more, but the scheme works.'

@@ -25,3 +25,8 @@ Setting: claude-bishop-opens-d-file, 4N2K/5p2/2R2P1p/4k1p1/3bP3/5P2/4p3/2BQ4 (11
   white blocker on c4 that guards d5 makes 1.f4+ Kxe4 2.Bd5# work.
 - A lone black bishop against Q+R+B+S: plan Black's line-closing pawns with the scheme (e-file, c1-h6 diagonal squares,
   e6), not one per cook afterwards.
+
+## Related: black unpinning on one square (bourd-bench-unpin-c3-bd3)
+2N5/3p1K1p/Q7/3nkB2/rbPn3N/6P1/1B6/8, 1.Bd3! (2.Sf3#) Sc3 2.Qf6#, Bc3 2.Qd6#. Bb2 pins Sd4, both defenders interpose
+on c3, each departure gives up the square the queen then mates on. My keys were idle or cooked; his: give Black a rook
+(a4) and make the key close its line in advance (Bf5-d3 against Ra3).
