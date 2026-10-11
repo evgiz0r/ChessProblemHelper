@@ -767,3 +767,17 @@
   itself (Bd6/Rd6); a key knight from e5 protects e5 from every square (Re5 dual); a rook on e5 checks the king. Result:
   1B6/7p/B7/3p3R/2n1k3/2P5/4K3/6N1, 1.Sh3! (2.Sf2#) Sd6 2.Bd3#, Se5 2.Rxe5#, gate PASS, 10 units, but random knight moves
   allow three mates (threat, Bd3, Re5) and the critique did not report it (hidden under 'further moves allow the threat').
+
+## Session 11 Oct 2026 (evening): his published record, PDB and WCCT
+* He downloaded his PDB entries (query A='Bourd', 246 problems, LaTeX). 60 were already in Problemesis; the
+  other 186 are now the `pdb_bourd` collection (tools/pdb_tex.py, raw export in knowledge/sources/).
+  PDB stops in 2018 and lacks two of ours (Variantim 2015 #2635, Novice TT 2002).
+* "Are all my WCCT problems there?" PDB has 19 placed entries (8th-10th WCCT). Two agents read his mail
+  (read-only): no entry in the 11th or 12th WCCT (he selected for the team in 2021); in the 10th he gave the
+  captain 8 problems and PDB has 7 as entries; mail before 2010 is gone, so the 8th cannot be checked.
+  Summary and table: knowledge/bourd_record.md. All 19 shown with diagrams (docs/blog/cards/wcct-*.png) and
+  translated solutions.
+* Process failure: the first notation conversion dropped origin squares, and the check reported a false
+  mismatch (Sc3 for Sbc3); fixed by converting the first move to SAN from the diagram.
+* Open: the sixth joint 10th-WCCT candidate (in "Israeli problems for WCCT.pdf", mail 15-17 Apr 2016); the
+  truncated "problem from wcct not sent" (7 Dec 2013); whether to add his later problems to PDB.
