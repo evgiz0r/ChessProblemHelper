@@ -781,3 +781,6 @@
   flight and threatens Re7, with Pf6 protecting e7 so that 1...Ke6 2.Re7#. Black pawns g5+h6 kill 1.Qd3/1.Qd2 and f7 kills
   1.Sc7/Sg7 + Re6. Final 4N2K/5p2/2R2P1p/4k1p1/3bP3/5P2/4p3/2BQ4, gate PASS, trim-minimal, 8+6. Flaws: static key, mixed
   defence and dual-avoidance motives, random bishop moves allow three mates, four black pawn plugs. About 30 solves, 2 searches.
+  His verdict: a nice flight-giving key, worth the static play unless a nicer scheme is found; unity preferable; 'a problem
+  can push more'. He disliked the black e2 pawn attacking the queen. v2: 4N3/5p2/2R2P1p/4k1p1/3bP3/5P2/p5K1/2BQ4 (black a2 +
+  white king g2 replace black e2), gate PASS, trim-minimal, 5 solves.

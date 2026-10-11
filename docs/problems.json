@@ -1282,7 +1282,7 @@
    "keys": [
     "Rc7"
    ],
-   "note": "1.Rc7! (2.Re7#) Bc5 2.Qd5#, Be3 2.Qd6#; 1...Ke6 2.Re7#. Both bishop moves open the queen's d-file (the common error); the arrival square chooses the mate: Bc5 guards d6 (2.Qd6? Bxd6) and guards e7 against the threat; Be3 cuts Bc1 from f4 (2.Qd5? Kf4, while Qd6 covers f4 by x-ray through the king) and opens f4 against the threat. The bishop stands next to its king, which protects it against 1.Qxd4. Key: the rook leaves the 6th rank where it guarded e6 (flight given; the threat answers it, Pf6 protects e7). Gate PASS, trim-minimal, 8+6. Flaws: static (both mates already set); Bc5 merely guards the threat square while Be3 interferes, and the dual avoidance motives differ (control of d6 / king flight f4); the seven other bishop moves allow the threat and both queen mates; black pawns f7 (stops 1.Sc7/Sg7 and 2.Re6), g5 and h6 (stop 1.Qd3 with f4# and 1.Qd2 with Qg5/Qf4) and e2 (closes the e-file against Qe1+/Qe2+) are cook-stoppers; 7 pawns; the flight is not a separate variation; passive king h8; not searched for anticipations beyond identical positions."
+   "note": "SUPERSEDED by claude-bishop-opens-d-file-v2 (E. Bourd, 11 Oct: he does not like the black e2 pawn attacking the queen on d1 as a cook-stopper). 1.Rc7! (2.Re7#) Bc5 2.Qd5#, Be3 2.Qd6#; 1...Ke6 2.Re7#. Both bishop moves open the queen's d-file (the common error); the arrival square chooses the mate: Bc5 guards d6 (2.Qd6? Bxd6) and guards e7 against the threat; Be3 cuts Bc1 from f4 (2.Qd5? Kf4, while Qd6 covers f4 by x-ray through the king) and opens f4 against the threat. The bishop stands next to its king, which protects it against 1.Qxd4. Key: the rook leaves the 6th rank where it guarded e6 (flight given; the threat answers it, Pf6 protects e7). Gate PASS, trim-minimal, 8+6. Flaws: static (both mates already set); Bc5 merely guards the threat square while Be3 interferes, and the dual avoidance motives differ (control of d6 / king flight f4); the seven other bishop moves allow the threat and both queen mates; black pawns f7 (stops 1.Sc7/Sg7 and 2.Re6), g5 and h6 (stop 1.Qd3 with f4# and 1.Qd2 with Qg5/Qf4) and e2 (closes the e-file against Qe1+/Qe2+) are cook-stoppers; 7 pawns; the flight is not a separate variation; passive king h8; not searched for anticipations beyond identical positions."
   },
   {
    "id": "claude-bishop-opens-d-file-rh2",
@@ -1298,6 +1298,23 @@
     "Rh7"
    ],
    "note": "REJECTED: sound, but the key piece Rh2 is out of play (edge, far, guarding nothing near the king: fatal, E. Bourd). 1.Rh7! (2.Re7#) Bc5 2.Qd5#, Be3 2.Qd6#, fxe4 2.Rh5#. The h-file rook is tied to Rh5# after fxe4; every other approach to h7 failed: from h3 1.f4+, from h4 Bf4#, from h5 Rxf5#, from h6 g7 (and still edge); 1.Bf7-g8 clearance cooked by Bc4/Bb3/Ba2, and Pc4 against those brought 1.f4+ Kxe4 2.Bd5# (Pc4 protects d5)."
+  },
+  {
+   "id": "claude-bishop-opens-d-file-v2",
+   "fen": "4N3/5p2/2R2P1p/4k1p1/3bP3/5P2/p5K1/2BQ4",
+   "stip": "#2",
+   "author": "Claude (11 Oct 2026, theme set by E. Bourd)",
+   "source": "session 11 Oct 2026, after his remark on the attacked queen",
+   "themes": [
+    "Black line opening (the same bishop twice)",
+    "Different mates on the opened line",
+    "Interference",
+    "Flight-giving key"
+   ],
+   "keys": [
+    "Rc7"
+   ],
+   "note": "1.Rc7! (2.Re7#) Bc5 2.Qd5#, Be3 2.Qd6#; 1...Ke6 2.Re7#. Same play as claude-bishop-opens-d-file. The black e2 pawn is gone. Its jobs were the e-file (not needed: Pe4 already closes it) and Black's spare force. The far black a2 pawn now refutes the waiting moves and 1.Be3 (a1=Q guards d4 against Qxd4), and the white king on g2 closes the 2nd rank against 1.Qd2 with Qh2#. Tried on the way: a white pawn on e2 (alone it allows 1.Qd2, 1.Be3 and 1.e3; with black a2 it is sound but 8 pawns), and the king on e2 (1.Qxd4+ Kxd4 2.Bb2#, the king boxing d3/e3). E. Bourd: the flight-giving key is worth the static play unless a nicer scheme is found; unity preferable. Gate PASS, trim-minimal, 8+6, 7 pawns. Flaws: static; mixed defence motives; random bishop moves allow three mates; black pawns a2, f7, g5, h6 are plugs; king g2 passive."
   }
  ]
 }
