@@ -62,6 +62,8 @@ Read `references/construction.md` now (the order and the rules with their exampl
    finished post-key position and solves each diagram (his habit: post-key position first, then take the key
    back). It only finds the keys the position already allows: in session 29 two good mechanisms gave only
    idle or flight-taking keys. Think about the key's role while the mechanism is still soft.
+   **Whole-diagram search** (11 Oct 2026): `python3 -m chesscomp.compose.diagsearch CORE SEED DEFS BUDGET RNG` mutates
+   everything outside CORE and scores by solver and critique. Put the theme's carriers in CORE, or it drops the theme.
    Prefer a threat to a zugzwang when you can: "it makes the problem richer. Zugzwang is limited and a bit
    less interesting by nature" (E. Bourd).
    With pawns the geometry has little room: "Pawn move themes are limiting by nature, can't rotate or move

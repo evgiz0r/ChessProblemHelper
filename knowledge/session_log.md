@@ -802,3 +802,6 @@
 * He asked for 'two knights unpinning a pawn on the same square' and I built captures (misread 'uping'); he asked
   'where is the unpin'. Redone: Bb2 pins Pd4, threat Re3#, Sbc3 Qd6#, Sec3 f4# (post-key 3QN3/5R2/8/1n2k1N1/3p4/7R/1B2nP2/K7,
   extras Sd6 Qxd6#, Sg3 f4#). Key not found yet (1.Ra6-f6 is unique but takes a diagram flight).
+  Continued 'till finished or giving up': rank-pin rebuild (Ra5 pins Pd5, threat Bc3#, S7c5 Qh8#, S3c5 Qf4#), clean
+  post-key 8/3n4/2R1P1B1/R2pk3/7Q/3n4/3B2b1/K7. No fatal-free key in about 12 searches and solves; gave up for now.
+  New tool chesscomp/compose/diagsearch.py.
