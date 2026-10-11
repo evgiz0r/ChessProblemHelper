@@ -794,3 +794,7 @@
   Velikÿ (focal rook, masked bishops behind mating knights). Tool bugs found on the way: 'K' marker collided with
   the white king's name; variations by different units were merged in one drawing. Four problems carry a
   try-only or plug unit, Bourd's own Pg2 among them: asked him how his 7 Oct rule weighs that.
+* His answers on the studies (11 Oct): the try-only unit is a drawback, not fatal (gate, checklist, CLAUDE.md,
+  tests changed: 'try-only unit' is now a warning the post must name; 'superfluous piece' stays fatal).
+  Miniatures are too simple, even with changes; he mainly composed complex problems. Next studies: complex #2s,
+  starting with his own WCCT entries (collection pdb_bourd).

@@ -125,5 +125,4 @@ Set 1...g6 2.Qf6#. 1.Qe8! (zz) g6 2.Qe5#, B~ 2.Qh5#, Bh7 2.Sf7#, Bf7 2.Kxf7#. Tr
    punished (3, 5).
 8. **Economy is measured per mate.** In most of these problems at least one unit was never the sole guard of
    anything in the solution: a plug (3), a try-only pawn (1, 8), a try-only king (2). Published problems accept
-   this; E. Bourd's rule (7 Oct) calls a try-only unit fatal. Open question to him: is the rule absolute, or
-   weighed against what the try buys (a Dombrovskis pair, a Le Grand)?
+   this. E. Bourd (11 Oct): a try-only unit is a drawback, weighed, not fatal.

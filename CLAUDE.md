@@ -11,7 +11,7 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 - A black king with a flight in the diagram (a flight GIVEN by the key is a plus).
 - A key that gives check or captures without a thematic reason; a try refuted by a king move.
 - A key by a piece out of play (a knight on the edge far from the king): the key is obvious (E. Bourd, 7 Oct 2026).
-- A White unit that takes no part in the solution, there only for a try or for soundness (E. Bourd, 7 Oct 2026).
+- A White unit that takes no part in the solution and is not needed for soundness either (superfluous).
 - A known mechanism with nothing added, or a reduced form of a published problem: not a problem (E. Bourd).
 
 ## Working rules
@@ -29,6 +29,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   with the solution beside it, for a file or a database record: `tools/card_png.py out.png --portrait` or `--id psis-…`.
 - Every session gives him the link to the Composing Bench, in its first reply and with every diagram:
   https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916 (E. Bourd, 10 Oct 2026).
+- A unit there only for a try is a drawback, weighed against what the try buys (E. Bourd, 11 Oct 2026; on
+  7 Oct he had called it fatal).
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his

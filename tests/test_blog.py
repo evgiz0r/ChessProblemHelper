@@ -70,12 +70,13 @@ def _rules(fen):
 def test_mentor_fatal_rules_7_october():
     # E. Bourd on daily No. 2: a key by a knight out of play is fatal
     assert 'out-of-play key' in _rules('3R4/8/6K1/4P3/3bk3/N1p3Q1/8/8')
-    # E. Bourd on daily No. 1: a unit that only plays the thematic try is fatal
+    # E. Bourd on daily No. 1: a unit that only plays the thematic try; 11 Oct: a drawback, not fatal
     assert 'try-only unit' in _rules('6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1')
-    for rule in ('out-of-play key', 'try-only unit', 'superfluous piece'):
+    for rule in ('out-of-play key', 'superfluous piece'):
         assert rule in blog.FATAL
+    assert 'try-only unit' not in blog.FATAL
 
 
 def test_try_only_unit_even_when_its_tries_carry_changes():
-    # c7 pawn: no part in the solution, only promotion tries (with a changed mate) - still fatal
+    # c7 pawn: no part in the solution, only promotion tries (with a changed mate) - reported (a drawback)
     assert 'try-only unit' in _rules('4K3/2Pp3B/4k3/8/3Q4/8/8/8')
