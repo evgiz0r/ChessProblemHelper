@@ -827,3 +827,8 @@
   diagonal, Be6-c4 / Be3-c5, mates Qd6#/Qf4#. Stage 1 sound: 7K/4Np2/4b2R/4kP2/1Q4P1/4bPP1/7N/5r2, 1.g5! (2.Sg4#).
   Key still weak (pawn clearance, static); thematic 1.Bh7-f5 cooked so far. freethreat.py got a PURE check (defender must
   not guard the threat square after its move).
+* E. Bourd on stage 1: errors not unified (line opening vs unguard), threat knight out of play, by-play = thematic mate
+  (big flaw); 'the thematic request was in a sense the same line'. Rebuilt: the threat is the line (Qc-file to c7),
+  both bishops cut it; unguard errors everywhere. Post-key 8/4N1K1/1p5R/3bkBB1/7R/1N2b3/3P4/2Q5: Bc4 Re4#, Bc6 Re6#,
+  Bc5 Bf4#, no by-play duplicates, pure. No key: the diagram allows deflection sacrifices (Re6+, Re4+, Bf4+) and
+  long-diagonal checks (Qc3+, Qb2+, d4+). Earlier c2-queen versions (Qe4#/f4#) had the same cook family.
