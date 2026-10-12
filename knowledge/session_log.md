@@ -953,3 +953,9 @@
 * 12 Oct: E. Bourd on 1.Sf6! (same-square self-blocks): "mega complicated, and you made it"; the flight-giving key is nice,
   the position generally ok; flaw: Rb2 active in only one variation. He will post easier constructions of the idea on
   the bench with his reasoning (read them with the `bench` skill when he comes back).
+* 12 Oct, bench sitting mv59m754 (672 steps: 99 solves, 184 find-key calls, 27 notes): E. Bourd built five schemes for the
+  same-square self-blocks, after my 1.Sf6!. His order: which mates can come on a self-block, the separation, why Black
+  defends there. Capture of a White unit on the square (1.Qd6! Bxd3 Qe6#, Sxd3 Qc6#; 1.Bf4! Sxd5 Re6#, Bxd5 Bh7#), a pin
+  as separation (1.Bf6! Sxe6 Se3#, Bxe6 Rd1#), stopping a double check (1.Qd3! threat Rc7 unmasking Bf8 through d6;
+  Sd6 Qxe3#, Bd6 Qc3#), zugzwang (1.Re8! Bc7 Re6#, Sc7 Rd8#). All five re-solved sound with the Python solver (by-play
+  and set duals noted). My mistake recorded: the capture motive is not anticipated by a sacrifice-key problem.

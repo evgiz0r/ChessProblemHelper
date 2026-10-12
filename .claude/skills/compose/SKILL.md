@@ -153,6 +153,11 @@ the square to the next field square; the threat unmasks it, the block cuts it. S
 postsearch, unmask_search). Prefer the king on the edge: fewer static guards, fewer other solutions. In the diagram the
 square is guarded, so each thematic mate is a mate in one unless the key adds what it needs or Black can parry it.
 Result: n2kNB2/8/B6p/2N3nQ/8/3K2b1/1R6/2R5, 1.Sf6! (2.Sb7#) Sc7 2.Rb8#, Bc7 2.Qe8#, Kc7 2.Se6#.
+E. Bourd called it "mega complicated" and built five easier schemes on the bench the same day: ask first which mates
+can come on the block, then the separation, then why Black goes there. Simplest motive: capture a White unit standing
+on the square that the threat needs (1.Qd6!, 1.Bf4!, 1.Bf6! with a pin as separation). A threat through the square
+works if it is a double check (no interposition): 1.Qd3! (2.Rc7#, unmasking Bf8 through d6). Zugzwang is the last
+resort. A sacrifice key captured three ways is anticipated (Strebkovs 2003); capture defences after a quiet key are not.
 
 ## Spread the scheme (E. Bourd, 11 Oct 2026)
 Place the scheme so the mechanism's parts are apart: the guarding line long, its cut squares away from the king, the
