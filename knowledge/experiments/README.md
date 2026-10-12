@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| StrateGems 2015 #2 (H. Gockel), from yacpdb, judges given solutions | 32 | AUC 0.70; his Prizes 1, 3, 4 our 3, 6, 8; 7 of our 11 placed are his | blind_tourney_strategems2015.md |
 | The Problemist 2014 (Rossomakho) / 2015 #2, from yacpdb | 35 + 28 (yacpdb, biased) | AUC 0.69 / 0.66; his 2014 1st Prize was our 50th (white correction) | blind_tourney_problemist2014.md |
 | Problemesis 1999-2002 #2 (J. Morice) | 34 of 34 entries | 5 of his 7 in our 8; our 3 Prizes all placed by him; AUC 0.86 | blind_tourney_problemesis1999.md |
 | Problemesis 2004 #2 (M. Mladenovic) | 53 of 53 entries | his 1st Prize our 2nd; 4 of his 6 in our 15; AUC 0.80 | blind_tourney_problemesis2004.md |
@@ -37,3 +38,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
    spots: a tertiary threat correction (1st Prize) read as "mechanical tries with a shared refutation", and English
    Novotny / Fleck read as fatal double threats. Next experiments should give the judges the published solution and theme
    (no author, no source), as a real judge has.
+10. **Seven experiments, one pattern** (StrateGems 2015): with the solution in hand, our judges find the real judge's top problems
+   (his 1st Prize in our top 3 in four of the seven tourneys) and agree on content almost everywhere. What remains is weighting,
+   and the weighting differs from judge to judge: Robert punished capturing tries, Mladenovic rude refutations, Morice paid for
+   line strategy, Gockel forgave rude moves in a threat correction. A single fixed filter overfits to the last judge read.

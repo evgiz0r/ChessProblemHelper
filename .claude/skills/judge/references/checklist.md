@@ -80,8 +80,9 @@ whether that content pays for them.
 - Our fatal list is our composing standard. When predicting an award, a rich phase complex buys back a diagram flight,
   a king-refuted try or a capture key; a double-threat try that breaks the harmony of the phases is still noticed.
 - Look at the refutations first (M. Mladenovic, Problemesis 2004 award): "rude" refutations (checks, captures, king moves to a
-  flight the try gives) and flight-taking tries and keys sink a problem with a real judge before its content is weighed.
-  A capturing try that IS the theme (Albino) is accepted.
+  flight the try gives) and flight-taking tries and keys weigh heavily with many judges. A capturing try that IS the theme
+  (Albino) is accepted, and judges differ: Gockel (StrateGems 2015) placed threat-correction problems with capturing keys,
+  capturing tries and open flights. Weigh rude moves against the theme; do not let them filter out a correctly shown theme.
 - Read line strategy as content, not only phases (J. Morice, Problemesis 1999-2002): bivalent key/defence effects (one line
   opened while two close), masked lines and anti-Lewmann defences, Franco-Latvian, one black unit refuting all tries with moves
   equipollent to White's (theme A). A mechanical multi-phase scheme can rank below a single-phase strategic one.
@@ -89,3 +90,5 @@ whether that content pays for them.
   whether they are the random move of a white correction; then read each specific move's error and its changed threat
   (secondary / tertiary threat correction). That structure is first-prize content, not a flaw.
 - A multiple threat that the theme separates (English Novotny, Fleck, Brogi) is content; read the author's theme first.
+- Changed play can be a role exchange with no common defence (a white king battery in the try, a black one in the
+  solution: StrateGems 2015, 2nd Prize). An empty phase table is not the end of the reading.

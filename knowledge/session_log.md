@@ -947,3 +947,6 @@
   login, wfcc/schwalbe/problemist/variantim are blocked). AUC 0.69 / 0.66. Biggest misses: white correction with tertiary
   threat correction (Bruch, 1st Prize, our 50th) and thematic multiple threats (English Novotny, Fleck) read as fatal.
   Themes "White correction" and "English Novotny" added to themes.json; checklist lines added.
+* StrateGems 2015 #2 (judge H. Gockel; yacpdb), judges given the published solution and theme keywords: AUC 0.70, his
+  1st/3rd/4th Prizes our 3rd/6th/8th, 7 of our 11 placed are his. Misses: role-exchange changed play (king batteries,
+  2nd Prize) and threat corrections sunk by our "rude moves" filter. Checklist softened: weigh rude moves, do not filter.
