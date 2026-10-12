@@ -233,3 +233,31 @@ T53 3: promotion swap c8/b8, threats never separated.
 61. T02
 62. T25
 63. T30
+
+## The real awards (opened after commit 6a14654), from yacpdb
+- **2014** (judge Y. Rossomakho; yacpdb records only 5 distinctions for 35 problems, so its award data is incomplete):
+  1st Prize T38 (W. Bruch), 3rd HM T23 (V. Dyachuk), Comm. T42, T20, T14. AUC 0.69. Our 1st (T21, Wirajaya, "Salazar
+  double") and 2nd (T18, Ouellet) carry no distinction in yacpdb.
+- **2015** (two half-year awards; 21 of our 28 are placed, so this subset is mostly prize-winners): AUC 0.66.
+  Ours in the top 13 that were placed: T05 (1 HM), T40 (5 HM), T35 (6 Prize), T31 (2 HM), T06 (3 Prize), T13 (1 HM).
+  Misses: T57 4th Prize (ours 41st), T60 3rd Prize (32nd), T36 4 HM (42nd), T08 2 HM (55th), T15 1 Comm (59th).
+
+| problem | real | ours | author keywords | our judge said |
+|---|---|---|---|---|
+| T38 (Bruch) | 1st Prize 2014 | 50th | White correction, Tertiary threat correction | "sac line-opening key, four tries share the refutation Bg6, mechanical" |
+| T08 (Tkachenko) | 2nd HM 2015 | 55th | White correction, Threat correction, flight-giving key, Pseudo Le Grand | "rude capture key, capture tries" |
+| T57 (Shire) | 4th Prize 2015 | 41st | Pseudo Le Grand, Pickabish | "a single pseudo Le Grand pair" |
+| T60 (Rice) | 3rd Prize 2015 | 32nd | King's battery, changed functions of moves, changed mates | "busy but scattered" |
+| T15 (Rosner) | 1st Comm 2015 | 59th | (none): seven tries with changing threats | "static capturing key" |
+
+## What we learn (Problemist)
+1. **White correction is our blind spot.** T38: random 1.Bc~? threatens Bf6# (refuted by Bg6!); the correction 1.Bd5?
+   threatens Sc4# because Bf6 is now spoiled (refuted by Sb6!); the key 1.Bd3! threatens Re4# with both Bf6 and Sc4 spoiled:
+   a tertiary threat correction. Our judge saw "many tries of one piece, one shared refutation" and called it mechanical.
+   The structure (random move, corrections, each correction's error spoiling the previous threat) IS the content, and the
+   shared refutation of the random move is part of the definition, not a flaw.
+2. **Thematic multiple threats** (English Novotny, Fleck, Brogi, cycles of double threats) are common in a strong
+   magazine. Judged from the FEN alone, they read as fatal double threats. Real judges read the author's solution and theme.
+   For future experiments the judges should get the published solution (key, tries, theme), without author or source.
+3. **yacpdb fields are biased.** 2014 has few recorded distinctions, and the 2015 subset is mostly placed. Agreement measures
+   (AUC 0.69 / 0.66) are weaker than for the complete Problemesis fields (0.80 / 0.86), partly for that reason, partly for 1.
