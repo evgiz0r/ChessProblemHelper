@@ -897,3 +897,4 @@
 * His answers (12 Oct): Pc4 (StrateGems 2007) was a cook/dual stopper; Wola Gulowska 2015 shows reciprocal changes
   and started from the geometric scheme (both lines, knight mates). I had called it pseudo Le Grand; the theme he
   names is the reciprocal change. Recorded in studies, principles, lessons.
+* (12 Oct) E. Bourd: flaw tolerance grows with content; judge checklist got a light/medium/rich scale anchored on his problems; CLAUDE.md and judge skill point to it.
