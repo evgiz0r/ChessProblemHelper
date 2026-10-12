@@ -1428,12 +1428,13 @@
     "Black interference with one white line by two different bishops (Rh6, cut on f6 and g6)",
     "Key abandons a guard of the threat square (the queen leaves the e-file guard of e6)",
     "Unguard errors far from the line (b4, b3)",
-    "Changed mate (set Bg6 Qa2#, solution Qb3#)"
+    "Changed mate (set Bg6 Qa2#, solution Qb3#)",
+    "Reciprocal guard: the two mating units hold c5 for each other"
    ],
    "keys": [
     "Qb5"
    ],
-   "note": "1.Qb5! (2.Bc6#) Bf6 2.Sb4#, Bg6 2.Qb3#. Set: Bf5/Bg6/Bh7 2.Qa2#, Ba4/Bb3/Bd1 2.Qe4#, Be4 2.Qxe4# (dual). Bc6 leaves the d7 guard of e6, so after the key only Rh6 holds the e6 pawn; in the diagram the queen also holds it down the e-file, and the key gives that up. The bishops cut the 6th rank (Kxe6 after Bc6+); Bc3 held b4, Bc2 held b3; the other bishop's guard stops the dual. Gate PASS, trim-minimal. Flaws: g5 only stops 1.Rh5+, Kb8 passive (any of h1, g2, h2, a7, b8), Sa8 only stops the second threat Sc7#, d6 stops Be5 (a check on b8, and a guard of d6), set dual after Be4, tries 1.Kb7?/1.Bc8? both refuted by Bd3, 11+4. How he made it: scheme Rh6, Pe6, Bd7, Kd5, bishops c3/c2 (the threat square moved from d6 to e6, on the same line; the light bishop on c2 so its error lands on b3, away from the line); post-key Qb5 with Sa6, Pd6 (stops Be5); findkey: only key 1.Qf1-b5! (10+4, sound, but no set play and no thematic weakening); he took 1.Qe2-b5 instead and paid with g5 against 1.Rh5+; a black rook f2/f1 gave an unprovided check Rb1+ and was removed. His words: 'i left freedom in my geometry around the threat, and what squares could be needed... i changed the mates with the bishops, putting them away from the line, they are less interfering with other play and dont need a lot of patching'."
+   "note": "1.Qb5! (2.Bc6#) Bf6 2.Sb4#, Bg6 2.Qb3#. Set: Bf5/Bg6/Bh7 2.Qa2#, Ba4/Bb3/Bd1 2.Qe4#, Be4 2.Qxe4# (dual). Bc6 leaves the d7 guard of e6, so after the key only Rh6 holds the e6 pawn; in the diagram the queen also holds it down the e-file, and the key gives that up. The bishops cut the 6th rank (Kxe6 after Bc6+); Bc3 held b4, Bc2 held b3; the other bishop's guard stops the dual. Gate PASS, trim-minimal. Flaws: g5 only stops 1.Rh5+, Kb8 passive (any of h1, g2, h2, a7, b8), Sa8 only stops the second threat Sc7#, d6 stops Be5 (a check on b8, and a guard of d6), set dual after Be4, tries 1.Kb7?/1.Bc8? both refuted by Bd3, 11+4. How he made it: scheme Rh6, Pe6, Bd7, Kd5, bishops c3/c2 (the threat square moved from d6 to e6, on the same line; the light bishop on c2 so its error lands on b3, away from the line); post-key Qb5 with Sa6, Pd6 (stops Be5); findkey: only key 1.Qf1-b5! (10+4, sound, but no set play and no thematic weakening); he took 1.Qe2-b5 instead and paid with g5 against 1.Rh5+; a black rook f2/f1 gave an unprovided check Rb1+ and was removed. His words: 'i left freedom in my geometry around the threat, and what squares could be needed... i changed the mates with the bishops, putting them away from the line, they are less interfering with other play and dont need a lot of patching'. His point (11 Oct): 'both mating pieces guard the same c5... each of the other variations they have a job, in some kind of mutual work of who guards c5. this way the play seems connected, and not like 2 distant variations'. The key makes c5 guarded twice (Sa6 -> Qb5,Sa6); after Bf6 the queen alone holds it for Sb4#, after Bg6 the knight alone for Qb3#."
   },
   {
    "id": "bourd-two-bishops-qb5-se8",
@@ -1449,7 +1450,7 @@
    "keys": [
     "Qb5"
    ],
-   "note": "1.Qb5! (2.Bc6#) Sf6 2.Sc7#, Bf6 2.Sb4#, Bg6 2.Qb3#. The knight still guards c7 (no second threat) and its cut on f6 unguards c7. Same unit count (11+4); gate PASS; trim-minimal. Remaining flaws: g5 cook-stopper (no single replacement does more), passive Kb8, set dual after Be4, no thematic try (only Qb5 makes the threat Bc6#). Not yet judged by E. Bourd: the knight's cut is a third, non-bishop defence of the same kind; whether it enriches or dilutes the two-bishop theme is his call."
+   "note": "1.Qb5! (2.Bc6#) Sf6 2.Sc7#, Bf6 2.Sb4#, Bg6 2.Qb3#. The knight still guards c7 (no second threat) and its cut on f6 unguards c7. Same unit count (11+4); gate PASS; trim-minimal. Remaining flaws: g5 cook-stopper (no single replacement does more), passive Kb8, set dual after Be4, no thematic try (only Qb5 makes the threat Bc6#). Not yet judged by E. Bourd: the knight's cut is a third, non-bishop defence of the same kind; whether it enriches or dilutes the two-bishop theme is his call. The c5 link holds in all three mates: Qb5 holds c5 for Sc7# and Sb4#, Sa6 for Qb3#."
   }
  ]
 }

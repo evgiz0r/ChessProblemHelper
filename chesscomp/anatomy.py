@@ -165,7 +165,8 @@ def _uci(board, u):
     return chess.Move.from_uci(u)
 
 
-def phase_anatomy(problem: Problem, ph: dict, roles: dict | None, show_all: bool) -> list[str]:
+def phase_anatomy(problem: Problem, ph: dict, roles: dict | None, show_all: bool,
+                  collect: list | None = None) -> list[str]:
     b0 = problem.board.copy()
     n0 = Names(b0)
     L = []
@@ -225,6 +226,8 @@ def phase_anatomy(problem: Problem, ph: dict, roles: dict | None, show_all: bool
             L.append(f"      covered twice: {', '.join(dbl)}")
         if roles is not None:
             _note_roles(roles, f, defs)
+        if collect is not None and len(v['continuations']) == 1 and not set(ids) <= threat_ids:
+            collect.append((defs, nd.at.get(bd.peek().to_square, '?'), f))
     for r in ph.get('refutations', []):
         br, nr = b1.copy(), n1.copy()
         nr.push(br, _uci(br, r['uci']))
@@ -236,6 +239,38 @@ def phase_anatomy(problem: Problem, ph: dict, roles: dict | None, show_all: bool
         for t in thr:
             L.append('      ' + why_fails(br, nr, chess.Move.from_uci(t['uci'])))
     return L
+
+
+def _cover(f, sq):
+    v = f.get(sq, '')
+    if not isinstance(sq, int) or v.startswith('@') or v.startswith('[') or v == '--FREE--':
+        return set()
+    return set(v.split(','))
+
+
+def links(mates: list) -> list[str]:
+    """How the variations of a phase hang together (E. Bourd, 11 Oct 2026: "both mating pieces guard the same c5 ...
+    each of the other variations they have a job ... the play seems connected, and not like 2 distant variations").
+    mates: (defences, mating unit, field) per single-mate variation. Reports squares two mating units hold for each
+    other (each the only guard in the other's mate), then mating units that work in another unit's mate."""
+    out = []
+    for i, (d1, m1, f1) in enumerate(mates):
+        for d2, m2, f2 in mates[i + 1:]:
+            if m1 == m2:
+                continue
+            for sq in sorted(s for s in f1 if isinstance(s, int)):
+                if _cover(f1, sq) == {m2} and _cover(f2, sq) == {m1}:
+                    out.append(f"   {m1} and {m2} hold {chess.square_name(sq)} for each other: "
+                               f"{m2} alone after {d1}, {m1} alone after {d2}")
+    mating = {m for _, m, _ in mates}
+    for d, m, f in mates:
+        helpers = {}
+        for sq in (s for s in f if isinstance(s, int)):
+            for u in _cover(f, sq) & (mating - {m}):
+                helpers.setdefault(u, []).append(chess.square_name(sq) + ('' if _cover(f, sq) == {u} else '='))
+        for u, sqs in sorted(helpers.items()):
+            out.append(f"   {u} works in the mate after {d} (by {m}): {' '.join(sorted(sqs))}")
+    return out
 
 
 def _note_roles(roles, f, label):
@@ -260,8 +295,15 @@ def anatomy(fen: str, tries: int = 2, show_all: bool = False) -> str:
     phases = res.get('phases', [])
     order = [x for x in phases if x['type'] == 'set'] + [x for x in phases if x['type'] == 'try'] + \
             [x for x in phases if x['type'] == 'key']
+    key_mates = []
     for ph in order:
-        out += phase_anatomy(p, ph, roles if ph['type'] == 'key' else None, show_all)
+        out += phase_anatomy(p, ph, roles if ph['type'] == 'key' else None, show_all,
+                             key_mates if ph['type'] == 'key' else None)
+        out.append('')
+    if key_mates:
+        lk = links(key_mates)
+        out.append('LINKS between the variations of the solution (mating units reused; = shared with another unit)')
+        out += lk or ['   none: each mate is made by its own units']
         out.append('')
     # role table for the solution
     out.append('ROLES in the solution (unit: variation/square it covers; * = gives check, = = square also covered by another unit)')

@@ -146,6 +146,9 @@ nK6/3B4/N2PP2R/2Bk2P1/5P2/2b2P2/2b1Q3/8, 1.Qb5! Bf6 Sb4#, Bg6 Qb3#. Among keys t
 thematic job (Qe2 leaves the e-file guard of e6) over a bare only-key (Qf1), even at a cook-stopper's price.
 A cook-stopper can often move so that it also plays: `python3 -m chesscomp.compose.restop FEN KEY "Bf6=Sb4#,..." a8`
 (his Sa8 -> Se8: 1...Sf6 2.Sc7#, a third cut).
+Connect the variations by reusing the mating pieces (E. Bourd): let the mating units share a guard square that each
+holds in the other's mate (Sa6 and Qb5 both on c5: Qb5 holds it for Sb4#, Sa6 for Qb3#). Check it with
+`python -m chesscomp.anatomy --fen FEN`, section LINKS; "none" means two distant variations.
 
 ## Shifts and rotations (E. Bourd, 11 Oct 2026)
 "They do not ruin the base of the theme": the line pieces keep their geometry (the two bishops change colour together).

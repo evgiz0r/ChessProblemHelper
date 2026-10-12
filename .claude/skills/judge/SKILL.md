@@ -20,7 +20,8 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
      only the set play (big flaw when completely redundant), cook-stoppers (acceptable: usual cost), unprovided moves, heavy pawn count,
      thin play (one mating move), defences that merely guard the threat square.
    - Pluses: flight-giving key, long key, unified defences, dual avoidance with one motive, tries whose
-     refutation uses the theme, changed mates, economy. Unified play beats a mixed set (defences that all
+     refutation uses the theme, changed mates, economy, connected variations (the mating units hold a square for each other: anatomy LINKS,
+     E. Bourd 11 Oct 2026). Unified play beats a mixed set (defences that all
      guard one square, tries on one scheme), E. Bourd. A protected key piece the king attacks is no flaw
      when the key has several jobs (gives a flight, opens a line, guards the threat square).
 4. Weigh, do not count: a doubled or tripled theme can carry flaws that would be fatal in a simple

@@ -36,3 +36,10 @@ def test_refutation_reason_and_stalemate():
     t = anatomy('R7/4N3/4p3/1k1nR3/3B3Q/1PP5/8/5K2', tries=1)  # Rice: Black has no move in the diagram
     assert 'stalemate: Black has no move' in t
     assert 'pin: Re5 holds sd5 on d5' in t                   # 1...Kxc5 walks into the pin
+
+
+def test_links_between_variations():
+    # Bourd (bench, 11 Oct 2026): the two mating units hold c5 for each other, so the variations are connected
+    t = anatomy('nK6/3B4/N2PP2R/2Bk2P1/5P2/2b2P2/2b1Q3/8', tries=1)
+    assert 'Sa6 and Qe2 hold c5 for each other: Qe2 alone after Bf6, Sa6 alone after Bg6' in t
+    assert 'Sa6 works in the mate after Bg6 (by Qe2): c5' in t

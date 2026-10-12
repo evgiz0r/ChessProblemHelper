@@ -341,3 +341,6 @@ the [a], [b] for the mates that change thematically."
 - Miniatures are too simple: very basic even when they show changes. He would not publish one as an advanced
   composer; later in his career he mainly composed complex problems. Study material and our own aim should be
   complex #2s (several thematic phases, rich defences), not light positions.
+- Reuse the mating pieces (11 Oct 2026, on 1.Qb5!): "both mating pieces guard the same c5. this makes so that each of
+  the other variations they have a job, in some kind of mutual work of who guards c5. this way the play seems
+  connected, and not like 2 distant variations." (anatomy: LINKS)

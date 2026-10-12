@@ -884,3 +884,7 @@
   tests changed: 'try-only unit' is now a warning the post must name; 'superfluous piece' stays fatal).
   Miniatures are too simple, even with changes; he mainly composed complex problems. Next studies: complex #2s,
   starting with his own WCCT entries (collection pdb_bourd).
+* Merged origin/main (anatomy tool, PDB record, studies); main's lessons.jsonl carried committed conflict markers, removed.
+  E. Bourd on 1.Qb5!: the two mating units hold c5 for each other (connected play). The anatomy confirms it (key: c5
+  Sa6 -> Qb5,Sa6; Bf6 Sb4#: Qb5 alone; Bg6 Qb3#: Sa6 alone). anatomy.py got a LINKS section (reciprocal guards and
+  mating units working in other mates) with a test; judge and compose skills point to it.
