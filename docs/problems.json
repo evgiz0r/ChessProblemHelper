@@ -1467,6 +1467,23 @@
     "Sf1"
    ],
    "note": "1.Sf1! (2.Se3#) Sg2 2.Qe4#, Sc2 2.Sxc3#. Sg2 closes h1-e4, so e4 loses its black guard; Sc2 closes c1-c3, so the c3 pawn loses its protection and the b1 knight takes it with check. Dual avoidance by the other line (Bh1 still guards e4, Rc1 still protects c3). Gate PASS, trim-minimal, 7+6. Flaws: static key (both mates set), the key piece stands attacked by c3 (the key looks like an escape), Kg3 passive, try 1.Sf3? (2.Qd7#/Qe4#) Bxf3! is not thematic. Built from the skeleton enumerator (T e3, Se1 -> c2/g2), the post-key by the free-threat search, the key by the fixed-key search (unmask_search KSQ f1 FSQ d2). Tried and failed: a queen key adding a guard (every guarded square is a diagram flight or the threat already mates); a pair of tries by the threat knight blocking each mate line (with one queen making both mates the block kills both; with Bc4#/Qe4# from a6/h7 the position needed 8+10 and the c4 try was refuted twice); the d3 pawn protecting c4/e4 (queen sacrifices Qe4+ Bxe4 dxe4#)."
+  },
+  {
+   "id": "claude-knight-lines-se2",
+   "fen": "8/Q1BB4/2P2r2/K2k4/p1pNp3/4n3/8/2r5",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme set by E. Bourd; rebuilt on his remarks (knights and queen closer, key from a central square)",
+   "source": "theme 'the same black knight has defences, in each it closes a different line as an error'; second version",
+   "themes": [
+    "Black knight e3 defends d4 from c2 and f5; each arrival closes a different black rook line",
+    "Clearance key: the knight leaves d4 for the queen and takes the only square reaching both c3 and f4",
+    "Try by the key piece refuted by a thematic defence (1.Sb5? Sf5!)",
+    "Set play: rook random move 2.Be6#, correction 1...Rxc6 2.Bxc6#"
+   ],
+   "keys": [
+    "Se2"
+   ],
+   "note": "1.Se2! (2.Qd4#) Sf5 2.Sf4#, Sc2 2.Sc3#; by-play Rd1 2.Sc3#. Try 1.Sb5? (2.Qd4#) Sc2 2.Sc3# but 1...Sf5!; 1.Se6? Rxe6!. Set: R~ 2.Be6#, Rxc6 2.Bxc6#. Sc2 closes Rc1's file (c3 unguarded), Sf5 closes Rf6's file (f4 unguarded); the same knight mates on either square, the other rook still guarding the other. Gate PASS, 7+7. Flaws: by-play 1...Rd1 2.Sc3# repeats a thematic mate (a plug on d2/d3 stops it but the gate rejects it as superfluous, and no single unit both stops it and plays); queen on a7 (on b6 she is closer but the a4 bishop she then needs also refutes 1.Sb5?); Ka5 passive; bPa4 only blocks 1...Ra1+; 1.Se6? not thematic. Earlier version claude-knight-lines-sf1 had everything on the edge (E. Bourd: 'the knights and queen are somewhat off')."
   }
  ]
 }

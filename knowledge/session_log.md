@@ -917,3 +917,10 @@
   his PDFs (selivanov.world). Lessons: count phases, not variations; tabulate tries x defences; name multi-phase
   themes; our fatal list is our standard, not an award predictor. Into the judge checklist, lessons and knowledge/experiments/.
 * (12 Oct) E. Bourd: flaw tolerance grows with content; judge checklist got a light/medium/rich scale anchored on his problems; CLAUDE.md and judge skill point to it.
+* 12 Oct: E. Bourd on 1.Sf1!: 'the knights and queen are somewhat off... the key from a more central square'.
+  line_skeletons got --knights (mates by knight checks on the closed line) and --central; chose T d4, Se3 -> c2/f5,
+  Rc1 and Rf-file rook, the same White knight mating on c3 or f4. Post-key by postsearch (threat Qb6d4 fixed), key
+  by unmask_search (KSQ e2 FSQ d4, tries required; now penalising by-play repeats). Hand cleaning: Sd8 -> Bd7,
+  Kc8 -> Ka5, Qb6 -> Qa7 with bPa4 instead of Ba4 (clean try 1.Sb5? Sf5!). Result 8/Q1BB4/2P2r2/K2k4/p1pNp3/4n3/8/2r5,
+  1.Se2! (2.Qd4#) Sf5 Sf4#, Sc2 Sc3#; set R~ Be6#, Rxc6 Bxc6#. Open flaw: 1...Rd1 2.Sc3# (by-play repeat); the d2
+  plug that stops it fails the gate (superfluous) and a 480-unit scan found no unit that stops it and plays.

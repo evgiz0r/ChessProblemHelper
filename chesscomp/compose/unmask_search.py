@@ -56,8 +56,12 @@ def post_score(fen):
         s += 12 if m == {want} else (-4 if m and want in m else -16)
     checks = [b.san(m) for m in b.legal_moves if b.gives_check(m)]
     s -= 5 * len(checks) + 0.7 * len(b.piece_map())
-    ok = len(t) == 1 and not bad and not holes and not duals and not checks and all(names.get(k) == {w} for k, w in WANT.items())
-    return s, ok, f"threat={sorted(t)} holes={holes} duals={duals} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
+    # a by-play that repeats a wanted mate is a big flaw (E. Bourd, 11 Oct 2026): 1...Rd1 2.Sc3# beside 1...Sc2 2.Sc3#
+    dups = [k for k, m in names.items() if k not in WANT and m & set(WANT.values())]
+    s -= 10 * len(dups)
+    ok = len(t) == 1 and not bad and not holes and not duals and not checks and not dups \
+        and all(names.get(k) == {w} for k, w in WANT.items())
+    return s, ok, f"threat={sorted(t)} holes={holes} duals={duals} dups={dups} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
 
 
 def idle_units(fen, t0):
