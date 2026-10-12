@@ -92,3 +92,6 @@ whether that content pays for them.
 - A multiple threat that the theme separates (English Novotny, Fleck, Brogi) is content; read the author's theme first.
 - Changed play can be a role exchange with no common defence (a white king battery in the try, a black one in the
   solution: StrateGems 2015, 2nd Prize). An empty phase table is not the end of the reading.
+- A cleanly rendered task or named scheme (battery task, Burmistrov, doubled Fleck/Brogi, one black unit refuting every try)
+  is Comm/HM material for real judges (10 blind experiments, knowledge/experiments). Score its completeness and cleanliness;
+  "known" or "mechanical" alone does not drop it out.

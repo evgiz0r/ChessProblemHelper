@@ -984,3 +984,5 @@
 * Variantim 2019 Israel Ring #2 (Kopyl; yacpdb, solutions): AUC 0.76 on 18 orthodox; his Prizes our 3rd/5th. Two fairy
   entries (neutral pieces) slipped through; tools/blind_tourney.py now filters them. Open questions for E. Bourd collected in
   knowledge/experiments/questions_for_bourd.md.
+* The Problemist 2011 #2 (yacpdb, solutions): AUC 0.64; his Prizes 1-3 our 11th/8th/3rd. Tasks and named schemes (battery
+  task Special HM, Burmistrov Comm) scored "mechanical" by us: checklist line and lesson added.

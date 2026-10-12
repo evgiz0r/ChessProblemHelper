@@ -164,3 +164,19 @@ Order: 46 > 45 > 44 > 43.
 44. E19
 45. E36
 46. E43
+
+## The real award (opened after commit 8e58e04): 14 of 46 placed in yacpdb
+AUC 0.64. Top end: his 1st Prize E46 (Ouellet & Reeves, Zagoruiko on a Grimshaw) our 11th; 2nd Prize E20 (Subotić, Somov B1 /
+Rukhlis) our 8th; 3rd Prize E03 (Kovačević & Burger, queen sacrifices ending in a Novotny) our 3rd. Our 1st, E13 (Kopyl,
+Zagoruiko 3x2 with a reciprocal change), and our 4th/5th (E30 half-pin choice of first move, E21 doubled pseudo Le Grand) are
+unplaced.
+
+Misses: E34 2nd HM (white + black correction, Barnes; ours 27th), E15 4th HM (Vladimirov + Dombrovskis; 28th), E40 Special HM
+(black queen against a battery: nine battery mates; 29th), E05 3rd Comm (reciprocal; 38th), E39 5th Comm (Burmistrov
+combination on one flight; 40th).
+
+## What we learn (Problemist 2011)
+1. **The strong-field band holds**: 0.64 here, 0.66-0.70 before, 0.76 at Variantim. The judge's three Prizes are in our top 11.
+2. **Tasks and named schemes get placed; our judges call them mechanical.** A clean battery task (Special HM), a Burmistrov
+   combination (Comm) here; Kopyl's 1st HM for a doubled Fleck/Brogi, Morice's HMs for one-black-unit refutation sets. A
+   correctly rendered known task or named scheme is Comm/HM material for real judges; we score it 4-5 and leave it out.
