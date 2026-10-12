@@ -73,3 +73,6 @@ A protector of a mating square along a line can mate along a parallel line for t
 - Pins: a defence that self-pins on a line to the king cannot interpose; a flight on the pin line re-pins.
 - Focal: a black plug at the crossing of two white lines; masked bishops behind mating knights cover vacated squares.
 - Check every unit's role with `python -m chesscomp.anatomy --fen "<FEN>"` before showing a position.
+- (complex #2s, 12 Oct) Each defence cuts the support line of the other mate: dual avoidance built in.
+- A Black plug at the crossing of two Black lines + a capture key = Le Grand by lines, no flight needed.
+- Masked battery with a black mask: pin while the mask stands, double check once it has moved.

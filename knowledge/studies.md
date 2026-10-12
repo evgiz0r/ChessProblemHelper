@@ -126,3 +126,54 @@ Set 1...g6 2.Qf6#. 1.Qe8! (zz) g6 2.Qe5#, B~ 2.Qh5#, Bh7 2.Sf7#, Bf7 2.Kxf7#. Tr
 8. **Economy is measured per mate.** In most of these problems at least one unit was never the sole guard of
    anything in the solution: a plug (3), a try-only pawn (1, 8), a try-only king (2). Published problems accept
    this. E. Bourd (11 Oct): a try-only unit is a drawback, weighed, not fatal.
+
+## Complex #2s: E. Bourd's own (12 Oct 2026)
+E. Bourd (11 Oct): miniatures are too simple; he mainly composed complex problems. His WCCT entries are #3 and
+longer, so the #2 studies use his honoured orthodox #2s. The anatomy got two new checks on the way (below).
+
+### 11. StrateGems 2007, 2nd HM (pdb-P1272979), B4R2/2K5/1N2pP2/4k3/2Pr3p/2P2Q2/1b1N4/2B5
+1.Sb3! (2.Qh5#) Rd5 2.Qf4#, Rd2 2.Qe4# (also Rxc4+ 2.Sxc4#, Rd7+ 2.Sxd7#, Bxc1 2.cxd4#).
+Tries 1.Sb1?/1.Sf1? Bxc1!, 1.Bd5? / 1.Rh8? / 1.Bxb2? Rf4!, 1.Sd5? Rg4!
+- The key unmasks Bc1-f4: the knight leaving d2 is what lets the distant Qh5 cover f4.
+- Two contact mates of the queen, each with its own supporter: Qf4 by Bc1, Qe4 by Ba8. Each rook defence
+  cuts the supporter of the OTHER mate: Rd5 guards h5 and cuts a8-e4 (so only Qf4), Rd2 cuts c1-f4 (so only
+  Qe4). The defence itself prevents the dual: black interference on white support lines.
+- Two jobs again: Sb1 and Sf1 unmask the bishop too, but only b3 guards d4, needed for 1...Bxc1 2.cxd4#
+  (Bb2 leaving the b2-e5 diagonal lets the pawn mate). The tries fail to exactly that defence.
+- Pf6 stands on f6 protected by Rf8 (the anatomy now credits a unit that occupies a flight). Pc4 stops the
+  cooks 1.Sbc4+/1.Sdc4+ and gives Black the checking defence Rxc4+.
+
+### 12. Sredba na Solidarnosta 2003-05, 1st HM (psis-f819ecb779), 2n5/1KNp1r2/3p1Q2/pN3br1/1Pp1k1p1/qR4P1/3P1b2/B3nB2
+1.Qxg5? (2.Qf4#) B~ 2.Qd5#, Bxg3 2.Qe3#, but 1...Be6!   1.Qxf7! (2.Qd5#) B~/Be6 2.Qf4#, Bxg3 2.Qxc4#, Se7/Sb6 2.Sxd6#.
+Set: B~ 2.Sc3#, Bxg3 2.Qd4#. Le Grand, Dombrovskis (Be6), Zagoruiko on Bxg3.
+- Bf5 plugs two Black lines where they cross: Rg5's rank to d5 and Rf7's file to f4. Each capture key
+  removes one rook: the plug then shields the remaining rook's mate square, and that mate is the threat. B~
+  unplugs the other line and kills the threat, so the other mate works. Le Grand with no king flight: what
+  the defence gives is a line, not a square.
+- Be6 refutes the try because it also guards d5; in the solution d5 is no longer needed.
+- The captures in the keys are thematic: which rook goes decides the threat.
+- Pb4 guards nothing: it blocks the black queen's a3-d6 diagonal (without it 1...Se7 2.Sxd6+ Qxd6, and 1...Qc5
+  refutes). The anatomy's new removal test reports it. Bf1 serves only the try 1.Bxc4? (2.Bd5#).
+
+### 13. Wola Gulowska 2015, 5th HM (pdb-P1314774), 5Rq1/2p2b2/2Pp1Npn/2nQ2RP/4Pk1P/4N3/3rPPBK/2Brb3
+1.Qd4? (2.Sfd5#) Rxd4 2.Sed5#, but 1...Qxf8!   1.Qe6? (2.Sed5#) Bxe6 2.Sfd5#, but 1...Rxc1!
+1.e5! (2.Qf3#) Bxd5 2.Sfxd5#, Rxd5 2.Sexd5#, Se4 2.Qxe4#, Sf5/Sg4+ 2.Rg4#.
+- Two masked batteries aimed at f4: Rf8 through Bf7 behind Sf6, Bc1 through Rd2 behind Se3. Both knights mate
+  on d5.
+- With the black mask in place, the knight's departure PINS the mask (Bf7, Rd2), which otherwise would take on
+  d5. That is how the tries threaten; each is refuted by taking the pinner (Qxf8, Rxc1).
+- Once the mask has moved (by capturing the queen), the departure gives DOUBLE CHECK. The mask that captured
+  decides which knight mates. The queen is offered to both masks in turn (d4, e6) and to both at once on d5.
+- Pin or double check from one line: the same white line works one way or the other, depending on whether
+  the black unit is still on it.
+
+## Lessons from the complex problems
+9. **Dual avoidance by the defence itself**: give each mate its own supporting line, and let each defence cut
+   the support of the other mate (11). Also: let each defence open the line its own mate needs (13).
+10. **Black plug at a crossing of two Black lines**: a capture key decides which line matters; the plug's moves
+   then give Le Grand with lines instead of flights (12). Mirror of lesson 5 (white lines crossing).
+11. **Masked battery, two modes**: with the black mask on the line, the front piece's departure pins it; with
+   the mask gone, the departure gives double check. Two such batteries with front pieces aimed at one square
+   give the try/solution contrast and the choice of mating piece (13).
+12. **Rich problems pay with plugs**: all three have units that only block a line (Pc4, Pb4) or stand on a
+   flight (Pf6). He accepts that cost for content.

@@ -14,7 +14,7 @@ def _roles(text):
 def test_try_only_pawn_is_flagged():
     # Bourd: Pg2 covers f3 only together with the queen in the solution; it is there for 1.Be3? (2.Qe6#)
     r = _roles(anatomy('8/2K5/B7/8/4k3/7Q/6P1/6B1', tries=1))
-    assert 'never needed alone' in r['Pg2']
+    assert 'needed in no mate' in r['Pg2']
     assert 'Kc7' in r and 'no part' not in r['Kc7']      # the white king guards d6 after 1...Ke5
 
 
@@ -43,3 +43,12 @@ def test_links_between_variations():
     t = anatomy('nK6/3B4/N2PP2R/2Bk2P1/5P2/2b2P2/2b1Q3/8', tries=1)
     assert 'Sa6 and Qe2 hold c5 for each other: Qe2 alone after Bf6, Sa6 alone after Bg6' in t
     assert 'Sa6 works in the mate after Bg6 (by Qe2): c5' in t
+
+
+def test_plug_and_occupier_are_needed():
+    # Bourd, Sredba 2003-05 1st HM: Pb4 guards nothing but blocks Qa3-d6 (after 1...Se7 2.Sxd6# the queen would take)
+    t = anatomy('2n5/1KNp1r2/3p1Q2/pN3br1/1Pp1k1p1/qR4P1/3P1b2/B3nB2', tries=0)
+    assert 'needed only as plug/protector/line' in _roles(t)['Pb4']
+    assert 'needed in no mate' in _roles(t)['Bf1']              # Bf1 is there for the try 1.Bxc4?
+    # Bourd, StrateGems 2007 2nd HM: Pf6 stands on f6, protected by Rf8
+    assert 'on f6' in _roles(anatomy('B4R2/2K5/1N2pP2/4k3/2Pr3p/2P2Q2/1b1N4/2B5', tries=0))['Pf6']
