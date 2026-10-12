@@ -1010,3 +1010,12 @@
   Economy pass (all 28 pairs of stoppers removed, one unit added, compose.trypair functions): the only sound 21-unit
   hit was bPg3 for wPg2+wPh2, with the key 1.Sxg3 (a capture: fatal). The 22-unit version stands. Tool fix (all
   sessions): trypair rejects a capturing key.
+* 12 Oct: E. Bourd: "black half pin of a bishop and a rook. each doing at least 1 thematic variation". Scheme: Bh7
+  pins Rg6/Bf5 to Ke4, threat Rxe5# along the e-file, both units block on e6 (Re6 covers f6, Be6 covers g4). Path:
+  postsearch gave non-pin mates (Be6 Sd6#, Re6 Bxf5#); a queen threat had no key; the inherent cook 1.Sf6+ Rxf6 2.Rg4#
+  set the key as the mask's own move Se7-g8. Position A (4R3/2p1N1NB/6rp/3ppb2/3Bk2n/4Pp2/3K1P2/6R1) was cooked by
+  1.Sexf5; no single unit cured it (compose.trypair). bRh5 for bNh4 did (it retakes on f5 and guards e5), turning the
+  bishop's defence into B~; bPg4 removed the Bg4 dual; wPc3 removed 1.Sxd5? Kxd5!; trim removed bPh6; wPe2 replaced
+  bPf3+wPf2. Result: 4R3/4N1NB/6r1/3ppb1r/3Bk1p1/2P1P3/4P3/3K2R1, 1.Sg8! (2.Rxe5#) Re6 2.Rxg4#, B~ 2.Sf6#; try 1.Sc8?
+  B~ 2.Sd6# (changed), but 1...Bxc8!. Gate PASS, 17 units. No pure pair: no knight landing spoils Rxg4#. Theme note
+  added to themes/references/half_pin_king_key.md.

@@ -1692,6 +1692,24 @@
     "Sg3"
    ],
    "note": "1.Se4-g3! (2.Re4#) Bc5 2.Sc6#, Rc5 2.Bxd4#. Tries: 1.Sf2? (2.Re4#) Bc5 2.Sc6#, but 1...Rc5!; 1.Sf6? (2.Re4#, 2.Qxd5#) Rc5 2.Bxd4#, but 1...Bc5! (2.Sc6+ Kxe6); 1.Sc3? Rxc3!; 1.Sc5? dxc5!. Gate PASS, 13+9, trim-minimal; the solver names 'White interference try: 1.Sf6? cuts Rh6 -> e6'. Flaws: 22 units, 10 pawns; stoppers wPd2 (Sd2), wPe2 (Qe2/Qf1, Re1), wPh2 (Bh2), wPd7 (Sf6-d7), bBg8+bPh7 (Sf7; Bh7 would guard e4), bSb2 (Sf2-d3); 1.Sf6? has a second threat Qxd5#; random-move duals. Lighter variants tested and cooked: without wPe6 (Sxd6, Qb4, Sc5), wPd3 for wPe2+bSb2 (Kg4), bRd1 for bSb2 (it guards d4: Bxd4 is no mate). Found by: unmask_search runs t1/w4 (pure Bc5-try, 22 units of junk) -> rebuilt by hand from the levers (Qb5 pin, Pe6 protected by Rh6 and Sd8, key Sg3 with no follow-up checks), one stopper per solve. E. Bourd (12 Oct 2026): 'its ok imo, pretty complex. it does feel a bit heavy and probably can improved, but its decent'; on the double protection of e6 (Sd8 and Rh6): 'cant come up with anything much better just of my head, its a good mechanism achieving the goal'."
+  },
+  {
+   "id": "claude-halfpin-br-sg8",
+   "fen": "4R3/4N1NB/6r1/3ppb1r/3Bk1p1/2P1P3/4P3/3K2R1",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd ('black half pin of a bishop and a rook. each doing at least 1 thematic variation')",
+   "source": "black half-pin of a bishop and a rook, each with a variation whose mate uses the pin of the other, plus a try with changed mates",
+   "themes": [
+    "Black half-pin: Bh7 x-rays Rg6 and Bf5 to Ke4",
+    "Rook variation: 1...Re6 closes the e-file; 2.Rxg4# (the pinned bishop cannot retake on g4)",
+    "Bishop variation: 1...B~ (Be6, Bd7, Bc8) opens Rh5-e5; 2.Sf6# (the pinned rook cannot take on f6)",
+    "Try with changed mates: 1.Sc8? Be6/Bd7 2.Sd6#, Re6 2.Rxg4#, but 1...Bxc8!",
+    "Key by the mask: Se7 leaves the e-file for the square that reaches f6"
+   ],
+   "keys": [
+    "Sg8"
+   ],
+   "note": "1.Se7-g8! (2.Rxe5#) Re6 2.Rxg4#; Be6/Bd7/Bc8 2.Sf6#. Set play 1...R~ (6th rank) 2.Rxg4#. Tries: 1.Sc8? Re6 2.Rxg4#, Be6/Bd7 2.Sd6#, but 1...Bxc8!; 1.Sexf5? (2.Rxe5#/Sd6#/Sg3#) Rxf5!. Gate PASS, 10+7, trim-minimal except wPc3, which only removes the crude try 1.Sxd5? Kxd5! (it takes c3 from the second threat Sc3#). Units and their reasons: bRh5 retakes on f5 against 1.Sexf5 (the cook of position A) and makes every bishop move a defence; bPg4 takes g4 from the bishop (1...Bg4 gave Rxg4#/Sf6#) and is the target of Rxg4#; wPe2 covers d3 and f3 (replaced bPf3, wPf2 and the king's d3 duty); wKd1 passive. Flaws: no pure pair (the key knight cannot spoil Rxg4#, so no try is refuted by Re6); the try is refuted by a capture of the try piece; the bishop's defence is any move (Be6 is not singled out); no LINKS between the mates; random-move duals (1...Rxg7 Rxe5#/Sf6#). Path: A = 4R3/2p1N1NB/6rp/3ppb2/3Bk2n/4Pp2/3K1P2/6R1 (bNh4 retakes on f5 against Bxf5 after Re6) was cooked by 1.Sexf5 (double threat) and no single unit cured it (compose.trypair); bRh5 for bNh4 did, at the price of B~ defences and the Bg4 dual, which bPg4 removed."
   }
  ]
 }
