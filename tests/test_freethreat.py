@@ -18,3 +18,12 @@ def test_skeleton_e1_knight_found():
     sk = [(t, o, a1, a2) for t, o, a1, a2, _ in skeletons(chess.D5, chess.E3)]
     assert (chess.E3, chess.E1, chess.C2, chess.G2) in sk
     assert all(chess.D5 not in (a1, a2) for _, _, a1, a2 in sk)
+
+
+def test_knight_pair_escape_check():
+    # 1...Rd1 (rook c1, T d4) is an escape no self-block on the king's field stops; Rf6-f4 is stopped by a pawn on e4
+    from chesscomp.compose.knight_pair_skeletons import escapes, F
+    k, T = chess.D5, chess.D4
+    occ = {k, chess.E3, T}
+    assert chess.D1 in escapes('R', chess.C1, T, occ, F(k) - {T})
+    assert escapes('R', chess.F6, T, occ, F(k) - {T}) == []

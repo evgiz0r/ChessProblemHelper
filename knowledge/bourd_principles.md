@@ -353,3 +353,5 @@ the [a], [b] for the mates that change thematically."
 - StrateGems 2007 2nd HM: Pc4 is there to stop duals and cooks; the checking defence it allows is a by-product.
 - (12 Oct) "As the content grows, we need to be more tolerable to flaws. A small 1 variation problem cannot be
   compared to like reciprocal changes. We pay flaws for content, and find the balance." Scale in the judge checklist.
+- Tries come as their natural pair (12 Oct 2026, on 1.Se2!): "The rd1 is fatal here, as it disallows adding a second
+  try. Showing just 1 gives bad taste. Se6 sounds like almost a must, once having the sb5 try."

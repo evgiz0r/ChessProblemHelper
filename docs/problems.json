@@ -1483,7 +1483,24 @@
    "keys": [
     "Se2"
    ],
-   "note": "1.Se2! (2.Qd4#) Sf5 2.Sf4#, Sc2 2.Sc3#; by-play Rd1 2.Sc3#. Try 1.Sb5? (2.Qd4#) Sc2 2.Sc3# but 1...Sf5!; 1.Se6? Rxe6!. Set: R~ 2.Be6#, Rxc6 2.Bxc6#. Sc2 closes Rc1's file (c3 unguarded), Sf5 closes Rf6's file (f4 unguarded); the same knight mates on either square, the other rook still guarding the other. Gate PASS, 7+7. Flaws: by-play 1...Rd1 2.Sc3# repeats a thematic mate (a plug on d2/d3 stops it but the gate rejects it as superfluous, and no single unit both stops it and plays); queen on a7 (on b6 she is closer but the a4 bishop she then needs also refutes 1.Sb5?); Ka5 passive; bPa4 only blocks 1...Ra1+; 1.Se6? not thematic. Earlier version claude-knight-lines-sf1 had everything on the edge (E. Bourd: 'the knights and queen are somewhat off')."
+   "note": "1.Se2! (2.Qd4#) Sf5 2.Sf4#, Sc2 2.Sc3#; by-play Rd1 2.Sc3#. Try 1.Sb5? (2.Qd4#) Sc2 2.Sc3# but 1...Sf5!; 1.Se6? Rxe6!. Set: R~ 2.Be6#, Rxc6 2.Bxc6#. Sc2 closes Rc1's file (c3 unguarded), Sf5 closes Rf6's file (f4 unguarded); the same knight mates on either square, the other rook still guarding the other. Gate PASS, 7+7. Flaws: by-play 1...Rd1 2.Sc3# repeats a thematic mate (a plug on d2/d3 stops it but the gate rejects it as superfluous, and no single unit both stops it and plays); queen on a7 (on b6 she is closer but the a4 bishop she then needs also refutes 1.Sb5?); Ka5 passive; bPa4 only blocks 1...Ra1+; 1.Se6? not thematic. Earlier version claude-knight-lines-sf1 had everything on the edge (E. Bourd: 'the knights and queen are somewhat off'). E. Bourd: 'The Rd1 is fatal here, as it disallows adding a second try. Showing just 1 gives bad taste. Se6 sounds like almost a must, once having the Sb5 try.' Rejected: the rook's other line must not reach d4.",
+   "rejected": true
+  },
+  {
+   "id": "claude-knight-lines-sg6",
+   "fen": "8/1r6/1p1PRn2/1KpkNB2/2p1p2r/2Q5/b2P4/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme and the try-pair demand by E. Bourd",
+   "source": "theme 'the same black knight has defences, in each it closes a different line as an error'; third version",
+   "themes": [
+    "Black knight f6 defends e5 from d7 and g4; each arrival closes a different black rook rank (Rb7 -> e7, Rh4 -> f4)",
+    "Clearance key from the centre: the knight leaves e5 for the queen and goes to the only square reaching e7 and f4",
+    "Try pair by the key piece: each try shows one thematic mate and is refuted by the other thematic defence"
+   ],
+   "keys": [
+    "Sg6"
+   ],
+   "note": "1.Sg6! (2.Qe5#) Sd7 2.Se7#, Sg4 2.Sf4#. Tries 1.Sd3? (2.Qe5#) Sg4 2.Sf4# but 1...Sd7!; 1.Sc6? (2.Qe5#) Sd7 2.Se7# but 1...Sg4!. Set: Bb1 2.Qxc4#. No by-play repeats: the rooks' escapes are cut by White units that also cover flights: 1...Re7 does not reach e5 because of Re6 (which covers d6/e5), 1...Rh5 does not because of Bf5 (which covers e6). Gate PASS, critique 'try set: 2 tries carry the key's threat, each refuted differently'. Every unit needed (Pc4 removable but then 1...Bc4+ 2.Qxc4#). Flaws: 7+9 with 6 pawns; Pd2 cook-stopper (2.Qd2#); Pd6 stops 1.Sxc4 and 1.Sf7; random-move duals (1...Rb8 Se7#/Qe5#); the extra tries 1.Sxc4? and 1.Sg4? have several threats (not to be published). Found by: knight_pair_skeletons (escape classification), postsearch (threat Qc3e5 fixed), unmask_search (KSQ g6 FSQ e5, tries required, by-play repeats penalised)."
   }
  ]
 }

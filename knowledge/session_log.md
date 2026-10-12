@@ -928,3 +928,8 @@
   Prize (Bourd D88) is our 2nd; 4 of his 6 in our 15; AUC 0.80. His filter: "rude refutations, flight-taking tries and keys";
   our top unplaced picks (Bourd D74, D75) had them. Missing names: Somov, Albino (Albino added to themes.json).
   Organiser fixes made blind: multi-solution stipulations (D96 4 solutions, D81 2 solutions) are in the record's `play` field, not the FEN.
+* 12 Oct: E. Bourd: 1...Rd1 is fatal (it also refutes the partner try 1.Se6?; one try of a pair gives bad taste).
+  New chesscomp/compose/knight_pair_skeletons.py classifies the line pieces' escapes (self-blockable or not); chose
+  T e5, Sf6 -> d7/g4, rooks b7 (not c7: it attacked the try square c6) and h4, key Se5-g6, tries Sd3/Sc6. postsearch
+  (threat Qc3e5) then unmask_search with the try pair required found 8/1r6/1p1PRn2/1KpkNB2/2p1p2r/2Q5/b2P4/8:
+  1.Sg6! Sd7 Se7#, Sg4 Sf4#; tries 1.Sd3? Sg4 Sf4# but Sd7!, 1.Sc6? Sd7 Se7# but Sg4!. Gate PASS, 7+9.

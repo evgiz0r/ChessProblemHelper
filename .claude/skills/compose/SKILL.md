@@ -140,6 +140,11 @@ square, two arrivals guarding it, the black line each arrival closes). Then the 
 `unmask_search` (KSQ/FSQ fixed). A key that only adds a guard cannot create a check threat (flight or mate in one);
 bring the threat piece instead. Pawns protecting diagonal mating squares recapture with check: use a rook or knight.
 Result: 4Q3/6p1/8/2Pk4/2R5/1Pp3K1/3N4/1Nr1n2b, 1.Sf1! Sg2 Qe4#, Sc2 Sxc3#.
+Then E. Bourd: pieces closer, key from the centre, and the try pair is a must ("Showing just 1 gives bad taste"); a
+by-play that repeats a thematic mate also refutes the partner try (1...Rd1). `python3 -m chesscomp.compose.knight_pair_skeletons
+d5` lists skeletons whose rook escapes self-blocks can stop; the clearance key (the knight leaves the threat square
+for the square reaching both mates) gives the pair for free: 8/1r6/1p1PRn2/1KpkNB2/2p1p2r/2Q5/b2P4/8, 1.Sg6!,
+tries 1.Sd3? Sd7!, 1.Sc6? Sg4!.
 
 ## Spread the scheme (E. Bourd, 11 Oct 2026)
 Place the scheme so the mechanism's parts are apart: the guarding line long, its cut squares away from the king, the
