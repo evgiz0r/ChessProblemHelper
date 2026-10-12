@@ -131,3 +131,16 @@ D65 (dual in the solution). The other 20 were "pleasant, well built, not enough 
 6. **His tolerance differs from our fatal list.** P01 (doubled Röpke, the mates swapped between phases) got a Comm despite
    the d1 diagram flight; P11/P22/P33/P04/P25 were "pleasant but not enough". The bottom of our list matched his
    rejects completely.
+
+## Comments compared, problem by problem (Robert's words vs our blind judge)
+| No. / label | Robert | our judge | match |
+|---|---|---|---|
+| D55 P31 | theme not new; mates A/B shift from a black correction in the try to threat + primary of the same correction; clear, economical, no wP, good key; no secondary play "does not bother me" | Dombrovskis effect, changed mates, light 7+7, long quiet key; marked down for thin play | same pluses, opposite weight on thin play |
+| D49 P27 | Feldmann 2 (mates of primary and secondary of one black correction exchanged), well shown; heavy; Pc2 only for the try and against a check of wK, so 3 bPs on the 3rd rank | reciprocal change random/correction (did not name Feldmann); 22 units, f3-h3 pawn mass is construction, Kc1 cook-stopper | same content and flaws; he traced the cause (Pc2 -> wK -> pawns) |
+| D51 P24 | virtual rosace of the wS at the head of a half-battery, nothing new, pleasant, tries cleverly refuted except 1.Sxe1? | 7 tries, all different refutations; known task; capture refutations cheap; no post-key play | same; he did not count the missing post-key play |
+| D46 P01 | doubled Röpke with reciprocal swap of mates; skilful, graceful | saw the swap; called the d1 flight and the f1=R dual fatal | content same; he ignored both flaws |
+| D42 P13 | 3 changed mates; "pseudo-reversal" because the try's threat is multiple | threat reversal, 2 changed mates (missed fxg3 Be5 -> Bxg5), capture key | he named the multiple threat, we the capture key |
+| D53 P18 | Rb7 idle in a) and b), major dual in c) | the same two, plus redundant twins | identical (the aggregation overrode it) |
+| D50 P02 | promoted black piece, duals | promoted bR, duals | identical |
+| D44 P21 | symmetrical; tries' threats never realised, so no real Dombrovskis | "mock Dombrovskis using the king", king refutations | same |
+| D57 P20, D58 P07, D59 P28 | thematic try captures a black piece | not named (P20 rejected for other reasons, P07 and P28 praised) | missed |
