@@ -950,3 +950,6 @@
 * StrateGems 2015 #2 (judge H. Gockel; yacpdb), judges given the published solution and theme keywords: AUC 0.70, his
   1st/3rd/4th Prizes our 3rd/6th/8th, 7 of our 11 placed are his. Misses: role-exchange changed play (king batteries,
   2nd Prize) and threat corrections sunk by our "rude moves" filter. Checklist softened: weigh rude moves, do not filter.
+* 12 Oct: E. Bourd on 1.Sf6! (same-square self-blocks): "mega complicated, and you made it"; the flight-giving key is nice,
+  the position generally ok; flaw: Rb2 active in only one variation. He will post easier constructions of the idea on
+  the bench with his reasoning (read them with the `bench` skill when he comes back).
