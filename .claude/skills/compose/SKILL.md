@@ -168,7 +168,11 @@ mating unit gives up (then only the landing squares guarding it keep the mate, a
 defence). A knight mate has no path: its pure try needs a guard line through a landing square, i.e. one more heavy
 piece. Search with `unmask_search` (THREAT=<mate id>, TRIES='{"e4f2":"c1c5",...}'); a black check that refutes
 every try (Rxg1+ on the king) can hide cooks: block it and re-solve before trusting a "sound" result.
-Result: 6b1/b3N2p/3ppP1K/R2pk1P1/3pN2R/8/7P/2r1n1B1, 1.Sg3! (1.Sd2? Bc5!, 1.Sf2? Bc5!/Rc5!).
+Result: 6b1/b3N2p/3ppP1K/R2pk1P1/3pN2R/8/7P/2r1n1B1, 1.Sg3! (1.Sd2? Bc5!, 1.Sf2? Bc5!/Rc5!), rejected: "without a
+pure pair, its almost not worth having 1 pair" and a try with both refutations "is not a thing" (E. Bourd). The pure
+pair came from a line lever on the knight-mate side: a white pawn on the flight e6 protected by the mating knight and
+by Rh6 along the rank, cut by the landing square f6: 3N2b1/b2P3p/3pP2R/1Q1pk1K1/3pN2R/8/1n1PP1PP/2r3B1, 1.Sg3!
+(1.Sf2? Rc5!, 1.Sf6? Bc5!). `python3 -m chesscomp.compose.trypair` (SPEC env) enumerates the last stoppers.
 
 ## Spread the scheme (E. Bourd, 11 Oct 2026)
 Place the scheme so the mechanism's parts are apart: the guarding line long, its cut squares away from the king, the

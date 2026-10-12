@@ -1001,3 +1001,16 @@
   sixth judging country (the countries with each other 0.34-0.72). 1st place (Kovačević, Zagoruiko 4x2) our 2nd. Misses: double
   threats paid for by a record (A01 3rd-4th our 21st) and a new task arrangement (A35 6th our 46th). Checklist line, lesson,
   question 7 extended. knowledge/experiments/blind_wcct11_A.md.
+* 12 Oct: E. Bourd on 1.Sg3! (one pure try): "without a pure pair, its almost not worth having 1 pair ... the effect of
+  guarding f5 looks too limiting"; "with only 1 real try it just seems unfinished problem of 2 tries ... its always
+  worth going further, and then look back". Tried a diagonal pin (Ke5, Pd4, Bb2, Grimshaw on c3: both mates on lines,
+  tries Be2?/Bd5? by a Bf3; fails on 1...Bd2 guarding e3 and 1...Re1) and Ke4/Pd4/Ra4 with a Grimshaw on b4 (Raxd4 and
+  queen cooks). Back to the knight wheel: rebuilt t1 by hand, one stopper per solve: 3N2b1/b2P3p/3pP2R/1Q1pk1K1/
+  3pN2R/8/1n1PP1PP/2r3B1, 1.Sg3! (2.Re4#) Bc5 2.Sc6#, Rc5 2.Bxd4#; 1.Sf2? Rc5!, 1.Sf6? Bc5! (pure pair), 1.Sc3?
+  Rxc3!, 1.Sc5? dxc5!; gate PASS, 22 units. New tool (all sessions): compose.trypair enumerates one or two stoppers
+  around a kernel for a key with named single-refutation tries (tests/test_trypair.py).
+* 12 Oct: E. Bourd on 1.Sg3! (pure pair, 22 units): "its ok imo, pretty complex. it does feel a bit heavy and probably
+  can improved, but its decent"; the e6 double protection: "a good mechanism achieving the goal".
+  Economy pass (all 28 pairs of stoppers removed, one unit added, compose.trypair functions): the only sound 21-unit
+  hit was bPg3 for wPg2+wPh2, with the key 1.Sxg3 (a capture: fatal). The 22-unit version stands. Tool fix (all
+  sessions): trypair rejects a capturing key.
