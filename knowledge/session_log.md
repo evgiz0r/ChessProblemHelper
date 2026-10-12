@@ -967,3 +967,6 @@
   and mates on c6 (the rook on d3 would interpose on d5) or e5 (the knight on d3 guards it). Result
   8/K7/4B3/2B5/p3kP2/2QN4/1nn2R2/3r4, 1.Bb6! (2.Sc5#) Sxd3 2.Qc6#, Rxd3 2.Qe5#; gate PASS, 7+5; three cook-stoppers,
   no tries. Tool fix (all sessions): self_block_needed now requires the king to be able to step onto the emptied square.
+* 12 Oct: E. Bourd: "rook and bishop selfblock on a square adjacent to the king orthogonally". freethreat (SELFBLOCK=1,
+  WANT Q* for both captures) found the motive in one round: Pd4 protects the threat square e5, Qb6 protects d4. keyfind
+  --patch: 5R2/4p3/1Q6/3N4/r2PkNK1/8/5b2/8, 1.Rf5! (2.Re5#) Rxd4 2.Qe6#, Bxd4 2.Qb1#; gate PASS, 6+4, trim-minimal.
