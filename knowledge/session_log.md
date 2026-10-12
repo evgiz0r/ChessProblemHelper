@@ -970,3 +970,8 @@
 * 12 Oct: E. Bourd: "rook and bishop selfblock on a square adjacent to the king orthogonally". freethreat (SELFBLOCK=1,
   WANT Q* for both captures) found the motive in one round: Pd4 protects the threat square e5, Qb6 protects d4. keyfind
   --patch: 5R2/4p3/1Q6/3N4/r2PkNK1/8/5b2/8, 1.Rf5! (2.Re5#) Rxd4 2.Qe6#, Bxd4 2.Qb1#; gate PASS, 6+4, trim-minimal.
+* 12 Oct: E. Bourd: extend the rook+bishop problem ("tries or changes or some other extending motive"). separate showed
+  every changed pair needs the queen as the key piece; a rook threat ready in the diagram is a mate in one; the queen star
+  (Qf6/Qg7/Qh8 protecting d4 through e5, Ra5 behind Bc5 for the A-mate) stalls on 1...Bd6 and on the diagram square.
+  unmask_search with the try 1.Re6 required found instead 8/8/1Q3R2/3N4/r2PkN2/8/5bK1/8: 1.Rf5! sacrifice, Kxf5 Qg6#,
+  Rxd4 Qe6#, Bxd4 Qb1#; 6+3, no cook-stopper. 1.Re6? is refuted only by Kf5.

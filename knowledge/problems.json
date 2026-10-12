@@ -1625,6 +1625,22 @@
     "Rf5"
    ],
    "note": "1.Rf8-f5! (2.Re5#) Rxd4 2.Qe6#, Bxd4 2.Qb1#. Set: 1...Rxd4 2.Qe6# (kept), 1...Be3 2.Sc3#. Try 1.Qf6? (2.Qe5#) Bxd4 2.Qf5# (changed) but 1...exf6! (rude; the try also has a dual after Rxd4). Gate PASS, 6+4, every unit needed (trim). Flaws: Pe7 is a cook-stopper (without it 1.Re8# and 1.Qf6); Kg4 in no mate (soundness); the key brings the rook next to the king with an obvious threat; random-move dual 1...Be3 Re5#/Sc3#. Found by: freethreat (SELFBLOCK, WANT Q* for both captures, free threat) found the pawn-protects-threat-square motive, keyfind --patch added bPe7."
+  },
+  {
+   "id": "claude-rook-bishop-d4-rf5-sac",
+   "fen": "8/8/1Q3R2/3N4/r2PkN2/8/5bK1/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd; extension asked by him",
+   "source": "extension of claude-rook-bishop-d4-rf5 ('try to extend... tries or changes or some other extending motive')",
+   "themes": [
+    "Black rook a4 and bishop f2 capture the pawn d4 that protects the threat square e5, and self-block d4 (orthogonal to Ke4)",
+    "Separation by interposition: the bishop on d4 would interpose on e5 against 2.Qe6#, the rook on d4 on d3 against 2.Qb1#",
+    "Flight-giving sacrifice key: the rook comes to f5 unprotected; 1...Kxf5 2.Qg6#"
+   ],
+   "keys": [
+    "Rf5"
+   ],
+   "note": "1.Rf6-f5! (2.Re5#) Kxf5 2.Qg6#, Rxd4 2.Qe6#, Bxd4 2.Qb1#. Set: 1...Rxd4 2.Qe6# (kept), 1...Be3 2.Sc3#. Gate PASS, 6+3, trim-minimal. Against the 10-unit version: the cook-stopper Pe7 and the passive Kg4 are gone, the key is a sacrifice that gives a flight, a third variation. Flaws: no tries (1.Re6? threatens Re5# but is refuted only by 1...Kf5; covering f5 would kill the sacrifice); Kg2 in no mate (soundness); dual-avoidance reasons differ (king flight vs defender control). Tried and not reached: a queen key with tries by the queen (queen protecting d4 through e5 from f6/g7/h8, each square with its own pair of mates: Qc6/Qe6, Qb7/Qe7, Qa8/Qe8; the A-mate needs e5 guarded, solved by Ra5 behind Bc5 which the bishop opens by capturing; blocked by 1...Bd6 and by the diagram square, d8 only); the rook already on f5 with a queen key (2.Re5# mates at once whenever d4 is protected). Found by unmask_search (KSQ f5 FSQ f6, try 1.Re6 required: the try did not come, the sacrifice did)."
   }
  ]
 }
