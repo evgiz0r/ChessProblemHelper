@@ -1657,6 +1657,23 @@
     "Ra5"
    ],
    "note": "1.Ra4-a5! (2.Re4#) Bc5 2.Sc6#, Rc5 2.d4#, Rc4 2.Sxc4#. Set: 1...Bc5 2.Sc6#, 1...Rc5 2.d4# (the mates are set; the key adds the pin that makes them defences), 1...Rc6 2.Sxc6#. Gate PASS, solver 'Grimshaw: Bc5/Rc5 on c5 [key]', 9+6. Flaws: heavy (15 units, 5 pawns); Kf7 in no mate; bPg6 a cook-stopper (keyfind patch), Pe2 a dual-stopper (without it 1...Re1 defends with Sc6#/Sc4#); the thematic mates are set (no change); the key pins directly, like his 1.Ra5! (bourd-bench-two-knights-unpin-ra5); no thematic tries (the rook's other moves have other threats). Found by: freethreat/postsearch failed on bishop-departure schemes; the Grimshaw geometry by hand (rook below on the c-file guarding c6, bishop a7 guarding d4 through c5, the mates on those squares); postsearch READY=1 with threat Rh4e4 fixed found the post-key (2.d4# instead of my 2.Rd4#), keyfind --patch the key."
+  },
+  {
+   "id": "claude-unpin-grimshaw-c5-wheel",
+   "fen": "6b1/b3N2p/3ppP1K/R2pk1P1/3pN2R/8/7P/2r1n1B1",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd ('add tries ... the pin in the initial position ... by the same piece that moves away to open a line or to guard a square')",
+   "source": "unpin on one square plus a Grimshaw on that square, with tries by the key piece",
+   "themes": [
+    "Black unpin: Ra5 pins Pd5 in the diagram; Rc1-c5 and Ba7-c5 interpose on c5 and free the pawn (dxe4 against the threat Re4#)",
+    "Grimshaw on the unpinning square: Bc5 cuts the rook's c-file (2.Sc6#), Rc5 cuts the bishop's a7-d4 diagonal (2.Bxd4#)",
+    "Knight on the threat square: every move of Se4 opens Rh4-e4 and guards e4; only g3 also guards f5, which Se7 gives up for 2.Sc6#",
+    "Try by the key piece refuted by a thematic defence: 1.Sd2? Bc5! (2.Sc6+ Kf5); 1.Sf2? Bc5!/Rc5! (it also closes g1-d4)"
+   ],
+   "keys": [
+    "Sg3"
+   ],
+   "note": "1.Se4-g3! (2.Re4#) Bc5 2.Sc6#, Rc5 2.Bxd4#. Tries: 1.Sd2? (2.Re4#) Rc5 2.Bxd4#, but 1...Bc5! (2.Sc6+ Kf5); 1.Sf2? Bc5! and Rc5! (the knight on f2 also closes the bishop's path); 1.Sc3? Bc5!/Rxc3!/dxc3!; 1.Sc5? Bxc5!/dxc5!. Gate PASS, 9+10, trim-minimal without bBg8 (bBg8 only removes 1.Sxd6? Kxd6!, a try refuted by a king move: 8/b3N2p/3ppP1K/R2pk1P1/3pN2R/8/7P/2r1n1B1 is the 18-unit version). Flaws: 19 units, 8 pawns; stoppers wPh2 (Bh2#), wPf6 (keeps the knight off f6: Sd7/Sg4), bSe1 (Sd3/Sf3 after Sd2/Sf2), bPh7 (Sg6), bBg8; wKh6 passive; two variations; the Rc5-try is not pure. Structure found: with the f5 lever (the key square is the one that guards f5) only g3 and d6 guard f5, so every other knight move fails to Bc5 and a pure Rc5-try (1.Sf2? Rc5!) is impossible; a pure pair 1.Sf2? Rc5! / 1.Sf6? Bc5! needs a heavy line through f6 (Rh6 or Qf8) and came out at 21+ units with the queen cooking (unmask_search t1/u1). Found by: unmask_search (THREAT=Rh4e4 fixed, TRIES e4f2/e4f6) gave z3 (5QK1/b3N2p/3ppP1K..., 18 units with Qf8), slimmed by hand (Pg5 for the queen, bPh7 for Sg6)."
   }
  ]
 }

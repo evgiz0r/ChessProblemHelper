@@ -5,6 +5,7 @@ usage: python3 -m chesscomp.compose.unmask_search CORE SEED KSQ FSQ PSQ WANT_JSO
 The key unit may be any piece (a masking unit leaving the pin line, or the pinner arriving: KSQ=a5 FSQ=a2).
 Optional env TRIES='{"d5c7": "b6b5"}': tries by first move uci, each with exactly that refutation.
 Optional env SELFBLOCK=1: each wanted mate must need its defence's self-block (freethreat.self_block_needed).
+Optional env THREAT=Qh4e4: the one threat must be that mate (a knight wheel on e4: every knight move guards e4).
 The diagram must have no flight and no black check, and the key piece must guard a square of the king's field.
 e.g. (two black rooks unpin Sc5, 11 Oct 2026; found 1.Bd5-f7! by hand from its failures):
   CORE=8/8/1r6/Q1n1k3/1r6/8/8/8 WANT='{"R6b5":"Qa5c7","R4b5":"Qa5c3"}' KSQ=e7 FSQ=d5 PSQ=a5
@@ -15,6 +16,7 @@ from chesscomp.core import Problem
 from chesscomp.analysis import analyse
 from chesscomp.compose.freethreat import self_block_needed
 SELFBLOCK = os.environ.get('SELFBLOCK') == '1'
+THREAT = os.environ.get('THREAT')                   # optional: the threat must be exactly this mate id
 
 CORE, SEED = sys.argv[1], sys.argv[2]
 KSQ, FSQ, PSQ = (chess.parse_square(x) for x in sys.argv[3:6])
@@ -52,6 +54,7 @@ def post_score(fen):
     bad = [x for x in t if x[1:3] == chess.square_name(PSQ)]
     good = [x for x in t if x not in bad]
     s -= 25 * len(bad) + (30 if not good else 12 * (len(good) - 1))
+    s -= 30 if THREAT and set(t) != {THREAT} else 0
     holes = [k for k, m in names.items() if not m]; duals = [k for k, m in names.items() if len(m) > 1]
     s -= 6 * len(holes) + 4 * len(duals) + 2 * len([k for k in names if k not in WANT])
     for k, want in WANT.items():
@@ -64,7 +67,7 @@ def post_score(fen):
     s -= 10 * len(dups)
     unblocked = [k for k, w in WANT.items() if SELFBLOCK and names.get(k) == {w} and not self_block_needed(b, k, w)]
     s -= 20 * len(unblocked)
-    ok = len(t) == 1 and not bad and not holes and not duals and not checks and not dups and not unblocked \
+    ok = len(t) == 1 and not bad and (not THREAT or set(t) == {THREAT}) and not holes and not duals and not checks and not dups and not unblocked \
         and all(names.get(k) == {w} for k, w in WANT.items())
     return s, ok, f"unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} dups={dups} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
 

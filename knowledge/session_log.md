@@ -986,3 +986,11 @@
   knowledge/experiments/questions_for_bourd.md.
 * The Problemist 2011 #2 (yacpdb, solutions): AUC 0.64; his Prizes 1-3 our 11th/8th/3rd. Tasks and named schemes (battery
   task Special HM, Burmistrov Comm) scored "mechanical" by us: checklist line and lesson added.
+* 12 Oct: E. Bourd: "add tries ... the pin in the initial position ... by the same piece that moves away to open a line
+  or to guard a square". Try piece: a knight on the threat square e4 (every move opens Rh4-e4 and guards e4). Tool
+  (all sessions): unmask_search takes THREAT=<mate id> to fix the threat. Searches (36 runs, 280 s each) found a
+  pure Rc5-try (1.Sf2?) or pure Bc5-tries, never a clean pair: the Bc5 mate is a knight check (2.Bc7+? Bd6), so its
+  lever is the flight Se7 gives up (f5), held only by Sg3/Sd6; a pure pair needs a heavy line through f6 and came
+  out at 21+ units with queen cooks. Result, slimmed from z3 by hand: 6b1/b3N2p/3ppP1K/R2pk1P1/3pN2R/8/7P/2r1n1B1,
+  1.Sg3! (2.Re4#) Bc5 2.Sc6#, Rc5 2.Bxd4#; 1.Sd2? Bc5!; 1.Sf2? Bc5!/Rc5!. Gate PASS, 19 units (bBg8 only kills
+  1.Sxd6? Kxd6!).
