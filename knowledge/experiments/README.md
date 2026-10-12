@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| WCCI 8 section A winners (scored, uploaded PDF) | 15 | Spearman -0.32; the 10/10 Burmistrov our 13th, the lowest our 2nd | blind_wcci8_A.md |
 | The Problemist 2011 #2, yacpdb, with solutions | 46 | AUC 0.64; his Prizes 1-3 our 11th, 8th, 3rd | blind_tourney_problemist2011.md |
 | Variantim 2019 Israel Ring #2 (V. Kopyl), yacpdb, with solutions | 18 | AUC 0.76; his two Prizes our 3rd and 5th; 5 of his 8 in our top 6 | blind_tourney_variantim2019.md |
 | The Problemist 2010 #2 (C. Wiedenhoff), yacpdb, with solutions | 49 | AUC 0.67; his 1st Prize our 13th; a half-battery 3rd HM our last | blind_tourney_problemist2010.md |
@@ -52,3 +53,12 @@ award is read. Then come the placings and the judge's comments, problem by probl
 12. **Ten experiments** (Problemist 2011 added): complete short awards 0.80-0.86; strong long awards 0.64-0.76. Recurrent fixable
     misses: tasks and named schemes scored as "mechanical" (placed by Morice, Kopyl and the Problemist judges), line mechanisms
     read as mixed play, and missing theme names.
+
+## Sources for scored fields (wfcc.ch, allowed in the environment on 12 Oct 2026)
+`wfcc_pdf_links.txt` lists the 661 PDFs found by crawling https://www.wfcc.ch/competitions/composing/ . For #2 (section A):
+WCCT 10 entries A + final award, WCCT 11 section A entries + A report (scores) + booklet, WCCT 12 section A entries
+(no award yet), WCCT 7-9 books, WCCI 5-9 and 2019-21 / 2022-24 section A results and winners. WCCT entries books are
+anonymous by design (country codes), so they make blind fields without an extractor; the scores live in the reports.
+Download them into /tmp/claude-0/sealed/ and do not open the score files before our ranking is committed.
+13. **World level inverts our weighting** (WCCI 8 A): the judges pay for content and ignore the flaws we count; our judges reward
+    cleanliness. "Tolerance grows with content" must be applied at full strength for rich multi-phase problems.

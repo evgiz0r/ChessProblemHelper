@@ -95,3 +95,5 @@ whether that content pays for them.
 - A cleanly rendered task or named scheme (battery task, Burmistrov, doubled Fleck/Brogi, one black unit refuting every try)
   is Comm/HM material for real judges (10 blind experiments, knowledge/experiments). Score its completeness and cleanliness;
   "known" or "mechanical" alone does not drop it out.
+- At the top of the scale (WCCI 8 A blind experiment) content decides: a Burmistrov combination with an unprovided flight and a
+  try-only pawn scored 10/10, the cleanest economical entry scored lowest. For rich multi-phase content, flaws cost fractions.

@@ -986,6 +986,9 @@
   knowledge/experiments/questions_for_bourd.md.
 * The Problemist 2011 #2 (yacpdb, solutions): AUC 0.64; his Prizes 1-3 our 11th/8th/3rd. Tasks and named schemes (battery
   task Special HM, Burmistrov Comm) scored "mechanical" by us: checklist line and lesson added.
+* WCCI 8 section A winners (uploaded by E. Bourd), 15 problems, blind with solutions: Spearman -0.32 against the WCCI points.
+  The 10/10 (Burmistrov + Zagoruiko, Dyachuk) our 13th; the cleanest (8.5) our 2nd. wfcc.ch allowed: 661 PDF links saved in
+  knowledge/experiments/wfcc_pdf_links.txt; WCCT 10/11 section A entries and reports downloaded for the next blind runs.
 * 12 Oct: E. Bourd: "add tries ... the pin in the initial position ... by the same piece that moves away to open a line
   or to guard a square". Try piece: a knight on the threat square e4 (every move opens Rh4-e4 and guards e4). Tool
   (all sessions): unmask_search takes THREAT=<mate id> to fix the threat. Searches (36 runs, 280 s each) found a
