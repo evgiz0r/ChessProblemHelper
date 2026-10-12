@@ -894,3 +894,6 @@
   mask stands, double check once it moves). Anatomy improved (any session's tool, all ours): a White unit on a
   flight is credited ('on f6'), and a removal test per mate finds plugs/protectors (Pb4 blocking Qa3-d6) that the
   guard map missed; the idle flag now uses it ('needed in no mate'). Tests added.
+* His answers (12 Oct): Pc4 (StrateGems 2007) was a cook/dual stopper; Wola Gulowska 2015 shows reciprocal changes
+  and started from the geometric scheme (both lines, knight mates). I had called it pseudo Le Grand; the theme he
+  names is the reciprocal change. Recorded in studies, principles, lessons.
