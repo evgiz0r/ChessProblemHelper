@@ -20,7 +20,8 @@ daily No. 2) or idle in the diagram (guards nothing near the king, no set mate, 
 HIT; KEYROLE=0 restores the old score. SELFBLOCK=N (self-block mode, daily No. 5) needs no DEFS: it rewards every
 variation whose defence is a functional self-block (the motive 'self-block on ..': the defender stands next to its
 king and the mate would fail without it), with distinct single mates; a HIT needs N such mates and no dual after a
-self-block. A line starting HIT is a position that meets the whole specification; check it with
+self-block. PATTERN with no DEFS (e.g. PATTERN=Half-pin NPAT=3, daily No. 7) rewards every key-phase defence the
+solver reports with that pattern and a single mate, distinct mates only; a HIT needs NPAT of them. A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
 """
 import os, sys, random, time, json, chess
@@ -39,6 +40,7 @@ PATTERN = os.environ.get('PATTERN', '')            # e.g. 'Dombrovskis (refutati
 TRYCHANGE = os.environ.get('TRYCHANGE', '0') == '1'  # reward tries whose mates for DEFS differ (or swap: reciprocal)
 CORR = os.environ.get('CORR', '')                  # Black correction mode: square of the correcting piece
 NCORR = int(os.environ.get('NCORR', '2'))
+NPAT = int(os.environ.get('NPAT', '2'))               # PATTERN with no DEFS: distinct pattern mates for a HIT
 SELFBLOCK = int(os.environ.get('SELFBLOCK', '0'))      # self-block mode: N distinct self-block mates for a HIT
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram flight is fatal, so no HIT has one
 KEYROLE = os.environ.get('KEYROLE', '1') == '1'     # E. Bourd: no HIT whose key piece is out of play or idle in the diagram
@@ -234,6 +236,8 @@ def score(b):
     if PATTERN:
         got = {pt.get('defence') for pt in pats if pt['name'] == PATTERN}
         s += 25 * sum(1 for d in DEFS if d in got)
+        if not DEFS:
+            s += 25 * min(NPAT + 1, len(pattern_mates(r, got)))
     keyph = [ph for ph in phases if ph['type'] == 'key']
     if TRYCHANGE and keyph:
         km = var_map(keyph[0])
@@ -263,7 +267,7 @@ def score(b):
         ok = ok and len(ph.get('threat') or []) <= 1 and 'x' not in ph['first_move']['san']
         if ok and PATTERN:
             got = {pt.get('defence') for pt in (r.get('relations') or {}).get('patterns', []) if pt['name'] == PATTERN}
-            ok = all(d in got for d in DEFS)
+            ok = all(d in got for d in DEFS) and (bool(DEFS) or len(pattern_mates(r, got)) >= NPAT)
         if ok and RECIP and len(DEFS) == 2:
             s0, s1 = setmap.get(DEFS[0]), setmap.get(DEFS[1])
             k0, k1 = vm[DEFS[0]]['continuations'][0]['san'], vm[DEFS[1]]['continuations'][0]['san']
@@ -278,6 +282,14 @@ def score(b):
             ok = not out_of_play_key(b, km) and (b.piece_type_at(km.from_square) == chess.KING or not idle_key_piece(b, km, phases))
         hit = ok
     return s, f"keys={keys} {best_sum}", hit
+
+def pattern_mates(r, got):
+    """Distinct single mates of the key-phase defences that carry PATTERN (PATTERN with no DEFS)."""
+    ph = [p for p in r.get('phases', []) if p['type'] == 'key']
+    if not ph:
+        return set()
+    return {v['continuations'][0]['san'] for v in ph[0]['variations']
+            if v['defence']['san'] in got and len(v['continuations']) == 1 and not v['threat_repeat']}
 
 def mutate(b):
     b = b.copy()

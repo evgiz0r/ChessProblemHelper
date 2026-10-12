@@ -75,3 +75,21 @@ def test_selfblock_mode_counts_functional_self_blocks():
 
 def test_selfblock_mode_demands_n_mates():
     assert _selfblock(2)[0].startswith('False')
+
+
+HALFPIN = """
+import chess, chesscomp.compose.evolve as e
+s, summ, hit = e.score(chess.Board('b2N4/Q3K3/8/3kpp2/4n1p1/1P3r2/3P4/2R4B w - - 0 1'))
+print(hit)
+"""
+
+
+def test_pattern_mode_without_defs_counts_distinct_half_pin_mates():
+    # daily No. 7: 1.Qa6! Sd6/Sxd2 Qd3#, Rc3 Qd6# - two distinct half-pin mates, not three
+    out = {}
+    for n in (2, 3):
+        env = dict(os.environ, PATTERN='Half-pin', DEFS='', NPAT=str(n), PYTHONPATH=ROOT)
+        r = subprocess.run([sys.executable, '-c', HALFPIN], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
+        assert r.returncode == 0, r.stderr
+        out[n] = r.stdout.split()[-1]
+    assert out == {2: 'True', 3: 'False'}
