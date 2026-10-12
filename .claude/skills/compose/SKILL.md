@@ -159,6 +159,17 @@ on the square that the threat needs (1.Qd6!, 1.Bf4!, 1.Bf6! with a pin as separa
 works if it is a double check (no interposition): 1.Qd3! (2.Rc7#, unmasking Bf8 through d6). Zugzwang is the last
 resort. A sacrifice key captured three ways is anticipated (Strebkovs 2003); capture defences after a quiet key are not.
 
+## Tries by the key piece (E. Bourd, 12 Oct 2026)
+"Usually by the same piece that moves away to open a line or to guard a square." Choose the try piece before the
+guards: one White unit whose every move creates the threat (a knight on the threat square: each move vacates it and
+guards it). Then list, for each thematic mate, what a landing square can spoil: a line mate's path (Sf2 blocks
+Bg1-d4: a pure try), a guard line to a flight through the landing square (f6 cuts Rf8 or Rh6), or the flight the
+mating unit gives up (then only the landing squares guarding it keep the mate, and all the others fail to the same
+defence). A knight mate has no path: its pure try needs a guard line through a landing square, i.e. one more heavy
+piece. Search with `unmask_search` (THREAT=<mate id>, TRIES='{"e4f2":"c1c5",...}'); a black check that refutes
+every try (Rxg1+ on the king) can hide cooks: block it and re-solve before trusting a "sound" result.
+Result: 6b1/b3N2p/3ppP1K/R2pk1P1/3pN2R/8/7P/2r1n1B1, 1.Sg3! (1.Sd2? Bc5!, 1.Sf2? Bc5!/Rc5!).
+
 ## Spread the scheme (E. Bourd, 11 Oct 2026)
 Place the scheme so the mechanism's parts are apart: the guarding line long, its cut squares away from the king, the
 cutting pieces at a distance with free paths (his 8/8/3P3R/3k4/8/2bb4/8/8: Rh6 guards the 6th rank, the bishops cut at
