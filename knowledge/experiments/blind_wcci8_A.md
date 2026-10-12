@@ -61,3 +61,26 @@ Order: 15 > 09 = 14 > 08 = 12 = 13 > 10 > 11.
 13. C10
 14. C07
 15. C11
+
+## The real scores (opened after commit 0831a98)
+WCCI points (the PDF prints totals only): C10 10; C05 9.75; C01, C02, C06, C07, C11, C12, C13 9.5; C03, C08, C14, C15 9;
+C04, C09 8.5. Spearman between our order and the points: **-0.32** (n = 15, a narrow range of 8.5-10).
+
+| problem | points | ours | why we put it there |
+|---|---|---|---|
+| C10 (Dyachuk) | **10** | 13 | Burmistrov combination (double Le Grand), Zagoruiko on two defences on e4; "unprovided flight, promotion-only pawn" |
+| C05 (Guida) | 9.75 | **1** | Zagoruiko with key/mate cycle |
+| C11 (Gavrilovski) | 9.5 | 15 (last) | Le Grand + Zagoruiko; "flight, king-refuted try, capturing try" |
+| C07 (Kovačević) | 9.5 | 14 | reciprocal swap; "rude tries, diagram flight" |
+| C04 (Kovačević) | **8.5** (lowest) | 2 | cyclic threats in tries + Dombrovskis; "clean, 15 units" |
+| C09 (Dyachuk) | 8.5 | 5 | reciprocal key/mate exchange |
+
+## What we learn (WCCI)
+1. **At world level the scale inverts our weighting.** Every entry is rich; the judges paid for content (Burmistrov, Zagoruiko
+   with Le Grand, complete multi-phase complexes) and ignored the flaws our judges count (unprovided flight, a pawn for a try,
+   king-refuted try, capturing tries). Our judges rewarded cleanliness and economy (C04 2nd), the WCCI judges did not.
+2. **E. Bourd's rule "tolerance grows with content" is not applied strongly enough**: at this level, flaws that are serious
+   in an informal tourney move a problem by fractions of a point, not to the bottom.
+3. **Burmistrov is undervalued again** (also Moscow 2012, Problemist 2011). A three-phase double Le Grand on one or two
+   defences is top content for real judges.
+4. Caveat: 15 problems in a 1.5-point range; noise is large. WCCT 11 (full entries book, anonymous, scored) is the next test.
