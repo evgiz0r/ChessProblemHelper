@@ -962,3 +962,22 @@
   as separation (1.Bf6! Sxe6 Se3#, Bxe6 Rd1#), stopping a double check (1.Qd3! threat Rc7 unmasking Bf8 through d6;
   Sd6 Qxe3#, Bd6 Qc3#), zugzwang (1.Re8! Bc7 Re6#, Sc7 Rd8#). All five re-solved sound with the Python solver (by-play
   and set duals noted). My mistake recorded: the capture motive is not anticipated by a sacrifice-key problem.
+* 12 Oct: E. Bourd: "try problem selfblock by rook and knight on diagonal square". Followed his bench order (mates on the
+  block, separation, motive) and his capture motive: Ke4, the threat knight on d3 captured by Rd1/Nb2, Qc3 protects d3
+  and mates on c6 (the rook on d3 would interpose on d5) or e5 (the knight on d3 guards it). Result
+  8/K7/4B3/2B5/p3kP2/2QN4/1nn2R2/3r4, 1.Bb6! (2.Sc5#) Sxd3 2.Qc6#, Rxd3 2.Qe5#; gate PASS, 7+5; three cook-stoppers,
+  no tries. Tool fix (all sessions): self_block_needed now requires the king to be able to step onto the emptied square.
+* 12 Oct: E. Bourd: "rook and bishop selfblock on a square adjacent to the king orthogonally". freethreat (SELFBLOCK=1,
+  WANT Q* for both captures) found the motive in one round: Pd4 protects the threat square e5, Qb6 protects d4. keyfind
+  --patch: 5R2/4p3/1Q6/3N4/r2PkNK1/8/5b2/8, 1.Rf5! (2.Re5#) Rxd4 2.Qe6#, Bxd4 2.Qb1#; gate PASS, 6+4, trim-minimal.
+* 12 Oct: E. Bourd: extend the rook+bishop problem ("tries or changes or some other extending motive"). separate showed
+  every changed pair needs the queen as the key piece; a rook threat ready in the diagram is a mate in one; the queen star
+  (Qf6/Qg7/Qh8 protecting d4 through e5, Ra5 behind Bc5 for the A-mate) stalls on 1...Bd6 and on the diagram square.
+  unmask_search with the try 1.Re6 required found instead 8/8/1Q3R2/3N4/r2PkN2/8/5bK1/8: 1.Rf5! sacrifice, Kxf5 Qg6#,
+  Rxd4 Qe6#, Bxd4 Qb1#; 6+3, no cook-stopper. 1.Re6? is refuted only by Kf5.
+* 12 Oct: E. Bourd: "the composing entity should push for a bit more now than the basic requested theme" (recorded in
+  CLAUDE.md and lessons); theme "two black pieces unpin a black pawn on the same square". Our collection already had it
+  (his 1.Ra5!, two knights). Second layer chosen: a Grimshaw on the unpinning square. Free-threat searches with
+  departure-unguard schemes failed; the crossing geometry by hand (Rc1 below guarding c6, Ba7 guarding d4 through c5);
+  postsearch (threat Rh4e4) then keyfind --patch: 3N4/b3BK2/6p1/3pk3/R6R/N2P1p1B/4P3/2r5, 1.Ra5! Bc5 Sc6#, Rc5 d4#,
+  Rc4 Sxc4#; gate PASS, 15 units; the solver names the Grimshaw. No thematic tries yet.

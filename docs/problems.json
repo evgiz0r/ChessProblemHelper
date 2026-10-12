@@ -1593,6 +1593,70 @@
     "Re8"
    ],
    "note": "1.Re8! (zz) Bc7 2.Re6#, Sc7 2.Rd8#. Set 1...Bc7 2.Re6#/Rd2# (dual), 1...Kc7 unprovided. His note: 'i could go further, but it works. the key is not the best, and unprovided flight, but just showing construction scheme'."
+  },
+  {
+   "id": "claude-rook-knight-d3-bb6",
+   "fen": "8/K7/4B3/2B5/p3kP2/2QN4/1nn2R2/3r4",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd",
+   "source": "theme 'self-block by rook and knight on a diagonal square'; built on his bench scheme (capture on the square, the queen protects it and gives both mates)",
+   "themes": [
+    "Black rook d1 and knight b2 capture the threat knight on d3 and self-block d3 (diagonal to Ke4); Qc3 protected d3 and leaves it to mate",
+    "Separation by the blocker itself: the rook on d3 would interpose on d5 against 2.Qc6#, the knight on d3 guards e5 against 2.Qe5#",
+    "Clearance key: the bishop vacates the threat square c5 and keeps d4/e3 through it from b6"
+   ],
+   "keys": [
+    "Bb6"
+   ],
+   "note": "1.Bc5-b6! (2.Sc5#) Sxd3 2.Qc6#, Rxd3 2.Qe5#. Set: 1...Rxd3 2.Qe5# (kept), 1...Sxd3 unprovided. Gate PASS, 7+5. Flaws: three cook-stoppers (Ka7 stops 1.Ba7, the only king square; Nc2 stops 1.Qd4#; Pa4 stops 1...Sa4 guarding c5); no tries: the bishop's other squares fail also to 1...Ke3; both mates by one queen, as in his bench scheme 1.Qd6!. Found by: postsearch (threat Nd3c5 fixed, SELFBLOCK) from his scheme, keyfind --patch (1.Bb6 with a unit on a7), unmask_search KSQ b6 FSQ c5 (king a7, Be6 for d5/f5)."
+  },
+  {
+   "id": "claude-rook-bishop-d4-rf5",
+   "fen": "5R2/4p3/1Q6/3N4/r2PkNK1/8/5b2/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd",
+   "source": "theme 'rook and bishop self-block on a square orthogonally adjacent to the king'",
+   "themes": [
+    "Black rook a4 and bishop f2 capture the pawn d4 (it protects the threat square e5) and self-block d4, orthogonal to Ke4",
+    "Separation by interposition: the bishop on d4 would interpose on e5 against 2.Qe6#, the rook on d4 on d3 against 2.Qb1#",
+    "Qb6 protects d4 and leaves it for both mates"
+   ],
+   "keys": [
+    "Rf5"
+   ],
+   "note": "1.Rf8-f5! (2.Re5#) Rxd4 2.Qe6#, Bxd4 2.Qb1#. Set: 1...Rxd4 2.Qe6# (kept), 1...Be3 2.Sc3#. Try 1.Qf6? (2.Qe5#) Bxd4 2.Qf5# (changed) but 1...exf6! (rude; the try also has a dual after Rxd4). Gate PASS, 6+4, every unit needed (trim). Flaws: Pe7 is a cook-stopper (without it 1.Re8# and 1.Qf6); Kg4 in no mate (soundness); the key brings the rook next to the king with an obvious threat; random-move dual 1...Be3 Re5#/Sc3#. Found by: freethreat (SELFBLOCK, WANT Q* for both captures, free threat) found the pawn-protects-threat-square motive, keyfind --patch added bPe7."
+  },
+  {
+   "id": "claude-rook-bishop-d4-rf5-sac",
+   "fen": "8/8/1Q3R2/3N4/r2PkN2/8/5bK1/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd; extension asked by him",
+   "source": "extension of claude-rook-bishop-d4-rf5 ('try to extend... tries or changes or some other extending motive')",
+   "themes": [
+    "Black rook a4 and bishop f2 capture the pawn d4 that protects the threat square e5, and self-block d4 (orthogonal to Ke4)",
+    "Separation by interposition: the bishop on d4 would interpose on e5 against 2.Qe6#, the rook on d4 on d3 against 2.Qb1#",
+    "Flight-giving sacrifice key: the rook comes to f5 unprotected; 1...Kxf5 2.Qg6#"
+   ],
+   "keys": [
+    "Rf5"
+   ],
+   "note": "1.Rf6-f5! (2.Re5#) Kxf5 2.Qg6#, Rxd4 2.Qe6#, Bxd4 2.Qb1#. Set: 1...Rxd4 2.Qe6# (kept), 1...Be3 2.Sc3#. Gate PASS, 6+3, trim-minimal. Against the 10-unit version: the cook-stopper Pe7 and the passive Kg4 are gone, the key is a sacrifice that gives a flight, a third variation. Flaws: no tries (1.Re6? threatens Re5# but is refuted only by 1...Kf5; covering f5 would kill the sacrifice); Kg2 in no mate (soundness); dual-avoidance reasons differ (king flight vs defender control). Tried and not reached: a queen key with tries by the queen (queen protecting d4 through e5 from f6/g7/h8, each square with its own pair of mates: Qc6/Qe6, Qb7/Qe7, Qa8/Qe8; the A-mate needs e5 guarded, solved by Ra5 behind Bc5 which the bishop opens by capturing; blocked by 1...Bd6 and by the diagram square, d8 only); the rook already on f5 with a queen key (2.Re5# mates at once whenever d4 is protected). Found by unmask_search (KSQ f5 FSQ f6, try 1.Re6 required: the try did not come, the sacrifice did)."
+  },
+  {
+   "id": "claude-unpin-grimshaw-c5-ra5",
+   "fen": "3N4/b3BK2/6p1/3pk3/R6R/N2P1p1B/4P3/2r5",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd ('two black pieces unpin a black pawn on the same square', push beyond the basic theme)",
+   "source": "unpin on one square plus a Grimshaw on that square",
+   "themes": [
+    "Black unpin: the key pins Pd5 (Ra5 against Ke5); Rc1-c5 and Ba7-c5 interpose on c5 and free the pawn (dxe4 against the threat Re4#)",
+    "Grimshaw on the unpinning square: Bc5 cuts the rook's c-file (2.Sc6#), Rc5 cuts the bishop's a7-d4 diagonal (2.d4#); each arriving unit keeps the other's mating square",
+    "Third variation: 1...Rc4 guards e4, 2.Sxc4#"
+   ],
+   "keys": [
+    "Ra5"
+   ],
+   "note": "1.Ra4-a5! (2.Re4#) Bc5 2.Sc6#, Rc5 2.d4#, Rc4 2.Sxc4#. Set: 1...Bc5 2.Sc6#, 1...Rc5 2.d4# (the mates are set; the key adds the pin that makes them defences), 1...Rc6 2.Sxc6#. Gate PASS, solver 'Grimshaw: Bc5/Rc5 on c5 [key]', 9+6. Flaws: heavy (15 units, 5 pawns); Kf7 in no mate; bPg6 a cook-stopper (keyfind patch), Pe2 a dual-stopper (without it 1...Re1 defends with Sc6#/Sc4#); the thematic mates are set (no change); the key pins directly, like his 1.Ra5! (bourd-bench-two-knights-unpin-ra5); no thematic tries (the rook's other moves have other threats). Found by: freethreat/postsearch failed on bishop-departure schemes; the Grimshaw geometry by hand (rook below on the c-file guarding c6, bishop a7 guarding d4 through c5, the mates on those squares); postsearch READY=1 with threat Rh4e4 fixed found the post-key (2.d4# instead of my 2.Rd4#), keyfind --patch the key."
   }
  ]
 }
