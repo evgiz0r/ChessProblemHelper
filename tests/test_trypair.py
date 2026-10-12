@@ -17,3 +17,9 @@ def test_a_cook_is_rejected():
     trypair.SPEC = SPEC
     ok, _ = trypair.full('3N2b1/b2P3p/3pP2R/1Q1pk1K1/3pN2R/8/1n2P1PP/2r3B1')   # without wPd2: 1.Sd2 also works
     assert not ok
+
+
+def test_a_capture_key_is_rejected():
+    # 12 Oct 2026: bPg3 replaced wPg2+wPh2 (21 units) but made the key 1.Sxg3, a capture without reason
+    trypair.SPEC = SPEC
+    assert trypair.cheap('3N2b1/b2P3p/3pP2R/1Q1pk1K1/3pN2R/6p1/1n1PP3/2r3B1') is None

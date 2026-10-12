@@ -47,8 +47,8 @@ def cheap(fen):
         if mate:
             return None
     key = chess.Move.from_uci(SPEC['key'])
-    if key not in w.legal_moves or w.gives_check(key):
-        return None
+    if key not in w.legal_moves or w.gives_check(key) or w.is_capture(key):
+        return None                                           # a checking or capturing key is fatal
     w.push(key)
     post = w.board_fen()
     t, d = post_spec(post)

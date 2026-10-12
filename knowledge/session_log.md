@@ -1005,3 +1005,8 @@
   3pN2R/8/1n1PP1PP/2r3B1, 1.Sg3! (2.Re4#) Bc5 2.Sc6#, Rc5 2.Bxd4#; 1.Sf2? Rc5!, 1.Sf6? Bc5! (pure pair), 1.Sc3?
   Rxc3!, 1.Sc5? dxc5!; gate PASS, 22 units. New tool (all sessions): compose.trypair enumerates one or two stoppers
   around a kernel for a key with named single-refutation tries (tests/test_trypair.py).
+* 12 Oct: E. Bourd on 1.Sg3! (pure pair, 22 units): "its ok imo, pretty complex. it does feel a bit heavy and probably
+  can improved, but its decent"; the e6 double protection: "a good mechanism achieving the goal".
+  Economy pass (all 28 pairs of stoppers removed, one unit added, compose.trypair functions): the only sound 21-unit
+  hit was bPg3 for wPg2+wPh2, with the key 1.Sxg3 (a capture: fatal). The 22-unit version stands. Tool fix (all
+  sessions): trypair rejects a capturing key.
