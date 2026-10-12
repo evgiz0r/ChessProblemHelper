@@ -20,13 +20,15 @@ the readings. Answers go into the judge checklist, lessons and themes, and the q
 6. **Your D49 / W23-type reciprocal changes**: Robert gave D49 only an HM for heaviness. When does weight cancel a
    reciprocal change for you?
 7. **Thematic multiple threats** (English Novotny, Fleck, Brogi): our constitution calls a double threat fatal. Should the
-   rule read "a double threat that the play does not separate"?
+   rule read "a double threat that the play does not separate"? WCCT 11 A adds a case: A01 (3rd-4th place) has the same
+   double threat in all four phases, accepted as "the price to pay" for a Zagoruiko 3x3 with cyclic refutations. Is that a
+   price you would pay in our own problems, or only a judge's allowance for others?
 8. **Rude moves**: Robert refused capturing tries; Gockel placed capturing keys in threat corrections. Where do you stand,
    so that our own composing follows one line?
 
 ## Data
 9. **StrateGems 2015, G08** (Witt): yacpdb's diagram has the white king in check (Kb4, bRg4, empty 4th rank). Is the
    record wrong, or is this a known problem with White in check?
-10. **WCCI / WCCT #2 scored sections**: wfcc.ch is blocked here; a PDF upload would give a fully scored field.
+10. ~~**WCCI / WCCT #2 scored sections**~~: answered, wfcc.ch allowed; WCCT 11 A run (blind_wcct11_A.md).
 11. **Variantim 2019, V14 (Svitek, 3rd Comm)**: the author labels the defence effects cyclically (AB/BC/CD/DA); our judge could not
     see the cycle on the board. How should such cyclic defence-effect labels be read and weighed?

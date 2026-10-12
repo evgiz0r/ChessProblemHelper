@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| WCCT 11 section A, all 86 entries (scored, wfcc.ch), theme given | 79 scored | Spearman 0.63 (the countries with each other 0.34-0.72); 1st place our 2nd | blind_wcct11_A.md |
 | WCCI 8 section A winners (scored, uploaded PDF) | 15 | Spearman -0.32; the 10/10 Burmistrov our 13th, the lowest our 2nd | blind_wcci8_A.md |
 | The Problemist 2011 #2, yacpdb, with solutions | 46 | AUC 0.64; his Prizes 1-3 our 11th, 8th, 3rd | blind_tourney_problemist2011.md |
 | Variantim 2019 Israel Ring #2 (V. Kopyl), yacpdb, with solutions | 18 | AUC 0.76; his two Prizes our 3rd and 5th; 5 of his 8 in our top 6 | blind_tourney_variantim2019.md |
@@ -62,3 +63,7 @@ anonymous by design (country codes), so they make blind fields without an extrac
 Download them into /tmp/claude-0/sealed/ and do not open the score files before our ranking is committed.
 13. **World level inverts our weighting** (WCCI 8 A): the judges pay for content and ignore the flaws we count; our judges reward
     cleanliness. "Tolerance grows with content" must be applied at full strength for rich multi-phase problems.
+14. **A full world-level field agrees with us like a judging country** (WCCT 11 A, 79 scored entries): Spearman 0.63 against the
+    total, 0.47-0.56 against each country, while the countries agree among themselves at 0.34-0.72. WCCI 8 (-0.32) was a
+    compressed field of winners only. The fixable misses are the same as before: a double threat paid for by a record content,
+    and new task arrangements scored as "mechanical". The unfixable one without a search: anticipation.

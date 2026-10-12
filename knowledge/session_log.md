@@ -997,6 +997,10 @@
   out at 21+ units with queen cooks. Result, slimmed from z3 by hand: 6b1/b3N2p/3ppP1K/R2pk1P1/3pN2R/8/7P/2r1n1B1,
   1.Sg3! (2.Re4#) Bc5 2.Sc6#, Rc5 2.Bxd4#; 1.Sd2? Bc5!; 1.Sf2? Bc5!/Rc5!. Gate PASS, 19 units (bBg8 only kills
   1.Sxd6? Kxd6!).
+* WCCT 11 section A (wfcc.ch, 86 entries, 79 scored, theme given, eight blind judges): Spearman 0.63 against the total, like a
+  sixth judging country (the countries with each other 0.34-0.72). 1st place (Kovačević, Zagoruiko 4x2) our 2nd. Misses: double
+  threats paid for by a record (A01 3rd-4th our 21st) and a new task arrangement (A35 6th our 46th). Checklist line, lesson,
+  question 7 extended. knowledge/experiments/blind_wcct11_A.md.
 * 12 Oct: E. Bourd on 1.Sg3! (one pure try): "without a pure pair, its almost not worth having 1 pair ... the effect of
   guarding f5 looks too limiting"; "with only 1 real try it just seems unfinished problem of 2 tries ... its always
   worth going further, and then look back". Tried a diagonal pin (Ke5, Pd4, Bb2, Grimshaw on c3: both mates on lines,
