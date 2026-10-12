@@ -994,3 +994,11 @@
   out at 21+ units with queen cooks. Result, slimmed from z3 by hand: 6b1/b3N2p/3ppP1K/R2pk1P1/3pN2R/8/7P/2r1n1B1,
   1.Sg3! (2.Re4#) Bc5 2.Sc6#, Rc5 2.Bxd4#; 1.Sd2? Bc5!; 1.Sf2? Bc5!/Rc5!. Gate PASS, 19 units (bBg8 only kills
   1.Sxd6? Kxd6!).
+* 12 Oct: E. Bourd on 1.Sg3! (one pure try): "without a pure pair, its almost not worth having 1 pair ... the effect of
+  guarding f5 looks too limiting"; "with only 1 real try it just seems unfinished problem of 2 tries ... its always
+  worth going further, and then look back". Tried a diagonal pin (Ke5, Pd4, Bb2, Grimshaw on c3: both mates on lines,
+  tries Be2?/Bd5? by a Bf3; fails on 1...Bd2 guarding e3 and 1...Re1) and Ke4/Pd4/Ra4 with a Grimshaw on b4 (Raxd4 and
+  queen cooks). Back to the knight wheel: rebuilt t1 by hand, one stopper per solve: 3N2b1/b2P3p/3pP2R/1Q1pk1K1/
+  3pN2R/8/1n1PP1PP/2r3B1, 1.Sg3! (2.Re4#) Bc5 2.Sc6#, Rc5 2.Bxd4#; 1.Sf2? Rc5!, 1.Sf6? Bc5! (pure pair), 1.Sc3?
+  Rxc3!, 1.Sc5? dxc5!; gate PASS, 22 units. New tool (all sessions): compose.trypair enumerates one or two stoppers
+  around a kernel for a key with named single-refutation tries (tests/test_trypair.py).
