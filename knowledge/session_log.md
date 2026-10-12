@@ -897,3 +897,13 @@
 * His answers (12 Oct): Pc4 (StrateGems 2007) was a cook/dual stopper; Wola Gulowska 2015 shows reciprocal changes
   and started from the geometric scheme (both lines, knight mates). I had called it pseudo Le Grand; the theme he
   names is the reciprocal change. Recorded in studies, principles, lessons.
+
+## Session: blind tourney judging (12 Oct 2026, branch claude/tournament-2-judgment-experiment-3str0l)
+* E. Bourd: "judge all problems of the tournament, then compare with the actual judgement, not biased by placement".
+  Protocol: FENs only, shuffled labels, judge subagents, award sealed (sha256 / sealed JSON); our verdict committed first.
+* Problemesis 2003 #2 (P. Robert): 25 of 35 entries (D60-D69 are stored as "Inédit" in the database, so the field
+  missed them). Nine of the 35 entries are E. Bourd's. We placed 13, he placed 8. My aggregation overrode a judge's
+  named fatal dual (D53).
+* MK2 2016 (Spearman 0.69, same 1st Prize) and Moscow Ch. 2012 (thematic 0.61 without the theme; published 0.07), from
+  his PDFs (selivanov.world). Lessons: count phases, not variations; tabulate tries x defences; name multi-phase
+  themes; our fatal list is our standard, not an award predictor. Into the judge checklist, lessons and knowledge/experiments/.

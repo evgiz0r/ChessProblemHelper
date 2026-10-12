@@ -114,3 +114,36 @@ Order: 26 > 28 > 27 > 25 > 30 > 29 > 31.
 29. MSK-29 thin block completion
 30. MSK-13 double threat in every phase
 31. MSK-31 capture key, 14 pawns
+
+## The real result (opened after commit afab59b)
+61 problems from 13 authors, in two sections:
+- **Thematic** (19 entries; the PDF shows 13): "In three phases the same (unchanged) defence is met by mates of
+  different white pieces or pawns on one square; additional change welcome." **Our judges were not told the theme.**
+- **Published 2011 or original** (42 entries; the PDF shows 18). Most of them already had prizes elsewhere. Points 9-14.
+  Criteria: thematic originality, overall complexity, artistic merit, unity and technical perfection.
+
+Spearman, ours against the real points: thematic **0.61**, published **0.07**.
+
+| section | real (pts) | ours (rank of 31) |
+|---|---|---|
+| thematic | MSK-09 1st (14), MSK-27 2nd (13), MSK-24/26/30 3-5 (10), MSK-06/19 (9), MSK-07 (8), MSK-11 (7), MSK-02 (6), MSK-23/31 (5), MSK-29 (4) | 24=1, 06=2, 26=3, 07=6, 09=8, 19=9, 27=17, 02=19, 23=21, 30=23, 11=27, 29=29, 31=31 |
+| published | MSK-16 (14), MSK-10 (13), MSK-12/20/22/25 (12), MSK-03/15/28 (11), MSK-08/13/14/17 (10), MSK-01/04/05/18/21 (9) | 14=4, 20=5, 10=7, 04=10, 03=11, 28=12, 15=13, 05=14, 08=15, 01=16, 25=18, 21=20, 16=22, 12=24, 18=25, 22=26, 17=28, 13=30 |
+
+His comments on our misses:
+- **MSK-27** (thematic 2nd, our 17th): "multi-phase choice, attractive capture-free battery play (threats and mates),
+  4x1 change of mates (three on one square), Dombrovskis paradox". Our judge called the diagram flight e4, the
+  king-refuted try and the capturing try fatal. He did not mention any of them. It shows the theme exactly (three mates on c5 after Ke4).
+- **MSK-30** (3-5): shows the theme (1...Qxd5 mated by Qxd5 / Sexd5 / cxd5). He names its impurities: the solution's
+  mate cxd5 is ready from the start, and there is a dual in a try. He still placed it because "the theme is done, plus a 3x1 change".
+- **MSK-09** (thematic 1st, our 8th): "the set theme with Zagoruiko 3x2 and the theme of the 17th Russian team
+  championship, alternation of key and threat; large-scale, but tactically dull ('grab for grab')". Scale won.
+- **MSK-16** (published, top 14 pts, our 22nd): "a rarely harmonious, unified complex with batteries created and
+  played, a self-pin of a black unit, white switchbacks; 'non-check checks' and a 2x2 change". Our judge called it
+  "two checks on one square, capture key, thin".
+- **MSK-12** (12 pts; 1st Prize ECSC 2011, our 24th): "Mäkihovi and Zagoruiko". It has the set play and two tries
+  (Bd4?, Sfd3?), each changing both mates after Rxh4 and Bxh4. Our judge saw one try and "two changed mates" and
+  **missed half the content**.
+- **MSK-22** (12 pts, our 26th): "Burmistrov's combination (three-phase doubled Le Grand on an unchanged defence) +
+  splitting the try's multiple first moves into the variation's mates. Not all came off: the solution has no extra
+  variation". Our judge: "a sketch, one variation".
+- MSK-13 (10 pts): we called its double threat fatal. He kept it among the 2011 prize-winners.

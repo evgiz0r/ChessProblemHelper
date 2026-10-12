@@ -58,3 +58,10 @@ some flaws; the balance is partly subjective. So: name every flaw, then say what
 - A named fatal flaw (a dual in a thematic phase, an idle unit in a twin) is not bought back by ambition.
 - Clear and economical beats heavy and rich at the top: the 1st Prize had 7+7, no white pawns and no secondary play.
 - Be stingy: an informal award places about a quarter of the entries.
+- Count phases, not variations (Moscow 2016 / Moscow Ch. 2012 blind experiments): a 2x2 change across tries and key, a
+  doubled Le Grand on one defence or Mäkihovi + Zagoruiko is full content; "thin: two variations" is the wrong verdict there.
+- Tabulate (set / each try / key) x (each thematic defence) before scoring, so that no changing try is missed.
+- Name the multi-phase theme (Mäkihovi, Burmistrov, Chepizhny, Hannelius, Banny, Rukhlis, ...) or say you cannot; real judges
+  weigh originality by the name.
+- Our fatal list is our composing standard. When predicting an award, a rich phase complex buys back a diagram flight,
+  a king-refuted try or a capture key; a double-threat try that breaks the harmony of the phases is still noticed.

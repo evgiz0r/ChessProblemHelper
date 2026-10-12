@@ -63,3 +63,35 @@ Order: 11 > 12 > 15 > 13 > 14.
 13. MK2-08 twin Le Grand on king flights; double threat in a)
 14. MK2-07 one cross-check
 15. MK2-02 double threat, one mate
+
+## The real award (opened after commit 9a2b287)
+Moscow tourney 2016, #2: 28 entries from 20 authors. The judge calls himself the country's standing critic of the
+"new-strategic" multi-phase shuffles; he wants a full-blooded fight between the two sides.
+
+| real | label | author | ours |
+|---|---|---|---|
+| 1 Prize | MK2-11 | M. Kovacevic | **1** |
+| 2 Prize | MK2-10 | A. Kuzovkov | 3 |
+| 3 Prize | MK2-14 | V. Shanshin | 12 |
+| 4 Prize | MK2-01 | P. Murashev | 2 |
+| 5 Prize | MK2-06 | G. Mosiashvili | 4 |
+| 1 HM | MK2-15 | V. Shanshin | 7 |
+| 2 HM | MK2-13 | S. Khachaturov | 10 |
+| 3 HM | MK2-04 | Z. Labai | 5 |
+| 4 HM | MK2-09 | M. Svitek | 9 |
+| 5 HM | MK2-08 | A. Shpakovsky | 13 |
+| 1 Comm | MK2-12 | N. Bykov | 6 |
+| 2 Comm | MK2-05 | Yu. Alekseev | 8 |
+| 3 Comm | MK2-02 | D. Mueller | 15 |
+| 4 Comm | MK2-07 | M. Kroitor | 14 |
+| 5 Comm | MK2-03 | V. Shumarin | 11 |
+
+Spearman 0.69. Our top four are four of his five prizes, and our 1st is his 1st.
+- MK2-11 (1st Prize): he praises the same things our judge did: the changes across set, tries and solution, the key, and
+  the Rukhlis-style transfer of the set mate Bf3 to a new defence. He calls the far mate 1...Kxf5 2.Qb1#
+  "luxurious"; our judge noted it only as a pin mate. He also says "not flawless" (our judge: Rh3 there only for the set play and the try).
+- MK2-14 (3rd Prize, our 12th): he likes the complex of phases and the rare mate 1...Kd5 2.Qh1#. He is disappointed
+  by the double-threat try 1.Se7?, as our judge was. Our judge also called it thin ("two variations"); he counted phases, not variations.
+- MK2-13 (2nd HM, our 10th): "harmonious, pleasant construction, but for Black only the king plays, and the change
+  no longer impresses". He placed it anyway; our judge called it mechanical. We agree on the substance, not the weight.
+- MK2-12 (1st Comm): "a 3x3 change was done 70 years ago, but next to many modern #2s it holds up".
