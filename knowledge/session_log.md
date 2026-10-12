@@ -933,3 +933,6 @@
   T e5, Sf6 -> d7/g4, rooks b7 (not c7: it attacked the try square c6) and h4, key Se5-g6, tries Sd3/Sc6. postsearch
   (threat Qc3e5) then unmask_search with the try pair required found 8/1r6/1p1PRn2/1KpkNB2/2p1p2r/2Q5/b2P4/8:
   1.Sg6! Sd7 Se7#, Sg4 Sf4#; tries 1.Sd3? Sg4 Sf4# but Sd7!, 1.Sc6? Sd7 Se7# but Sg4!. Gate PASS, 7+9.
+* Problemesis 1999-2002 #2 (judge J. Morice), full field D1-D34, blind: 5 of his 7 in our 8, our three Prizes all placed,
+  AUC 0.86 (best of five). Our 1st Prize (Kapros D15, four-phase queen tries) was his last placed; he paid for line strategy
+  (bivalence, masked lines, anti-Lewmann, Franco-Latvian, equipollent moves). Lessons and checklist line added.

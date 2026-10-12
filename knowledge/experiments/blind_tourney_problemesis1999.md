@@ -129,3 +129,53 @@ Order: 29 > 34 > 30 > 33 > 31 > 32.
 32. R32
 33. R17
 34. R03
+
+## The real award (opened after commit 46e29e3): judge Jean Morice
+34 originals by 12 authors, "honourable quality overall"; 7 placed.
+
+| real | No. | author | label | ours (rank of 34) |
+|---|---|---|---|---|
+| 1 Prize | D1 | M. Mladenovic | R02 | **3 Prize (3)** |
+| 2 Prize | D2 | J. Rotenberg & J.-M. Loustau | R12 | 3 HM (6) |
+| 1 HM | D31 | G. Doukhan | R26 | **2 Prize (2)** |
+| 2 HM | D27 | M. Mladenovic | R18 | none (14) |
+| 3 HM | D26 | M. Mladenovic | R22 | 2 HM (5) |
+| 1 Comm | D30 | A. Cuppini | R04 | none (23) |
+| 2 Comm | D15 | J. M. Kapros | R06 | **1 Prize (1)** |
+
+**Five of his seven are among our eight placed** (we placed 8, he 7), and our three Prizes are all in his award.
+AUC 0.86, the best of the five experiments.
+
+Comments compared:
+- **D1 R02** (1st Prize): "exchanged mates; key and thematic defences in both phases have bivalent effects (opening one white
+  line while closing another white line and a black line); function exchange of wS and bS; diagonal-orthogonal echo; a
+  changed mate after b3; impeccable construction". Ours: the reciprocal change and "the key closes the e-file against the
+  refutation", but "heavy, grey black force". We saw the change and not the **bivalence**, and called heavy what he called impeccable.
+- **D2 R12** (2nd Prize): "two corrections of a white knight with a very original Franco-Latvian (Franco-Russian) theme;
+  white self-obstructions, the key destroys the R/B battery; the thematic defences open both lines of the wB and pre-pin the
+  black thematic pieces". Ours: "knight wheel, four tries refuted differently, the key offered to two pieces that self-pin;
+  only one changed mate". We saw the pieces of it and not the named theme (**Franco-Latvian**), and counted changes again.
+- **D31 R26** (1st HM): "a tri-ampliative key with sacrifices on the flight squares is not original (Segal 1950); but three
+  queen tries forming batteries whose first moves reappear as the mates". Ours: exactly this ("the queen's three tries return
+  as the three mates; I would call it a threefold Vladimirov, not certain of the name"). Same reading, and we placed it higher.
+- **D27 R18** (2nd HM): "five tries of a wS refuted by one and the same bS, two of them theme A (Ahues); the originality is that
+  the bS moves are **equipollent** to the wS moves". Ours: "six knight tries with distinct refutations; capture key; rude
+  refutations". We saw distinct refutations and missed the unity (the same black knight, mirrored moves). He ignored the capture key.
+- **D26 R22** (3rd HM): "four corrections of a wB, three thematic tries refuted by equipollent moves of one bB because of white
+  self-obstruction (Savournin, Thèmes 64, 1964)". Ours: the same reading, 2nd HM.
+- **D30 R04** (1st Comm): "white correction with pre-closing of two masked white lines, two masked anti-Lewmann defences
+  (Ahues)". Ours: "22 units for one changed mate, five idle white units": **the whole mechanism missed**.
+- **D15 R06** (2nd Comm, our 1st Prize): "four phases, the try keys refuted by corrections of one bS; in the solution the
+  primary defence's mate changes a third time, plus a new secondary". Same content; he put this mechanical multi-phase
+  queen scheme last of his seven, we first.
+
+## What we learn (1999-2002)
+1. **Best agreement so far** (AUC 0.86, 5 of 7 in our 8, all three of our Prizes placed by him).
+2. **Judges have schools.** Morice (French strategic school) pays for line effects: bivalence, masked lines, anti-Lewmann,
+   Franco-Latvian, theme A, equipollent black and white moves. The Moscow judges paid for phases. Our "count phases" calibration
+   made us put the most mechanical multi-phase entry (D15) first; he put it last. Phases are content; line strategy is content
+   too; a judge weighs the one his school values.
+3. **Unity of the refuting unit** (one black piece refutes all the tries, with moves mirroring White's) is a theme in itself;
+   our judges reported "distinct refutations" and stopped.
+4. **Vocabulary**: Franco-Latvian, anti-Lewmann, theme A (Ahues), equipollent moves, bivalent effects, masked lines,
+   tri-ampliative key. Add to the list of names to learn from E. Bourd.
