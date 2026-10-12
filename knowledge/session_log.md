@@ -888,3 +888,9 @@
   E. Bourd on 1.Qb5!: the two mating units hold c5 for each other (connected play). The anatomy confirms it (key: c5
   Sa6 -> Qb5,Sa6; Bf6 Sb4#: Qb5 alone; Bg6 Qb3#: Sa6 alone). anatomy.py got a LINKS section (reciprocal guards and
   mating units working in other mates) with a test; judge and compose skills point to it.
+* Studies, complex round (12 Oct; his WCCT entries are #3+, so his honoured orthodox #2s instead): StrateGems 2007
+  2HM (each rook defence cuts the support of the other queen mate), Sredba 2003-05 1HM (Bf5 plugs two black rook
+  lines at their crossing: Le Grand without flights), Wola Gulowska 2015 5HM (two masked batteries: pin while the
+  mask stands, double check once it moves). Anatomy improved (any session's tool, all ours): a White unit on a
+  flight is credited ('on f6'), and a removal test per mate finds plugs/protectors (Pb4 blocking Qa3-d6) that the
+  guard map missed; the idle flag now uses it ('needed in no mate'). Tests added.
