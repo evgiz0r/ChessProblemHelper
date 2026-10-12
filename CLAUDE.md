@@ -11,7 +11,7 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 - A black king with a flight in the diagram (a flight GIVEN by the key is a plus).
 - A key that gives check or captures without a thematic reason; a try refuted by a king move.
 - A key by a piece out of play (a knight on the edge far from the king): the key is obvious (E. Bourd, 7 Oct 2026).
-- A White unit that takes no part in the solution, there only for a try or for soundness (E. Bourd, 7 Oct 2026).
+- A White unit that takes no part in the solution and is not needed for soundness either (superfluous).
 - A known mechanism with nothing added, or a reduced form of a published problem: not a problem (E. Bourd).
 
 ## Working rules
@@ -38,6 +38,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   with the solution beside it, for a file or a database record: `tools/card_png.py out.png --portrait` or `--id psis-…`.
 - Every session gives him the link to the Composing Bench, in its first reply and with every diagram:
   https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916 (E. Bourd, 10 Oct 2026).
+- A unit there only for a try is a drawback, weighed against what the try buys (E. Bourd, 11 Oct 2026; on
+  7 Oct he had called it fatal).
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his
@@ -66,7 +68,9 @@ it is doing, plus a tool-call cap in its prompt. It writes a notes line per solv
 `chesscomp/` solver, analysis, motives, critique, compose tools. `knowledge/` principles, lessons,
 session log, problem collection (`docs/problems.json` must equal `knowledge/problems.json`). `docs/`
 web page and bench; `analysis.js` mirrors `chesscomp/analysis.py` and any fix goes into both.
-`tests/test_regression.py` re-solves every stored key.
+`tests/test_regression.py` re-solves every stored key. `chesscomp/anatomy.py` shows how a #2 works on the
+board (guard field of each mate, pins, why tries fail, role of each unit); `knowledge/studies.md` holds the
+published problems read with it and the structural lessons drawn from them (E. Bourd, 11 Oct 2026).
 
 ## Setup
 
@@ -105,3 +109,6 @@ to keep. `check` statuses: ok, mismatch, cooked, unsound, timeout, unsupported, 
 To add or refresh a collection: `python tools/problemesis.py crawl DIR` then `parse DIR`
 (the parser is deterministic; ids are a hash of position + stipulation + twins + conditions).
 New collections are registered in `db.COLLECTIONS`.
+`knowledge/pdb_bourd.json` (`pdb_bourd`): his own PDB entries not in Problemesis, from a PDB LaTeX export
+via `python tools/pdb_tex.py <export.tex> knowledge/pdb_bourd.json --skip-known`; his record and WCCT
+history are in `knowledge/bourd_record.md`.

@@ -334,3 +334,10 @@ the [a], [b] for the mates that change thematically."
   freedom in my geometry around the threat, and what squares could be needed (i switched from d6 to e6, on the same
   line). and i changed the mates with the bishops, putting them away from the line, they are less interfering with
   other play and dont need a lot of patching." The d6 pawn was added "to avoid the defense Be5".
+
+## 11 Oct 2026: on the studies of published #2s
+- A White unit there only for a try is a drawback, not a fatal flaw: weigh it against what the try buys.
+  (Asked about Pg2 in his own miniature 8/2K5/B7/8/4k3/7Q/6P1/6B1, which serves only 1.Be3?.)
+- Miniatures are too simple: very basic even when they show changes. He would not publish one as an advanced
+  composer; later in his career he mainly composed complex problems. Study material and our own aim should be
+  complex #2s (several thematic phases, rich defences), not light positions.

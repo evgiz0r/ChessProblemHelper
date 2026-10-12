@@ -64,3 +64,12 @@ A protector of a mating square along a line can mate along a parallel line for t
 - Test removals in pairs: two units each removable alone can be jointly necessary.
 - Reuse general ideas and the search process, not structures; the same solution appears in other
   directions - rotate, reflect, shift, respect the constraints of the position.
+
+## Mechanisms read from published #2s (11 Oct 2026, `knowledge/studies.md`)
+- Flight paradox (Le Grand, mate exchange): two mate squares, each touching one king square and two away from
+  the other. Key unit protects both (one diagonal, one knight fork); try unit takes the distant mate's free square.
+- Two-job key: the try does job one, the refutation is the defence job two answers.
+- Dombrovskis: the refutation works by a side effect (vacated flight); the key kills that side effect.
+- Pins: a defence that self-pins on a line to the king cannot interpose; a flight on the pin line re-pins.
+- Focal: a black plug at the crossing of two white lines; masked bishops behind mating knights cover vacated squares.
+- Check every unit's role with `python -m chesscomp.anatomy --fen "<FEN>"` before showing a position.

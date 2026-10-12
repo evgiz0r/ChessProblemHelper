@@ -853,3 +853,34 @@
   Improving it as he invited: replacements for Sa8 (470 tried) -> only Se8 also works and adds 1...Sf6 2.Sc7# (third
   cut of the line, unguard error); g5 has no better replacement; the king is passive on every working square; no queen
   try (only Qb5 makes Bc6# a threat). New tool chesscomp/compose/restop.py with tests/test_restop.py.
+
+## Session 11 Oct 2026 (evening): his published record, PDB and WCCT
+* He downloaded his PDB entries (query A='Bourd', 246 problems, LaTeX). 60 were already in Problemesis; the
+  other 186 are now the `pdb_bourd` collection (tools/pdb_tex.py, raw export in knowledge/sources/).
+  PDB stops in 2018 and lacks two of ours (Variantim 2015 #2635, Novice TT 2002).
+* "Are all my WCCT problems there?" PDB has 19 placed entries (8th-10th WCCT). Two agents read his mail
+  (read-only): no entry in the 11th or 12th WCCT (he selected for the team in 2021); in the 10th he gave the
+  captain 8 problems and PDB has 7 as entries; mail before 2010 is gone, so the 8th cannot be checked.
+  Summary and table: knowledge/bourd_record.md. All 19 shown with diagrams (docs/blog/cards/wcct-*.png) and
+  translated solutions.
+* Solver check (5-minute cap, resumable): 56 of the direct and self mates checked, 44 ok, 4 with no printed
+  key, 8 timeouts (moremovers and s#), no cook and no mismatch.
+* Process failure: the first notation conversion dropped origin squares, and the check reported a false
+  mismatch (Sc3 for Sbc3); fixed by converting the first move to SAN from the diagram.
+* Open: the sixth joint 10th-WCCT candidate (in "Israeli problems for WCCT.pdf", mail 15-17 Apr 2016); the
+  truncated "problem from wcct not sent" (7 Dec 2013); whether to add his later problems to PDB.
+* Studies of published #2s (11 Oct, E. Bourd: "go over existing #2, starting with simple ones, understanding how the
+  mechanism works"). New `chesscomp/anatomy.py`: the king's field after each mate, field change of each first move,
+  why each try's threat fails after its refutation, essential pins, role table with idle units flagged; 4 tests in
+  tests/test_anatomy.py. Ten sound problems from the database (5-12 units) read in `knowledge/studies.md`: Bourd and
+  Labai turn out to be one Le Grand engine (contact/distant cross-geometry); Kazimov (two-job key); Milewski x2
+  (black correction; Boros with Bh2 whose only job is pinning self-pinned defenders: first tool version called it
+  idle, fixed by adding pins); Marin (focal at a crossing point); Velimirovic (black Albino); Slesarenko-Gvozdjak
+  (Dombrovskis by side effects); Rice (unpin key from a no-move position; stalemate tries were silent, fixed);
+  Velikÿ (focal rook, masked bishops behind mating knights). Tool bugs found on the way: 'K' marker collided with
+  the white king's name; variations by different units were merged in one drawing. Four problems carry a
+  try-only or plug unit, Bourd's own Pg2 among them: asked him how his 7 Oct rule weighs that.
+* His answers on the studies (11 Oct): the try-only unit is a drawback, not fatal (gate, checklist, CLAUDE.md,
+  tests changed: 'try-only unit' is now a warning the post must name; 'superfluous piece' stays fatal).
+  Miniatures are too simple, even with changes; he mainly composed complex problems. Next studies: complex #2s,
+  starting with his own WCCT entries (collection pdb_bourd).
