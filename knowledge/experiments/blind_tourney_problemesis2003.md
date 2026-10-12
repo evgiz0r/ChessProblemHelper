@@ -91,3 +91,43 @@ Weighing across groups (the judges' scales differ; content first, then construct
 Expectation stated in advance: our rules punish promoted black force (P02, P26), double threats (P20, P09, P08, P32)
 and king-move refutations (P21) as fatal; a 2003 judge may tolerate some of these. We may undervalue task
 problems (P24) and overvalue heavy positions with many changes.
+
+## The real award (opened after commit 21d3528): judge Philippe Robert
+35 orthodox #2 originals (D35-D69). Our field had only 25: D60-D69 are stored in the database with source
+"Inédit" instead of "Problemesis 2003", so the field selection missed them (among them the 2nd Prize D67,
+2nd HM D66 and 3rd Comm D68, all three seen after unsealing, so they cannot be judged blind any more).
+
+| Real place | No. | Author | label | our place |
+|---|---|---|---|---|
+| 1 Prize | D55 | M. Mladenovic | P31 | Comm (judge: 5, "thin play") |
+| 2 Prize | D67 | E. Bourd | - (not in field) | - |
+| 1 HM | D49 | E. Bourd | P27 | **1 Prize** |
+| 2 HM | D66 | E. Bourd | - | - |
+| 3 HM | D51 | A. Armeni | P24 | Comm |
+| 1 Comm | D46 | E. Bourd | P01 | nothing (judge: diagram flight d1, f1=R dual) |
+| 2 Comm | D42 | B. Delobel | P13 | 3 HM |
+| 3 Comm | D68 | R. Aliovsadzade | - | - |
+
+Named and rejected by Robert ("ambitious but unacceptable flaws"): D44 P21 (symmetry, tries whose threats are
+never realised: no real Dombrovskis), D50 P02 (promoted black piece, duals), D53 P18 (Rb7 idle in a) and b), major
+dual in c)), D57 P20 and D58 P07 (thematic try captures a black piece), D59 P28 (try captures a black piece),
+D65 (dual in the solution). The other 20 were "pleasant, well built, not enough for an award".
+
+## What we learn
+1. **We were too generous: we placed 13 of 25, he placed 8 of 35 (23%).** Real informal awards are short.
+   Of his 5 placed problems in our field we placed 4 (missed P01), but 8 of our 13 he did not place.
+2. **Our biggest miss was my aggregation, not the judges.** The group-3 judge named exactly Robert's reasons
+   against P18 (Rb7 idle in a and b, dual in c, redundant twins) and scored it 5; I raised it to 2nd Prize for
+   its ambition. That broke our own rule: a dual in a thematic variation is fatal. Ambition does not buy a
+   major dual in a phase.
+3. **A try that captures a black unit disqualifies it for him** (P07, P20, P28). Our checklist only treats a
+   capturing key as a flaw; a capturing try was not even named as a flaw (P07 1.Qxd6? got our 3rd Prize).
+4. **Clarity and economy beat volume at the top.** His 1st Prize P31 (7+7, no white pawn, good key, a clean shift of
+   two mates between try and solution) has no secondary play, and he says outright that this does not bother him.
+   Our judge marked it down for "thin play: 3 mates". Our 1st Prize P27, with the same kind of change, got only
+   1 HM from him: "construction a bit heavy", Pc2 only for the try, three black pawns weighing on it.
+5. **A clear task is rewarded** (P24, the white knight's rosace (wheel) in the tries, got 3 HM; we gave Comm).
+   We had predicted this bias in advance.
+6. **His tolerance differs from our fatal list.** P01 (doubled Röpke, the mates swapped between phases) got a Comm despite
+   the d1 diagram flight; P11/P22/P33/P04/P25 were "pleasant but not enough". The bottom of our list matched his
+   rejects completely.

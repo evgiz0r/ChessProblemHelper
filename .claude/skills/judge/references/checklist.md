@@ -52,3 +52,9 @@ some flaws; the balance is partly subjective. So: name every flaw, then say what
   Sc3? R4b5!), not 2+1; keep the others in the notes.
 - An edge key is acceptable when the piece has a role in the solution and its other moves make real tries: "a3
   is somewhat less obvious than the rest, making the tries more real."
+
+## Calibration against a real award (blind experiment, Problemesis 2003, judge P. Robert; knowledge/experiments)
+- A try that captures a black unit is a serious flaw (three entries refused for it), not only a capturing key.
+- A named fatal flaw (a dual in a thematic phase, an idle unit in a twin) is not bought back by ambition.
+- Clear and economical beats heavy and rich at the top: the 1st Prize had 7+7, no white pawns and no secondary play.
+- Be stingy: an informal award places about a quarter of the entries.
