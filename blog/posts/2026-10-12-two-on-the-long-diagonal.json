@@ -49,6 +49,6 @@
   "searches": 16
  },
  "improvement": "The solver now reports a black half-pin. chesscomp.motives.detect_half_pin was in the kit but nothing called it. chesscomp.analysis now adds one 'Half-pin: <defence> [key]' pattern for each defence whose mate uses the other unit's pin. evolve accepts PATTERN=Half-pin with no DEFS (NPAT distinct pattern mates for a HIT). The half-pin reference gains a section on the mechanism with the Barnes model. Tested in tests/test_patterns.py: the half-pin is found on Barnes's problem and not on daily No. 6, and knowledge/lessons.jsonl has no merge markers (a merge had left them on main).",
- "mentor_issue": null,
+ "mentor_issue": 8,
  "feedback": []
 }
