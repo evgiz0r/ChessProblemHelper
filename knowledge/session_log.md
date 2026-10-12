@@ -917,3 +917,7 @@
   his PDFs (selivanov.world). Lessons: count phases, not variations; tabulate tries x defences; name multi-phase
   themes; our fatal list is our standard, not an award predictor. Into the judge checklist, lessons and knowledge/experiments/.
 * (12 Oct) E. Bourd: flaw tolerance grows with content; judge checklist got a light/medium/rich scale anchored on his problems; CLAUDE.md and judge skill point to it.
+* Problemesis 2004 #2 (judge M. Mladenovic), full field D70-D122 (53), judged blind with the calibrated checklist: his 1st
+  Prize (Bourd D88) is our 2nd; 4 of his 6 in our 15; AUC 0.80. His filter: "rude refutations, flight-taking tries and keys";
+  our top unplaced picks (Bourd D74, D75) had them. Missing names: Somov, Albino (Albino added to themes.json).
+  Organiser fixes made blind: multi-solution stipulations (D96 4 solutions, D81 2 solutions) are in the record's `play` field, not the FEN.

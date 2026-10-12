@@ -79,3 +79,6 @@ whether that content pays for them.
   weigh originality by the name.
 - Our fatal list is our composing standard. When predicting an award, a rich phase complex buys back a diagram flight,
   a king-refuted try or a capture key; a double-threat try that breaks the harmony of the phases is still noticed.
+- Look at the refutations first (M. Mladenovic, Problemesis 2004 award): "rude" refutations (checks, captures, king moves to a
+  flight the try gives) and flight-taking tries and keys sink a problem with a real judge before its content is weighed.
+  A capturing try that IS the theme (Albino) is accepted.

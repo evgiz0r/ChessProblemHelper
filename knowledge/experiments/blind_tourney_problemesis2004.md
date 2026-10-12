@@ -190,3 +190,48 @@ Order: 52 > 49 > 53 > 51 > 50.
 51. Q45
 52. Q04
 53. Q46
+
+## The real award (opened after commit 2b15b41): judge Miodrag Mladenovic
+"The overall quality was average. There were lots of problems with rude refutations and flight taking tries and keys."
+He placed 6 of 53.
+
+| real | No. | author | label | ours (rank of 53) |
+|---|---|---|---|---|
+| 1 Prize | D88 | E. Bourd | Q25 | **2 Prize (2)** |
+| 2 Prize | D122 | E. Bourd | Q44 | 5 HM (8) |
+| 1 HM | D97 | B. Delobel | Q33 | Comm (13) |
+| 2 HM | D103 | E. Bourd | Q53 | Comm (10) |
+| 1 Comm | D79 | B. Delobel | Q42 | none (26) |
+| 2 Comm | D76 | V. Kozhakin | Q47 | none (17) |
+
+AUC (chance that one of his placed problems is ranked above one of his unplaced ones, in our order) = **0.80**. Four of his six are in our 15;
+all six are in our top 26. Our 1st Prize Q15 (D74), 3rd Prize Q17 (D75), 3 HM Q16 (D110) and Comm Q18 (D96) are all
+E. Bourd problems he did not place (D74 has a capturing key and a capturing try; D75 a capturing try refuted by a check and
+unprovided set checks: his "rude refutations").
+
+Comments compared:
+- **D88 Q25** (1st Prize): his reasons are "reciprocally changed white mates after black bishop correction, Somov mates in every
+  phase, Somov block in try and solution", and his flaw is "no set mate after 1...Kc6". Our judge found the same reciprocal change
+  and the same flaw (flight c6, tries refuted by Kxc6), but did not name **Somov**.
+- **D122 Q44** (2nd Prize): "Le Grand; Somov block by bBf4, self-pinning, pin mate; a little heavy". Ours: "Le Grand, single
+  line, heavy". The extra elements (Somov, self-pin, pin mate) are what he paid for; our judge counted lines.
+- **D97 Q33** (1 HM): "Albino in three tries and solution; not an original idea but an original mechanism". Ours: "e-pawn
+  selection", marked down for capturing tries (a Robert calibration). He did not mind captures in the tries. The name
+  **Albino** was missing from our vocabulary; it is now in themes.json.
+- **D103 Q53** (2 HM): "Dombrovskis in tries plus two changed mates; one refutation is a king move to an unprovided flight,
+  the capturing key cuts Black's moves from 3 to 2". Ours: the same content and the same two flaws.
+- **D79 Q42** (1 Comm): "mutate with an unexpected nice key that lets the black bishop play more moves; a clear change after
+  1...e4". Ours: correct content, but marked down for four plugs and tries sharing a refutation. In a mutate the tries are not
+  the point; the key is.
+- **D76 Q47** (2 Comm): "excellent key giving 4 flights; the declared tries are not tries (refuted by the king on the flight
+  the try gives)". Ours: the same, word for word.
+
+## What we learn (2004)
+1. **Better than 2003.** With the calibrated checklist we placed his 1st Prize 2nd and got 4 of 6 in our award, AUC 0.80.
+   We are still too generous (15 placed against his 6).
+2. **"Rude refutations"** (checks and captures as refutations, flight-taking tries and keys) is this judge's main filter; our
+   two top-rated unplaced problems had exactly these. Capturing tries were tolerated when thematic (Albino).
+3. **Judges differ:** Robert refused capturing tries (2003); Mladenovic placed an Albino whose two tries capture. The
+   calibration "capturing try = serious" is one judge's taste, not a law.
+4. **Names again: Somov and Albino.** Every content point he made was seen by our judges, but two named themes were not
+   recognised. Theme vocabulary is the most consistent gap across all four experiments.
