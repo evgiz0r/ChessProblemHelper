@@ -82,3 +82,10 @@ whether that content pays for them.
 - Look at the refutations first (M. Mladenovic, Problemesis 2004 award): "rude" refutations (checks, captures, king moves to a
   flight the try gives) and flight-taking tries and keys sink a problem with a real judge before its content is weighed.
   A capturing try that IS the theme (Albino) is accepted.
+- Read line strategy as content, not only phases (J. Morice, Problemesis 1999-2002): bivalent key/defence effects (one line
+  opened while two close), masked lines and anti-Lewmann defences, Franco-Latvian, one black unit refuting all tries with moves
+  equipollent to White's (theme A). A mechanical multi-phase scheme can rank below a single-phase strategic one.
+- White correction (The Problemist 2014 blind experiment): when several tries of ONE white piece share a refutation, check
+  whether they are the random move of a white correction; then read each specific move's error and its changed threat
+  (secondary / tertiary threat correction). That structure is first-prize content, not a flaw.
+- A multiple threat that the theme separates (English Novotny, Fleck, Brogi) is content; read the author's theme first.

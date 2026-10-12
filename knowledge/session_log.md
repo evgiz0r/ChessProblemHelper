@@ -940,3 +940,10 @@
   (unmask_search KSQ f6 FSQ d5) and by hand (start on e8, not d5). Result n2kNB2/8/B6p/2N3nQ/8/3K2b1/1R6/2R5:
   1.Sf6! (2.Sb7#) Sc7 2.Rb8#, Bc7 2.Qe8#, Kc7 2.Se6#. Gate PASS, 8+5; flaws: no tries, Ng5/Ph6 cook-stoppers, Kd3.
   Tools (ours, all sessions): postsearch and unmask_search take SELFBLOCK=1; postsearch rejects promoted black units.
+* Problemesis 1999-2002 #2 (judge J. Morice), full field D1-D34, blind: 5 of his 7 in our 8, our three Prizes all placed,
+  AUC 0.86 (best of five). Our 1st Prize (Kapros D15, four-phase queen tries) was his last placed; he paid for line strategy
+  (bivalence, masked lines, anti-Lewmann, Franco-Latvian, equipollent moves). Lessons and checklist line added.
+* The Problemist #2 (2014 Rossomakho, 2015 half-years), field from yacpdb (the only strong source reachable; PDB needs a
+  login, wfcc/schwalbe/problemist/variantim are blocked). AUC 0.69 / 0.66. Biggest misses: white correction with tertiary
+  threat correction (Bruch, 1st Prize, our 50th) and thematic multiple threats (English Novotny, Fleck) read as fatal.
+  Themes "White correction" and "English Novotny" added to themes.json; checklist lines added.

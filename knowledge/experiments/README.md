@@ -6,6 +6,8 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| The Problemist 2014 (Rossomakho) / 2015 #2, from yacpdb | 35 + 28 (yacpdb, biased) | AUC 0.69 / 0.66; his 2014 1st Prize was our 50th (white correction) | blind_tourney_problemist2014.md |
+| Problemesis 1999-2002 #2 (J. Morice) | 34 of 34 entries | 5 of his 7 in our 8; our 3 Prizes all placed by him; AUC 0.86 | blind_tourney_problemesis1999.md |
 | Problemesis 2004 #2 (M. Mladenovic) | 53 of 53 entries | his 1st Prize our 2nd; 4 of his 6 in our 15; AUC 0.80 | blind_tourney_problemesis2004.md |
 | Moscow tourney 2016 #2 | 15 placed | Spearman 0.69, same 1st Prize | blind_tourney_mk2.md |
 | Moscow Ch. 2012 #2, thematic | 13 scored | Spearman 0.61 (theme not given to us) | blind_tourney_msk2012.md |
@@ -29,3 +31,9 @@ award is read. Then come the placings and the judge's comments, problem by probl
 7. **2004 (judged with the calibrated checklist) agreed better than 2003**: the judges see the same content and the same
    flaws as the real judge, problem after problem. What is left is weighting (refutation quality first: no rude refutations),
    generosity (place fewer), and names (Somov, Albino, Mäkihovi, Burmistrov ...: ask E. Bourd for the ones we lack).
+8. **Judges have schools** (1999-2002, Morice): line strategy (bivalence, masked lines, anti-Lewmann, Franco-Latvian,
+   equipollent moves) against phase counting. Read both kinds of content; the remaining disagreements are about which one a judge pays for.
+9. **White correction and thematic multiple threats** (The Problemist): the strongest field showed the two biggest blind
+   spots: a tertiary threat correction (1st Prize) read as "mechanical tries with a shared refutation", and English
+   Novotny / Fleck read as fatal double threats. Next experiments should give the judges the published solution and theme
+   (no author, no source), as a real judge has.

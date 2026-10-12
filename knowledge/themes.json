@@ -168,5 +168,21 @@
   "examples": [
    "Q33 = Problemesis 2004 D97 (Delobel), 1.exd3? Rb4! 1.exf3? Qb5! 1.e3? S~! 1.e4!; FEN in knowledge/experiments/blind_tourney_problemesis2004.md"
   ]
+ },
+ "White correction": {
+  "definition": "A white piece's random move (any move of it) makes a try with a threat and fails to one refutation; a specific move of the same piece corrects the random move's error but makes an error of its own (secondary correction; a further one is tertiary). In threat correction each correction changes the threat because its own error spoils the previous threat.",
+  "detector": "None",
+  "source": "standard; missed by our blind judges on The Problemist 2014 1st Prize (W. Bruch) and a 2015 2nd HM, knowledge/experiments/blind_tourney_problemist2014.md",
+  "examples": [
+   "2n2K2/3p1P2/p1pN3R/4k1B1/1RB2NP1/1P6/8/bb1Q2n1: 1.Bc~? (2.Bf6#) Bg6!; 1.Bd5? (2.Sc4#, 2.Bf6?) Sb6!; 1.Bd3! (2.Re4#, 2.Bf6? 2.Sc4?)"
+  ]
+ },
+ "English Novotny": {
+  "definition": "A white unit moves to a square where two black line pieces can capture it; each capture closes one black line and leaves exactly one of the threatened mates, so the key's double threat is the theme, not a flaw.",
+  "detector": "None",
+  "source": "standard; author keyword in The Problemist 2014-15 (yacpdb)",
+  "examples": [
+   "Q5b1/6Bk/5K2/3R2p1/1pp2p2/1r6/1pq2p2/1B6: 1.Rd3! (2.Qe4#/Qh1#) Rxd3 Qe4#, Qxd3 Qh1#"
+  ]
  }
 }
