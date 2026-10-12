@@ -933,6 +933,13 @@
   T e5, Sf6 -> d7/g4, rooks b7 (not c7: it attacked the try square c6) and h4, key Se5-g6, tries Sd3/Sc6. postsearch
   (threat Qc3e5) then unmask_search with the try pair required found 8/1r6/1p1PRn2/1KpkNB2/2p1p2r/2Q5/b2P4/8:
   1.Sg6! Sd7 Se7#, Sg4 Sf4#; tries 1.Sd3? Sg4 Sf4# but Sd7!, 1.Sc6? Sd7 Se7# but Sg4!. Gate PASS, 7+9.
+* 12 Oct: E. Bourd: "a black knight and a bishop self-block diagonally to the black king in 2 variations", then "on the
+  same square". Kd5/c4 attempts failed: a threat checking through c4 is met by the blockers interposing; a White line
+  through c4 guards it; the K/S/B sacrifice form is Strebkovs 2003. Found the masked-line motive (Rc1 behind Sc5: the
+  threat Sb7 unmasks c7/c8, the block on c7 cuts c8) and moved the king to the edge (Kd8, square c7). Keys by search
+  (unmask_search KSQ f6 FSQ d5) and by hand (start on e8, not d5). Result n2kNB2/8/B6p/2N3nQ/8/3K2b1/1R6/2R5:
+  1.Sf6! (2.Sb7#) Sc7 2.Rb8#, Bc7 2.Qe8#, Kc7 2.Se6#. Gate PASS, 8+5; flaws: no tries, Ng5/Ph6 cook-stoppers, Kd3.
+  Tools (ours, all sessions): postsearch and unmask_search take SELFBLOCK=1; postsearch rejects promoted black units.
 * Problemesis 1999-2002 #2 (judge J. Morice), full field D1-D34, blind: 5 of his 7 in our 8, our three Prizes all placed,
   AUC 0.86 (best of five). Our 1st Prize (Kapros D15, four-phase queen tries) was his last placed; he paid for line strategy
   (bivalence, masked lines, anti-Lewmann, Franco-Latvian, equipollent moves). Lessons and checklist line added.
@@ -946,3 +953,12 @@
 * The Problemist 2010 #2 (Wiedenhoff; yacpdb, solutions given): AUC 0.67. 1st Prize (black correction over five phases)
   our 13th; half-battery 3rd HM our last. tools/blind_tourney.py added (build/compare). Conclusion over eight runs: complete
   short awards 0.80-0.86, strong long awards 0.66-0.70 (judge's taste inside a competent field).
+* 12 Oct: E. Bourd on 1.Sf6! (same-square self-blocks): "mega complicated, and you made it"; the flight-giving key is nice,
+  the position generally ok; flaw: Rb2 active in only one variation. He will post easier constructions of the idea on
+  the bench with his reasoning (read them with the `bench` skill when he comes back).
+* 12 Oct, bench sitting mv59m754 (672 steps: 99 solves, 184 find-key calls, 27 notes): E. Bourd built five schemes for the
+  same-square self-blocks, after my 1.Sf6!. His order: which mates can come on a self-block, the separation, why Black
+  defends there. Capture of a White unit on the square (1.Qd6! Bxd3 Qe6#, Sxd3 Qc6#; 1.Bf4! Sxd5 Re6#, Bxd5 Bh7#), a pin
+  as separation (1.Bf6! Sxe6 Se3#, Bxe6 Rd1#), stopping a double check (1.Qd3! threat Rc7 unmasking Bf8 through d6;
+  Sd6 Qxe3#, Bd6 Qc3#), zugzwang (1.Re8! Bc7 Re6#, Sc7 Rd8#). All five re-solved sound with the Python solver (by-play
+  and set duals noted). My mistake recorded: the capture motive is not anticipated by a sacrifice-key problem.

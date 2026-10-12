@@ -27,3 +27,16 @@ def test_knight_pair_escape_check():
     occ = {k, chess.E3, T}
     assert chess.D1 in escapes('R', chess.C1, T, occ, F(k) - {T})
     assert escapes('R', chess.F6, T, occ, F(k) - {T}) == []
+
+
+def test_self_block_needed():
+    # Strebkovs (Vratnica-64 2003): after 1.Sb3, 1...Sc4 2.e4# and 1...Bc6 2.Sc7# both need the self-block
+    b = chess.Board('b1Q1N3/5p2/5K2/2PkP3/1n4R1/1N6/1n2P3/6b1 b - - 0 1')
+    assert freethreat.self_block_needed(b, 'Nc4', 'Pe2e4')
+    assert freethreat.self_block_needed(b, 'Bc6', 'Ne8c7')
+
+
+def test_capturing_the_blocker_is_no_self_block():
+    b = chess.Board('3N4/8/3p4/1K1k4/3P3R/2Q1n2N/5B2/7b b - - 0 1')
+    assert not freethreat.self_block_needed(b, 'Nc4', 'Qc3c4')
+    assert freethreat.self_block_needed(b, 'Be4', 'Nh3f4')

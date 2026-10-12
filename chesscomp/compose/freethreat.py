@@ -32,6 +32,28 @@ def promoted(b):
     return False
 
 
+def self_block_needed(b: chess.Board, defence_san: str, mate_id: str) -> bool:
+    """True when the defence lands next to the black king and its mate fails once the blocker is taken off (the king
+    escapes to the square): the self-block is the error (E. Bourd's theme, 12 Oct 2026)."""
+    bb = b.copy()
+    try:
+        d = bb.parse_san(defence_san)
+    except ValueError:
+        return False
+    if chess.square_distance(d.to_square, bb.king(chess.BLACK)) != 1:
+        return False
+    bb.push(d)
+    mv = next((x for x in bb.legal_moves if f"{bb.piece_at(x.from_square).symbol().upper()}"
+               f"{chess.square_name(x.from_square)}{chess.square_name(x.to_square)}" == mate_id), None)
+    if mv is None or mv.to_square == d.to_square:        # capturing the blocker uses no self-block
+        return False
+    bb.push(mv)
+    if not bb.is_checkmate():
+        return False
+    bb.remove_piece_at(d.to_square)
+    return not bb.is_checkmate()
+
+
 def score(fen):
     b = chess.Board(fen + ' b - - 0 1')
     if not b.is_valid() or promoted(b) or not chess.Board(fen + ' w - - 0 1').is_valid():
@@ -68,10 +90,19 @@ def score(fen):
                 if bb.is_attacked_by(chess.BLACK, chess.parse_square(x[3:5])) and not b.is_attacked_by(chess.BLACK, chess.parse_square(x[3:5])):
                     impure.append(k)
         s -= 20 * len(impure)
+    unblocked = []
+    if os.environ.get('SELFBLOCK') == '1':                 # the wanted mate must need the defence's self-block
+        for k in WANT:
+            m = names.get(k)
+            if not m or len(m) != 1:
+                continue
+            if not self_block_needed(b, k, next(iter(m))):
+                unblocked.append(k)
+        s -= 20 * len(unblocked)
     checks = [b.san(m) for m in b.legal_moves if b.gives_check(m)]
     s -= 5 * len(checks) + 0.7 * len(b.piece_map())
-    ok = not impure and len(t) == 1 and not bad and not holes and not duals and all(wok(names.get(k), w) for k, w in WANT.items()) and not dups
-    return s + (100 if ok else 0), f"dups={dups} impure={impure} threat={sorted(t)} holes={holes} duals={duals} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
+    ok = not impure and not unblocked and len(t) == 1 and not bad and not holes and not duals and all(wok(names.get(k), w) for k, w in WANT.items()) and not dups
+    return s + (100 if ok else 0), f"dups={dups} impure={impure} unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
 
 
 def mutate(fen):

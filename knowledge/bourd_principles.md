@@ -355,3 +355,6 @@ the [a], [b] for the mates that change thematically."
   compared to like reciprocal changes. We pay flaws for content, and find the balance." Scale in the judge checklist.
 - Tries come as their natural pair (12 Oct 2026, on 1.Se2!): "The rd1 is fatal here, as it disallows adding a second
   try. Showing just 1 gives bad taste. Se6 sounds like almost a must, once having the sb5 try."
+- Weight follows the theme (12 Oct 2026, on 1.Sg6!): "i think the position is decent, its reasonable in terms for
+  composing, your earlier versions showed simple themes. more complex themes require more pieces and more heavy
+  positions." 7+9 with a try pair and two thematic variations is acceptable weight.

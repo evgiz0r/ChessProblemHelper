@@ -3,11 +3,14 @@ the named defences must each get one mate, all different, with no holes and no d
 
     python3 -m chesscomp.compose.postsearch CORE SEED THREAT_IDS DEFS BUDGET_S RNG
     e.g. CORE=3R4/8/8/8/4k3/r7/3PP3/b1Q5 THREAT_IDS=Qc1c6 DEFS=Rc3,Bc3
+Env SELFBLOCK=1: each named defence's mate must need the defence's self-block (freethreat.self_block_needed).
 """
 import sys, os, random, time, chess
 from chesscomp.compose.keyfind import post_spec, move_id
 from chesscomp.core import Problem
 from chesscomp.analysis import analyse
+from chesscomp.compose.freethreat import self_block_needed
+SELFBLOCK = os.environ.get('SELFBLOCK', '0') == '1'
 READY = os.environ.get('READY', '0') == '1'   # also minimise White's other real mates in two (key readiness)
 
 
@@ -38,10 +41,12 @@ CORE = sys.argv[1]; SEED = sys.argv[2]; THREAT = set(sys.argv[3].split(','))
 DEFS = sys.argv[4].split(','); BUDGET = float(sys.argv[5]); random.seed(int(sys.argv[6]))
 core = chess.Board(CORE + ' b - - 0 1'); CSQ = {s: core.piece_at(s) for s in chess.SQUARES if core.piece_at(s)}
 def promoted(b):
-    w = lambda t: len(b.pieces(t, chess.WHITE))
-    if w(chess.QUEEN) > 1 or w(chess.ROOK) > 2 or w(chess.KNIGHT) > 2: return True
-    bs = list(b.pieces(chess.BISHOP, chess.WHITE))
-    return len(bs) > 2 or (len(bs) == 2 and sum(divmod(bs[0], 8)) % 2 == sum(divmod(bs[1], 8)) % 2)
+    for col in (chess.WHITE, chess.BLACK):                # a promoted unit of either colour (E. Bourd, 7 Oct 2026)
+        w = lambda t: len(b.pieces(t, col))
+        if w(chess.QUEEN) > 1 or w(chess.ROOK) > 2 or w(chess.KNIGHT) > 2: return True
+        bs = list(b.pieces(chess.BISHOP, col))
+        if len(bs) > 2 or (len(bs) == 2 and sum(divmod(bs[0], 8)) % 2 == sum(divmod(bs[1], 8)) % 2): return True
+    return False
 def score(fen):
     b = chess.Board(fen + ' b - - 0 1')
     if not b.is_valid() or promoted(b): return -1e9, ''
@@ -53,18 +58,20 @@ def score(fen):
     names = {b.san(chess.Move.from_uci(u)): m for u, m in d.items()}
     holes = [k for k, m in names.items() if not m]; duals = [k for k, m in names.items() if len(m) > 1]
     s -= 6 * len(holes) + 4 * len(duals)
-    mates = []
+    mates, unblocked = [], []
     for dd in DEFS:
         m = names.get(dd)
         if m is None: s -= 20; continue                       # not a defence (threat still mates)
-        if len(m) == 1: s += 10; mates.append(next(iter(m)))
+        if len(m) == 1:
+            s += 10; mates.append(next(iter(m)))
+            if SELFBLOCK and not self_block_needed(b, dd, mates[-1]): s -= 20; unblocked.append(dd)
         else: s -= 5
     if len(mates) == len(DEFS) and len(set(mates)) == len(mates): s += 15
     s -= 0.7 * len(b.piece_map())
-    ok = t == THREAT and not holes and not duals and len(mates) == len(DEFS) and len(set(mates)) == len(DEFS)
-    extra = ''
+    ok = t == THREAT and not holes and not duals and len(mates) == len(DEFS) and len(set(mates)) == len(DEFS) and not unblocked
+    extra = f' unblocked={unblocked}' if unblocked else ''
     if ok and READY:
-        o = other_solutions(fen, THREAT); s -= 8 * o; extra = f' others={o}'
+        o = other_solutions(fen, THREAT); s -= 8 * o; extra += f' others={o}'
     return s + (100 if ok else 0), f"holes={holes} duals={duals} {dict((k, sorted(names.get(k, []))) for k in DEFS)}{extra}"
 def mutate(fen):
     b = chess.Board(fen + ' b - - 0 1')

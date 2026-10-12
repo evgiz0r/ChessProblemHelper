@@ -1500,7 +1500,99 @@
    "keys": [
     "Sg6"
    ],
-   "note": "1.Sg6! (2.Qe5#) Sd7 2.Se7#, Sg4 2.Sf4#. Tries 1.Sd3? (2.Qe5#) Sg4 2.Sf4# but 1...Sd7!; 1.Sc6? (2.Qe5#) Sd7 2.Se7# but 1...Sg4!. Set: Bb1 2.Qxc4#. No by-play repeats: the rooks' escapes are cut by White units that also cover flights: 1...Re7 does not reach e5 because of Re6 (which covers d6/e5), 1...Rh5 does not because of Bf5 (which covers e6). Gate PASS, critique 'try set: 2 tries carry the key's threat, each refuted differently'. Every unit needed (Pc4 removable but then 1...Bc4+ 2.Qxc4#). Flaws: 7+9 with 6 pawns; Pd2 cook-stopper (2.Qd2#); Pd6 stops 1.Sxc4 and 1.Sf7; random-move duals (1...Rb8 Se7#/Qe5#); the extra tries 1.Sxc4? and 1.Sg4? have several threats (not to be published). Found by: knight_pair_skeletons (escape classification), postsearch (threat Qc3e5 fixed), unmask_search (KSQ g6 FSQ e5, tries required, by-play repeats penalised)."
+   "note": "1.Sg6! (2.Qe5#) Sd7 2.Se7#, Sg4 2.Sf4#. Tries 1.Sd3? (2.Qe5#) Sg4 2.Sf4# but 1...Sd7!; 1.Sc6? (2.Qe5#) Sd7 2.Se7# but 1...Sg4!. Set: Bb1 2.Qxc4#. No by-play repeats: the rooks' escapes are cut by White units that also cover flights: 1...Re7 does not reach e5 because of Re6 (which covers d6/e5), 1...Rh5 does not because of Bf5 (which covers e6). Gate PASS, critique 'try set: 2 tries carry the key's threat, each refuted differently'. Every unit needed (Pc4 removable but then 1...Bc4+ 2.Qxc4#). Flaws: 7+9 with 6 pawns; Pd2 cook-stopper (2.Qd2#); Pd6 stops 1.Sxc4 and 1.Sf7; random-move duals (1...Rb8 Se7#/Qe5#); the extra tries 1.Sxc4? and 1.Sg4? have several threats (not to be published). Found by: knight_pair_skeletons (escape classification), postsearch (threat Qc3e5 fixed), unmask_search (KSQ g6 FSQ e5, tries required, by-play repeats penalised). E. Bourd: 'i think the position is decent, its reasonable in terms for composing'; heavier because the theme is richer."
+  },
+  {
+   "id": "claude-same-square-sf6",
+   "fen": "n2kNB2/8/B6p/2N3nQ/8/3K2b1/1R6/2R5",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd",
+   "source": "theme 'a black knight and a bishop self-block on the same square diagonally next to the black king, in 2 variations'",
+   "themes": [
+    "Black knight a8 and bishop g3 self-block on c7 (diagonal to Kd8); c7 has no White guard after the key, so each mate needs the block",
+    "Defence motive: the threat 2.Sb7# unmasks Rc1 (c7, c8) and cuts Ba6-c8 itself; the self-block on c7 also cuts the c-file, so c8 would be free",
+    "Mutual dual avoidance: the knight on c7 guards e8 (no 2.Qe8), the bishop on c7 guards b8 (no 2.Rb8); 1...Sc7 also cuts the bishop's guard of b8",
+    "Flight-giving key: the knight leaves e8 (where it guarded c7) for f6 (d7, e8)"
+   ],
+   "keys": [
+    "Sf6"
+   ],
+   "note": "1.Se8-f6! (2.Sb7#) Sc7 2.Rb8#, Bc7 2.Qe8#, Kc7 2.Se6#. Set: 1...Sc7 2.Rb8# (set mate kept), 1...Bc7 unprovided. Gate PASS, 8+5. Flaws: no tries (the key knight is the only unit that can cover d7 and protect e8, so no try pair by it); Ng5 only guards e6 against a second threat 2.Se6#, Ph6 only protects it (stops 1.Qxg5+); Kd3 takes part in no mate (stops cooks); Ba6 is in no mate (guards c8: without it 1...Kc8 refutes and the diagram has a flight); random-move duals after Ng5 moves (Sb7#/Se6#); the Sc7 mate is already set. Not anticipated by the gate; the capture form (sacrifice captured by K, S, B on one square) is Strebkovs, Vratnica-64 2003 (psis-fd6a6d0ccf) and Muralidharan 2002, so the self-blocks here are on an empty square. Found by: freethreat/postsearch (SELFBLOCK=1), then on the edge (Kd8: five field squares instead of eight at d5), unmask_search KSQ f6 FSQ d5 and a hand change of the key's start (d5 -> e8: on d5 it protected e7, giving 1.Be7#). E. Bourd (12 Oct 2026): 'your mechanism is mega complicated, and you made it. the key is nice giving flight, the position is generally ok, with the b2 rook only being active in 1 variation. other than that pretty impressive honestly. you went into very hard constructions to achieve it. using the flight mechanism of self-block.' He will show easier constructions around this on the bench, with notes of his reasoning."
+  },
+  {
+   "id": "bourd-bench-sb-capture-qd6",
+   "fen": "8/8/Q4p1K/p4p2/r3kp2/1p1Rpp2/1Bb5/2r1n3",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 12 Oct 2026)",
+   "source": "E. Bourd's bench, sitting mv59m754 (12 Oct 2026): construction schemes for 'knight and bishop self-block on the same square', shown after 1.Sf6!; 'just showing construction scheme', not finished problems",
+   "themes": [
+    "Self-blocks by capture of a White unit standing on the square (Rd3), the simplest defence motive",
+    "Queen mates; the separation by line opening (his note: 'what im missing is the reasoning of why Bxd3 would stop Qc6. that could happen basically if a line is opened')"
+   ],
+   "keys": [
+    "Qd6"
+   ],
+   "note": "1.Qd6! (2.Qd5#) Bxd3 2.Qe6#, Sxd3 2.Qc6#; by-play Rd4 2.Qxd4#/Rxd4# (dual). His note: 'not the best key, could be improved. but i am just focusing on the mechanism and the scheme'."
+  },
+  {
+   "id": "bourd-bench-sb-capture-bf4",
+   "fen": "6B1/1rn5/3P1R2/1p1NB1p1/1PbPk1P1/4P1K1/2P5/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 12 Oct 2026)",
+   "source": "E. Bourd's bench, sitting mv59m754 (12 Oct 2026): construction schemes for 'knight and bishop self-block on the same square', shown after 1.Sf6!; 'just showing construction scheme', not finished problems",
+   "themes": [
+    "Self-blocks by capture of the White knight d5, mates not by the queen",
+    "Separation: Sxd5 opens the black rook b7's line to h7, Bxd5 guards e6"
+   ],
+   "keys": [
+    "Bf4"
+   ],
+   "note": "1.Bf4! (2.Sc3#) Sxd5 2.Re6#, Bxd5 2.Bh7#, gxf4+ 2.Rxf4#; tries 1.Rf3?/1.Kf2? Sxd5!. His note: 'again could be improved further. just wanted to patch up, to show a finished scheme'."
+  },
+  {
+   "id": "bourd-bench-sb-pin-bf6",
+   "fen": "2bn2n1/r6p/3pN3/p2k4/3B2N1/2R2P1K/8/4R3",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 12 Oct 2026)",
+   "source": "E. Bourd's bench, sitting mv59m754 (12 Oct 2026): construction schemes for 'knight and bishop self-block on the same square', shown after 1.Sf6!; 'just showing construction scheme', not finished problems",
+   "themes": [
+    "Self-blocks by capture of the White knight e6; the separation by a pin, a new mechanism beside line opening",
+    "Key chosen so the set play has no unprovided check ('almost as bad as taking a flight')"
+   ],
+   "keys": [
+    "Bf6"
+   ],
+   "note": "1.Bf6! (2.Sf4#) Sxe6 2.Se3#, Bxe6 2.Rd1#, Sxf6 2.Sxf6#; tries 1.Bxa7? Sxe6!, 1.Re4? Bxe6!. His note: 'i worked a bit to make the key proper, as other keys left a check in the set-play unanswered which is fatal'."
+  },
+  {
+   "id": "bourd-bench-sb-doublecheck-qd3",
+   "fen": "5BK1/1n1QR3/np2p3/ppk5/7p/PP2p1br/6B1/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 12 Oct 2026)",
+   "source": "E. Bourd's bench, sitting mv59m754 (12 Oct 2026): construction schemes for 'knight and bishop self-block on the same square', shown after 1.Sf6!; 'just showing construction scheme', not finished problems",
+   "themes": [
+    "Self-blocks that stop a double check: the threat Rc7 also unmasks Bf8 through d6; a double check cannot be interposed, so Black must block d6 before it",
+    "Rare; the mates keep the scheme of the earlier versions, only the reason for the threat changes"
+   ],
+   "keys": [
+    "Qd3"
+   ],
+   "note": "1.Qd3! (2.Rc7#) Sd6 2.Qxe3#, Bd6 2.Qc3#; try 1.Bg7? Be5!. His note: 'one side remained similar to what we did before. but the defensive motive is different'."
+  },
+  {
+   "id": "bourd-bench-sb-zugzwang-re8",
+   "fen": "nbB5/p7/PpNk4/1P6/2P5/8/4R3/3K2B1",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 12 Oct 2026)",
+   "source": "E. Bourd's bench, sitting mv59m754 (12 Oct 2026): construction schemes for 'knight and bishop self-block on the same square', shown after 1.Sf6!; 'just showing construction scheme', not finished problems",
+   "themes": [
+    "Zugzwang: 'the least soft, and least freedom given'",
+    "Tries 1.Bf5?/Bg4?/Bh3?/Re7? Sc7!, 1.Sd8?/Se7? Kc7!"
+   ],
+   "keys": [
+    "Re8"
+   ],
+   "note": "1.Re8! (zz) Bc7 2.Re6#, Sc7 2.Rd8#. Set 1...Bc7 2.Re6#/Rd2# (dual), 1...Kc7 unprovided. His note: 'i could go further, but it works. the key is not the best, and unprovided flight, but just showing construction scheme'."
   }
  ]
 }
