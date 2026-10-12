@@ -888,3 +888,12 @@
   E. Bourd on 1.Qb5!: the two mating units hold c5 for each other (connected play). The anatomy confirms it (key: c5
   Sa6 -> Qb5,Sa6; Bf6 Sb4#: Qb5 alone; Bg6 Qb3#: Sa6 alone). anatomy.py got a LINKS section (reciprocal guards and
   mating units working in other mates) with a test; judge and compose skills point to it.
+* 12 Oct: merged to main on E. Bourd's request; CLAUDE.md "Everything is ours" (improve any tool; work reaches main;
+  anatomy while composing). Theme 'the same black knight has defences, in each it closes a different line'. Skeletons
+  by enumeration (new chesscomp/compose/line_skeletons.py): T d4 / Se3 -> c2,f5 (rook threat, no key: too many
+  White mates) and T e3 / Se1 -> c2,g2 (local knight threat). Post-keys by the free-threat search (promoted to
+  chesscomp/compose/freethreat.py with a test). Queen keys failed structurally (an added guard is a flight or the
+  threat already mates); pawn d3 gave sacrifice cooks; the try pair by blocking needed 8+10. Result, by the fixed-key
+  search: 4Q3/6p1/8/2Pk4/2R5/1Pp3K1/3N4/1Nr1n2b, 1.Sf1! (2.Se3#) Sg2 Qe4#, Sc2 Sxc3#, 7+6, gate PASS, trim-minimal;
+  flaws: static key, attacked key piece, passive king. Side result: 8/3KR3/1Bp5/3kp2r/7Q/3P4/1N6/1nr1n2b, 1.Sd1!
+  with try 1.Sc4? Sc2! (by-play Rxd1 Qc4# repeats a thematic mate, second black knight).

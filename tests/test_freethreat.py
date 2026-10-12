@@ -1,0 +1,20 @@
+"""Free-threat post-key search (chesscomp.compose.freethreat) and line-closing skeletons (line_skeletons)."""
+import os, sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+import chess
+from chesscomp.compose import freethreat
+from chesscomp.compose.line_skeletons import skeletons
+
+
+def test_knight_line_closing_post_key_scores_as_finished():
+    # 12 Oct 2026: 1...Sg2 closes Bh1's diagonal (2.Qe4#), 1...Sc2 closes Rc1's file (2.Sxc3#); threat 2.Se3#
+    freethreat.configure('4Q3/8/8/3k4/8/8/8/1Nr1nN1b', {'Nc2': 'N*c3', 'Ng2': 'Qe8e4'})
+    sc, info = freethreat.score('4Q3/2K5/8/3k4/2R5/1Pp5/8/1Nr1nN1b')
+    assert sc > 100, info
+    assert "threat=['Nf1e3']" in info and 'holes=[]' in info
+
+
+def test_skeleton_e1_knight_found():
+    sk = [(t, o, a1, a2) for t, o, a1, a2, _ in skeletons(chess.D5, chess.E3)]
+    assert (chess.E3, chess.E1, chess.C2, chess.G2) in sk
+    assert all(chess.D5 not in (a1, a2) for _, _, a1, a2 in sk)

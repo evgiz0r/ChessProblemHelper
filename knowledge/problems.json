@@ -1451,6 +1451,22 @@
     "Qb5"
    ],
    "note": "1.Qb5! (2.Bc6#) Sf6 2.Sc7#, Bf6 2.Sb4#, Bg6 2.Qb3#. The knight still guards c7 (no second threat) and its cut on f6 unguards c7. Same unit count (11+4); gate PASS; trim-minimal. Remaining flaws: g5 cook-stopper (no single replacement does more), passive Kb8, set dual after Be4, no thematic try (only Qb5 makes the threat Bc6#). Not yet judged by E. Bourd: the knight's cut is a third, non-bishop defence of the same kind; whether it enriches or dilutes the two-bishop theme is his call. The c5 link holds in all three mates: Qb5 holds c5 for Sc7# and Sb4#, Sa6 for Qb3#."
+  },
+  {
+   "id": "claude-knight-lines-sf1",
+   "fen": "4Q3/6p1/8/2Pk4/2R5/1Pp3K1/3N4/1Nr1n2b",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme set by E. Bourd",
+   "source": "theme 'the same black knight has defences, in each it closes a different line as an error'",
+   "themes": [
+    "Black knight defences by guarding the threat square e3 from c2 and g2",
+    "Errors: each arrival closes a different black line (Rc1's file, Bh1's diagonal)",
+    "Mates by different units (Sb1, Qe8)"
+   ],
+   "keys": [
+    "Sf1"
+   ],
+   "note": "1.Sf1! (2.Se3#) Sg2 2.Qe4#, Sc2 2.Sxc3#. Sg2 closes h1-e4, so e4 loses its black guard; Sc2 closes c1-c3, so the c3 pawn loses its protection and the b1 knight takes it with check. Dual avoidance by the other line (Bh1 still guards e4, Rc1 still protects c3). Gate PASS, trim-minimal, 7+6. Flaws: static key (both mates set), the key piece stands attacked by c3 (the key looks like an escape), Kg3 passive, try 1.Sf3? (2.Qd7#/Qe4#) Bxf3! is not thematic. Built from the skeleton enumerator (T e3, Se1 -> c2/g2), the post-key by the free-threat search, the key by the fixed-key search (unmask_search KSQ f1 FSQ d2). Tried and failed: a queen key adding a guard (every guarded square is a diagram flight or the threat already mates); a pair of tries by the threat knight blocking each mate line (with one queen making both mates the block kills both; with Bc4#/Qe4# from a6/h7 the position needed 8+10 and the c4 try was refuted twice); the d3 pawn protecting c4/e4 (queen sacrifices Qe4+ Bxe4 dxe4#)."
   }
  ]
 }

@@ -133,6 +133,14 @@ A sound post-key with no key is not a dead end. In this order: move each mate ne
 White guards by Black self-blocks; protect mating squares with short-range units; then retract the theme's carrier (the
 pinner) as the key. Example: 8/3n4/2R1P1B1/R2pk3/7Q/3n4/3B2b1/K7 -> 8/3n4/R2p4/3pkPQN/4p3/3nP3/b2B4/K7, 1.Ra5!.
 
+## One unit, several line-closing errors (12 Oct 2026)
+Enumerate the geometry before placing: `python3 -m chesscomp.compose.line_skeletons d5 [--t e3]` (threat square, knight
+square, two arrivals guarding it, the black line each arrival closes). Then the post-key with
+`python3 -m chesscomp.compose.freethreat CORE SEED '{"Nc2":"N*c3","Ng2":"Qe8e4"}' zz 270 RNG`, then the key with
+`unmask_search` (KSQ/FSQ fixed). A key that only adds a guard cannot create a check threat (flight or mate in one);
+bring the threat piece instead. Pawns protecting diagonal mating squares recapture with check: use a rook or knight.
+Result: 4Q3/6p1/8/2Pk4/2R5/1Pp3K1/3N4/1Nr1n2b, 1.Sf1! Sg2 Qe4#, Sc2 Sxc3#.
+
 ## Spread the scheme (E. Bourd, 11 Oct 2026)
 Place the scheme so the mechanism's parts are apart: the guarding line long, its cut squares away from the king, the
 cutting pieces at a distance with free paths (his 8/8/3P3R/3k4/8/2bb4/8/8: Rh6 guards the 6th rank, the bishops cut at
