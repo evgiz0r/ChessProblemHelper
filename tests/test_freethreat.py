@@ -40,3 +40,10 @@ def test_capturing_the_blocker_is_no_self_block():
     b = chess.Board('3N4/8/3p4/1K1k4/3P3R/2Q1n2N/5B2/7b b - - 0 1')
     assert not freethreat.self_block_needed(b, 'Nc4', 'Qc3c4')
     assert freethreat.self_block_needed(b, 'Be4', 'Nh3f4')
+
+
+def test_self_block_needs_the_king_on_the_square():
+    """1...Sxc4 2.Qd3#: without the knight the rook a4 interposes on d4, but the king cannot go to c4 (Qd3 guards it)."""
+    b = chess.Board('5B2/8/1P6/1P1knK2/r1N5/2Q5/8/8 b - - 0 1')
+    assert not freethreat.self_block_needed(b, 'Nxc4', 'Qc3d3')
+    assert freethreat.self_block_needed(b, 'Rxc4', 'Qc3e5')

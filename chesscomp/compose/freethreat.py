@@ -51,7 +51,9 @@ def self_block_needed(b: chess.Board, defence_san: str, mate_id: str) -> bool:
     if not bb.is_checkmate():
         return False
     bb.remove_piece_at(d.to_square)
-    return not bb.is_checkmate()
+    # the king must escape to the emptied square itself; a mate that fails only because the blocker also cut a
+    # black line (Sxc4 cutting Ra4-d4 against Qd3+) is an interference, not a self-block (12 Oct 2026)
+    return any(m.to_square == d.to_square and bb.piece_type_at(m.from_square) == chess.KING for m in bb.legal_moves)
 
 
 def score(fen):

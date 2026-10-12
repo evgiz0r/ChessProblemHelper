@@ -1593,6 +1593,22 @@
     "Re8"
    ],
    "note": "1.Re8! (zz) Bc7 2.Re6#, Sc7 2.Rd8#. Set 1...Bc7 2.Re6#/Rd2# (dual), 1...Kc7 unprovided. His note: 'i could go further, but it works. the key is not the best, and unprovided flight, but just showing construction scheme'."
+  },
+  {
+   "id": "claude-rook-knight-d3-bb6",
+   "fen": "8/K7/4B3/2B5/p3kP2/2QN4/1nn2R2/3r4",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd",
+   "source": "theme 'self-block by rook and knight on a diagonal square'; built on his bench scheme (capture on the square, the queen protects it and gives both mates)",
+   "themes": [
+    "Black rook d1 and knight b2 capture the threat knight on d3 and self-block d3 (diagonal to Ke4); Qc3 protected d3 and leaves it to mate",
+    "Separation by the blocker itself: the rook on d3 would interpose on d5 against 2.Qc6#, the knight on d3 guards e5 against 2.Qe5#",
+    "Clearance key: the bishop vacates the threat square c5 and keeps d4/e3 through it from b6"
+   ],
+   "keys": [
+    "Bb6"
+   ],
+   "note": "1.Bc5-b6! (2.Sc5#) Sxd3 2.Qc6#, Rxd3 2.Qe5#. Set: 1...Rxd3 2.Qe5# (kept), 1...Sxd3 unprovided. Gate PASS, 7+5. Flaws: three cook-stoppers (Ka7 stops 1.Ba7, the only king square; Nc2 stops 1.Qd4#; Pa4 stops 1...Sa4 guarding c5); no tries: the bishop's other squares fail also to 1...Ke3; both mates by one queen, as in his bench scheme 1.Qd6!. Found by: postsearch (threat Nd3c5 fixed, SELFBLOCK) from his scheme, keyfind --patch (1.Bb6 with a unit on a7), unmask_search KSQ b6 FSQ c5 (king a7, Be6 for d5/f5)."
   }
  ]
 }

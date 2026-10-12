@@ -962,3 +962,8 @@
   as separation (1.Bf6! Sxe6 Se3#, Bxe6 Rd1#), stopping a double check (1.Qd3! threat Rc7 unmasking Bf8 through d6;
   Sd6 Qxe3#, Bd6 Qc3#), zugzwang (1.Re8! Bc7 Re6#, Sc7 Rd8#). All five re-solved sound with the Python solver (by-play
   and set duals noted). My mistake recorded: the capture motive is not anticipated by a sacrifice-key problem.
+* 12 Oct: E. Bourd: "try problem selfblock by rook and knight on diagonal square". Followed his bench order (mates on the
+  block, separation, motive) and his capture motive: Ke4, the threat knight on d3 captured by Rd1/Nb2, Qc3 protects d3
+  and mates on c6 (the rook on d3 would interpose on d5) or e5 (the knight on d3 guards it). Result
+  8/K7/4B3/2B5/p3kP2/2QN4/1nn2R2/3r4, 1.Bb6! (2.Sc5#) Sxd3 2.Qc6#, Rxd3 2.Qe5#; gate PASS, 7+5; three cook-stoppers,
+  no tries. Tool fix (all sessions): self_block_needed now requires the king to be able to step onto the emptied square.
