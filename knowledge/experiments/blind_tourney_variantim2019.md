@@ -77,3 +77,26 @@ Order: 18 > 17 > 20 > 19 > 15.
 17. V12
 18. V14
 (V09, V16: fairy problems with neutral pieces, excluded; tools/blind_tourney.py now filters them.)
+
+## The real award (opened after commit bcbcf1c): judge V. Kopyl, 8 of 18 orthodox placed
+| real | label | keywords | ours |
+|---|---|---|---|
+| 1st-3rd Prize | V18 (Gockel) | Reciprocal | **3** |
+| 1st-3rd Prize | V04 (Doukhan) | White correction, threat correction, caprice | **5** |
+| 1st HM | V19 (Maleika) | Fleck, Brogi, cycle of double mates, changed mates | 12 |
+| 2nd HM | V01 (Uris) | Luukkonen, transferred mates | **2** |
+| 3rd HM | V02 (Murashev) | (reciprocal change by one bishop move) | **6** |
+| 1st Comm | V11 (Piliczewski) | Black correction, white knight wheel | **1** |
+| 2nd Comm | V17 (Papack) | Threat anti-reversal, Zhuravlev, Le Grand | 8 |
+| 3rd Comm | V14 (Svitek) | (cyclic defence effects) | 18 (last) |
+
+AUC 0.76 on the 18 orthodox problems (0.80 printed by the tool counts the two fairy entries placed last). Five of his eight
+are in our top six; his two Prizes are our 3rd and 5th.
+
+## What we learn (Variantim 2019)
+1. **Best agreement on a strong field so far** (0.76): the "name the line mechanism" instruction and the softened rude-move
+   weighting may have helped (W05-type misses did not recur), but one tourney of 18 is not proof.
+2. **The doubled Fleck/Brogi change (V19, 1st HM)** was read correctly and judged "mechanical bookkeeping" (5). Kopyl paid for
+   the complete changed separation scheme. Judges again differ on tasks (Morice and Wiedenhoff also placed tasks we put low).
+3. **V14 (3rd Comm, our last)**: the author's cyclic defence effects (AB/BC/CD/DA) "do not show on the board" for our judge.
+   An open question for E. Bourd: how to read such cyclic labels.

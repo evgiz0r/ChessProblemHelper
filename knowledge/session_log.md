@@ -981,3 +981,6 @@
   departure-unguard schemes failed; the crossing geometry by hand (Rc1 below guarding c6, Ba7 guarding d4 through c5);
   postsearch (threat Rh4e4) then keyfind --patch: 3N4/b3BK2/6p1/3pk3/R6R/N2P1p1B/4P3/2r5, 1.Ra5! Bc5 Sc6#, Rc5 d4#,
   Rc4 Sxc4#; gate PASS, 15 units; the solver names the Grimshaw. No thematic tries yet.
+* Variantim 2019 Israel Ring #2 (Kopyl; yacpdb, solutions): AUC 0.76 on 18 orthodox; his Prizes our 3rd/5th. Two fairy
+  entries (neutral pieces) slipped through; tools/blind_tourney.py now filters them. Open questions for E. Bourd collected in
+  knowledge/experiments/questions_for_bourd.md.

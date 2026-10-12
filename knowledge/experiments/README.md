@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| Variantim 2019 Israel Ring #2 (V. Kopyl), yacpdb, with solutions | 18 | AUC 0.76; his two Prizes our 3rd and 5th; 5 of his 8 in our top 6 | blind_tourney_variantim2019.md |
 | The Problemist 2010 #2 (C. Wiedenhoff), yacpdb, with solutions | 49 | AUC 0.67; his 1st Prize our 13th; a half-battery 3rd HM our last | blind_tourney_problemist2010.md |
 | StrateGems 2015 #2 (H. Gockel), from yacpdb, judges given solutions | 32 | AUC 0.70; his Prizes 1, 3, 4 our 3, 6, 8; 7 of our 11 placed are his | blind_tourney_strategems2015.md |
 | The Problemist 2014 (Rossomakho) / 2015 #2, from yacpdb | 35 + 28 (yacpdb, biased) | AUC 0.69 / 0.66; his 2014 1st Prize was our 50th (white correction) | blind_tourney_problemist2014.md |

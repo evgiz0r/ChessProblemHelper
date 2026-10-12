@@ -28,3 +28,5 @@ the readings. Answers go into the judge checklist, lessons and themes, and the q
 9. **StrateGems 2015, G08** (Witt): yacpdb's diagram has the white king in check (Kb4, bRg4, empty 4th rank). Is the
    record wrong, or is this a known problem with White in check?
 10. **WCCI / WCCT #2 scored sections**: wfcc.ch is blocked here; a PDF upload would give a fully scored field.
+11. **Variantim 2019, V14 (Svitek, 3rd Comm)**: the author labels the defence effects cyclically (AB/BC/CD/DA); our judge could not
+    see the cycle on the board. How should such cyclic defence-effect labels be read and weighed?
