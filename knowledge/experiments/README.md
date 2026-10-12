@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| The Problemist 2010 #2 (C. Wiedenhoff), yacpdb, with solutions | 49 | AUC 0.67; his 1st Prize our 13th; a half-battery 3rd HM our last | blind_tourney_problemist2010.md |
 | StrateGems 2015 #2 (H. Gockel), from yacpdb, judges given solutions | 32 | AUC 0.70; his Prizes 1, 3, 4 our 3, 6, 8; 7 of our 11 placed are his | blind_tourney_strategems2015.md |
 | The Problemist 2014 (Rossomakho) / 2015 #2, from yacpdb | 35 + 28 (yacpdb, biased) | AUC 0.69 / 0.66; his 2014 1st Prize was our 50th (white correction) | blind_tourney_problemist2014.md |
 | Problemesis 1999-2002 #2 (J. Morice) | 34 of 34 entries | 5 of his 7 in our 8; our 3 Prizes all placed by him; AUC 0.86 | blind_tourney_problemesis1999.md |
@@ -42,3 +43,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
    (his 1st Prize in our top 3 in four of the seven tourneys) and agree on content almost everywhere. What remains is weighting,
    and the weighting differs from judge to judge: Robert punished capturing tries, Mladenovic rude refutations, Morice paid for
    line strategy, Gockel forgave rude moves in a threat correction. A single fixed filter overfits to the last judge read.
+11. **Two regimes** (eight experiments): on complete fields with a short award (Problemesis), AUC 0.80-0.86 and the winner in our
+   top 3; on strong yacpdb fields with long awards (The Problemist, StrateGems), AUC 0.66-0.70 whether or not the judges have
+   the solutions. Inside a strong field the order is largely the judge's taste; our remaining fixable misses are mechanisms
+   read as "mixed" (half-battery, role exchange) and named themes (Somov, Albino, Franco-Latvian...).

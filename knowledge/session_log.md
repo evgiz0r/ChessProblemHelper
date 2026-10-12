@@ -943,3 +943,6 @@
 * StrateGems 2015 #2 (judge H. Gockel; yacpdb), judges given the published solution and theme keywords: AUC 0.70, his
   1st/3rd/4th Prizes our 3rd/6th/8th, 7 of our 11 placed are his. Misses: role-exchange changed play (king batteries,
   2nd Prize) and threat corrections sunk by our "rude moves" filter. Checklist softened: weigh rude moves, do not filter.
+* The Problemist 2010 #2 (Wiedenhoff; yacpdb, solutions given): AUC 0.67. 1st Prize (black correction over five phases)
+  our 13th; half-battery 3rd HM our last. tools/blind_tourney.py added (build/compare). Conclusion over eight runs: complete
+  short awards 0.80-0.86, strong long awards 0.66-0.70 (judge's taste inside a competent field).

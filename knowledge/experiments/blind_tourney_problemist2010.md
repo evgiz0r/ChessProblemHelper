@@ -173,3 +173,37 @@ Order: 46 > 44 > 45 > 47 > 48 > 43 > 49.
 47. W40
 48. W26
 49. W05
+
+## The real award (opened after commit 0f1735c): judge C. Wiedenhoff; 18 of 49 placed in yacpdb (no 2nd Prize recorded)
+AUC 0.67 (`tools/blind_tourney.py compare`). Two entries are E. Bourd's: W17 (Comm; ours 8th) and W23 (1st HM; ours 19th).
+
+| real | label | keywords | ours |
+|---|---|---|---|
+| 1st Prize | W28 (Pereira & Reeves) | Black correction, Changed mates | 13 |
+| 3rd Prize | W34 (Rice) | Tertiary arrival threat correction | 17 |
+| 4th Prize | W44 (Rosner & Reeves) | Third battery, scaccografia | 9 |
+| 5th Prize | W15 (Bruch) | Carousel, Grimshaw | 22 |
+| Special Prize | W33 (Shire & Reeves) | Reciprocal threat correction, reciprocal obstruction | 21 |
+| 1st HM | W23 (Bourd) | Reciprocal, black correction, battery | 19 |
+| 2nd HM | W01 (Shire) | Threat correction, changed and transferred mates | 20 |
+| 3rd HM | W05 (Savournin) | Half-battery, changed mates | **49 (last)** |
+| 6th HM | W22 (Rice) | Threat reversal (three pairs) | **6** |
+| 7th HM / 8th / 9th | W31 / W11 / W35 | | 36 / 14 / 10 |
+| Comm. | W42, W46, W17, W12, W25, W27 | | 3, 5, 8, 31, 34, 38 |
+
+Unplaced in yacpdb but high with us: W18 (our 1st, Shire, white + threat correction), W16 (2nd, Stocchi-Zagoruiko),
+W07 (4th, doubled Dombrovskis), W29 (7th, white correction + Barnes).
+
+## What we learn (Problemist 2010)
+1. **Giving solutions did not raise agreement here** (0.67, against 0.70 at StrateGems and 0.66-0.69 at The Problemist
+   2014 without solutions). On these strong yacpdb fields our agreement sits at about 0.67-0.70, against 0.80-0.86 on the
+   complete Problemesis fields. In a field where nearly every entry is competent, and the judge places 18 of 49 with many
+   HMs, the order inside the middle is the judge's taste.
+2. **The 1st Prize was in our upper third, not at the top**: a black correction with the random mate changed over set, four
+   knight tries and the key, each refutation the bishop move that spoils that phase's mate. Our judge read it exactly right
+   (7, HM) and gave more to the threat reversals and white corrections; Wiedenhoff preferred the classical black-correction
+   cycle of five phases.
+3. **A half-battery read as "mixed changes"** (W05, 3rd HM, our last): the tries 1.Rg7? and 1.Rxc6? and the key 1.Rxe4! are rook moves
+   that the author describes as half-battery play, each phase with its own mates (e.g. 1...Rxf6+ answered by Rexf6, Rxf6, Sxf6). Our judge
+   counted rude captures and 23 units and did not see the mechanism. Same lesson as Morice: name the line mechanism
+   (half-battery, battery creation and destruction) before weighing the construction.
