@@ -975,3 +975,9 @@
   (Qf6/Qg7/Qh8 protecting d4 through e5, Ra5 behind Bc5 for the A-mate) stalls on 1...Bd6 and on the diagram square.
   unmask_search with the try 1.Re6 required found instead 8/8/1Q3R2/3N4/r2PkN2/8/5bK1/8: 1.Rf5! sacrifice, Kxf5 Qg6#,
   Rxd4 Qe6#, Bxd4 Qb1#; 6+3, no cook-stopper. 1.Re6? is refuted only by Kf5.
+* 12 Oct: E. Bourd: "the composing entity should push for a bit more now than the basic requested theme" (recorded in
+  CLAUDE.md and lessons); theme "two black pieces unpin a black pawn on the same square". Our collection already had it
+  (his 1.Ra5!, two knights). Second layer chosen: a Grimshaw on the unpinning square. Free-threat searches with
+  departure-unguard schemes failed; the crossing geometry by hand (Rc1 below guarding c6, Ba7 guarding d4 through c5);
+  postsearch (threat Rh4e4) then keyfind --patch: 3N4/b3BK2/6p1/3pk3/R6R/N2P1p1B/4P3/2r5, 1.Ra5! Bc5 Sc6#, Rc5 d4#,
+  Rc4 Sxc4#; gate PASS, 15 units; the solver names the Grimshaw. No thematic tries yet.
