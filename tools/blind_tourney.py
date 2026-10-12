@@ -36,7 +36,9 @@ def fetch(source, year):
         if len(e) < 100:
             break
         page += 1
+    # orthodox only: no options (fairy conditions), no twins, no neutral pieces (stored apart from white/black)
     return [x for x in res if not x.get("options") and not x.get("twins")
+            and set(x.get("algebraic", {})) <= {"white", "black"}
             and x["source"].get("date", {}).get("year") == year]
 
 
