@@ -344,3 +344,10 @@ the [a], [b] for the mates that change thematically."
 - Reuse the mating pieces (11 Oct 2026, on 1.Qb5!): "both mating pieces guard the same c5. this makes so that each of
   the other variations they have a job, in some kind of mutual work of who guards c5. this way the play seems
   connected, and not like 2 distant variations." (anatomy: LINKS)
+
+## 12 Oct 2026: on his own complex #2s
+- Wola Gulowska 2015 5th HM (5Rq1/2p2b2/2Pp1Npn/2nQ2RP/4Pk1P/4N3/3rPPBK/2Brb3): the problem shows reciprocal changes
+  (threat A / mate B in one try, threat B / mate A in the other), "rather complex". He started from the geometric
+  scheme: both lines (two masked batteries on f4) and the mates by the knights; the content evolved from it.
+  Process: geometry first (lines and mating units), then the paradox it can carry.
+- StrateGems 2007 2nd HM: Pc4 is there to stop duals and cooks; the checking defence it allows is a by-product.

@@ -141,7 +141,8 @@ Tries 1.Sb1?/1.Sf1? Bxc1!, 1.Bd5? / 1.Rh8? / 1.Bxb2? Rf4!, 1.Sd5? Rg4!
 - Two jobs again: Sb1 and Sf1 unmask the bishop too, but only b3 guards d4, needed for 1...Bxc1 2.cxd4#
   (Bb2 leaving the b2-e5 diagonal lets the pawn mate). The tries fail to exactly that defence.
 - Pf6 stands on f6 protected by Rf8 (the anatomy now credits a unit that occupies a flight). Pc4 stops the
-  cooks 1.Sbc4+/1.Sdc4+ and gives Black the checking defence Rxc4+.
+  cooks 1.Sbc4+/1.Sdc4+; the checking defence Rxc4+ comes with it. E. Bourd (12 Oct): "probably to stop the
+  duals / cooks" - a cook-stopper, not a thematic choice.
 
 ### 12. Sredba na Solidarnosta 2003-05, 1st HM (psis-f819ecb779), 2n5/1KNp1r2/3p1Q2/pN3br1/1Pp1k1p1/qR4P1/3P1b2/B3nB2
 1.Qxg5? (2.Qf4#) B~ 2.Qd5#, Bxg3 2.Qe3#, but 1...Be6!   1.Qxf7! (2.Qd5#) B~/Be6 2.Qf4#, Bxg3 2.Qxc4#, Se7/Sb6 2.Sxd6#.
@@ -166,6 +167,9 @@ Set: B~ 2.Sc3#, Bxg3 2.Qd4#. Le Grand, Dombrovskis (Be6), Zagoruiko on Bxg3.
   decides which knight mates. The queen is offered to both masks in turn (d4, e6) and to both at once on d5.
 - Pin or double check from one line: the same white line works one way or the other, depending on whether
   the black unit is still on it.
+- E. Bourd (12 Oct): the content is the RECIPROCAL CHANGE, which is rather complex: 1.Qd4? threat Sfd5# (A),
+  Rxd4 Sed5# (B); 1.Qe6? threat Sed5# (B), Bxe6 Sfd5# (A). He started from the geometric scheme (both lines
+  and the knight mates); the rest may have evolved from it.
 
 ## Lessons from the complex problems
 9. **Dual avoidance by the defence itself**: give each mate its own supporting line, and let each defence cut
