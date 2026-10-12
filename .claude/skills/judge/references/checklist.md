@@ -36,6 +36,20 @@ its own reason: 5K2/3P4/1N2p3/1P2k1NP/1P4P1/3p4/3B4/8) can carry three diagram f
 king-move refutations and a king-flight variation. Clean and simple is usually judged below complex with
 some flaws; the balance is partly subjective. So: name every flaw, then say what content it is buying.
 
+### The scale: tolerance grows with content (E. Bourd, 12 Oct 2026)
+"As the content grows, we need to be more tolerable to flaws. A small 1 variation problem cannot be compared to
+like reciprocal changes. We pay flaws for content, and find the balance." Place the problem first, then judge:
+
+| Content | Examples | What it can pay for |
+|---|---|---|
+| Light: one thematic variation or one simple paradox, often a miniature | single Dombrovskis, a Le Grand miniature | almost nothing: a try-only unit, a plug, an obvious key or a borrowed mechanism sinks it (daily No. 1) |
+| Medium: several thematic variations or one change between two phases | Boros pair of changed mates, a correction with two corrections | a cook-stopper or two, a passive king, an unthematic dual after random moves |
+| Rich: reciprocal changes, Zagoruiko, Le Grand + Dombrovskis together, a cycle | his Wola Gulowska 2015 5th HM (reciprocal change, 25 units), Sredba 2003-05 1st HM (Le Grand, Dombrovskis, Zagoruiko) | heavy force and pawns, several plugs (Pc4, Pb4), a unit standing on a flight (Pf6), try-only units, capturing keys and tries when thematic, unthematic duals left out of the published solution |
+
+Never bought back at any level: a cook, a dual in a thematic variation, a double threat (the gate keeps them
+fatal). Everything else is weighed: say what the problem IS, which level it reaches, then the flaws and
+whether that content pays for them.
+
 ## His verdicts on the first two daily problems (7 October 2026)
 - No. 1 (single Dombrovskis, 6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1): "almost plagiarised without any additional value,
   even reducing the original"; "almost a non problem with a single Dombrovskis"; the g1 knight that only makes the
@@ -52,3 +66,16 @@ some flaws; the balance is partly subjective. So: name every flaw, then say what
   Sc3? R4b5!), not 2+1; keep the others in the notes.
 - An edge key is acceptable when the piece has a role in the solution and its other moves make real tries: "a3
   is somewhat less obvious than the rest, making the tries more real."
+
+## Calibration against a real award (blind experiment, Problemesis 2003, judge P. Robert; knowledge/experiments)
+- A try that captures a black unit is a serious flaw (three entries refused for it), not only a capturing key.
+- A named fatal flaw (a dual in a thematic phase, an idle unit in a twin) is not bought back by ambition.
+- Clear and economical beats heavy and rich at the top: the 1st Prize had 7+7, no white pawns and no secondary play.
+- Be stingy: an informal award places about a quarter of the entries.
+- Count phases, not variations (Moscow 2016 / Moscow Ch. 2012 blind experiments): a 2x2 change across tries and key, a
+  doubled Le Grand on one defence or Mäkihovi + Zagoruiko is full content; "thin: two variations" is the wrong verdict there.
+- Tabulate (set / each try / key) x (each thematic defence) before scoring, so that no changing try is missed.
+- Name the multi-phase theme (Mäkihovi, Burmistrov, Chepizhny, Hannelius, Banny, Rukhlis, ...) or say you cannot; real judges
+  weigh originality by the name.
+- Our fatal list is our composing standard. When predicting an award, a rich phase complex buys back a diagram flight,
+  a king-refuted try or a capture key; a double-threat try that breaks the harmony of the phases is still noticed.

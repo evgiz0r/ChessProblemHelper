@@ -90,6 +90,35 @@ def essential_pins(board: chess.Board, names: Names) -> list[tuple[str, str, str
     return out
 
 
+def needed_units(board: chess.Board, names: Names) -> list[str]:
+    """In a mate: White units without which it is no longer mate (a guard, a pin, a plug on a Black line,
+    a protector, the checker). The test is removal, so it sees jobs a guard map cannot."""
+    out = []
+    for sq in chess.SquareSet(board.occupied_co[chess.WHITE]):
+        if board.piece_type_at(sq) == chess.KING:
+            continue
+        b = board.copy(stack=False)
+        b.remove_piece_at(sq)
+        if not b.is_checkmate():
+            out.append(names.at.get(sq, '?'))
+    return sorted(out)
+
+
+def _mark_needed(board, names, f, lines, indent='      '):
+    need = needed_units(board, names)
+    for u in need:
+        f[('needed', u)] = u
+    seen = {v for k, v in f.items() if isinstance(k, tuple) and k[0] in ('pin', 'occupies')}
+    sole = set()
+    for sq, v in f.items():
+        if isinstance(sq, int) and v[0] not in '@[' and ',' not in v and v != '--FREE--':
+            sole.add(v)
+    checker = names.at.get(board.peek().to_square) if board.move_stack else None
+    other = [u for u in need if u not in sole and u not in seen and u != checker]
+    if other:
+        lines.append(f"{indent}needed beyond its guards (a plug, a protector, a line): {', '.join(other)}")
+
+
 def draw_field(board, names, indent='      '):
     f = field(board, names)
     k = board.king(chess.BLACK)
@@ -105,6 +134,11 @@ def draw_field(board, names, indent='      '):
             else:
                 cells.append(' ' * (w + 3))
         lines.append(indent + ' '.join(cells))
+    k = board.king(chess.BLACK)
+    for sq in chess.SquareSet(chess.BB_KING_ATTACKS[k]):
+        q = board.piece_at(sq)
+        if q and q.color == chess.WHITE:                     # a White unit standing on a flight blocks it
+            f[('occupies', chess.square_name(sq))] = names.at.get(sq, '?')
     for pinner, pinned, sq in essential_pins(board, names):
         lines.append(f"{indent}pin: {pinner} holds {pinned} on {sq} (it could parry the check)")
         f[('pin', sq)] = pinner
@@ -204,6 +238,7 @@ def phase_anatomy(problem: Problem, ph: dict, roles: dict | None, show_all: bool
         nt.push(bt, _uci(bt, t['uci']))
         L.append(f"   threat 2.{t['san']}")
         lines, f = draw_field(bt, nt)
+        _mark_needed(bt, nt, f, lines)
         L += lines
         if roles is not None:
             _note_roles(roles, f, 'threat')
@@ -220,6 +255,7 @@ def phase_anatomy(problem: Problem, ph: dict, roles: dict | None, show_all: bool
         mates = '/'.join(x['san'] for x in v['continuations'])
         L.append(f"   1...{defs} 2.{mates}" + ('   DUAL' if len(v['continuations']) > 1 else ''))
         lines, f = draw_field(bd, nd)
+        _mark_needed(bd, nd, f, lines)
         L += lines
         dbl = _double(f)
         if dbl:
@@ -276,7 +312,11 @@ def links(mates: list) -> list[str]:
 def _note_roles(roles, f, label):
     for sq, v in f.items():
         if not isinstance(sq, int):
-            roles.setdefault(v, []).append((label, 'pin@' + sq[1], ''))
+            if sq[0] == 'needed':
+                roles.setdefault(v, []).append((label, 'needed', '!'))
+                continue
+            tag = 'pin@' if sq[0] == 'pin' else 'on '
+            roles.setdefault(v, []).append((label, tag + sq[1], ''))
             continue
         if v.startswith('['):
             continue
@@ -315,12 +355,18 @@ def anatomy(fen: str, tries: int = 2, show_all: bool = False) -> str:
         if not r:
             out.append(f"   {n:5} -- takes no part in any mate of the solution --")
             continue
+        need = sorted({lab for lab, _, mark in r if mark == '!'})
+        r = [x for x in r if x[2] != '!']
         by = {}
         for lab, s, mark in r:
             by.setdefault(lab, []).append(s + mark)
         sole = any(not mark.endswith('=') for _, _, mark in r)
-        out.append(f"   {n:5} " + '; '.join(f"{lab}: {' '.join(v)}" for lab, v in by.items())
-                   + ('' if sole else '   <- never needed alone: only for tries or soundness?'))
+        text = '; '.join(f"{lab}: {' '.join(v)}" for lab, v in by.items()) or '(no guard)'
+        if not need:
+            text += '   <- needed in no mate (removing it keeps every mate): only for tries or soundness?'
+        elif not sole:
+            text += f"   <- needed only as plug/protector/line, in: {'; '.join(need)}"
+        out.append(f"   {n:5} {text}")
     return '\n'.join(out)
 
 

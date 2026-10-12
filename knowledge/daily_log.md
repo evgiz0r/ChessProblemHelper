@@ -97,11 +97,26 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For a Grimshaw again, aim for a changed mate between set and solution (the mentor may
   answer question 1). Fix the critique's 'black piece role' so it counts the threats (see Proposals).
 
+## 2026-10-12, No. 7: Half-pin
+- Result: b2N4/Q3K3/8/3kpp2/4n1p1/1P3r2/3P4/2R4B (7+7), 1.Qa6! (2.Qc4#) Sd6/Sxd2 2.Qd3#, Rc3 2.Qd6#, Kd4 2.Qc4#
+  (flight-giving key). Gate: PASS with warnings (random-move duals, dual-avoidance reasons differ), both named in the post.
+  The solver reports Half-pin on all three defences. Mentor issue #7 (No. 6) has no answer yet; nothing to act on.
+- Setup: the local `main` had diverged again (the stale 54-commit history); worked on `daily-run` from origin/main.
+  origin/main carried merge-conflict markers in knowledge/lessons.jsonl (from a08ad2b); removed, both sides kept.
+- Minutes (container clock): setup and reading 5, mentor 1, study and kit change 10, evolve 10 (wasted), postsearch 6,
+  hand work and keyfind 10, judging and post 15. About 30 solves, 16 searches (8 evolve, 4 postsearch, keyfind, trim, 2 matecheck).
+- What wasted time: bare and lightly seeded evolve (eight jobs) again gave checking keys only; postsearch converged on
+  one mate for all named defences; a `pgrep -f` wait loop that matched its own shell (killed by hand).
+- What helped: the split by reasoning on each unit's lines (see lessons); a post-key printer (threats + every Black move's
+  mates in SAN) between solves; keyfind for the flight-giving key; trim after every cure (it found a redundant Sf7).
+- Next run: theme from `next-theme`. For a half-pin again, aim for two mates per unit (four variations); the knight's
+  two defences here share a mate. Try `PATTERN=Half-pin DEFS= NPAT=3` evolve seeded with a post-key sketch, not a bare core.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
-- A detector for Grimshaw and Novotny in `chesscomp/analysis.py`, so those themes can be claimed only when
-  the solver sees them (today only a Grimshaw on the key phase is reported).
+- A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct), so those themes can be claimed only when
+  the solver sees them (today only a Grimshaw and a half-pin on the key phase are reported).
 - evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
 - A theme reference for Novotny, Le Grand and Rudenko (none yet; Grimshaw done 11 Oct).
 - critique 'black piece role' (and the gate warning) calls a unit 'not needed' when the variations survive its removal, but

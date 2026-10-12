@@ -897,3 +897,23 @@
   search: 4Q3/6p1/8/2Pk4/2R5/1Pp3K1/3N4/1Nr1n2b, 1.Sf1! (2.Se3#) Sg2 Qe4#, Sc2 Sxc3#, 7+6, gate PASS, trim-minimal;
   flaws: static key, attacked key piece, passive king. Side result: 8/3KR3/1Bp5/3kp2r/7Q/3P4/1N6/1nr1n2b, 1.Sd1!
   with try 1.Sc4? Sc2! (by-play Rxd1 Qc4# repeats a thematic mate, second black knight).
+* Studies, complex round (12 Oct; his WCCT entries are #3+, so his honoured orthodox #2s instead): StrateGems 2007
+  2HM (each rook defence cuts the support of the other queen mate), Sredba 2003-05 1HM (Bf5 plugs two black rook
+  lines at their crossing: Le Grand without flights), Wola Gulowska 2015 5HM (two masked batteries: pin while the
+  mask stands, double check once it moves). Anatomy improved (any session's tool, all ours): a White unit on a
+  flight is credited ('on f6'), and a removal test per mate finds plugs/protectors (Pb4 blocking Qa3-d6) that the
+  guard map missed; the idle flag now uses it ('needed in no mate'). Tests added.
+* His answers (12 Oct): Pc4 (StrateGems 2007) was a cook/dual stopper; Wola Gulowska 2015 shows reciprocal changes
+  and started from the geometric scheme (both lines, knight mates). I had called it pseudo Le Grand; the theme he
+  names is the reciprocal change. Recorded in studies, principles, lessons.
+
+## Session: blind tourney judging (12 Oct 2026, branch claude/tournament-2-judgment-experiment-3str0l)
+* E. Bourd: "judge all problems of the tournament, then compare with the actual judgement, not biased by placement".
+  Protocol: FENs only, shuffled labels, judge subagents, award sealed (sha256 / sealed JSON); our verdict committed first.
+* Problemesis 2003 #2 (P. Robert): 25 of 35 entries (D60-D69 are stored as "Inédit" in the database, so the field
+  missed them). Nine of the 35 entries are E. Bourd's. We placed 13, he placed 8. My aggregation overrode a judge's
+  named fatal dual (D53).
+* MK2 2016 (Spearman 0.69, same 1st Prize) and Moscow Ch. 2012 (thematic 0.61 without the theme; published 0.07), from
+  his PDFs (selivanov.world). Lessons: count phases, not variations; tabulate tries x defences; name multi-phase
+  themes; our fatal list is our standard, not an award predictor. Into the judge checklist, lessons and knowledge/experiments/.
+* (12 Oct) E. Bourd: flaw tolerance grows with content; judge checklist got a light/medium/rich scale anchored on his problems; CLAUDE.md and judge skill point to it.

@@ -1,0 +1,54 @@
+{
+ "date": "2026-10-12",
+ "title": "Two on the long diagonal",
+ "theme": "half-pin",
+ "theme_name": "Half-pin",
+ "fen": "b2N4/Q3K3/8/3kpp2/4n1p1/1P3r2/3P4/2R4B",
+ "stip": "#2",
+ "author": "Claude (ChessProblemHelper)",
+ "source": "Original, composed 12 October 2026",
+ "teaser": "Fourteen units, no flight. The bishop in the corner looks through a black rook and a black knight at the king. Neither is pinned yet, but as soon as one of them moves, the other is. White's quiet first move gives the king a square.",
+ "solution": [
+  "#Key",
+  "1.Qa6! (2.Qc4#)",
+  "  1...Sd6 2.Qd3#",
+  "  1...Sxd2 2.Qd3#",
+  "  1...Rc3 2.Qd6#",
+  "  1...Kd4 2.Qc4#"
+ ],
+ "comment": {
+  "what": "A black half-pin on the long diagonal: the bishop h1, the rook f3, the knight e4 and the king d5 stand on one line. The threat 2.Qc4# can be stopped by both units. When the knight guards c4 (1...Sd6 or 1...Sxd2), the rook is left pinned and cannot take on d3 along the third rank, so 2.Qd3# works. When the rook guards c4 (1...Rc3), the knight is pinned and cannot take on d6, so 2.Qd6# works. Each mate fails in the other variation: after 1...Rc3 the rook takes on d3, and after a knight move the king escapes to e4 from Qd6. The key gives the flight d4, and 1...Kd4 is met by the threat. The solver reports the half-pin on all three defences.",
+  "flaws": [
+   "Thin play: three thematic defences but only two mates. The knight's two defences share 2.Qd3#.",
+   "Heavy black construction. Three of the seven black units only stop cooks. The bishop a8 refutes 1.Rc4? (2.Qxa8#) with 1...Bc6!. The pawn g4 refutes 1.Bxf3? (2.Qd7#/Qc5#) with 1...gxf3!. The pawn f5 shuts the f-file, without it 1.Qa6? fails to 1...Rf7+. The pawn e5 is a box unit, a self-block on e5 (without it 1.Rc4? fails only to 1...Ke5).",
+   "The key is a one-square queen move. It gives a flight, but the flight is answered only by the threat mate.",
+   "The pawn d2 works only after 1...Kd4 (it covers c3 and e3). The rook c1 has no part in 1...Rc3 2.Qd6#.",
+   "The tries are not thematic and are not printed. 1.Bxf3? captures the half-pinned rook and fails only to the cook-stopper pawn, and 1.Rc4? fails only to the cook-stopper bishop. In the set play every rook move has two mates (2.Qd7#/Qc5#), so the key's 2.Qd6# after 1...Rc3 is no real change.",
+   "Eleven non-defences allow a second mate besides the threat (for example 1...Sf6 2.Qc4#/Qd3#). The critique also notes that the two variations avoid duals for different reasons: the defender keeps control after 1...Rc3, and the king flight e4 stops 2.Qd6 after the knight moves.",
+   "The half-pin of a rook and a knight with queen mates is a standard matrix. Barnes (StrateGems 2002, 1st Prize) shows it on a rank. The geometry (a diagonal pinned by a bishop) and the mates differ, but the content is not new."
+  ],
+  "pluses": [
+   "The key gives a flight (d4) in a diagram with no flight.",
+   "Both half-pinned units defend the same way, by guarding the threat square c4. Each mate uses the pin that the defence itself creates.",
+   "The dual avoidance is clean: 2.Qd3# and 2.Qd6# each fail in the other unit's variation.",
+   "The white king e7 takes part: it covers d6 and e6 in every mate.",
+   "7+7, and the trim tool can remove no unit."
+  ],
+  "process": "Before composing, the run wired the solver's half-pin detector (it existed in motives.py but was never called) into the Patterns list of the report. Eight evolve searches (four bare cores in four geometries, four seeded with a threat) found only checking keys, as on earlier days. Four postsearch runs on a hand sketch (threat Qc4#, defences Rc3/Sd6/Sd2) settled on 2.Qd6# after all three defences, so they found no split. The split came from reasoning on each unit's lines. The knight covers d6, so Qd6 needs the knight pinned. The rook covers the third rank, so Qd3 needs the rook pinned. The knight leaving e4 opens e4, which Qd3 covers and Qd6 does not. Then holes were closed one unit per solve: Rc1 for c4 after 1...Rxb3, the pawn f5 against 1...Rxf7, and the pawn d2 for e3 after 1...Kd4. Keyfind proposed 1.Qa7-a6, which gives the flight d4, with two cooks. The pawn e5 and the bishop a8 (with the king moved to e7) turned 1.Rc4 into a try; e5 later proved to be a box unit as well. The pawn g4 did the same for 1.Bxf3. Trim then removed a knight f7 that the king e7 had made redundant. About 30 solves and 16 searches.",
+  "lesson": "For a half-pin, write down for each of the two units the squares it covers and the lines it can block. The mate for one unit's defence goes on a square or line of the other unit, which is then pinned: Qd6 on a knight square, Qd3 on the rook's rank. Then look at what the moving unit itself changes (here the knight frees e4) to find the dual avoidance."
+ },
+ "mentor_questions": [
+  "Three of the seven black units are only cook-stoppers (Ba8, Pf5, Pg4). For a two-variation half-pin at 7+7, is that an acceptable price, or should every black unit carry play?",
+  "The knight's two defences, 1...Sd6 and 1...Sxd2, share 2.Qd3#. Does a half-pin #2 need a distinct mate for every defence, or is one mate per half-pinned unit (as in Barnes's prize problem) the standard?",
+  "1.Bxf3?, capturing the half-pinned rook, is the natural try, and only the cook-stopper pawn g4 refutes it (1...gxf3!). Should a try like that be printed in the solution or left out?"
+ ],
+ "stats": {
+  "minutes": 75,
+  "solves": 30,
+  "kernels": 3,
+  "searches": 16
+ },
+ "improvement": "The solver now reports a black half-pin. chesscomp.motives.detect_half_pin was in the kit but nothing called it. chesscomp.analysis now adds one 'Half-pin: <defence> [key]' pattern for each defence whose mate uses the other unit's pin. evolve accepts PATTERN=Half-pin with no DEFS (NPAT distinct pattern mates for a HIT). The half-pin reference gains a section on the mechanism with the Barnes model. Tested in tests/test_patterns.py: the half-pin is found on Barnes's problem and not on daily No. 6, and knowledge/lessons.jsonl has no merge markers (a merge had left them on main).",
+ "mentor_issue": 8,
+ "feedback": []
+}

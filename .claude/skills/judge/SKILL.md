@@ -8,7 +8,7 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
 1. Solve: `python -m chesscomp.report --fen "<FEN> w - - 0 1" "#2" --critique`. Read the whole report,
    including the "further moves allow the threat" counts and the try list.
 2. Roles: `python -m chesscomp.anatomy --fen "<FEN>" --tries 1` (king field per mate, essential pins, role
-   table). A unit flagged "no part" or "never needed alone" gets one solve without it: cook-stopper or
+   table). A unit flagged "no part" or "needed in no mate" (removal test) gets one solve without it: cook-stopper or
    try-only unit (a drawback, E. Bourd 11 Oct). The critique does not check this.
    Count the force yourself (the critique does not): a third knight or rook, a second queen, two
    bishops on one colour = promoted piece = fatal unless the idea cannot exist without it.
@@ -24,7 +24,9 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
      E. Bourd 11 Oct 2026). Unified play beats a mixed set (defences that all
      guard one square, tries on one scheme), E. Bourd. A protected key piece the king attacks is no flaw
      when the key has several jobs (gives a flight, opens a line, guards the threat square).
-4. Weigh, do not count: a doubled or tripled theme can carry flaws that would be fatal in a simple
+4. Weigh, do not count; tolerance grows with content (E. Bourd, 12 Oct: "we pay flaws for content, and find
+   the balance"). Place the problem on the scale in `references/checklist.md` (light / medium / rich) first.
+   Weigh, do not count: a doubled or tripled theme can carry flaws that would be fatal in a simple
    problem (see the checklist's last section). Say what content each flaw is buying.
 5. Say what the problem IS (theme, phases, changes) in two lines, then the flaws, then the pluses. No
    praise before the flaws. Give the FEN and draw the board.
