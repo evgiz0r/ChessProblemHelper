@@ -119,3 +119,43 @@ Order: 28 > 31 > 27 > 30 > 25 > 26 > 32 > 29.
 30. G04
 31. G29
 32. G08
+
+## The real award (opened after commit 21fe48c): judge Hubert Gockel (yacpdb), 13 of 32 placed
+| real | label | author | ours (rank of 32) |
+|---|---|---|---|
+| 1st Prize | G28 | P. Einat | **3** |
+| 2nd Prize | G13 | M. Kovačević | 25 |
+| 3rd Prize | G31 | V. Shanshin | **6** |
+| 4th Prize | G02 | M. Radomirović | **8** |
+| 1st HM | G21 | V. Shanshin | 15 |
+| 2nd HM | G17 | E. Navon | **10** |
+| 3rd HM | G20 | Ch. Ouellet | 16 |
+| 5th HM | G03 | S. Tkachenko | 19 |
+| 1st Comm | G26 | S. Tkachenko & A. Vasilenko | 23 |
+| 2nd Comm | G10 | R. Paslack | **11** |
+| 3rd Comm | G23 | G. Maleika | 22 |
+| 4th Comm | G16 | D. Wirajaya | **1** |
+| 5th Comm | G19 | Ph. Robert | **5** |
+
+AUC 0.70; 7 of our 11 placed are in his award; his 1st, 3rd and 4th Prizes are our 3rd, 6th and 8th. Our 2nd (G18,
+Mosiashvili) and 4th (G06, Guida) are unplaced. Keyword bias is small: placed problems carry 2.7 keywords on average,
+unplaced ones 1.9.
+
+Misses, with the author's keywords:
+- **G13, 2nd Prize** ("Changed play, King's battery, 2 flights giving key, Provoked check"). Try 1.Bg2?: a WHITE king
+  battery (threat Ke3#, Bf2 Kxf2#). Key 1.Sd4!: opens a BLACK king battery; both flights are checks answered by pawn
+  mates. Our judge: "two batteries that never meet; slight". The exchange of the king-battery role between White (try) and
+  Black (key) IS the changed play.
+- **G21, 1st HM** ("Threat correction, Sushkov, Dual avoidance"): three queen mates chosen by threat correction. Our
+  judge saw the theme and still marked it down for the capturing, flight-giving key and an unthematic refutation.
+- **G26, 1st Comm** ("Choice of the first move, Threat correction, Transferred mates"): our judge saw the threat
+  correction and sank it for capturing tries and the open f4 flight.
+
+## What we learn (StrateGems)
+1. **Giving the solution helps a little** (AUC 0.70, against 0.66-0.69 for The Problemist from the FEN alone). The top is
+   good: three of his four Prizes in our top 8.
+2. **We are now too harsh on "rude" moves.** Gockel placed threat-correction problems with capturing keys and tries and open
+   flights (G21, G26). The "refutations first" line came from one judge (Mladenovic); applied everywhere, it costs us.
+   Weigh rude moves against the theme, as the content scale says, and do not let them sink a correctly shown modern theme.
+3. **Role exchange between phases is content even when no defence repeats** (G13: White's king battery in the try, Black's
+   in the solution). The phase table found no common defence and called it "never meet".
