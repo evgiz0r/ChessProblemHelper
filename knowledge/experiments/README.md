@@ -52,3 +52,10 @@ award is read. Then come the placings and the judge's comments, problem by probl
 12. **Ten experiments** (Problemist 2011 added): complete short awards 0.80-0.86; strong long awards 0.64-0.76. Recurrent fixable
     misses: tasks and named schemes scored as "mechanical" (placed by Morice, Kopyl and the Problemist judges), line mechanisms
     read as mixed play, and missing theme names.
+
+## Sources for scored fields (wfcc.ch, allowed in the environment on 12 Oct 2026)
+`wfcc_pdf_links.txt` lists the 661 PDFs found by crawling https://www.wfcc.ch/competitions/composing/ . For #2 (section A):
+WCCT 10 entries A + final award, WCCT 11 section A entries + A report (scores) + booklet, WCCT 12 section A entries
+(no award yet), WCCT 7-9 books, WCCI 5-9 and 2019-21 / 2022-24 section A results and winners. WCCT entries books are
+anonymous by design (country codes), so they make blind fields without an extractor; the scores live in the reports.
+Download them into /tmp/claude-0/sealed/ and do not open the score files before our ranking is committed.
