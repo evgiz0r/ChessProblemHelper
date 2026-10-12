@@ -4,6 +4,7 @@ no duals, no black checks; every white unit needed (removing it breaks the post-
 usage: python3 -m chesscomp.compose.unmask_search CORE SEED KSQ FSQ PSQ WANT_JSON BUDGET_S RNG
 The key unit may be any piece (a masking unit leaving the pin line, or the pinner arriving: KSQ=a5 FSQ=a2).
 Optional env TRIES='{"d5c7": "b6b5"}': tries by first move uci, each with exactly that refutation.
+Optional env SELFBLOCK=1: each wanted mate must need its defence's self-block (freethreat.self_block_needed).
 The diagram must have no flight and no black check, and the key piece must guard a square of the king's field.
 e.g. (two black rooks unpin Sc5, 11 Oct 2026; found 1.Bd5-f7! by hand from its failures):
   CORE=8/8/1r6/Q1n1k3/1r6/8/8/8 WANT='{"R6b5":"Qa5c7","R4b5":"Qa5c3"}' KSQ=e7 FSQ=d5 PSQ=a5
@@ -12,6 +13,8 @@ import sys, os, random, time, json, chess
 from chesscomp.compose.keyfind import post_spec
 from chesscomp.core import Problem
 from chesscomp.analysis import analyse
+from chesscomp.compose.freethreat import self_block_needed
+SELFBLOCK = os.environ.get('SELFBLOCK') == '1'
 
 CORE, SEED = sys.argv[1], sys.argv[2]
 KSQ, FSQ, PSQ = (chess.parse_square(x) for x in sys.argv[3:6])
@@ -59,9 +62,11 @@ def post_score(fen):
     # a by-play that repeats a wanted mate is a big flaw (E. Bourd, 11 Oct 2026): 1...Rd1 2.Sc3# beside 1...Sc2 2.Sc3#
     dups = [k for k, m in names.items() if k not in WANT and m & set(WANT.values())]
     s -= 10 * len(dups)
-    ok = len(t) == 1 and not bad and not holes and not duals and not checks and not dups \
+    unblocked = [k for k, w in WANT.items() if SELFBLOCK and names.get(k) == {w} and not self_block_needed(b, k, w)]
+    s -= 20 * len(unblocked)
+    ok = len(t) == 1 and not bad and not holes and not duals and not checks and not dups and not unblocked \
         and all(names.get(k) == {w} for k, w in WANT.items())
-    return s, ok, f"threat={sorted(t)} holes={holes} duals={duals} dups={dups} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
+    return s, ok, f"unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} dups={dups} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
 
 
 def idle_units(fen, t0):
