@@ -193,14 +193,17 @@ def detect_half_pin(board: chess.Board, explained: list[dict]) -> list[dict]:
         if len(occ) == 2 and all(board.color_at(x) == chess.BLACK for x in occ):
             a, b = [chess.square_name(x) for x in occ]
             used = {a: 0, b: 0}
+            defences = []
             for e in explained:
                 frm = e['defence_uci'][:2]
                 other = b if frm == a else a if frm == b else None
                 if other and any('self-pin' in w and other in w for m in e['mates'] for w in m['why_works']):
                     used[frm] += 1
+                    defences.append(e['defence'])
             if used[a] and used[b]:
                 found.append({'name': 'Half-pin', 'line': f"{nm(board, sq)}-{chess.square_name(k)}",
-                              'pieces': [nm(board, occ[0]), nm(board, occ[1])], 'variations': sum(used.values())})
+                              'pieces': [nm(board, occ[0]), nm(board, occ[1])], 'variations': sum(used.values()),
+                              'defences': defences})
     return found
 
 
