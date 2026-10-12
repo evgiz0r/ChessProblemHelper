@@ -36,6 +36,20 @@ its own reason: 5K2/3P4/1N2p3/1P2k1NP/1P4P1/3p4/3B4/8) can carry three diagram f
 king-move refutations and a king-flight variation. Clean and simple is usually judged below complex with
 some flaws; the balance is partly subjective. So: name every flaw, then say what content it is buying.
 
+### The scale: tolerance grows with content (E. Bourd, 12 Oct 2026)
+"As the content grows, we need to be more tolerable to flaws. A small 1 variation problem cannot be compared to
+like reciprocal changes. We pay flaws for content, and find the balance." Place the problem first, then judge:
+
+| Content | Examples | What it can pay for |
+|---|---|---|
+| Light: one thematic variation or one simple paradox, often a miniature | single Dombrovskis, a Le Grand miniature | almost nothing: a try-only unit, a plug, an obvious key or a borrowed mechanism sinks it (daily No. 1) |
+| Medium: several thematic variations or one change between two phases | Boros pair of changed mates, a correction with two corrections | a cook-stopper or two, a passive king, an unthematic dual after random moves |
+| Rich: reciprocal changes, Zagoruiko, Le Grand + Dombrovskis together, a cycle | his Wola Gulowska 2015 5th HM (reciprocal change, 25 units), Sredba 2003-05 1st HM (Le Grand, Dombrovskis, Zagoruiko) | heavy force and pawns, several plugs (Pc4, Pb4), a unit standing on a flight (Pf6), try-only units, capturing keys and tries when thematic, unthematic duals left out of the published solution |
+
+Never bought back at any level: a cook, a dual in a thematic variation, a double threat (the gate keeps them
+fatal). Everything else is weighed: say what the problem IS, which level it reaches, then the flaws and
+whether that content pays for them.
+
 ## His verdicts on the first two daily problems (7 October 2026)
 - No. 1 (single Dombrovskis, 6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1): "almost plagiarised without any additional value,
   even reducing the original"; "almost a non problem with a single Dombrovskis"; the g1 knight that only makes the

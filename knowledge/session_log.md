@@ -907,3 +907,4 @@
 * MK2 2016 (Spearman 0.69, same 1st Prize) and Moscow Ch. 2012 (thematic 0.61 without the theme; published 0.07), from
   his PDFs (selivanov.world). Lessons: count phases, not variations; tabulate tries x defences; name multi-phase
   themes; our fatal list is our standard, not an award predictor. Into the judge checklist, lessons and knowledge/experiments/.
+* (12 Oct) E. Bourd: flaw tolerance grows with content; judge checklist got a light/medium/rich scale anchored on his problems; CLAUDE.md and judge skill point to it.

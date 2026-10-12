@@ -351,3 +351,5 @@ the [a], [b] for the mates that change thematically."
   scheme: both lines (two masked batteries on f4) and the mates by the knights; the content evolved from it.
   Process: geometry first (lines and mating units), then the paradox it can carry.
 - StrateGems 2007 2nd HM: Pc4 is there to stop duals and cooks; the checking defence it allows is a by-product.
+- (12 Oct) "As the content grows, we need to be more tolerable to flaws. A small 1 variation problem cannot be
+  compared to like reciprocal changes. We pay flaws for content, and find the balance." Scale in the judge checklist.
