@@ -924,3 +924,7 @@
   Kc8 -> Ka5, Qb6 -> Qa7 with bPa4 instead of Ba4 (clean try 1.Sb5? Sf5!). Result 8/Q1BB4/2P2r2/K2k4/p1pNp3/4n3/8/2r5,
   1.Se2! (2.Qd4#) Sf5 Sf4#, Sc2 Sc3#; set R~ Be6#, Rxc6 Bxc6#. Open flaw: 1...Rd1 2.Sc3# (by-play repeat); the d2
   plug that stops it fails the gate (superfluous) and a 480-unit scan found no unit that stops it and plays.
+* Problemesis 2004 #2 (judge M. Mladenovic), full field D70-D122 (53), judged blind with the calibrated checklist: his 1st
+  Prize (Bourd D88) is our 2nd; 4 of his 6 in our 15; AUC 0.80. His filter: "rude refutations, flight-taking tries and keys";
+  our top unplaced picks (Bourd D74, D75) had them. Missing names: Somov, Albino (Albino added to themes.json).
+  Organiser fixes made blind: multi-solution stipulations (D96 4 solutions, D81 2 solutions) are in the record's `play` field, not the FEN.

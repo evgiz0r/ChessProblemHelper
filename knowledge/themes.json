@@ -160,5 +160,13 @@
   "examples": [
    "scheme: 8/7B/8/5K2/3N4/4k3/r7/b2Q4 - 1.Ke5? Ra3! and Sc2 is pinned by Ba1"
   ]
+ },
+ "Albino": {
+  "definition": "A white pawn on its second rank makes all four of its moves (one step, two steps, both captures) across tries and key, each try failing to a defence the other phases answer.",
+  "detector": "None",
+  "source": "named by M. Mladenovic, Problemesis 2004 award (1st HM, B. Delobel D97); our blind judge called it 'pawn selection'",
+  "examples": [
+   "Q33 = Problemesis 2004 D97 (Delobel), 1.exd3? Rb4! 1.exf3? Qb5! 1.e3? S~! 1.e4!; FEN in knowledge/experiments/blind_tourney_problemesis2004.md"
+  ]
  }
 }
