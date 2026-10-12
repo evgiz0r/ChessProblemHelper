@@ -1501,6 +1501,23 @@
     "Sg6"
    ],
    "note": "1.Sg6! (2.Qe5#) Sd7 2.Se7#, Sg4 2.Sf4#. Tries 1.Sd3? (2.Qe5#) Sg4 2.Sf4# but 1...Sd7!; 1.Sc6? (2.Qe5#) Sd7 2.Se7# but 1...Sg4!. Set: Bb1 2.Qxc4#. No by-play repeats: the rooks' escapes are cut by White units that also cover flights: 1...Re7 does not reach e5 because of Re6 (which covers d6/e5), 1...Rh5 does not because of Bf5 (which covers e6). Gate PASS, critique 'try set: 2 tries carry the key's threat, each refuted differently'. Every unit needed (Pc4 removable but then 1...Bc4+ 2.Qxc4#). Flaws: 7+9 with 6 pawns; Pd2 cook-stopper (2.Qd2#); Pd6 stops 1.Sxc4 and 1.Sf7; random-move duals (1...Rb8 Se7#/Qe5#); the extra tries 1.Sxc4? and 1.Sg4? have several threats (not to be published). Found by: knight_pair_skeletons (escape classification), postsearch (threat Qc3e5 fixed), unmask_search (KSQ g6 FSQ e5, tries required, by-play repeats penalised). E. Bourd: 'i think the position is decent, its reasonable in terms for composing'; heavier because the theme is richer."
+  },
+  {
+   "id": "claude-same-square-sf6",
+   "fen": "n2kNB2/8/B6p/2N3nQ/8/3K2b1/1R6/2R5",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 12 Oct 2026), theme by E. Bourd",
+   "source": "theme 'a black knight and a bishop self-block on the same square diagonally next to the black king, in 2 variations'",
+   "themes": [
+    "Black knight a8 and bishop g3 self-block on c7 (diagonal to Kd8); c7 has no White guard after the key, so each mate needs the block",
+    "Defence motive: the threat 2.Sb7# unmasks Rc1 (c7, c8) and cuts Ba6-c8 itself; the self-block on c7 also cuts the c-file, so c8 would be free",
+    "Mutual dual avoidance: the knight on c7 guards e8 (no 2.Qe8), the bishop on c7 guards b8 (no 2.Rb8); 1...Sc7 also cuts the bishop's guard of b8",
+    "Flight-giving key: the knight leaves e8 (where it guarded c7) for f6 (d7, e8)"
+   ],
+   "keys": [
+    "Sf6"
+   ],
+   "note": "1.Se8-f6! (2.Sb7#) Sc7 2.Rb8#, Bc7 2.Qe8#, Kc7 2.Se6#. Set: 1...Sc7 2.Rb8# (set mate kept), 1...Bc7 unprovided. Gate PASS, 8+5. Flaws: no tries (the key knight is the only unit that can cover d7 and protect e8, so no try pair by it); Ng5 only guards e6 against a second threat 2.Se6#, Ph6 only protects it (stops 1.Qxg5+); Kd3 takes part in no mate (stops cooks); Ba6 is in no mate (guards c8: without it 1...Kc8 refutes and the diagram has a flight); random-move duals after Ng5 moves (Sb7#/Se6#); the Sc7 mate is already set. Not anticipated by the gate; the capture form (sacrifice captured by K, S, B on one square) is Strebkovs, Vratnica-64 2003 (psis-fd6a6d0ccf) and Muralidharan 2002, so the self-blocks here are on an empty square. Found by: freethreat/postsearch (SELFBLOCK=1), then on the edge (Kd8: five field squares instead of eight at d5), unmask_search KSQ f6 FSQ d5 and a hand change of the key's start (d5 -> e8: on d5 it protected e7, giving 1.Be7#)."
   }
  ]
 }

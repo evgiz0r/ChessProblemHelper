@@ -146,6 +146,14 @@ d5` lists skeletons whose rook escapes self-blocks can stop; the clearance key (
 for the square reaching both mates) gives the pair for free: 8/1r6/1p1PRn2/1KpkNB2/2p1p2r/2Q5/b2P4/8, 1.Sg6!,
 tries 1.Sd3? Sd7!, 1.Sc6? Sg4!.
 
+## Two units self-block one square (12 Oct 2026)
+The square needs no White guard after the key (the flight is given by the key), and the threat may not check through
+it (the blockers interpose before it plays). Motive that works: a White line masked by the threat piece runs through
+the square to the next field square; the threat unmasks it, the block cuts it. Search with `SELFBLOCK=1` (freethreat,
+postsearch, unmask_search). Prefer the king on the edge: fewer static guards, fewer other solutions. In the diagram the
+square is guarded, so each thematic mate is a mate in one unless the key adds what it needs or Black can parry it.
+Result: n2kNB2/8/B6p/2N3nQ/8/3K2b1/1R6/2R5, 1.Sf6! (2.Sb7#) Sc7 2.Rb8#, Bc7 2.Qe8#, Kc7 2.Se6#.
+
 ## Spread the scheme (E. Bourd, 11 Oct 2026)
 Place the scheme so the mechanism's parts are apart: the guarding line long, its cut squares away from the king, the
 cutting pieces at a distance with free paths (his 8/8/3P3R/3k4/8/2bb4/8/8: Rh6 guards the 6th rank, the bishops cut at

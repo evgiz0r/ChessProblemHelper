@@ -933,3 +933,10 @@
   T e5, Sf6 -> d7/g4, rooks b7 (not c7: it attacked the try square c6) and h4, key Se5-g6, tries Sd3/Sc6. postsearch
   (threat Qc3e5) then unmask_search with the try pair required found 8/1r6/1p1PRn2/1KpkNB2/2p1p2r/2Q5/b2P4/8:
   1.Sg6! Sd7 Se7#, Sg4 Sf4#; tries 1.Sd3? Sg4 Sf4# but Sd7!, 1.Sc6? Sd7 Se7# but Sg4!. Gate PASS, 7+9.
+* 12 Oct: E. Bourd: "a black knight and a bishop self-block diagonally to the black king in 2 variations", then "on the
+  same square". Kd5/c4 attempts failed: a threat checking through c4 is met by the blockers interposing; a White line
+  through c4 guards it; the K/S/B sacrifice form is Strebkovs 2003. Found the masked-line motive (Rc1 behind Sc5: the
+  threat Sb7 unmasks c7/c8, the block on c7 cuts c8) and moved the king to the edge (Kd8, square c7). Keys by search
+  (unmask_search KSQ f6 FSQ d5) and by hand (start on e8, not d5). Result n2kNB2/8/B6p/2N3nQ/8/3K2b1/1R6/2R5:
+  1.Sf6! (2.Sb7#) Sc7 2.Rb8#, Bc7 2.Qe8#, Kc7 2.Se6#. Gate PASS, 8+5; flaws: no tries, Ng5/Ph6 cook-stoppers, Kd3.
+  Tools (ours, all sessions): postsearch and unmask_search take SELFBLOCK=1; postsearch rejects promoted black units.
