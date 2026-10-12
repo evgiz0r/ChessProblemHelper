@@ -176,7 +176,8 @@ def index_html(posts):
     return page(BLOG_TITLE, body, 'A chess twomover composed every day.')
 
 def feed_xml(posts):
-    now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    # the newest post's date, not the clock: a build without a new post leaves feed.xml unchanged (tests build it)
+    now = f"{posts[-1]['date']}T06:00:00Z" if posts else '2026-01-01T00:00:00Z'
     entries = ''.join(f"""<entry><title>No. {p['number']}: {html.escape(p['title'])}</title><link href="{SITE}{p['slug']}.html"/>
 <id>{SITE}{p['slug']}.html</id><updated>{p['date']}T06:00:00Z</updated><summary>{html.escape(p.get('teaser', ''))}</summary></entry>""" for p in reversed(posts[-30:]))
     return f"""<?xml version="1.0" encoding="utf-8"?>
