@@ -97,3 +97,7 @@ whether that content pays for them.
   "known" or "mechanical" alone does not drop it out.
 - At the top of the scale (WCCI 8 A blind experiment) content decides: a Burmistrov combination with an unprovided flight and a
   try-only pawn scored 10/10, the cleanest economical entry scored lowest. For rich multi-phase content, flaws cost fractions.
+- Judging others (WCCT 11 A blind experiment, Spearman 0.63 with the five countries): a double threat repeated in every phase
+  of a record content (Zagoruiko 3x3 with cyclic refutations, 3rd-4th place) costs points, not the problem; a new arrangement
+  of a task (five black units refuting five tries on one square, 6th place) scores as content, not "mechanical". Count the
+  Zagoruiko size (4x2 won). Our own fatal list for composing is unchanged.
