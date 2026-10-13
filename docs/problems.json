@@ -1911,6 +1911,25 @@
     "Qf7"
    ],
    "note": "1.Qg7-f7! (2.Qd5#) Sf4 2.Qc4#, Se3 2.Qf4#. Tries 1.Qg8? (Sf4 2.Qc4#) Se3!; 1.Qg5? (Se5 2.Qe3#, Se3 2.Qxe3#/Qf4#) Sf4!. Gate PASS, 6+5. It took one solve from claude-halfpin-rs-qf7 (Rc2 -> Sc2) and a trim (Bh6 no longer needed: e3 is the knight's self-block). Too close to the rook-and-knight problem to stand alone. Knight-specific attempt, both knights to b4 (both guard d5; Sdb4 opens d3, which only Qc4 covers; Scb4 opens the c-file to a black Rc1, which takes on c4): freethreat found the post-key 8/5Q2/8/6R1/4k3/3nN1K1/2nP4/1Br1R3 (Sdb4 2.Qc4#, Scb4 2.Qf4#, 1...Sxe3 pinned by Re1) with 1...Sf4 repeating Qc4, but no key (the Re1-Se3 battery gives 15 white mates); a hand version with black pawns e3/f4 had six threats once every flight was guarded."
+  },
+  {
+   "id": "claude-halfpin-ss-qh5",
+   "fen": "7Q/4N3/6N1/6B1/r3k2K/2Pn4/r1n3P1/1B6",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 13 Oct 2026), theme set by E. Bourd ('half-pin of two knights'; 'another mechanism, something without king flight')",
+   "source": "black half-pin of two knights on a diagonal, no flight, mates on one queen diagonal, both knights to e1",
+   "themes": [
+    "Black half-pin on the diagonal b1-e4: Bb1 x-rays Sc2 and Sd3 to Ke4",
+    "Threat 2.Qf3# in the middle of the diagonal h5-e2; every defence guards f3",
+    "1...Se5 2.Qe2# (the pinned c2 knight cannot block on e3; Se5 guards g4); 1...Sd4 2.Qg4# (the pinned d3 knight cannot block on f4; Sd4 guards e2)",
+    "Both knights to e1 (both guard f3), told apart by the square left: Sde1 opens d3 (only Qe2 covers it), Sce1 opens the 2nd rank to Ra2 (Rxe2)",
+    "Changed mates set -> key: 1...Sd4/Sce1 2.Qe5# -> 2.Qg4#",
+    "No flight in the diagram or after the key"
+   ],
+   "keys": [
+    "Qh5"
+   ],
+   "note": "1.Qh8-h5! (2.Qf3#) Se5/Sde1 2.Qe2#, Sd4/Sce1 2.Qg4#. Set 1...Sd4/Se3/Sa3/Sce1/Sa1 2.Qe5#, 1...Sdb4 2.Qd4#. Tries 1.Qf8? (2.Qf5#/Qf3#) Sd4 2.Qf4#, but 1...Sf4!; 1.Qf6? Sf4!. Gate PASS, 8+5. Built by hand from the knights' guard squares (e5 and d4 both guard f3; the queen on h5 reaches g4, f3, e2 on one diagonal); no static guard of d3, so 1.Bxd3+ Kxd3 after a c2 move and no flight is needed. keyfind --patch found the key with bRa4 added. Units: bRa2 (2nd rank opened by Sce1); bRa4 stops 1.Bxc2 and 1.Qf6; Kh4 stops 2.Qh4 after Sd4 (no mate); Sg6 e5/f4 and blocks Qg6/Qh7; Bg5 e3/f4 and closes the 5th rank (no Qe5/Qf5 duals); Se7 d5/f5; Pc3 d4; Pg2 f3. Flaws: each mate comes twice (Se5/Sde1, Sd4/Sce1); both tries fall to Sf4 and carry multiple threats; Kh4 passive; bRa4 cook-stopper; the queen gives every mate, no links."
   }
  ]
 }

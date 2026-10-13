@@ -1113,3 +1113,9 @@ no motive layer to mirror.
   departure (d3 flight / c-file opened to a black Rc1). Post-key found by freethreat, 1...Sf4 repeating, no key. Published
   two-knight half-pins in the base: Loshinsky (psis-c3c45b84fb, both to d2, pinner takes the other knight) and Ivanov
   (psis-95d7a43c46, The Problemist 2000).
+- Two-knight half-pin, new mechanism without a flight (E. Bourd: "something without king flight, its a bit limiting"):
+  claude-halfpin-ss-qh5, 7Q/4N3/6N1/6B1/r3k2K/2Pn4/r1n3P1/1B6, 1.Qh5! (2.Qf3#) Se5/Sde1 2.Qe2#, Sd4/Sce1 2.Qg4#;
+  set Sd4/Sce1 2.Qe5#. Four NOFLIGHT freethreat runs (e-file from both ends) found no threat from bare seeds; the hand
+  design came from the knights' common guard square (e5 and d4 both guard f3) and one queen diagonal h5-g4-f3-e2; four
+  hand solves to a clean post-key (Sg6 against Qg6/Qh7, Bg5 closing the 5th rank, Kh4 against Qh4, bRa2 for the e1 pair),
+  keyfind --patch for the key (+bRa4). freethreat got NOFLIGHT=1.
