@@ -1058,3 +1058,11 @@ no motive layer to mirror.
   (Shanshin) our 5th, 1st (Witt/Bruch, logical white correction) our 14th, 2nd-3rd (Bykov/Belchikov, theme in a try) our 41st.
   Checklist lines: read the set theme literally (a thematic try is full fulfilment), score the logic of a multistage try sequence,
   weigh white units idle after the key heavier. knowledge/experiments/blind_wcct10_A.md.
+* 13 Oct: E. Bourd on the bench (sitting mv6ykgg4, 330 steps, 97 solves) from claude-halfpin-file-sf7: kept the
+  Sf7/Sg5 threat for a while (the Bd4/Rd4 holes, a zugzwang try, a queen for the bishop), then rotated three times and
+  shifted, ending on a rank half-pin Qa4: Rb4, Bc4 to Kd4 with the threat Sc6#: 1.Bxc2! Rb6 2.Rd3#, Bb5 2.Sb3#;
+  1.B~? Bb5!, 1.Bd3? Rb6! (the white correction again). "bit ugly i made it work kinda". Recorded as
+  bourd-halfpin-rank-bxc2. Checked: the capture key is forced (bPa5 for bpc2 leaves Bc2 and Bb1 both, no one-unit
+  separator); the stopper cascade starts at Bd6 (Be5# after Bb5). Critique fix (all sessions): tries by the key piece that
+  fail to one refutation while another try fails to a different one are a 'white correction' plus, not 'same
+  refutation' (E. Bourd's reading of 12 Oct); test in test_regression.py; checklist line updated.

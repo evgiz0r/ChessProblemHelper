@@ -353,6 +353,14 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     for u, n in rc.items():
         if n > 1:
             s_ = next(x[2] for x in them_refs if x[1] == u)
+            # tries by the key piece where some fail to u and another fails to something else are the random stage of a
+            # white correction, not a flaw (E. Bourd, 13 Oct 2026: "B~ Bd6! Bf5!? Rd6! Bc2!")
+            others = [t for t in pool if u not in {r['uci'] for r in t['refutations']} and t['refutations']]
+            if u[:2] != ksq and others and all(t['first_move']['uci'][:2] == key_piece_sq for t in pool):
+                add('plus', 'white correction', f"1.{key['first_move']['san'][0]}~? {s_}! ({n} moves); "
+                    + '; '.join(f"1.{t['first_move']['san']}? {'/'.join(r['san'] for r in t['refutations'])}!" for t in others)
+                    + f"; 1.{key['first_move']['san']}!")
+                continue
             add('major' if n > 2 or u[:2] == ksq else 'minor', 'same refutation', f'1...{s_}! refutes {n} thematic tries')
     if themed:
         other = Counter(u for _, u, _ in refs) - rc

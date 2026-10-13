@@ -262,3 +262,16 @@ def test_critique_reports_duals_after_random_moves():
     res = critique(Problem.from_fen('1B6/7p/B7/3p3R/2n1k3/2P5/4K3/6N1 w - - 0 1', '#2'))
     kinds = [f['rule'] for f in res['findings']]
     assert 'random-move duals' in kinds
+
+
+def test_white_correction_is_not_same_refutation():
+    """E. Bourd, 13 Oct 2026: tries by the key piece failing to one defence, then a correction failing to another, are a
+    white correction ("B~ Bd6! Bf5!? Rd6! Bc2!"), not the 'same refutation' flaw."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    for fen in ('5R2/1N1Q2B1/2n2rP1/2Npb3/1n1kBp2/1P6/3P4/1K2R3 w - - 0 1',
+                '5n1r/4N1Pp/3BPppK/2NP1BR1/Qrbk1p2/n1R5/2pP4/8 w - - 0 1'):
+        p = Problem.from_fen(fen, '#2')
+        rules = {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
+        assert 'white correction' in rules and 'same refutation' not in rules, rules

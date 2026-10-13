@@ -1782,6 +1782,25 @@
     "Sf7"
    ],
    "note": "1.Sh6-f7! (2.Sg5#) Rg6 2.Rd4#, Bf6 2.Sxd6#. Set 1...Rxh6/Rg6/Rf6 2.Rd4#. Tries 1.Rxe6? dxe6!, 1.Sg4? (2.Sf2#) Bd4 2.Rxd4#, but 1...hxg4!. Gate PASS, 6+7. Units: bPd6 retakes on e5 (1...Rg6 2.Rxe5+? dxe5) and is the target of Sxd6#; bPf4 keeps the bishop off f4 (1...Bf4 would also guard g5); bPd7 stops 1.Rxe6 (dxe6); bPh5 stops 1.Sg4; Kc4 holds d3/d4/d5; Bd2 e3; Sh4 f3/f5. Flaws: no thematic try (the threat Sg5# has one creating move, the knight's arrival on f7); key piece attacked by the rook from e6; random-move duals (1...Rh6 2.Sg5#/Rd4#). The freedom of the file pin: after a rook move the pinned bishop leaves Sc3#, Sg3# (f4 empty), Rd4#/Qd4#, 4th-rank checks; after a bishop move the pinned rook leaves Sd6#, Sf6#, Qc6#/Bb7#/Qa8# (d6 empty), Qg6#/Bh7# (f6 empty)."
+  },
+  {
+   "id": "bourd-halfpin-rank-bxc2",
+   "fen": "5n1r/4N1Pp/3BPppK/2NP1BR1/Qrbk1p2/n1R5/2pP4/8",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv6ykgg4, 13 Oct 2026, step 319), from claude-halfpin-file-sf7",
+   "source": "black half-pin of a rook and a bishop on a rank (Qa4: Rb4, Bc4, Kd4), with a white correction",
+   "themes": [
+    "Black half-pin on the 4th rank: Qa4 x-rays Rb4 and Bc4 to Kd4",
+    "Rook variation: 1...Rb6 2.Rd3# (the pinned bishop cannot take on d3)",
+    "Bishop variation: 1...Bb5 2.Sb3# (the pinned rook cannot take on b3)",
+    "Key unmasks Rg5 along the 5th rank (protects d5 once Se7 leaves for c6)",
+    "White correction: 1.B~? Bb5! (Sb3 leaves e4); 1.Bd3? Rb6! (closes d3); 1.Bxc2! (covers e4 through d3)",
+    "Connected mates: Sc5 and Bc2 hold e4 for each other"
+   ],
+   "keys": [
+    "Bxc2"
+   ],
+   "note": "1.Bxc2! (2.Sc6#) Rb6 2.Rd3#, Bb5 2.Sb3#, Bxd5 2.Rxd5#, f3 2.Rg4#; 1...fxg5/f5 2.gxh8=Q#/gxh8=B# (dual). Tries 1.Bg4/Be4/Bh3? Bb5!, 1.Bd3? Rb6!, 1.Bxg6? hxg6+!. Set play R~ 2.Rd3#, Rb3 2.Sxb3#, B~ 2.Sb3# (retained). 12+11, gate PASS. Units: bSa3 guards c4 (1...Rb6 2.Qxc4#/Rxc4#); bPf6 guards e5 (1...Bb5 2.Be5#) and attacks Rg5, whence wPg7 (2.gxh8 after fxg5/f5), bRh8, bPh7, bSf8 (1.Sd7 cook), bPg6 (Sf5#), wPe6 (Se6#); bpc2 stops 1.Qxb4 (c1=S) and 1.Bb1. Checked 13 Oct: with bPa5 for bpc2 (1.Qxb4? axb4!) the keys are 1.Bc2 and 1.Bb1, and no single added unit leaves one of them (compose by onestop scan); Bc2 and Bb1 differ only on b3/d1/a2/c2, so the capture key is the price. bSd7 for bSf8+bPf6: 1...Sb8!/Se5! guard c6. Bb6/Ba7 for Bd6 make a battery with Sc5 (Sb3 double check). E. Bourd: 'bit ugly i made it work kinda'."
   }
  ]
 }
