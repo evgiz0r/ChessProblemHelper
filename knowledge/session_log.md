@@ -1094,3 +1094,7 @@ no motive layer to mirror.
   hand solves did. The queen does the threat and both mates (one line each: a2-g8 diagonal, g-file).
 - Next layer tried: the pure try pair by the queen (1.Qg5? Sf4!, a Qg8/Qf7 try refuted by Rc5), queen on g7 in the
   diagram; 1.Qf7 then also solves (Rc5 2.Qf4#) and 1.Bxc2 cooks. halfpin_tries runs from both diagrams.
+- Second layer done: claude-halfpin-rs-qf7, 8/4N1Q1/3p3B/R7/1p2k3/3n2K1/2rP4/1B6, 1.Qf7! Sf4 2.Qc4#, Rc5 2.Qf4#;
+  pure pair 1.Qg8? Rc5! and 1.Qg5? Sf4!. compose.halfpin_tries (rng 1) found it in under 280 s from the hand diagram with
+  the queen on g7: Sd7 -> Ra5, so that 1...Rc5 also cuts the 5th-rank guard of e5 (the refutation of 1.Qg8). The hand
+  idea (bPh5 against Qg4) failed to knight checks on Kg2. The basic scheme took ~9 hand solves; the try layer one search.

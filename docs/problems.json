@@ -1837,6 +1837,25 @@
     "Qg8"
    ],
    "note": "1.Qh8-g8! (2.Qd5#) Sf4 2.Qc4#, Rc5 2.Qg4#; 1...Kd4 2.Qd5#. Gate PASS, 7+5. Built by colour reasoning: the knight on d3 covers dark squares only, so its pin mates are line mates through e5/f4 (4th rank from the east: Qg4), and its arrival must spoil the other mate (f4 blocks the 4th rank); the rook's pin mate is a line mate through c4 (Qc4), spoiled after 1...Rc5 because the rook keeps its file. d4 must stay unguarded after the key: with d4 guarded, 1...Rc5 also allowed 2.Bxd3# (the pinner takes the pinned knight, d3 protected) and the queen's checks Qg6+/Qh7+ mated; the free d4 makes the key give a flight. Units: Bh6 e3/f4 (without it 1.Qg8 fails to 1...Rxd2); Pd2 c3/e3 and blocks the rook's 2nd rank (no Rg2+); Kg3 f3/f4; Sd7 e5; Se7 d5/f5; bPb4 stops 1.Bxc2 (zugzwang) and the third defence 1...Sb4; bPd6 stops 1.Be3. Flaws: no tries, no set play, both defences merely guard the threat square, three soundness units (bPb4, bPd6, Bh6), one mating unit (the queen) and no links between the variations."
+  },
+  {
+   "id": "claude-halfpin-rs-qf7",
+   "fen": "8/4N1Q1/3p3B/R7/1p2k3/3n2K1/2rP4/1B6",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 13 Oct 2026), theme set by E. Bourd ('Black half-pin, rook and knight'); second layer of claude-halfpin-rs-qg8",
+   "source": "black half-pin of a rook and a knight on a diagonal, with a pure try pair by the key piece",
+   "themes": [
+    "Black half-pin on the diagonal b1-e4: Bb1 x-rays Rc2 and Sd3 to Ke4",
+    "Both thematic defences guard the threat square d5: 1...Sf4 and 1...Rc5",
+    "Knight variation: 2.Qc4# (the pinned rook cannot take on c4)",
+    "Rook variation: 2.Qf4# (the pinned knight cannot take on f4)",
+    "Pure try pair by the key piece: 1.Qg8? Rc5! (Rc5 also cuts Ra5 from e5, so 2.Qg4+ Kxe5), 1.Qg5? Sf4! (no way to c4)",
+    "Flight-giving key: d4"
+   ],
+   "keys": [
+    "Qf7"
+   ],
+   "note": "1.Qg7-f7! (2.Qd5#) Sf4 2.Qc4#, Rc5 2.Qf4#; 1...Kd4 2.Qd5#. Tries 1.Qg8? (2.Qd5#) Sf4 2.Qc4#, but 1...Rc5!; 1.Qg5? (2.Qd5#/Qe3#) Rc5 2.Qf4#/Qe3#, but 1...Sf4!. Set 1...R~ (not c5) 2.Qg4#. Gate PASS, 7+5. Found by compose.halfpin_tries (rng 1, 280 s) seeded with the queen on g7: it replaced Sd7 by Ra5, whose guard of d5/e5 along the 5th rank is cut by 1...Rc5, the second effect that refutes 1.Qg8. Units: Bh6 guards e3 so that 1...Rxd2 does not become a third defence (without it the Qg8 try is lost: a unit for the try); bPb4 stops 1.Ra4+ and 1...Sb4; bPd6 stops 1.Bxc2 and 1.Rd5; Pd2 c3/e3 and blocks the 2nd rank; Kg3 f3/f4; Se7 d5/f5. Flaws: double threat and a dual in the 1.Qg5 try; three soundness units; one mating unit and no links between the variations; the defences guard the threat square; the flight answered by the threat."
   }
  ]
 }
