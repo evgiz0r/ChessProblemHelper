@@ -1070,3 +1070,8 @@ no motive layer to mirror.
   the key bishop starts on the threat square c6 and goes to g2 (guards d5 and e4 along the long diagonal), so no d5 pawn,
   no Rg5, and Bd6 no longer mates on e5; 1.Be4? Bb5! pure. Left open: 1...Bd5 (guards c6) has no mate of its own;
   Rd3# repeats the rook's mate and the extra c4 guard (Rc1) brings 1.Rd3+ as a cook. Lesson in lessons.jsonl.
+* 13 Oct: E. Bourd went on (steps 331-500): moved the knight off c5 ("it made it a bit easier to manouver"), a rank-5
+  version with 1.Bc3! (tries Be5? Bb6!, Bd4? Rb7!/Rxb3!), then "the correction on the diagonal": back on rank 4,
+  8/4N3/8/2pP1BR1/Qrbk1P1n/npR5/1K1N1P2/8, 1.Bb1! (2.Sc6#) Bb5 Sxb3#, Rb6 Rd3#; 1.Bh7/Bg6? Sf5!, 1.Be4? Bb5!,
+  1.Bd3? Rb6!. 17 units, gate PASS, recorded as bourd-halfpin-diagonal-bb1. Left: 1...Bxd5 2.Rxd5#/Rd3#; cause found
+  (Sd2 is the only guard of c4 after 2.Rd3); Sa1 kills the dual but loses Sf3# against 1...Sf5 and the e4 guard.

@@ -1801,6 +1801,23 @@
     "Bxc2"
    ],
    "note": "1.Bxc2! (2.Sc6#) Rb6 2.Rd3#, Bb5 2.Sb3#, Bxd5 2.Rxd5#, f3 2.Rg4#; 1...fxg5/f5 2.gxh8=Q#/gxh8=B# (dual). Tries 1.Bg4/Be4/Bh3? Bb5!, 1.Bd3? Rb6!, 1.Bxg6? hxg6+!. Set play R~ 2.Rd3#, Rb3 2.Sxb3#, B~ 2.Sb3# (retained). 12+11, gate PASS. Units: bSa3 guards c4 (1...Rb6 2.Qxc4#/Rxc4#); bPf6 guards e5 (1...Bb5 2.Be5#) and attacks Rg5, whence wPg7 (2.gxh8 after fxg5/f5), bRh8, bPh7, bSf8 (1.Sd7 cook), bPg6 (Sf5#), wPe6 (Se6#); bpc2 stops 1.Qxb4 (c1=S) and 1.Bb1. Checked 13 Oct: with bPa5 for bpc2 (1.Qxb4? axb4!) the keys are 1.Bc2 and 1.Bb1, and no single added unit leaves one of them (compose by onestop scan); Bc2 and Bb1 differ only on b3/d1/a2/c2, so the capture key is the price. bSd7 for bSf8+bPf6: 1...Sb8!/Se5! guard c6. Bb6/Ba7 for Bd6 make a battery with Sc5 (Sb3 double check). E. Bourd: 'bit ugly i made it work kinda'."
+  },
+  {
+   "id": "bourd-halfpin-diagonal-bb1",
+   "fen": "8/4N3/8/2pP1BR1/Qrbk1P1n/npR5/1K1N1P2/8",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv6ykgg4, 13 Oct 2026, step 500), after bourd-halfpin-rank-bxc2",
+   "source": "black half-pin of a rook and a bishop on a rank (Qa4: Rb4, Bc4, Kd4), white correction on the b1-h7 diagonal with a pure try pair",
+   "themes": [
+    "Black half-pin on the 4th rank: Qa4 x-rays Rb4 and Bc4 to Kd4",
+    "Both thematic defences guard the threat square c6: 1...Bb5 2.Sxb3#, 1...Rb6 2.Rd3#",
+    "Key unmasks Rg5 (guards d5 once Se7 leaves for c6)",
+    "White correction on one diagonal: 1.Bh7/Bg6? Sf5!; 1.Be4? Bb5! (Sxb3 leaves e4 unguarded); 1.Bd3? Rb6! (closes d3); 1.Bb1! (long, quiet)"
+   ],
+   "keys": [
+    "Bb1"
+   ],
+   "note": "1.Bb1! (2.Sc6#) Bb5 2.Sxb3#, Rb6 2.Rd3#, Sf5 2.Sf3#, Bxd5 2.Rxd5#/Rd3# (dual). Tries 1.Bh7?/Bg6? Sf5!, 1.Be4? Bb5!, 1.Bd3? Rb6!, 1.Bc2? bxc2+!, 1.Qc6? Rb6!. 10+7, gate PASS. Earlier stages of the sitting: rank-5 version 4N3/1b6/2pP1BR1/Qrbk1P1n/n1R5/1P1N1P2/1P6/K7 (1.Bc3!, tries Be5? Bb6!, Bd4? Rxb3!) and 4N3/6pr/p1pP1BR1/Qrbk1P1n/npR5/1P1N1P2/1P6/K7 (step 454, trims to 4N3/8/2pP1BR1/Qrbk1P1n/npR5/1P1N1P2/1P6/K7 with the same play, 19 units). The Bxd5 dual: after 1...Bxd5 2.Rd3 the only guard of c4 is Sd2 (and of e4 too); with the b3-knight on a1 (does not see c4) 1...Bxd5 has only 2.Rxd5#, but then 1...Sf5 has no 2.Sf3# and e4 needs another guard (wPf3, which bSh4 takes): checked 13 Oct, no solution yet. E. Bourd: 'there is that dual still a bit annoying in the solution'."
   }
  ]
 }
