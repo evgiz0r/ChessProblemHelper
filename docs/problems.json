@@ -1747,6 +1747,23 @@
     "Bxh6"
    ],
    "note": "1.Bxh6! (2.Rf4#; Pe5 pinned by Qe8) Re6 2.Rxg4#, Be6 2.Sf6#. Tries 1.Bg3? Re6!, 1.Bxe3? Be6!, 1.Bg5? hxg5!, 1.Bxg6? Bxg6!. On the bench with Re8 (three white rooks: promoted force); Qe8 keeps every line (solver-checked). Flaws: the key captures; cook-stoppers wPh2 (1.Bh2), bRh5 (2.Bxf5 duals after Re6), bPh6 (1.Bg5, and it makes the key a capture: without it 1.Bh6 and 1.Bg5 both solve, and no single added unit tells them apart, compose.trypair); random-move duals; 20 units. Bench path: from claude-halfpin-br-sg8 he removed Bd4, Se7, Sg7, put Sd5/Rd3/Qg3 (threat Qg2#), then wB on f4 masking Rf1 with Pe5 pinned on the e-file, shift left/right to test, bRh5 and the h-pawns as stoppers; sound with 1.Bxh6! on the 36th step of the second sitting."
+  },
+  {
+   "id": "bourd-halfpin-correction-bc2",
+   "fen": "5R2/1N1Q2B1/2n2rP1/2Npb3/1n1kBp2/1P6/3P4/1K2R3",
+   "stip": "#2",
+   "author": "E. Bourd on the Composing Bench (13 Oct 2026), from bourd-halfpin-e6-bf4",
+   "source": "black half-pin of a bishop and a rook, both blocking d6 to unpin Pd5, with a white correction by the masking bishop",
+   "themes": [
+    "Black half-pin: Bg7 x-rays Rf6 and Be5 to Kd4; Qd7 pins Pd5, threat 2.Re4# (Be4 masks Re1)",
+    "Pure defences on one square: 1...Rd6 and 1...Bd6 both unpin Pd5; each mate uses the other unit's pin: Rd6 2.Rxf4#, Bd6 2.Se6#",
+    "White correction: 1.B~? (Bf3, Bg2, Bh1, Bd3: d3 left to Sc5, which leaves it for e6) Bd6!; 1.Bf5!? (still sees d3 through e4, closes Rf8-f4) Rd6!; 1.Bc2! (guards d3, closes nothing)",
+    "Link: Sc5 guards d3 in 2.Rxf4#, Bc2 guards d3 in 2.Se6#"
+   ],
+   "keys": [
+    "Bc2"
+   ],
+   "note": "1.Bc2! (2.Re4#) Rd6 2.Rxf4#, Bd6 2.Se6#. Tries 1.Bf3?/Bg2?/Bh1?/Bd3? Bd6!, 1.Bf5? Rd6!. Set play R~ 2.Se6#, S(b4)~ 2.Qxd5#. Gate-level critique: 11+7, trim-minimal; wPg6 stops 1.Bg6/Bh7, wKb1 stops 1.Bb1; random-move duals. E. Bourd: 'its not pure errors by white, almost correction style - B~ Bd6! Bf5!? Rd6! Bc2!' (the critique's 'same refutation for four tries' is the random-move stage of a correction, not a flaw; a wPf3 that kept only 1.Bf5?/1.Bd3? would delete it). His aim: more freedom in guarding the threat square, the f5 try found, combined with keeping d3 guarded; shifted one file left on the bench."
   }
  ]
 }

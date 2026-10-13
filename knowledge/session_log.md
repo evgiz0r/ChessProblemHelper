@@ -1041,3 +1041,7 @@ no motive layer to mirror.
   threat Rf4# with Pe5 pinned on the e-file, Re6/Be6 unpin it; pure pair 1.Bg3? Re6!, 1.Bxe3? Be6!; key 1.Bxh6!. Three
   white rooks on the bench; Qe8 for Re8 verified sound with the same play. Quiet key 1.Bh6 needs bPh6 gone, then 1.Bg5
   also solves; no one-unit stopper (trypair). Recorded as bourd-halfpin-e6-bf4.
+* 13 Oct: E. Bourd went on (sitting mv6klxrm, steps 37-80): Qe8, then shifted left, Qd7 pinning Pd5, wBe4 masking Re1
+  (threat Re4#), 1.Bc2! Rd6 Rxf4#, Bd6 Se6#; tries 1.B~? Bd6! (d3 unguarded once Sc5 leaves), 1.Bf5!? Rd6! (closes
+  Rf8-f4): a white correction. Quiet key, 18 units, trim-minimal. Recorded as bourd-halfpin-correction-bc2. I misread the
+  four Bd6 tries as a 'same refutation' flaw and offered wPf3 to cut them; he: "almost correction style".
