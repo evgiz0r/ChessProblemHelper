@@ -13,6 +13,7 @@
 | White unit in no mate of the solution, there only for a try | drawback, weighed against the try's content (E. Bourd, 11 Oct; fatal on 7 Oct) | `try-only unit` |
 | Officer (Q/R/B/S) whose only job is the key, in no mate after it; a pawn doing the same is cheap | usually fatal (E. Bourd, 8 Oct) | `useless key piece` |
 | Same mechanism as a published problem with nothing added, or reduced | not a problem (E. Bourd, 7 Oct) | anticipation (gate: identical only) |
+| A simple motive shared with a published problem (self-block, unguard, two units to one square) | not an anticipation unless pushed to a limit (E. Bourd, 13 Oct); only the specific multi-phase layer counts | - |
 | Try refuted by a king move | big flaw | `king refutes try` |
 | Same refutation for several thematic tries (not when they are the random stage of a white correction: B~? Bd6!, Bf5!? Rd6!, Bc2!, E. Bourd 13 Oct) | flaw | `same refutation` / plus `white correction` |
 | White unit taking part in no mate (key piece forgivable; pin-anchor king thematic) | flaw | `passive piece`, `passive king`, `cook-stopper` |
