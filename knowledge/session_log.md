@@ -1045,3 +1045,11 @@ no motive layer to mirror.
   (threat Re4#), 1.Bc2! Rd6 Rxf4#, Bd6 Se6#; tries 1.B~? Bd6! (d3 unguarded once Sc5 leaves), 1.Bf5!? Rd6! (closes
   Rf8-f4): a white correction. Quiet key, 18 units, trim-minimal. Recorded as bourd-halfpin-correction-bc2. I misread the
   four Bd6 tries as a 'same refutation' flaw and offered wPf3 to cut them; he: "almost correction style".
+* 13 Oct: E. Bourd: "another half-pin of rook and a bishop on an orthogonal line ... multiple mates might be available".
+  Scheme: Ke4, Be5, Re6, Re8. Mates that use the pin: after a rook move Sc3#, Sg3# (f4 empty), Rd4#/Qd4#, 4th-rank
+  checks; after a bishop move Sd6#, Sf6#, Qc6#/Bb7#/Qa8# (d6 empty), Qg6#/Bh7# (f6 empty). Sound base, recorded as draft
+  claude-halfpin-file-sf7: 4R3/3p4/3pr2N/3Rb2p/2K1kp1N/8/3B4/8, 1.Sf7! (2.Sg5#) Rg6 2.Rd4#, Bf6 2.Sxd6#, set R~ Rd4#;
+  only Rg6 and Bf6 defend. No thematic try: the threat has one creating move. Dead end: Zagoruiko 2x2 by Se7-d5/f5
+  (search and hand analysis, lesson). New tool (all sessions): compose.halfpin_tries (SPEC env, diagram search scored by
+  the solver: one defence per half-pinned unit, pin-using mates, pure tries; it finds Kapros's pair on his diagram).
+  Twelve runs from five seeds found no pure pair yet; halfpin_pair on a b6-d5 knight wheel did not reach a sound post-key.

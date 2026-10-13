@@ -1764,6 +1764,24 @@
     "Bc2"
    ],
    "note": "1.Bc2! (2.Re4#) Rd6 2.Rxf4#, Bd6 2.Se6#. Tries 1.Bf3?/Bg2?/Bh1?/Bd3? Bd6!, 1.Bf5? Rd6!. Set play R~ 2.Se6#, S(b4)~ 2.Qxd5#. Gate-level critique: 11+7, trim-minimal; wPg6 stops 1.Bg6/Bh7, wKb1 stops 1.Bb1; random-move duals. E. Bourd: 'its not pure errors by white, almost correction style - B~ Bd6! Bf5!? Rd6! Bc2!' (the critique's 'same refutation for four tries' is the random-move stage of a correction, not a flaw; a wPf3 that kept only 1.Bf5?/1.Bd3? would delete it). His aim: more freedom in guarding the threat square, the f5 try found, combined with keeping d3 guarded; shifted one file left on the bench."
+  },
+  {
+   "id": "claude-halfpin-file-sf7",
+   "fen": "4R3/3p4/3pr2N/3Rb2p/2K1kp1N/8/3B4/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 13 Oct 2026), scheme by E. Bourd ('another half-pin of rook and a bishop on an orthogonal line ... multiple mates might be available')",
+   "source": "black half-pin of a rook and a bishop on a file (draft: the base of the scheme, no thematic try yet)",
+   "themes": [
+    "Black half-pin on the e-file: Re8 x-rays Re6 and Be5 to Ke4",
+    "Pure defences: 1...Rg6 is the only rook move and 1...Bf6 the only bishop move that guard g5",
+    "Rook variation: 2.Rd4# (the pinned bishop cannot take on d4)",
+    "Bishop variation: 2.Sxd6# (the pinned rook cannot take on d6)",
+    "Set play 1...R~ 2.Rd4# retained"
+   ],
+   "keys": [
+    "Sf7"
+   ],
+   "note": "1.Sh6-f7! (2.Sg5#) Rg6 2.Rd4#, Bf6 2.Sxd6#. Set 1...Rxh6/Rg6/Rf6 2.Rd4#. Tries 1.Rxe6? dxe6!, 1.Sg4? (2.Sf2#) Bd4 2.Rxd4#, but 1...hxg4!. Gate PASS, 6+7. Units: bPd6 retakes on e5 (1...Rg6 2.Rxe5+? dxe5) and is the target of Sxd6#; bPf4 keeps the bishop off f4 (1...Bf4 would also guard g5); bPd7 stops 1.Rxe6 (dxe6); bPh5 stops 1.Sg4; Kc4 holds d3/d4/d5; Bd2 e3; Sh4 f3/f5. Flaws: no thematic try (the threat Sg5# has one creating move, the knight's arrival on f7); key piece attacked by the rook from e6; random-move duals (1...Rh6 2.Sg5#/Rd4#). The freedom of the file pin: after a rook move the pinned bishop leaves Sc3#, Sg3# (f4 empty), Rd4#/Qd4#, 4th-rank checks; after a bishop move the pinned rook leaves Sd6#, Sf6#, Qc6#/Bb7#/Qa8# (d6 empty), Qg6#/Bh7# (f6 empty)."
   }
  ]
 }
