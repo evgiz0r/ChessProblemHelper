@@ -30,6 +30,7 @@ ul{padding-left:22px} li{margin:3px 0}
 .q{background:var(--tint);border-left:2px solid var(--rule);padding:10px 14px;margin-top:10px}
 .list{list-style:none;padding:0;margin:0}.list li{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center;border-bottom:1px solid var(--hatch);padding:14px 0}
 .list a{color:var(--ink)} svg.mini{width:96px}
+.att{margin:10px 0 18px} .att svg{width:220px;max-width:100%} .att .fen{font-size:12px}
 table{border-collapse:collapse;font-size:14px;width:100%} th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--hatch)} th{color:var(--grey);font-weight:600}
 footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-size:14px;color:var(--grey)} a{color:var(--ink)}
 </style></head><body><div class="wrap">
@@ -47,6 +48,7 @@ footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-s
 <h3>Flaws</h3><ul><li>One thematic variation; Black has only e5 and the tempo move h4.</li><li>Two tries with the same refutation (Sf3 and Sh3 both fall to e5).</li><li>The g1 knight exists only to play the try, the usual price of a Dombrovskis.</li><li>The h5 pawn is there to give Black a tempo move so that the key carries a threat.</li><li>Not new as a mechanism: it is the pawn side of Slesarenko and Gvozdjak, Shakhmatnaya Kompozitsiya 1999, which shows it twice.</li></ul>
 <h3>Pluses</h3><ul><li>King key, no cook-stopper among the white units.</li><li>Pure paradox: before the key 1...e5 has no mate at all, so the key creates the mate rather than restoring it.</li><li>After 1.Sf3 e5 the capture Qxe5+ also fails, because c4 is guarded only by the queen from e2: one geometric reason does all the work.</li></ul>
 <h3>How it was made</h3><p>Five hand kernels around a king on d5 and a pawn on e6 died to mates in one, because a fully boxed king turns every protected check into mate. The kernel that worked copies Slesarenko&#x27;s idea of making the queen the sole guard of two flights. The last two white units came from a search that adds one or two units to a kernel and uses the solver&#x27;s own Dombrovskis detector as the judge: 14 hits in seven minutes, this the lightest.</p>
+
 <h3>Lesson</h3><p>Do not box the king with pieces when building a paradox: give one white piece sole charge of two flights, so that any move of it opens them and the try piece only has to close one.</p>
 
 </details>

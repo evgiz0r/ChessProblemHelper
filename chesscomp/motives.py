@@ -130,6 +130,17 @@ def mate_motives(b_key: chess.Board, d: chess.Move, mate: chess.Move) -> list[st
                     mot.append(f'self-pin: {piece} pinned')
     else:
         mot.append(f'mate made possible by the defence (square/line given by {dn})')
+    # 4) direct self-pin: the defender itself is pinned on its arrival square, and unpinned it would parry
+    #    the mate (capture the checker or interpose); daily No. 8
+    if after.is_check() and d.to_square != k and after.is_pinned(chess.BLACK, d.to_square):
+        pin_ray = after.pin(chess.BLACK, d.to_square)
+        pinner = next((s for s in pin_ray if after.color_at(s) == chess.WHITE and s not in after.checkers()
+                       and chess.SquareSet(chess.between(k, s)) & after.occupied == chess.SquareSet([d.to_square])), None)
+        if pinner is not None:
+            t = after.copy(stack=False); t.remove_piece_at(pinner)
+            if any(m.from_square == d.to_square for m in t.legal_moves):
+                mot.append(f'self-pin: {dn[0]}{chess.square_name(d.to_square)} pinned by the defence itself '
+                           f'({nm(after, pinner)})')
     seen, res = set(), []
     for m in mot:
         if m not in seen:
@@ -204,6 +215,19 @@ def detect_half_pin(board: chess.Board, explained: list[dict]) -> list[dict]:
                 found.append({'name': 'Half-pin', 'line': f"{nm(board, sq)}-{chess.square_name(k)}",
                               'pieces': [nm(board, occ[0]), nm(board, occ[1])], 'variations': sum(used.values()),
                               'defences': defences})
+    return found
+
+
+def detect_self_pin(explained: list[dict]) -> list[dict]:
+    """Direct self-pin: a defence pins the moved unit against its own king and the mate exploits it
+    (the unit, unpinned, could capture the mating piece or interpose). One entry per defence (daily No. 8)."""
+    found = []
+    for e in explained:
+        sq = e['defence_uci'][2:4]
+        hits = [m['mate'] for m in e['mates'] if any(w.startswith('self-pin:') and f'{sq} pinned by the defence' in w
+                                                     for w in m['why_works'])]
+        if hits:
+            found.append({'name': 'Self-pin', 'defence': e['defence'], 'square': sq, 'mates': hits})
     return found
 
 

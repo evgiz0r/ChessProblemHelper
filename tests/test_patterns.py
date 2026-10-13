@@ -24,6 +24,18 @@ def test_no_half_pin_in_grimshaw():
     assert not [p for p in _patterns('3Q1bb1/2N3r1/1N3Rpp/1pP1k3/3p4/3P4/5K2/8') if p['name'] == 'Half-pin']
 
 
+def test_self_pin_by_capture_reported_per_defence():
+    # Avner & Retter, Israel Ring Tourney 2000, 4th Prize (psis-30b58be7a5): 1.Qb3! Bxd6 2.Se4# (Bd6 pinned
+    # by Rd8, cannot interpose on e5), Bxf4 2.Sd7# (Bf4 pinned by Rh4); daily No. 8
+    sp = [p for p in _patterns('3R3B/1b5K/3N1Np1/4b3/3k1P1R/Q7/3Pnp2/3n3B') if p['name'] == 'Self-pin']
+    assert sorted(p['defence'] for p in sp) == ['Bxd6', 'Bxf4']
+
+
+def test_half_pin_is_not_a_direct_self_pin():
+    # in Barnes' half-pin the pinned unit is the one that stayed, not the defender
+    assert not [p for p in _patterns('7b/8/1K1p2Q1/3N4/1Nknr2R/P6R/2rp4/B7') if p['name'] == 'Self-pin']
+
+
 def test_knowledge_jsonl_has_no_merge_markers():
     # 12 Oct 2026: a merge left <<<<<<< / ======= / >>>>>>> lines in lessons.jsonl on main
     for name in ('lessons.jsonl',):

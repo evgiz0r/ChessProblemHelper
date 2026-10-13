@@ -112,10 +112,29 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For a half-pin again, aim for two mates per unit (four variations); the knight's
   two defences here share a mate. Try `PATTERN=Half-pin DEFS= NPAT=3` evolve seeded with a post-key sketch, not a bare core.
 
+## 2026-10-13, No. 8: Self-pin
+- Result: B7/2N5/2Pp4/1P2p1B1/RK1nk2N/1PR5/2P5/1Q1n4 (12+5), 1.Rg3! (2.Rg4#) Sxc6+ 2.Ka3#, Sxc2+ 2.Ka5#, Se6/Se2 2.c3#,
+  Se3 2.Rxe3#, Sf2 2.Re3#; try 1.Qxd1? Sxc2+!. Self-pin by capture with check against a royal battery; the pinned knight's
+  remaining control selects the king's square. Gate: PASS with warnings (attacked key piece, same refutation d5 of two tries,
+  random-move duals, Pc6 'cook-stopper' which is the captured pin blocker, 17 units), all named in the post. The thematic pair
+  is already set (flaw, asked). Mentor issues #7 and #8 had no answers; nothing to act on.
+- Setup: `main` fast-forwarded cleanly this time (no diverged history).
+- Minutes (container clock 23:58-01:35): setup and reading 5, mentor 1, detector (kit change) 15, composing 65, judging,
+  post and records 15. About 60 solves, 38 search jobs (12 evolve, 14 postsearch, 12 freethreat), 3 keyfind, 1 trim.
+- What wasted time: two loaded knight batteries (checking keys only, 14 evolve jobs in total gave nothing); four postsearch
+  jobs with the same RNG converged to one zugzwang; two `until pgrep -f` wait loops matched their own shells again (use a
+  file test: `until grep -q evaluated OUT`); a seed with Qh1 checking the king (validate seeds with python-chess first);
+  an evolve core with two light bishops (count the bishops' colours before launching).
+- What helped: reasoning about what a capture gives White (only the vacated square, or a check) before searching; freethreat
+  with exact mate ids once the selectors were placed by hand; postsearch READY=1 to cut White's other solutions; keyfind.
+- Next run: theme from `next-theme`. For a theme whose defence is a capture, first write down what the capture gives White.
+  The royal-battery selection (a pinned checker keeping the king off one square) could carry changed mates: a key by the
+  white king that forms the battery would leave the set captures with other mates.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
-- A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct), so those themes can be claimed only when
+- A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct, direct self-pin 13 Oct), so those themes can be claimed only when
   the solver sees them (today only a Grimshaw and a half-pin on the key phase are reported).
 - evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
 - A theme reference for Novotny, Le Grand and Rudenko (none yet; Grimshaw done 11 Oct).

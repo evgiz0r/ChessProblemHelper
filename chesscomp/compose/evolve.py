@@ -21,7 +21,8 @@ HIT; KEYROLE=0 restores the old score. SELFBLOCK=N (self-block mode, daily No. 5
 variation whose defence is a functional self-block (the motive 'self-block on ..': the defender stands next to its
 king and the mate would fail without it), with distinct single mates; a HIT needs N such mates and no dual after a
 self-block. PATTERN with no DEFS (e.g. PATTERN=Half-pin NPAT=3, daily No. 7) rewards every key-phase defence the
-solver reports with that pattern and a single mate, distinct mates only; a HIT needs NPAT of them. A line starting HIT is a position that meets the whole specification; check it with
+solver reports with that pattern and a single mate, distinct mates only; a HIT needs NPAT of them (PATTERN=Self-pin
+for direct self-pins by the defender, daily No. 8). A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
 """
 import os, sys, random, time, json, chess

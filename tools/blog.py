@@ -8,7 +8,8 @@
 Post fields (see the daily-problem skill): date, slug, title, theme, fen, stip, author, source, teaser,
 solution (lines: '#Label' starts a section, two leading spaces indent a variation), comment {what, flaws,
 pluses, process, lesson}, mentor_questions, mentor_issue, stats {minutes, solves, kernels, searches},
-feedback (his answers, summarised by a later run), improvement (what the run changed in the kit).
+feedback (his answers, summarised by a later run), improvement (what the run changed in the kit),
+attempts (optional list of {title, fen, note}: failed attempts and near-misses shown with their diagrams).
 """
 import sys, os, json, glob, html, re, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -95,6 +96,7 @@ ul{padding-left:22px} li{margin:3px 0}
 .q{background:var(--tint);border-left:2px solid var(--rule);padding:10px 14px;margin-top:10px}
 .list{list-style:none;padding:0;margin:0}.list li{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center;border-bottom:1px solid var(--hatch);padding:14px 0}
 .list a{color:var(--ink)} svg.mini{width:96px}
+.att{margin:10px 0 18px} .att svg{width:220px;max-width:100%} .att .fen{font-size:12px}
 table{border-collapse:collapse;font-size:14px;width:100%} th,td{text-align:left;padding:4px 8px;border-bottom:1px solid var(--hatch)} th{color:var(--grey);font-weight:600}
 footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-size:14px;color:var(--grey)} a{color:var(--ink)}
 """
@@ -126,6 +128,16 @@ def sol_html(lines):
 def ul(items):
     return '<ul>' + ''.join(f'<li>{html.escape(i)}</li>' for i in items) + '</ul>' if items else '<p>None noted.</p>'
 
+def attempts_html(atts):
+    """Failed attempts and near-misses, each with its diagram, FEN and flaw (E. Bourd, mentor issue #5)."""
+    if not atts:
+        return ''
+    out = ['<h3>Attempts that failed</h3>']
+    for a in atts:
+        out.append(f'<div class="att"><b>{html.escape(a.get("title", ""))}</b><br>{board_svg(a["fen"], small=True)}'
+                   f'<div class="fen">{html.escape(a["fen"])}</div><p>{html.escape(a.get("note", ""))}</p></div>')
+    return ''.join(out)
+
 def post_html(p, prev, nxt):
     c = p.get('comment', {})
     st = p.get('stats', {})
@@ -146,6 +158,7 @@ def post_html(p, prev, nxt):
 <h3>Flaws</h3>{ul(c.get('flaws', []))}
 <h3>Pluses</h3>{ul(c.get('pluses', []))}
 <h3>How it was made</h3><p>{html.escape(c.get('process', ''))}</p>
+{attempts_html(p.get('attempts', []))}
 <h3>Lesson</h3><p>{html.escape(c.get('lesson', ''))}</p>
 {('<h3>What changed in the kit</h3><p>' + html.escape(p['improvement']) + '</p>') if p.get('improvement') else ''}
 </details>

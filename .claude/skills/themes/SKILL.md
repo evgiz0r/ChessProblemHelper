@@ -10,7 +10,7 @@ Open the reference for the theme named; each has the construction that worked, t
 say so.
 
 - `references/changed_mates.md` - set/try/solution changes, one-defence changes, two units on one square.
-- `references/self_pin.md` - self-pin by capture, two rooks, queen-pin defences.
+- `references/self_pin.md` - self-pin by capture, two rooks, queen-pin defences; the geometry of a direct self-pin (captured blocker, no battery front) and the royal-battery selection of daily No. 8.
 - `references/corner_key.md` - Bristol clearance with a corner key.
 - `references/underpromotion.md` - S/B/R promotion keys by stalemate motivation.
 - `references/half_pin_king_key.md` - half-pin, pawn half-battery, White-king key with interference tries.

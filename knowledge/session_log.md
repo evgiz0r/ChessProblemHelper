@@ -1029,3 +1029,11 @@
   compose.halfpin_pair (SPEC env: knight key, two try squares, one defence per half-pinned unit, free threat);
   12 runs on origins e3/f4/d4/c7, no sound hit. Hand schemes (Be7 mask with Qd8-h4, Rd7 cut) cooked (1.Rd4+). Asked
   E. Bourd which direction: knight wheel near Kapros, the pure e6 double block extended otherwise, or tries by two pieces.
+
+## Daily run No. 8 (13 Oct 2026, routine): Self-pin
+Added the direct self-pin detector (motives.mate_motives, motives.detect_self_pin, Patterns 'Self-pin', evolve
+PATTERN=Self-pin) and the blog's 'attempts' list. Composed B7/2N5/2Pp4/1P2p1B1/RK1nk2N/1PR5/2P5/1Q1n4, 1.Rg3!: two
+self-pinning knight captures with check against a royal battery, the pinned knight choosing the king's square. Dead ends:
+two loaded knight batteries, immobile pawn blockers (recapture mates only), a bishop matrix that was Avner & Retter's
+reflected. The detector lives in motives.py (Python only, like the Grimshaw and half-pin detectors); docs/analysis.js has
+no motive layer to mirror.
