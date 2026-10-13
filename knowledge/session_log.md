@@ -1107,3 +1107,9 @@ no motive layer to mirror.
 - Co-author step on his version (he: "you are my co-author. always welcome to try more"): one black knight e1 guards c2
   and d3, so it replaces bSc1 (d3) and bBd1 (c2); with Kh4 it checks from g2, so a scan of every king square
   (scratch kscan.py) found f1/g1/h2/g3/h6; g3 chosen (takes part). bourd-halfpin-rs-qf7-se1, 8/6Q1/6N1/8/1p2k3/3nNpK1/2rP1P2/1B2n3, 7+6.
+- Half-pin of two knights (E. Bourd: "lets go next, half-pin of two knights"): the basic scheme is the rook-and-knight
+  problem with Rc2 -> Sc2, sound in one solve (claude-halfpin-ss-qf7, 8/4N1Q1/3p4/R7/1p2k3/3n2K1/2nP4/1B6, 1.Qf7! Sf4
+  2.Qc4#, Se3 2.Qf4#; tries Qg8? Se3!, Qg5? Sf4!). Knight-specific layer tried: both knights to b4, separated by the
+  departure (d3 flight / c-file opened to a black Rc1). Post-key found by freethreat, 1...Sf4 repeating, no key. Published
+  two-knight half-pins in the base: Loshinsky (psis-c3c45b84fb, both to d2, pinner takes the other knight) and Ivanov
+  (psis-95d7a43c46, The Problemist 2000).

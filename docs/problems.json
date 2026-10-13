@@ -1893,6 +1893,24 @@
     "Qf7"
    ],
    "note": "1.Qg7-f7! (2.Qd5#) Sf4 2.Qc4#, Rc5 2.Qf4#. Tries 1.Qg8? Sf4 2.Qc4#, but 1...Rc5!; 1.Qd7? Rc5 2.Qg4#, but 1...Sf4!; 1.Bxc2? (2.Qe5#) Sxc2!. Set 1...R~ 2.Qe5#. Gate PASS, 7+6 (his 7+7). bSe1 does the two jobs of bSc1 and bBd1: it protects d3 (1.Qd7? Rc5 is not 2.Qxd3#/Bxd3#) and recaptures on c2 (1.Bxc2? Sxc2!). With the king on h4, 1...Sg2+ refuted the key; the scan of all king squares gave f1, g1, h2, g3, h6; g3 takes part (doubles f4), h6 takes none. Other units as in bourd-halfpin-rs-qf7: Pf2 holds e3 against 1...Rxd2 and fixes bPf3; bPb4 stops 1...Sb4."
+  },
+  {
+   "id": "claude-halfpin-ss-qf7",
+   "fen": "8/4N1Q1/3p4/R7/1p2k3/3n2K1/2nP4/1B6",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 13 Oct 2026), theme set by E. Bourd ('half-pin of two knights'); the white side of claude-halfpin-rs-qf7 with the rook c2 replaced by a knight",
+   "source": "black half-pin of two knights on a diagonal (basic scheme, carried over from the rook-and-knight problem)",
+   "themes": [
+    "Black half-pin on the diagonal b1-e4: Bb1 x-rays Sc2 and Sd3 to Ke4",
+    "1...Sf4 2.Qc4# (the pinned c2 knight cannot block on d4); 1...Se3 2.Qf4# (the pinned d3 knight cannot take on f4)",
+    "Dual avoidance by the arrivals: Sf4 blocks the 4th rank, Se3 guards c4",
+    "Tries 1.Qg8? Se3! (g4 guarded by the knight), 1.Qg5? Sf4!",
+    "Set 1...Sc~ 2.Qg4#; flight-giving key (d4)"
+   ],
+   "keys": [
+    "Qf7"
+   ],
+   "note": "1.Qg7-f7! (2.Qd5#) Sf4 2.Qc4#, Se3 2.Qf4#. Tries 1.Qg8? (Sf4 2.Qc4#) Se3!; 1.Qg5? (Se5 2.Qe3#, Se3 2.Qxe3#/Qf4#) Sf4!. Gate PASS, 6+5. It took one solve from claude-halfpin-rs-qf7 (Rc2 -> Sc2) and a trim (Bh6 no longer needed: e3 is the knight's self-block). Too close to the rook-and-knight problem to stand alone. Knight-specific attempt, both knights to b4 (both guard d5; Sdb4 opens d3, which only Qc4 covers; Scb4 opens the c-file to a black Rc1, which takes on c4): freethreat found the post-key 8/5Q2/8/6R1/4k3/3nN1K1/2nP4/1Br1R3 (Sdb4 2.Qc4#, Scb4 2.Qf4#, 1...Sxe3 pinned by Re1) with 1...Sf4 repeating Qc4, but no key (the Re1-Se3 battery gives 15 white mates); a hand version with black pawns e3/f4 had six threats once every flight was guarded."
   }
  ]
 }
