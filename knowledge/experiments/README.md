@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| WCCT 10 section A, all 93 entries (scored, wfcc.ch), theme given, calibrated checklist | 93 | Spearman 0.73 (countries with each other 0.62-0.78); 2nd-3rd place our 5th, 1st place our 14th | blind_wcct10_A.md |
 | WCCT 11 section A, all 86 entries (scored, wfcc.ch), theme given | 79 scored | Spearman 0.63 (the countries with each other 0.34-0.72); 1st place our 2nd | blind_wcct11_A.md |
 | WCCI 8 section A winners (scored, uploaded PDF) | 15 | Spearman -0.32; the 10/10 Burmistrov our 13th, the lowest our 2nd | blind_wcci8_A.md |
 | The Problemist 2011 #2, yacpdb, with solutions | 46 | AUC 0.64; his Prizes 1-3 our 11th, 8th, 3rd | blind_tourney_problemist2011.md |
@@ -67,3 +68,7 @@ Download them into /tmp/claude-0/sealed/ and do not open the score files before 
     total, 0.47-0.56 against each country, while the countries agree among themselves at 0.34-0.72. WCCI 8 (-0.32) was a
     compressed field of winners only. The fixable misses are the same as before: a double threat paid for by a record content,
     and new task arrangements scored as "mechanical". The unfixable one without a search: anticipation.
+15. **The calibration held and the next misses are about reading** (WCCT 10 A, 93 entries): Spearman 0.73, near the countries'
+    agreement with each other (0.62-0.78). No double-threat or task misses this time. New ones: a theme that admits tries was
+    marked down when shown "only in a try" (the 2nd-3rd place our 41st); the logical progression of a multistage try sequence
+    (1st place) was read as a list of changes; white units idle after the key were noted but not punished as the countries did.

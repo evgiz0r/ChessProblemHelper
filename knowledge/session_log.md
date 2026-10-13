@@ -1045,3 +1045,8 @@ no motive layer to mirror.
   (threat Re4#), 1.Bc2! Rd6 Rxf4#, Bd6 Se6#; tries 1.B~? Bd6! (d3 unguarded once Sc5 leaves), 1.Bf5!? Rd6! (closes
   Rf8-f4): a white correction. Quiet key, 18 units, trim-minimal. Recorded as bourd-halfpin-correction-bc2. I misread the
   four Bd6 tries as a 'same refutation' flaw and offered wPf3 to cut them; he: "almost correction style".
+* 13 Oct: WCCT 10 section A (wfcc.ch, 93 entries all marked, theme "anticipatory unpin of a white piece", nine blind judges with
+  the checklist calibrated after WCCT 11): Spearman 0.73 against the points (countries with each other 0.62-0.78). 2nd-3rd place
+  (Shanshin) our 5th, 1st (Witt/Bruch, logical white correction) our 14th, 2nd-3rd (Bykov/Belchikov, theme in a try) our 41st.
+  Checklist lines: read the set theme literally (a thematic try is full fulfilment), score the logic of a multistage try sequence,
+  weigh white units idle after the key heavier. knowledge/experiments/blind_wcct10_A.md.
