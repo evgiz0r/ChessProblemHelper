@@ -1856,6 +1856,25 @@
     "Qf7"
    ],
    "note": "1.Qg7-f7! (2.Qd5#) Sf4 2.Qc4#, Rc5 2.Qf4#; 1...Kd4 2.Qd5#. Tries 1.Qg8? (2.Qd5#) Sf4 2.Qc4#, but 1...Rc5!; 1.Qg5? (2.Qd5#/Qe3#) Rc5 2.Qf4#/Qe3#, but 1...Sf4!. Set 1...R~ (not c5) 2.Qg4#. Gate PASS, 7+5. Found by compose.halfpin_tries (rng 1, 280 s) seeded with the queen on g7: it replaced Sd7 by Ra5, whose guard of d5/e5 along the 5th rank is cut by 1...Rc5, the second effect that refutes 1.Qg8. Units: Bh6 guards e3 so that 1...Rxd2 does not become a third defence (without it the Qg8 try is lost: a unit for the try); bPb4 stops 1.Ra4+ and 1...Sb4; bPd6 stops 1.Bxc2 and 1.Rd5; Pd2 c3/e3 and blocks the 2nd rank; Kg3 f3/f4; Se7 d5/f5. Flaws: double threat and a dual in the 1.Qg5 try; three soundness units; one mating unit and no links between the variations; the defences guard the threat square; the flight answered by the threat."
+  },
+  {
+   "id": "bourd-halfpin-rs-qf7",
+   "fen": "8/6Q1/6N1/8/1p2k2K/3nNp2/2rP1P2/1Bnb4",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv73p0wa, 13 Oct 2026), from claude-halfpin-rs-qf7",
+   "source": "black half-pin of a rook and a knight on a diagonal, pure try pair with single threats and a changed mate",
+   "themes": [
+    "Black half-pin on the diagonal b1-e4: Bb1 x-rays Rc2 and Sd3 to Ke4",
+    "Knight variation: 1...Sf4 2.Qc4# (the pinned rook cannot take on c4)",
+    "Rook variation: 1...Rc5 2.Qf4# (the pinned knight cannot take on f4)",
+    "Pure try pair by the key piece: 1.Qg8? Rc5! (Sg6 closes the g-file, no Qg4), 1.Qd7? Sf4! (no way to c4)",
+    "Changed mate after 1...Rc5: 2.Qg4# (try 1.Qd7) -> 2.Qf4# (key)",
+    "Set play 1...R~ 2.Qe5#; flight-giving key (d4)"
+   ],
+   "keys": [
+    "Qf7"
+   ],
+   "note": "1.Qg7-f7! (2.Qd5#) Sf4 2.Qc4#, Rc5 2.Qf4#. Tries 1.Qg8? (2.Qd5#) Sf4 2.Qc4#, but 1...Rc5!; 1.Qd7? (2.Qd5#) Rc5 2.Qg4#, but 1...Sf4!. Set 1...R~ 2.Qe5#. Gate-level critique: sound, 7+7. Against claude-halfpin-rs-qf7 (12 units): the Sf4-refuted try has a single threat (mine, 1.Qg5?, had Qd5/Qe3 and a dual), and Rc5's mate changes between try and key. His structure: Se3 on a field square holds d5/f5 and protects c4/g4 (replaces Se7, Bh6, Ra5); Sg6 guards e5/f4 and closes the g-file, which is the refutation mechanism of 1.Qg8. Costs: bSc1 protects d3 so that 1.Qd7? Rc5 is not 2.Qxd3#/Bxd3# (the pinned-knight capture); Pf2 holds e3 against 1...Rxd2 (without it the tries are lost) and fixes bPf3, so bBd1 is needed against 1.Bxc2 (recaptures); bPb4 stops 1...Sb4 (second knight defence, same Qc4#); Kh4 takes part in no mate (cook-stopper by position). Tested: one bSe1 for Sc1+Bd1 fails to 1...Sg2+ (Kh4) and to 5th-rank checks with Kh5."
   }
  ]
 }

@@ -1098,3 +1098,9 @@ no motive layer to mirror.
   pure pair 1.Qg8? Rc5! and 1.Qg5? Sf4!. compose.halfpin_tries (rng 1) found it in under 280 s from the hand diagram with
   the queen on g7: Sd7 -> Ra5, so that 1...Rc5 also cuts the 5th-rank guard of e5 (the refutation of 1.Qg8). The hand
   idea (bPh5 against Qg4) failed to knight checks on Kg2. The basic scheme took ~9 hand solves; the try layer one search.
+- E. Bourd's bench sitting mv73p0wa (146 steps, 57 solves), from claude-halfpin-rs-qf7: bourd-halfpin-rs-qf7,
+  8/6Q1/6N1/8/1p2k2K/3nNp2/2rP1P2/1Bnb4, 1.Qf7! Sf4 2.Qc4#, Rc5 2.Qf4#; tries 1.Qg8? Rc5!, 1.Qd7? (Rc5 2.Qg4#) Sf4!.
+  Path: first fought the double threat of my 1.Qg5 try (steps 8-22, pawn on f5, no solution), tried a shifted
+  orientation with Kd4 (steps 25-48) and dropped it, then rebuilt the guards around a white knight on e3 (d5/f5, c4/g4)
+  and Sg6 (e5/f4, closing the g-file), moved the queen through d7/f7/g8/g5/g7, and cleaned with bSc1 (d3), bPf3, Kh4,
+  bBd1 (Bxc2). Whole-side restructuring again: my Ra5/Se7/Bh6/Kg3/bPd6 all went.
