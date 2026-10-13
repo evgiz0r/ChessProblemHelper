@@ -5,7 +5,8 @@ mate, the wanted mates all different. Core units never move; every other unit is
     python3 -m chesscomp.compose.freethreat CORE SEED WANT_JSON NOQ BUDGET_S RNG     (NOQ=zz: no restriction)
 
 WANT maps a defence (python-chess SAN, N for knights) to a mate pattern (fnmatch on move ids like Qa4c4: "*c4",
-"N*c3"). Env PURE=1 also rejects a defence that guards a threat square from its arrival (impure).
+"N*c3"). Env PURE=1 also rejects a defence that guards a threat square from its arrival (impure). Env NOFLIGHT=1 rejects any
+king move in the post-key (a flight the threat still mates forces a flight-giving key; E. Bourd: "limiting").
 Found the post-keys of the two-rooks unpin (11 Oct 2026) and the knight line-closing problem (12 Oct 2026):
     CORE=4Q3/8/8/3k4/8/8/8/2r1nN1b WANT='{"Nc2":"N*c3","Ng2":"Qe8e4"}' -> 4Q3/2K5/8/3k4/2R5/1Pp5/8/1Nr1nN1b
 """
@@ -103,8 +104,13 @@ def score(fen):
         s -= 20 * len(unblocked)
     checks = [b.san(m) for m in b.legal_moves if b.gives_check(m)]
     s -= 5 * len(checks) + 0.7 * len(b.piece_map())
-    ok = not impure and not unblocked and len(t) == 1 and not bad and not holes and not duals and all(wok(names.get(k), w) for k, w in WANT.items()) and not dups
-    return s + (100 if ok else 0), f"dups={dups} impure={impure} unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
+    flights = []
+    if os.environ.get('NOFLIGHT') == '1':                  # no king move at all after the key (E. Bourd, 13 Oct 2026:
+        flights = [b.san(m) for m in b.legal_moves         # "something without king flight, its a bit limiting")
+                   if b.piece_type_at(m.from_square) == chess.KING]
+        s -= 15 * len(flights)
+    ok = not flights and not impure and not unblocked and len(t) == 1 and not bad and not holes and not duals and all(wok(names.get(k), w) for k, w in WANT.items()) and not dups
+    return s + (100 if ok else 0), f"dups={dups} flights={flights} impure={impure} unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
 
 
 def mutate(fen):
