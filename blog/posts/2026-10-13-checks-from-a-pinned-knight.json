@@ -70,6 +70,6 @@
   "searches": 38
  },
  "improvement": "The solver now reports a direct self-pin: chesscomp/motives.py marks a mate as 'self-pin' when the defender itself is pinned on its arrival square and, unpinned, could capture the mating unit or interpose, and chesscomp/analysis.py lists it under Patterns ('Self-pin: Bxd6'), one entry per defence, so evolve takes PATTERN=Self-pin. Before, such a defender was reported as 'unguard', and only half-pins were found. Tested in tests/test_patterns.py on Avner & Retter 2000 (Bxd6 and Bxf4 found) and on Barnes 2002, a half-pin, where it must not fire. The blog also takes an 'attempts' list (failed attempts with diagrams, as mentor issue #5 asked), and the self-pin reference has the geometry learned today.",
- "mentor_issue": null,
+ "mentor_issue": 9,
  "feedback": []
 }
