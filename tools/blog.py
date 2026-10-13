@@ -209,7 +209,8 @@ def build():
         f.write(feed_xml(posts))
     print(f'built {len(posts)} posts into docs/blog/')
 
-FATAL = {'unsound', 'cook', 'promoted force', 'unprovided check', 'check key', 'white in check',
+FATAL = {'unsound', 'cook', 'promoted force', 'double threat',   # double threat: now in critique (13 Oct 2026)
+         'unprovided check', 'check key', 'white in check',
          'out-of-play key', 'superfluous piece',   # E. Bourd, 7 Oct 2026 (try-only unit: a drawback since 11 Oct)
          'useless key piece'}                                       # E. Bourd, 8 Oct 2026 (an officer, not a pawn)
 
@@ -228,11 +229,6 @@ def check(fen, stip='#2'):
     res = analyse(p, time_limit=120)
     c = critique(p, res)
     fatal, warn = [], []
-    # constitution: a double threat is fatal (it was missing from the gate: 10 Oct 2026, a trimmed version with
-    # 2.Qe5#/2.Qf4# passed)
-    kp = [ph for ph in res.get('phases', []) if ph['type'] == 'key']
-    if len(res.get('keys') or []) == 1 and kp and len(kp[0].get('threat') or []) > 1:
-        fatal.append('[double threat] ' + '/'.join(t['san'] for t in kp[0]['threat']))
     for f in c['findings']:
         line = f"[{f['rule']}] {f['msg']}"
         if f['rule'] in FATAL or (f['severity'] == 'major' and f['rule'] in ('dual', 'king escape in diagram')):

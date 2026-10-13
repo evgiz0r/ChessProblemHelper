@@ -265,6 +265,11 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # --- key quality
     if key.get('check_key'):
         add('major', 'check key', 'the key gives check')
+    # constitution: a double threat is fatal. It was only in the gate (tools/blog.py check), so a session using
+    # --critique alone called a triple threat "serious" (ablation, 13 Oct 2026)
+    if problem.stip.kind == 'direct' and len(key.get('threat') or []) > 1:
+        add('major', 'double threat', 'the key threatens ' + '/'.join(t['san'] for t in key['threat'])
+            + ' (fatal: a double threat)')
     if board.is_capture(kmove):
         cap = board.piece_at(kmove.to_square)
         add('minor', 'capture key', 'the key captures a pawn (minor, E. Bourd 13 Oct 2026)'

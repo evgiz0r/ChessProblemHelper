@@ -80,3 +80,10 @@ def test_mentor_fatal_rules_7_october():
 def test_try_only_unit_even_when_its_tries_carry_changes():
     # c7 pawn: no part in the solution, only promotion tries (with a changed mate) - reported (a drawback)
     assert 'try-only unit' in _rules('4K3/2Pp3B/4k3/8/3Q4/8/8/8')
+
+
+def test_double_threat_in_critique():
+    # ablation 13 Oct 2026: 1.Qd3! threatens Sc6#/Qe4#/f4#; --critique alone did not call it fatal
+    assert 'double threat' in _rules('2br4/5B2/8/4k1P1/1B1N4/1Q2PPK1/8/8')
+    code, out = _gate('2br4/5B2/8/4k1P1/1B1N4/1Q2PPK1/8/8')
+    assert code != 0 and 'FATAL [double threat]' in out, out
