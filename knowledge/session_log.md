@@ -1023,3 +1023,9 @@
   bPf3+wPf2. Result: 4R3/4N1NB/6r1/3ppb1r/3Bk1p1/2P1P3/4P3/3K2R1, 1.Sg8! (2.Rxe5#) Re6 2.Rxg4#, B~ 2.Sf6#; try 1.Sc8?
   B~ 2.Sd6# (changed), but 1...Bxc8!. Gate PASS, 17 units. No pure pair: no knight landing spoils Rxg4#. Theme note
   added to themes/references/half_pin_king_key.md.
+* 13 Oct: E. Bourd on claude-halfpin-br-sg8: too many impurities (B~ defences from bRh5), no extension; heavy is fine.
+  Looked for a pure pair. Finding: one-knight tries need both mates to be knight checks, only possible with a file pin
+  (Ke4, Be5, Re6, Re8) - Kapros, Problemesis 2002 (psis-0dd597ba62) has it, with unpin motives. New tool (all sessions):
+  compose.halfpin_pair (SPEC env: knight key, two try squares, one defence per half-pinned unit, free threat);
+  12 runs on origins e3/f4/d4/c7, no sound hit. Hand schemes (Be7 mask with Qd8-h4, Rd7 cut) cooked (1.Rd4+). Asked
+  E. Bourd which direction: knight wheel near Kapros, the pure e6 double block extended otherwise, or tries by two pieces.
