@@ -266,7 +266,9 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     if key.get('check_key'):
         add('major', 'check key', 'the key gives check')
     if board.is_capture(kmove):
-        add('minor', 'capture key', 'the key captures')
+        cap = board.piece_at(kmove.to_square)
+        add('minor', 'capture key', 'the key captures a pawn (minor, E. Bourd 13 Oct 2026)'
+            if cap is None or cap.piece_type == chess.PAWN else 'the key captures a piece')
     # E. Bourd (s30): a key that moves a White piece Black attacks is a flaw (the piece "escapes"), milder when
     # the alternative is a piece out of play
     kp0 = board.piece_at(kmove.from_square)

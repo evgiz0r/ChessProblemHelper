@@ -69,6 +69,7 @@ whether that content pays for them.
 
 ## Calibration against a real award (blind experiment, Problemesis 2003, judge P. Robert; knowledge/experiments)
 - A try that captures a black unit is a serious flaw (three entries refused for it), not only a capturing key.
+  E. Bourd (13 Oct 2026) on our verdicts: capturing a pawn, White's or Black's, is a minor flaw; we were too harsh with it.
 - A named fatal flaw (a dual in a thematic phase, an idle unit in a twin) is not bought back by ambition.
 - Clear and economical beats heavy and rich at the top: the 1st Prize had 7+7, no white pawns and no secondary play.
 - Be stingy: an informal award places about a quarter of the entries.

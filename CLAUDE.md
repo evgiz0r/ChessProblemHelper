@@ -9,7 +9,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 - A promoted piece in the diagram: a third knight or rook, a second queen, two bishops on one colour.
 - An unprovided check in the set play.
 - A black king with a flight in the diagram (a flight GIVEN by the key is a plus).
-- A key that gives check or captures without a thematic reason; a try refuted by a king move.
+- A key that gives check or captures a piece without a thematic reason; a try refuted by a king move. Capturing a pawn,
+  White's or Black's, in a key, a try or a mate is a minor flaw (E. Bourd, 13 Oct 2026: "these are minor flaws").
 - A key by a piece out of play (a knight on the edge far from the king): the key is obvious (E. Bourd, 7 Oct 2026).
 - A White unit that takes no part in the solution and is not needed for soundness either (superfluous).
 - A known mechanism with nothing added, or a reduced form of a published problem: not a problem (E. Bourd).

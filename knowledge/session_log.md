@@ -1075,3 +1075,5 @@ no motive layer to mirror.
   8/4N3/8/2pP1BR1/Qrbk1P1n/npR5/1K1N1P2/8, 1.Bb1! (2.Sc6#) Bb5 Sxb3#, Rb6 Rd3#; 1.Bh7/Bg6? Sf5!, 1.Be4? Bb5!,
   1.Bd3? Rb6!. 17 units, gate PASS, recorded as bourd-halfpin-diagonal-bb1. Left: 1...Bxd5 2.Rxd5#/Rd3#; cause found
   (Sd2 is the only guard of c4 after 2.Rd3); Sa1 kills the dual but loses Sf3# against 1...Sf5 and the e4 guard.
+* 13 Oct: E. Bourd asked for a taste verdict on 1.Bb1! and said I am too harsh on pawn captures ("minor flaws"). Fatal-flaw
+  line in CLAUDE.md now reads 'captures a piece'; judge skill, checklist and critique wording updated (all sessions).

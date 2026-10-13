@@ -14,7 +14,8 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
    bishops on one colour = promoted piece = fatal unless the idea cannot exist without it.
 3. Verdict in this order, see `references/checklist.md`:
    - Fatal: cook, dual in a thematic variation, double threat, unprovided check in set play, promoted
-     piece, diagram flight, key by check or capture without thematic reason, try refuted by a king move.
+     piece, diagram flight, key by check or capture of a piece without thematic reason, try refuted by a king move.
+     A pawn capture (key, try, mate, refutation) is minor (E. Bourd, 13 Oct 2026); do not lead a verdict with it.
    - Flaws: same refutation of several tries, passive units (the key piece is forgivable; a king that
      anchors a pin a defence creates is thematic; a passive king is acceptable, E. Bourd), a unit that serves
      only the set play (big flaw when completely redundant), cook-stoppers (acceptable: usual cost), unprovided moves, heavy pawn count,
