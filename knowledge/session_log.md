@@ -1066,3 +1066,7 @@ no motive layer to mirror.
   separator); the stopper cascade starts at Bd6 (Be5# after Bb5). Critique fix (all sessions): tries by the key piece that
   fail to one refutation while another try fails to a different one are a 'white correction' plus, not 'same
   refutation' (E. Bourd's reading of 12 Oct); test in test_regression.py; checklist line updated.
+* 13 Oct: E. Bourd: c5 is the issue, and "the resolving using d5 pawn is a bit chaotic". Restructure sketch (not sound):
+  the key bishop starts on the threat square c6 and goes to g2 (guards d5 and e4 along the long diagonal), so no d5 pawn,
+  no Rg5, and Bd6 no longer mates on e5; 1.Be4? Bb5! pure. Left open: 1...Bd5 (guards c6) has no mate of its own;
+  Rd3# repeats the rook's mate and the extra c4 guard (Rc1) brings 1.Rd3+ as a cook. Lesson in lessons.jsonl.
