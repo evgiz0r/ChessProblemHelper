@@ -1119,3 +1119,11 @@ no motive layer to mirror.
   design came from the knights' common guard square (e5 and d4 both guard f3) and one queen diagonal h5-g4-f3-e2; four
   hand solves to a clean post-key (Sg6 against Qg6/Qh7, Bg5 closing the 5th rank, Kh4 against Qh4, bRa2 for the e1 pair),
   keyfind --patch for the key (+bRa4). freethreat got NOFLIGHT=1.
+- Orthogonal two-knight half-pin, separation by arrival (E. Bourd: the dual avoidance must not come from the d3 flight):
+  e-file pin Ke4/Se3/Se2/Re1. (1) Rank checks from both sides, each knight's arrival blocking the other side (Se3-g4,
+  Se2-d4; threat Qf3 from h5): rank mates cover little, so every field square needs a static guard and then every
+  white check mates (four threats). (2) Both knights interfering on the f-file with a Qf3 threat: the queen on the
+  f-file also reaches f5, and with f5 guarded Qf5 mates whenever a knight is frozen. (3) King on the edge (Kh4, h-file
+  pin): an arrival covers the partner's colour, so it spoils the partner's mate only by blocking. Twelve freethreat
+  runs (NOFLIGHT) from bare seeds found threats but no defences; from the hand structure the best was the post-key
+  8/8/3Q1R2/6K1/2p1k3/2P1np1B/4n3/4RNb1 (Sg4 2.Rf4#, Sd4 2.Qxd4#, Sd5 2.Bf5#, threats Sd2 and Re6).
