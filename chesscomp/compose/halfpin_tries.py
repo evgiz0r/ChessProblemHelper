@@ -1,4 +1,4 @@
-"""Half-pin diagram search with thematic tries: the key and the tries are whatever the solver finds (E. Bourd, 13 Oct 2026,
+"""Half-pin diagram search with thematic tries (any two half-pinned units, "rook" and "bishop" are just their squares): the key and the tries are whatever the solver finds (E. Bourd, 13 Oct 2026,
 on the orthogonal half-pin: "try to find a scheme where maybe multiple mates might be available. that freedom will
 allow not to get stuck and have some choices").
 
@@ -76,8 +76,10 @@ def score(D, spec):
     ksq = bb.king(chess.BLACK)
     for sq in chess.SquareSet(chess.BB_RAYS[ksq][rsq]) if chess.BB_RAYS[ksq][rsq] else []:
         p = b.piece_at(sq)
-        if p and p.color == chess.WHITE and sq not in (rsq, bsq) and p.piece_type in (chess.ROOK, chess.QUEEN):
-            if chess.square_distance(sq, ksq) > chess.square_distance(rsq, ksq):
+        diag = chess.square_file(sq) != chess.square_file(ksq) and chess.square_rank(sq) != chess.square_rank(ksq)
+        if p and p.color == chess.WHITE and sq not in (rsq, bsq) and p.piece_type in (
+                (chess.BISHOP, chess.QUEEN) if diag else (chess.ROOK, chess.QUEEN)):
+            if chess.square_distance(sq, ksq) > max(chess.square_distance(rsq, ksq), chess.square_distance(bsq, ksq)):
                 pinner = sq
                 break
     good = {}

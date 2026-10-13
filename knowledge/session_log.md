@@ -1080,3 +1080,9 @@ no motive layer to mirror.
 * 13 Oct: compared claude-halfpin-file-sf7 (13 units, no tries) with bourd-halfpin-diagonal-bb1 (17 units, correction
   with a pure pair). E. Bourd: "it's incomparable for me. The additional content is almost always worth it". Added to
   CLAUDE.md (the theme is the floor) and lessons.jsonl.
+* 13 Oct: new theme from E. Bourd: black half-pin of a rook and a knight. Findings so far: a knight's new squares never
+  guard what it guarded before (colour parity), so the rook's pin mate is spoiled after S~ only by occupation (then the
+  mating piece usually captures with check: dual) or by the knight landing on the mating line of a distant piece. Two
+  sketches failed on that (h4 pin, threat Sc6; e8 pin, threat Sc3). Anticipation: Dyachuk, Probleemblad 2002, 1st Prize
+  (psis-c1154197a2, pure pair with reversal) and Barnes, StrateGems 2002, 1st Prize (psis-25e8021eff, both defences on e6).
+  compose.halfpin_tries now detects diagonal pinners (any two half-pinned units).
