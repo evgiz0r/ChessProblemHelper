@@ -1729,6 +1729,24 @@
    ],
    "note": "1.Rg3! (2.Rg4#) Sxc6+ 2.Ka3#, Sxc2+ 2.Ka5#, Se6/Se2 2.c3#, Se3 2.Rxe3#, Sf2 2.Re3#; set Sxc6+ Ka3#, Sxc2+ Ka5#, Sxb5 Kxb5#, Sxb3 Kxb3#; try 1.Qxd1? Sxc2+!. Gate PASS, 12+5, trim-minimal. Flaws: the thematic pair is set and unchanged; the key piece is attacked by Sd1; wPb3/wPb5 only take squares from their own king; six unprovided set moves; six pawns.",
    "solution": "#2 (12+5)   FEN B7/2N5/2Pp4/1P2p1B1/RK1nk2N/1PR5/2P5/1Q1n4 w - - 0 1\nSet play:\n   1...Sxc6+ 2.Ka3#\n   1...Sxb5 2.Kxb5#\n   1...Sxb3 2.Kxb3#\n   1...Sxc2+ 2.Ka5#\n   1...Se3 2.Rxe3#\n   1...Sf2/Sb2 2.Re3#\n   unprovided: Se6, Sf5, Sf3, Se2, Sxc3, d5\nTry: 1.Qxd1? (threat: 2.Re3#/Qg4#/Qd3#)\n   1...Sxc6+ 2.Ka3#\n   (7 further moves allow the threat)\n   but 1...Sxc2+!\nTry: 1.Ka5? (zugzwang)\n   1...Se3 2.Rxe3#\n   1...Sxc3 2.Qh1#\n   1...Sf2 2.Re3#/Qe1#  [dual]\n   1...Sb2 2.Re3#/Qh1#/Qe1#  [dual]\n   S~ random Se3/Sf2/Sb2 2.Rxe3# (dual after Sf2/Sb2); corrections Sxc3 2.Qh1#\n   but 1...d5!\nTry: 1.Ka3? (zugzwang)\n   1...Se3 2.Rxe3#\n   1...Sxc3 2.Qh1#\n   1...Sf2 2.Re3#/Qe1#  [dual]\n   1...Sb2 2.Re3#/Qh1#/Qe1#  [dual]\n   S~ random Se3/Sf2/Sb2 2.Rxe3# (dual after Sf2/Sb2); corrections Sxc3 2.Qh1#\n   but 1...d5!\nTry: 1.Rc4? (threat: 2.c3#)\n   1...Sc3 2.Qh1#\n   1...Sf2 2.Qe1#\n   1...Sb2 2.Qh1#/Qe1#  [dual]\n   (1 further moves allow the threat)\n   S~ random Sc3/Sb2 2.Qh1# (dual after Sb2); corrections Sf2 2.Qe1#\n   but 1...Se3!\nTry: 1.Rh3? (zugzwang)\n   1...Se6/Sf5/Sf3/Se2 2.c3#\n   1...Sxc6+ 2.Ka3#\n   1...Sxb5 2.Kxb5#/c3#  [dual]\n   1...Sxb3 2.Kxb3#/c3#  [dual]\n   1...Sxc2+ 2.Ka5#\n   1...Se3 2.Rxe3#\n   1...Sc3/Sf2/Sb2 2.Re3#\n   S~ random Se6/Sf5/Sxb5/Sf3/Sxb3/Se2 2.c3# (dual after Sxb5/Sxb3); corrections Sxc6+ 2.Ka3#, Sxc2+ 2.Ka5#\n   but 1...d5!\nTry: 1.Rf3? (zugzwang)\n   1...Se6/Sf5/Sxf3/Se2 2.c3#\n   1...Sxc6+ 2.Ka3#\n   1...Sxb5 2.Kxb5#/c3#  [dual]\n   1...Sxb3 2.Kxb3#/c3#  [dual]\n   1...Sxc2+ 2.Ka5#\n   1...Se3 2.Rxe3#\n   1...Sc3/Sf2/Sb2 2.Re3#\n   S~ random Se6/Sf5/Sxb5/Sxf3/Sxb3/Se2 2.c3# (dual after Sxb5/Sxb3); corrections Sxc6+ 2.Ka3#, Sxc2+ 2.Ka5#\n   but 1...d5!\nKey: 1.Rg3! (threat: 2.Rg4#)\n   1...Se6/Se2 2.c3#\n   1...Sxc6+ 2.Ka3#\n   1...Sxc2+ 2.Ka5#\n   1...Se3 2.Rxe3#\n   1...Sf2 2.Re3#\n   (7 further moves allow the threat)\n   S~ random Se6/Se2 2.c3#; corrections Sxc6+ 2.Ka3#, Sxc2+ 2.Ka5#\nChanged continuations:\n   1...Sf2: Rxe3# -> Qe1#   [set play vs try Rc4]\n   1...Sxc3: Qh1# -> Rxe3#   [try Ka5 vs try Rh3]\n   1...Sxc3: Qh1# -> Rxe3#   [try Ka5 vs try Rf3]\n   1...Sxc3: Qh1# -> Rxe3#   [try Ka3 vs try Rh3]\n   1...Sxc3: Qh1# -> Rxe3#   [try Ka3 vs try Rf3]\n   1...Sxc3: Qh1# -> Rxe3#   [try Rc4 vs try Rh3]\n   1...Sf2: Qe1# -> Rxe3#   [try Rc4 vs try Rh3]\n   1...Sxc3: Qh1# -> Rxe3#   [try Rc4 vs try Rf3]\n   1...Sf2: Qe1# -> Rxe3#   [try Rc4 vs try Rf3]\n   1...Sf2: Qe1# -> Rxe3#   [try Rc4 vs key Rg3]\nPatterns:\n   changed threat: Qd3#/Qg4#/Rxe3# / c3#   [try Qxd1 vs try Rc4]\n   changed threat: Qd3#/Qg4#/Rxe3# / Rg4#   [try Qxd1 vs key Rg3]\n   changed threat: c3# / Rg4#   [try Rc4 vs key Rg3]\n   Self-pin: Sxc6+   [key]\n   Self-pin: Sxc2+   [key]\n(3694 nodes, 0.19s)"
+  },
+  {
+   "id": "bourd-halfpin-e6-bf4",
+   "fen": "4Q3/7B/3p2rp/3Npb1r/2P1kBp1/2P1p3/2K1P2P/5RR1",
+   "stip": "#2",
+   "author": "E. Bourd on the Composing Bench (12-13 Oct 2026), from claude-halfpin-br-sg8; Qe8 for Re8 (third rook) by Claude",
+   "source": "black half-pin of a bishop and a rook, both blocking e6 to unpin Pe5, with a pure try pair by the masking bishop",
+   "themes": [
+    "Black half-pin: Bh7 x-rays Rg6 and Bf5 to Ke4",
+    "Pure defences on one square: 1...Re6 and 1...Be6 both close Qe8's e-file and unpin Pe5 (which can then take on f4); no other move of either unit defends",
+    "Each mate uses the other unit's pin: Re6 2.Rxg4# (the bishop cannot retake), Be6 2.Sf6# (the rook cannot take)",
+    "Pure try pair by the key piece, which masks Rf1: 1.Bg3? (closes Rg1-g4) Re6!, 1.Bxe3? (Sf6 leaves e3 unguarded: Kxe3) Be6!",
+    "Third try 1.Bg5? hxg5!"
+   ],
+   "keys": [
+    "Bxh6"
+   ],
+   "note": "1.Bxh6! (2.Rf4#; Pe5 pinned by Qe8) Re6 2.Rxg4#, Be6 2.Sf6#. Tries 1.Bg3? Re6!, 1.Bxe3? Be6!, 1.Bg5? hxg5!, 1.Bxg6? Bxg6!. On the bench with Re8 (three white rooks: promoted force); Qe8 keeps every line (solver-checked). Flaws: the key captures; cook-stoppers wPh2 (1.Bh2), bRh5 (2.Bxf5 duals after Re6), bPh6 (1.Bg5, and it makes the key a capture: without it 1.Bh6 and 1.Bg5 both solve, and no single added unit tells them apart, compose.trypair); random-move duals; 20 units. Bench path: from claude-halfpin-br-sg8 he removed Bd4, Se7, Sg7, put Sd5/Rd3/Qg3 (threat Qg2#), then wB on f4 masking Rf1 with Pe5 pinned on the e-file, shift left/right to test, bRh5 and the h-pawns as stoppers; sound with 1.Bxh6! on the 36th step of the second sitting."
   }
  ]
 }

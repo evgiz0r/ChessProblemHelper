@@ -1037,3 +1037,7 @@ self-pinning knight captures with check against a royal battery, the pinned knig
 two loaded knight batteries, immobile pawn blockers (recapture mates only), a bishop matrix that was Avner & Retter's
 reflected. The detector lives in motives.py (Python only, like the Grimshaw and half-pin detectors); docs/analysis.js has
 no motive layer to mirror.
+* 13 Oct: E. Bourd composed on the bench (sittings mv5v1wnn, mv6klxrm) from claude-halfpin-br-sg8: wB on f4 masking Rf1,
+  threat Rf4# with Pe5 pinned on the e-file, Re6/Be6 unpin it; pure pair 1.Bg3? Re6!, 1.Bxe3? Be6!; key 1.Bxh6!. Three
+  white rooks on the bench; Qe8 for Re8 verified sound with the same play. Quiet key 1.Bh6 needs bPh6 gone, then 1.Bg5
+  also solves; no one-unit stopper (trypair). Recorded as bourd-halfpin-e6-bf4.
