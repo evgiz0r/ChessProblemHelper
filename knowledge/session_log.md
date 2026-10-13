@@ -1104,3 +1104,6 @@ no motive layer to mirror.
   orientation with Kd4 (steps 25-48) and dropped it, then rebuilt the guards around a white knight on e3 (d5/f5, c4/g4)
   and Sg6 (e5/f4, closing the g-file), moved the queen through d7/f7/g8/g5/g7, and cleaned with bSc1 (d3), bPf3, Kh4,
   bBd1 (Bxc2). Whole-side restructuring again: my Ra5/Se7/Bh6/Kg3/bPd6 all went.
+- Co-author step on his version (he: "you are my co-author. always welcome to try more"): one black knight e1 guards c2
+  and d3, so it replaces bSc1 (d3) and bBd1 (c2); with Kh4 it checks from g2, so a scan of every king square
+  (scratch kscan.py) found f1/g1/h2/g3/h6; g3 chosen (takes part). bourd-halfpin-rs-qf7-se1, 8/6Q1/6N1/8/1p2k3/3nNpK1/2rP1P2/1B2n3, 7+6.
