@@ -31,6 +31,10 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   basic requested theme ... your problem is actually nice, but its too simple thematic wise"; 13 Oct, comparing a light
   half-pin with its corrected version: "it's incomparable for me. The additional content is almost always worth it"). Plan the second layer
   (tries refuted by the thematic defences, changed mates, a correction) from the start, not after the theme works.
+  But build the basic scheme first and see how easy it is (E. Bourd, 13 Oct 2026: "start simple, and then maybe consider
+  the enhancement... a basic scheme is needed to play around... if the basic scheme turns to be very limited already, we
+  need to somewhat limit expectation of the content"). Exception: alphabetic changes (reciprocal, Lacny, Shedey, Le Grand)
+  start from a paradoxical scheme before any piece is placed.
 - When a position resists (no key, cooks coming back), small steps cannot do it: restructure a whole side at once,
   reasoning from what the mechanism needs (E. Bourd, 11 Oct 2026: "i am pretty open to just switching a whole side
   around, the really small steps cant do it... its not step by step. its whole restructuring"). Keep the thematic
