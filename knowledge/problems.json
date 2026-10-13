@@ -1818,6 +1818,25 @@
     "Bb1"
    ],
    "note": "1.Bb1! (2.Sc6#) Bb5 2.Sxb3#, Rb6 2.Rd3#, Sf5 2.Sf3#, Bxd5 2.Rxd5#/Rd3# (dual). Tries 1.Bh7?/Bg6? Sf5!, 1.Be4? Bb5!, 1.Bd3? Rb6!, 1.Bc2? bxc2+!, 1.Qc6? Rb6!. 10+7, gate PASS. Earlier stages of the sitting: rank-5 version 4N3/1b6/2pP1BR1/Qrbk1P1n/n1R5/1P1N1P2/1P6/K7 (1.Bc3!, tries Be5? Bb6!, Bd4? Rxb3!) and 4N3/6pr/p1pP1BR1/Qrbk1P1n/npR5/1P1N1P2/1P6/K7 (step 454, trims to 4N3/8/2pP1BR1/Qrbk1P1n/npR5/1P1N1P2/1P6/K7 with the same play, 19 units). The Bxd5 dual: after 1...Bxd5 2.Rd3 the only guard of c4 is Sd2 (and of e4 too); with the b3-knight on a1 (does not see c4) 1...Bxd5 has only 2.Rxd5#, but then 1...Sf5 has no 2.Sf3# and e4 needs another guard (wPf3, which bSh4 takes): checked 13 Oct, no solution yet. E. Bourd: 'there is that dual still a bit annoying in the solution'."
+  },
+  {
+   "id": "claude-halfpin-rs-qg8",
+   "fen": "7Q/3NN3/3p3B/8/1p2k3/3n2K1/2rP4/1B6",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 13 Oct 2026), theme set by E. Bourd ('Black half-pin, rook and knight'; 'start simple')",
+   "source": "black half-pin of a rook and a knight on a diagonal (basic scheme, no tries)",
+   "themes": [
+    "Black half-pin on the diagonal b1-e4: Bb1 x-rays Rc2 and Sd3 to Ke4; on a diagonal the pinned unit cannot move at all",
+    "Both thematic defences guard the threat square d5: 1...Sf4 and 1...Rc5",
+    "Knight variation: 2.Qc4# (the pinned rook cannot take on c4)",
+    "Rook variation: 2.Qg4# (the pinned knight cannot block on f4)",
+    "Dual avoidance by the arrival squares: Sf4 blocks the 4th rank (no Qg4), the rook on c5 still holds c4 (no Qc4)",
+    "Flight-giving key: d4"
+   ],
+   "keys": [
+    "Qg8"
+   ],
+   "note": "1.Qh8-g8! (2.Qd5#) Sf4 2.Qc4#, Rc5 2.Qg4#; 1...Kd4 2.Qd5#. Gate PASS, 7+5. Built by colour reasoning: the knight on d3 covers dark squares only, so its pin mates are line mates through e5/f4 (4th rank from the east: Qg4), and its arrival must spoil the other mate (f4 blocks the 4th rank); the rook's pin mate is a line mate through c4 (Qc4), spoiled after 1...Rc5 because the rook keeps its file. d4 must stay unguarded after the key: with d4 guarded, 1...Rc5 also allowed 2.Bxd3# (the pinner takes the pinned knight, d3 protected) and the queen's checks Qg6+/Qh7+ mated; the free d4 makes the key give a flight. Units: Bh6 e3/f4 (without it 1.Qg8 fails to 1...Rxd2); Pd2 c3/e3 and blocks the rook's 2nd rank (no Rg2+); Kg3 f3/f4; Sd7 e5; Se7 d5/f5; bPb4 stops 1.Bxc2 (zugzwang) and the third defence 1...Sb4; bPd6 stops 1.Be3. Flaws: no tries, no set play, both defences merely guard the threat square, three soundness units (bPb4, bPd6, Bh6), one mating unit (the queen) and no links between the variations."
   }
  ]
 }

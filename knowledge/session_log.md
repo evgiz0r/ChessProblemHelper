@@ -1086,3 +1086,11 @@ no motive layer to mirror.
   sketches failed on that (h4 pin, threat Sc6; e8 pin, threat Sc3). Anticipation: Dyachuk, Probleemblad 2002, 1st Prize
   (psis-c1154197a2, pure pair with reversal) and Barnes, StrateGems 2002, 1st Prize (psis-25e8021eff, both defences on e6).
   compose.halfpin_tries now detects diagonal pinners (any two half-pinned units).
+
+### 13 Oct 2026 - rook-and-knight half-pin, basic scheme (session 0be7e202)
+- Basic scheme first, as E. Bourd asked: claude-halfpin-rs-qg8, 7Q/3NN3/3p3B/8/1p2k3/3n2K1/2rP4/1B6, 1.Qg8! (2.Qd5#)
+  Sf4 2.Qc4#, Rc5 2.Qg4#, key gives d4. Gate PASS, 7+5. Light: no tries, three soundness units (bPb4, bPd6, Bh6).
+- How it came: four freethreat runs from near-empty seeds gave nothing; reasoning by knight colour (see lessons) and nine
+  hand solves did. The queen does the threat and both mates (one line each: a2-g8 diagonal, g-file).
+- Next layer tried: the pure try pair by the queen (1.Qg5? Sf4!, a Qg8/Qf7 try refuted by Rc5), queen on g7 in the
+  diagram; 1.Qf7 then also solves (Rc5 2.Qf4#) and 1.Bxc2 cooks. halfpin_tries runs from both diagrams.
