@@ -101,3 +101,9 @@ whether that content pays for them.
   of a record content (Zagoruiko 3x3 with cyclic refutations, 3rd-4th place) costs points, not the problem; a new arrangement
   of a task (five black units refuting five tries on one square, 6th place) scores as content, not "mechanical". Count the
   Zagoruiko size (4x2 won). Our own fatal list for composing is unchanged.
+- Read a set theme literally (WCCT 10 A blind experiment, Spearman 0.73): when it says "try and/or solution", a theme shown in a
+  try is full fulfilment; judge the whole phase complex (Hannelius, Zagoruiko over the tries), not "is the key thematic".
+- A multistage try sequence with a logic (prevent the defence, then abandon the prevention for a better plan) is content in
+  itself: score the logic of the progression, not only the count of changed mates (WCCT 10 A, 1st place).
+- White units with no function after the key (only for tries or set play) cost real points at world level (GBR: "invariably led to
+  a reduction"); two of them can sink an otherwise rich entry to the bottom third.

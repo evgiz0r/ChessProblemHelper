@@ -1053,3 +1053,8 @@ no motive layer to mirror.
   (search and hand analysis, lesson). New tool (all sessions): compose.halfpin_tries (SPEC env, diagram search scored by
   the solver: one defence per half-pinned unit, pin-using mates, pure tries; it finds Kapros's pair on his diagram).
   Twelve runs from five seeds found no pure pair yet; halfpin_pair on a b6-d5 knight wheel did not reach a sound post-key.
+* 13 Oct: WCCT 10 section A (wfcc.ch, 93 entries all marked, theme "anticipatory unpin of a white piece", nine blind judges with
+  the checklist calibrated after WCCT 11): Spearman 0.73 against the points (countries with each other 0.62-0.78). 2nd-3rd place
+  (Shanshin) our 5th, 1st (Witt/Bruch, logical white correction) our 14th, 2nd-3rd (Bykov/Belchikov, theme in a try) our 41st.
+  Checklist lines: read the set theme literally (a thematic try is full fulfilment), score the logic of a multistage try sequence,
+  weigh white units idle after the key heavier. knowledge/experiments/blind_wcct10_A.md.
