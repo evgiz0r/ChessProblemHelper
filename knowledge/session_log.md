@@ -1077,3 +1077,6 @@ no motive layer to mirror.
   (Sd2 is the only guard of c4 after 2.Rd3); Sa1 kills the dual but loses Sf3# against 1...Sf5 and the e4 guard.
 * 13 Oct: E. Bourd asked for a taste verdict on 1.Bb1! and said I am too harsh on pawn captures ("minor flaws"). Fatal-flaw
   line in CLAUDE.md now reads 'captures a piece'; judge skill, checklist and critique wording updated (all sessions).
+* 13 Oct: compared claude-halfpin-file-sf7 (13 units, no tries) with bourd-halfpin-diagonal-bb1 (17 units, correction
+  with a pure pair). E. Bourd: "it's incomparable for me. The additional content is almost always worth it". Added to
+  CLAUDE.md (the theme is the floor) and lessons.jsonl.

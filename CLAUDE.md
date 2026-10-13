@@ -28,7 +28,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   can be added - tries, changes, a cleaner position - and try it, in steps, before showing. Do not hand him the
   question "is it worth it?": answer it by trying.
 - The requested theme is the floor (E. Bourd, 12 Oct 2026: "the composing entity should push for a bit more now than the
-  basic requested theme ... your problem is actually nice, but its too simple thematic wise"). Plan the second layer
+  basic requested theme ... your problem is actually nice, but its too simple thematic wise"; 13 Oct, comparing a light
+  half-pin with its corrected version: "it's incomparable for me. The additional content is almost always worth it"). Plan the second layer
   (tries refuted by the thematic defences, changed mates, a correction) from the start, not after the theme works.
 - When a position resists (no key, cooks coming back), small steps cannot do it: restructure a whole side at once,
   reasoning from what the mechanism needs (E. Bourd, 11 Oct 2026: "i am pretty open to just switching a whole side
