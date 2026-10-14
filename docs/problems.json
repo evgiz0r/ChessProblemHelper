@@ -1930,6 +1930,24 @@
     "Qh5"
    ],
    "note": "1.Qh8-h5! (2.Qf3#) Se5/Sde1 2.Qe2#, Sd4/Sce1 2.Qg4#. Set 1...Sd4/Se3/Sa3/Sce1/Sa1 2.Qe5#, 1...Sdb4 2.Qd4#. Tries 1.Qf8? (2.Qf5#/Qf3#) Sd4 2.Qf4#, but 1...Sf4!; 1.Qf6? Sf4!. Gate PASS, 8+5. Built by hand from the knights' guard squares (e5 and d4 both guard f3; the queen on h5 reaches g4, f3, e2 on one diagonal); no static guard of d3, so 1.Bxd3+ Kxd3 after a c2 move and no flight is needed. keyfind --patch found the key with bRa4 added. Units: bRa2 (2nd rank opened by Sce1); bRa4 stops 1.Bxc2 and 1.Qf6; Kh4 stops 2.Qh4 after Sd4 (no mate); Sg6 e5/f4 and blocks Qg6/Qh7; Bg5 e3/f4 and closes the 5th rank (no Qe5/Qf5 duals); Se7 d5/f5; Pc3 d4; Pg2 f3. Flaws: each mate comes twice (Se5/Sde1, Sd4/Sce1); both tries fall to Sf4 and carry multiple threats; Kh4 passive; bRa4 cook-stopper; the queen gives every mate, no links."
+  },
+  {
+   "id": "bourd-halfpin-ss-bh7",
+   "fen": "8/3QKp2/2N5/5B2/3p1kpP/3P1npP/5nb1/3N1R2",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv7bwm99, 13-14 Oct 2026), from Claude's orthogonal sketch; wPe5 removed by Claude (no part, verified)",
+   "source": "black half-pin of two knights on the f-file, masking bishop key with a pure try pair",
+   "themes": [
+    "Black half-pin on the f-file: Rf1 x-rays Sf2 and Sf3 to Kf4",
+    "Key 1.Bh7! clears f5 for the queen (threat 2.Qf5#)",
+    "1...Sxh4 (guards f5) 2.Qxg4# (the pinned f2 knight cannot take on g4); 1...Sxd1 (takes the e3 guard) 2.Qxd4# (the pinned f3 knight cannot take on d4)",
+    "Tries by the key piece, each refuted by one thematic defence because the bishop's arrival spoils one mate: 1.Bxg4? (occupies g4) Sxh4!, 1.Be4? (cuts d4-f4) Sxd1!; 1.Bg6? fxg6!",
+    "No flight in the diagram or after the key"
+   ],
+   "keys": [
+    "Bh7"
+   ],
+   "note": "His diagram had wPe5 (8/3QKp2/2N5/4PB2/3p1kpP/3P1npP/5nb1/3N1R2): trim and one solve show it takes no part (key, both variations and all three tries stay without it), 17 units instead of 18. Process (238 steps, 77 solves): from Claude's sketch 8/8/3Q1R2/6K1/2p1k3/2P1np1B/4n3/4RNb1 he tried threats Sd2/Qe6/Qe5/Sf6/Re5 with the queen on d6, g7, f6, c6 (steps 3-175, loose positions with 4-13 other white solutions); at step 188 he put a bishop on e5 masking the queen c7's line to e5, and at once the bishop's other squares became tries refuted by the two knights (1.Bxf4? Sxg4!, 1.Bd4? Sxc1!); steps 192-236 cleaned the bishop's other squares (black pawns, Bf2 against Bxf4, king moves): sound 1.Bf6!, then 1.Bg7!, cooked by Bh8; step 237 shifted the board one file right, so the board edge removed the long diagonal and 1.Bh7! became the only key. Units: bPf7 refutes 1.Bg6 (cook-stopper); bPd4 stops 1...Sd4 (a second refutation of 1.Bxg4) and is taken in Qxd4#; bBg2 plugs the g-pawn (without it 1.Bh7 g2!); Sd1 guards e3 (the target of Sxd1); Sc6 e5; Ph4 g5; Ph3 g4; Pd3 e4; Ke7 takes no part (cook-stopper by position). Flaws: in the solution the separation still runs through flights (after Sxh4, Qxd4 leaves f3 (vacated) and g5 (h4 gone); after Sxd1, Qxg4 leaves e3 (guard taken)); many captures (both defences, both mates, the try Bxg4: pawn captures minor); the queen gives every mate; heavy (7 pawns)."
   }
  ]
 }

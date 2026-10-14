@@ -1127,3 +1127,7 @@ no motive layer to mirror.
   pin): an arrival covers the partner's colour, so it spoils the partner's mate only by blocking. Twelve freethreat
   runs (NOFLIGHT) from bare seeds found threats but no defences; from the hand structure the best was the post-key
   8/8/3Q1R2/6K1/2p1k3/2P1np1B/4n3/4RNb1 (Sg4 2.Rf4#, Sd4 2.Qxd4#, Sd5 2.Bf5#, threats Sd2 and Re6).
+- E. Bourd's bench sitting mv7bwm99 (13-14 Oct, 238 steps, 77 solves) from my orthogonal sketch: bourd-halfpin-ss-bh7,
+  8/3QKp2/2N5/5B2/3p1kpP/3P1npP/5nb1/3N1R2 (his Pe5 removed, verified), 1.Bh7! (2.Qf5#) Sxh4 2.Qxg4#, Sxd1 2.Qxd4#;
+  tries 1.Bxg4? Sxh4!, 1.Be4? Sxd1!, 1.Bg6? fxg6!. The turning point was a masking bishop on the threat line (step 188):
+  its landing squares gave the try pair at once. The last step, a one-file shift, used the board edge to kill Bg7/Bh8.
