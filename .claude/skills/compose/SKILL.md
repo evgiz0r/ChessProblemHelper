@@ -36,6 +36,8 @@ Read `references/construction.md` now (the order and the rules with their exampl
 3c-type1. **Changed mates of one queen (type 1)?** `python -m chesscomp.compose.type1_geometry d4 --types RB` lists the queen
    post pairs, the defenders that free one mating square per phase, and the knight threats with each defender's off-line
    defences and plugs. Then a guard table by hand; `evolve` with DEFSQ/TKEY/QMATE and CANDS only for the last layer.
+   Two errors per defence: only the far pair of mating squares can take them (themes/changed_mates.md); check each
+   defence with `python -m chesscomp.compose.errors FEN DEF --key UCI` (departure / arrival per mate).
 3c'. **Errors before any search** (E. Bourd, 8 Oct 2026: "this small thing cannot be just search"). For every
    defence, and every hole, run `python3 -m chesscomp.compose.effects POSTKEY [MOVE ...]`: it lists what the move's
    departure and arrival change (self-block, lines opened/closed with the squares, guards lost/gained, pins) and

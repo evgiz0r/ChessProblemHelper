@@ -2143,6 +2143,23 @@
     "Qe8"
    ],
    "note": "His sound position at step 34 was 2Q2K2/1B1N2p1/1P1p3p/1p6/1n1k1P2/1Ppp2R1/2b2N2/2b5 (9+10); trim removes wPb6, bPh6, bPg7 (also -Pf4 -Pb6 -ph6 works): 8+8, gate PASS. His notes: 'instead of one piece defending 2 squares, another error happens: unguard + line close for example'; 'unguard/line-close + line-opening; there are many combinations of creating two errors at once'. Flaws: wSf2 gives only the set mates' guards (needed), wKf8 cook-stopper, random-move duals (1...Be3 2.Qxe3#/Qe4#). His first scheme of the sitting (step 20, note 'unguard + line close'): 2Q2K2/1B1N1Pp1/1P1p3p/1p6/1n1k4/1Pp3R1/5N2/1nb5, 1.Qe8! d5 2.Qe5#, Sd2 2.Qe3# (set d5 Qc5#, Sd2 Qxc3#): 1...Sb1-d2 unguards bPc3 and closes bBc1's line to e3 (and guards e4); cooked only by 1.Qc6 (1...Sxc6 2.Rd3#). The second scheme replaced Sb1+Pc3 by Pd3+Bc2."
+  },
+  {
+   "id": "claude-changed-type1-qg8-two-errors",
+   "fen": "8/3BB1nQ/1nP2N2/p3k1Pp/r7/p2KP1P1/8/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 14 Oct 2026), at E. Bourd's request",
+   "source": "the first type-1 problem (claude-changed-type1-qg8: queen b1-h7 -> a2-g8, K e5, threat 2.Qb8#) with the e4/d5 defence changed to two errors",
+   "themes": [
+    "Changed mates (set vs solution): the queen on b1-h7 (h7) in the set, on a2-g8 after 1.Qg8! (2.Qb8#)",
+    "Set 1...Sc4 2.Qe4#, 1...Sf5 2.Qxf5#, 1...Se8 2.Qf5#; 1.Qg8! Sc4 (and every Sb6 move) 2.Qd5#, Sf5/Se8 2.Qe6#, Se6 2.Qxe6#",
+    "1...Sb6-c4 makes two errors: its arrival closes bRa4's guard of e4 (set 2.Qe4#), its departure unguards d5 (solution 2.Qd5#); from c4 it can interpose on d6 (the defence)",
+    "The g7 knight keeps the one-unit-two-squares error (f5 and e6): on the side the queen comes from, no two-error defence exists (see lessons, 14 Oct 2026)"
+   ],
+   "keys": [
+    "Qg8"
+   ],
+   "note": "Gate PASS, 9+7, trim: nothing removable. chesscomp.compose.errors: 1...Sc4 set Qe4# (arrival), solution Qd5# (departure); Sf5/Se8 both mates from the departure. Built by hand in ~25 solves after evolve runs on two-error cores found nothing. Roles: Sf6 e4/d5 and shuts g7-f6 (no 1.Qxg7#); Bd7 e6 and f5 through e6; Be7 d6/f6 and closes the e-file (no 1...Se8 2.Qxe8#, no set 2.Qe7#); Kd3 d4/e4, stops 1.Qd3 (2.Qd6#), gives 1...Rd4+ 2.exd4#; Pe3/Pg3 d4/f4. Cook-stoppers: wPc6 (c-file: 1...Rc4 would interpose on c7), bPa5+bPa3 (pen the rook: Ra8/Ra7 and rank-3 checks), bPh5 (guards g4 against 2.Sg4# duals, blocks the h-file), wPg5. Flaws: heavy (7 pawns); the g7 knight's errors are unchanged; mates capture on thematic squares (Se6 Qxe6, Sd5 Qxd5); 1...Se6 has no set mate (it cuts Bd7 from f5); set dual after the non-defence 1...Rf4. Dead ends on the way: a white line opened onto e6 as the solution error leaves e6 a flight in the diagram; with threat 2.Sd7# (Sf2-d3 cutting Bb1-f5) e6 could not be guarded (Kd7 on the threat square, Ke7 checked by Sf5, knights give second threats, a 6th-rank rook mates on e6 too); Ke7+Re8 gives 1.Kd7+; a white pawn on d3 gives 1.d4+; Bh5 guarding e8 gives 1...Bg6+."
   }
  ]
 }

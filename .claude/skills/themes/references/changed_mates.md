@@ -54,3 +54,10 @@ Two errors in one defence (E. Bourd, bourd-changed-type1-pawn-errors, 2Q2K2/1B1N
 the defender need not hold one square of each line. 1...d3-d2 opens wRg3 to c3 (set Qxc3#) and closes bBc1 to e3 (Qe3#
 after 1.Qe8!). Combine any two errors (unguard, black line closed, white line opened, self-block); the queen's line picks one.
 `python -m chesscomp.compose.effects POSTKEY MOVE` lists each move's errors.
+Where two errors are possible (claude-changed-type1-qg8-two-errors, 8/3BB1nQ/1nP2N2/p3k1Pp/r7/p2KP1P1/8/8, the first type-1
+problem redone): with no diagram flight and the threat needing the set squares guarded, every mate comes from removing a
+Black guard, and on the side the queen comes from (f5/e6 for a queen above K e5) no defence can do it twice: each Black line
+to one of those squares hits the other or the queen's path. A White line opened onto e6 leaves e6 a flight in the diagram.
+So only the far pair (e4/d5) takes two errors: Sf2-d3, Sb6-c4 (used: arrival closes Ra4-e4, departure unguards d5), d5-d4.
+E. Bourd's pawn scheme has the same split (d5 double unguard on the near squares, d2 two errors on the far ones).
+`python -m chesscomp.compose.errors FEN DEF --key UCI` says which part of the move (departure / arrival) makes each mate.

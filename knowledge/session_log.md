@@ -1213,3 +1213,10 @@ no motive layer to mirror.
   by bPd3 + bBc1 + wRg3: 1...d2 makes two errors (opens Rg3 to c3, closes Bc1 to e3), the queen's line chooses. Sound at step
   34; trimmed (-Pb6 -ph6 -pg7) to bourd-changed-type1-pawn-errors, 8+8, gate PASS. Recorded his principle: type 1 by two errors
   in one defence, many combinations. His first scheme (step 20): 1...Sb1-d2 unguards bPc3 + closes Bc1-e3, cooked by 1.Qc6.
+- E. Bourd: "try to do the first problem of the type, and change the errors of the defenses". Wrote
+  chesscomp.compose.errors (which part of a defence, departure or arrival, makes each mate; tested). Enumerated two-error
+  defences around K e5: the side the queen comes from (f5/e6) has none without a diagram flight, the far side three
+  (Sf2-d3, Sb6-c4, d5-d4); his bench scheme has the same split. Eight evolve runs on two-error cores found nothing; by hand,
+  keeping the first problem's threat 2.Qb8#: claude-changed-type1-qg8-two-errors, 8/3BB1nQ/1nP2N2/p3k1Pp/r7/p2KP1P1/8/8,
+  set Sc4 Qe4#, Sf5 Qxf5#, Se8 Qf5#; 1.Qg8! Sb6~ Qd5#, Sf5/Se8 Qe6#, Se6 Qxe6#. 1...Sc4: arrival closes Ra4-e4 (set),
+  departure unguards d5 (solution). Gate PASS, 9+7, nothing trimmable; heavy, six cook-stoppers.
