@@ -1131,3 +1131,9 @@ no motive layer to mirror.
   8/3QKp2/2N5/5B2/3p1kpP/3P1npP/5nb1/3N1R2 (his Pe5 removed, verified), 1.Bh7! (2.Qf5#) Sxh4 2.Qxg4#, Sxd1 2.Qxd4#;
   tries 1.Bxg4? Sxh4!, 1.Be4? Sxd1!, 1.Bg6? fxg6!. The turning point was a masking bishop on the threat line (step 188):
   its landing squares gave the try pair at once. The last step, a one-file shift, used the board edge to kill Bg7/Bh8.
+- E. Bourd's bench sitting mv7emm2t (14 Oct, 128 steps, 19 solves): cleared his f-file problem down to the half-pin core,
+  shifted it up and left, rotated twice and rebuilt a new scheme on the d-file above the king (post-key, no key yet):
+  3B1b2/3R4/2Qn2B1/r2n4/3kP3/2pN2N1/2P2P2/1R4K1 (Black to move), threat Se2#; 1...S5f4 2.Rb4# (Bf6+? Re5!: the
+  departure opens the 5th rank to bRa5); 1...S6f5 2.Bf6# (Rb4+? Bxb4!: the departure opens f8-b4 to bBf8); by-play
+  1...Rc5 2.Qxc5#. No flight, no black check, 17 units. White to move also mates by Bf6+, Bb6+, Rb4+; keyfind (48
+  retractions, 1070 one-unit patches) found no key.
