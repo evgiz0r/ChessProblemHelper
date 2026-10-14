@@ -1206,3 +1206,6 @@ no motive layer to mirror.
   claude-changed-type1-ranks, 8/3K4/2p1p3/7Q/N2k1PP1/8/1N3PB1/2r1r3: set Rcd1 Qc5#, Red1 Qe5#; 1.Qh3! (2.Qd3#) Rcd1 Qc3#,
   Red1 Qe3#. Seven solves by hand: Pd2 blocked the d1 defence, Kh7 let Rh1 pin the queen, Bb4/Bh6/Sb4 mated on c3/c5/e3/c2,
   Ba6's guard was cut by Rc4, 1.d7 promoted. Gate PASS, 8+5.
+- E. Bourd: less symmetric, different pieces. claude-changed-type1-files-pawn-rook, 2Q2K2/1B1N1P2/3p3p/1p6/1n1k4/1P5r/3P1N2/8:
+  set d5 Qc5#, Rh4 Qc3#; 1.Qe8! (2.Qe4#) d5 Qe5#, Rh4 Qe3#. Pawn d6 (c5/e5) and rook h3 (c3/e3); six solves; gate PASS, 8+6;
+  five cook-stoppers (Kf8, Pf7, bPh6, bSb4, bPb5).

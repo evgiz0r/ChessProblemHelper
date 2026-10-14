@@ -2109,6 +2109,23 @@
     "Qh3"
    ],
    "note": "Gate PASS, 8+5, trim removed wPb4. By-play 1...Rc3 2.Qxc3#, 1...Re3 2.Qxe3#/fxe3# (the rook steps onto its own mating square on the threat line: inherent when the threat is the line's third square). Tries 1.Qh7?/1.Qg6? (2.Qd3#) Red1 2.Qe4# (a third mate of the e-rook) but Rcd1!, Re3!, Rc3!. Cook-stoppers: wPg4 (1.Qf3), wKd7 (d-file); bPc6/bPe6 close the files above (Rc7+, Re7+) and hold d5. Symmetric by design (two mirror rooks). Geometry: with the king in the centre only Qh5-h3 and Qc8-e8 reach exactly three squares of a line from each post, and the pairs are always straight (c5/c3, d5/d3, e5/e3)."
+  },
+  {
+   "id": "claude-changed-type1-files-pawn-rook",
+   "fen": "2Q2K2/1B1N1P2/3p3p/1p6/1n1k4/1P5r/3P1N2/8",
+   "stip": "#2",
+   "author": "Claude (E. Bourd's type 1 on two orthogonal lines, his request for less symmetry and different pieces, 14 Oct 2026)",
+   "source": "changed mates type 1, the queen switching from the c-file (c8) to the e-file (e8); a pawn and a rook defend",
+   "themes": [
+    "Changed mates (set vs solution): the queen mates on the c-file in the set, on the e-file after the key",
+    "Set 1...d5 2.Qc5#, 1...Rh4 2.Qc3#; 1.Qe8! (2.Qe4#) d5 2.Qe5#, Rh4 2.Qe3#",
+    "Different defenders: bPd6 holds c5 and e5, its only move d5 guards the threat square e4; bRh3 holds c3 and e3 along the 3rd rank and defends from h4 along the 4th",
+    "The third square of each line: c4 is held by bPb5 in the set, e4 is the threat after the key"
+   ],
+   "keys": [
+    "Qe8"
+   ],
+   "note": "Gate PASS, 8+6, trim: nothing removable. Built from the two-rook version (claude-changed-type1-ranks) after E. Bourd asked for less symmetry and different pieces: a pawn pair is horizontal (d6 guards c5 and e5), so the queen switches files. By-play 1...Re3 2.Qxe3#. Cook-stoppers: wKf8 closes the 8th rank (1.Qf8, 1.Qg8), wPf7 the f-file (1...Rf3+), bPh6 the h-file (1...Rh8+), bSb4 guards c6 (1.Qc6 with threats on d5/e4/b6/d6), bPb5 guards c4 (1.Qc4# in the diagram). Six hand solves from the sketch: 1...Ra3+ (Ka2), 1...d5 without set mate (Bb7's guard of e4 cut by d5: Sf2), 1.Qf8/1.Qg8, 1...Rf3+, 1.Qc6."
   }
  ]
 }
