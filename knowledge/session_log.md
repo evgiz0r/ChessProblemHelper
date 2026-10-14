@@ -1144,3 +1144,9 @@ no motive layer to mirror.
   unmask_search: 1.Sd3 (from b2) unique with diagram flight Ke5; 1.Sg3 (from h1) with bPc7 leaves 1.Bf6+ as a cook.
 - His rebuilt version on the 5th rank, bourd-halfpin-ss-bd8, b3R1N1/Q1B5/5Ppp/R2nnkN1/6pP/1K1P2P1/1P6/4r3, 1.Bd8!
   Sf7 2.Qf2#, Se7 2.Qd7#: sound, gate PASS; my improvement searches found nothing better (see its note).
+- E. Bourd on bourd-halfpin-ss-bd8: "key is slightly less flawed here, as we have a set mate, and the bishop seems to
+  guard e5 as well". Verified: Bc7 is the only guard of e5 in the set 1...R~ 2.Rxe5# (seven rook moves) and doubles e5/f4
+  in the set 1...Sf7 2.Qf2#; c7 is the only free square guarding e5 and reaching d8, so the attack by Sd5 follows from
+  the set job; 1...Sxc7 is the one capture left without a set mate. The critique's 'attacked key piece' finding now
+  names the set mates that need the key piece on its diagram square and the unprovided captures of it
+  (chesscomp/critique.py, tests/test_critique_key_role.py).

@@ -274,7 +274,17 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     kp0 = board.piece_at(kmove.from_square)
     att = black_captures(board, kmove.from_square)
     if kp0 and kp0.piece_type != chess.KING and att:
-        add('minor', 'attacked key piece', f"the key piece stands attacked in the diagram (from {', '.join(att)}): the key looks like an escape")
+        msg = f"the key piece stands attacked in the diagram (from {', '.join(att)}): the key looks like an escape"
+        # E. Bourd (14 Oct 2026, 1.Bd8! from c7 in bourd-halfpin-ss-bd8): "key is slightly less flawed here, as we have
+        # a set mate, and the bishop seems to guard e5 as well" - a set mate that needs the piece on its diagram square
+        # gives the square a reason; the attack is then a by-product, not the decoration of an escape
+        roles = key_piece_set_roles(board, kmove, res['phases'])
+        if roles:
+            mates = '; '.join(f"1...{ds[0]}{f' (+{len(ds) - 1})' if len(ds) > 1 else ''} 2.{m}" for m, ds in roles.items())
+            unprov = [m for m in key_piece_captures_unprovided(board, kmove, res['phases'])]
+            msg += (f"; milder: the set mate{'s' if len(roles) > 1 else ''} {mates} need{'' if len(roles) > 1 else 's'} it on {chess.square_name(kmove.from_square)} (E. Bourd, 14 Oct 2026)"
+                    + (f"; the capture 1...{', '.join(unprov)} has no set mate" if unprov else '; the capture is provided in the set play'))
+        add('minor', 'attacked key piece', msg)
     # E. Bourd (session 29): "the key piece is always in play; the issue is that on the initial diagram it
     # has no role - not guarding, not delivering mates, not blocking pieces. So its only role is to come out
     # of thin air and place itself obviously on the key square" (his 1.Rf1 from h1). Three checks in the
@@ -578,6 +588,40 @@ def black_captures(board, sq):
     was flagged as an attacked key piece)."""
     b = board.copy(stack=False); b.turn = chess.BLACK; b.ep_square = None
     return sorted({chess.square_name(m.from_square) for m in b.legal_moves if m.to_square == sq})
+
+
+def key_piece_set_roles(board, kmove, phases):
+    """Set mates that need the key piece on its diagram square: it gives the mate, or without it the position after
+    the mate is no mate. Returns {mate SAN: [defence SANs]} in set-play order."""
+    fsq, roles = kmove.from_square, {}
+    for ph in phases:
+        if ph['type'] != 'set':
+            continue
+        for v in ph['variations']:
+            for c in v['continuations']:
+                b = board.copy(stack=False); b.turn = chess.BLACK; b.ep_square = None
+                d = chess.Move.from_uci(v['defence']['uci'])
+                if d.to_square == fsq or d not in b.legal_moves:
+                    continue
+                b.push(d)
+                m = chess.Move.from_uci(c['uci'])
+                if m not in b.legal_moves:
+                    continue
+                b.push(m)
+                need = m.from_square == fsq
+                if not need and b.piece_at(fsq) is not None:
+                    b.remove_piece_at(fsq)
+                    need = not b.is_checkmate()
+                if need:
+                    roles.setdefault(c['san'], []).append(v['defence']['san'])
+    return roles
+
+
+def key_piece_captures_unprovided(board, kmove, phases):
+    """Black captures of the key piece on its diagram square that have no set mate."""
+    fsq = kmove.from_square
+    return [v['defence']['san'] for ph in phases if ph['type'] == 'set' for v in ph['variations']
+            if chess.Move.from_uci(v['defence']['uci']).to_square == fsq and not v['continuations']]
 
 
 def format_critique(c):
