@@ -15,3 +15,21 @@ Reading: the repository raised the ambition (a Grimshaw on the threat line in th
 reading and on three 270 s postsearch runs; A made 63 quick hand solves. B never called anatomy.
 Gap found: `report --critique` does not flag a double threat; only `tools/blog.py check` does.
 One theme, one run each: not a measurement yet. Next: 45-60 minutes per arm, two or three themes.
+
+# Ablation 2: "2 black bishops unpin a black knight" (theme by E. Bourd, 13-14 Oct 2026)
+
+Two sessions per arm, 50 minutes each (55-minute watchdog), 200 tool calls, four in parallel on 4 cores. The critique
+now flags the double threat. A blind `judge` agent scored them in shuffled order (P1-P4):
+
+| blind | arm | FEN | gate | judge |
+|---|---|---|---|---|
+| P3 | B1 repo | 3N4/3b1R2/1n1p4/QN1nk1K1/R2bp3/4p3/8/6B1 | PASS | 1st, 6/10: unmasking key 1.Sc3! (Qa5 pins Sd5), Bb5 Rf5#, Bc5 Rxe4# (unpin + line opening), tries Sc7/Sa7/Sa3 all fail to Bc5 |
+| P1 | B2 repo | 4b1R1/4b3/7N/3nk3/R3N1B1/2P2K2/8/2B5 | PASS | 2nd, 4/10: 1.Ra5! pins, Bb5 Sf7#, Bc5 Rg5#, set mates, no tries |
+| P2 | A1 solver | 4b3/6nK/8/5n1k/8/4b1Q1/R5N1/8 | FAIL (out-of-play key) | 3rd, 3.5/10: richest play, 4+5, three unpins, Bg5 Qf3# self-block; key Ra2-a5 obvious |
+| P4 | A2 solver | 8/7K/7B/4bB2/1R2n2k/2n1N1N1/5R1P/5b2 | PASS | 4th, 2/10: pin already set, 1.Kg6 unrelated to the theme, a plug (stopped at 39 min) |
+
+Reading: the repository arms placed 1st and 2nd. B1's extra layer (unmasking key, tries) came from the tools
+(`unmask_search`, `trypair`, `freethreat`); both B arms called `anatomy` (5 and 7 times) once CLAUDE.md asked it.
+The solver-only arm found the richest raw play (A1) but did not know the house rule that sank its key; the judge
+applies our rules, so part of the gap is the rules themselves. All four found the same basic scheme (the unpin is the
+reason of the defence, the mate exploits the bishop's lost guard); none used the freed knight. n=2 per arm.
