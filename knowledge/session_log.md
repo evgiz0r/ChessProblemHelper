@@ -1182,3 +1182,7 @@ no motive layer to mirror.
   on b7; bPf3 blocks the bishop's diagonal so its only defence is Bc8 (guards g4 along c8-h3). His last position had a second key
   1.Ba2; finished as bourd-changed-type1-bishop (wPb3, 9+9, try 1.Be4? Bc8!) and bourd-changed-type1-bishop-light
   (1n5b/1bp3nQ/5N2/2P1k1P1/3N3p/K2PPp2/8/8, wPd3 for Bb1+Pb3, bPg4 removed, 8+8). Both gate PASS, nothing removable.
+- E. Bourd's bench sitting mv8ffb5c (14 Oct, 18 steps, notes): type-1 with the queen switching from the b1-h7 diagonal (g6) to
+  the 5th rank (g5), defenders bRe1 (e4/e5) and bSb4 (d3/d5), batteries Bh7/Rh5, threat 2.Bc3#. Asked to finish it: six evolve
+  runs; best 8/7B/5PQ1/2P4R/1n1k2P1/1K1p2r1/1P1B4/1R2r3 (1.Qg5! unique key, four defences) fails on the thematic dual
+  1...Rc1 2.Qe5#/Qf4#, inherent (see lessons). Not shown as a problem.
