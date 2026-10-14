@@ -131,6 +131,22 @@ what the next run should try. "Proposals" collects improvements too big for one 
   The royal-battery selection (a pinned checker keeping the king off one square) could carry changed mates: a key by the
   white king that forms the battery would leave the set captures with other mates.
 
+## 2026-10-14, No. 9: Underpromotion key
+- Result: B2B4/2r1P3/2nppp2/N3k3/2P3Q1/8/8/2K5 (7+6), 1.e8=S! (2.Bxf6#) Rf7/Re7 2.Sxc6#, Sxd8/Se7 2.Qe4#; tries 1.e8=Q?
+  (2.Qexe6#) and 1.e8=R? (2.Rxe6#) f5!, 1.e8=B? Rc8!/f5!. The first underpromotion key in the kit with a threat and
+  a mobile Black. Gate: PASS with warnings (attacked key piece, same refutation, random-move duals, unprovided Rc8/f5),
+  all named in the post. An independent judge subagent called it light (static key: both mates set). Mentor issues
+  #7, #8, #9 had no answers; nothing to act on.
+- Setup: `main` fast-forwarded cleanly.
+- Minutes (container clock 23:58-00:45): setup and reading 5, kit change (evolve KEY mode) 5, evolve 15 (mostly
+  wasted), hand reasoning and postsearch 10, judging, post and records 10. About 30 solves, 13 search jobs.
+- What wasted time: three of four first seeds had a white unit checking the black king (validate seeds before launch,
+  again); KEY-mode evolve at about one evaluation a second; a scoring bug that rated a try with many keys like a key.
+- What helped: asking what only the promoted piece does from e8 (guard d6/f6/c7/g7), then postsearch on the post-key
+  with the knight already on e8.
+- Next run: theme from `next-theme`. To lift No. 9: changed mates (the key could make the black rook's 7th-rank moves
+  matter) or one refutation per wrong promotion. A seed validator in evolve (refuse an illegal SEED with a message).
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).

@@ -51,7 +51,8 @@ PURE=1, several DEF, MODE w1|w2|w1b1|w2b1|m1) and `chesscomp.compose.kernel_sear
 theme's core (the black king and the thematic units) and let `chesscomp.compose.evolve` grow it: it mutates
 the rest of the board and scores every candidate with the solver (DEFS = the thematic defences, CHANGED=1 for
 set-play changes, PATTERN for a detected pattern on each defence, or PATTERN with no DEFS and NPAT=N for N pattern
-mates the search may choose itself, e.g. PATTERN=Half-pin; TRYCHANGE=1 for changes against a try).
+mates the search may choose itself, e.g. PATTERN=Half-pin; TRYCHANGE=1 for changes against a try; KEY=<uci> NVAR=n when the theme is the key itself, e.g. an underpromotion:
+it is slow, so seed it with the post-key mechanism or prefer postsearch with the promoted piece already in place).
 Run one job per CPU with different king squares or seeds (start them from a script file and stop them
 by PID: `pkill -f compose.evolve` and `pgrep -f compose.evolve | xargs kill` also kill the shell that runs them, as its command
 line matches; use `ps -eo pid,comm,args | awk '$2 ~ /^python/ && /compose.evolve/ {print $1}' | xargs -r kill`); read its HIT

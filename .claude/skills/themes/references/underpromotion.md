@@ -14,5 +14,11 @@ Minimal form (E. Bourd): 7K/3P1k2/3Q4/8/8/8/8/8, 1.d8=B! Ke8 2.Qe7# - the promot
 attack on e8 (flight-giving), Q/R re-cover it on the rank and stalemate, the bishop protects e7 for the queen.
 Exhaustive: 11 such four-unit positions exist, all with a queen; nothing smaller. Four promotions as
 try/key in one problem: bourd-four-promotions (5K2/3P4/1N2p3/1P2k1NP/1P4P1/3p4/3B4/8).
-Not done yet: an underpromotion key with a threat and real defences (the check-avoidance route failed,
-see the compose skill's dead ends), and mates by underpromotion (AUW without the queen).
+Threat with real defences (daily No. 9, claude-underpromotion-S-threat): B2B4/2r1P3/2nppp2/N3k3/2P3Q1/8/8/2K5,
+1.e8=S! (2.Bxf6#) Rf7/Re7 2.Sxc6#, Sxd8/Se7 2.Qe4#; 1.e8=Q?/R? f5!. Recipe: list the squares only the promoted piece
+reaches from the promotion square (knight on e8: d6, f6, c7, g7) and make one of them the guard a white line piece
+needs once the promotion unmasks it (Bd8-e7-f6 against Ke5 behind black pawns d6, e6, f6). Q and R then fail for a
+reason in the position, not by stalemate. Built post-key first: postsearch with CORE=3BN3/8/3ppp2/4k3/8/8/8/8,
+THREAT=Bd8f6, DEFS=Re7,Ne7 placed every other unit in under five minutes. Open: changed mates (both mates are set
+there), and a different refutation for each wrong promotion. evolve KEY=e7e8n NVAR=n scores a fixed key.
+Not done yet: mates by underpromotion (AUW without the queen).

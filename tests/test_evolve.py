@@ -93,3 +93,21 @@ def test_pattern_mode_without_defs_counts_distinct_half_pin_mates():
         assert r.returncode == 0, r.stderr
         out[n] = r.stdout.split()[-1]
     assert out == {2: 'True', 3: 'False'}
+
+
+KEYPROBE = """
+import chess, chesscomp.compose.evolve as e
+s, summ, hit = e.score(chess.Board('3R4/4P1B1/8/4Pp2/4k1n1/6Q1/8/1K6 w - - 0 1'))
+print(summ, hit)
+"""
+
+
+def test_key_mode_fixes_the_key_and_counts_mates():
+    # daily No. 9 search: 1.e8=S! S~ 2.Sf6#, 1...Sf6 2.Sxf6#, 1...f4 2.Qd3# - three distinct mates; 1.e8=Q? Se3!
+    out = {}
+    for key, n in (('e7e8n', 3), ('e7e8n', 4), ('e7e8q', 1)):
+        env = dict(os.environ, KEY=key, NVAR=str(n), DEFS='', PYTHONPATH=ROOT)
+        r = subprocess.run([sys.executable, '-c', KEYPROBE], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
+        assert r.returncode == 0, r.stderr
+        out[(key, n)] = r.stdout.split()[-1]
+    assert out == {('e7e8n', 3): 'True', ('e7e8n', 4): 'False', ('e7e8q', 1): 'False'}
