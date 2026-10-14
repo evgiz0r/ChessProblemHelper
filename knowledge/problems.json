@@ -1983,6 +1983,25 @@
     "Bd8"
    ],
    "note": "1.Bd8! (2.Sxh6#) Sf7 2.Qf2#, Se7 2.Qd7#. Tries 1.Rf8? and 1.Re6? (2.Sxh6#) hxg5!, 1.Se6? g5!, 1.Bxe5? Rxe5!. Gate PASS, 12+8. It grew from his d-file scheme 3B1b2/3R4/2Qn2B1/r2n4/3kP3/2pN2N1/2P2P2/1R4K1 (same doubled 'line behind'), turned and rebuilt through ~475 bench steps; findkey on intermediate post-keys gave only keys 1.Sh3-g5, 1.h3-h4, 1.Bb6/Bc7-d8. Units: Pb2 shields Kb3 from 1...Rb1+ (no king square replaces it, scanned); Pd3 gives the set mate 1...Re4 2.dxe4#; Sg5 guards e4/e6 (doubled after the key); Ph4 g5; Pg3 f4; Re8 e5/e6. Flaws: the key piece is attacked by Sd5 (1...Sxc7 has no set mate), milder than it looks (E. Bourd, 14 Oct 2026: 'key is slightly less flawed here, as we have a set mate, and the bishop seems to guard e5 as well'): on c7 the bishop is the only guard of e5 in the set 1...R~ 2.Rxe5# (seven rook moves) and doubles e5/f4 in the set 1...Sf7 2.Qf2#; c7 is the only free square that guards e5 and reaches d8 (b6 does not guard e5, e7 already guards f6, f6/g5 are occupied), so the attack follows from a set-play job and the key gives up that set mate; both tries fall to the same non-thematic hxg5; 20 units (8 pawns); Kb3 passive; random-move duals. Claude's improvement searches (trim, king scan, halfpin_tries, diagsearch) found nothing better: the only pure-pair candidate was a promotion key (wPd7, 1.d8=Q) with both tries refuted by Se7."
+  },
+  {
+   "id": "claude-changed-type1-qg8",
+   "fen": "8/3BB3/5NQ1/4k1Pp/2pn4/2n1P3/8/7K",
+   "stip": "#2",
+   "author": "Claude (with E. Bourd's type-1 scheme, bench sitting mv88wzbb, 14 Oct 2026)",
+   "source": "changed mates, type 1 of E. Bourd's three: one white piece mates in both phases on a different line",
+   "themes": [
+    "Changed mates (set vs solution), 2x2 and more: the queen changes line, b1-h7 in the set, a2-g8 after the key",
+    "Sd4 guards f5 and e6 (one square of each queen line), Sc3 guards e4 and d5: a knight's move frees both of its squares",
+    "Set: Sd4~ (Sc6, Sb5) 2.Qf5#, Sf5 2.Qxf5#; Sc3~ (Sb5 and others) 2.Qe4#, Sd5 2.Qe4#, Se4 2.Qxe4#",
+    "1.Qg8! (2.Qb8#) Sc6/Sdb5/Sf5 2.Qe6#, Se6 2.Qxe6#; Scb5/Se4 2.Qd5#, Sd5 2.Qxd5#",
+    "One white unit protects both squares of each knight: Sf6 (e4, d5), Bd7 (f5, e6)",
+    "The knights' arrivals on mating squares change a quiet mate into a capture (Sf5, Se4 in the set; Se6, Sd5 after the key)"
+   ],
+   "keys": [
+    "Qg8"
+   ],
+   "note": "1.Qg8! (2.Qb8#) Se6 2.Qxe6#, Sc6/Sf5/Sdb5 2.Qe6#, Sd5 2.Qxd5#, Scb5/Se4 2.Qd5#. Set: Sd4~ 2.Qf5# (Sf5 2.Qxf5#), Sc3~ 2.Qe4# (Se4 2.Qxe4#); Se6 and h4 unprovided. Tries 1.Qd3? (2.Qxd4#) cxd3!, 1.Qf7? (zugzwang, the solution's mates) h4!, 1.Bh3? h4!. Gate PASS, 7+5, trim: nothing removable. Units: Sf6 guards e4/d5 and blocks the queen's 6th rank (no Qe6 in the set); Bd7 guards f5/e6; Be7 d6 in the set and blocks the e-file (2.Qe8 after the key); Pe3 d4/f4; Pg5 shuts the g-file (Qg5, Qg3); bPc4 guards d3 (1.Qd3); bPh5 guards g4 (2.Sg4 would double 2.Qe4 after Sd5 and 2.Qd5 after Se4) and its tempo h4 refutes the waiting tries. Flaws: Sd4/Sc3 moves that do not stop Qb8 allow it and the queen mate too (random-move duals); Kh1 idle; Be7 and Pg5 serve the set and soundness only. How it was found: the two knights interpose on every rank or file check (Qe8+ Se6, Qc5+ Sd5), so the threat had to be a diagonal check through d6 (Qb8); the first versions were complete blocks in the set, cooked by waiting moves."
   }
  ]
 }

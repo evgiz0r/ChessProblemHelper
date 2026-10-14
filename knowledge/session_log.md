@@ -1150,3 +1150,9 @@ no motive layer to mirror.
   the set job; 1...Sxc7 is the one capture left without a set mate. The critique's 'attacked key piece' finding now
   names the set mates that need the key piece on its diagram square and the unprovided captures of it
   (chesscomp/critique.py, tests/test_critique_key_role.py).
+- Changed mates, E. Bourd's bench sitting mv88wzbb (14 Oct, 54 steps, notes only, one solve): three types of 2x2 changed
+  mates (see lessons). Type 1 composed: claude-changed-type1-qg8, 8/3BB3/5NQ1/4k1Pp/2pn4/2n1P3/8/7K, set Sd4~ 2.Qf5#,
+  Sc3~ 2.Qe4#; 1.Qg8! (2.Qb8#) Sd4 defences 2.Qe6#/Qxe6#, Sc3 defences 2.Qd5#/Qxd5#. Path: evolve on bare cores (8 jobs)
+  found no key; the hand design needed the diagonal threat (knights interpose on lines), Sf6/Bd7 guarding each knight's
+  pair, then one cure per solve: Pc4/bPc5 (Se4 refutation, Qd3), restructure to Qg6/Sf6/Be7/Bd7/Pg5 (cooks Qg6/Qh6),
+  bPc4+bPd3 (Qd3), bPh5 (Sg4 dual); trim removed bPd3. Gate PASS, 7+5.

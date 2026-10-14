@@ -28,3 +28,11 @@ Traps: the try threat and the key duals coming from the same resource (2Rn1N2/7K
 a set+solution block cooked by any waiting move; a diagram flight that the change needs (queen on g5/h5).
 Dead end: blind enumeration for same-piece changes (5M positions, nothing); the composer's 3-unit scheme
 plus ONE named changed defence as the criterion succeeded in one pass.
+
+E. Bourd's three types (bench mv88wzbb, 14 Oct 2026): (1) one White piece mates in both phases on another line, each
+Black defender guarding one arrival square on each line; (2) different White pieces mate; (3) one piece has two mates
+and each phase excludes one (king flights widen the geometry but make the play rigid).
+Type 1, claude-changed-type1-qg8 (8/3BB3/5NQ1/4k1Pp/2pn4/2n1P3/8/7K): Sd4 guards f5+e6, Sc3 guards e4+d5; the queen on
+b1-h7 (g6) mates Qf5/Qe4, after 1.Qg8! on a2-g8 Qe6/Qd5. One protector per knight pair (Sf6: e4, d5; Bd7: f5, e6).
+Knights next to the king interpose on every rank/file check, so the threat is a diagonal check they cannot reach
+(Qb8+ through d6). Evolve on bare cores (8 jobs) found no key; the hand design, one cure per solve, did.
