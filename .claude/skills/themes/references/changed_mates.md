@@ -36,3 +36,7 @@ Type 1, claude-changed-type1-qg8 (8/3BB3/5NQ1/4k1Pp/2pn4/2n1P3/8/7K): Sd4 guards
 b1-h7 (g6) mates Qf5/Qe4, after 1.Qg8! on a2-g8 Qe6/Qd5. One protector per knight pair (Sf6: e4, d5; Bd7: f5, e6).
 Knights next to the king interpose on every rank/file check, so the threat is a diagonal check they cannot reach
 (Qb8+ through d6). Evolve on bare cores (8 jobs) found no key; the hand design, one cure per solve, did.
+E. Bourd on it: "realistically all knight moves are the same" - one change per knight, not six. Unique defences:
+claude-changed-type1-unique-qg8 (8/2pK2nQ/5N2/4k1P1/7p/2nBP3/2r1p3/8): the threat 2.Sg4 is made by the e4/d5 guard
+itself, so d5 hangs on the queen's new line and f5 on Bd3 alone; only Se6 cuts g8-d5, only Se4 cuts d3-f5. The f5/e6
+knight stands on g7 (not d4), shutting the queen's 7th rank (no twin 1.Qf7). Search: evolve UNIQUE=1.

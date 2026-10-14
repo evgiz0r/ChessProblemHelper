@@ -1165,3 +1165,8 @@ no motive layer to mirror.
   overcorrected (discounted a Zagoruiko the theme does not force): rewritten as "what the theme's wording logically entails", plus a
   line on real black correction. A judge's FEN copy error (two pawns dropped) was caught by re-solving before freezing.
   knowledge/experiments/blind_wcct8_A.md.
+- E. Bourd on claude-changed-type1-qg8: not 6 changes, all knight moves are the same; make each knight's defence unique.
+  claude-changed-type1-unique-qg8, 8/2pK2nQ/5N2/4k1P1/7p/2nBP3/2r1p3/8: set Se6 Qf5#, Se4 Qxe4#; 1.Qg8! (2.Sg4#) Se6 Qxe6#,
+  Se4 Qd5#; tries 1.Be4? Rd2+!, 1.Qxg7? Se4!, 1.Qxh4? Se6!. Hand mechanism (threat Sg4 by the d5/e4 guard itself, guards cut
+  by Se6/Se4) then cooks Qf7 (twin), Be4, Qe8+, Bc5/Bd8 (Be7), Qh7-h2; new evolve flag UNIQUE=1 (unique_defence.py, tested)
+  found the version with the black knight on g7; trim removed bPa2, bBa5 replaced by bPc7. Gate PASS, 6+7.

@@ -25,7 +25,8 @@ solver reports with that pattern and a single mate, distinct mates only; a HIT n
 for direct self-pins by the defender, daily No. 8). KEY=e7e8n (fixed-key mode, daily No. 9: underpromotion) needs no DEFS:
 it scores only the phase whose first move is KEY (uci), rewards it being the only key, and rewards NVAR (default 3)
 distinct single mates after its real defences, any defences; a HIT needs exactly that key, at most one threat, NVAR
-such mates and no flight. Put the promoting pawn and the black king in CORE. A line starting HIT is a position that meets the whole specification; check it with
+such mates and no flight. Put the promoting pawn and the black king in CORE. UNIQUE=1 makes every DEF the only defence of its unit (any other
+move of that unit must let the threat mate; E. Bourd: "realistically all knight moves are the same"). A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
 """
 import os, sys, random, time, json, chess
@@ -33,6 +34,7 @@ from chesscomp.core import Problem
 from chesscomp.analysis import analyse
 from chesscomp.critique import idle_key_piece, out_of_play_key
 from chesscomp.motives import mate_motives
+from chesscomp.compose.unique_defence import extra_defences
 
 JOB = int(sys.argv[1]) if len(sys.argv) > 1 else 0
 OUT = sys.argv[2] if len(sys.argv) > 2 else f'evolve_{JOB}.txt'
@@ -49,6 +51,7 @@ SELFBLOCK = int(os.environ.get('SELFBLOCK', '0'))      # self-block mode: N dist
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram flight is fatal, so no HIT has one
 KEYROLE = os.environ.get('KEYROLE', '1') == '1'     # E. Bourd: no HIT whose key piece is out of play or idle in the diagram
 RECIP = os.environ.get('RECIP', '0') == '1'          # set play and key swap the mates of the two DEFS
+UNIQUE = os.environ.get('UNIQUE', '0') == '1'        # each DEF is its unit's only defence (E. Bourd, 14 Oct 2026)
 TARGET = dict(x.split(':') for x in os.environ.get('TARGET', '').split(',') if ':' in x)   # exact mates, e.g. d6:Qe6#,d5:Ba4#
 KEY = os.environ.get('KEY', '')                      # fixed-key mode: the key's uci, e.g. e7e8n
 NVAR = int(os.environ.get('NVAR', '3'))
@@ -230,6 +233,8 @@ def score(b):
                 if sv and sv['continuations']:
                     sm = {c['san'] for c in sv['continuations']}
                     t += 12 if v['continuations'][0]['san'] not in sm else 3
+        if UNIQUE:                                   # other moves of a DEF's unit must let the threat mate
+            t -= 12 * sum(len(x) for x in extra_defences(ph, DEFS).values())
         real = [m for m in mates if m]
         if len(real) == len(DEFS) and len(set(real)) < len(real):
             t -= 30                                  # the same mate after two thematic defences is no theme
@@ -319,6 +324,7 @@ def score(b):
         if ok and TARGET:
             ok = all(vm[d]['continuations'][0]['san'] == TARGET[d] for d in TARGET if d in vm)
         ok = ok and corr_score(ph)[2] and sb_score(b, ph)[2] and not (NOFLIGHT and kmoves)
+        ok = ok and not (UNIQUE and any(extra_defences(ph, DEFS).values()))
         if ok and KEYROLE:
             km = chess.Move.from_uci(ph['first_move']['uci'])
             ok = not out_of_play_key(b, km) and (b.piece_type_at(km.from_square) == chess.KING or not idle_key_piece(b, km, phases))
