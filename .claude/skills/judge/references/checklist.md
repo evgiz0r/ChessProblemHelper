@@ -109,3 +109,6 @@ whether that content pays for them.
   itself: score the logic of the progression, not only the count of changed mates (WCCT 10 A, 1st place).
 - White units with no function after the key (only for tries or set play) cost real points at world level (GBR: "invariably led to
   a reduction"); two of them can sink an otherwise rich entry to the bottom third.
+- In a thematic tourney, effects the set theme produces by itself are the floor, not extra content (WCCT 9 A: in "threats A and B of
+  the tries return as mates", Dombrovskis and Hannelius follow automatically; the textbook entries were 20th-27th). Pay for what
+  goes beyond the scheme: more phases, different refutations for every try, changed mates, a new mechanism.

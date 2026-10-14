@@ -1144,3 +1144,7 @@ no motive layer to mirror.
   unmask_search: 1.Sd3 (from b2) unique with diagram flight Ke5; 1.Sg3 (from h1) with bPc7 leaves 1.Bf6+ as a cook.
 - His rebuilt version on the 5th rank, bourd-halfpin-ss-bd8, b3R1N1/Q1B5/5Ppp/R2nnkN1/6pP/1K1P2P1/1P6/4r3, 1.Bd8!
   Sf7 2.Qf2#, Se7 2.Qd7#: sound, gate PASS; my improvement searches found nothing better (see its note).
+* 14 Oct: WCCT 9 section A (booklet on wfcc.ch, the 27 entries printed with a diagram, three blind judges): Spearman 0.16 against the
+  total, while the five countries agree with each other at 0.08; the 1st place (Murashev, Slesarenko, Feoktistov) is our 1st. Lesson:
+  effects the theme produces by itself are the floor (textbook Hannelius + Dombrovskis placed 20th-27th). README conclusion 16:
+  full fields measure judging (0.63-0.73), top fields measure taste. knowledge/experiments/blind_wcct9_A.md.
