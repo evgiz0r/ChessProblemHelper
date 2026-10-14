@@ -1212,4 +1212,4 @@ no motive layer to mirror.
 - E. Bourd's bench sitting mv8ktz5s (14 Oct, 35 steps, 8 solves): from claude-changed-type1-files-pawn-rook he replaced the rook
   by bPd3 + bBc1 + wRg3: 1...d2 makes two errors (opens Rg3 to c3, closes Bc1 to e3), the queen's line chooses. Sound at step
   34; trimmed (-Pb6 -ph6 -pg7) to bourd-changed-type1-pawn-errors, 8+8, gate PASS. Recorded his principle: type 1 by two errors
-  in one defence, many combinations.
+  in one defence, many combinations. His first scheme (step 20): 1...Sb1-d2 unguards bPc3 + closes Bc1-e3, cooked by 1.Qc6.

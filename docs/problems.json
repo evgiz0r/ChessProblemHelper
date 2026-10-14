@@ -2142,7 +2142,7 @@
    "keys": [
     "Qe8"
    ],
-   "note": "His sound position at step 34 was 2Q2K2/1B1N2p1/1P1p3p/1p6/1n1k1P2/1Ppp2R1/2b2N2/2b5 (9+10); trim removes wPb6, bPh6, bPg7 (also -Pf4 -Pb6 -ph6 works): 8+8, gate PASS. His notes: 'instead of one piece defending 2 squares, another error happens: unguard + line close for example'; 'unguard/line-close + line-opening; there are many combinations of creating two errors at once'. Flaws: wSf2 gives only the set mates' guards (needed), wKf8 cook-stopper, random-move duals (1...Be3 2.Qxe3#/Qe4#)."
+   "note": "His sound position at step 34 was 2Q2K2/1B1N2p1/1P1p3p/1p6/1n1k1P2/1Ppp2R1/2b2N2/2b5 (9+10); trim removes wPb6, bPh6, bPg7 (also -Pf4 -Pb6 -ph6 works): 8+8, gate PASS. His notes: 'instead of one piece defending 2 squares, another error happens: unguard + line close for example'; 'unguard/line-close + line-opening; there are many combinations of creating two errors at once'. Flaws: wSf2 gives only the set mates' guards (needed), wKf8 cook-stopper, random-move duals (1...Be3 2.Qxe3#/Qe4#). His first scheme of the sitting (step 20, note 'unguard + line close'): 2Q2K2/1B1N1Pp1/1P1p3p/1p6/1n1k4/1Pp3R1/5N2/1nb5, 1.Qe8! d5 2.Qe5#, Sd2 2.Qe3# (set d5 Qc5#, Sd2 Qxc3#): 1...Sb1-d2 unguards bPc3 and closes bBc1's line to e3 (and guards e4); cooked only by 1.Qc6 (1...Sxc6 2.Rd3#). The second scheme replaced Sb1+Pc3 by Pd3+Bc2."
   }
  ]
 }
