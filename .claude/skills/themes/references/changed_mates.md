@@ -50,3 +50,7 @@ Cost here: six black cook-stoppers.
 Two orthogonal lines (claude-changed-type1-ranks, 8/3K4/2p1p3/7Q/N2k1PP1/8/1N3PB1/2r1r3): Qh5 -> Qh3, black rooks c1/e1;
 set Rcd1 Qc5#, Red1 Qe5#; 1.Qh3! (2.Qd3#, the line's third square) Rcd1 Qc3#, Red1 Qe3#: both rooks defend on d1. Guard the
 field with units that cannot mate there (knights, a bishop off the lines); by-play Rc3/Re3 (Qxc3, Qxe3) is inherent.
+Two errors in one defence (E. Bourd, bourd-changed-type1-pawn-errors, 2Q2K2/1B1N4/3p4/1p6/1n1k1P2/1Ppp2R1/2b2N2/2b5):
+the defender need not hold one square of each line. 1...d3-d2 opens wRg3 to c3 (set Qxc3#) and closes bBc1 to e3 (Qe3#
+after 1.Qe8!). Combine any two errors (unguard, black line closed, white line opened, self-block); the queen's line picks one.
+`python -m chesscomp.compose.effects POSTKEY MOVE` lists each move's errors.

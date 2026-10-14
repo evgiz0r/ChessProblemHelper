@@ -2126,6 +2126,23 @@
     "Qe8"
    ],
    "note": "Gate PASS, 8+6, trim: nothing removable. Built from the two-rook version (claude-changed-type1-ranks) after E. Bourd asked for less symmetry and different pieces: a pawn pair is horizontal (d6 guards c5 and e5), so the queen switches files. By-play 1...Re3 2.Qxe3#. Cook-stoppers: wKf8 closes the 8th rank (1.Qf8, 1.Qg8), wPf7 the f-file (1...Rf3+), bPh6 the h-file (1...Rh8+), bSb4 guards c6 (1.Qc6 with threats on d5/e4/b6/d6), bPb5 guards c4 (1.Qc4# in the diagram). Six hand solves from the sketch: 1...Ra3+ (Ka2), 1...d5 without set mate (Bb7's guard of e4 cut by d5: Sf2), 1.Qf8/1.Qg8, 1...Rf3+, 1.Qc6."
+  },
+  {
+   "id": "bourd-changed-type1-pawn-errors",
+   "fen": "2Q2K2/1B1N4/3p4/1p6/1n1k1P2/1Ppp2R1/2b2N2/2b5",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv8ktz5s, 14 Oct 2026), trimmed by Claude",
+   "source": "type-1 changed mates where one defence makes two different errors; built from claude-changed-type1-files-pawn-rook",
+   "themes": [
+    "Changed mates (set vs solution): the queen on the c-file in the set, on the e-file after 1.Qe8!",
+    "Set 1...d5 2.Qc5#, 1...d2 2.Qxc3#; 1.Qe8! (2.Qe4#) d5 2.Qe5#, d2 2.Qe3#",
+    "1...d3-d2 has three effects: it opens bBc2 to e4 (the defence: it guards the threat square), opens wRg3 to c3 (the set mate Qxc3 is protected) and closes bBc1's guard of e3 (the solution mate Qe3); each phase uses one error",
+    "1...d5 is the one-unit-two-squares type (bPd6 holds c5 and e5) and guards the threat square e4"
+   ],
+   "keys": [
+    "Qe8"
+   ],
+   "note": "His sound position at step 34 was 2Q2K2/1B1N2p1/1P1p3p/1p6/1n1k1P2/1Ppp2R1/2b2N2/2b5 (9+10); trim removes wPb6, bPh6, bPg7 (also -Pf4 -Pb6 -ph6 works): 8+8, gate PASS. His notes: 'instead of one piece defending 2 squares, another error happens: unguard + line close for example'; 'unguard/line-close + line-opening; there are many combinations of creating two errors at once'. Flaws: wSf2 gives only the set mates' guards (needed), wKf8 cook-stopper, random-move duals (1...Be3 2.Qxe3#/Qe4#)."
   }
  ]
 }
