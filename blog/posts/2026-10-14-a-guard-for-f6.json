@@ -66,6 +66,6 @@
   "searches": 13
  },
  "improvement": "evolve has a fixed-key mode: KEY=e7e8n (any uci) scores only the phase that starts with that move, rewards it being the only key and NVAR distinct single mates after its real defences, and a HIT needs exactly that key, at most one threat, NVAR mates and no flight. It is for themes defined by the key (underpromotion, a king key, a sacrifice), where the old modes needed named defences. Tested in tests/test_evolve.py on today's zugzwang (three mates: hit at NVAR=3, not at 4, not with KEY=e7e8q). The underpromotion reference has today's mechanism.",
- "mentor_issue": null,
+ "mentor_issue": 10,
  "feedback": []
 }
