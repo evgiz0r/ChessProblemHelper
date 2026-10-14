@@ -1192,3 +1192,10 @@ no motive layer to mirror.
 - E. Bourd on bourd-changed-diag-file-qc7: guard-only defences are pure single moves, not a flaw; he avoided defences on the
   thematic squares because he dislikes the queen recapturing there. Critique: guard/unguard flag now only without changed
   mates (note 'pure guard defences' otherwise), new minor 'mate captures defender'; judge checklist updated; tested.
+- E. Bourd: compose another type-1 problem, maybe with other pieces than knights defending. Geometry first
+  (chesscomp.compose.type1_geometry, tested): a rook and a bishop cannot share two queen lines; they need queen posts with
+  different reach. One-step pairs Qg3-g2 and Qc7-b7 failed on the set flight being mated (1.Sb3+ Ke4 2.Qd3#, 1.Sc2+ Kd5
+  2.Qc6#); Qa3-a8 works because Sb3 blocks the queen's rank. claude-changed-type1-rook-bishop,
+  1K6/7b/1N1B4/1p5r/3k1pp1/Q7/nPpNBP2/2r5: set Bg8 Qd3#, Rh3 Qc5#; 1.Qa8! (2.Sb3#) Bg8 Qe4#, Rh3 Qd5#; set Grimshaw f5
+  (Bf5 Qc5#, Rf5 Qd3#). Gate PASS, 8+9, heavy: six black cook-stoppers. evolve gained a type-1 mode (DEFSQ/TKEY/QMATE) and a
+  candidate-list mutation (CANDS); 40 search jobs on bare or kernel cores found nothing, the hand guard table did.

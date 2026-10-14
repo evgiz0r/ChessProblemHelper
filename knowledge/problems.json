@@ -2073,6 +2073,25 @@
     "Qc7"
    ],
    "note": "Gate PASS, 9+7, trim: nothing removable. Started as 8/7B/6Q1/7R/1n1k4/3p4/1P1B4/4r3 (threat 2.Bc3#, dual 1...Rc1 2.Qe5/Qf4 that Claude found inherent); he turned the board a quarter (steps 90-92) and rebuilt the white side around a new threat. 196 steps, 104 piece moves. Roles: bPc4/bPe4 self-blocks protected by Sd2 (mates Qxe4/Qxc4); Pe2 d3; Sd1 c3/e3; bPe7 guards d6 (no Qd6+); Pb6, Pd7 and Kd8 only stop queen checks. Defences that only guard e3 are pure single moves, not a flaw (E. Bourd), and they land away from the thematic squares on purpose: he disliked the queen recapturing the defender. Flaws: random-move duals; set duals after Be5/e5; cook-stoppers Pb6/Pd7; Kd8 idle."
+  },
+  {
+   "id": "claude-changed-type1-rook-bishop",
+   "fen": "1K6/7b/1N1B4/1p5r/3k1pp1/Q7/nPpNBP2/2r5",
+   "stip": "#2",
+   "author": "Claude (E. Bourd's type 1 with other defenders than knights, his request of 14 Oct 2026)",
+   "source": "changed mates type 1, the queen switching from the 3rd rank (a3) to the long diagonal (a8), a rook and a bishop as the defenders",
+   "themes": [
+    "Changed mates (set vs solution): the queen on a3 mates on the 3rd rank and the a3-f8 diagonal, after the key on the long diagonal",
+    "Set 1...Bg8 2.Qd3#, 1...Rh3 2.Qc5#; 1.Qa8! (2.Sb3#) Bg8 2.Qe4#, Rh3 2.Qd5#",
+    "Each defender frees one mating square of each phase by leaving its line: Bh7 holds d3 and e4 (b1-h7), Rh5 holds c5 and d5 (5th rank)",
+    "Unique defences away from the thematic squares: only Bg8 and Rh3 guard b3 off their lines (bPc2 and bPb5 stop Bc2 and Rb5)",
+    "The threat piece Sd2 guards e4 in the diagram; the queen on a8 takes e4 over (E. Bourd's 1.Qc7! engine). In the set 1.Sb3+ blocks the queen's own rank, so the flight e4 is not mated",
+    "Set Grimshaw on f5: 1...Bf5 2.Qc5#, 1...Rf5 2.Qd3# (each interference gives the other unit's departure mate)"
+   ],
+   "keys": [
+    "Qa8"
+   ],
+   "note": "Gate PASS, 8+9, trim: nothing removable; an economy search (evolve type-1 mode with a candidate list) found no version under 17 units (Kd8 works as well as Kb8). By-play 1...Rd5 2.Qxd5# (the rook interferes with the queen's guard of e4; mate captures the defender on a thematic square). Flaws: six black cook-stoppers (Sa2 stops 1.Qb4# and the set Qc3; Rc1 stops 1...Sc1 and c1=S; Pc2 stops Bc2; Pb5 stops Rb5; Pf4 stops 1.Qe3#; Pg4 stops 1.Sf3+ Ke4 2.Qd3#), wKb8 closes the 8th rank (Qh8 checks), random-move duals (1...Bf5 2.Qd5#/Sb3#), long key into the corner. Geometry: a rook and a bishop can never be the two defenders when the queen switches between two whole lines (chesscomp.compose.type1_geometry); only queen posts whose reach differs work: one-step Qc7-b7 and Qg3-g2 (both failed on the set flight being mated: 1.Sb3+ Ke4 2.Qd3#, 1.Sc2+ Kd5 2.Qc6#), and Qa3-a8, where Sb3 blocks the queen's rank. Not yet shown to E. Bourd when recorded."
   }
  ]
 }

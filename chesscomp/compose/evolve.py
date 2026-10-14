@@ -28,6 +28,13 @@ distinct single mates after its real defences, any defences; a HIT needs exactly
 such mates and no flight. Put the promoting pawn and the black king in CORE. UNIQUE=1 makes every DEF the only defence of its unit (any other
 move of that unit must let the threat mate; E. Bourd: "realistically all knight moves are the same"). A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
+Type-1 changed mates (E. Bourd, 14 Oct 2026: one White piece mates in both phases on another line): DEFSQ=f3,a3 names
+the thematic Black units by their diagram squares instead of DEFS, and TKEY=g5g6 the intended key (uci); the DEFS are
+read off the TKEY phase (each unit's defending move, the one with fewest mates first), so the threat is free.
+QMATE=1 wants every thematic mate, set and solution, given by the queen. Use with CHANGED=1 UNIQUE=1.
+CANDS=Pd2,Sb2,Bf8,Kd8,pe7,sb3 restricts mutation to those units on those squares (upper case White, lower case Black,
+S/s for knights): add one, remove one, or swap a unit for another candidate of the same colour. Use it when the guard
+analysis has already named the job of every square; the blind search wastes most solves on units with no role.
 """
 import os, sys, random, time, json, chess
 from chesscomp.core import Problem
@@ -55,7 +62,12 @@ UNIQUE = os.environ.get('UNIQUE', '0') == '1'        # each DEF is its unit's on
 TARGET = dict(x.split(':') for x in os.environ.get('TARGET', '').split(',') if ':' in x)   # exact mates, e.g. d6:Qe6#,d5:Ba4#
 KEY = os.environ.get('KEY', '')                      # fixed-key mode: the key's uci, e.g. e7e8n
 NVAR = int(os.environ.get('NVAR', '3'))
+DEFSQ = [x for x in os.environ.get('DEFSQ', '').split(',') if x]   # type-1: thematic units by square (needs TKEY)
+TKEY = os.environ.get('TKEY', '')                    # type-1: the intended key (uci)
+QMATE = os.environ.get('QMATE', '0') == '1'          # type-1: every thematic mate by the queen
 BUDGET = float(os.environ.get('BUDGET_S', '900'))
+CANDS = [(chess.parse_square(t[1:]), chess.Piece.from_symbol(t[0].replace('S', 'N').replace('s', 'n')))
+         for t in os.environ.get('CANDS', '').split(',') if t]
 MAXU = int(os.environ.get('MAX_UNITS', '16'))
 random.seed(int(os.environ.get('SEED_RNG', str(JOB * 7919 + int(time.time()) % 1000))))
 
@@ -186,8 +198,25 @@ def key_mode(r):
     return t, f"{ph['type']} {ph['first_move']['san']} thr={'/'.join(sorted(thr))} mates={'/'.join(sorted(mates))} duals={duals}", ok
 
 
+def dyn_defs(ph, setmap=None):
+    """Type-1 mode: each DEFSQ unit's defending move in phase ph: one whose set mate exists and changes first (not
+    a by-play like 1...Rd5 2.Qxd5#), then fewest mates; '-sq' when the unit has no defending move."""
+    setmap = setmap or {}
+    def changed(v):
+        sv = setmap.get(v['defence']['san'].rstrip('+#'))
+        return bool(sv and sv['continuations'] and v['continuations'][0]['san'] not in {c['san'] for c in sv['continuations']})
+    out = []
+    for sq in DEFSQ:
+        mine = [v for v in ph['variations'] if v['defence']['uci'][:2] == sq and not v['threat_repeat']
+                and v['continuations'] and not v.get('refutes')]
+        mine.sort(key=lambda v: (not changed(v), len(v['continuations'])))
+        out.append(mine[0]['defence']['san'].rstrip('+#') if mine else f'-{sq}')
+    return out
+
+
 def score(b):
     """(score, summary, hit)"""
+    global DEFS
     p = Problem.from_fen(b.fen(), '#2')
     try:
         r = analyse(p, max_refutations=4, include_tries=True, include_set=True, time_limit=8)
@@ -212,6 +241,16 @@ def score(b):
         cands = [ph for ph in phases if ph['type'] == 'key']
     setph = [ph for ph in phases if ph['type'] == 'set']
     setmap = var_map(setph[0]) if setph else {}
+    if DEFSQ:
+        tk = [ph for ph in phases if ph['type'] in ('key', 'try') and ph['first_move']['uci'] == TKEY]
+        DEFS = dyn_defs(tk[0], setmap) if tk else [f'-{sq}' for sq in DEFSQ]
+        if tk:
+            cands = tk
+            if tk[0]['type'] == 'try':
+                refs = tk[0]['refutations']
+                s -= 30 + 10 * (len(refs) if isinstance(refs, list) else refs)
+        else:
+            s -= 60
     best_theme, best_sum = -1e9, ''
     for ph in cands:
         t, mates = 0.0, []
@@ -233,6 +272,8 @@ def score(b):
                 if sv and sv['continuations']:
                     sm = {c['san'] for c in sv['continuations']}
                     t += 12 if v['continuations'][0]['san'] not in sm else 3
+                    if QMATE:
+                        t += 6 * (v['continuations'][0]['san'][0] == 'Q') + 6 * all(m[0] == 'Q' for m in sm) - 4 * (len(sm) - 1)
         if UNIQUE:                                   # other moves of a DEF's unit must let the threat mate
             t -= 12 * sum(len(x) for x in extra_defences(ph, DEFS).values())
         real = [m for m in mates if m]
@@ -321,6 +362,11 @@ def score(b):
             ok = bool(s0 and s1 and [c['san'] for c in s0['continuations']] == [k1] and [c['san'] for c in s1['continuations']] == [k0])
         if ok and CHANGED:
             ok = all(d in setmap and setmap[d]['continuations'] and vm[d]['continuations'][0]['san'] not in {c['san'] for c in setmap[d]['continuations']} for d in DEFS)
+        if ok and DEFSQ:
+            ok = ph['type'] == 'key' and ph['first_move']['uci'] == TKEY
+        if ok and QMATE:
+            ok = all(vm[d]['continuations'][0]['san'][0] == 'Q' and len(setmap[d]['continuations']) == 1
+                     and setmap[d]['continuations'][0]['san'][0] == 'Q' for d in DEFS)
         if ok and TARGET:
             ok = all(vm[d]['continuations'][0]['san'] == TARGET[d] for d in TARGET if d in vm)
         ok = ok and corr_score(ph)[2] and sb_score(b, ph)[2] and not (NOFLIGHT and kmoves)
@@ -339,7 +385,29 @@ def pattern_mates(r, got):
     return {v['continuations'][0]['san'] for v in ph[0]['variations']
             if v['defence']['san'] in got and len(v['continuations']) == 1 and not v['threat_repeat']}
 
+def mutate_cands(b):
+    """CANDS mode: add, remove or swap units from the candidate list only."""
+    b = b.copy()
+    placed = [(sq, pc) for sq, pc in CANDS if b.piece_at(sq) == pc]
+    free = [(sq, pc) for sq, pc in CANDS if not b.piece_at(sq)]
+    op = random.random()
+    if (op < 0.4 or not placed) and free:
+        sq, pc = random.choice(free); b.set_piece_at(sq, pc)
+    elif op < 0.7 and placed:
+        sq, pc = random.choice(placed); b.remove_piece_at(sq)
+    elif placed and free:
+        sq, pc = random.choice(placed)
+        same = [(s2, p2) for s2, p2 in free if p2.color == pc.color]
+        if same:
+            b.remove_piece_at(sq); s2, p2 = random.choice(same); b.set_piece_at(s2, p2)
+    for sq, pc in CORE_SQ.items():
+        b.set_piece_at(sq, pc)
+    return b
+
+
 def mutate(b):
+    if CANDS:
+        return mutate_cands(b)
     b = b.copy()
     free = [sq for sq in chess.SQUARES if b.piece_at(sq) and sq not in CORE_SQ]
     empty = [sq for sq in chess.SQUARES if not b.piece_at(sq)]

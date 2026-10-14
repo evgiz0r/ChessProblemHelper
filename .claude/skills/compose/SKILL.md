@@ -33,6 +33,9 @@ Read `references/construction.md` now (the order and the rules with their exampl
    in every named phase, fewest new black moves first. On his pawn-step scheme it ranks his bPe5 first.
    These are implementation aids, not ideas (E. Bourd: "add one unit that eliminates mates? That's not an
    idea, that's a specific implementation"). Decide the reason for every split first; use a tool to place it.
+3c-type1. **Changed mates of one queen (type 1)?** `python -m chesscomp.compose.type1_geometry d4 --types RB` lists the queen
+   post pairs, the defenders that free one mating square per phase, and the knight threats with each defender's off-line
+   defences and plugs. Then a guard table by hand; `evolve` with DEFSQ/TKEY/QMATE and CANDS only for the last layer.
 3c'. **Errors before any search** (E. Bourd, 8 Oct 2026: "this small thing cannot be just search"). For every
    defence, and every hole, run `python3 -m chesscomp.compose.effects POSTKEY [MOVE ...]`: it lists what the move's
    departure and arrival change (self-block, lines opened/closed with the squares, guards lost/gained, pins) and
