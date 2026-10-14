@@ -1965,6 +1965,24 @@
    ],
    "note": "Gate PASS, 7+6. Flaws: static key (mates set), e7 pawn attacked, one refutation for all tries, light.",
    "solution": "#2 (7+6)   FEN B2B4/2r1P3/2nppp2/N3k3/2P3Q1/8/8/2K5 w - - 0 1\nSet play:\n   1...Rxe7/Rd7/Rb7/Ra7 2.Sxc6#\n   1...Sxd8/Sb8/Sxe7/Sa7/Sxa5/Sd4/Sb4 2.Qe4#\n   1...d5 2.Bxc7#\n   unprovided: Rc8, f5\nTry: 1.Bxc7? (threat: 2.Sxc6#)\n   1...Sd8/Sb8/Sxe7/Sa7/Sxa5/Sd4/Sb4 2.Qe4#\n   but 1...f5!\nTry: 1.Bxc6? (threat: 2.Qe4#)\n   1...Rxc6 2.Sxc6#\n   1...d5 2.Bxc7#\n   (5 further moves allow the threat)\n   but 1...f5!\nTry: 1.e8=Q? (threat: 2.Qexe6#)\n   1...Re7 2.Sxc6#\n   1...Sxd8/Se7/Sd4 2.Qe4#\n   (12 further moves allow the threat)\n   but 1...f5!\nTry: 1.e8=R? (threat: 2.Rxe6#)\n   1...Re7 2.Sxc6#\n   1...Sxd8/Se7/Sd4 2.Qe4#\n   (12 further moves allow the threat)\n   but 1...f5!\nKey: 1.e8=S! (threat: 2.Bxf6#)\n   1...Rf7/Re7 2.Sxc6#\n   1...Sxd8/Se7 2.Qe4#\n   (13 further moves allow the threat)\nPatterns:\n   changed threat: Sxc6# / Qe4#   [try Bxc7 vs try Bxc6]\n   Pseudo Le Grand: Sxd8, Rxc6   [try Bxc7 vs try Bxc6]\n   changed threat: Sxc6# / Qexe6#   [try Bxc7 vs try e8=Q]\n   changed threat: Sxc6# / Rxe6#   [try Bxc7 vs try e8=R]\n   changed threat: Sxc6# / Bxf6#   [try Bxc7 vs key e8=S]\n   changed threat: Qe4# / Qexe6#   [try Bxc6 vs try e8=Q]\n   changed threat: Qe4# / Rxe6#   [try Bxc6 vs try e8=R]\n   changed threat: Qe4# / Bxf6#   [try Bxc6 vs key e8=S]\n   changed threat: Qexe6# / Rxe6#   [try e8=Q vs try e8=R]\n   changed threat: Qexe6# / Bxf6#   [try e8=Q vs key e8=S]\n   changed threat: Rxe6# / Bxf6#   [try e8=R vs key e8=S]\n(4612 nodes, 0.24s)\n"
+  },
+  {
+   "id": "bourd-halfpin-ss-bd8",
+   "fen": "b3R1N1/Q1B5/5Ppp/R2nnkN1/6pP/1K1P2P1/1P6/4r3",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv7emm2t, 14 Oct 2026)",
+   "source": "black half-pin of two knights on the 5th rank, dual avoidance by two black lines behind the knights",
+   "themes": [
+    "Black half-pin on the 5th rank: Ra5 x-rays Sd5 and Se5 to Kf5",
+    "Key 1.Bc7-d8! guards f6, which the threat knight leaves (threat 2.Sxh6#)",
+    "1...Sf7 2.Qf2# (the pinned d5 knight cannot block on f4); 1...Se7 2.Qd7# (the pinned e5 knight cannot take on d7)",
+    "Dual avoidance by black line opening: Se5 leaves and bRe1 reaches e6 (Qd7+? Re6); Sd5 leaves and bBa8 reaches f3 (Qf2+? Bf3)",
+    "Set 1...R~ 2.Rxe5#, 1...Re4 2.dxe4#; no flight"
+   ],
+   "keys": [
+    "Bd8"
+   ],
+   "note": "1.Bd8! (2.Sxh6#) Sf7 2.Qf2#, Se7 2.Qd7#. Tries 1.Rf8? and 1.Re6? (2.Sxh6#) hxg5!, 1.Se6? g5!, 1.Bxe5? Rxe5!. Gate PASS, 12+8. It grew from his d-file scheme 3B1b2/3R4/2Qn2B1/r2n4/3kP3/2pN2N1/2P2P2/1R4K1 (same doubled 'line behind'), turned and rebuilt through ~475 bench steps; findkey on intermediate post-keys gave only keys 1.Sh3-g5, 1.h3-h4, 1.Bb6/Bc7-d8. Units: Pb2 shields Kb3 from 1...Rb1+ (no king square replaces it, scanned); Pd3 gives the set mate 1...Re4 2.dxe4#; Sg5 guards e4/e6 (doubled after the key); Ph4 g5; Pg3 f4; Re8 e5/e6. Flaws: the key piece is attacked by Sd5 on every origin (c7, b6; e7 already guards f6); both tries fall to the same non-thematic hxg5; 20 units (8 pawns); Kb3 passive; random-move duals. Claude's improvement searches (trim, king scan, halfpin_tries, diagsearch) found nothing better: the only pure-pair candidate was a promotion key (wPd7, 1.d8=Q) with both tries refuted by Se7."
   }
  ]
 }

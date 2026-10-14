@@ -1137,3 +1137,10 @@ no motive layer to mirror.
   departure opens the 5th rank to bRa5); 1...S6f5 2.Bf6# (Rb4+? Bxb4!: the departure opens f8-b4 to bBf8); by-play
   1...Rc5 2.Qxc5#. No flight, no black check, 17 units. White to move also mates by Bf6+, Bb6+, Rb4+; keyfind (48
   retractions, 1070 one-unit patches) found no key.
+- Key hunt for his d-file scheme (3B1b2/3R4/2Qn2B1/r2n4/3kP3/2pN2N1/2P2P2/1R4K1): in the diagram Se2# is already mate,
+  and the stray checks Bf6+/Bb6+/Rb4+ lead by force to the same pin mates, so the key must add something every pin
+  mate needs; the only square that is not a diagram flight is d5 (occupied until a knight leaves), and the threat Se2
+  does not need it. diagsearch: 1.Qc2 unique on a lighter version but by taking the flight Kxd3 (diagram flight);
+  unmask_search: 1.Sd3 (from b2) unique with diagram flight Ke5; 1.Sg3 (from h1) with bPc7 leaves 1.Bf6+ as a cook.
+- His rebuilt version on the 5th rank, bourd-halfpin-ss-bd8, b3R1N1/Q1B5/5Ppp/R2nnkN1/6pP/1K1P2P1/1P6/4r3, 1.Bd8!
+  Sf7 2.Qf2#, Se7 2.Qd7#: sound, gate PASS; my improvement searches found nothing better (see its note).
