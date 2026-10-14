@@ -2020,6 +2020,42 @@
     "Qg8"
    ],
    "note": "1.Qg8! (2.Sg4#) Se6 2.Qxe6#, Se4 2.Qd5#. Set Se6 2.Qf5#, Se4 2.Qxe4#. Tries 1.Be4? Sf5 2.Qxf5#, Sxe4 2.Qxe4#, but Rd2+!; 1.Qxg7? (2.Qe7#) Sd5 2.Sg4#, but Se4!; 1.Qxh4? Se6!. Gate PASS, 6+7, trim: nothing removable. The guard of f5/e6 is the black knight on g7 (the other square that guards both), which also shuts the queen's 7th rank and g-file: no twin key 1.Qf7, no Qe7 checks. Units: Kd7 guards d6 and protects e6; Pe3 d4/f4; Pg5 f6 after Sf6 leaves; bPc7 stops 2.Qb8; bRc2 refutes 1.Be4 by Rd2+; bPe2 keeps the rook off g2 (Rg2 guards g4) and e2; bPh4 shuts the h-file (Qh2) and gives the tempo h3. Flaws: one mate per phase captures the defender on the cut square (Qxe4, Qxe6); random-move duals after non-defences; set duals after non-thematic moves (Se8/Sh5 Qe7/Qf5, Sd5 Qe4/Sg4); Rc2+Pe2 and Pc7 are cook-stoppers. Found by evolve UNIQUE=1 (new flag) from the hand mechanism (threat Sg4, guards cut by Se6/Se4); bPa2 trimmed, bBa5 replaced by bPc7 (gains the try 1.Qxg7?)."
+  },
+  {
+   "id": "bourd-changed-type1-bishop",
+   "fen": "1n5b/1bp3nQ/5N2/2P1k1P1/3N2pp/KP2Pp2/8/1B6",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv8f1ugp, 14 Oct 2026), wPb3 added by Claude",
+   "source": "type-1 changed mates with one defending knight replaced by a bishop (from claude-changed-type1-unique-qg8)",
+   "themes": [
+    "Changed mates (set vs solution): the queen changes line, b1-h7 (h7) in the set, a2-g8 (g8) after the key",
+    "Set 1...Se6 2.Qf5#, 1...Bc8 2.Qe4#; 1.Qg8! (2.Sg4) Se6 2.Qxe6#, Bc8 2.Qd5#",
+    "Unique defences: the knight g7 cuts the queen's guard of d5 (Se6); the bishop b7 leaves the long diagonal (freeing e4 and d5 at once) and from c8 guards g4 along c8-h3, through the other defender's squares e6/f5",
+    "bPf3 blocks the long diagonal so that 1...Bf3 (guarding g4 while keeping d5/e4) is impossible",
+    "Tries 1.Be4? (2.Sxg4#) Bc8! (the thematic defence), 1.Qxg7? Bxg7!"
+   ],
+   "keys": [
+    "Qg8"
+   ],
+   "note": "His bench position 1n5b/1bp3nQ/5N2/2P1k1P1/3N2pp/K3Pp2/8/1B6 had a second key 1.Ba2 (White's own bishop changing line b1-h7 -> a2-g8 covers d5); wKa2 instead gives 1...Bd5+ (unprovided check); wPb3 cuts a2-d5: sound, gate PASS, 9+9, nothing removable. Threat 2.Sxg4# (bPg4 protects f3 against 2.Sxf3 after Bc8). Roles: Sd4 protects e6/f5; Bb1 e4/f5; Pc5 d6; Pe3 d4/f4; Pg5 f6; bSb8 guards c6/d7 (Sc6+, Sd7+); bBh8 refutes 1.Qxg7; bPc7 stops 2.Qxb8; bPh4 shuts the h-file; wPb3 only stops 1.Ba2."
+  },
+  {
+   "id": "bourd-changed-type1-bishop-light",
+   "fen": "1n5b/1bp3nQ/5N2/2P1k1P1/3N3p/K2PPp2/8/8",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv8f1ugp, 14 Oct 2026), lightened by Claude",
+   "source": "type-1 changed mates with a bishop defender, light version of bourd-changed-type1-bishop",
+   "themes": [
+    "Changed mates (set vs solution): the queen changes line, b1-h7 (h7) in the set, a2-g8 (g8) after the key",
+    "Set 1...Se6 2.Qf5#, 1...Bc8 2.Qe4#; 1.Qg8! (2.Sg4) Se6 2.Qxe6#, Bc8 2.Qd5#",
+    "Unique defences: the knight g7 cuts the queen's guard of d5 (Se6); the bishop b7 leaves the long diagonal (freeing e4 and d5 at once) and from c8 guards g4 along c8-h3, through the other defender's squares e6/f5",
+    "bPf3 blocks the long diagonal so that 1...Bf3 (guarding g4 while keeping d5/e4) is impossible",
+    "Try 1.Qxg7? Bxg7!"
+   ],
+   "keys": [
+    "Qg8"
+   ],
+   "note": "Bb1+wPb3 replaced by wPd3 (covers e4, blocked by Sd4: no line-switching white bishop, so no 1.Ba2/1.Bc4 cook) and bPg4 removed (the threat becomes 2.Sg4#; with Pd3 2.Sxf3 is no longer a dual after Bc8): sound, gate PASS, 8+8, nothing removable. Lost: the try 1.Be4? Bc8!. Flaws: random-move duals after non-defences (1...Sd7 2.Sxd7/Sg4); set duals after Se8/Sh5; cook-stoppers bSb8, bBh8, bPc7, bPh4; wKa3 idle; 7 pawns."
   }
  ]
 }

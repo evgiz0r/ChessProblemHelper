@@ -1174,3 +1174,7 @@ no motive layer to mirror.
   b7/c6/g2/c8, rook on d4/f6) and hand designs (Bg2-h3 vs 2.Sd7#, Rb6 guarding e6): no sound version. Reason recorded in
   lessons (a bishop guards the pair along its own line and keeps an on-line defence against any knight check; a rook keeps one
   guard on every move). Near-miss 2b5/4Br1Q/5N2/4k1N1/8/2nBP3/7K/2R5: 1.Qxf7 (2.Sf3#) Bb7 Qe6#, Se4 Qd5#, but Bg4, Rxh7+.
+- E. Bourd's bench sitting mv8f1ugp (14 Oct, 60 steps, 18 solves): our unique-defence problem with Sc3 replaced by a black bishop
+  on b7; bPf3 blocks the bishop's diagonal so its only defence is Bc8 (guards g4 along c8-h3). His last position had a second key
+  1.Ba2; finished as bourd-changed-type1-bishop (wPb3, 9+9, try 1.Be4? Bc8!) and bourd-changed-type1-bishop-light
+  (1n5b/1bp3nQ/5N2/2P1k1P1/3N3p/K2PPp2/8/8, wPd3 for Bb1+Pb3, bPg4 removed, 8+8). Both gate PASS, nothing removable.
