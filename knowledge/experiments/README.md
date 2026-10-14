@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| WCCT 7 section A, the 27 printed (scanned book, wfcc.ch), theme given, out of sample | 27 | Spearman 0.22 against the place; countries with each other 0.00 (-0.62..0.63); 4th and 6th places ours exactly | blind_wcct7_A.md |
 | WCCT 8 section A, the 28 printed with a diagram (scored, wfcc.ch), theme given | 28 | Spearman 0.30 against the place; countries with each other 0.22 (-0.01..0.52); 2nd place our 2nd, 1st our 9th | blind_wcct8_A.md |
 | WCCT 9 section A, the 27 printed with a diagram (scored, wfcc.ch), theme given | 27 | Spearman 0.16, but the countries with each other only 0.08 (-0.50..0.37); 1st place our 1st | blind_wcct9_A.md |
 | WCCT 10 section A, all 93 entries (scored, wfcc.ch), theme given, calibrated checklist | 93 | Spearman 0.73 (countries with each other 0.62-0.78); 2nd-3rd place our 5th, 1st place our 14th | blind_wcct10_A.md |
@@ -82,3 +83,7 @@ Download them into /tmp/claude-0/sealed/ and do not open the score files before 
     "effects the theme produces are the floor" was applied to effects this theme does not force, and the 1st place fell to our 9th.
     Each line in the checklist needs its condition stated; it is now "what the theme's wording logically entails". Also: black
     correction must be a new error, not the avoidance of the random move's error.
+18. **Out of sample, the same picture** (WCCT 7 A, 27 entries, no checklist line from it): 0.22 against the place, while the five
+    countries agree with each other at 0.00. Three fields of the better problems (WCCT 7, 8, 9) all show near-zero agreement among
+    the real judges and our panel inside their range. Content lesson: a blend is judged by its weakest group, and in a single-phase
+    problem the key carries the most weight.
