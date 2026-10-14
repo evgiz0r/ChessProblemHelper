@@ -1154,3 +1154,8 @@ no motive layer to mirror.
   the set job; 1...Sxc7 is the one capture left without a set mate. The critique's 'attacked key piece' finding now
   names the set mates that need the key piece on its diagram square and the unprovided captures of it
   (chesscomp/critique.py, tests/test_critique_key_role.py).
+* 14 Oct: WCCT 8 section A (book on wfcc.ch, 28 entries decoded from a Type-3 chess font, three blind judges): Spearman 0.30 against
+  the place (countries with each other 0.22). 2nd place (Gvozdják) our 2nd, 1st (Kovačević) our 9th. The WCCT 9 checklist line
+  overcorrected (discounted a Zagoruiko the theme does not force): rewritten as "what the theme's wording logically entails", plus a
+  line on real black correction. A judge's FEN copy error (two pawns dropped) was caught by re-solving before freezing.
+  knowledge/experiments/blind_wcct8_A.md.

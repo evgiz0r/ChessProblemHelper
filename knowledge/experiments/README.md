@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| WCCT 8 section A, the 28 printed with a diagram (scored, wfcc.ch), theme given | 28 | Spearman 0.30 against the place; countries with each other 0.22 (-0.01..0.52); 2nd place our 2nd, 1st our 9th | blind_wcct8_A.md |
 | WCCT 9 section A, the 27 printed with a diagram (scored, wfcc.ch), theme given | 27 | Spearman 0.16, but the countries with each other only 0.08 (-0.50..0.37); 1st place our 1st | blind_wcct9_A.md |
 | WCCT 10 section A, all 93 entries (scored, wfcc.ch), theme given, calibrated checklist | 93 | Spearman 0.73 (countries with each other 0.62-0.78); 2nd-3rd place our 5th, 1st place our 14th | blind_wcct10_A.md |
 | WCCT 11 section A, all 86 entries (scored, wfcc.ch), theme given | 79 scored | Spearman 0.63 (the countries with each other 0.34-0.72); 1st place our 2nd | blind_wcct11_A.md |
@@ -77,3 +78,7 @@ Download them into /tmp/claude-0/sealed/ and do not open the score files before 
     countries 0.08 against each other, and the 1st place shared (ours 1st). With WCCI 8 (winners only, -0.32) and WCCT 10/11 (all
     entries, 0.73/0.63): on a full field we judge like a country; among the best, nobody agrees except on the outstanding problem.
     Content lesson: effects the set theme itself produces (Dombrovskis, Hannelius in a threats-return theme) are the floor, not extra.
+17. **A calibration can overcorrect** (WCCT 8 A, 28 entries): Spearman 0.30, inside the countries' range (mean 0.22). The WCCT 9 line
+    "effects the theme produces are the floor" was applied to effects this theme does not force, and the 1st place fell to our 9th.
+    Each line in the checklist needs its condition stated; it is now "what the theme's wording logically entails". Also: black
+    correction must be a new error, not the avoidance of the random move's error.
