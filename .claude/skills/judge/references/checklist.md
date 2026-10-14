@@ -19,7 +19,9 @@
 | White unit taking part in no mate (key piece forgivable; pin-anchor king thematic) | flaw | `passive piece`, `passive king`, `cook-stopper` |
 | Unit needed only for soundness | flaw | `cook-stopper` |
 | Obvious Black defence with no answer | flaw | `unprovided move` |
-| Defences that merely guard the threat square, mates that merely exploit the unguard | weak content | - |
+| Defences that merely guard the threat square, mates that merely exploit the unguard, in a single-phase problem | weak content | `guard/unguard play` |
+| The same with changed mates: pure single-purpose defences, the change is the content (E. Bourd, 14 Oct) | no flaw | `pure guard defences` (note) |
+| A defence landing on a mating square, the mate recapturing it (1...Se6 2.Qxe6#): prefer defences away from the thematic squares (E. Bourd, 14 Oct) | minor flaw | `mate captures defender` |
 | One mating move for all defences | thin | `thin play` |
 | Flight-giving key, long key, quiet key by a piece with a role | plus | `flight-giving key`, `long key` |
 | Unified defences / one dual-avoidance motive | plus | `dual avoidance` |

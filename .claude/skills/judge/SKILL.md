@@ -19,7 +19,8 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
    - Flaws: same refutation of several tries, passive units (the key piece is forgivable; a king that
      anchors a pin a defence creates is thematic; a passive king is acceptable, E. Bourd), a unit that serves
      only the set play (big flaw when completely redundant), cook-stoppers (acceptable: usual cost), unprovided moves, heavy pawn count,
-     thin play (one mating move), defences that merely guard the threat square.
+     thin play (one mating move), defences that merely guard the threat square in a single-phase problem (with changed
+     mates they are pure single moves, no flaw: E. Bourd 14 Oct 2026), a mate that recaptures the defender on its arrival square.
    - Pluses: flight-giving key, long key, unified defences, dual avoidance with one motive, tries whose
      refutation uses the theme, changed mates, economy, connected variations (the mating units hold a square for each other: anatomy LINKS,
      E. Bourd 11 Oct 2026). Unified play beats a mixed set (defences that all

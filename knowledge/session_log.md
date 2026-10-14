@@ -1189,3 +1189,6 @@ no motive layer to mirror.
 - He finished his diagonal->rank scheme himself while I reported it stuck (mv8ffb5c steps 19-196): same Rc1 duals at first,
   rotations, then a quarter turn and a new threat: bourd-changed-diag-file-qc7, B1RK3b/1Q1Pp3/1P6/7r/2pkpB2/8/3nP3/3N4,
   1.Qc7! (2.Be3#) Rh3 Qc5#, Sf1 Qxc4# (set Qd5#, Qxe4#). Gate PASS, 9+7. Lesson recorded on what I should have done.
+- E. Bourd on bourd-changed-diag-file-qc7: guard-only defences are pure single moves, not a flaw; he avoided defences on the
+  thematic squares because he dislikes the queen recapturing there. Critique: guard/unguard flag now only without changed
+  mates (note 'pure guard defences' otherwise), new minor 'mate captures defender'; judge checklist updated; tested.

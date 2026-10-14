@@ -408,18 +408,31 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         if chess.parse_square(v['defence']['uci'][2:4]) in flights_after - flights_before:
             continue
         add('minor', 'king flight variation', f"1...{v['defence']['san']} is a king flight (easy to see)")
+    # E. Bourd (14 Oct 2026): "I didn't like the recapture of the queen on the defense squares" - a defence that lands on a
+    # square where the mate then captures it (1...Se6 2.Qxe6#): he looks for defences away from the thematic squares
+    recap = [f"1...{v['defence']['san']} 2.{v['continuations'][0]['san']}" for v in real
+             if len(v['continuations']) == 1 and v['continuations'][0]['uci'][2:4] == v['defence']['uci'][2:4]]
+    if recap:
+        add('minor', 'mate captures defender', 'the mate captures the defender on its arrival square: ' + ', '.join(recap) +
+            ' (E. Bourd, 14 Oct 2026: defences away from the thematic squares are cleaner)')
     mates = {c['id'] for v in real for c in v['continuations']}
     if len(real) >= 3 and len(mates) >= 3:
         add('plus', 'varied play', f'{len(real)} defences, {len(mates)} different mates')
 
-    # --- content: guard/unguard-only play is uninteresting (E. Bourd s2)
+    # --- content: guard/unguard-only play is uninteresting (E. Bourd s2) - in a single-phase problem. When the mates change
+    # between phases the change is the content and a plain guard is a pure single-purpose defence (E. Bourd, 14 Oct 2026, on
+    # 1.Qc7! Rh3/Sf1 both guarding e3: "I don't think it's a flaw, it's somewhat pure single moves")
     try:
         from .motives import explain_key_phase
         ex = explain_key_phase(problem, res)
         if ex and all(all('guard' in w for w in e['why_defends']) and
                       all(all('unguard' in w or 'available anyway' in w for w in m['why_works']) for m in e['mates'])
                       for e in ex):
-            add('minor', 'guard/unguard play', 'defences only guard the threat square and mates only exploit the unguard (not interesting)')
+            if res.get('relations', {}).get('changed'):
+                add('note', 'pure guard defences', 'the defences only guard the threat square: pure single-purpose moves, '
+                    'the changed mates carry the content (E. Bourd, 14 Oct 2026)')
+            else:
+                add('minor', 'guard/unguard play', 'defences only guard the threat square and mates only exploit the unguard (not interesting)')
         kinds = {('self-block' if any('self-block' in w for m in e['mates'] for w in m['why_works']) else
                   'interference' if any('interference' in w for m in e['mates'] for w in m['why_works']) else
                   'line opening' if any('line opening' in w for m in e['mates'] for w in m['why_works']) else 'other') for e in ex}
