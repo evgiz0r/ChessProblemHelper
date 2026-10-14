@@ -1948,6 +1948,23 @@
     "Bh7"
    ],
    "note": "His diagram had wPe5 (8/3QKp2/2N5/4PB2/3p1kpP/3P1npP/5nb1/3N1R2): trim and one solve show it takes no part (key, both variations and all three tries stay without it), 17 units instead of 18. Process (238 steps, 77 solves): from Claude's sketch 8/8/3Q1R2/6K1/2p1k3/2P1np1B/4n3/4RNb1 he tried threats Sd2/Qe6/Qe5/Sf6/Re5 with the queen on d6, g7, f6, c6 (steps 3-175, loose positions with 4-13 other white solutions); at step 188 he put a bishop on e5 masking the queen c7's line to e5, and at once the bishop's other squares became tries refuted by the two knights (1.Bxf4? Sxg4!, 1.Bd4? Sxc1!); steps 192-236 cleaned the bishop's other squares (black pawns, Bf2 against Bxf4, king moves): sound 1.Bf6!, then 1.Bg7!, cooked by Bh8; step 237 shifted the board one file right, so the board edge removed the long diagonal and 1.Bh7! became the only key. Units: bPf7 refutes 1.Bg6 (cook-stopper); bPd4 stops 1...Sd4 (a second refutation of 1.Bxg4) and is taken in Qxd4#; bBg2 plugs the g-pawn (without it 1.Bh7 g2!); Sd1 guards e3 (the target of Sxd1); Sc6 e5; Ph4 g5; Ph3 g4; Pd3 e4; Ke7 takes no part (cook-stopper by position). Flaws: in the solution the separation still runs through flights (after Sxh4, Qxd4 leaves f3 (vacated) and g5 (h4 gone); after Sxd1, Qxg4 leaves e3 (guard taken)); many captures (both defences, both mates, the try Bxg4: pawn captures minor); the queen gives every mate; heavy (7 pawns)."
+  },
+  {
+   "id": "claude-underpromotion-S-threat",
+   "fen": "B2B4/2r1P3/2nppp2/N3k3/2P3Q1/8/8/2K5",
+   "stip": "#2",
+   "author": "Claude (daily No. 9, 14 Oct 2026)",
+   "source": "blog daily No. 9, underpromotion key with a threat",
+   "themes": [
+    "Underpromotion key 1.e8=S!: only a knight on e8 protects f6 for the unmasked Bd8 (threat 2.Bxf6#)",
+    "Tries 1.e8=Q? (2.Qexe6#) and 1.e8=R? (2.Rxe6#) refuted by 1...f5! (cuts Qg4-e6)",
+    "Two black pieces each defend twice: Rf7/Re7 2.Sxc6#, Sxd8/Se7 2.Qe4#"
+   ],
+   "keys": [
+    "e8=S"
+   ],
+   "note": "Gate PASS, 7+6. Flaws: static key (mates set), e7 pawn attacked, one refutation for all tries, light.",
+   "solution": "#2 (7+6)   FEN B2B4/2r1P3/2nppp2/N3k3/2P3Q1/8/8/2K5 w - - 0 1\nSet play:\n   1...Rxe7/Rd7/Rb7/Ra7 2.Sxc6#\n   1...Sxd8/Sb8/Sxe7/Sa7/Sxa5/Sd4/Sb4 2.Qe4#\n   1...d5 2.Bxc7#\n   unprovided: Rc8, f5\nTry: 1.Bxc7? (threat: 2.Sxc6#)\n   1...Sd8/Sb8/Sxe7/Sa7/Sxa5/Sd4/Sb4 2.Qe4#\n   but 1...f5!\nTry: 1.Bxc6? (threat: 2.Qe4#)\n   1...Rxc6 2.Sxc6#\n   1...d5 2.Bxc7#\n   (5 further moves allow the threat)\n   but 1...f5!\nTry: 1.e8=Q? (threat: 2.Qexe6#)\n   1...Re7 2.Sxc6#\n   1...Sxd8/Se7/Sd4 2.Qe4#\n   (12 further moves allow the threat)\n   but 1...f5!\nTry: 1.e8=R? (threat: 2.Rxe6#)\n   1...Re7 2.Sxc6#\n   1...Sxd8/Se7/Sd4 2.Qe4#\n   (12 further moves allow the threat)\n   but 1...f5!\nKey: 1.e8=S! (threat: 2.Bxf6#)\n   1...Rf7/Re7 2.Sxc6#\n   1...Sxd8/Se7 2.Qe4#\n   (13 further moves allow the threat)\nPatterns:\n   changed threat: Sxc6# / Qe4#   [try Bxc7 vs try Bxc6]\n   Pseudo Le Grand: Sxd8, Rxc6   [try Bxc7 vs try Bxc6]\n   changed threat: Sxc6# / Qexe6#   [try Bxc7 vs try e8=Q]\n   changed threat: Sxc6# / Rxe6#   [try Bxc7 vs try e8=R]\n   changed threat: Sxc6# / Bxf6#   [try Bxc7 vs key e8=S]\n   changed threat: Qe4# / Qexe6#   [try Bxc6 vs try e8=Q]\n   changed threat: Qe4# / Rxe6#   [try Bxc6 vs try e8=R]\n   changed threat: Qe4# / Bxf6#   [try Bxc6 vs key e8=S]\n   changed threat: Qexe6# / Rxe6#   [try e8=Q vs try e8=R]\n   changed threat: Qexe6# / Bxf6#   [try e8=Q vs key e8=S]\n   changed threat: Rxe6# / Bxf6#   [try e8=R vs key e8=S]\n(4612 nodes, 0.24s)\n"
   }
  ]
 }

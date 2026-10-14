@@ -22,7 +22,10 @@ variation whose defence is a functional self-block (the motive 'self-block on ..
 king and the mate would fail without it), with distinct single mates; a HIT needs N such mates and no dual after a
 self-block. PATTERN with no DEFS (e.g. PATTERN=Half-pin NPAT=3, daily No. 7) rewards every key-phase defence the
 solver reports with that pattern and a single mate, distinct mates only; a HIT needs NPAT of them (PATTERN=Self-pin
-for direct self-pins by the defender, daily No. 8). A line starting HIT is a position that meets the whole specification; check it with
+for direct self-pins by the defender, daily No. 8). KEY=e7e8n (fixed-key mode, daily No. 9: underpromotion) needs no DEFS:
+it scores only the phase whose first move is KEY (uci), rewards it being the only key, and rewards NVAR (default 3)
+distinct single mates after its real defences, any defences; a HIT needs exactly that key, at most one threat, NVAR
+such mates and no flight. Put the promoting pawn and the black king in CORE. A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
 """
 import os, sys, random, time, json, chess
@@ -47,6 +50,8 @@ NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram fl
 KEYROLE = os.environ.get('KEYROLE', '1') == '1'     # E. Bourd: no HIT whose key piece is out of play or idle in the diagram
 RECIP = os.environ.get('RECIP', '0') == '1'          # set play and key swap the mates of the two DEFS
 TARGET = dict(x.split(':') for x in os.environ.get('TARGET', '').split(',') if ':' in x)   # exact mates, e.g. d6:Qe6#,d5:Ba4#
+KEY = os.environ.get('KEY', '')                      # fixed-key mode: the key's uci, e.g. e7e8n
+NVAR = int(os.environ.get('NVAR', '3'))
 BUDGET = float(os.environ.get('BUDGET_S', '900'))
 MAXU = int(os.environ.get('MAX_UNITS', '16'))
 random.seed(int(os.environ.get('SEED_RNG', str(JOB * 7919 + int(time.time()) % 1000))))
@@ -148,6 +153,36 @@ def sb_score(b, ph):
     return 22 * len(mates) - 8 * duals, f"SB {'/'.join(sorted(mates))} duals={duals}", len(mates) >= SELFBLOCK and not duals
 
 
+def key_mode(r):
+    """(score, summary, hit-ok) of the phase whose first move is KEY (fixed-key mode)."""
+    phases = r.get('phases') or []
+    ph = next((p for p in phases if p['type'] in ('key', 'try') and p['first_move']['uci'] == KEY), None)
+    if not ph:
+        return -60.0, f'{KEY} not a try', False
+    keys = r.get('keys') or []
+    t = 0.0
+    if ph['type'] == 'key':
+        t += 60 - 25 * (len(keys) - 1)
+    else:
+        refs = ph['refutations']
+        t -= 10 * max(1, len(refs) if isinstance(refs, list) else refs) + 18 * len(keys)
+    mates, duals = set(), 0
+    for v in ph['variations']:
+        if v['threat_repeat'] or not v['continuations'] or v.get('refutes'):
+            continue
+        if len(v['continuations']) == 1:
+            mates.add(v['continuations'][0]['san'])
+        else:
+            duals += 1
+    thr = {c['san'] for c in (ph.get('threat') or [])}
+    mates -= thr
+    t += 18 * min(len(mates), NVAR + 1) - 4 * duals
+    nthr = len(ph.get('threat') or [])
+    t += 4 if nthr == 1 else -8 * max(0, nthr - 1)
+    ok = ph['type'] == 'key' and len(keys) == 1 and nthr <= 1 and len(mates) >= NVAR
+    return t, f"{ph['type']} {ph['first_move']['san']} thr={'/'.join(sorted(thr))} mates={'/'.join(sorted(mates))} duals={duals}", ok
+
+
 def score(b):
     """(score, summary, hit)"""
     p = Problem.from_fen(b.fen(), '#2')
@@ -158,6 +193,12 @@ def score(b):
     keys = r.get('keys') or []
     phases = r.get('phases') or []
     s = 0.0
+    if KEY:
+        t, summ, ok = key_mode(r)
+        n = b.copy(); n.push(chess.Move.null())
+        nfl = sum(1 for m in n.legal_moves if n.piece_type_at(m.from_square) == chess.KING)
+        t -= 15 * nfl + 1.5 * max(0, units(b) - 10)
+        return t, f'keys={keys} {summ}', ok and not (NOFLIGHT and nfl)
     if not keys:
         tries = [ph for ph in phases if ph['type'] == 'try' and not ph.get('check_key')]
         best = min((len(ph['refutations']) if isinstance(ph['refutations'], list) else ph['refutations'] for ph in tries), default=9)
