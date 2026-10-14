@@ -1170,3 +1170,7 @@ no motive layer to mirror.
   Se4 Qd5#; tries 1.Be4? Rd2+!, 1.Qxg7? Se4!, 1.Qxh4? Se6!. Hand mechanism (threat Sg4 by the d5/e4 guard itself, guards cut
   by Se6/Se4) then cooks Qf7 (twin), Be4, Qe8+, Bc5/Bd8 (Be7), Qh7-h2; new evolve flag UNIQUE=1 (unique_defence.py, tested)
   found the version with the black knight on g7; trim removed bPa2, bBa5 replaced by bPc7. Gate PASS, 6+7.
+* 14 Oct: WCCT 7 section A (scanned book, 27 entries read from the images, three blind judges, out of sample): Spearman 0.22 against
+  the place, countries with each other 0.00. 4th and 6th places ours exactly; 1st our 14th, 2nd (Stolev, "best key of the tourney")
+  our 12th. Checklist: a blend is judged by its weakest group; the key weighs most in a single-phase problem. README conclusion 18.
+  knowledge/experiments/blind_wcct7_A.md.

@@ -116,3 +116,7 @@ whether that content pays for them.
   goes beyond the scheme: more phases, different refutations for every try, changed mates, a new mechanism.
 - Black correction must be real: the corrected move commits a new error of its own. A move that merely avoids the random move's
   error (a Grimshaw piece staying on its line) is not full-value correction (WCCT 8 A, GB on the 26th place).
+- A blend of thematic groups is judged by its weakest group (WCCT 7 A, out of sample: the countries named the weakest system in
+  nearly every remark; our 1st, 2nd and 3rd placed 8th, 21st and 19th for a weak or artificially added group). An extra group that
+  repeats another's mechanism, or a pair of king captures, lowers the score. In a single-phase problem the key carries the most
+  weight: a sacrificial, unpinning, flight-giving key with changed mates took 2nd place over richer blends.
