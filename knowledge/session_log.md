@@ -1223,3 +1223,9 @@ no motive layer to mirror.
   keeping the first problem's threat 2.Qb8#: claude-changed-type1-qg8-two-errors, 8/3BB1nQ/1nP2N2/p3k1Pp/r7/p2KP1P1/8/8,
   set Sc4 Qe4#, Sf5 Qxf5#, Se8 Qf5#; 1.Qg8! Sb6~ Qd5#, Sf5/Se8 Qe6#, Se6 Qxe6#. 1...Sc4: arrival closes Ra4-e4 (set),
   departure unguards d5 (solution). Gate PASS, 9+7, nothing trimmable; heavy, six cook-stoppers.
+- E. Bourd: "lets try to duplicate the closing of line maybe, and just 1 thematic move. big jump yes". One defence closing two
+  Black lines: for K e5 and the queen h7 -> g8 the only crossing for e4/d5 is d4 (Ra4 and Rd1). Eight evolve runs found nothing;
+  by hand (threat knight Sd8 freed by the queen taking e6, threat 2.Sc6#, the d4 knight guarding c6):
+  claude-changed-type1-double-closing, K2N4/4B1nQ/3p1P2/p1p1k3/r7/1n2P1N1/6B1/3r4, set Sd4 Qe4#; 1.Qg8! Sd4 Qd5#, the only
+  defence. Gate PASS, 8+8. Fixes on the way: check-first cook 1.Sc6+ Ke6 2.Qg8# (free d7), 1.Qxg7# (Pf6), by-play dual
+  1...Se6 2.Qxe6#/Sf7# (Bb7 -> Bg2), rook paths to c6 (bPa5, bPc5, bPd6).

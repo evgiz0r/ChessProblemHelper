@@ -2160,6 +2160,23 @@
     "Qg8"
    ],
    "note": "Gate PASS, 9+7, trim: nothing removable. chesscomp.compose.errors: 1...Sc4 set Qe4# (arrival), solution Qd5# (departure); Sf5/Se8 both mates from the departure. Built by hand in ~25 solves after evolve runs on two-error cores found nothing. Roles: Sf6 e4/d5 and shuts g7-f6 (no 1.Qxg7#); Bd7 e6 and f5 through e6; Be7 d6/f6 and closes the e-file (no 1...Se8 2.Qxe8#, no set 2.Qe7#); Kd3 d4/e4, stops 1.Qd3 (2.Qd6#), gives 1...Rd4+ 2.exd4#; Pe3/Pg3 d4/f4. Cook-stoppers: wPc6 (c-file: 1...Rc4 would interpose on c7), bPa5+bPa3 (pen the rook: Ra8/Ra7 and rank-3 checks), bPh5 (guards g4 against 2.Sg4# duals, blocks the h-file), wPg5. Flaws: heavy (7 pawns); the g7 knight's errors are unchanged; mates capture on thematic squares (Se6 Qxe6, Sd5 Qxd5); 1...Se6 has no set mate (it cuts Bd7 from f5); set dual after the non-defence 1...Rf4. Dead ends on the way: a white line opened onto e6 as the solution error leaves e6 a flight in the diagram; with threat 2.Sd7# (Sf2-d3 cutting Bb1-f5) e6 could not be guarded (Kd7 on the threat square, Ke7 checked by Sf5, knights give second threats, a 6th-rank rook mates on e6 too); Ke7+Re8 gives 1.Kd7+; a white pawn on d3 gives 1.d4+; Bh5 guarding e8 gives 1...Bg6+."
+  },
+  {
+   "id": "claude-changed-type1-double-closing",
+   "fen": "K2N4/4B1nQ/3p1P2/p1p1k3/r7/1n2P1N1/6B1/3r4",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 14 Oct 2026), at E. Bourd's request",
+   "source": "type-1 changed mates with one thematic move whose two errors are both line closings (E. Bourd: \"lets try to duplicate the closing of line maybe, and just 1 thematic move\")",
+   "themes": [
+    "Changed mate (set vs solution): the queen on b1-h7 (h7) in the set, on a2-g8 after 1.Qg8! (2.Sc6#)",
+    "Set 1...Sb3-d4 2.Qe4#; 1.Qg8! Sd4 2.Qd5# (the only defence)",
+    "1...Sd4 closes bRa4's guard of e4 (the set mate) and bRd1's guard of d5 (the solution mate) on the one square where the two lines cross; it parries by guarding c6 and also guards f5/e6, so the near squares give no duals",
+    "Threat engine: wSd8 holds e6 in the set; the queen takes e6 over and frees the knight to check from c6"
+   ],
+   "keys": [
+    "Qg8"
+   ],
+   "note": "Gate PASS, 8+8, trim: nothing removable. chesscomp.compose.errors: 1...Sd4 set Qe4# (arrival), solution Qd5# (arrival). For K e5 and the queen lines b1-h7/a2-g8 the far mating squares e4/d5 have one crossing of Black guard lines, d4 (rank 4 and the d-file), so two rooks. Roles: Bg2 e4/d5 from the side c6 cannot cut (with Bb7 instead, 1...Se6 cut the queen from d5 and gave the dual 2.Qxe6#/Sf7#; gate FAIL); Sg3 e4/f5; Pe3 d4/f4; Pf6 blocks 1.Qxg7 (protected by Be7); bSg7 guards f5 (no 1.Qf5) and e6 (no second threat 2.Qe6). Every rook path to c6 is cut: bPa5 (Ra6), bPc5 (Rc4-c6), bPd6 (Rd6-c6). d7 stays free: 1.Sc6+? Ke6 2.Qg8+ Kd7. Flaws: heavy for one variation (three black pawns penning rooks), wKa8 passive, set duals after Se8/Sh5/Se6. Eight evolve runs (two-rook cores, then with the threat engine fixed) found nothing; built by hand in ~8 solves."
   }
  ]
 }
