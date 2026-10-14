@@ -6,6 +6,7 @@ award is read. Then come the placings and the judge's comments, problem by probl
 | tourney | field | agreement | file |
 |---|---|---|---|
 | Problemesis 2003 #2 (P. Robert) | 25 of 35 entries | 4 of his 5 placed (in our field) placed by us; we placed 13 of 25, he 8 of 35 | blind_tourney_problemesis2003.md |
+| **Prediction:** WCCT 12 section A, all 63 entries, judged before the award (frozen 14 Oct 2026) | 63 | to compare when the award appears | predict_wcct12_A.md |
 | WCCT 7 section A, the 27 printed (scanned book, wfcc.ch), theme given, out of sample | 27 | Spearman 0.22 against the place; countries with each other 0.00 (-0.62..0.63); 4th and 6th places ours exactly | blind_wcct7_A.md |
 | WCCT 8 section A, the 28 printed with a diagram (scored, wfcc.ch), theme given | 28 | Spearman 0.30 against the place; countries with each other 0.22 (-0.01..0.52); 2nd place our 2nd, 1st our 9th | blind_wcct8_A.md |
 | WCCT 9 section A, the 27 printed with a diagram (scored, wfcc.ch), theme given | 27 | Spearman 0.16, but the countries with each other only 0.08 (-0.50..0.37); 1st place our 1st | blind_wcct9_A.md |

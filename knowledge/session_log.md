@@ -1209,6 +1209,9 @@ no motive layer to mirror.
 - E. Bourd: less symmetric, different pieces. claude-changed-type1-files-pawn-rook, 2Q2K2/1B1N1P2/3p3p/1p6/1n1k4/1P5r/3P1N2/8:
   set d5 Qc5#, Rh4 Qc3#; 1.Qe8! (2.Qe4#) d5 Qe5#, Rh4 Qe3#. Pawn d6 (c5/e5) and rook h3 (c3/e3); six solves; gate PASS, 8+6;
   five cook-stoppers (Kf8, Pf7, bPh6, bSb4, bPb5).
+* 14 Oct: blind PREDICTION for WCCT 12 section A (63 entries, theme Double Mate Correction, six blind judges), frozen before the
+  award: knowledge/experiments/predict_wcct12_A.md + .json (entry codes, FENs, our scores). Our top: A44 (DMC as a full Zagoruiko 3x3, flight key), A47
+  (DMC + a Dombrovskis try on all three defences), A54, A42, A52, A46. Compare when the award is published (README row).
 - E. Bourd's bench sitting mv8ktz5s (14 Oct, 35 steps, 8 solves): from claude-changed-type1-files-pawn-rook he replaced the rook
   by bPd3 + bBc1 + wRg3: 1...d2 makes two errors (opens Rg3 to c3, closes Bc1 to e3), the queen's line chooses. Sound at step
   34; trimmed (-Pb6 -ph6 -pg7) to bourd-changed-type1-pawn-errors, 8+8, gate PASS. Recorded his principle: type 1 by two errors
