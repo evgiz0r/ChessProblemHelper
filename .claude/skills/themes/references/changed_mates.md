@@ -43,6 +43,10 @@ knight stands on g7 (not d4), shutting the queen's 7th rank (no twin 1.Qf7). Sea
 Type 1 with a rook and a bishop (claude-changed-type1-rook-bishop, 1K6/7b/1N1B4/1p5r/3k1pp1/Q7/nPpNBP2/2r5): impossible with
 two whole queen lines (`python -m chesscomp.compose.type1_geometry d4 --types RB` prints the post pairs that work, with
 knight threats, the off-line defences and the plugs). Qa3 -> Qa8: Bh7 holds d3/e4, Rh5 holds c5/d5; set Bg8 Qd3#, Rh3 Qc5#;
-1.Qa8! (2.Sb3#) Bg8 Qe4#, Rh3 Qd5#; set Grimshaw f5. Before anything else check the set escape: the threat piece's vacated
+1.Qa8! (2.Sb3#) Bg8 Qe4#, Rh3 Qd5#. Its set Grimshaw on f5 is fake (E. Bourd: never fulfilled after the key, so
+it does not exist). Before anything else check the set escape: the threat piece's vacated
 square must not be mated by the set queen (Qg3-g2 and Qc7-b7 died there); a threat square on the queen's own line cures it.
 Cost here: six black cook-stoppers.
+Two orthogonal lines (claude-changed-type1-ranks, 8/3K4/2p1p3/7Q/N2k1PP1/8/1N3PB1/2r1r3): Qh5 -> Qh3, black rooks c1/e1;
+set Rcd1 Qc5#, Red1 Qe5#; 1.Qh3! (2.Qd3#, the line's third square) Rcd1 Qc3#, Red1 Qe3#: both rooks defend on d1. Guard the
+field with units that cannot mate there (knights, a bishop off the lines); by-play Rc3/Re3 (Qxc3, Qxe3) is inherent.

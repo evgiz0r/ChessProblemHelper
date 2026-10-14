@@ -2085,13 +2085,30 @@
     "Set 1...Bg8 2.Qd3#, 1...Rh3 2.Qc5#; 1.Qa8! (2.Sb3#) Bg8 2.Qe4#, Rh3 2.Qd5#",
     "Each defender frees one mating square of each phase by leaving its line: Bh7 holds d3 and e4 (b1-h7), Rh5 holds c5 and d5 (5th rank)",
     "Unique defences away from the thematic squares: only Bg8 and Rh3 guard b3 off their lines (bPc2 and bPb5 stop Bc2 and Rb5)",
-    "The threat piece Sd2 guards e4 in the diagram; the queen on a8 takes e4 over (E. Bourd's 1.Qc7! engine). In the set 1.Sb3+ blocks the queen's own rank, so the flight e4 is not mated",
-    "Set Grimshaw on f5: 1...Bf5 2.Qc5#, 1...Rf5 2.Qd3# (each interference gives the other unit's departure mate)"
+    "The threat piece Sd2 guards e4 in the diagram; the queen on a8 takes e4 over (E. Bourd's 1.Qc7! engine). In the set 1.Sb3+ blocks the queen's own rank, so the flight e4 is not mated"
    ],
    "keys": [
     "Qa8"
    ],
-   "note": "Gate PASS, 8+9, trim: nothing removable; an economy search (evolve type-1 mode with a candidate list) found no version under 17 units (Kd8 works as well as Kb8). By-play 1...Rd5 2.Qxd5# (the rook interferes with the queen's guard of e4; mate captures the defender on a thematic square). Flaws: six black cook-stoppers (Sa2 stops 1.Qb4# and the set Qc3; Rc1 stops 1...Sc1 and c1=S; Pc2 stops Bc2; Pb5 stops Rb5; Pf4 stops 1.Qe3#; Pg4 stops 1.Sf3+ Ke4 2.Qd3#), wKb8 closes the 8th rank (Qh8 checks), random-move duals (1...Bf5 2.Qd5#/Sb3#), long key into the corner. Geometry: a rook and a bishop can never be the two defenders when the queen switches between two whole lines (chesscomp.compose.type1_geometry); only queen posts whose reach differs work: one-step Qc7-b7 and Qg3-g2 (both failed on the set flight being mated: 1.Sb3+ Ke4 2.Qd3#, 1.Sc2+ Kd5 2.Qc6#), and Qa3-a8, where Sb3 blocks the queen's rank. Not yet shown to E. Bourd when recorded."
+   "note": "Gate PASS, 8+9, trim: nothing removable; an economy search (evolve type-1 mode with a candidate list) found no version under 17 units (Kd8 works as well as Kb8). By-play 1...Rd5 2.Qxd5# (the rook interferes with the queen's guard of e4; mate captures the defender on a thematic square). Flaws: six black cook-stoppers (Sa2 stops 1.Qb4# and the set Qc3; Rc1 stops 1...Sc1 and c1=S; Pc2 stops Bc2; Pb5 stops Rb5; Pf4 stops 1.Qe3#; Pg4 stops 1.Sf3+ Ke4 2.Qd3#), wKb8 closes the 8th rank (Qh8 checks), random-move duals (1...Bf5 2.Qd5#/Sb3#), long key into the corner. Geometry: a rook and a bishop can never be the two defenders when the queen switches between two whole lines (chesscomp.compose.type1_geometry); only queen posts whose reach differs work: one-step Qc7-b7 and Qg3-g2 (both failed on the set flight being mated: 1.Sb3+ Ke4 2.Qd3#, 1.Sc2+ Kd5 2.Qc6#), and Qa3-a8, where Sb3 blocks the queen's rank. E. Bourd (14 Oct): \"a key to the corner is always nice, and here as it sets the changes it's cool\"; Rd5 \"a flaw but not too big\"; the set Grimshaw on f5 (Bf5 Qc5#, Rf5 Qd3#) is fake, never fulfilled after the key, so it is no content; \"nice construction\"."
+  },
+  {
+   "id": "claude-changed-type1-ranks",
+   "fen": "8/3K4/2p1p3/7Q/N2k1PP1/8/1N3PB1/2r1r3",
+   "stip": "#2",
+   "author": "Claude (E. Bourd's type 1 on two orthogonal lines, his request of 14 Oct 2026)",
+   "source": "changed mates type 1, the queen switching from the 5th rank (h5) to the 3rd (h3); two black rooks defend on the same square",
+   "themes": [
+    "Changed mates (set vs solution): the queen mates on the 5th rank in the set, on the 3rd after the key; each line holds three field squares",
+    "Set 1...Rcd1 2.Qc5#, 1...Red1 2.Qe5#; 1.Qh3! (2.Qd3#) Rcd1 2.Qc3#, Red1 2.Qe3#",
+    "Both rooks defend on d1 (guarding d3 through d2) and each unguards its own file: the queen's line decides the mate",
+    "The third square of each line: d5 is held by bPc6/bPe6 in the set, d3 is the threat after the key",
+    "Only the queen mates: c3/c4/d3/d5/e4 are covered by knights and a bishop that cannot mate there (Sa4, Sb2, Bg2), c5/e5/e3 by Sa4 and pawns"
+   ],
+   "keys": [
+    "Qh3"
+   ],
+   "note": "Gate PASS, 8+5, trim removed wPb4. By-play 1...Rc3 2.Qxc3#, 1...Re3 2.Qxe3#/fxe3# (the rook steps onto its own mating square on the threat line: inherent when the threat is the line's third square). Tries 1.Qh7?/1.Qg6? (2.Qd3#) Red1 2.Qe4# (a third mate of the e-rook) but Rcd1!, Re3!, Rc3!. Cook-stoppers: wPg4 (1.Qf3), wKd7 (d-file); bPc6/bPe6 close the files above (Rc7+, Re7+) and hold d5. Symmetric by design (two mirror rooks). Geometry: with the king in the centre only Qh5-h3 and Qc8-e8 reach exactly three squares of a line from each post, and the pairs are always straight (c5/c3, d5/d3, e5/e3)."
   }
  ]
 }

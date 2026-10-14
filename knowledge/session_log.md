@@ -1199,3 +1199,10 @@ no motive layer to mirror.
   1K6/7b/1N1B4/1p5r/3k1pp1/Q7/nPpNBP2/2r5: set Bg8 Qd3#, Rh3 Qc5#; 1.Qa8! (2.Sb3#) Bg8 Qe4#, Rh3 Qd5#; set Grimshaw f5
   (Bf5 Qc5#, Rf5 Qd3#). Gate PASS, 8+9, heavy: six black cook-stoppers. evolve gained a type-1 mode (DEFSQ/TKEY/QMATE) and a
   candidate-list mutation (CANDS); 40 search jobs on bare or kernel cores found nothing, the hand guard table did.
+- E. Bourd on claude-changed-type1-rook-bishop: the corner key is nice and sets the changes; Rd5 a small flaw; the set Grimshaw
+  is fake (never fulfilled after the key, so it does not exist); "nice construction". Recorded as a principle and a checklist line.
+- E. Bourd: type 1 on two orthogonal lines (three mating squares each), then his non-adjacent scheme (bench mv8ffb5c steps
+  197-208: Ke4, Qa5->a6, black Bg8 and Qg3 defending, Rh5, pawns marking d5/e5 and c4/d3). Orthogonal first:
+  claude-changed-type1-ranks, 8/3K4/2p1p3/7Q/N2k1PP1/8/1N3PB1/2r1r3: set Rcd1 Qc5#, Red1 Qe5#; 1.Qh3! (2.Qd3#) Rcd1 Qc3#,
+  Red1 Qe3#. Seven solves by hand: Pd2 blocked the d1 defence, Kh7 let Rh1 pin the queen, Bb4/Bh6/Sb4 mated on c3/c5/e3/c2,
+  Ba6's guard was cut by Rc4, 1.d7 promoted. Gate PASS, 8+5.
