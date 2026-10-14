@@ -1174,3 +1174,7 @@ no motive layer to mirror.
   the place, countries with each other 0.00. 4th and 6th places ours exactly; 1st our 14th, 2nd (Stolev, "best key of the tourney")
   our 12th. Checklist: a blend is judged by its weakest group; the key weighs most in a single-phase problem. README conclusion 18.
   knowledge/experiments/blind_wcct7_A.md.
+- E. Bourd: replace one defending knight of claude-changed-type1-unique-qg8 by another piece. 12 evolve UNIQUE runs (bishop on
+  b7/c6/g2/c8, rook on d4/f6) and hand designs (Bg2-h3 vs 2.Sd7#, Rb6 guarding e6): no sound version. Reason recorded in
+  lessons (a bishop guards the pair along its own line and keeps an on-line defence against any knight check; a rook keeps one
+  guard on every move). Near-miss 2b5/4Br1Q/5N2/4k1N1/8/2nBP3/7K/2R5: 1.Qxf7 (2.Sf3#) Bb7 Qe6#, Se4 Qd5#, but Bg4, Rxh7+.
