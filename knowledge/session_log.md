@@ -1144,6 +1144,10 @@ no motive layer to mirror.
   unmask_search: 1.Sd3 (from b2) unique with diagram flight Ke5; 1.Sg3 (from h1) with bPc7 leaves 1.Bf6+ as a cook.
 - His rebuilt version on the 5th rank, bourd-halfpin-ss-bd8, b3R1N1/Q1B5/5Ppp/R2nnkN1/6pP/1K1P2P1/1P6/4r3, 1.Bd8!
   Sf7 2.Qf2#, Se7 2.Qd7#: sound, gate PASS; my improvement searches found nothing better (see its note).
+* 14 Oct: WCCT 9 section A (booklet on wfcc.ch, the 27 entries printed with a diagram, three blind judges): Spearman 0.16 against the
+  total, while the five countries agree with each other at 0.08; the 1st place (Murashev, Slesarenko, Feoktistov) is our 1st. Lesson:
+  effects the theme produces by itself are the floor (textbook Hannelius + Dombrovskis placed 20th-27th). README conclusion 16:
+  full fields measure judging (0.63-0.73), top fields measure taste. knowledge/experiments/blind_wcct9_A.md.
 - E. Bourd on bourd-halfpin-ss-bd8: "key is slightly less flawed here, as we have a set mate, and the bishop seems to
   guard e5 as well". Verified: Bc7 is the only guard of e5 in the set 1...R~ 2.Rxe5# (seven rook moves) and doubles e5/f4
   in the set 1...Sf7 2.Qf2#; c7 is the only free square guarding e5 and reaching d8, so the attack by Sd5 follows from
@@ -1156,3 +1160,8 @@ no motive layer to mirror.
   found no key; the hand design needed the diagonal threat (knights interpose on lines), Sf6/Bd7 guarding each knight's
   pair, then one cure per solve: Pc4/bPc5 (Se4 refutation, Qd3), restructure to Qg6/Sf6/Be7/Bd7/Pg5 (cooks Qg6/Qh6),
   bPc4+bPd3 (Qd3), bPh5 (Sg4 dual); trim removed bPd3. Gate PASS, 7+5.
+* 14 Oct: WCCT 8 section A (book on wfcc.ch, 28 entries decoded from a Type-3 chess font, three blind judges): Spearman 0.30 against
+  the place (countries with each other 0.22). 2nd place (Gvozdják) our 2nd, 1st (Kovačević) our 9th. The WCCT 9 checklist line
+  overcorrected (discounted a Zagoruiko the theme does not force): rewritten as "what the theme's wording logically entails", plus a
+  line on real black correction. A judge's FEN copy error (two pawns dropped) was caught by re-solving before freezing.
+  knowledge/experiments/blind_wcct8_A.md.

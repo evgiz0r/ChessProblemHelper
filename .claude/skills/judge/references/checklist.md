@@ -109,3 +109,10 @@ whether that content pays for them.
   itself: score the logic of the progression, not only the count of changed mates (WCCT 10 A, 1st place).
 - White units with no function after the key (only for tries or set play) cost real points at world level (GBR: "invariably led to
   a reduction"); two of them can sink an otherwise rich entry to the bottom third.
+- In a thematic tourney, effects the set theme's WORDING logically entails are the floor, not extra content (WCCT 9 A: in "threats A
+  and B of the tries return as mates", Dombrovskis and Hannelius follow automatically; the textbook entries were 20th-27th). Check
+  the definition before discounting: an effect the theme does not force is content (WCCT 8 A, black correction + change of function:
+  the 1st place was a Zagoruiko + Dombrovskis + Hannelius blend that our judge discounted as "coming with the theme"). Pay for what
+  goes beyond the scheme: more phases, different refutations for every try, changed mates, a new mechanism.
+- Black correction must be real: the corrected move commits a new error of its own. A move that merely avoids the random move's
+  error (a Grimshaw piece staying on its line) is not full-value correction (WCCT 8 A, GB on the 26th place).
