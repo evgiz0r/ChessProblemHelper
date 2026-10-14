@@ -1,0 +1,443 @@
+[
+ {
+  "our_rank": 1,
+  "label": "P03",
+  "entry_code": "A44",
+  "our_score": 8.5,
+  "fen": "2N1B2b/pn2PQ2/2brP1p1/1p1k4/7R/1P1N1p2/8/2R4K"
+ },
+ {
+  "our_rank": 2,
+  "label": "P19",
+  "entry_code": "A47",
+  "our_score": 8.5,
+  "fen": "4N3/3p4/4pN2/1p1Pk2p/r1R4P/1pP1Pp1Q/2b4b/4R2K"
+ },
+ {
+  "our_rank": 3,
+  "label": "P40",
+  "entry_code": "A54",
+  "our_score": 8.0,
+  "fen": "8/1BBnpN1b/qppRP3/R1bpP3/2pNkp1K/2Q3P1/3PP3/8"
+ },
+ {
+  "our_rank": 4,
+  "label": "P51",
+  "entry_code": "A42",
+  "our_score": 8.0,
+  "fen": "3N3B/2R1p3/n2Pp1K1/3k4/3pN3/2bQ4/8/4rB2"
+ },
+ {
+  "our_rank": 5,
+  "label": "P05",
+  "entry_code": "A52",
+  "our_score": 8.0,
+  "fen": "2nr4/1p1Q1b1B/3P1P1n/2BPkrPN/7R/2PR2PK/8/b7"
+ },
+ {
+  "our_rank": 6,
+  "label": "P18",
+  "entry_code": "A46",
+  "our_score": 8.0,
+  "fen": "7B/3n4/N2qP2R/3p2RN/4kpQp/6PP/3P4/2n2B1K"
+ },
+ {
+  "our_rank": 7,
+  "label": "P26",
+  "entry_code": "A49",
+  "our_score": 7.5,
+  "fen": "3rb3/2R5/Np2Q3/1p3p2/1p1k1p2/1R1P2PK/2PqpP1n/4N3"
+ },
+ {
+  "our_rank": 8,
+  "label": "P56",
+  "entry_code": "A25",
+  "our_score": 7.5,
+  "fen": "3KQ1n1/ppP1p3/q1R2Br1/3p1Np1/1R1Pk1B1/b3P2N/2Ppr1p1/1b4n1"
+ },
+ {
+  "our_rank": 9,
+  "label": "P57",
+  "entry_code": "A10",
+  "our_score": 7.5,
+  "fen": "8/KBRNPbpq/p2N4/8/Qb1knRP1/6B1/2P2P1p/1rn2r2"
+ },
+ {
+  "our_rank": 10,
+  "label": "P25",
+  "entry_code": "A02",
+  "our_score": 7.0,
+  "fen": "8/8/1n1Q1P1n/r1pP2N1/3kN3/p4p1R/K1R1P1B1/2B2r2"
+ },
+ {
+  "our_rank": 11,
+  "label": "P34",
+  "entry_code": "A05",
+  "our_score": 7.0,
+  "fen": "8/8/K1NN4/1p1R4/b1B1p3/2k1p3/Q3P3/7q"
+ },
+ {
+  "our_rank": 12,
+  "label": "P47",
+  "entry_code": "A15",
+  "our_score": 7.0,
+  "fen": "4r3/2B2R2/1pB1p2N/2Pp4/2P1k1r1/3Rp2p/2P2n2/1K3Q2"
+ },
+ {
+  "our_rank": 13,
+  "label": "P10",
+  "entry_code": "A41",
+  "our_score": 7.0,
+  "fen": "4N3/4np2/5R2/3pk1p1/1N2PnK1/2Pp1P2/4P3/B3R3"
+ },
+ {
+  "our_rank": 14,
+  "label": "P17",
+  "entry_code": "A20",
+  "our_score": 7.0,
+  "fen": "2K5/1p6/n2B2N1/pB2R3/3kp2p/1Rp4r/4pp2/1N2Qb1n"
+ },
+ {
+  "our_rank": 15,
+  "label": "P33",
+  "entry_code": "A33",
+  "our_score": 7.0,
+  "fen": "4rb2/3N1pp1/4P1p1/1Ppk4/R3NpQ1/1Pp5/2B2R2/5KB1"
+ },
+ {
+  "our_rank": 16,
+  "label": "P35",
+  "entry_code": "A13",
+  "our_score": 7.0,
+  "fen": "K2BNN2/3Rp3/1p6/4k3/2n2R2/p3P3/2p3r1/qbQ1n2B"
+ },
+ {
+  "our_rank": 17,
+  "label": "P49",
+  "entry_code": "A45",
+  "our_score": 7.0,
+  "fen": "3r4/3Q4/1N2pn2/1Nn3Rp/4k3/q1b1p3/1B2B3/5R1K"
+ },
+ {
+  "our_rank": 18,
+  "label": "P60",
+  "entry_code": "A34",
+  "our_score": 7.0,
+  "fen": "3N1KB1/1PpRp3/3P4/PpkppR2/1p3QNr/7r/1B5b/q6b"
+ },
+ {
+  "our_rank": 19,
+  "label": "P11",
+  "entry_code": "A21",
+  "our_score": 7.0,
+  "fen": "1nKn4/2p5/2pb3Q/2Pkp2N/8/1P3P2/b7/B1R2B2"
+ },
+ {
+  "our_rank": 20,
+  "label": "P27",
+  "entry_code": "A03",
+  "our_score": 6.5,
+  "fen": "8/5NNp/4pp2/2n3pQ/5kr1/3pR1p1/K7/6B1"
+ },
+ {
+  "our_rank": 21,
+  "label": "P62",
+  "entry_code": "A18",
+  "our_score": 6.5,
+  "fen": "q1r5/bN3R2/rQb3p1/2Rpk2n/p3P3/3Pp2B/1PN2B2/2K5"
+ },
+ {
+  "our_rank": 22,
+  "label": "P07",
+  "entry_code": "A16",
+  "our_score": 6.5,
+  "fen": "7q/1PRPB1p1/1K4P1/3P1QR1/p2k1pN1/rb4p1/p1pPn3/2r3n1"
+ },
+ {
+  "our_rank": 23,
+  "label": "P32",
+  "entry_code": "A38",
+  "our_score": 6.5,
+  "fen": "3b1r2/3N4/3R1p2/2p5/3pk1Bp/3np2N/2Q1R1n1/1bB3K1"
+ },
+ {
+  "our_rank": 24,
+  "label": "P13",
+  "entry_code": "A51",
+  "our_score": 6.0,
+  "fen": "4r1n1/7N/1p2p1pb/p4pQ1/2Bpk2n/rR1N3K/3PP3/2q1B3"
+ },
+ {
+  "our_rank": 25,
+  "label": "P38",
+  "entry_code": "A22",
+  "our_score": 6.0,
+  "fen": "8/3K4/4PQ2/1n1RPN2/2PBkpp1/6pR/4B3/8"
+ },
+ {
+  "our_rank": 26,
+  "label": "P53",
+  "entry_code": "A63",
+  "our_score": 6.0,
+  "fen": "2BR3K/2R2p1Q/r2P3p/N2k3r/n1p2p2/B1PNP3/1n2P2b/7q"
+ },
+ {
+  "our_rank": 27,
+  "label": "P15",
+  "entry_code": "A09",
+  "our_score": 6.0,
+  "fen": "2r3b1/p4R2/KP3p2/b1R3Pp/pp5Q/r3kPn1/1N1Np1q1/4B3"
+ },
+ {
+  "our_rank": 28,
+  "label": "P42",
+  "entry_code": "A57",
+  "our_score": 6.0,
+  "fen": "1B6/2r1N2B/4R2K/3ppP1p/1nn2k2/2Q1RN1P/4PqbP/8"
+ },
+ {
+  "our_rank": 29,
+  "label": "P52",
+  "entry_code": "A62",
+  "our_score": 6.0,
+  "fen": "2R2B1K/6N1/2P5/Rp1k2N1/P2P4/p6p/1q1Q4/5B1b"
+ },
+ {
+  "our_rank": 30,
+  "label": "P01",
+  "entry_code": "A58",
+  "our_score": 6.0,
+  "fen": "2Q5/5PBK/2pp4/1n1kn2R/R3N1p1/6N1/2P2Pr1/3r3B"
+ },
+ {
+  "our_rank": 31,
+  "label": "P21",
+  "entry_code": "A28",
+  "our_score": 6.0,
+  "fen": "8/4N3/3ppp1B/6n1/5k1p/2PP2NP/3P4/3bK2Q"
+ },
+ {
+  "our_rank": 32,
+  "label": "P31",
+  "entry_code": "A32",
+  "our_score": 6.0,
+  "fen": "2qR4/1pQ5/4rn2/3pP1N1/3k1P2/1BR3p1/bP1r1pN1/4bK2"
+ },
+ {
+  "our_rank": 33,
+  "label": "P02",
+  "entry_code": "A56",
+  "our_score": 6.0,
+  "fen": "Q3b3/3N2N1/4P1nK/3nP2B/2r1krRp/1R1pP1b1/3PPB2/8"
+ },
+ {
+  "our_rank": 34,
+  "label": "P30",
+  "entry_code": "A35",
+  "our_score": 6.0,
+  "fen": "2B2K2/8/1P1NPp2/N1Pkp1R1/6qR/n2p4/8/b1Q3B1"
+ },
+ {
+  "our_rank": 35,
+  "label": "P58",
+  "entry_code": "A23",
+  "our_score": 5.5,
+  "fen": "8/3K2Pp/4B1pQ/2RPk1pP/2RpN2b/6nN/4P2B/8"
+ },
+ {
+  "our_rank": 36,
+  "label": "P63",
+  "entry_code": "A31",
+  "our_score": 5.5,
+  "fen": "4K3/nPN3pp/3kN3/b1R2p2/1P3n1r/6Q1/8/7B"
+ },
+ {
+  "our_rank": 37,
+  "label": "P20",
+  "entry_code": "A37",
+  "our_score": 5.5,
+  "fen": "8/1p2p1P1/1p2Nbp1/1Q2P1p1/4k1P1/7P/3P2p1/4N1K1"
+ },
+ {
+  "our_rank": 38,
+  "label": "P37",
+  "entry_code": "A14",
+  "our_score": 5.0,
+  "fen": "K5N1/4p1R1/7p/3B1kp1/2N2pn1/b2n1R1Q/7B/8"
+ },
+ {
+  "our_rank": 39,
+  "label": "P46",
+  "entry_code": "A36",
+  "our_score": 5.0,
+  "fen": "n1B5/1rBb2q1/Npk1pQ2/PNp5/P3P3/3R4/1R1r2p1/b4nK1"
+ },
+ {
+  "our_rank": 40,
+  "label": "P44",
+  "entry_code": "A59",
+  "our_score": 5.0,
+  "fen": "8/1Q2N2K/7B/1N1rp3/1p2knR1/7p/b1PPBpn1/5r1q"
+ },
+ {
+  "our_rank": 41,
+  "label": "P48",
+  "entry_code": "A39",
+  "our_score": 5.0,
+  "fen": "2r5/1PPpBn2/2Npk1P1/2QNp3/2P5/5PK1/8/1B6"
+ },
+ {
+  "our_rank": 42,
+  "label": "P08",
+  "entry_code": "A48",
+  "our_score": 5.0,
+  "fen": "1r6/3P1P2/R1N1Qp2/1Bk5/P5rR/1P2PbPp/1Np2n1K/1q2n3"
+ },
+ {
+  "our_rank": 43,
+  "label": "P24",
+  "entry_code": "A53",
+  "our_score": 5.0,
+  "fen": "1B4B1/8/1pp5/nPkn1R2/R2N1p1K/5N2/1P1pPrp1/2r3Q1"
+ },
+ {
+  "our_rank": 44,
+  "label": "P50",
+  "entry_code": "A30",
+  "our_score": 5.0,
+  "fen": "1R1QK3/B1p2N2/p2bP3/2pk4/1pR2p2/1P1P3B/N7/8"
+ },
+ {
+  "our_rank": 45,
+  "label": "P22",
+  "entry_code": "A08",
+  "our_score": 4.5,
+  "fen": "8/nrp4q/Kn4Q1/NPk1P3/Rp5p/1pPpRB2/2b2N2/4r3"
+ },
+ {
+  "our_rank": 46,
+  "label": "P36",
+  "entry_code": "A04",
+  "our_score": 4.0,
+  "fen": "3R3B/4p3/p2pB1N1/K4Qp1/pP2r2q/r2kPPP1/1R3P2/7b"
+ },
+ {
+  "our_rank": 47,
+  "label": "P23",
+  "entry_code": "A17",
+  "our_score": 4.0,
+  "fen": "5n2/1K1pq3/3p4/3k1B2/8/2Q1p3/b1Rr1PrB/3N4"
+ },
+ {
+  "our_rank": 48,
+  "label": "P39",
+  "entry_code": "A11",
+  "our_score": 4.0,
+  "fen": "K4N2/4BQN1/1Pkp4/Pp2q2R/1P6/8/8/3r4"
+ },
+ {
+  "our_rank": 49,
+  "label": "P45",
+  "entry_code": "A55",
+  "our_score": 4.0,
+  "fen": "3r4/5N1p/2Rp1P1K/5pQ1/3kpN2/B1p2b2/nPBb1P2/1q1Rn3"
+ },
+ {
+  "our_rank": 50,
+  "label": "P41",
+  "entry_code": "A29",
+  "our_score": 4.0,
+  "fen": "B6b/p1B1n3/3N4/rPkp3Q/2r5/P1RP4/1nNPK3/8"
+ },
+ {
+  "our_rank": 51,
+  "label": "P59",
+  "entry_code": "A61",
+  "our_score": 3.5,
+  "fen": "b7/1R5K/6N1/5Bkp/6r1/2B3NP/5rQn/8"
+ },
+ {
+  "our_rank": 52,
+  "label": "P28",
+  "entry_code": "A27",
+  "our_score": 3.5,
+  "fen": "8/4p3/P2pB3/3P2B1/2ppkNN1/4p2R/4p3/Q3K3"
+ },
+ {
+  "our_rank": 53,
+  "label": "P61",
+  "entry_code": "A43",
+  "our_score": 3.0,
+  "fen": "4R1KQ/6N1/4p3/6pP/4pkp1/4p3/4B2R/4B3"
+ },
+ {
+  "our_rank": 54,
+  "label": "P14",
+  "entry_code": "A06",
+  "our_score": 3.0,
+  "fen": "4r3/p1p1N3/K4b2/pR1p4/2kP4/P1p4B/2P5/r1N5"
+ },
+ {
+  "our_rank": 55,
+  "label": "P16",
+  "entry_code": "A60",
+  "our_score": 3.0,
+  "fen": "8/5p1K/r2Pp3/1pR2B1p/1RNP1kPQ/4nPpb/1B1PP1P1/2b5"
+ },
+ {
+  "our_rank": 56,
+  "label": "P54",
+  "entry_code": "A24",
+  "our_score": 3.0,
+  "fen": "3K1B2/1B3p2/8/pkP4p/ppNp3r/R3P2p/2NP4/2RQ3r"
+ },
+ {
+  "our_rank": 57,
+  "label": "P43",
+  "entry_code": "A40",
+  "our_score": 3.0,
+  "fen": "4R1B1/2p1Npp1/8/3Pprp1/3BkpK1/2R2N2/5b2/rb1Q3n"
+ },
+ {
+  "our_rank": 58,
+  "label": "P55",
+  "entry_code": "A01",
+  "our_score": 3.0,
+  "fen": "5B2/3p2N1/3P2Q1/1Bpkp3/3P4/2P1b1P1/1N3n2/K7"
+ },
+ {
+  "our_rank": 59,
+  "label": "P04",
+  "entry_code": "A07",
+  "our_score": 2.0,
+  "fen": "3R4/pBN2p2/K2b4/4p1Nr/pPkPp3/Q4n2/2p2n2/2rb2B1"
+ },
+ {
+  "our_rank": 60,
+  "label": "P06",
+  "entry_code": "A50",
+  "our_score": 2.0,
+  "fen": "8/3pR3/3pr3/3Np3/2B1kpQ1/2P4K/7B/8"
+ },
+ {
+  "our_rank": 61,
+  "label": "P09",
+  "entry_code": "A12",
+  "our_score": 2.0,
+  "fen": "K4nB1/p5Q1/4p3/P2k3r/R2N4/B2P2n1/1N6/b7"
+ },
+ {
+  "our_rank": 62,
+  "label": "P12",
+  "entry_code": "A19",
+  "our_score": 2.0,
+  "fen": "1BQ5/8/2pPP3/2P1nR2/1P2k1B1/2Kb1p2/3R1P2/8"
+ },
+ {
+  "our_rank": 63,
+  "label": "P29",
+  "entry_code": "A26",
+  "our_score": 2.0,
+  "fen": "3K4/3PB1p1/Q2Rp3/R1PPk3/1p2p1P1/p3p3/2n1N1B1/b6b"
+ }
+]
