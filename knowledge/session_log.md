@@ -1186,3 +1186,6 @@ no motive layer to mirror.
   the 5th rank (g5), defenders bRe1 (e4/e5) and bSb4 (d3/d5), batteries Bh7/Rh5, threat 2.Bc3#. Asked to finish it: six evolve
   runs; best 8/7B/5PQ1/2P4R/1n1k2P1/1K1p2r1/1P1B4/1R2r3 (1.Qg5! unique key, four defences) fails on the thematic dual
   1...Rc1 2.Qe5#/Qf4#, inherent (see lessons). Not shown as a problem.
+- He finished his diagonal->rank scheme himself while I reported it stuck (mv8ffb5c steps 19-196): same Rc1 duals at first,
+  rotations, then a quarter turn and a new threat: bourd-changed-diag-file-qc7, B1RK3b/1Q1Pp3/1P6/7r/2pkpB2/8/3nP3/3N4,
+  1.Qc7! (2.Be3#) Rh3 Qc5#, Sf1 Qxc4# (set Qd5#, Qxe4#). Gate PASS, 9+7. Lesson recorded on what I should have done.

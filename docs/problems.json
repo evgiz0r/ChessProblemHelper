@@ -2056,6 +2056,23 @@
     "Qg8"
    ],
    "note": "Bb1+wPb3 replaced by wPd3 (covers e4, blocked by Sd4: no line-switching white bishop, so no 1.Ba2/1.Bc4 cook) and bPg4 removed (the threat becomes 2.Sg4#; with Pd3 2.Sxf3 is no longer a dual after Bc8): sound, gate PASS, 8+8, nothing removable. Lost: the try 1.Be4? Bc8!. Flaws: random-move duals after non-defences (1...Sd7 2.Sxd7/Sg4); set duals after Se8/Sh5; cook-stoppers bSb8, bBh8, bPc7, bPh4; wKa3 idle; 7 pawns."
+  },
+  {
+   "id": "bourd-changed-diag-file-qc7",
+   "fen": "B1RK3b/1Q1Pp3/1P6/7r/2pkpB2/8/3nP3/3N4",
+   "stip": "#2",
+   "author": "E. Bourd (Composing Bench, sitting mv8ffb5c, 14 Oct 2026)",
+   "source": "type-1 changed mates, the queen switching from a diagonal to a file; his answer to the dead end of his first orientation",
+   "themes": [
+    "Changed mates (set vs solution): the queen on the long diagonal (b7, battery Ba8 behind) in the set, on the c-file (c7, battery Rc8 behind) after the key",
+    "Set 1...R~ 2.Qd5#, 1...S~ 2.Qxe4#; 1.Qc7! (2.Be3#) Rh3 2.Qc5#, Sf1 2.Qxc4#",
+    "Unique defences: both defenders guard the threat square e3 (the rook from the 3rd rank, the knight from f1); leaving rank 5 frees c5/d5, leaving d2 frees c4/e4",
+    "The key creates the threat by guarding e5 along c7-d6-e5 (Bf4 leaves that guard when it mates on e3)"
+   ],
+   "keys": [
+    "Qc7"
+   ],
+   "note": "Gate PASS, 9+7, trim: nothing removable. Started as 8/7B/6Q1/7R/1n1k4/3p4/1P1B4/4r3 (threat 2.Bc3#, dual 1...Rc1 2.Qe5/Qf4 that Claude found inherent); he turned the board a quarter (steps 90-92) and rebuilt the white side around a new threat. 196 steps, 104 piece moves. Roles: bPc4/bPe4 self-blocks protected by Sd2 (mates Qxe4/Qxc4); Pe2 d3; Sd1 c3/e3; bPe7 guards d6 (no Qd6+); Pb6, Pd7 and Kd8 only stop queen checks. Flaws: defences merely guard the threat square; random-move duals; set duals after Be5/e5; cook-stoppers Pb6/Pd7; Kd8 idle."
   }
  ]
 }
