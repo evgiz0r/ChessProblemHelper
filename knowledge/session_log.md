@@ -1148,3 +1148,9 @@ no motive layer to mirror.
   total, while the five countries agree with each other at 0.08; the 1st place (Murashev, Slesarenko, Feoktistov) is our 1st. Lesson:
   effects the theme produces by itself are the floor (textbook Hannelius + Dombrovskis placed 20th-27th). README conclusion 16:
   full fields measure judging (0.63-0.73), top fields measure taste. knowledge/experiments/blind_wcct9_A.md.
+- E. Bourd on bourd-halfpin-ss-bd8: "key is slightly less flawed here, as we have a set mate, and the bishop seems to
+  guard e5 as well". Verified: Bc7 is the only guard of e5 in the set 1...R~ 2.Rxe5# (seven rook moves) and doubles e5/f4
+  in the set 1...Sf7 2.Qf2#; c7 is the only free square guarding e5 and reaching d8, so the attack by Sd5 follows from
+  the set job; 1...Sxc7 is the one capture left without a set mate. The critique's 'attacked key piece' finding now
+  names the set mates that need the key piece on its diagram square and the unprovided captures of it
+  (chesscomp/critique.py, tests/test_critique_key_role.py).
