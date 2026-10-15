@@ -35,6 +35,10 @@ QMATE=1 wants every thematic mate, set and solution, given by the queen. Use wit
 CANDS=Pd2,Sb2,Bf8,Kd8,pe7,sb3 restricts mutation to those units on those squares (upper case White, lower case Black,
 S/s for knights): add one, remove one, or swap a unit for another candidate of the same colour. Use it when the guard
 analysis has already named the job of every square; the blind search wastes most solves on units with no role.
+WCORR=e7 (white correction mode, daily No. 10) needs no DEFS: it scores the moves of the White unit on that square
+(chesscomp.compose.white_correction): a unique quiet key by it, a random refutation shared by at least two of its tries,
+NCORR (default 2) distinct correction refutations, no king refutation, every thematic refutation answered in the key;
+mates changed from the random stage score extra. Put the key piece and the black king in CORE.
 """
 import os, sys, random, time, json, chess
 from chesscomp.core import Problem
@@ -42,6 +46,7 @@ from chesscomp.analysis import analyse
 from chesscomp.critique import idle_key_piece, out_of_play_key
 from chesscomp.motives import mate_motives
 from chesscomp.compose.unique_defence import extra_defences
+from chesscomp.compose.white_correction import wcorr_score
 
 JOB = int(sys.argv[1]) if len(sys.argv) > 1 else 0
 OUT = sys.argv[2] if len(sys.argv) > 2 else f'evolve_{JOB}.txt'
@@ -60,6 +65,7 @@ KEYROLE = os.environ.get('KEYROLE', '1') == '1'     # E. Bourd: no HIT whose key
 RECIP = os.environ.get('RECIP', '0') == '1'          # set play and key swap the mates of the two DEFS
 UNIQUE = os.environ.get('UNIQUE', '0') == '1'        # each DEF is its unit's only defence (E. Bourd, 14 Oct 2026)
 TARGET = dict(x.split(':') for x in os.environ.get('TARGET', '').split(',') if ':' in x)   # exact mates, e.g. d6:Qe6#,d5:Ba4#
+WCORR = os.environ.get('WCORR', '')                  # white correction mode: square of the key piece
 KEY = os.environ.get('KEY', '')                      # fixed-key mode: the key's uci, e.g. e7e8n
 NVAR = int(os.environ.get('NVAR', '3'))
 DEFSQ = [x for x in os.environ.get('DEFSQ', '').split(',') if x]   # type-1: thematic units by square (needs TKEY)
@@ -225,6 +231,16 @@ def score(b):
     keys = r.get('keys') or []
     phases = r.get('phases') or []
     s = 0.0
+    if WCORR:
+        t, summ, ok = wcorr_score(b, r, WCORR, NCORR)
+        n = b.copy(); n.push(chess.Move.null())
+        nfl = sum(1 for m in n.legal_moves if n.piece_type_at(m.from_square) == chess.KING)
+        t -= 15 * nfl + 1.5 * max(0, units(b) - 10)
+        if KEYROLE and keys:
+            km = next((chess.Move.from_uci(ph['first_move']['uci']) for ph in phases if ph['type'] == 'key'), None)
+            if km and (out_of_play_key(b, km) or idle_key_piece(b, km, phases)):
+                t -= 25; ok = False
+        return t, f'keys={keys} {summ}', ok and not (NOFLIGHT and nfl)
     if KEY:
         t, summ, ok = key_mode(r)
         n = b.copy(); n.push(chess.Move.null())
@@ -451,6 +467,12 @@ def main():
             with open(OUT, 'a') as f:
                 f.write(f'HIT {sc:.1f} | {key} | {summ}\n')
     seed = chess.Board(SEED + ' w - - 0 1')
+    if not legal(seed):                    # daily logs 11-14 Oct: seeds with a checking unit died in 0 s, silently
+        why = 'black king in check' if (lambda n: (n.push(chess.Move.null()), n.is_check())[1])(seed.copy()) else \
+              'white in check' if seed.is_check() else 'mate in one, promoted force or invalid position'
+        with open(OUT, 'a') as f:
+            f.write(f'SEED illegal ({why}): {SEED}\n')
+        print(f'SEED illegal ({why}): {SEED}', file=sys.stderr)
     consider(seed)
     tries = 0
     while len(pop) < 6 and tries < 400 and time.time() - t0 < BUDGET:

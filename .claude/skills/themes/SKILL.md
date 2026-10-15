@@ -16,5 +16,6 @@ say so.
 - `references/half_pin_king_key.md` - half-pin, pawn half-battery, White-king key with interference tries.
 - `references/flight_giving_key.md` - a key that gives two flights (sacrificial knight, two capture-flights, mates by one queen differing by x-ray; the other arrival squares of the key piece).
 - `references/black_correction.md` - knight correction by capture; the threat -> random defence -> correction order and the dead ends; the adjacent-knight self-block cell and its structural rules; E. Bourd's solution of it, a knight next to the king defending by departure, with the mirrored white correction.
+- `references/white_correction.md` - white correction: Loustau's 4th-degree reading (one diagonal to block, squares that spoil a mate), the error table, why interposition plus line closing gives only one correction, the WCORR search.
 - `references/grimshaw.md` - Grimshaw by a block on the threat piece's path (not on the check line); the square beyond the crossing; one retreat square for the key piece; the cooks met and their cures.
 - `references/line_opening.md` - one black unit opens the same white line twice (the queen's path through the vacated square), the arrival square choosing the mate; the return-interposition and unprotected-blocker traps.
