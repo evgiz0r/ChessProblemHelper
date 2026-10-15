@@ -2285,6 +2285,22 @@
     "Qe5"
    ],
    "note": "Python solver: sound, 8+9. Trim: bPb7 can go with the same key and play (8/q7/1b2Q1p1/3P2B1/rr5p/pPPk4/3NN3/3K4, 8+8). Flaws: set play dual in both thematic lines (Bd4 Qxg6/Qe4, Rd4 Qh3/Qe3; with the queen on e7, his step 204, the set is clean but repeats the key's mates and the 1.Bf6? try disappears); wPd5 only stops 1.Qd5+; the black queen a7 only stops 1.Qh3+ Be3 2.Qxe3# (it retakes on e3 behind the b6 bishop); 1...Bd4 2.Qe4# is the same in 1.Bf6? and the key; 2.Qxg6# takes a pawn (try)."
+  },
+  {
+   "id": "bourd-grimshaw-d5-queen-posts",
+   "fen": "q7/2p1Q1p1/2b5/r1r4p/p1Pk4/3NNP2/3K4/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench sitting mv9wf7y9, 15 Oct 2026, step 266)",
+   "source": "Next stage of bourd-grimshaw-d4-three-phases: shifted up one rank (king central on d4), the 1.Bf6? try dropped, white plugs removed",
+   "themes": [
+    "Grimshaw on d5 with try/key changes: 1.Qf7? (2.Sc2#) Bd5 Qxg7#, Rd5 Qf4#, but 1...Bxf3!; 1.Qe6! Bd5 Qe5#, Rd5 Qe4# (Zagoruiko 2x2 by the queen's posts f7/e6)",
+    "By-play 1...Rxc4 2.Qxc4# in both phases",
+    "His principle: the units behind the Grimshaw pieces (bQa8 behind Bc6, bRa5 behind Rc5) stop the cooks on the same thematic lines"
+   ],
+   "keys": [
+    "Qe6"
+   ],
+   "note": "Python solver: sound, 6+9; trim: nothing removable; every white unit plays except Kd2 (soundness). Flaws: the try's refutation 1...Bxf3 is a capture that removes the e4 guard (not thematic); set play has a dual in both thematic lines (Qxg7/Qe5, Qh4/Qe4) since the e7 queen reaches both posts' lines - publish without set; 1...Rxc4 2.Qxc4# captures the defender and does not change; black force 9 units with a queen."
   }
  ]
 }

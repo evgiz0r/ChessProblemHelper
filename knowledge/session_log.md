@@ -1268,3 +1268,6 @@ no motive layer to mirror.
   8/qp6/1b2Q1p1/3P2B1/rr5p/pPPk4/3NN3/3K4, 1.Qe5! (2.Sc1#) Bd4 Qe4#, Rd4 Qe3#; tries 1.Qf6? (Qxg6#/Qf3#) Rf4!, 1.Bf6?
   (Qe4#/Qh3#) Re4!. Our verdict given in chat: rich (Zagoruiko 2x2 + a third phase, refutations by the 4th-rank rook shutting
   each guard of e3); flaws: set duals, Pd5 and the a7 queen as plugs; trim: -pb7.
+- E. Bourd continued on the bench: bourd-grimshaw-d5-queen-posts, q7/2p1Q1p1/2b5/r1r4p/p1Pk4/3NNP2/3K4/8, 1.Qe6! (2.Sc2#)
+  Bd5 Qe5#, Rd5 Qe4#; try 1.Qf7? Bd5 Qxg7#, Rd5 Qf4#, Bxf3!. 6+9, nothing trimmable. His principle recorded: pieces behind
+  the Grimshaw units stop the cooks on the thematic lines. Our verdict: weakest point the capturing, unthematic refutation.
