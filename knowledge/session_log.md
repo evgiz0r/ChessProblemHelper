@@ -1256,3 +1256,7 @@ no motive layer to mirror.
   chesscomp.compose.trychange. Search found the c6 knight guarding d4: 4r1b1/3R2Q1/ppn5/1pk5/1R6/KP4N1/8/8, three keys
   (Qf6/Qg6/Qh6, Re6 Qc3#/Qc2#/Qc1#, set Qc3#, Be6 always Se4#). He: "this works, not the best key, but the play generally
   works"; he will look for another scheme. He asked to be told whether a search is by tools or by reasoning (lessons).
+- E. Bourd's bench sitting mv9trlcf (15 Oct, 158 steps, 36 solves): from our e6 Grimshaw (steps 2-39, no solve) two quarter
+  turns to K g4 / Grimshaw e3 (first sound at step 76, 1.Qf7!), then K f4 / Grimshaw d3: bourd-grimshaw-d3-changed-set,
+  B3K3/3N4/6pN/6p1/5k2/Qp2b2R/4Pr2/1b1r4, set Rd3 Qf8#, Bd3 Qd6#; 1.Qxb3! Rd3 Qf7#, Bd3 Qb8#. The queen starts on one post
+  masked by bPb3; the capture key opens the line. He: "this works, not the best key"; he will look for another scheme.

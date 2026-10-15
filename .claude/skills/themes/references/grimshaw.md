@@ -46,6 +46,9 @@ guard the landing square (e3, d5).
   guarded d4 (1.Qd4#, 1.Qc3+ Bc4 2.Qxc4#), h7 is attacked by Bg8. Look for the start square before the posts.
 - Leave d4 unguarded: 1.Qf6! (Qc3# covers d4 itself), tries 1.Qg6?/1.Qh6? Re6!, Be6 mated three ways. Still open: the
   diagram checks 1.Qc3+ Bc4 2.Qxc4#, 1.Qg1+ Re3 2.Qxe3# (a check whose interposition is captured with mate).
+- E. Bourd's solution (bench, 15 Oct): bourd-grimshaw-d3-changed-set, B3K3/3N4/6pN/6p1/5k2/Qp2b2R/4Pr2/1b1r4, our scheme turned
+  180 degrees; the queen starts ON post a3 with the threat line masked by bPb3, 1.Qxb3! opens it: set Rd3 Qf8#, Bd3 Qd6#;
+  solution Rd3 Qf7#, Bd3 Qb8#. Masked start instead of a start square off the line. His word: not the best key (capture).
 - Next to try: Velimirovic's own mechanism with a real Grimshaw (both units cut a White guard of the threat square on X,
   e.g. wRh6 guarding d6 through e6), so the queen's posts are free of the line; `chesscomp.compose.trychange` with KP=Q.
 

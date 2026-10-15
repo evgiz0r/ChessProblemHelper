@@ -2253,6 +2253,22 @@
     "Qh6"
    ],
    "note": "Gate PASS, 7+6. A scheme, not a result (our own verdict before showing): one phase, no changed mates (set Re6 Rd5#, Be6 Qe3# repeat after the key), the threat captures a pawn, bSh3/bSf2 are plugs with random moves, wRb1 plays only in the set, the key is the queen's only way to the threat line. The changed-mates layer failed (lessons.jsonl 15 Oct): queen posts f6/g6/h6 give six different mates (Qc3/Qf2, Qc2/Qg1, Qc1/Qe3) but no diagram square holds the queen without 1.Qd4#/1.Qc3+ Bc4 2.Qxc4# (g7) or the bishop's attack (h7)."
+  },
+  {
+   "id": "bourd-grimshaw-d3-changed-set",
+   "fen": "B3K3/3N4/6pN/6p1/5k2/Qp2b2R/4Pr2/1b1r4",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench sitting mv9trlcf, 15 Oct 2026, 158 steps, 36 solves)",
+   "source": "His answer to claude-grimshaw-e6-scheme and the queen-post changes: 'arrange changes in the diagram ... after Qg6, Qh6 maybe'",
+   "themes": [
+    "Grimshaw on d3 with set/solution changes on both halves: set 1...Rd3 2.Qf8#, 1...Bd3 2.Qd6#; 1.Qxb3! (2.Qxe3#) Rd3 2.Qf7#, Bd3 2.Qb8#",
+    "The mates arrive on the two lines the Grimshaw opens: the f-file (f8 -> f7, interposition f5 cut by Rd3) and the b8-h2 diagonal (d6 -> b8, interposition d6 cut by Bd3)",
+    "By-play: B~ (Ba7/Bb6/Bc5/Bd4/Bc1) 2.Qg3#, Rf3 2.Rxf3#, Rxe2 2.Rf3#"
+   ],
+   "keys": [
+    "Qxb3"
+   ],
+   "note": "Python solver: sound, 7+8. Our geometry rotated 180 degrees (K c5/X e6/T d6 -> K f4/X d3/T e3): the queen's posts a3/b3 are our h6/g6. His step: the diagram queen stands ON one post (a3) with the threat line masked by a black pawn on the other post (b3); the key takes the mask, so the set comes from a3 and the solution from b3, and the queen never stands on our g7 (the square that reached d4 and gave 1.Qd4#). E5, our d4, is guarded by Sd7 and neither post reaches it. His verdict: 'this works, not the best key, but the play generally works'. Flaws: capture key, the a3 queen guards nothing near the king (critique: out-of-play key), dual 1...Bd2 2.Qb8#/Qg3#, random bishop moves all 2.Qg3#. The sitting: steps 2-39 on our e6 scheme with no solve, two quarter turns (40, 42) to K g4 with the Grimshaw on e3, first sound version step 76 (1.Qf7!, set Re3 Qg8#, Be3 Qe6#), shift to K f4, step 103 the changed pair with 1.Qxb3!, steps 106-158 cleaning (Sd7 for the pawn, Ba8, black e3 bishop, fewer pawns)."
   }
  ]
 }
