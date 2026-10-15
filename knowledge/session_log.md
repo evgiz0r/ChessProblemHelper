@@ -1229,3 +1229,10 @@ no motive layer to mirror.
   claude-changed-type1-double-closing, K2N4/4B1nQ/3p1P2/p1p1k3/r7/1n2P1N1/6B1/3r4, set Sd4 Qe4#; 1.Qg8! Sd4 Qd5#, the only
   defence. Gate PASS, 8+8. Fixes on the way: check-first cook 1.Sc6+ Ke6 2.Qg8# (free d7), 1.Qxg7# (Pf6), by-play dual
   1...Se6 2.Qxe6#/Sf7# (Bb7 -> Bg2), rook paths to c6 (bPa5, bPc5, bPd6).
+- E. Bourd (15 Oct): "maybe you can finish this - idea Qg7-f7, Sd3 Se6", after bench sittings mv8r4h2h/mv8v9fm2 (K d4, bPc4/e4/e5,
+  bRe8 for e5, bBe2 for c4 through d3, knights b4/g5, his Qb7 with Ba8 behind). Read as the mirrored battery Qg7+Bh8: set Se6 Qxe5#;
+  1.Qf7: Sd3 Qxc4#, Se6 Bxe5#. Not finished; three structural findings (lessons.jsonl, 15 Oct): the Qg7/Bh8 battery cooks by
+  1.Qxe5+ Rxe5 2.Bxe5# unless the bishop's protector is masked by the knight's origin (bSc5 in front of wRa5); a threat through
+  e6 is refuted by 1...Re6, a threat stopped by the d3 cut also by 1...Bd3; far/near mates on one check line (K e4, Qg2 -> Qf3)
+  cook by 1.Qg2+ Rf3 2.Qxf3#. Evolve (8 runs x 270 s) moved the key to 1.Qc7 (2.Qxc5#, Black correction S~ Rd5#, Sd3 Qxc4#,
+  Se6 Bxe5#), still refuted by Bd3 and Rc8. Asked him which mates he meant.
