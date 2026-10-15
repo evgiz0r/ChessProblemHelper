@@ -10,6 +10,7 @@ single mates, all different between the two moves and between the defences, one 
         python -m chesscomp.compose.trychange JOB OUTFILE
 
 KP: square of the key piece, or Q for the White queen wherever she stands. ONLY: restrict its moves (uci).
+THREAT=* accepts any threat (MODE=posts): a defence is a move after which no threat mate works.
 FORBID: squares that must stay empty (the thematic lines). TARGET: wanted mates per move SAN, in DEFS order.
 MODE=posts scores one key (KEYS: the wanted ones) with the other moves as tries, each refuted once and differently.
 MODE=set scores set play against the best key instead (setkey_evaluate): set and key mates single and changed,
@@ -58,14 +59,14 @@ def phase_rows(b, kp, threat, defs, only=()):
         p = b.copy(); p.push(m)
         n = p.copy(); n.push(chess.Move.null())
         thr = mates(n) if n.is_valid() and not n.is_check() else []
-        if threat not in thr:
+        if (threat == '*' and not thr) or (threat != '*' and threat not in thr):
             continue
-        row = {'move': _san(b, m), 'uci': m.uci(), 'thr': len(thr), 'defs': [], 'p': p}
+        row = {'move': _san(b, m), 'uci': m.uci(), 'thr': len(thr), 'threat': '/'.join(thr), 'defs': [], 'p': p}
         for d in defs:
             if d not in p.legal_moves:
                 row['defs'].append(None); continue
             p.push(d); ms = tuple(sorted(mates(p))); p.pop()
-            row['defs'].append(None if threat in ms else ms)        # not a defence in this phase
+            row['defs'].append(None if set(thr if threat == '*' else [threat]) & set(ms) else ms)   # not a defence here
         rows.append(row)
     return rows
 
@@ -207,7 +208,7 @@ def refutations(p, threat_ok=True):
     return out
 
 
-def posts_evaluate(b, kp, threat, defs, only=(), want_keys=()):
+def posts_evaluate(b, kp, threat, defs, only=(), want_keys=(), target=None):
     """(score, summary): one key and the other moves of the key piece as tries, each refuted once and differently,
     the thematic defences answered by different mates in every phase and in the set (E. Bourd, 15 Oct 2026: the
     queen's posts g6/h6, maybe f6, with changes against the diagram)."""
@@ -252,9 +253,13 @@ def posts_evaluate(b, kp, threat, defs, only=(), want_keys=()):
         if all(y and len(y) == 1 for y in k['defs']) and all(not x or not set(x) & set(y) for x, y in zip(sm, k['defs'])):
             s += 20                                         # every thematic mate changed against the set
         s += 5 * sum(1 for r in tries if all(y and len(y) == 1 for y in r['defs']))
+    for r in phases:                                       # TARGET: wanted mates per post, in DEFS order
+        for y, want in zip(r['defs'], (target or {}).get(r['move'], [])):
+            if y and want in y:
+                s += 12 if len(y) == 1 else 5
     s -= max(0, len(b.piece_map()) - 13)
     fmt = lambda v: ' '.join('/'.join(x) if x else '-' for x in v)
-    return s, f"set {fmt(sm)} || " + ' | '.join(f"{r['move']} {fmt(r['defs'])} t{r['thr']} ref {','.join(r['refs'][:3]) or 'KEY'}"
+    return s, f"set {fmt(sm)} || " + ' | '.join(f"{r['move']}({r['threat']}) {fmt(r['defs'])} t{r['thr']} ref {','.join(r['refs'][:3]) or 'KEY'}"
                                                 for r in phases) + (f" cooks {cooks}" if cooks else '')
 
 
@@ -309,7 +314,7 @@ def main(argv=None):
         ev = lambda b: setkey_evaluate(b, kp, e['THREAT'], defs, only)
     elif e.get('MODE') == 'posts':
         wk = {x for x in e.get('KEYS', '').split(',') if x}
-        ev = lambda b: posts_evaluate(b, kp, e['THREAT'], defs, only, wk)
+        ev = lambda b: posts_evaluate(b, kp, e['THREAT'], defs, only, wk, target)
     else:
         ev = lambda b: evaluate(b, kp, e['THREAT'], defs, only, target)
     pop, seen, t0 = [(ev(seed), seed)], {}, time.time()

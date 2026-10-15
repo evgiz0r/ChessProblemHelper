@@ -1260,3 +1260,7 @@ no motive layer to mirror.
   turns to K g4 / Grimshaw e3 (first sound at step 76, 1.Qf7!), then K f4 / Grimshaw d3: bourd-grimshaw-d3-changed-set,
   B3K3/3N4/6pN/6p1/5k2/Qp2b2R/4Pr2/1b1r4, set Rd3 Qf8#, Bd3 Qd6#; 1.Qxb3! Rd3 Qf7#, Bd3 Qb8#. The queen starts on one post
   masked by bPb3; the capture key opens the line. He: "this works, not the best key"; he will look for another scheme.
+- E. Bourd's scheme "Qd5/c6/b7, Re4/Be4 close the line to f3, mates along the diagonals": tried as threat Qf3# through e4
+  (hand geometry, then chesscomp.compose.trychange MODE=posts with THREAT=* and TARGET, both added and tested). K f4: the
+  queen checks from five squares; shifted to K h4 / Grimshaw g4 / Qh3#: Rg4 mates change (Qh5#, Qh6#), Bg4 mates do not
+  (Bf2#); best 5nr1/5Q1n/8/8/3BNN1k/2K5/1P2b1RP/8 cooked by 1.Qxg8. Not finished (lessons.jsonl).
