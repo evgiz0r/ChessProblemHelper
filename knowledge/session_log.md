@@ -1241,3 +1241,13 @@ no motive layer to mirror.
   needs a hole. claude-type2-rooks-light, 8/2n5/2B2RK1/4k3/3R4/4P1n1/8/8 (evolve 6+3, then -Pc3): set Sg3~ Re4#; 1.Bd7! Sg3~ Rf5#,
   Sc7~ Re6#. claude-type2-rooks-full, b7/1pn5/1PB2R2/4k1P1/3R2P1/3K2n1/8/8 (by hand, 7+5): both changes, hole 1...bxc6, tries
   1.Bxb7? Bxb7!, 1.bxc7? bxc6!. Both gate PASS. Fixed chesscomp.compose.trim for zugzwang keys (it never trimmed a block).
+- E. Bourd: "lets try something more complicated, we need to increase complexity, the gate of passing needs to slightly
+  increase" (after the type-2 mutates). Raised the gate ('simple block' fatal; zugzwang, random defences, symmetric play
+  flagged; CLAUDE.md rule: a working mechanism is a scheme). Then a real Grimshaw with changed mates, Velimirovic 2000 as the
+  model. Basic scheme, sound: claude-grimshaw-e6-scheme, 2N1r1b1/8/3p4/1Bk5/2P5/K6n/5n2/1RQR4, 1.Qh6! (2.Qxd6#) Re6 Rd5#,
+  Be6 Qe3# (postsearch + keyfind, gate PASS) - our verdict: a scheme. Did not stop; tried (all failed so far, reasons in
+  lessons.jsonl 15 Oct and grimshaw.md): knight on the threat square as selector; queen posts f6/g6/h6 on the threat line
+  (six different mates, but the queen's diagram square g7 gives 1.Qd4#, h7 is attacked by Bg8); d4 left unguarded (key
+  1.Qf6!, tries Qg6?/Qh6? Re6!, Be6 mated three ways; open: 1.Qc3+ Bc4 2.Qxc4#, 1.Qg1+ Re3 2.Qxe3#); a masking rook as
+  selector (one pair split); set play vs solution with the queen h2 -> h6 (out of play). New tool
+  chesscomp.compose.trychange (tested): the fast pre-filter that found the posts.

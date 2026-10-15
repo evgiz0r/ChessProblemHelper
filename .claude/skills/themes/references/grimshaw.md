@@ -37,6 +37,18 @@ Reference: daily No. 6 (11 Oct 2026), 3Q1bb1/2N3r1/1N3Rpp/1pP1k3/3p4/3P4/5K2/8 #
   e4 that protects d5 made 2.Qd5 a standing threat whenever g8 was blocked; 1.Qb8+ along b8-e5 (Rc7 is then
   pinned, so 2.Sd7# still works): a white knight on c7 blocks that diagonal and covers e6 and d5 as well.
 
+## Changed mates on a Grimshaw (15 Oct 2026, unfinished)
+The basic scheme first (postsearch READY=1 + keyfind): claude-grimshaw-e6-scheme, 2N1r1b1/8/3p4/1Bk5/2P5/K6n/5n2/1RQR4,
+1.Qh6! (2.Qxd6#) Re6 2.Rd5#, Be6 2.Qe3#. Mates by interposition cuts: the cut piece can no longer interpose (Bd4, Rf3) or
+guard the landing square (e3, d5).
+- Queen posts on the threat line beyond X choose the pair: bK c5, X e6, threat Qd6#: f6 (Qc3#/Qf2#), g6 (Qc2#/Qg1#),
+  h6 (Qc1#/Qe3#), six different mates. The diagram square is the problem: only g7/h7 reach two posts; g7 reaches the
+  guarded d4 (1.Qd4#, 1.Qc3+ Bc4 2.Qxc4#), h7 is attacked by Bg8. Look for the start square before the posts.
+- Leave d4 unguarded: 1.Qf6! (Qc3# covers d4 itself), tries 1.Qg6?/1.Qh6? Re6!, Be6 mated three ways. Still open: the
+  diagram checks 1.Qc3+ Bc4 2.Qxc4#, 1.Qg1+ Re3 2.Qxe3# (a check whose interposition is captured with mate).
+- Next to try: Velimirovic's own mechanism with a real Grimshaw (both units cut a White guard of the threat square on X,
+  e.g. wRh6 guarding d6 through e6), so the queen's posts are free of the line; `chesscomp.compose.trychange` with KP=Q.
+
 ## Dead ends
 - Bare or lightly seeded `compose.evolve` (DEFS=Re7,Be7 / Rg6,Bg6): checking keys only, as for every theme so far.
 - The threat 2.Qe8# on the e-file through e7: the defenders interpose after the check (rule 1).

@@ -2238,6 +2238,21 @@
     "Bd7"
    ],
    "note": "Gate PASS, 7+5; every unit needed (one removal each). Kd3 covers e4 and protects d4, so every king move spoils the set; no wPe3, so f4 depends on Rf6 through f5 in the set and 1.Rg6/Rh6 spoil; Pg5 protects f6, Pg4 covers f5 for 2.Re6#. The complete block needs a hole: 1...bxc6 (bPb7, wPb6 to fix it after the key, bBa8 against 1.Bxb7). Flaws: three units only for the hole, and the hole is a capture of the key piece (the key looks like an escape); mates capture the self-blocking knight."
+  },
+  {
+   "id": "claude-grimshaw-e6-scheme",
+   "fen": "2N1r1b1/8/3p4/1Bk5/2P5/K6n/5n2/1RQR4",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 15 Oct 2026), postsearch + keyfind",
+   "source": "The basic scheme for E. Bourd's request 'something more complicated' (15 Oct): a real Grimshaw on e6 with a threat key, built before the changed-mates layer",
+   "themes": [
+    "Grimshaw on e6 (each arrival cuts the other's line beyond e6): 1.Qh6! (2.Qxd6#) Re6 2.Rd5# (the bishop no longer guards d5), Be6 2.Qe3# (the rook no longer guards e3)",
+    "By-play: Rd8/Re3+/Se4 2.Qe3#; tries 1.Qf4? Sxf4!, 1.Qd2? Sd3!"
+   ],
+   "keys": [
+    "Qh6"
+   ],
+   "note": "Gate PASS, 7+6. A scheme, not a result (our own verdict before showing): one phase, no changed mates (set Re6 Rd5#, Be6 Qe3# repeat after the key), the threat captures a pawn, bSh3/bSf2 are plugs with random moves, wRb1 plays only in the set, the key is the queen's only way to the threat line. The changed-mates layer failed (lessons.jsonl 15 Oct): queen posts f6/g6/h6 give six different mates (Qc3/Qf2, Qc2/Qg1, Qc1/Qe3) but no diagram square holds the queen without 1.Qd4#/1.Qc3+ Bc4 2.Qxc4# (g7) or the bishop's attack (h7)."
   }
  ]
 }
