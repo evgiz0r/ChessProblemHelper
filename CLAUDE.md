@@ -84,7 +84,9 @@ prompt. Routines cannot attach a repository by themselves; a session without it 
 
 ## Time caps (E. Bourd, 10 Oct 2026: "cap all searches to like 5 minutes")
 - Every search, solver or gate command runs under `timeout 300`; one solve per shell command, never a chain.
-- A one-line progress message in chat before each solve or search: the position and what is being tested.
+- A one-line progress message in chat before each solve or search: the position and what is being tested, and whether it
+  is a tool search (which tool, what is fixed, what is scored) or hand reasoning (E. Bourd, 15 Oct 2026: "not sure what you
+  are searching, looks like a lot, not sure if by tools or reasoning").
   Thirty minutes without a line is a failure of the process, whatever the search found.
 
 ## Unattended runs

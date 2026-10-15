@@ -1251,3 +1251,8 @@ no motive layer to mirror.
   1.Qf6!, tries Qg6?/Qh6? Re6!, Be6 mated three ways; open: 1.Qc3+ Bc4 2.Qxc4#, 1.Qg1+ Re3 2.Qxe3#); a masking rook as
   selector (one pair split); set play vs solution with the queen h2 -> h6 (out of play). New tool
   chesscomp.compose.trychange (tested): the fast pre-filter that found the posts.
+- E. Bourd: "arrange changes in the diagram ... after Qg6, Qh6 maybe ... Qf6 seems hard due to the d4 square". Added
+  MODE=set (set play vs key, check cooks) and MODE=posts (one key, the other posts as tries) to
+  chesscomp.compose.trychange. Search found the c6 knight guarding d4: 4r1b1/3R2Q1/ppn5/1pk5/1R6/KP4N1/8/8, three keys
+  (Qf6/Qg6/Qh6, Re6 Qc3#/Qc2#/Qc1#, set Qc3#, Be6 always Se4#). He: "this works, not the best key, but the play generally
+  works"; he will look for another scheme. He asked to be told whether a search is by tools or by reasoning (lessons).
