@@ -1264,3 +1264,7 @@ no motive layer to mirror.
   (hand geometry, then chesscomp.compose.trychange MODE=posts with THREAT=* and TARGET, both added and tested). K f4: the
   queen checks from five squares; shifted to K h4 / Grimshaw g4 / Qh3#: Rg4 mates change (Qh5#, Qh6#), Bg4 mates do not
   (Bf2#); best 5nr1/5Q1n/8/8/3BNN1k/2K5/1P2b1RP/8 cooked by 1.Qxg8. Not finished (lessons.jsonl).
+- E. Bourd's bench sitting mv9wf7y9 (15 Oct, 221 steps): his own e4/f3 scheme set on d4/c3: bourd-grimshaw-d4-three-phases,
+  8/qp6/1b2Q1p1/3P2B1/rr5p/pPPk4/3NN3/3K4, 1.Qe5! (2.Sc1#) Bd4 Qe4#, Rd4 Qe3#; tries 1.Qf6? (Qxg6#/Qf3#) Rf4!, 1.Bf6?
+  (Qe4#/Qh3#) Re4!. Our verdict given in chat: rich (Zagoruiko 2x2 + a third phase, refutations by the 4th-rank rook shutting
+  each guard of e3); flaws: set duals, Pd5 and the a7 queen as plugs; trim: -pb7.
