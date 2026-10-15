@@ -1294,3 +1294,7 @@ no motive layer to mirror.
   bourd-type2-doubled, 8/8/2PQ1Br1/2KNP3/4k1P1/2pppR2/3qn1P1/8, 1.Sb4! (2.Qd5#) Qa2 Qxd3#, Sf4 Qd4# (set Rxe3#, Rxf4#);
   white correction 1.S~? Qa2!, 1.Sf4? Rxg4!. Re-solved: sound, nothing trimmable. Tool fixes: critique necessity counts a
   double-threat stopper (wPc6) as needed; rerefute.lighten checks every first move (it had offered -Rg6, 13 keys).
+- 16 Oct, same sitting mva0262a (steps 115-185): bPd7 for wPc6 (8+8, sound). Then the queen defence replaced by a second
+  knight to the same square: bourd-type2-two-knights-c3, 8/3p4/3Q1Br1/1PKNP3/2P1k1P1/r2ppR2/4n1P1/3n1b2, 1.Sb4! Sec3 Qd4#,
+  Sdc3 Qxd3#, Sf4 Qd4# (set Rf4#, Rxe3#, Rxf4#); Ra3 (cut on c3) and Bf1 (opened by Se2) make the d3 guard play. Sound, 10+9.
+  Our search for knight pairs on f4 (scratch keysel2.py) found nothing; his c3 square came from moving the d3 guard to a line.

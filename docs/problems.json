@@ -2363,7 +2363,23 @@
    "keys": [
     "Sb4"
    ],
-   "note": "Python solver: sound, 9+7, nothing trimmable; lighten (now with a full key check) finds nothing lighter. His method: list the guard changes the line opening allows (f4,e3 -> d4,d3), then the defences whose geometry gives both, then the key's reason: guarding d3 is the change itself, better than a cook-stopping guard of f5. Flaws: wPc6 only stops the double threat Qc6#; bRg6 cook-stopper (also refutes 1.Sf4? and 1.Qe6?); the set mates capture (Rxf4 takes the defender, Rxe3 a pawn); random queen moves share the set mate Rxe3#; 7 pawns."
+   "note": "Python solver: sound, 9+7, nothing trimmable; lighten (now with a full key check) finds nothing lighter. His method: list the guard changes the line opening allows (f4,e3 -> d4,d3), then the defences whose geometry gives both, then the key's reason: guarding d3 is the change itself, better than a cook-stopping guard of f5. Flaws: wPc6 only stops the double threat Qc6#; bRg6 cook-stopper (also refutes 1.Sf4? and 1.Qe6?); the set mates capture (Rxf4 takes the defender, Rxe3 a pawn); random queen moves share the set mate Rxe3#; 7 pawns. Step 115-117: bPd7 for wPc6 (the pawn guards c6 against 2.Qc6#), sound 8+8: 8/3p4/3Q1Br1/2KNP3/4k1P1/2pppR2/3qn1P1/8; he: 'probably a little nicer'."
+  },
+  {
+   "id": "bourd-type2-two-knights-c3",
+   "fen": "8/3p4/3Q1Br1/1PKNP3/2P1k1P1/r2ppR2/4n1P1/3n1b2",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench sitting mva0262a, 16 Oct 2026, step 185)",
+   "source": "bourd-type2-doubled with the black queen's defence replaced by a second knight to the same square: 'the defence by two knights on same square, instead of the queen ... keeping the Sf4 for the side-nodes, just the two thematic moves on c3 with changes'",
+   "themes": [
+    "Two knights to c3, each with a set/key change between rook and queen: 1...Sec3 Rf4# -> Qd4#, 1...Sdc3 Rxe3# -> Qxd3#; by-play 1...Sf4 Rxf4# -> Qd4#",
+    "Dual avoidance on c3: both landings cut Ra3's guard of d3; the e2 knight opens Bf1-d3 (d3 still guarded) and gives up d4; the d1 knight leaves d3 unguarded and keeps d4 (Se2)",
+    "White correction: 1.S~? (Se7/Sc7/Sb6) Sdc3! (d3 unprotected); 1.Sf4? Rxg4!; 1.Sb4! protects d3"
+   ],
+   "keys": [
+    "Sb4"
+   ],
+   "note": "Python solver: sound, 10+9, nothing trimmable. Flaws: 19 units, 8 pawns; wPb5 only stops a check (no solution without it), wPc4 a duplicate guard; Ra3 and Bf1 exist for the d3 guard play, Rg6 and Pd7 stop cooks; in the set the mates follow every move of each knight (Rf4# for e2 moves, Rxe3# for d1 moves), so the c3 specificity appears only after the key; Qd4# twice after the key (Sec3, Sf4)."
   }
  ]
 }
