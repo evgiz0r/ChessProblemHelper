@@ -418,6 +418,8 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     mates = {c['id'] for v in real for c in v['continuations']}
     if len(real) >= 3 and len(mates) >= 3:
         add('plus', 'varied play', f'{len(real)} defences, {len(mates)} different mates')
+    for rule, sev, msg in simplicity(board, res, key, real, ksq):
+        add(sev, rule, msg)
 
     # --- content: guard/unguard-only play is uninteresting (E. Bourd s2) - in a single-phase problem. When the mates change
     # between phases the change is the content and a plain guard is a pure single-purpose defence (E. Bourd, 14 Oct 2026, on
@@ -593,6 +595,70 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     if res['relations'].get('reciprocal'):
         add('plus', 'theme', 'reciprocal change')
     return {'findings': F, 'participation': use, 'necessity': nec}
+
+
+_REFLECTIONS = {'file': lambda dx, dy: (-dx, dy), 'rank': lambda dx, dy: (dx, -dy),
+                'diagonal': lambda dx, dy: (dy, dx), 'anti-diagonal': lambda dx, dy: (-dy, -dx)}
+
+
+def _reflect(sq, k, t):
+    dx, dy = t(chess.square_file(sq) - chess.square_file(k), chess.square_rank(sq) - chess.square_rank(k))
+    f, r = chess.square_file(k) + dx, chess.square_rank(k) + dy
+    return chess.square(f, r) if 0 <= f < 8 and 0 <= r < 8 else None
+
+
+def simplicity(board, res, key, real, ksq):
+    """E. Bourd (15 Oct 2026), on claude-type2-rooks-light/full: "this is too symmetrical and simple. The zugzwang and the
+    piece moving from capture is bad. The random moves by the knights are annoying. ... the gate of passing needs to
+    slightly increase." Yields (rule, severity, message). 'simple block' (major, fatal in the gate): a zugzwang whose
+    thematic defences are all random moves of their units, or whose key piece only escapes a capture the set leaves
+    unprovided."""
+    from collections import Counter
+    out = []
+    zz = not key.get('threat')
+    if zz:
+        out.append(('zugzwang key', 'minor', 'the key threatens nothing (a block): zugzwang is limited and less '
+                    'interesting than a threat (E. Bourd)'))
+    groups = {}
+    for v in real:
+        if v['defence']['uci'][:2] != ksq:
+            groups.setdefault(v['defence']['uci'][:2], []).append(frozenset(c['id'] for c in v['continuations']))
+    rnd = {}
+    for sq, ms in groups.items():
+        top, n = Counter(ms).most_common(1)[0]
+        if n >= 3:
+            rnd[sq] = n
+    if rnd:
+        out.append(('random defences', 'minor', 'one mate answers many moves of the same unit ('
+                    + ', '.join(f"{board.piece_at(chess.parse_square(s)).symbol().upper().replace('N', 'S')}{s}: {n} moves"
+                                for s, n in rnd.items())
+                    + '): random moves, not defences (E. Bourd: "the random moves by the knights are annoying")'))
+    # symmetric play: the thematic mates (all phases) map onto themselves under a reflection through the black king
+    k = board.king(chess.BLACK)
+    mv = set()
+    for ph in res['phases']:
+        if ph['type'] in ('set', 'key'):
+            for v in ph['variations']:
+                if v['continuations'] and not v.get('threat_repeat') and v['defence']['uci'][:2] != ksq:
+                    mv |= {(c['uci'][:2], c['uci'][2:4]) for c in v['continuations']}
+    mvs = {(chess.parse_square(a), chess.parse_square(b)) for a, b in mv}
+    for name, t in _REFLECTIONS.items():
+        img = {(_reflect(a, k, t), _reflect(b, k, t)) for a, b in mvs}
+        moved = [m for m in mvs if (_reflect(m[0], k, t), _reflect(m[1], k, t)) != m]
+        if len(moved) >= 4 and img == mvs:
+            out.append(('symmetric play', 'minor', f'the mates map onto each other in the {name} through the king '
+                        '(E. Bourd: "too symmetrical")'))
+            break
+    escape = False
+    kmove = chess.Move.from_uci(key['first_move']['uci'])
+    if board.piece_type_at(kmove.from_square) != chess.KING and black_captures(board, kmove.from_square):
+        escape = bool(key_piece_captures_unprovided(board, kmove, res['phases']))
+    allrandom = bool(groups) and all(sq in rnd for sq in groups)
+    if zz and (allrandom or escape):
+        out.append(('simple block', 'major', 'a zugzwang ' + ('whose defences are random moves of their units'
+                    if allrandom else 'whose key piece escapes a capture the set leaves unprovided')
+                    + ': too simple to publish (E. Bourd, 15 Oct 2026: "the gate of passing needs to slightly increase")'))
+    return out
 
 
 def black_captures(board, sq):

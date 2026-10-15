@@ -51,7 +51,11 @@ like reciprocal changes. We pay flaws for content, and find the balance." Place 
 | Rich: reciprocal changes, Zagoruiko, Le Grand + Dombrovskis together, a cycle | his Wola Gulowska 2015 5th HM (reciprocal change, 25 units), Sredba 2003-05 1st HM (Le Grand, Dombrovskis, Zagoruiko) | heavy force and pawns, several plugs (Pc4, Pb4), a unit standing on a flight (Pf6), try-only units, capturing keys and tries when thematic, unthematic duals left out of the published solution |
 
 Never bought back at any level: a cook, a dual in a thematic variation, a double threat (the gate keeps them
-fatal). Everything else is weighed: say what the problem IS, which level it reaches, then the flaws and
+fatal). Since 15 Oct 2026 also a 'simple block': a zugzwang whose defences are random moves of
+their units, or whose key piece escapes a capture the set leaves unprovided (E. Bourd on claude-type2-rooks-light/full:
+"too symmetrical and simple. The zugzwang and the piece moving from capture is bad. The random moves by the knights are
+annoying... the gate of passing needs to slightly increase"). Zugzwang, random defences and symmetric play are
+warnings on their own; together they mark a scheme, which is never shown as a result. Everything else is weighed: say what the problem IS, which level it reaches, then the flaws and
 whether that content pays for them.
 
 ## His verdicts on the first two daily problems (7 October 2026)

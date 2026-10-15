@@ -27,6 +27,11 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   "what i actually mean is compose a good problem around it, not the simplest"). Once it works, ask yourself what
   can be added - tries, changes, a cleaner position - and try it, in steps, before showing. Do not hand him the
   question "is it worth it?": answer it by trying.
+- A working mechanism is a scheme, not a problem (E. Bourd, 15 Oct 2026, on two type-2 mutates: "too symmetrical and
+  simple... just a scheme"; "something that you should be able to already tell"). Judge it yourself before he does:
+  zugzwang, one mate for every random move of a unit, symmetric play, a key that escapes a capture, flaws bigger than
+  the content. Do not stop there; report as "I finished the simple X, but did not stop: I tried A, B, C (failed or
+  worked)". The gate fails a block whose play is only random moves or an escape ('simple block').
 - The requested theme is the floor (E. Bourd, 12 Oct 2026: "the composing entity should push for a bit more now than the
   basic requested theme ... your problem is actually nice, but its too simple thematic wise"; 13 Oct, comparing a light
   half-pin with its corrected version: "it's incomparable for me. The additional content is almost always worth it"). Plan the second layer

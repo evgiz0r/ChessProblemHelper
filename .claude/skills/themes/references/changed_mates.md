@@ -29,6 +29,9 @@ a set+solution block cooked by any waiting move; a diagram flight that the chang
 Dead end: blind enumeration for same-piece changes (5M positions, nothing); the composer's 3-unit scheme
 plus ONE named changed defence as the criterion succeeded in one pass.
 
+Note (E. Bourd, 15 Oct 2026): "those type 1 - 2 - 3 are just enumerations, not real composition terms" - his way to break
+down the implementation stage (unguard, self-block, line play...), separate from the theme (changes, tries...). Never present
+them as terms in a post or a source line; name the theme (changed mates) and say how it is implemented.
 E. Bourd's three types (bench mv88wzbb, 14 Oct 2026): (1) one White piece mates in both phases on another line, each
 Black defender guarding one arrival square on each line; (2) different White pieces mate; (3) one piece has two mates
 and each phase excludes one (king flights widen the geometry but make the play rigid).
