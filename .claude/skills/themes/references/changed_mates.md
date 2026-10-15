@@ -61,3 +61,10 @@ to one of those squares hits the other or the queen's path. A White line opened 
 So only the far pair (e4/d5) takes two errors: Sf2-d3, Sb6-c4 (used: arrival closes Ra4-e4, departure unguards d5), d5-d4.
 E. Bourd's pawn scheme has the same split (d5 double unguard on the near squares, d2 two errors on the far ones).
 `python -m chesscomp.compose.errors FEN DEF --key UCI` says which part of the move (departure / arrival) makes each mate.
+Type 2 (different White pieces mate), his rook scheme: claude-type2-rooks-light (8/2n5/2B2RK1/4k3/3R4/4P1n1/8/8) and
+claude-type2-rooks-full (b7/1pn5/1PB2R2/4k1P1/3R2P1/3K2n1/8/8). Rd4 mates on d5/e4, Rf6 on e6/f5; Sc7 guards d5+e6, Sg3 e4+f5
+(not Sd6, which both rooks capture). All four squares touch the king, so the selector is protection: Bc6 (d5, and e4 through
+d5) in the set, 1.Bd7! (e6, and f5 through e6). The far square of each pair needs a second guard in the near mate (e4 in
+Rd5#: Pd3/Kd3; f5 in Re6#: Kg6/Pg4). A mutate needs a set hole, or every waiting move solves (Kf7, Bb7, Rg6 cooked the
+complete block): leave one variation unguarded (light, one change) or let a black pawn take the key piece (full, 2x2, three
+units and an escape-looking key). Trim block problems only with the 15 Oct fix of chesscomp.compose.trim.

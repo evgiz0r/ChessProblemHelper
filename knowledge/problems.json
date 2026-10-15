@@ -2208,6 +2208,36 @@
    ],
    "cooked": true,
    "note": "REJECTED: cooked by 1.Sg5 (2.Se6#/Qd5#) and 1.Sc5; dual after 1...Bg8; Pd6 a cook-stopper."
+  },
+  {
+   "id": "claude-type2-rooks-light",
+   "fen": "8/2n5/2B2RK1/4k3/3R4/4P1n1/8/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 15 Oct 2026), at E. Bourd's request, evolve + trim by hand",
+   "source": "E. Bourd's type 2 of changed mates (different White pieces mate; bench mv88wzbb: Rf6/Rd4 with knights c7/d6), \"lets practice the other types of transfers\"",
+   "themes": [
+    "Changed mate type 2 (mutate): the mating rook changes. Set 1...Sg3~ 2.Re4# (Rd4); 1.Bd7! (zugzwang) 1...Sg3~ 2.Rf5# (Rf6), 1...Sc7~ 2.Re6# (added)",
+    "Each knight guards one square on each rook's lines (Sc7: d5/e6, Sg3: e4/f5); all four mating squares touch the king, so the bishop chooses the rook by which pair it protects: c6 protects d5+e4 (via d5), d7 protects e6+f5 (via e6)"
+   ],
+   "keys": [
+    "Bd7"
+   ],
+   "note": "Gate PASS, 5+3. The set hole is the c7 knight: in the set 1...Sc7~ 2.Rd5? fails because e4 has no guard once the rook leaves d4, and that hole is what makes the key unique (with e4 covered, Pd3 or Kd3, the set is a complete block and Kf7/Bb7/Rg6 wait). Evolve found 6+3 with Pc3+Pe3; either pawn alone keeps the same play (trim missed it: zugzwang keys were never trimmed, fixed 15 Oct). Flaws: one change only (the c7 knight is new play), mates capture the self-blocking knight (Rxe6, Rxf5), Kg6 and Pe3 protect only."
+  },
+  {
+   "id": "claude-type2-rooks-full",
+   "fen": "b7/1pn5/1PB2R2/4k1P1/3R2P1/3K2n1/8/8",
+   "stip": "#2",
+   "author": "Claude (session 0be7e202, 15 Oct 2026), by hand",
+   "source": "E. Bourd's type 2 of changed mates, 2x2: both knights' mates change from the d4 rook to the f6 rook",
+   "themes": [
+    "Changed mates type 2 (mutate, 2x2): set 1...Sc7~ 2.Rd5#, 1...Sg3~ 2.Re4#; 1.Bd7! (zugzwang) 1...Sc7~ 2.Re6#, 1...Sg3~ 2.Rf5#",
+    "Tries 1.Bxb7? Bxb7!, 1.bxc7? (2.Rd5#) bxc6!"
+   ],
+   "keys": [
+    "Bd7"
+   ],
+   "note": "Gate PASS, 7+5; every unit needed (one removal each). Kd3 covers e4 and protects d4, so every king move spoils the set; no wPe3, so f4 depends on Rf6 through f5 in the set and 1.Rg6/Rh6 spoil; Pg5 protects f6, Pg4 covers f5 for 2.Re6#. The complete block needs a hole: 1...bxc6 (bPb7, wPb6 to fix it after the key, bBa8 against 1.Bxb7). Flaws: three units only for the hole, and the hole is a capture of the key piece (the key looks like an escape); mates capture the self-blocking knight."
   }
  ]
 }

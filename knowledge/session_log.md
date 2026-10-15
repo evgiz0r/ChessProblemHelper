@@ -1236,3 +1236,8 @@ no motive layer to mirror.
   e6 is refuted by 1...Re6, a threat stopped by the d3 cut also by 1...Bd3; far/near mates on one check line (K e4, Qg2 -> Qf3)
   cook by 1.Qg2+ Rf3 2.Qxf3#. Evolve (8 runs x 270 s) moved the key to 1.Qc7 (2.Qxc5#, Black correction S~ Rd5#, Sd3 Qxc4#,
   Se6 Bxe5#), still refuted by Bd3 and Rc8. Asked him which mates he meant.
+- E. Bourd: "lets practice the other types of transfers" (his types 2 and 3). Type 2 on his rook scheme (Rf6/Rd4, knights
+  guarding one square of each rook's pair): a bishop selects the rook (c6 protects d5/e4, d7 protects e6/f5). Mutate; the set
+  needs a hole. claude-type2-rooks-light, 8/2n5/2B2RK1/4k3/3R4/4P1n1/8/8 (evolve 6+3, then -Pc3): set Sg3~ Re4#; 1.Bd7! Sg3~ Rf5#,
+  Sc7~ Re6#. claude-type2-rooks-full, b7/1pn5/1PB2R2/4k1P1/3R2P1/3K2n1/8/8 (by hand, 7+5): both changes, hole 1...bxc6, tries
+  1.Bxb7? Bxb7!, 1.bxc7? bxc6!. Both gate PASS. Fixed chesscomp.compose.trim for zugzwang keys (it never trimmed a block).

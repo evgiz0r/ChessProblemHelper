@@ -63,7 +63,8 @@ def trim(fen: str, keep=(), max_removed=6):
                 kp = key_play(b.board_fen())
                 if not kp or kp[0] != keys0 or kp[2]:
                     continue
-                if any(kp[1].get(d) != m for d, m in play0.items() if m) or any(not m for m in kp[1].values()):
+                if any(kp[1].get(d) != m for d, m in play0.items() if m) or \
+                        any(not m for d, m in kp[1].items() if d != '(threat)'):   # a zugzwang key has no threat
                     continue
                 nxt.append(g); found.append((g, b.board_fen()))
         if not nxt:
