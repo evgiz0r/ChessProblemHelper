@@ -2348,6 +2348,22 @@
     "Sc7"
    ],
    "note": "Python solver: sound, 10+4, gate PASS. Flaws: thin (one thematic defence); Bf1 only for the try's threat; Kg2 placed to close f1-g2; bPb6 and Pc3 cook-stoppers; white force heavy against 4 black units; both tries share the refutation Rd7 (publish 1.e3? only). Pluses: two pieces mating on one empty square, threats changed on one square, selection by one knight's double effect, flight-giving key."
+  },
+  {
+   "id": "bourd-type2-doubled",
+   "fen": "8/8/2PQ1Br1/2KNP3/4k1P1/2pppR2/3qn1P1/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench sitting mva0262a, 16 Oct 2026, step 114), from claude-type2-d4-scheme",
+   "source": "Our knight-d5 selector scheme doubled: 114 steps, 23 solves, three quarter turns each way; sound only at the last step (bRg6 for 13 cooks)",
+   "themes": [
+    "Doubled set/key change between two pieces: 1...Qa2 Rxe3# -> Qxd3#, 1...Sf4 Rxf4# -> Qd4#. The knight d5 masks Qd6's file and protects e3/f4 for the rook; 1.Sb4! opens the file and protects d3 for the queen: the guarded pair shifts a file, (e3,f4) -> (d3,d4)",
+    "White correction: 1.S~? (Se7/Sc7/Sb6) Qa2! (d3 unprotected); 1.Sf4? (protects d3, cuts Rf3-f5) Rxg4!; 1.Sb4!",
+    "Both defences guard the threat square d5 (Qa2 along a2-d5, Sf4), each with its own error (the queen leaves d2: e3/d3 unguarded; the knight blocks f4)"
+   ],
+   "keys": [
+    "Sb4"
+   ],
+   "note": "Python solver: sound, 9+7, nothing trimmable; lighten (now with a full key check) finds nothing lighter. His method: list the guard changes the line opening allows (f4,e3 -> d4,d3), then the defences whose geometry gives both, then the key's reason: guarding d3 is the change itself, better than a cook-stopping guard of f5. Flaws: wPc6 only stops the double threat Qc6#; bRg6 cook-stopper (also refutes 1.Sf4? and 1.Qe6?); the set mates capture (Rxf4 takes the defender, Rxe3 a pawn); random queen moves share the set mate Rxe3#; 7 pawns."
   }
  ]
 }

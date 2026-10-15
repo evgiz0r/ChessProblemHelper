@@ -164,7 +164,13 @@ def piece_necessity(problem, res, time_limit=20):
         pr = Problem(b, problem.stip)
         r = analyse(pr, max_refutations=1, include_tries=True, include_set=True, time_limit=time_limit)
         keys = r.get('keys', [])
-        if keys == [key]:
+        base_thr = {t['san'] for t in (key_ph or {}).get('threat') or []}
+        new_key = next((ph for ph in r.get('phases', []) if ph['type'] == 'key'), None)
+        new_thr = {t['san'] for t in (new_key or {}).get('threat') or []}
+        if keys == [key] and len(base_thr) == 1 and len(new_thr) > 1:
+            # a double threat is fatal for us: the unit that prevents it is a cook-stopper (his wPc6, 16 Oct 2026)
+            out[chess.square_name(sq)] = f"needed (stops the double threat {'/'.join(sorted(new_thr))})"
+        elif keys == [key]:
             k0 = [ph for ph in r['phases'] if ph['type'] == 'key'][0]
             real = [v for v in k0['variations'] if not v['threat_repeat'] and v['continuations']]
             duals = [v for v in real if v['dual']]

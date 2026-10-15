@@ -95,9 +95,11 @@ def lighten(fen, key, trym, defs=(), keep=(), max_remove=2):
     """Trim with replacement (E. Bourd, 15 Oct 2026: bQa8 and bPh5 out, wPg4 in): remove up to max_remove units (not
     the kings, not the squares in keep) and add at most one pawn of either colour, keeping the key phase without a
     refutation, the try's refutations and the thematic mates in both phases, and no mate in one or check cook in the
-    diagram. Returns (units, change, fen) lightest first. python-chess only: solve every hit."""
+    diagram (every first move is checked for a second key). Returns (units, change, fen) lightest first. python-chess
+    only: solve every hit."""
     from itertools import combinations
     from .trychange import check_cooks
+    from .keysel import keys
     b0 = chess.Board(fen if ' ' in fen else fen + ' w - - 0 1')
     key, trym = chess.Move.from_uci(key), chess.Move.from_uci(trym)
     defs = [chess.Move.from_uci(d) for d in defs]
@@ -127,6 +129,8 @@ def lighten(fen, key, trym, defs=(), keep=(), max_remove=2):
                 if not tp or {m.uci() for m in tp[0]} != refs0 or any(tp[1].get(d) != t0[1].get(d) for d in defs):
                     continue
                 if check_cooks(b):
+                    continue
+                if keys(b) != [key]:        # every first move, not only checks (bench 16 Oct: -Rg6 let in 13 keys)
                     continue
                 change = ' '.join('-' + b0.piece_at(s).symbol() + chess.square_name(s) for s in gone)
                 if add:

@@ -1290,3 +1290,7 @@ no motive layer to mirror.
   claude-type2-d4-try, 3Q4/1r3R2/1p6/2pNN3/4kP2/2P5/4P1K1/3R1B2, 1.e3? (2.Bd3#) c4 2.Rd4#, Rd7!; gate PASS. One-unit
   try search (scratch addtry.py) found nothing; the two-unit try (Bf1 masked by e2) came by hand, then g2 and b2 cooks
   fixed (Kg2, bPb6). Verdict: medium, thin (one thematic defence); Bf1 try-only, heavy White. Shown with diagrams.
+- 16 Oct: E. Bourd's bench sitting mva0262a (114 steps, 23 solves, three quarter turns each way) doubled our scheme:
+  bourd-type2-doubled, 8/8/2PQ1Br1/2KNP3/4k1P1/2pppR2/3qn1P1/8, 1.Sb4! (2.Qd5#) Qa2 Qxd3#, Sf4 Qd4# (set Rxe3#, Rxf4#);
+  white correction 1.S~? Qa2!, 1.Sf4? Rxg4!. Re-solved: sound, nothing trimmable. Tool fixes: critique necessity counts a
+  double-threat stopper (wPc6) as needed; rerefute.lighten checks every first move (it had offered -Rg6, 13 keys).

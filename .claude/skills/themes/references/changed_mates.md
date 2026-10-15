@@ -85,3 +85,7 @@ defender reaches d6/d7 or checks the White king on a dark diagonal - a quiet paw
 and the mate-captures-defender flaw. All knight moves then solve; chesscomp.compose.keysel found the reason for one key
 (Rb7, cut by 1.Sc7!; 1.Se7? Rd7!). Try with the same change: claude-type2-d4-try (+Bf1 masked by e2: 1.e3? (2.Bd3#) c4
 2.Rd4#, Rd7!), threats changed on one square d3. On d4 only Q and R can mate, so a third phase needs another square.
+His doubling (bench 16 Oct 2026), bourd-type2-doubled, 8/8/2PQ1Br1/2KNP3/4k1P1/2pppR2/3qn1P1/8, 1.Sb4! (2.Qd5#):
+1...Qa2 Rxe3# -> Qxd3#, 1...Sf4 Rxf4# -> Qd4#. He listed the guard pairs first (the knight on d5 holds e3/f4 for the
+rook; the opened file gives d3/d4 to the queen), then the defences whose geometry yields both, then the key's reason from
+the change itself: 1.Sb4 protects d3 (1.S~? Qa2!, 1.Sf4? Rxg4!) - a white correction, better than a cook-stopping guard.

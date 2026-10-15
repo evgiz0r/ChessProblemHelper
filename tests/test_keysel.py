@@ -15,3 +15,12 @@ def test_scheme_has_one_key_and_the_change():
 def test_without_the_rook_every_knight_move_solves():
     b = chess.Board('3Q1R2/8/8/2pNN3/4kP2/2P5/8/3RK3 w - - 0 1')
     assert {b.san(k) for k in keys(b)} >= {'Nc7', 'Ne7', 'Nb6'}
+
+
+def test_critique_counts_a_double_threat_stopper_as_needed():
+    from chesscomp import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import piece_necessity
+    p = Problem.from_fen('8/8/2PQ1Br1/2KNP3/4k1P1/2pppR2/3qn1P1/8 w - - 0 1', '#2')
+    r = analyse(p, max_refutations=1, include_tries=True, include_set=True, time_limit=30)
+    assert piece_necessity(p, r)['c6'].startswith('needed (stops the double threat')
