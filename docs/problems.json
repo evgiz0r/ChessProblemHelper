@@ -2316,6 +2316,38 @@
     "Qe6"
    ],
    "note": "Python solver: sound, 7+7; nothing trimmable, and rerefute.lighten finds no lighter version. Flaws: wPg4 only stops 1.Qh4+; random bishop moves (Be8/Bd7/Bb5) allow Qe4# beside the threat; 1...Rxc4 2.Qxc4# takes the defender; Kd2 for soundness; set duals (Bd5 Qxg7/Qe5), which he does not mind. With the queen on e8 the set is clean but repeats the key's mates and adds a capture try 1.Qxc6? Rxc6!."
+  },
+  {
+   "id": "claude-type2-d4-scheme",
+   "fen": "3Q1R2/1r6/8/2pNN3/4kP2/2P5/8/3RK3",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 15 Oct 2026)",
+   "source": "E. Bourd's request: changes where two different White pieces mate and a third unit's effect selects the mate; simple scheme first",
+   "themes": [
+    "Set/key change on one square by two pieces: set 1...c4 2.Rd4#; 1.Sc7! (2.Qd3#) c4 2.Qd4#. The knight d5 masks Qd8's file and guards e3; its departure opens the file (Qd4#) and gives e3 (Rd4+? Ke3)",
+    "Key cuts Rb7 from d7: 1.Se7? (2.Qd3#) c4 2.Qd4#, but 1...Rd7!",
+    "Flight-giving key: 1...Ke3 2.Qd3#"
+   ],
+   "keys": [
+    "Sc7"
+   ],
+   "note": "Python solver: sound, 8+3, nothing trimmable (trim, rerefute.lighten). The quiet defence lands away from d4 (both mates on an empty square). Flaws: thin play (one thematic defence), Pc3 only stops Sc3+/Sc4, Se5 and Rf8 static guards. Model: Ahues, Die Schwalbe 1997 4th Prize (psis-8e536d7627), where Sc7/Sc5 select fxe3#/Qxe3# after a checking defence. Found by hand construction (selector = mask + guard) and chesscomp.compose.keysel for the key's reason."
+  },
+  {
+   "id": "claude-type2-d4-try",
+   "fen": "3Q4/1r3R2/1p6/2pNN3/4kP2/2P5/4P1K1/3R1B2",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 15 Oct 2026)",
+   "source": "claude-type2-d4-scheme extended with a try: +Bf1 +Pe2 (masked bishop), Kg2 closes f1-g2 (1.g4 cooked), Rf7 blocks the 7th rank, bPb6 stops 1.e3? Rb2+",
+   "themes": [
+    "Changed mates on d4 by two pieces after 1...c4: set and try 1.e3? (2.Bd3#) 2.Rd4#; key 1.Sc7! (2.Qd3#) 2.Qd4#; the knight d5 selects by staying (masks the queen, holds e3) or leaving",
+    "Changed threats on one square d3 (Bd3#/Qd3#), 1...c4 guarding d3 in both phases",
+    "Tries refuted by 1...Rd7! (cuts the queen's protection of Sd5 in 1.e3?, closes the file in 1.Se7?); the key cuts the rook"
+   ],
+   "keys": [
+    "Sc7"
+   ],
+   "note": "Python solver: sound, 10+4, gate PASS. Flaws: thin (one thematic defence); Bf1 only for the try's threat; Kg2 placed to close f1-g2; bPb6 and Pc3 cook-stoppers; white force heavy against 4 black units; both tries share the refutation Rd7 (publish 1.e3? only). Pluses: two pieces mating on one empty square, threats changed on one square, selection by one knight's double effect, flight-giving key."
   }
  ]
 }

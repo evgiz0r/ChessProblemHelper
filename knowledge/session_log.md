@@ -1281,3 +1281,12 @@ no motive layer to mirror.
   square the Grimshaw cuts: the queen lands on e5/e4 in the key, mates through it in the try - Qxg7, Qf4), the refutation
   1...Rf5 is the Grimshaw rook on its own line; flaws: wPg4 plug, only two phases (Grimshaw + try/key change is a known
   combination), 1...Rxc4 Qxc4# constant, random bishop duals, Kd2 passive. Expected commendation level; publish try + key.
+- E. Bourd: "a different type of changes ... 2 pieces ... other effect which makes only 1 of the 2 mates possible; simple
+  first, then unity". Scan of problemesis (#2 with a try, same defence, different mating units, same key piece): 121
+  problems; model Ahues 1997 (Sc5?/Sc7! selecting fxe3#/Qxe3#). Random searches (scratch type2.py) failed (cooks, fake
+  changes). Hand construction (stated as such in chat) of a knight that masks the queen's file and guards e3, ~15 inspected
+  steps, then chesscomp.compose.keysel (new, tested) for the key's reason: claude-type2-d4-scheme,
+  3Q1R2/1r6/8/2pNN3/4kP2/2P5/8/3RK3, set 1...c4 2.Rd4#, 1.Sc7! (2.Qd3#) c4 2.Qd4#, 1.Se7? Rd7!. Extended with a try:
+  claude-type2-d4-try, 3Q4/1r3R2/1p6/2pNN3/4kP2/2P5/4P1K1/3R1B2, 1.e3? (2.Bd3#) c4 2.Rd4#, Rd7!; gate PASS. One-unit
+  try search (scratch addtry.py) found nothing; the two-unit try (Bf1 masked by e2) came by hand, then g2 and b2 cooks
+  fixed (Kg2, bPb6). Verdict: medium, thin (one thematic defence); Bf1 try-only, heavy White. Shown with diagrams.

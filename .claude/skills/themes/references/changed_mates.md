@@ -71,3 +71,17 @@ d5) in the set, 1.Bd7! (e6, and f5 through e6). The far square of each pair need
 Rd5#: Pd3/Kd3; f5 in Re6#: Kg6/Pg4). A mutate needs a set hole, or every waiting move solves (Kf7, Bb7, Rg6 cooked the
 complete block): leave one variation unguarded (light, one change) or let a black pawn take the key piece (full, 2x2, three
 units and an escape-looking key). Trim block problems only with the 15 Oct fix of chesscomp.compose.trim.
+
+## Two pieces mate, a third unit selects (E. Bourd, 15 Oct 2026)
+"Not the same white piece does all the play, but 2 pieces ... the change is not due to movement of the piece, but rather
+other effect which makes only 1 of the 2 mates possible." Model: Ahues, Die Schwalbe 1997 4th Prize (psis-8e536d7627),
+1.Sc5? / 1.Sc7! after 1...Se3+: fxe3# needs Bb8-e5 open, Qxe3# needs d5 guarded; Sc7 closes the one and guards the other.
+Mates on one square by two pieces: both must check from it (Q+R on a line, Q+B or Q+P or B+P on a diagonal, two knights).
+Our scheme, claude-type2-d4-scheme, 3Q1R2/1r6/8/2pNN3/4kP2/2P5/8/3RK3: the knight d5 masks Qd8's file and guards e3, so
+1...c4 (unguards d4, guards d3) gives 2.Rd4# in the set and 2.Qd4# after any knight move (Rd4+? Ke3). One departure, two
+effects. What it took (session log 15 Oct): every queen square near the king gives mates in one (Qf6, Qd7); the knight's
+check squares (c3, f6) must be occupied, or a check by the knight cooks once the file opens; a black bishop as the
+defender reaches d6/d7 or checks the White king on a dark diagonal - a quiet pawn defence (c5-c4) away from d4 avoided both
+and the mate-captures-defender flaw. All knight moves then solve; chesscomp.compose.keysel found the reason for one key
+(Rb7, cut by 1.Sc7!; 1.Se7? Rd7!). Try with the same change: claude-type2-d4-try (+Bf1 masked by e2: 1.e3? (2.Bd3#) c4
+2.Rd4#, Rd7!), threats changed on one square d3. On d4 only Q and R can mate, so a third phase needs another square.

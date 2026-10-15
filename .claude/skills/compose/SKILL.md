@@ -41,6 +41,10 @@ Read `references/construction.md` now (the order and the rules with their exampl
 3c0. **Try/key changes on the same defences?** `python3 -m chesscomp.compose.trychange` (env CORE, SEED, KP or Q, THREAT,
    DEFS, ONLY, FORBID, TARGET) scores pairs of key-piece moves by the mates after each defence, without the solver: a
    mechanism in minutes (Grimshaw queen posts, 15 Oct 2026), never a sound problem. Solve every hit.
+   Two pieces mating, a third unit selecting (themes/changed_mates.md): build the selector's effects by hand first (a
+   random diagram search gives cooks and fake changes: a try mate that is its own threat still standing). When every move
+   of the selector solves, `python3 -m chesscomp.compose.keysel` (env CORE, SEED, KP, DEF, SETM, KEYM) keeps the set/key
+   change and searches the units that leave one key (claude-type2-d4-scheme: 1.Sc7! cuts Rb7 from d7).
 3c'. **Errors before any search** (E. Bourd, 8 Oct 2026: "this small thing cannot be just search"). For every
    defence, and every hole, run `python3 -m chesscomp.compose.effects POSTKEY [MOVE ...]`: it lists what the move's
    departure and arrival change (self-block, lines opened/closed with the squares, guards lost/gained, pins) and
