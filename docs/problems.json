@@ -2300,7 +2300,7 @@
    "keys": [
     "Qe6"
    ],
-   "note": "Python solver: sound, 6+9; trim: nothing removable; every white unit plays except Kd2 (soundness). Flaws: the try's refutation 1...Bxf3 is a capture that removes the e4 guard (not thematic); set play has a dual in both thematic lines (Qxg7/Qe5, Qh4/Qe4) since the e7 queen reaches both posts' lines - publish without set; 1...Rxc4 2.Qxc4# captures the defender and does not change; black force 9 units with a queen."
+   "note": "Python solver: sound, 6+9; trim: nothing removable; every white unit plays except Kd2 (soundness). Flaws: the try's refutation 1...Bxf3 is a capture that removes the e4 guard (not thematic); set play has a dual in both thematic lines (Qxg7/Qe5, Qh4/Qe4) since the e7 queen reaches both posts' lines - publish without set; 1...Rxc4 2.Qxc4# captures the defender and does not change; black force 9 units with a queen. His variant with wBg6 instead of wPf3 (step 262, q7/2p1Q1p1/2b3B1/r1r4p/p1Pk4/3NN3/3K4/8, sound, 6+9): 1.Qf7? is refuted by 1...Rf5!, the Grimshaw rook on its own rank through d5 closing the g6 bishop's guard of e4 - quiet and thematic; our preference. With wBh7 the 1.Qf7? try disappears."
   }
  ]
 }
