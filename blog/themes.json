@@ -78,7 +78,7 @@
    "order": 10,
    "name": "White correction",
    "definition": "The key piece's random move fails to one defence; its corrections fix that but fail to another; the key is the correction with no negative effect.",
-   "reference": ".claude/skills/themes/references/black_correction.md (the mirror section)",
+   "reference": ".claude/skills/themes/references/white_correction.md",
    "db_text": "Correction blanche"
   },
   {

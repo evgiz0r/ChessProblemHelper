@@ -147,7 +147,25 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. To lift No. 9: changed mates (the key could make the black rook's 7th-rank moves
   matter) or one refutation per wrong promotion. A seed validator in evolve (refuse an illegal SEED with a message).
 
+## 2026-10-15, No. 10: White correction (study post)
+- Result: no sound original; study post on Loustau, Phénix 1999 2nd Prize (psis-22fa9079c1),
+  4R3/3N4/1BNb1R1r/1K1k1p2/1p4q1/3P4/4r3/6Q1, 1.B~? Qxg1!, 1.Bc5? Bc7!, 1.Bd4? Bc5!, 1.Be3!, with today's two
+  near-misses as diagrams (bishop d3 on the d-file: one correction and a diagram flight; knight e4 next to the king:
+  cooked by knight checks). Mentor issues #7-#10 had no answers; nothing to act on.
+- Setup: `main` fast-forwarded cleanly (60 commits behind, no divergence).
+- Minutes (container clock 23:58-02:30): setup and reading 10, mentor 1, study 10, kit change (WCORR score, seed check,
+  test) 20, evolve 40 (24 jobs), hand work 50, post and records 20. About 80 solves.
+- What wasted time: four of eight first seeds had a mate in one (the new seed check reported them, at least); evolve
+  never found a second correction in 16 seeded jobs; three hand geometries started without the error table; the
+  `ps | awk /compose.evolve/ | xargs kill` pipe in front of pytest killed its own shell, so the tests did not run.
+- What helped: a 30-line try table in python-chess (threat, refutations and mates for every move of one unit, under a
+  second) for one change per solve; the knight-colour fact (a knight next to the king never checks by moving).
+- Next run: theme from `next-theme`. For a white correction again, write the error table first (arrival square ->
+  defence stopped, mate spoiled), on a bishop or rook line with a second White line crossing it, then WCORR evolve.
+
 ## Proposals
+- compose.trytable: the scratch try table of daily No. 10 (every move of one White unit: threat, refutations,
+  non-threat mates; pure python-chess, under a second) as a kit tool with a test.
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
 - A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct, direct self-pin 13 Oct), so those themes can be claimed only when

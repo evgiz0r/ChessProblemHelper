@@ -2177,6 +2177,36 @@
     "Qg8"
    ],
    "note": "Gate PASS, 8+8, trim: nothing removable. chesscomp.compose.errors: 1...Sd4 set Qe4# (arrival), solution Qd5# (arrival). For K e5 and the queen lines b1-h7/a2-g8 the far mating squares e4/d5 have one crossing of Black guard lines, d4 (rank 4 and the d-file), so two rooks. Roles: Bg2 e4/d5 from the side c6 cannot cut (with Bb7 instead, 1...Se6 cut the queen from d5 and gave the dual 2.Qxe6#/Sf7#; gate FAIL); Sg3 e4/f5; Pe3 d4/f4; Pf6 blocks 1.Qxg7 (protected by Be7); bSg7 guards f5 (no 1.Qf5) and e6 (no second threat 2.Qe6). Every rook path to c6 is cut: bPa5 (Ra6), bPc5 (Rc4-c6), bPd6 (Rd6-c6). d7 stays free: 1.Sc6+? Ke6 2.Qg8+ Kd7. Flaws: heavy for one variation (three black pawns penning rooks), wKa8 passive, set duals after Se8/Sh5/Se6. Eight evolve runs (two-rook cores, then with the threat engine fixed) found nothing; built by hand in ~8 solves."
+  },
+  {
+   "id": "claude-wcorr-bishop-d3-rejected",
+   "fen": "8/2K2R2/8/4k3/4PN1r/2RB4/2P4r/3Q4",
+   "stip": "#2",
+   "author": "Claude (daily No. 10, 15 Oct 2026), evolve WCORR",
+   "source": "blog daily No. 10 attempt, theme White correction",
+   "themes": [
+    "Random stage 1.B~ (Ba6, Bb5, Bc4, Bf1)? (2.Qd5#) Rd2!; 1.Be2! closes the black rook's rank"
+   ],
+   "keys": [
+    "Be2"
+   ],
+   "note": "REJECTED: diagram flight d4 (gate FAIL), no defence after the key, only one correction."
+  },
+  {
+   "id": "claude-wcorr-knight-e4-rejected",
+   "fen": "8/6rb/1N1P4/4P3/1P1kNP2/8/1K2PP2/7Q",
+   "stip": "#2",
+   "author": "Claude (daily No. 10, 15 Oct 2026), by hand",
+   "source": "blog daily No. 10 attempt, theme White correction",
+   "themes": [
+    "Knight e4 next to the king masks Qh1-d5; 1.Sf6?/Sc3?/Sd2? Rg2! (interposition); 1.Sg3 closes the g-file"
+   ],
+   "keys": [
+    "Sg5",
+    "Sc5",
+    "Sg3"
+   ],
+   "note": "REJECTED: cooked by 1.Sg5 (2.Se6#/Qd5#) and 1.Sc5; dual after 1...Bg8; Pd6 a cook-stopper."
   }
  ]
 }
