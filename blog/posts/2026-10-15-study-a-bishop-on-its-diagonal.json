@@ -60,5 +60,6 @@
   "kernels": 9,
   "searches": 24
  },
- "improvement": "A white-correction score for the kit: chesscomp/compose/white_correction.py scores the moves of one White unit (a unique quiet key by it, a random refutation shared by at least two tries, distinct correction refutations, no king refutation, every thematic refutation answered in the key, changed mates rewarded). evolve uses it as WCORR=<square>, and also runs `python -m chesscomp.compose.white_correction FEN SQ`. Tested in tests/test_white_correction.py on Loustau (a hit) and Narayanan 1997 (no hit: a try refuted by a king move). evolve now also reports an illegal SEED (a check, a mate in one, promoted force) in its output instead of dying silently, which three earlier daily runs asked for."
+ "improvement": "A white-correction score for the kit: chesscomp/compose/white_correction.py scores the moves of one White unit (a unique quiet key by it, a random refutation shared by at least two tries, distinct correction refutations, no king refutation, every thematic refutation answered in the key, changed mates rewarded). evolve uses it as WCORR=<square>, and also runs `python -m chesscomp.compose.white_correction FEN SQ`. Tested in tests/test_white_correction.py on Loustau (a hit) and Narayanan 1997 (no hit: a try refuted by a king move). evolve now also reports an illegal SEED (a check, a mate in one, promoted force) in its output instead of dying silently, which three earlier daily runs asked for.",
+ "mentor_issue": 11
 }
