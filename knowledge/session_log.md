@@ -1271,3 +1271,6 @@ no motive layer to mirror.
 - E. Bourd continued on the bench: bourd-grimshaw-d5-queen-posts, q7/2p1Q1p1/2b5/r1r4p/p1Pk4/3NNP2/3K4/8, 1.Qe6! (2.Sc2#)
   Bd5 Qe5#, Rd5 Qe4#; try 1.Qf7? Bd5 Qxg7#, Rd5 Qf4#, Bxf3!. 6+9, nothing trimmable. His principle recorded: pieces behind
   the Grimshaw units stop the cooks on the thematic lines. Our verdict: weakest point the capturing, unthematic refutation.
+- E. Bourd: "how would you find that improvement, its not just trimming". Wrote chesscomp.compose.rerefute (tested): re-guard
+  the square a try lacks with a line piece crossing a thematic unit's line; on his Pf3 version it finds -Pf3 +Bg6 (1.Qf7? Rf5!)
+  as the only hit in 13 s. Compose skill step 6c added.
