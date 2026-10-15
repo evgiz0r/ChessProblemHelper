@@ -2301,6 +2301,21 @@
     "Qe6"
    ],
    "note": "Python solver: sound, 6+9; trim: nothing removable; every white unit plays except Kd2 (soundness). Flaws: the try's refutation 1...Bxf3 is a capture that removes the e4 guard (not thematic); set play has a dual in both thematic lines (Qxg7/Qe5, Qh4/Qe4) since the e7 queen reaches both posts' lines - publish without set; 1...Rxc4 2.Qxc4# captures the defender and does not change; black force 9 units with a queen. His variant with wBg6 instead of wPf3 (step 262, q7/2p1Q1p1/2b3B1/r1r4p/p1Pk4/3NN3/3K4/8, sound, 6+9): 1.Qf7? is refuted by 1...Rf5!, the Grimshaw rook on its own rank through d5 closing the g6 bishop's guard of e4 - quiet and thematic; our preference. With wBh7 the 1.Qf7? try disappears."
+  },
+  {
+   "id": "bourd-grimshaw-d5-7x7",
+   "fen": "8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench sitting mv9wf7y9, 15 Oct 2026, step 287)",
+   "source": "Stage after bourd-grimshaw-d5-queen-posts: wBg6 for wPf3 (refutation Rf5), then bQa8 and bPh5 out, wPg4 in",
+   "themes": [
+    "Grimshaw on d5 with try/key changes: 1.Qf7? (2.Sc2#) Bd5 Qxg7#, Rd5 Qf4#, but 1...Rf5! (the rook on its own rank cutting Bg6-e4); 1.Qe6! Bd5 Qe5#, Rd5 Qe4#",
+    "By-play 1...Rxc4 2.Qxc4#"
+   ],
+   "keys": [
+    "Qe6"
+   ],
+   "note": "Python solver: sound, 7+7; nothing trimmable, and rerefute.lighten finds no lighter version. Flaws: wPg4 only stops 1.Qh4+; random bishop moves (Be8/Bd7/Bb5) allow Qe4# beside the threat; 1...Rxc4 2.Qxc4# takes the defender; Kd2 for soundness; set duals (Bd5 Qxg7/Qe5), which he does not mind. With the queen on e8 the set is clean but repeats the key's mates and adds a capture try 1.Qxc6? Rxc6!."
   }
  ]
 }

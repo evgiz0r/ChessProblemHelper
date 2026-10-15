@@ -1274,3 +1274,6 @@ no motive layer to mirror.
 - E. Bourd: "how would you find that improvement, its not just trimming". Wrote chesscomp.compose.rerefute (tested): re-guard
   the square a try lacks with a line piece crossing a thematic unit's line; on his Pf3 version it finds -Pf3 +Bg6 (1.Qf7? Rf5!)
   as the only hit in 13 s. Compose skill step 6c added.
+- E. Bourd: "i improved a bit more!? noticing that the black queen might not be needed": bourd-grimshaw-d5-7x7,
+  8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8, 7+7 (-bQa8 -bPh5 +wPg4). Added rerefute.lighten (trim with replacement, tested):
+  finds his step as the only hit; no lighter version of the new position.
