@@ -1277,3 +1277,7 @@ no motive layer to mirror.
 - E. Bourd: "i improved a bit more!? noticing that the black queen might not be needed": bourd-grimshaw-d5-7x7,
   8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8, 7+7 (-bQa8 -bPh5 +wPg4). Added rerefute.lighten (trim with replacement, tested):
   finds his step as the only hit; no lighter version of the new position.
+- Our verdict on bourd-grimshaw-d5-7x7 (judge skill): medium content, clean; the changes are unified (each pair uses the
+  square the Grimshaw cuts: the queen lands on e5/e4 in the key, mates through it in the try - Qxg7, Qf4), the refutation
+  1...Rf5 is the Grimshaw rook on its own line; flaws: wPg4 plug, only two phases (Grimshaw + try/key change is a known
+  combination), 1...Rxc4 Qxc4# constant, random bishop duals, Kd2 passive. Expected commendation level; publish try + key.
