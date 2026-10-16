@@ -1306,3 +1306,6 @@ no motive layer to mirror.
   swap in Strebkovs 2003 (psis-c1d0392e2e). Built claude-knight-swap-2x2-scheme (hand reasoning + inspector): the 2x2 change
   works as a block; no threat found (searches keysel2/swap2 failed: the key's own flight f4 needs a 4th-rank check, which
   the f-file rook parries). Shown to him as a scheme, not a problem.
+- 16 Oct: he asked "you tried and gave up or just stopped": I had stopped with two untried directions (lesson). Continued:
+  Strebkovs principle (static guards removed by the set mates' own interference), threat 2.Qe6# found by hand
+  (claude-knight-swap-2x2-qe6), still faults (set dual, Ke3 after Qxf5). Not finished.

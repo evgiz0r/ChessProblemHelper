@@ -103,3 +103,10 @@ capture squares c5/d4 for the key mates; one black bishop lands on either square
 claude-knight-swap-2x2-scheme, 5r2/8/2N5/8/2P1k3/4p2Q/1KP3N1/8, Sg2->h4: set Rf5 Qxe3#, Rf3 Qe6#; after Sh4 Rf5 Qxf5#,
 Rf3 Qxf3# (each rook landing cuts one queen line h3-e3 / h3-e6 and becomes the other's capture target). Obstacle: the key
 gives f4 (the knight's old guard), so a threat must check along the 4th rank, and the f-file rook interposes on f4.
+Principle from Strebkovs (why his key gives no flight): the squares the knight gives up are ALSO covered by White line
+pieces, and the set mates interfere with those lines themselves (Sc7 shuts the queen's c-file, e4 the rook's 4th rank), so
+only they need the knight. Next stage of ours: claude-knight-swap-2x2-qe6, 8/6p1/5p2/7N/2P1k3/7Q/1BP3Nn/K1n5, threat
+1.Sh4 (2.Qe6#): Sf3 Sg3# -> Qxf3# (the knight could interpose on e5), f5 Qe3# -> Qxf5# (interference on h3-e6). Faults:
+set dual Sg3/Qg4 after Sf3; after the key 1...f5 Qxf5+ Ke3 (Qxf5 cannot cover e3, and a static guard of e3 would also
+protect the set mate Qe3 after the key). Way out: both set mates must rely on f4 only and each must remove f4's static
+guard itself (the h5 knight's two checks Sg3/Sf6), but Sf6 needs f6 free after 1...f5 and guarded in the diagram.
