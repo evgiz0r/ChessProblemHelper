@@ -45,6 +45,9 @@ Read `references/construction.md` now (the order and the rules with their exampl
    random diagram search gives cooks and fake changes: a try mate that is its own threat still standing). When every move
    of the selector solves, `python3 -m chesscomp.compose.keysel` (env CORE, SEED, KP, DEF, SETM, KEYM) keeps the set/key
    change and searches the units that leave one key (claude-type2-d4-scheme: 1.Sc7! cuts Rb7 from d7).
+   One piece with two mates per defence, one per phase: list by hand the pairs one Black unit can free (one square on
+   each line), fix the selector key and the mating piece, then `python -m chesscomp.compose.type3` (env CORE, SEED,
+   KEY, MP, FIX) scores every defence (holes, duals) and rewards a unit with a single defence (claude-type3-queen-lines).
 3c'. **Errors before any search** (E. Bourd, 8 Oct 2026: "this small thing cannot be just search"). For every
    defence, and every hole, run `python3 -m chesscomp.compose.effects POSTKEY [MOVE ...]`: it lists what the move's
    departure and arrival change (self-block, lines opened/closed with the squares, guards lost/gained, pins) and

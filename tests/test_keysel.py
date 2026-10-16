@@ -38,3 +38,15 @@ def test_landings_that_cut_a_line_are_not_a_random_move():
     r2 = analyse(Problem.from_fen('3R4/8/6K1/4P3/3bk3/N1p3Q1/8/8 w - - 0 1', '#2'), include_set=True, time_limit=60)
     key = next(ph for ph in r2['phases'] if ph['type'] == 'key')
     assert key['corrections'] and key['corrections'][0]['random']['mate'] == 'Qg4#'
+
+
+def test_a_unit_that_stops_solution_duals_is_not_set_play_only():
+    # claude-type3-queen-lines: wSg1 protects f3 for the set mates and, after 1.Ke2!, shuts Qh1# out of 1...Sd3/Sc2
+    from chesscomp import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import piece_necessity, critique
+    p = Problem.from_fen('2B5/8/2N2n2/8/2P1k3/1p2P3/3K4/1R1Qn1N1 w - - 0 1', '#2')
+    r = analyse(p, max_refutations=1, include_tries=True, include_set=True, time_limit=30)
+    assert piece_necessity(p, r)['g1'].startswith('needed (stops the dual(s) 1...S')
+    rules = {f['rule'] for f in critique(p, r)['findings']}
+    assert 'set-play-only unit' not in rules and 'set play + dual stopper' in rules

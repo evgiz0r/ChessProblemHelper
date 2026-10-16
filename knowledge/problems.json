@@ -2414,6 +2414,36 @@
    ],
    "note": "Python solver: sound, 7+7. Flaws: the try is refuted by capture of the key piece; set unprovided moves (Sc1, rook moves along the g-file, bishop moves, fxe3); after the key 1...Sd4 allows Be4#/Re5# (no defence); the defences only guard the threat square (pure, with changed mates). Pluses: unity - each changed pair exploits the defence's own line cut; light force. Next step (mva9qdn4, 16 Oct): wBd6 for wSd3 and bPc7, 8/3K4/3B2R1/5kpP/4Np2/4RB2/4n3/b5r1, 7+6, same play, key now written 1.Sf2! (the bench's diff had called it a new key: fixed, keys compared by move). New try 1.Rc3? (2.Rf6#) Bxc3!; the try 1.Sd6+? cxd6! is gone.",
    "fen_improved": "8/3K4/3B2R1/5kpP/4Np2/4RB2/4n3/b5r1"
+  },
+  {
+   "id": "claude-type3-queen-lines-scheme",
+   "fen": "7b/8/5n2/R7/4k3/1p2P3/3K4/1R1Qn1N1",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 16 Oct 2026)",
+   "source": "Hand design (king d2-e2 exchanges the queen's lines; Se1 holds d3+f3, Sf6 holds g4+d5, Bh8 masked by Sf6 reaches d4), then scratch type3 search for the cook/dual stoppers (Rb1, bPb3, Sg1, Ra5, Pe3)",
+   "themes": [
+    "Changed mates set -> solution by one queen, doubled: 1...Sf6~ set 2.Qg4# -> 2.Qd5#, 1...Se1~ set 2.Qf3# -> 2.Qd3#; the key 1.Ke2! shuts the d1-h5 diagonal and opens the d-file, so each phase admits one of the two queen mates"
+   ],
+   "keys": [
+    "Ke2"
+   ],
+   "note": "Scheme stage, not a problem: both knights defend by random moves (Sf6: 7 moves through the opened Bh8-d4 line; Se1: 3), Sd5/Sd3 mates capture, Rb1 cook-stopper (1.Qxe1), bPb3 stops Qc2. Sound, 11 units, python solver."
+  },
+  {
+   "id": "claude-type3-queen-lines",
+   "fen": "2B5/8/2N2n2/8/2P1k3/1p2P3/3K4/1R1Qn1N1",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 16 Oct 2026)",
+   "source": "claude-type3-queen-lines-scheme with Bh8 out and Bc8 in (f5 held only along c8-f5): the f6 knight's defence becomes the single cut 1...Sd7; Sc6 for Ra5 (d4, e5), Pc4 (d5); found by chesscomp.compose.type3 (scratch type3c run 173)",
+   "themes": [
+    "Changed mates set -> solution by one queen, doubled (E. Bourd's third way of 2x2 changes): each defence lets the queen mate on the d1-h5 diagonal or on the d-file; 1.Ke2! closes the diagonal and opens the file. Set 1...Sd7 2.Qg4#, 1...Se1~ 2.Qf3#; 1.Ke2! (2.Qd4#) Sd7 2.Qd5#, Sc2/Sf3 2.Qd3#, Sd3 2.Qxd3#",
+    "1...Sd7 is the only defence of the f6 knight: it cuts Bc8 from f5 (flight against Qd4#)",
+    "Try 1.Kxe1? (2.Qd4#, gives the flight e3) Sd7!"
+   ],
+   "keys": [
+    "Ke2"
+   ],
+   "note": "Python solver: sound, 8+4, gate PASS, nothing trimmable. Flaws: the e1 knight still has three defences for one mate (c2, f3 guard d4; d3 blocks, 2.Qxd3# recaptures); Rb1 cook-stopper (1.Qxe1! otherwise); bPb3 stops Qc2; Sg1 protects f3 for the set and shuts Qh1# out of 1...Sd3/Sc2 after the key; monotone queen mates; non-defences of the f6 knight allow Qd5# besides the threat; the try captures a defender. Pluses: one queen, two lines, both selected by one quiet king step; 2x2 change; specific quiet defence Sd7; try refuted by the thematic defence. Making Se1 specific failed: a pin of c2 or f3 checks in the diagram, only knights on e1/e5 or a 3rd-rank rook hold d3+f3 (the rook checks with Re3+ once the king is on e2), and the search found no other second unit."
   }
  ]
 }

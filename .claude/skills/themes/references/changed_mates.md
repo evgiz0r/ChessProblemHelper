@@ -110,3 +110,17 @@ only they need the knight. Next stage of ours: claude-knight-swap-2x2-qe6, 8/6p1
 set dual Sg3/Qg4 after Sf3; after the key 1...f5 Qxf5+ Ke3 (Qxf5 cannot cover e3, and a static guard of e3 would also
 protect the set mate Qe3 after the key). Way out: both set mates must rely on f4 only and each must remove f4's static
 guard itself (the h5 knight's two checks Sg3/Sf6), but Sf6 needs f6 free after 1...f5 and guarded in the diagram.
+
+## One piece, two mates, one excluded per phase (E. Bourd's third way, 16 Oct 2026)
+Selector: a unit that stands on one line of the mating piece and steps onto its other line. Queen d1, Ke4: the White
+king d2 shuts the d-file in the set; 1.Ke2! opens it and shuts the d1-h5 diagonal, so a defence that frees one square on
+each line (f3 or g4 / d3 or d5) gets the diagonal mate in the set and the file mate after the key. The key also creates
+the threat Qd4# (the file) and takes over the queen's f3 guard. One Black unit must free a pair: g4+d5 (Sf6, or Be6, but a
+bishop move keeps one of them), d3+f3 (Se1, Se5 in the field, or a 3rd-rank rook, which checks with Re3+ once the king is
+on e2), f3+d5 (Rf5 through f4/e5). Only {g4,d5} with {d3,f3} gives two different key mates. Se1 also frees c2 and g2:
+Qc2/Qb1/Qh1 duals (bPb3 guards c2, Rb1 shuts the first rank, Sg1 protects f3 and blocks h1).
+Scheme: claude-type3-queen-lines-scheme, 7b/8/5n2/R7/4k3/1p2P3/3K4/1R1Qn1N1 (both knights random; Bh8 masked by Sf6 reaches
+d4). Result: claude-type3-queen-lines, 2B5/8/2N2n2/8/2P1k3/1p2P3/3K4/1R1Qn1N1, 1.Ke2! (2.Qd4#) Sd7 Qd5#, Sc2/Sf3 Qd3#,
+Sd3 Qxd3# (set Qg4#, Qf3#); try 1.Kxe1? Sd7!. To make a knight's defence specific, give the threat a flight that only one
+landing opens: f5 held by Bc8 alone, cut on d7. The e1 knight stayed with three defences: Sd3 always blocks the file, and
+a pin of c2 or f3 is a check in the diagram. Search: `python -m chesscomp.compose.type3` (KEY, MP, FIX; tested).

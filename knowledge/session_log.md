@@ -1315,3 +1315,12 @@ no motive layer to mirror.
 - 16 Oct: his next step 8/3K4/3B2R1/5kpP/4Np2/4RB2/4n3/b5r1 (Bd6 for Sd3 + c7, 7+6, same play). Bug he reported: the
   bench diff said "was sound, 1.Sef2!, now sound, 1.Sf2!" for the same move; docs/analysis.js now compares keys by from-to
   (solveSummary.keyIds). Bench republished.
+- 16 Oct: "go try to compose next theme" (his third way of 2x2 changes: one piece, two mates, one excluded per phase).
+  Hand design: Qd1, Ke4, the king d2-e2 exchanges the queen's lines (diagonal shut, file open, threat Qd4#); pairs one Black
+  unit can free listed by hand (Sf6: g4+d5, Se1: d3+f3). Scratch type3 searches (jobs 131-184, 280 s each) placed the
+  stoppers. Scheme: claude-type3-queen-lines-scheme, 7b/8/5n2/R7/4k3/1p2P3/3K4/1R1Qn1N1 (two random knights). Did not stop:
+  Bc8 for Bh8 makes 1...Sd7 the f6 knight's only defence: claude-type3-queen-lines, 2B5/8/2N2n2/8/2P1k3/1p2P3/3K4/1R1Qn1N1,
+  1.Ke2! (2.Qd4#) Sd7 Qd5#, Sc2/Sf3 Qd3#, Sd3 Qxd3# (set Qg4#, Qf3#), try 1.Kxe1? Sd7!; sound, gate PASS, untrimmable.
+  Failed: a specific e1-knight defence (pins check in the diagram; Sd3 always blocks; no other second unit found by search).
+  Tools: chesscomp.compose.type3 (new, tested); critique piece_necessity ranks new key-phase duals first (Sg1 was reported
+  set-play-only though it shuts Qh1# after the key).

@@ -173,9 +173,10 @@ def piece_necessity(problem, res, time_limit=20):
         elif keys == [key]:
             k0 = [ph for ph in r['phases'] if ph['type'] == 'key'][0]
             real = [v for v in k0['variations'] if not v['threat_repeat'] and v['continuations']]
-            duals = [v for v in real if v['dual']]
             base_k = [ph for ph in res['phases'] if ph['type'] == 'key'][0]
             base_real = [v for v in base_k['variations'] if not v['threat_repeat'] and v['continuations']]
+            base_duals = {v['defence']['uci'] for v in base_real if v['dual']}
+            duals = [v for v in real if v['dual'] and v['defence']['uci'] not in base_duals]
             lost = len(base_real) - len(real)
             # tries are content too: a unit may exist only to make the thematic tries fail
             kp_sq = key_uci[:2] if key_uci else None
@@ -199,15 +200,17 @@ def piece_necessity(problem, res, time_limit=20):
             base_sp = next((ph for ph in res['phases'] if ph['type'] == 'set'), None)
             new_sp = next((ph for ph in r.get('phases', []) if ph['type'] == 'set'), None)
             new_unprov = set(new_sp.get('unprovided', [])) - set(base_sp.get('unprovided', [])) if (base_sp and new_sp) else set()
-            if lost_tries:
+            if duals:
+                # a dual after the key is fatal, so this comes before tries and changes (claude-type3-queen-lines:
+                # wSg1 makes the set mate Qf3# and shuts Qh1# out of 1...Sd3/Sc2 after 1.Ke2!)
+                out[chess.square_name(sq)] = ('needed (stops the dual(s) ' +
+                    ', '.join(f"1...{v['defence']['san']} {'/'.join(c['san'] for c in v['continuations'])}" for v in duals[:2]) + ')')
+            elif lost_tries:
                 out[chess.square_name(sq)] = ('needed for the CONTENT: without it the tries '
                                               + ', '.join('1.' + t + '?' for t in sorted(lost_tries)) + ' are lost')
             elif lost_changes:
                 out[chess.square_name(sq)] = ('needed for the CONTENT: without it the changed mate(s) after '
                                               + ', '.join(sorted({'1...' + d for d, _ in lost_changes})) + ' are lost')
-            elif duals:
-                out[chess.square_name(sq)] = ('needed for the CONTENT: without it ' +
-                    ', '.join(f"1...{v['defence']['san']} allows {'/'.join(c['san'] for c in v['continuations'])}" for v in duals[:2]))
             elif lost > 0:
                 out[chess.square_name(sq)] = f'needed for the CONTENT: {lost} variation(s) lost without it'
             elif new_unprov:
@@ -577,7 +580,11 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
             sq = chess.parse_square(name)
             verdict = nec.get(name, '')
             msg = f"{_pname(board, sq)} gives set-play mates only; in every mate after the key its guards are duplicated"
-            if verdict.startswith('needed') and 'SET PLAY' not in verdict:
+            if verdict.startswith('needed (stops the dual'):
+                # it also works in the solution: it keeps a thematic variation single (not a set-play-only unit)
+                add('minor', 'set play + dual stopper', f"{_pname(board, sq)} gives set-play mates; after the key it "
+                                                         + verdict[len('needed ('):-1])
+            elif verdict.startswith('needed') and 'SET PLAY' not in verdict:
                 # not completely redundant: it also holds soundness or the tries
                 add('minor', 'set-play-only unit', msg + ' (still ' + verdict + ')')
             elif verdict:
