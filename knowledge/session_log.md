@@ -1329,3 +1329,8 @@ no motive layer to mirror.
   type3 (new options NOQTHR, QUIET; tested) runs 201-244: claude-type3-pawn-g5, 2B2r2/8/2n3p1/1NNpk3/6PQ/5pK1/8/8, 1.g5!
   (2.Sd3#) Rxc8 Qf4#, Sb4 Qd4# (set Qg5#, Qe7#), sound 6+6, gate PASS. Failed: the Qh5 direction (no non-queen threat), a
   quiet single rook defence.
+- 16 Oct: "insert board rotations a bit more ... to consider how to replace pieces with pawns. But that requires
+  restructuring". Scans (scratch pawnify.py, type3 scorer): no one/two-unit pawn swap on claude-type3-pawn-g5; hand analysis
+  of pawn directions in the g4-g5 geometry; type3 PAWNY option (tested); runs 251-264: claude-type3-pawn-g5-pe3
+  (2B2r2/1N6/2n3p1/2Npk3/6PQ/K3P3/8/8, sound, same play, a trade not a gain); lighter field (Pc5, Sf2) lost the rook's change.
+  Rule written into compose (Shifts and rotations: rotate to let pawns work).

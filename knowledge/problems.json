@@ -2459,6 +2459,20 @@
     "g5"
    ],
    "note": "Python solver: sound, 6+6, gate PASS, untrimmable. Flaws: the rook's thematic defence is a capture (1...Rxc8); by-play 1...Rf4 2.Qxf4# blocks the queen's rank and is recaptured, 1...d4 2.Qe4#; three black plugs (g6 stops 1.Qg5+ and 1.Qh6, f3 shields Kg3 from Rf3+, d5 blocks d5 and holds the solution); set dual 1...Rh8 Qxh8#/Qg5#; monotone queen mates. Pluses: the key pawn is the selector (its guard also moves from f5 to f6), single thematic defences, threat off the queen lines, set mate Qg5 is a one-square queen move onto the pawn's arrival square, Kg3 protects f4, no white plug. Not found: a quiet single rook defence (with Bh3 behind the pawn 1...Rd8 works but Rf7/Rf5 refute); the other direction (Qh5, g4-g5 opening the diagonal) gave no threat by another piece in four runs."
+  },
+  {
+   "id": "claude-type3-pawn-g5-pe3",
+   "fen": "2B2r2/1N6/2n3p1/2Npk3/6PQ/K3P3/8/8",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 16 Oct 2026)",
+   "source": "claude-type3-pawn-g5 restructured with pawns below the king (chesscomp.compose.type3, PAWNY=3, scratch run 251): wPe3 protects f4 and d4 for Kg3, so bPf3 goes; Sb7 for Sb5",
+   "themes": [
+    "Same play as claude-type3-pawn-g5: 1.g5! (2.Sd3#) Rxc8 Qf4#, Sb4 Qd4# (set Qg5#, Qe7#)"
+   ],
+   "keys": [
+    "g5"
+   ],
+   "note": "Python solver: sound, 7+5. Stage, not better than the 6+6 version: one black plug fewer (g6, d5 remain) but the king on a3 only stops cooks; same officers."
   }
  ]
 }

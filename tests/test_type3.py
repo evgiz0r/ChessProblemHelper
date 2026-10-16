@@ -20,3 +20,9 @@ def test_pawn_selector_with_a_threat_off_the_queen_lines():
     sc, summ = evaluate(b, k, mp, noqthr=True)
     assert summ.startswith("keys ['g5']") and "thr ['c5d3']" in summ and "good ['c6:1/1', 'f8:1/2']" in summ
     assert "'f8" not in evaluate(b, k, mp, noqthr=True, quiet=True)[1]     # 1...Rxc8 is a capture
+
+
+def test_pawny_charges_officers():
+    b = chess.Board('2B2r2/8/2n3p1/1NNpk3/6PQ/5pK1/8/8 w - - 0 1')
+    k, mp = chess.Move.from_uci('g4g5'), chess.H4
+    assert evaluate(b, k, mp, noqthr=True)[0] - evaluate(b, k, mp, noqthr=True, pawny=3)[0] == 3 * 6   # Q B S S r s

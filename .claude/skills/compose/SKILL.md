@@ -220,3 +220,14 @@ stripped. `python3 -m chesscomp.compose.transform FEN --all --post` solves every
 c2/c3/c4 chain (it checked Kb3, captured on b3, promoted) into a static b6/c6/d6 chain, the targets of the mates;
 three changes later 5N2/2KQ1p2/1ppp3n/1bbkBPp1/8/2R2P2/8/4R3, 1.Sg6! Be2 Qxc6#, Be3 Qxd6#; try Sh7? Be2!.
 Among several unique keys he took the origin with a try (Sf8: 1.Sh7?; from h4 none, from h8 only 1.Sxf7?).
+
+### Rotate to let pawns work (E. Bourd, 16 Oct 2026)
+"You need to insert board rotations a bit more imo, to consider how to replace pieces with pawns. But that requires
+restructuring a bit." Do it while the scheme is soft, not after: write each unit's job without directions (a one-square
+step that closes one line and opens another; two guards on one rank two files apart; one guard diagonally ahead; a
+block). A White pawn does such a job only moving and guarding up the board, a Black pawn only down. For each
+orientation (`chesscomp.compose.transform --all`) count the jobs pawns can take, choose the orientation, then rebuild
+the field there as one change. Swapping units for pawns afterwards does not work: on claude-type3-pawn-g5 every one- and
+two-unit pawn swap (about 40,000 positions, scratch pawnify.py) kept nothing. His own example: the selector Kd2-e2
+(Qd1, Ke4) is a pawn step g4-g5 only after a quarter turn (Qh4, Ke5). There White pawns can guard the squares below the
+king (Pe3: d4, f4, freeing the king and the bPf3 that shielded it), but the guards above it (e6, d6, f5) stay officers.
