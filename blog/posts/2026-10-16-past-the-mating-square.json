@@ -62,6 +62,6 @@
   "searches": 16
  },
  "improvement": "evolve has a Bristol mode: BRISTOL=1 with KEY=<uci> makes a HIT need a threat that follows the key along its line (analysis.bristol), and rewards tries by the key piece whose single refutation the key answers with a mate (12 points each, up to three). Tested in tests/test_evolve.py on E. Bourd's Bristol prototype: 1.Bh2! is a hit with thematic tries Bd6/d6, and 1.Bb6?, whose threat does not follow the line, is not.",
- "mentor_issue": null,
+ "mentor_issue": 12,
  "feedback": []
 }
