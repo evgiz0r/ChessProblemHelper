@@ -231,3 +231,6 @@ the field there as one change. Swapping units for pawns afterwards does not work
 two-unit pawn swap (about 40,000 positions, scratch pawnify.py) kept nothing. His own example: the selector Kd2-e2
 (Qd1, Ke4) is a pawn step g4-g5 only after a quarter turn (Qh4, Ke5). There White pawns can guard the squares below the
 king (Pe3: d4, f4, freeing the king and the bPf3 that shielded it), but the guards above it (e6, d6, f5) stay officers.
+A shift also removes a capture of a line piece (E. Bourd, bench mva9ts5k): one rank down and the bishop on b8, his rook
+cuts the guard line on c7 (1...Rc7) where it had captured the bishop on c8 (1...Rxc8): move the board so the line piece
+leaves the defender's rank or file while its guard line still does the job.

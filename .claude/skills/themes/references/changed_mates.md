@@ -130,3 +130,7 @@ scheme so the step goes up: claude-type3-pawn-g5, 2B2r2/8/2n3p1/1NNpk3/6PQ/5pK1/
 the knight threat. A threat by another piece removes the block defences; each unit has one defence. Plugs: bPg6, bPf3, bPd5.
 The other direction (Qh5, g4-g5 opening h5-d1) closes the rank that guarded d5/e5/f5 and gave no non-queen threat.
 Search: type3 NOQTHR=1 (threat not by MP), QUIET=1 (capturing defences do not count).
+His step (bench mva9ts5k): bourd-type3-pawn-g4, 1B6/5r2/1N6/1Kn3p1/2Npk3/6PQ/4P3/8, 1.g4! (2.Sd2#) Rc7 Qf3#, Sb3 Qd3# (set
+Qg4#, Qe6#): a one-rank shift and Bb8 turn the capture 1...Rxc8 into the cut 1...Rc7. Left: 1...Rf3 2.Qxf3#. His way out
+needs a new structure: threat due to f3, thematic mates on e3/d3; no black unit holds e3 with g4/f5/e6 (colours, knight
+squares), so e3 needs a self-block or a line effect.

@@ -26,3 +26,14 @@ def test_pawny_charges_officers():
     b = chess.Board('2B2r2/8/2n3p1/1NNpk3/6PQ/5pK1/8/8 w - - 0 1')
     k, mp = chess.Move.from_uci('g4g5'), chess.H4
     assert evaluate(b, k, mp, noqthr=True)[0] - evaluate(b, k, mp, noqthr=True, pawny=3)[0] == 3 * 6   # Q B S S r s
+
+
+def test_keysq_keeps_only_the_named_key_mates():
+    # bourd-type3-pawn-g4: 1.g4! (2.Sd2#) Rc7 Qf3#, Sb3 Qd3#
+    b = chess.Board('1B6/5r2/1N6/1Kn3p1/2Npk3/6PQ/4P3/8 w - - 0 1')
+    k, mp = chess.Move.from_uci('g3g4'), chess.H3
+    full = evaluate(b, k, mp, noqthr=True)[1]
+    assert "'c5:1/1'" in full and "'f7:1/" in full
+    only_d3 = evaluate(b, k, mp, noqthr=True, keysq={chess.D3})[1]
+    assert "'c5:1/1'" in only_d3 and "'f7" not in only_d3
+    assert evaluate(b, k, mp, thrsq=chess.F3)[0] < evaluate(b, k, mp)[0]      # the threat is Sd2#, not on f3

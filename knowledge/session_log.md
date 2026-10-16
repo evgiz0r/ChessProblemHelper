@@ -1334,3 +1334,6 @@ no motive layer to mirror.
   of pawn directions in the g4-g5 geometry; type3 PAWNY option (tested); runs 251-264: claude-type3-pawn-g5-pe3
   (2B2r2/1N6/2n3p1/2Npk3/6PQ/K3P3/8/8, sound, same play, a trade not a gain); lighter field (Pc5, Sf2) lost the rook's change.
   Rule written into compose (Shifts and rotations: rotate to let pawns work).
+- 16 Oct: his bench sitting mva9ts5k (13 steps, 4 solves): bourd-type3-pawn-g4, 1B6/5r2/1N6/1Kn3p1/2Npk3/6PQ/4P3/8, shift down
+  + Bb8 turns 1...Rxc8 into 1...Rc7; re-solved, sound 7+5. His next direction (threat due to f3, mates on e3/d3): type3
+  THRSQ/KEYSQ options (tested), four runs, nothing; e3 has no single-unit pair with the diagonal squares.
