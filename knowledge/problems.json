@@ -2500,9 +2500,15 @@
     "The black units select the mates themselves: Sb4 holds d5/d3, Pf6 holds e5 (set) and blocks the flight f5 after the key (Qc4# needs f5 shut)"
    ],
    "keys": [
+    "Qf5+",
+    "Bxb4",
+    "Bf4",
+    "Rh3",
+    "Rg3",
     "c5"
    ],
-   "note": "SCHEME, not sound: cooked by 1.Qf5+, Bxb4, Bf4, Rh3, Rg3 (the set leaves 1...Sd3 open: the knight cuts Rc3 from e3/f3). 9+3, Sb4 random. No threat version: the key strips d5/e5/f5 of the queen's rank; only Qd3 covers both flights and Sb4 guards d3 (its thematic job); Re5 would, but Pf6 guards e5 (its job). Light settings (e.g. 8/8/3p1p2/1Q6/1nP1kP2/1P2P3/4K3/8) leave Kd5/Kf5 unanswered."
+   "note": "SCHEME, not sound: cooked by 1.Qf5+, Bxb4, Bf4, Rh3, Rg3 (the set leaves 1...Sd3 open: the knight cuts Rc3 from e3/f3). 9+3, Sb4 random. No threat version: the key strips d5/e5/f5 of the queen's rank; only Qd3 covers both flights and Sb4 guards d3 (its thematic job); Re5 would, but Pf6 guards e5 (its job). Light settings (e.g. 8/8/3p1p2/1Q6/1nP1kP2/1P2P3/4K3/8) leave Kd5/Kf5 unanswered.",
+   "cooked": true
   }
  ]
 }
