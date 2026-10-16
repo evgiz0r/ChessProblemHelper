@@ -30,8 +30,8 @@ h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:26px;margin:0;
 @media (max-width:720px){.layout{grid-template-columns:1fr}}
 .pane{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
 .pane h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 8px;font-weight:600}
-.board{touch-action:none;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:100%;max-width:400px;aspect-ratio:1;border:2px solid var(--sq-dark);user-select:none}
-.sq{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;overflow:hidden;aspect-ratio:1;font-size:clamp(22px,5.2vw,34px);line-height:1;cursor:pointer;border:0;padding:0;background:var(--sq-light);color:var(--ink)}
+.board{touch-action:none;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);width:100%;max-width:400px;aspect-ratio:1;border:2px solid var(--sq-dark);user-select:none;container-type:inline-size}
+.sq{position:relative;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;overflow:hidden;aspect-ratio:1;font-size:clamp(22px,5.2vw,34px);font-size:10cqi;line-height:1;cursor:pointer;border:0;padding:0;background:var(--sq-light);color:var(--ink)}
 .sq.dark{background:var(--sq-dark)}
 .sq.sel{box-shadow:inset 0 0 0 4px var(--sel);filter:brightness(1.08)}
 .sq.over{box-shadow:inset 0 0 0 3px var(--accent)}
@@ -76,7 +76,42 @@ pre.report{font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:1
 .journal .a{font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.06em;margin-right:6px}
 .journal .fen{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);cursor:pointer;word-break:break-all}
 .journal .fen:hover{color:var(--accent)}
+.phone{display:none}
 .hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+/* phones (E. Bourd, 16 Oct 2026: landscape "doesn't work at all", portrait "annoying because of scrolling"):
+   the board never grows past the screen height, and the board, palette and Solve fit on one screen */
+@media (max-width:720px){
+  body{padding:8px 10px 24px}
+  .top{margin-bottom:6px}.top h1{font-size:19px}.top .sub,.hint,.count{display:none}
+  .layout{grid-template-columns:minmax(0,1fr);gap:10px}.pane{padding:8px}.pane h2{display:none}
+  .board{max-width:none;width:min(100%,calc(100vh - 210px))}
+  .palette{display:grid;grid-template-columns:repeat(7,1fr);max-width:none;margin-top:6px}
+  .palette button{width:auto;min-width:0;padding:0;height:40px}
+  .selinfo.idle{display:none}
+  .tools{max-width:none;gap:4px;margin-top:6px}.tools .lbl{display:none}
+  .tools button.act{padding:6px 10px;font-size:14px}
+  @media (orientation:portrait){.tools .phone{display:inline-block}}
+  .fenrow{max-width:none;margin-top:6px}
+  pre.report{max-height:70vh}
+}
+@media (orientation:landscape) and (max-height:520px){
+  body{padding:6px 10px 24px}
+  .top{margin-bottom:4px}.top h1{font-size:17px}.top .sub,.hint,.count{display:none}
+  .layout{grid-template-columns:auto minmax(260px,1fr);gap:10px}
+  .layout>.pane:nth-child(3){grid-column:1/-1}
+  .pane{padding:8px}.pane h2{display:none}
+  .layout>.pane:first-child{display:grid;grid-template-columns:auto 176px;column-gap:10px;align-content:start;align-items:start}
+  .layout>.pane:first-child>*{grid-column:2;margin-top:0}
+  .board{grid-column:1 !important;grid-row:1/span 6;max-width:none;width:calc(100vh - 56px)}
+  .palette{display:grid;grid-template-columns:repeat(5,1fr);max-width:none;gap:3px}
+  .palette button{width:auto;min-width:0;padding:0;height:32px;font-size:21px}
+  .palette button.tool{padding:0;font-size:12px}
+  .selinfo{font-size:12px}.selinfo.idle{display:none}
+  .tools{max-width:none;gap:3px;margin-top:6px}.tools .lbl{display:none}
+  .tools button.act{padding:4px 7px}
+  .fenrow{max-width:none;flex-wrap:wrap;margin-top:6px}.fenrow input{flex-basis:100%}
+  pre.report{max-height:calc(100vh - 90px);font-size:12px}
+}
 kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px;background:var(--ground)}
 </style>
 
@@ -93,14 +128,15 @@ kbd{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(-
     <div class="palette" id="palette"></div>
     <div class="selinfo" id="selinfo"></div>
     <div class="tools">
-      <button class="act" id="rotl" title="rotate the whole position 90° counter-clockwise">&#8634; rotate</button>
-      <button class="act" id="rotr" title="rotate 90° clockwise">&#8635; rotate</button>
-      <button class="act" id="mirh" title="mirror left-right">&#8660; mirror</button>
-      <button class="act" id="mirv" title="mirror up-down">&#8661; mirror</button>
+      <button class="act" id="rotl" title="rotate the whole position 90° counter-clockwise">&#8634;<span class="lbl"> rotate</span></button>
+      <button class="act" id="rotr" title="rotate 90° clockwise">&#8635;<span class="lbl"> rotate</span></button>
+      <button class="act" id="mirh" title="mirror left-right">&#8660;<span class="lbl"> mirror</span></button>
+      <button class="act" id="mirv" title="mirror up-down">&#8661;<span class="lbl"> mirror</span></button>
       <button class="act" id="shl">&#8592;</button><button class="act" id="shr">&#8594;</button>
       <button class="act" id="shu">&#8593;</button><button class="act" id="shd">&#8595;</button>
       <button class="act" id="undo" title="undo the last board change">undo</button>
       <button class="act" id="clear">clear</button>
+      <button class="act primary phone" id="solve2" title="solve; the report opens below">Solve</button>
       <button class="act" id="refresh" title="empty the board and start a new journal session (earlier sessions stay saved, hidden)">refresh</button>
     </div>
     <div class="fenrow">
@@ -215,6 +251,7 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     else if (state.brush === 'x') info.innerHTML = 'eraser: click a piece to remove it';
     else if (state.brush) info.innerHTML = 'brush: <b>' + pieceName(state.brush) + '</b> - click squares to place; Esc to stop';
     else info.textContent = 'drag a piece from the palette or the board; drag off the board to remove; click to select';
+    info.classList.toggle('idle', !state.sel && !state.brush);
   }
 
   // ---------- palette
@@ -390,6 +427,7 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
   function setMode(m){ state.mode = m; document.getElementById('modepre').classList.toggle('on', m === 'pre'); document.getElementById('modepost').classList.toggle('on', m === 'post'); }
   document.getElementById('stip').addEventListener('change', e => { state.stip = e.target.value; });
   document.getElementById('solve').addEventListener('click', solve);
+  document.getElementById('solve2').addEventListener('click', solve);
   // E. Bourd s30: "a button find #2 key: given a post-key play that works, find a move getting to that position
   // where it is the only key; mention the moves that are close - just a few more solutions".
   document.getElementById('findkey').addEventListener('click', async () => {
@@ -448,6 +486,8 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
         const text = state.mode === 'pre' ? solvePre(fen) : solvePost(fen);
         reportEl.className = 'report'; reportEl.textContent = text;
         log('solve', (state.mode === 'pre' ? state.stip + ' pre-key: ' : 'post-key: ') + firstLines(text));
+        // on a phone in portrait the report is below the fold: bring it up
+        if (matchMedia('(max-width:720px) and (orientation:portrait)').matches) reportEl.closest('.pane').scrollIntoView({behavior:'smooth', block:'start'});
       } catch (err) { report('That position could not be analysed: ' + err.message, 'bad'); }
     }, 20);
   }

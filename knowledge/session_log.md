@@ -1337,3 +1337,10 @@ no motive layer to mirror.
 - 16 Oct: his bench sitting mva9ts5k (13 steps, 4 solves): bourd-type3-pawn-g4, 1B6/5r2/1N6/1Kn3p1/2Npk3/6PQ/4P3/8, shift down
   + Bb8 turns 1...Rxc8 into 1...Rc7; re-solved, sound 7+5. His next direction (threat due to f3, mates on e3/d3): type3
   THRSQ/KEYSQ options (tested), four runs, nothing; e3 has no single-unit pair with the diagonal squares.
+
+## Session 16 Oct 2026: the bench on his phone
+* E. Bourd on mobile: portrait "annoying because of scrolling", landscape "doesn't work at all" (the board was taller than the
+  screen and catches touches, so nothing below it could be reached). docs/bench/index.html: the board is sized by the screen
+  height as well as its width (landscape: board left, palette and tools beside it, Solve pane on the right, all on one screen);
+  portrait: compact palette (7 per row), icon-only transforms, a Solve button under the board that scrolls to the report.
+  Checked with Playwright at 385x700 and 830x310. Bench republished (version 34).
