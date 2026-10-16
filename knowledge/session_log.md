@@ -1298,3 +1298,7 @@ no motive layer to mirror.
   knight to the same square: bourd-type2-two-knights-c3, 8/3p4/3Q1Br1/1PKNP3/2P1k1P1/r2ppR2/4n1P1/3n1b2, 1.Sb4! Sec3 Qd4#,
   Sdc3 Qxd3#, Sf4 Qd4# (set Rf4#, Rxe3#, Rxf4#); Ra3 (cut on c3) and Bf1 (opened by Se2) make the d3 guard play. Sound, 10+9.
   Our search for knight pairs on f4 (scratch keysel2.py) found nothing; his c3 square came from moving the d3 guard to a line.
+- 16 Oct: E. Bourd: "just a knight move can swap 2x2 squares of guards. can you try? ... in general". Hand analysis recorded in
+  themes/changed_mates.md (knight guard pairs around K e4, colour argument, line conflict needs blocks). Three scratch searches
+  (swap2.py) gave single changes or fatal flaws (8/3N1r1n/4B3/1pK5/2pBkp2/1r3R2/4P1N1/8: 1.Sh4! Rxf4# -> Bf5# twice, set Rf5+
+  unprovided). No 2x2 yet; next: self-block defences instead of unguards.

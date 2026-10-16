@@ -89,3 +89,11 @@ His doubling (bench 16 Oct 2026), bourd-type2-doubled, 8/8/2PQ1Br1/2KNP3/4k1P1/2
 1...Qa2 Rxe3# -> Qxd3#, 1...Sf4 Rxf4# -> Qd4#. He listed the guard pairs first (the knight on d5 holds e3/f4 for the
 rook; the opened file gives d3/d4 to the queen), then the defences whose geometry yields both, then the key's reason from
 the change itself: 1.Sb4 protects d3 (1.S~? Qa2!, 1.Sf4? Rxg4!) - a white correction, better than a cook-stopping guard.
+2x2 guard swap by a knight move alone (E. Bourd, 16 Oct 2026: "no need for line opening ... just a knight move can swap 2x2
+squares of guards"). Facts found while trying (K e4): knight squares guarding two field squares - b4{d3,d5} c2{e3,d4}
+c4{e3,e5} c6{d4,e5} e1{d3,f3} e2{d4,f4} e6{d4,f4} e7{d5,f5} g2{e3,f4} g4{e3,e5} g6{e5,f4} h4{f3,f5}; swaps with disjoint
+pairs: g2->h4/e1, e7->c6/g6, b4->c2/c6, c2->e1, h4->g6. A knight attacks one colour only, so the old pair and the new pair
+differ in colour: a defence that frees one square of each needs a rook/queen line (orthogonal neighbours) or a self-block,
+never a bishop. In every geometry the rook line through one pair runs on into the other pair (2x2 shape), so a block is
+needed (his black pawns d3/e3 did it). If the knight protects the square it vacates (d5->b4 protects d5), a black guard
+of that square attacks the knight in the diagram. Random searches (scratch swap2.py, 3 rounds) gave single changes only.
