@@ -1309,3 +1309,6 @@ no motive layer to mirror.
 - 16 Oct: he asked "you tried and gave up or just stopped": I had stopped with two untried directions (lesson). Continued:
   Strebkovs principle (static guards removed by the set mates' own interference), threat 2.Qe6# found by hand
   (claude-knight-swap-2x2-qe6), still faults (set dual, Ke3 after Qxf5). Not finished.
+- 16 Oct: his bench sitting mva8vaxu (168 steps): bourd-sef2-two-cuts, 8/2pK4/6R1/5kpP/4Np2/3NRB2/4n3/b5r1, 1.Sef2!
+  (2.Be4#) Sc3 Re5#, Sg3 Bg4# (set Rf6#, Rxg5#). He reported the bench's "S~ random" for Sd4/Sc3 as a bug: fixed in
+  chesscomp/analysis.py and docs/analysis.js (a random mate must work with the piece removed), test added, bench republished.

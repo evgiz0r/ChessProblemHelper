@@ -2397,6 +2397,22 @@
    ],
    "note": "1.Rd2! (2.Qf2#) Sc4 2.Rd5#, Sd5 2.Rxd5#; 1.Rb2? Sd5! (1...Sc4 2.Rb5#). Flaws: bPh3 attacks the key rook, four box units (Kg1, bPh3, Pg3, Pg4), random knight duals Qf2/Rd5. The first-rank version 8/4N3/4N3/Bn6/P1k5/6P1/2P3PK/6RQ failed the gate (out-of-play key Rg1).",
    "solution": "#2 (10+3)   FEN 4N3/4N3/Bn6/P1k5/6P1/2P3Pp/6RQ/6K1 w - - 0 1\nTry: 1.Rb2? (threat: 2.Qf2#)\n   1...Sc4 2.Rb5#\n   (4 further moves allow the threat)\n   but 1...Sd5!\nKey: 1.Rd2! (threat: 2.Qf2#)\n   1...Sd5 2.Rxd5#\n   1...Sc4 2.Rd5#\n   (4 further moves allow the threat)\nChanged continuations:\n   1...Sc4: Rb5# -> Rd5#   [try Rb2 vs key Rd2]\nPatterns:\n   Bristol: 1.Rb2 + 2.Qf2#   [try Rb2]\n   Bristol: 1.Rd2 + 2.Qf2#   [key Rd2]"
+  },
+  {
+   "id": "bourd-sef2-two-cuts",
+   "fen": "8/2pK4/6R1/5kpP/4Np2/3NRB2/4n3/b5r1",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench sitting mva8vaxu, 16 Oct 2026, step 168)",
+   "source": "His bench; he pointed out the bench's 'S~ random' grouping of 1...Sd4/Sc3 as a bug: 'its not a random move'",
+   "themes": [
+    "Set/key changes on two black self-interferences: 1...Sc3 (cuts Ba1-f6/e5) Rf6# -> Re5#, 1...Sg3 (cuts Rg1-g5/g4) Rxg5# -> Bg4#; both mates of each defence use the line it cuts",
+    "Key 1.Sef2! (2.Be4#): the knight clears e4 and protects it; both defences guard e4",
+    "Try 1.Sf6? (same play) Bxf6!"
+   ],
+   "keys": [
+    "Sef2"
+   ],
+   "note": "Python solver: sound, 7+7. Flaws: the try is refuted by capture of the key piece; set unprovided moves (Sc1, rook moves along the g-file, bishop moves, fxe3); after the key 1...Sd4 allows Be4#/Re5# (no defence); the defences only guard the threat square (pure, with changed mates). Pluses: unity - each changed pair exploits the defence's own line cut; light force."
   }
  ]
 }

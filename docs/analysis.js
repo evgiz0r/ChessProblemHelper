@@ -82,6 +82,7 @@
       ph.variations.push(v);
       if (v.refutes) ph.refutations.push(S(d.san));
     }
+    ph.fen = c.fen();
     c.undo();
     return ph;
   }
@@ -89,12 +90,12 @@
   function setPlay(fen) {
     const c = boardFrom(fen, 'b');
     if (!c || c.isCheck() || c.isGameOver()) return null;
-    const ph = { type: 'set', first: null, threat: [], variations: [], unprovided: [] };
+    const ph = { type: 'set', first: null, threat: [], variations: [], unprovided: [], fen: c.fen() };
     for (const d of legal(c)) {
       c.move(d);
       const dead = c.isGameOver() && !c.isCheckmate();
       const ms = dead ? [] : matesIn1(c);
-      const conts = ms.map(m => ({ san: S(m.san), id: mid(m) }));
+      const conts = ms.map(m => ({ san: S(m.san), id: mid(m), from: m.from, to: m.to }));
       c.undo();
       if (!conts.length) ph.unprovided.push(S(d.san));
       else ph.variations.push({ defence: S(d.san), uci: d.from + d.to, conts, dual: conts.length > 1,
@@ -329,9 +330,27 @@
   }
 
 
+  // Does White's move from-to mate once the Black unit on frm has simply left the board? true/false, null if
+  // the test cannot be made. Mirrors _departure_mates in chesscomp/analysis.py.
+  function departureMates(fen, frm, cont) {
+    if (!fen || !cont || !cont.from) return null;
+    let c2;
+    try {
+      const c = new Chess(fen);
+      c.remove(frm);
+      const parts = c.fen().split(' ');
+      parts[1] = 'w'; parts[3] = '-';
+      c2 = new Chess(parts.join(' '));
+    } catch (e) { return null; }
+    try { c2.move({ from: cont.from, to: cont.to, promotion: 'q' }); } catch (e) { return false; }
+    return c2.isCheckmate();
+  }
   // E. Bourd s27: random move = the moves of one piece allowing one and the same mate; a correction is a
   // move of that piece after which that mate no longer works and another does. A move with another mate
   // that still allows the random mate is a random move with a dual, not a correction.
+  // E. Bourd (16 Oct 2026, 1...Sd4/Sc3 2.Rf6# on 8/2pK4/6R1/5kpP/4Np2/3NRB2/4n3/b5r1): "its not a random move" -
+  // the random mate must come from the piece LEAVING its square; if it does not mate with the piece removed, the
+  // moves are specific defences (both landings cut Ba1-f6 there), not a random move.
   function corrections(ph) {
     const out = [], by = new Map();
     for (const v of ph.variations || []) {
@@ -352,7 +371,9 @@
       const rnd = vs.filter(v => v.conts.some(c => c.id === rid));
       const cor = vs.filter(v => !rnd.includes(v));
       if (!cor.length) continue;
-      const rsan = rnd[0].conts.find(c => c.id === rid).san;
+      const rcont = rnd[0].conts.find(c => c.id === rid);
+      const rsan = rcont.san;
+      if (departureMates(ph.fen, frm, rcont) === false) continue;   // the shared mate needs the arrivals
       out.push({ piece: (vs[0].defence || vs[0].san)[0] + frm,
                  random: { moves: rnd.map(v => v.defence || v.san), mate: rsan, duals: rnd.filter(v => v.conts.length > 1).map(v => v.defence || v.san) },
                  corrections: cor.map(v => ({ move: v.defence || v.san, mates: v.conts.map(c => c.san) })) });

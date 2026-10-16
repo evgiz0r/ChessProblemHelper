@@ -57,11 +57,30 @@ def _variations(eng: Engine, board: chess.Board, n: int, mode: str, threat_ucis:
     return out
 
 
-def _corrections(ph):
+def _departure_mates(board, frm, uci):
+    """Does the White move `uci` mate once the Black unit on `frm` has simply left the board (Black to move in
+    `board`)? True/False, or None when the test cannot be made (the removal leaves an illegal position)."""
+    b = board.copy(stack=False)
+    b.remove_piece_at(chess.parse_square(frm))
+    b.turn = chess.WHITE
+    b.ep_square = None
+    if not b.is_valid():
+        return None
+    m = chess.Move.from_uci(uci)
+    if m not in b.legal_moves:
+        return False
+    b.push(m)
+    return b.is_checkmate()
+
+
+def _corrections(ph, board=None):
     """E. Bourd s27: for each Black piece (not king, not pawn) with several defences, the RANDOM move
     is the set of its moves that allow one and the same mate; a CORRECTION is a move of the same piece
     after which that mate no longer works and another mate does. A move with a different mate that
-    still allows the random mate is not a correction (it is a random move with a dual)."""
+    still allows the random mate is not a correction (it is a random move with a dual).
+    E. Bourd (16 Oct 2026, 1...Sd4/Sc3 2.Rf6# on his bench, 8/2pK4/6R1/5kpP/4Np2/3NRB2/4n3/b5r1): "its not a random
+    move". The random mate must come from the piece LEAVING its square; if it does not mate when the piece is simply
+    removed (there both landings cut Ba1-f6), the moves are specific defences, not a random move (needs `board`)."""
     out = []
     by_piece = {}
     for v in ph.get('variations', []):
@@ -88,6 +107,9 @@ def _corrections(ph):
         if not cor:
             continue
         rsan = next(c['san'] for v in rnd for c in v['continuations'] if c['id'] == rid)
+        ruci = next(c.get('uci') for v in rnd for c in v['continuations'] if c['id'] == rid)
+        if board is not None and ruci and _departure_mates(board, frm, ruci) is False:
+            continue                     # the shared mate needs the arrival squares: specific defences
         out.append({'piece': vs[0]['defence']['san'][0] + frm,
                     'random': {'moves': [v['defence']['san'] for v in rnd], 'mate': rsan,
                                'duals': [v['defence']['san'] for v in rnd if len(v['continuations']) > 1]},
@@ -120,7 +142,7 @@ def _phase(eng, board, n, mode, first_move, kind, refs=None):
         ph['check_key'] = board.is_check()
         ph['variations'] = _variations(eng, board, n, mode, {t['id'] for t in threat})
         ph['flights'] = _flights(board)
-        ph['corrections'] = _corrections(ph)
+        ph['corrections'] = _corrections(ph, board)
     finally:
         board.pop()
         _ORIGIN.clear()
@@ -145,7 +167,7 @@ def _set_play(eng, board, n, mode):
     ph['variations'] = _variations(eng, b, n, mode, set())
     ph['flights'] = _flights(b)
     ph['unprovided'] = [v['defence']['san'] for v in ph['variations'] if v['refutes']]
-    ph['corrections'] = _corrections(ph)
+    ph['corrections'] = _corrections(ph, b)
     return ph
 
 

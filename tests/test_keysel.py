@@ -24,3 +24,17 @@ def test_critique_counts_a_double_threat_stopper_as_needed():
     p = Problem.from_fen('8/8/2PQ1Br1/2KNP3/4k1P1/2pppR2/3qn1P1/8 w - - 0 1', '#2')
     r = analyse(p, max_refutations=1, include_tries=True, include_set=True, time_limit=30)
     assert piece_necessity(p, r)['c6'].startswith('needed (stops the double threat')
+
+
+def test_landings_that_cut_a_line_are_not_a_random_move():
+    # E. Bourd (16 Oct 2026): "its not a random move" - 1...Sd4/Sc3 2.Rf6# both cut Ba1-f6; with the knight simply
+    # removed Rf6+ is met by Bxf6, so the shared mate comes from the arrival, not from the departure.
+    from chesscomp import Problem
+    from chesscomp.analysis import analyse
+    r = analyse(Problem.from_fen('8/2pK4/6R1/5kpP/4Np2/3NRB2/4n3/b5r1 w - - 0 1', '#2'), include_set=True, time_limit=60)
+    sp = next(ph for ph in r['phases'] if ph['type'] == 'set')
+    assert not sp['corrections']
+    # a real random move stays random (daily No. 2: the bishop's departure from d4 gives Qg4#)
+    r2 = analyse(Problem.from_fen('3R4/8/6K1/4P3/3bk3/N1p3Q1/8/8 w - - 0 1', '#2'), include_set=True, time_limit=60)
+    key = next(ph for ph in r2['phases'] if ph['type'] == 'key')
+    assert key['corrections'] and key['corrections'][0]['random']['mate'] == 'Qg4#'

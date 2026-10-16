@@ -513,7 +513,7 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     const full = document.getElementById('fullreport').checked;
     if (!full && ChessComp.phaseCompact){
       lines.push('Defences (moves that stop the threat) and their mates:');
-      const dv = { variations: defs.map(v => ({ ...v, threatRepeat: false })) };
+      const dv = { variations: defs.map(v => ({ ...v, threatRepeat: false })), fen: sp.fen };
       for (const l of ChessComp.phaseCompact(dv)) lines.push(l);
       if (allow) lines.push('   (' + allow + ' further Black moves allow the threat)');
       lines.push('');
@@ -534,7 +534,7 @@ Post-key: the diagram is the position after the key, Black to move; you get the 
     if (allow) lines.push('   (' + allow + ' further Black moves allow the threat)');
     // random moves and corrections (E. Bourd s27): a correction must stop the random move's mate
     if (ChessComp.correctionLines){
-      const dv = { variations: defs.map(v => ({ ...v, threatRepeat: false })) };
+      const dv = { variations: defs.map(v => ({ ...v, threatRepeat: false })), fen: sp.fen };
       const cl = ChessComp.correctionLines(dv);
       if (cl.length){ lines.push(''); lines.push('Random moves and corrections:'); for (const l of cl) lines.push(l); }
     }
