@@ -145,3 +145,6 @@ Reduced: bourd-type3-c5-threat-18, 4r3/3p4/3P1RN1/bQ6/KnP1kNb1/2p5/2p1pBP1/8 (bP
 completed: claude-type3-c5-blackqueen, 8/1p1R4/2N2R2/pQ2p2q/1nP1k3/8/4p3/1KB5, 1.c5! (2.Qc4#) Qf7 Qxe2#, Sxc6/Sc2 Qd3# (set
 Q~ Qxe5#): bQh5 holds bPe5 on the rank and bPe2 on the diagonal; 7+7, but captures in both queen mates and two defences each.
 His Bh5 + Sh4 (1...Sf3 frees f5, cuts h5-e2) gave nothing in two runs.
+Knight guard swap, done light: claude-knight-swap-c2, 8/8/5R2/K3p3/1N1Pk3/2Q3p1/5n2/8, 1.Sc2! (2.Qf3#) exd4 Qxd4#, Sd3 Qc6#,
+Kd5 Qc6# (set exd4 Qe1#, Sd3 Qxd3#): b4 {d3,d5} -> c2 {e3,d4}, the key gives d5. Found by type3 MP=any BYMOVE=1 (key fixed),
+then bPg3 for the search's black bishop. 1.Sc6? fails to Kd5 and Sd3 (no single-refutation try while d5 is given).

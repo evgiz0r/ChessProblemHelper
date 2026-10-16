@@ -47,3 +47,10 @@ def test_mutate_option_drops_the_no_threat_penalty():
     assert "good ['b4:5/6', 'f6:1/1']" in plain[1] and not plain[1].startswith('keys')
     # without the penalty the full key check runs and finds the waiting-move cooks
     assert mut[1].startswith("keys ['Bf4', 'Bxb4', 'Qf5+', 'Rh3', 'Rg3', 'c5']")
+
+
+def test_any_piece_by_move_recognises_the_strebkovs_swap():
+    # Strebkovs 2003 (psis-c1d0392e2e): 1.Sb3! Bxc5 Qxc5#, Bd4 Rxd4# (set Sc7#, e4#): one bishop makes both defences
+    b = chess.Board('b1Q1N3/5p2/5K2/N1PkP3/1n4R1/8/1n2P3/6b1 w - - 0 1')
+    sc, summ = evaluate(b, chess.Move.from_uci('a5b3'), None, bymove=True)
+    assert summ.startswith("keys ['Nb3']") and "good ['g1:2/2']" in summ

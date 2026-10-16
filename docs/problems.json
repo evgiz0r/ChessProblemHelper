@@ -2553,6 +2553,20 @@
     "c5"
    ],
    "note": "Python solver: sound, 7+7, gate PASS. Flaws: both mates of the queen pair capture a pawn (Qxe5, Qxe2); two defences per unit (1...Qf7/Qf5, 1...Sxc6/Sc2, Sxc6 captures); wSc6 serves the set and stops Qxb7+; Kb1 passive; e1 promotion unprovided in the set. Lighter than his 9+9 but less clean (his single quiet defences Be6, Sc6)."
+  },
+  {
+   "id": "claude-knight-swap-c2",
+   "fen": "8/8/5R2/K3p3/1N1Pk3/2Q3p1/5n2/8",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 16 Oct 2026)",
+   "source": "His 2x2 guard swap by a knight move (\"just a knight move can swap 2x2 squares of guards\"), model Strebkovs 2003 (psis-c1d0392e2e). chesscomp.compose.type3 MP=any BYMOVE=1, key Sb4-c2 fixed with a black bishop g1 (scratch run 334), then the bishop replaced by bPg3 (one-pawn scan)",
+   "themes": [
+    "Changed mates by a knight's guard swap: Sb4 guards d3/d5, 1.Sc2! guards e3/d4. Set 1...exd4 2.Qe1#, 1...Sd3 2.Qxd3#; 1.Sc2! (2.Qf3#) exd4 2.Qxd4#, Sd3 2.Qc6#, Kd5 2.Qc6# (flight given)"
+   ],
+   "keys": [
+    "Sc2"
+   ],
+   "note": "Python solver: sound, 5+4 miniature, gate PASS. Flaws: 2.Qxd4# takes the defender on its arrival square; set hole 1...g2 hints at the key; all mates by the queen; 1...Sd3 and 1...Kd5 share 2.Qc6#; Ka5 only stops cooks. Pluses: flight-giving key, 2x2 change from the knight's swap, light. Tries by the knight fail twice (1.Sc6? Kd5!, Sd3!)."
   }
  ]
 }

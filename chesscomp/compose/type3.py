@@ -13,7 +13,8 @@ on e1 holds d3 and f3 there (no other second unit in four runs).
 
 FIX: Black squares that must stay occupied (the first thematic unit). NOQTHR: the threat may not be made by MP. QUIET: thematic defences that capture do not count. PAWNY=3: each officer costs 3 more than a pawn.
 THRSQ=f3: the threat must land there; KEYSQ=e3,d3: only key mates on these squares count.
-MUTATE=1: a zugzwang key is not penalised (every Black move must then have a mate). Confirm every hit with chesscomp.report.
+MUTATE=1: a zugzwang key is not penalised (every Black move must then have a mate).
+MP=any: any White pieces may mate (a plain 2x2 change); BYMOVE=1: count thematic defence moves, not units. Confirm every hit with chesscomp.report.
 """
 from __future__ import annotations
 import os
@@ -25,7 +26,7 @@ from .trychange import legal, mutate
 from .keysel import mate_moves, keys
 
 
-def evaluate(b, key, mp, fix=(), noqthr=False, quiet=False, pawny=0.0, thrsq=None, keysq=None, mutate=False):
+def evaluate(b, key, mp, fix=(), noqthr=False, quiet=False, pawny=0.0, thrsq=None, keysq=None, mutate=False, bymove=False):
     """(score, summary). good[u] lists the defences of Black unit u with the MP change; ndef[u] counts its defences."""
     n = b.copy(); n.push(chess.Move.null())
     if not n.is_valid() or b.is_check():
@@ -64,7 +65,8 @@ def evaluate(b, key, mp, fix=(), noqthr=False, quiet=False, pawny=0.0, thrsq=Non
         if d.from_square == bk or d not in n.legal_moves:
             continue
         n.push(d); sm = mate_moves(n); n.pop()
-        if len(sm) == 1 and len(km) == 1 and sm[0].from_square == mp == km[0].from_square and sm[0] != km[0]:
+        same = mp is None or sm[0].from_square == mp == km[0].from_square if sm and km else False
+        if len(sm) == 1 and len(km) == 1 and same and sm[0] != km[0]:
             if keysq is None or km[0].to_square in keysq:
                 good.setdefault(d.from_square, []).append(d)
         elif len(sm) > 1:
@@ -72,8 +74,12 @@ def evaluate(b, key, mp, fix=(), noqthr=False, quiet=False, pawny=0.0, thrsq=Non
     if quiet:   # a capture is a weaker thematic defence than a quiet move (1...Rxc8 of the first pawn version)
         good = {u: [d for d in v if not p.is_capture(d)] for u, v in good.items()}
         good = {u: v for u, v in good.items() if v}
-    s += sum(30 + (25 if ndef.get(u) == 1 else 10 if ndef.get(u) == 2 else 0) for u in good)
-    s -= 40 if len(good) < 2 else 0
+    if bymove:  # one unit may make both thematic defences (Strebkovs: the bishop to c5 or d4)
+        n_good = sum(len(v) for v in good.values())
+        s += 35 * min(n_good, 3) - (40 if n_good < 2 else 0)
+    else:
+        s += sum(30 + (25 if ndef.get(u) == 1 else 10 if ndef.get(u) == 2 else 0) for u in good)
+        s -= 40 if len(good) < 2 else 0
     s -= 10 * holes + 14 * duals
     summ = (f"thr {[t.uci() for t in thr]} good {sorted(chess.square_name(u) + ':' + str(len(v)) + '/' + str(ndef.get(u)) for u, v in good.items())}"
             f" holes {holes} duals {duals} {' '.join(bad[:6])}")
@@ -91,15 +97,16 @@ def main(argv=None):
     E = os.environ
     core = chess.Board(E['CORE'] + ' w - - 0 1')
     core_sq = {s for s in chess.SQUARES if core.piece_at(s)}
-    key, mp = chess.Move.from_uci(E['KEY']), chess.parse_square(E['MP'])
+    key = chess.Move.from_uci(E['KEY'])
+    mp = None if E['MP'] == 'any' else chess.parse_square(E['MP'])
     fix = [chess.parse_square(x) for x in E.get('FIX', '').split(',') if x]
     noq, quiet, pawny = bool(E.get('NOQTHR')), bool(E.get('QUIET')), float(E.get('PAWNY') or 0)
     thrsq = chess.parse_square(E['THRSQ']) if E.get('THRSQ') else None
     keysq = {chess.parse_square(x) for x in E['KEYSQ'].split(',')} if E.get('KEYSQ') else None
-    mut = bool(E.get('MUTATE'))
+    mut, bym = bool(E.get('MUTATE')), bool(E.get('BYMOVE'))
     random.seed(job * 7919 + int(time.time()))
     seed = chess.Board(E.get('SEED', E['CORE']) + ' w - - 0 1')
-    pop, seen, t0 = [(evaluate(seed, key, mp, fix, noq, quiet, pawny, thrsq, keysq, mut), seed)], {}, time.time()
+    pop, seen, t0 = [(evaluate(seed, key, mp, fix, noq, quiet, pawny, thrsq, keysq, mut, bym), seed)], {}, time.time()
     while time.time() - t0 < float(E.get('BUDGET_S', '240')):
         _, par = random.choice(pop[:6]) if random.random() < 0.8 else random.choice(pop)
         ch = mutate(par, core_sq, int(E.get('MAX_UNITS', '13')))
@@ -107,7 +114,7 @@ def main(argv=None):
             ch = mutate(ch, core_sq)
         if not legal(ch, set()) or ch.board_fen() in seen:
             continue
-        r = evaluate(ch, key, mp, fix, noq, quiet, pawny, thrsq, keysq, mut); seen[ch.board_fen()] = r
+        r = evaluate(ch, key, mp, fix, noq, quiet, pawny, thrsq, keysq, mut, bym); seen[ch.board_fen()] = r
         pop.append((r, ch)); pop.sort(key=lambda x: -x[0][0]); pop = pop[:40]
     with open(out, 'w') as f:
         for fen, (sc, summ) in sorted(seen.items(), key=lambda x: -x[1][0])[:15]:

@@ -1353,3 +1353,5 @@ no motive layer to mirror.
 - 16 Oct: judged his bourd-type3-c5-threat; on his questions: removal table (scratch why.py) -> bourd-type3-c5-threat-18
   (22 -> 18 units, same play, verified); his Qh5 idea completed by type3 QUIET (claude-type3-c5-blackqueen, 7+7, sound); his
   Bh5/Sh4 idea: two runs, nothing. Compose: "Reduce by chains".
+- 16 Oct: "try another type ... another 2x2": the knight guard swap (his idea, Strebkovs model). type3 gained MP=any and
+  BYMOVE (tested on Strebkovs); run 334 gave a sound 5+4, then bPg3 replaced the black bishop: claude-knight-swap-c2.
