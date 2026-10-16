@@ -25,7 +25,9 @@ solver reports with that pattern and a single mate, distinct mates only; a HIT n
 for direct self-pins by the defender, daily No. 8). KEY=e7e8n (fixed-key mode, daily No. 9: underpromotion) needs no DEFS:
 it scores only the phase whose first move is KEY (uci), rewards it being the only key, and rewards NVAR (default 3)
 distinct single mates after its real defences, any defences; a HIT needs exactly that key, at most one threat, NVAR
-such mates and no flight. Put the promoting pawn and the black king in CORE. UNIQUE=1 makes every DEF the only defence of its unit (any other
+such mates and no flight. Put the promoting pawn and the black king in CORE. BRISTOL=1 (with KEY, daily No. 11) also
+needs the threat to follow KEY along its line (analysis.bristol) for a HIT, and rewards tries by the key piece whose single
+refutation the key answers with a mate (E. Bourd's prototype: 1.Bd8? Bd6!, 1.Bb6? d6!). UNIQUE=1 makes every DEF the only defence of its unit (any other
 move of that unit must let the threat mate; E. Bourd: "realistically all knight moves are the same"). A line starting HIT is a position that meets the whole specification; check it with
 `tools/blog.py check` before believing it.
 Type-1 changed mates (E. Bourd, 14 Oct 2026: one White piece mates in both phases on another line): DEFSQ=f3,a3 names
@@ -67,6 +69,7 @@ UNIQUE = os.environ.get('UNIQUE', '0') == '1'        # each DEF is its unit's on
 TARGET = dict(x.split(':') for x in os.environ.get('TARGET', '').split(',') if ':' in x)   # exact mates, e.g. d6:Qe6#,d5:Ba4#
 WCORR = os.environ.get('WCORR', '')                  # white correction mode: square of the key piece
 KEY = os.environ.get('KEY', '')                      # fixed-key mode: the key's uci, e.g. e7e8n
+BRISTOL = os.environ.get('BRISTOL', '0') == '1'      # fixed-key mode: the threat must follow KEY on its line (daily No. 11)
 NVAR = int(os.environ.get('NVAR', '3'))
 DEFSQ = [x for x in os.environ.get('DEFSQ', '').split(',') if x]   # type-1: thematic units by square (needs TKEY)
 TKEY = os.environ.get('TKEY', '')                    # type-1: the intended key (uci)
@@ -201,7 +204,36 @@ def key_mode(r):
     nthr = len(ph.get('threat') or [])
     t += 4 if nthr == 1 else -8 * max(0, nthr - 1)
     ok = ph['type'] == 'key' and len(keys) == 1 and nthr <= 1 and len(mates) >= NVAR
-    return t, f"{ph['type']} {ph['first_move']['san']} thr={'/'.join(sorted(thr))} mates={'/'.join(sorted(mates))} duals={duals}", ok
+    summ = f"{ph['type']} {ph['first_move']['san']} thr={'/'.join(sorted(thr))} mates={'/'.join(sorted(mates))} duals={duals}"
+    if BRISTOL:
+        bt, btxt, bok = bristol_terms(ph, phases)
+        t += bt; ok = ok and bok; summ += ' ' + btxt
+    return t, summ, ok
+
+
+def bristol_terms(ph, phases):
+    """BRISTOL=1 (daily No. 11): (score, summary, ok). The threat must follow the key along its line (analysis.bristol);
+    the key piece's other moves are tries whose single refutation the key answers with a mate (E. Bourd's
+    prototype: 1.Bd8? Bd6!, 1.Bb6? d6!, 1.Bh2! Bd6 2.Qg8#, d6 2.Qxb4#)."""
+    from chesscomp.analysis import bristol
+    fm = ph['first_move']['uci']
+    thr = ph.get('threat') or []
+    follow = bool(thr) and all(bristol(fm, c['uci']) for c in thr)
+    answered = {v['defence']['san'].rstrip('+#') for v in ph['variations'] if v['continuations'] and not v['threat_repeat']}
+    refs = set()
+    for q in phases:
+        if q['type'] != 'try':
+            continue
+        u = q['first_move']['uci']
+        if u[:2] != fm[:2] or u == fm:
+            continue
+        rr = q['refutations'] if isinstance(q['refutations'], list) else []
+        if len(rr) == 1:
+            san = (rr[0]['san'] if isinstance(rr[0], dict) else str(rr[0])).rstrip('+#!')
+            if san in answered and not (q.get('check_key')):
+                refs.add(san)
+    t = (25 if follow else -30) + 12 * min(len(refs), 3)
+    return t, f"bristol={'yes' if follow else 'no'} thematic-tries={'/'.join(sorted(refs)) or '-'}", follow
 
 
 def dyn_defs(ph, setmap=None):

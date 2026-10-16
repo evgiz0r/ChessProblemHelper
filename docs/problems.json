@@ -2380,6 +2380,23 @@
     "Sb4"
    ],
    "note": "Python solver: sound, 10+9, nothing trimmable. Flaws: 19 units, 8 pawns; wPb5 only stops a check (no solution without it), wPc4 a duplicate guard; Ra3 and Bf1 exist for the d3 guard play, Rg6 and Pd7 stop cooks; in the set the mates follow every move of each knight (Rf4# for e2 moves, Rxe3# for d1 moves), so the c3 specificity appears only after the key; Qd4# twice after the key (Sec3, Sf4)."
+  },
+  {
+   "id": "claude-daily11-bristol-rook-files",
+   "fen": "4N3/4N3/Bn6/P1k5/6P1/2P3Pp/6RQ/6K1",
+   "stip": "#2",
+   "author": "Claude (daily No. 11, 16 Oct 2026)",
+   "source": "blog daily No. 11, theme Bristol clearance",
+   "themes": [
+    "Bristol (key and try): Rg2 clears the 2nd rank for Qh2-f2",
+    "Changed mate try/key after 1...Sc4 (Rb5#/Rd5#), selected by the rook's file",
+    "White self-interference compensated by a self-block (Rb5 cuts Ba6-c4, Sc4 blocks c4)"
+   ],
+   "keys": [
+    "Rd2"
+   ],
+   "note": "1.Rd2! (2.Qf2#) Sc4 2.Rd5#, Sd5 2.Rxd5#; 1.Rb2? Sd5! (1...Sc4 2.Rb5#). Flaws: bPh3 attacks the key rook, four box units (Kg1, bPh3, Pg3, Pg4), random knight duals Qf2/Rd5. The first-rank version 8/4N3/4N3/Bn6/P1k5/6P1/2P3PK/6RQ failed the gate (out-of-play key Rg1).",
+   "solution": "#2 (10+3)   FEN 4N3/4N3/Bn6/P1k5/6P1/2P3Pp/6RQ/6K1 w - - 0 1\nTry: 1.Rb2? (threat: 2.Qf2#)\n   1...Sc4 2.Rb5#\n   (4 further moves allow the threat)\n   but 1...Sd5!\nKey: 1.Rd2! (threat: 2.Qf2#)\n   1...Sd5 2.Rxd5#\n   1...Sc4 2.Rd5#\n   (4 further moves allow the threat)\nChanged continuations:\n   1...Sc4: Rb5# -> Rd5#   [try Rb2 vs key Rd2]\nPatterns:\n   Bristol: 1.Rb2 + 2.Qf2#   [try Rb2]\n   Bristol: 1.Rd2 + 2.Qf2#   [key Rd2]"
   }
  ]
 }

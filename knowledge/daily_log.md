@@ -163,6 +163,21 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For a white correction again, write the error table first (arrival square ->
   defence stopped, mate spoiled), on a bishop or rook line with a second White line crossing it, then WCORR evolve.
 
+## 2026-10-16, No. 11: Bristol clearance
+- Result: 4N3/4N3/Bn6/P1k5/6P1/2P3Pp/6RQ/6K1 (10+3), 1.Rd2! (2.Qf2#) Sc4 2.Rd5#, Sd5 2.Rxd5#; try 1.Rb2? Sd5! (1...Sc4
+  2.Rb5#): Bristol in key and try, changed mate after 1...Sc4, the rook's file selects the mates. Gate: PASS with warnings
+  (attacked key piece from h3, random knight duals Qf2/Rd5, Rxd5 captures the defender, cook-stoppers Pg3/Pg4), all named
+  in the post. Light. Mentor issues #7-#11 had no answers; nothing to act on.
+- Setup: the local `main` had diverged again (114 vs 65 commits); worked on `daily-run` from origin/main.
+- Minutes (container clock 23:58-00:40): setup and reading 5, kit change (BRISTOL mode + tests) 10, evolve 25 (16 jobs,
+  run alongside hand work), hand work with a try table 20, judging, post and records 10. About 45 solves.
+- What wasted time: bare evolve seeds and seeds with a free queen (only queen keys); a pin-cut sketch where the rook on
+  d2 just took over the d-file pin; a first-rank version refused by the gate (out-of-play key) after it was sound.
+- What helped: boxing the queen before any search; a scratch try table (every move of one unit: threat, refutations,
+  non-threat mates) for one change per solve; reading the rook's stops as files.
+- Next run: theme from `next-theme`. For a Bristol again, aim for every stop of the clearing piece a try with its own
+  refutation, and a box whose units also mate. The try table is worth a kit tool (see Proposals).
+
 ## Proposals
 - compose.trytable: the scratch try table of daily No. 10 (every move of one White unit: threat, refutations,
   non-threat mates; pure python-chess, under a second) as a kit tool with a test.
