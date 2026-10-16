@@ -1302,3 +1302,7 @@ no motive layer to mirror.
   themes/changed_mates.md (knight guard pairs around K e4, colour argument, line conflict needs blocks). Three scratch searches
   (swap2.py) gave single changes or fatal flaws (8/3N1r1n/4B3/1pK5/2pBkp2/1r3R2/4P1N1/8: 1.Sh4! Rxf4# -> Bf5# twice, set Rf5+
   unprovided). No 2x2 yet; next: self-block defences instead of unguards.
+- 16 Oct: "go for it" (2x2 knight swap). Database scan (knight keys with two set/key changes, 16 problems) found the pure
+  swap in Strebkovs 2003 (psis-c1d0392e2e). Built claude-knight-swap-2x2-scheme (hand reasoning + inspector): the 2x2 change
+  works as a block; no threat found (searches keysel2/swap2 failed: the key's own flight f4 needs a 4th-rank check, which
+  the f-file rook parries). Shown to him as a scheme, not a problem.

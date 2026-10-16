@@ -97,3 +97,9 @@ differ in colour: a defence that frees one square of each needs a rook/queen lin
 never a bishop. In every geometry the rook line through one pair runs on into the other pair (2x2 shape), so a block is
 needed (his black pawns d3/e3 did it). If the knight protects the square it vacates (d5->b4 protects d5), a black guard
 of that square attacks the knight in the diagram. Random searches (scratch swap2.py, 3 rounds) gave single changes only.
+Published model of the pure swap: Strebkovs, Vratnica-64 2003, Recommended (psis-c1d0392e2e), b1Q1N3/5p2/5K2/N1PkP3/1n4R1/8/1n2P3/6b1,
+1.Sb3! (2.Qd7#) Bxc5 Qxc5#, Bd4 Rxd4# (set Sc7#, e4#): Sa5 covers the flights c4/c6 for the set mates, Sb3 protects the
+capture squares c5/d4 for the key mates; one black bishop lands on either square. Our scheme on that model (no threat yet):
+claude-knight-swap-2x2-scheme, 5r2/8/2N5/8/2P1k3/4p2Q/1KP3N1/8, Sg2->h4: set Rf5 Qxe3#, Rf3 Qe6#; after Sh4 Rf5 Qxf5#,
+Rf3 Qxf3# (each rook landing cuts one queen line h3-e3 / h3-e6 and becomes the other's capture target). Obstacle: the key
+gives f4 (the knight's old guard), so a threat must check along the 4th rank, and the f-file rook interposes on f4.
