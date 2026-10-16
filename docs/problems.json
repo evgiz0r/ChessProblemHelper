@@ -2444,6 +2444,21 @@
     "Ke2"
    ],
    "note": "Python solver: sound, 8+4, gate PASS, nothing trimmable. Flaws: the e1 knight still has three defences for one mate (c2, f3 guard d4; d3 blocks, 2.Qxd3# recaptures); Rb1 cook-stopper (1.Qxe1! otherwise); bPb3 stops Qc2; Sg1 protects f3 for the set and shuts Qh1# out of 1...Sd3/Sc2 after the key; monotone queen mates; non-defences of the f6 knight allow Qd5# besides the threat; the try captures a defender. Pluses: one queen, two lines, both selected by one quiet king step; 2x2 change; specific quiet defence Sd7; try refuted by the thematic defence. Making Se1 specific failed: a pin of c2 or f3 checks in the diagram, only knights on e1/e5 or a 3rd-rank rook hold d3+f3 (the rook checks with Re3+ once the king is on e2), and the search found no other second unit."
+  },
+  {
+   "id": "claude-type3-pawn-g5",
+   "fen": "2B2r2/8/2n3p1/1NNpk3/6PQ/5pK1/8/8",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 16 Oct 2026)",
+   "source": "E. Bourd on claude-type3-queen-lines: \"change the king into a pawn and swap directions. that rook on b1 is too bad\"; Sd3 \"a bit annoying\", prefer a single move and a threat not depending on the queen line. Hand sketch (Qh4, Pg4, Ke5, bRf8 for f5/f4, bSc6 for e7/d4, threat Sd3#), then chesscomp.compose.type3 with NOQTHR (scratch run 221)",
+   "themes": [
+    "Changed mates set -> solution by one queen, doubled: 1.g5! shuts the h4-d8 diagonal and opens the 4th rank. Set 1...R~ 2.Qg5#, 1...Sb4 2.Qe7#; 1.g5! (2.Sd3#) Rxc8 2.Qf4#, Sb4 2.Qd4#",
+    "The threat is a knight mate, so no defence can block a queen line; each thematic unit has one defence (Sb4 guards d3, Rxc8 takes the e6/f5 guard)"
+   ],
+   "keys": [
+    "g5"
+   ],
+   "note": "Python solver: sound, 6+6, gate PASS, untrimmable. Flaws: the rook's thematic defence is a capture (1...Rxc8); by-play 1...Rf4 2.Qxf4# blocks the queen's rank and is recaptured, 1...d4 2.Qe4#; three black plugs (g6 stops 1.Qg5+ and 1.Qh6, f3 shields Kg3 from Rf3+, d5 blocks d5 and holds the solution); set dual 1...Rh8 Qxh8#/Qg5#; monotone queen mates. Pluses: the key pawn is the selector (its guard also moves from f5 to f6), single thematic defences, threat off the queen lines, set mate Qg5 is a one-square queen move onto the pawn's arrival square, Kg3 protects f4, no white plug. Not found: a quiet single rook defence (with Bh3 behind the pawn 1...Rd8 works but Rf7/Rf5 refute); the other direction (Qh5, g4-g5 opening the diagonal) gave no threat by another piece in four runs."
   }
  ]
 }

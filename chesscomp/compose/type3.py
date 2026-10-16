@@ -9,9 +9,9 @@ one mate (holes and duals cost), two units with a change, unique key (every Whit
 It made the f6 knight's defence specific in claude-type3-queen-lines (1...Sd7 cuts Bc8-f5) and found that only a knight
 on e1 holds d3 and f3 there (no other second unit in four runs).
 
-    CORE=... SEED=... KEY=d2e2 MP=d1 [FIX=f6] BUDGET_S=280 python -m chesscomp.compose.type3 JOB OUT
+    CORE=... SEED=... KEY=d2e2 MP=d1 [FIX=f6] [NOQTHR=1] [QUIET=1] BUDGET_S=280 python -m chesscomp.compose.type3 JOB OUT
 
-FIX: Black squares that must stay occupied (the first thematic unit). Confirm every hit with chesscomp.report.
+FIX: Black squares that must stay occupied (the first thematic unit). NOQTHR: the threat may not be made by MP. QUIET: thematic defences that capture do not count. Confirm every hit with chesscomp.report.
 """
 from __future__ import annotations
 import os
@@ -23,7 +23,7 @@ from .trychange import legal, mutate
 from .keysel import mate_moves, keys
 
 
-def evaluate(b, key, mp, fix=()):
+def evaluate(b, key, mp, fix=(), noqthr=False, quiet=False):
     """(score, summary). good[u] lists the defences of Black unit u with the MP change; ndef[u] counts its defences."""
     n = b.copy(); n.push(chess.Move.null())
     if not n.is_valid() or b.is_check():
@@ -40,13 +40,15 @@ def evaluate(b, key, mp, fix=()):
     p = b.copy(); p.push(key); q = p.copy(); q.push(chess.Move.null())
     thr = mate_moves(q) if q.is_valid() and not q.is_check() else []
     s = 15.0 if len(thr) == 1 else (-40 if not thr else -15 * (len(thr) - 1))
+    if noqthr and any(t.from_square == mp for t in thr):
+        s -= 60     # E. Bourd, 16 Oct 2026: a threat on the queen's new line lets a block defend (1...Sd3)
     holes = duals = 0
     good, ndef, bad = {}, {}, []
     for d in list(p.legal_moves):
         p.push(d)
         if p.is_checkmate():
             p.pop(); continue
-        km = mate_moves(p); p.pop()
+        km = mate_moves(p); kms = [p.san(x) for x in km]; p.pop()
         if any(t in km for t in thr):
             continue
         if d.from_square != bk:
@@ -54,7 +56,7 @@ def evaluate(b, key, mp, fix=()):
         if not km:
             holes += 1; bad.append(p.san(d) + ':-'); continue
         if len(km) > 1:
-            duals += len(km) - 1; bad.append(p.san(d) + ':' + '/'.join(p.san(x) for x in km))
+            duals += len(km) - 1; bad.append(p.san(d) + ':' + '/'.join(kms))
         if d.from_square == bk or d not in n.legal_moves:
             continue
         n.push(d); sm = mate_moves(n); n.pop()
@@ -62,6 +64,9 @@ def evaluate(b, key, mp, fix=()):
             good.setdefault(d.from_square, []).append(d)
         elif len(sm) > 1:
             duals += 0.5 * (len(sm) - 1)
+    if quiet:   # a capture is a weaker thematic defence than a quiet move (1...Rxc8 of the first pawn version)
+        good = {u: [d for d in v if not p.is_capture(d)] for u, v in good.items()}
+        good = {u: v for u, v in good.items() if v}
     s += sum(30 + (25 if ndef.get(u) == 1 else 10 if ndef.get(u) == 2 else 0) for u in good)
     s -= 40 if len(good) < 2 else 0
     s -= 10 * holes + 14 * duals
@@ -82,9 +87,10 @@ def main(argv=None):
     core_sq = {s for s in chess.SQUARES if core.piece_at(s)}
     key, mp = chess.Move.from_uci(E['KEY']), chess.parse_square(E['MP'])
     fix = [chess.parse_square(x) for x in E.get('FIX', '').split(',') if x]
+    noq, quiet = bool(E.get('NOQTHR')), bool(E.get('QUIET'))
     random.seed(job * 7919 + int(time.time()))
     seed = chess.Board(E.get('SEED', E['CORE']) + ' w - - 0 1')
-    pop, seen, t0 = [(evaluate(seed, key, mp, fix), seed)], {}, time.time()
+    pop, seen, t0 = [(evaluate(seed, key, mp, fix, noq, quiet), seed)], {}, time.time()
     while time.time() - t0 < float(E.get('BUDGET_S', '240')):
         _, par = random.choice(pop[:6]) if random.random() < 0.8 else random.choice(pop)
         ch = mutate(par, core_sq, int(E.get('MAX_UNITS', '13')))
@@ -92,7 +98,7 @@ def main(argv=None):
             ch = mutate(ch, core_sq)
         if not legal(ch, set()) or ch.board_fen() in seen:
             continue
-        r = evaluate(ch, key, mp, fix); seen[ch.board_fen()] = r
+        r = evaluate(ch, key, mp, fix, noq, quiet); seen[ch.board_fen()] = r
         pop.append((r, ch)); pop.sort(key=lambda x: -x[0][0]); pop = pop[:40]
     with open(out, 'w') as f:
         for fen, (sc, summ) in sorted(seen.items(), key=lambda x: -x[1][0])[:15]:

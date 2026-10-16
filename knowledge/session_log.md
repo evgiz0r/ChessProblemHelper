@@ -1324,3 +1324,8 @@ no motive layer to mirror.
   Failed: a specific e1-knight defence (pins check in the diagram; Sd3 always blocks; no other second unit found by search).
   Tools: chesscomp.compose.type3 (new, tested); critique piece_necessity ranks new key-phase duals first (Sg1 was reported
   set-play-only though it shuts Qh1# after the key).
+- 16 Oct, his answer: king -> pawn, swap directions, Rb1 too bad, Sd3 annoying (single defence; a threat off the queen line;
+  short queen mates cannot be blocked). Hand: rotated scheme Qh4/Pg4/Ke5, bRf8 (f5/f4), bSc6 (e7/d4), Bh3/Sc5 threat sketch;
+  type3 (new options NOQTHR, QUIET; tested) runs 201-244: claude-type3-pawn-g5, 2B2r2/8/2n3p1/1NNpk3/6PQ/5pK1/8/8, 1.g5!
+  (2.Sd3#) Rxc8 Qf4#, Sb4 Qd4# (set Qg5#, Qe7#), sound 6+6, gate PASS. Failed: the Qh5 direction (no non-queen threat), a
+  quiet single rook defence.

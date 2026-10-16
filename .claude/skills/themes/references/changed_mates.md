@@ -124,3 +124,9 @@ d4). Result: claude-type3-queen-lines, 2B5/8/2N2n2/8/2P1k3/1p2P3/3K4/1R1Qn1N1, 1
 Sd3 Qxd3# (set Qg4#, Qf3#); try 1.Kxe1? Sd7!. To make a knight's defence specific, give the threat a flight that only one
 landing opens: f5 held by Bc8 alone, cut on d7. The e1 knight stayed with three defences: Sd3 always blocks the file, and
 a pin of c2 or f3 is a check in the diagram. Search: `python -m chesscomp.compose.type3` (KEY, MP, FIX; tested).
+Pawn selector (E. Bourd: "change the king into a pawn and swap directions"; b1 rook "too bad"; Sd3 annoying): turn the
+scheme so the step goes up: claude-type3-pawn-g5, 2B2r2/8/2n3p1/1NNpk3/6PQ/5pK1/8/8, 1.g5! (2.Sd3#) Rxc8 Qf4#, Sb4 Qd4#
+(set R~ Qg5#, Sb4 Qe7#). bRf8 holds f5 (the interposition square of Qg5+) and f4, bSc6 holds e7 and d4; Bc8 holds e6/f5 for
+the knight threat. A threat by another piece removes the block defences; each unit has one defence. Plugs: bPg6, bPf3, bPd5.
+The other direction (Qh5, g4-g5 opening h5-d1) closes the rank that guarded d5/e5/f5 and gave no non-queen threat.
+Search: type3 NOQTHR=1 (threat not by MP), QUIET=1 (capturing defences do not count).
