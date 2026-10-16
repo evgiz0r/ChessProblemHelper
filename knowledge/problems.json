@@ -2488,6 +2488,21 @@
     "g4"
    ],
    "note": "Python solver: sound, 7+5. His verdict: \"the result is decent. Rf3 is still annoying\" (1...Rf3 2.Qxf3#, blocking the queen's rank); to change it \"will need to restructure completely probably, so that the threat is due to the f3 square. and the thematic mates on e3,d3 somehow. but requires completely different direction\". Other flaws: by-play 1...d3 2.Qe3#, set dual 1...Rh7, Kb5 only stops cooks, bPd4 and bPg5 plugs."
+  },
+  {
+   "id": "claude-type3-c5-flights-scheme",
+   "fen": "3N4/8/2RB1p2/1Q5K/1nP1k3/2R5/2P1N3/8",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 16 Oct 2026), on his bench core mvattjff (Qb5, Pc4, Ke4, bSb4)",
+   "source": "His sitting mvattjff: Qg4/Pf4/Kd5 with f4-f5, turned twice: the pawn's step c4-c5 shuts the queen's 5th rank and opens b5-f1; then chesscomp.compose.type3 (FIX b4, scratch run 281)",
+   "themes": [
+    "Changed mates set -> key by one queen, doubled, with a flight-giving key: set 1...Sb4~ 2.Qd5#, 1...f5 2.Qe5#; 1.c5 (zugzwang) gives d5 and f5: Kd5 2.Qc4#, Kf5 2.Sg3#, Sb4~ 2.Qd3#, f5 2.Qc4#",
+    "The black units select the mates themselves: Sb4 holds d5/d3, Pf6 holds e5 (set) and blocks the flight f5 after the key (Qc4# needs f5 shut)"
+   ],
+   "keys": [
+    "c5"
+   ],
+   "note": "SCHEME, not sound: cooked by 1.Qf5+, Bxb4, Bf4, Rh3, Rg3 (the set leaves 1...Sd3 open: the knight cuts Rc3 from e3/f3). 9+3, Sb4 random. No threat version: the key strips d5/e5/f5 of the queen's rank; only Qd3 covers both flights and Sb4 guards d3 (its thematic job); Re5 would, but Pf6 guards e5 (its job). Light settings (e.g. 8/8/3p1p2/1Q6/1nP1kP2/1P2P3/4K3/8) leave Kd5/Kf5 unanswered."
   }
  ]
 }
