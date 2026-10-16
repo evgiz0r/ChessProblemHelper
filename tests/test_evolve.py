@@ -111,3 +111,28 @@ def test_key_mode_fixes_the_key_and_counts_mates():
         assert r.returncode == 0, r.stderr
         out[(key, n)] = r.stdout.split()[-1]
     assert out == {('e7e8n', 3): 'True', ('e7e8n', 4): 'False', ('e7e8q', 1): 'False'}
+
+
+BRISTOL_PROBE = """
+import chess, chesscomp.compose.evolve as e
+s, summ, hit = e.score(chess.Board('1Q6/R1Bpb3/2p5/6p1/1p1P4/1k6/N7/2K2B2 w - - 0 1'))
+print(hit, summ)
+"""
+
+
+def _bristol(key):
+    env = dict(os.environ, KEY=key, BRISTOL='1', NVAR='2', DEFS='', PYTHONPATH=ROOT)
+    r = subprocess.run([sys.executable, '-c', BRISTOL_PROBE], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
+    assert r.returncode == 0, r.stderr
+    return r.stdout.strip()
+
+
+def test_bristol_mode_hits_bourd_prototype_with_thematic_tries():
+    # E. Bourd's Bristol prototype: 1.Bh2! (2.Qg3#), tries 1.Bd8? Bd6! and 1.Bb6? d6!, both answered after the key
+    out = _bristol('c7h2')
+    assert out.startswith('True') and 'bristol=yes' in out and 'thematic-tries=Bd6/d6' in out
+
+
+def test_bristol_mode_refuses_a_non_bristol_threat():
+    # 1.Bb6? also threatens 2.Qg3#, but the queen does not follow the bishop's line
+    assert _bristol('c7b6').startswith('False')
