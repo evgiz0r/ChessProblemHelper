@@ -1355,3 +1355,6 @@ no motive layer to mirror.
   Bh5/Sh4 idea: two runs, nothing. Compose: "Reduce by chains".
 - 16 Oct: "try another type ... another 2x2": the knight guard swap (his idea, Strebkovs model). type3 gained MP=any and
   BYMOVE (tested on Strebkovs); run 334 gave a sound 5+4, then bPg3 replaced the black bishop: claude-knight-swap-c2.
+- 16 Oct: his scheme mvbifzbn (two rooks, e3/e4 guard selects bishop or knight mates); he wants a threat. Hand: threat c3#,
+  key Sg4-f2; type3 runs 341-394 (MP=any, KEYSQ): best claude-two-rooks-c3-scheme (single changed defences Rb3/Rc1, four
+  refutations). Not finished. Tool: type3 warns on illegal seeds (three knights cost four rounds).

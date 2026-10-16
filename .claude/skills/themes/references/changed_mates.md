@@ -148,3 +148,7 @@ His Bh5 + Sh4 (1...Sf3 frees f5, cuts h5-e2) gave nothing in two runs.
 Knight guard swap, done light: claude-knight-swap-c2, 8/8/5R2/K3p3/1N1Pk3/2Q3p1/5n2/8, 1.Sc2! (2.Qf3#) exd4 Qxd4#, Sd3 Qc6#,
 Kd5 Qc6# (set exd4 Qe1#, Sd3 Qxd3#): b4 {d3,d5} -> c2 {e3,d4}, the key gives d5. Found by type3 MP=any BYMOVE=1 (key fixed),
 then bPg3 for the search's black bishop. 1.Sc6? fails to Kd5 and Sd3 (no single-refutation try while d5 is given).
+Two rooks, two mating pieces (his bench mvbifzbn): Re1 holds e2/e3 (Se2#/Be3#), Rb5 holds e5/f5 (Be5#/Sf5#); e3 guarded ->
+bishop mates, e4 guarded -> knight mates. With a threat: claude-two-rooks-c3-scheme, 8/4K3/2R5/1r6/3kPBN1/4p1N1/2P5/4r3,
+1.Sf2 (2.c3#) Rb3 Sf5#, Rc1 Se2# (set Be5#, Bxe3#); refuted by Rb7+, Re5+, Rc5, exf2. Obstacle: 1...Re3 guards c3 along the
+3rd rank, and only the e1 rook can hold e2+e3. Idea left: knight mates in the set, the key protects e3, so Re3 meets Bxe3#.

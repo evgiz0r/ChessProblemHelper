@@ -106,6 +106,9 @@ def main(argv=None):
     mut, bym = bool(E.get('MUTATE')), bool(E.get('BYMOVE'))
     random.seed(job * 7919 + int(time.time()))
     seed = chess.Board(E.get('SEED', E['CORE']) + ' w - - 0 1')
+    if not legal(seed, set()):   # a third knight or a second dark bishop makes the seed promoted force (16 Oct 2026)
+        print(f'warning: seed {seed.board_fen()} is not legal (promoted force, check or pawn on rank 1/8): '
+              'the search starts from its mutations', file=sys.stderr)
     pop, seen, t0 = [(evaluate(seed, key, mp, fix, noq, quiet, pawny, thrsq, keysq, mut, bym), seed)], {}, time.time()
     while time.time() - t0 < float(E.get('BUDGET_S', '240')):
         _, par = random.choice(pop[:6]) if random.random() < 0.8 else random.choice(pop)
