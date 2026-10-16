@@ -517,6 +517,10 @@
   // summary of a solve, and the difference to the previous solve of the same session.
   function solveSummary(res, defs) {
     const out = { keys: (res.keys || []).slice(), cooked: !!res.cooked, theme: {}, holes: [], duals: [] };
+    // E. Bourd (16 Oct 2026): "was sound, 1.Sef2!, now sound, 1.Sf2!" - the same move, written without the
+    // file once the other knight had gone. Keys are compared by the move (from-to), the notation is only shown.
+    const ids = new Map((res.phases || []).filter(p => p.type === 'key' && p.from).map(p => [p.first, p.from + p.to]));
+    out.keyIds = out.keys.map(k => ids.get(k) || k);
     const key = (res.phases || []).find(p => p.type === 'key');
     const sp = (res.phases || []).find(p => p.type === 'set');
     const cell = v => !v ? 'not legal' : v.threatRepeat ? 'threat' : (v.conts.length ? v.conts.map(c => c.san).join('/') + (v.conts.length > 1 ? ' DUAL' : '') : 'no mate');
@@ -532,7 +536,8 @@
   }
   function diffSummary(prev, cur) {
     if (!prev) return [];
-    const L = [], gone = prev.keys.filter(k => !cur.keys.includes(k)), came = cur.keys.filter(k => !prev.keys.includes(k));
+    const pid = prev.keyIds || prev.keys, cid = cur.keyIds || cur.keys;
+    const L = [], gone = prev.keys.filter((k, i) => !cid.includes(pid[i])), came = cur.keys.filter((k, i) => !pid.includes(cid[i]));
     if (prev.cooked !== cur.cooked || gone.length || came.length) {
       const v = s => s.keys.length === 0 ? 'no solution' : s.cooked ? `cooked (${s.keys.length} keys)` : `sound, 1.${s.keys[0]}!`;
       L.push(`was ${v(prev)}, now ${v(cur)}` + (gone.length ? `; gone: ${gone.join(', ')}` : '') + (came.length ? `; new: ${came.join(', ')}` : ''));

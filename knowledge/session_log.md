@@ -1312,3 +1312,6 @@ no motive layer to mirror.
 - 16 Oct: his bench sitting mva8vaxu (168 steps): bourd-sef2-two-cuts, 8/2pK4/6R1/5kpP/4Np2/3NRB2/4n3/b5r1, 1.Sef2!
   (2.Be4#) Sc3 Re5#, Sg3 Bg4# (set Rf6#, Rxg5#). He reported the bench's "S~ random" for Sd4/Sc3 as a bug: fixed in
   chesscomp/analysis.py and docs/analysis.js (a random mate must work with the piece removed), test added, bench republished.
+- 16 Oct: his next step 8/3K4/3B2R1/5kpP/4Np2/4RB2/4n3/b5r1 (Bd6 for Sd3 + c7, 7+6, same play). Bug he reported: the
+  bench diff said "was sound, 1.Sef2!, now sound, 1.Sf2!" for the same move; docs/analysis.js now compares keys by from-to
+  (solveSummary.keyIds). Bench republished.
