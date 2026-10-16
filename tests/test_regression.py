@@ -275,3 +275,15 @@ def test_white_correction_is_not_same_refutation():
         p = Problem.from_fen(fen, '#2')
         rules = {f['rule'] for f in critique(p, analyse(p), necessity=False)['findings']}
         assert 'white correction' in rules and 'same refutation' not in rules, rules
+
+
+def test_trim_refuses_a_removal_that_adds_a_defence():
+    """bourd-type3-c5-threat: without bPc2 the knight also defends by 1...Sc2 (same mate Qd3#), so the knight's
+    single defence becomes two; only wPg3 may go."""
+    import chess
+    from chesscomp.compose.trim import trim
+    fen = '4r2r/1p6/1P1P1RNp/bQ6/1nP1kNb1/2p3P1/2p1pBPK/8'
+    keep = [chess.square_name(s) for s in chess.SquareSet(chess.Board(fen + ' w - - 0 1').occupied)
+            if chess.square_name(s) not in ('c2', 'g3')]
+    found = trim(fen, keep=keep)[2]
+    assert [sorted(chess.square_name(x) for x in g) for g, _ in found] == [['g3']]

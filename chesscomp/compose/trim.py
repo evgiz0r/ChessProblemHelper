@@ -4,7 +4,7 @@ E. Bourd (8 Oct 2026): "you could remove the h6 pawn as well, worth searching re
 pieces are artifacts of others" (bRh5 went, and then bPh6, which only stopped the rook's checks, could go too).
 A single pass of removals misses such pairs; this explores removal sets breadth-first and keeps every position
 in which the key is still the only key, the play of the key phase is unchanged (every defence keeps exactly
-its mates, no new defence without a mate), there is no diagram flight and no unprovided check in the set play.
+its mates, no new defence at all), there is no diagram flight and no unprovided check in the set play.
 
     python3 -m chesscomp.compose.trim FEN [--keep e5,d7] [--max 4]
 """
@@ -66,6 +66,8 @@ def trim(fen: str, keep=(), max_removed=6):
                 if any(kp[1].get(d) != m for d, m in play0.items() if m) or \
                         any(not m for d, m in kp[1].items() if d != '(threat)'):   # a zugzwang key has no threat
                     continue
+                if set(kp[1]) - set(play0):   # a new defence changes the play: -bPc2 let 1...Sc2 join 1...Sc6
+                    continue                  # (bourd-type3-c5-threat, 16 Oct 2026)
                 nxt.append(g); found.append((g, b.board_fen()))
         if not nxt:
             break

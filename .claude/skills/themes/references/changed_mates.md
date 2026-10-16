@@ -138,3 +138,6 @@ Other pawn direction (his bench core mvattjff: Qb5, Pc4, Ke4, bSb4; c4-c5 shuts 
 strips d5/e5/f5 and gives flights, so it is a mutate. Scheme claude-type3-c5-flights-scheme, 3N4/8/2RB1p2/1Q5K/1nP1k3/2R5/2P1N3/8:
 1.c5 Kd5 Qc4#, Kf5 Sg3#, Sb4~ Qd3# (set Qd5#), f5 Qc4# (set Qe5#); cooked (set hole 1...Sd3 lets Rh3/Rg3 wait), 9+3.
 Pairs in this geometry: Sb4 d5/d3, Sb6 or a bishop leaving a2-g8 d5/c4, Sc3 d5/e2, Sg3 f5/e2; Pf6 e5 + the f5 block.
+His threat version (bench mvbgkei9): bourd-type3-c5-threat, 4r2r/1p6/1P1P1RNp/bQ6/1nP1kNb1/2p3P1/2p1pBPK/8, 1.c5! (2.Qc4#)
+Sc6 Qd3#, Be6 Qxe2# (set Qd5#, Qe5#): the field holds d5/e5/f5 itself, so no flights; Be6 cuts Re8 from e5 in the set and
+leaves e2 after the key. 11+11 (wPg3 can go): the price of the threat in this direction is the field.

@@ -2509,6 +2509,22 @@
    ],
    "note": "SCHEME, not sound: cooked by 1.Qf5+, Bxb4, Bf4, Rh3, Rg3 (the set leaves 1...Sd3 open: the knight cuts Rc3 from e3/f3). 9+3, Sb4 random. No threat version: the key strips d5/e5/f5 of the queen's rank; only Qd3 covers both flights and Sb4 guards d3 (its thematic job); Re5 would, but Pf6 guards e5 (its job). Light settings (e.g. 8/8/3p1p2/1Q6/1nP1kP2/1P2P3/4K3/8) leave Kd5/Kf5 unanswered.",
    "cooked": true
+  },
+  {
+   "id": "bourd-type3-c5-threat",
+   "fen": "4r2r/1p6/1P1P1RNp/bQ6/1nP1kNb1/2p3P1/2p1pBPK/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench sitting mvbgkei9, 16 Oct 2026), on his core Qb5/Pc4/Ke4/bSb4",
+   "source": "Bench, 38 steps, 6 solves: bBg4 and bRe8 for the second pair, the field (Sf4, Sg6, Rf6, Bf2, Pg2, Pg3), wPd6, wKh2; 1.c5 gave Qc4#/Qxb4# double threat; bPb7, bPa5, wPb6, rook moves, bRh8 (stops dxe7), bBa5 (1.Qc5 becomes a try): sound",
+   "themes": [
+    "Changed mates set -> solution by one queen, doubled: 1.c5! (2.Qc4#) shuts the 5th rank and opens b5-f1. Set 1...Sc6 2.Qd5#, 1...Be6 2.Qe5#; 1.c5! Sc6 2.Qd3#, Be6 2.Qxe2#",
+    "Single defences with different motives: Sc6 guards d4 (the interposition square of Qc4+), Be6 guards c4; the bishop's move makes a different error in each phase (cuts Re8 from e5 in the set, leaves e2 unprotected after the key)",
+    "Try 1.Qc5? (2.Qd4#/Qe3#) Bxb6!"
+   ],
+   "keys": [
+    "c5"
+   ],
+   "note": "Python solver: sound, 11+11, gate PASS. Our verdict: medium content (two thematic lines, 2x2), price high: 22 units, 10 pawns; plugs wPb6 (1.Qxb7+), wPd6, bPb7, bPh6, bPc3, bPc2 (keeps the knight's defence single: without it 1...Sc2 also defends), bRh8 (1.dxe7), bBa5 (only the try); Kh2 passive; wPg3 removable (verified: 4r2r/1p6/1P1P1RNp/bQ6/1nP1kNb1/2p5/2p1pBPK/8, same play, 10+11); eight unprovided promotions in the set; the try has a double threat and a plug refutes it; Qxe2 takes a pawn. The field holds d5/e5/f5 itself (Sf4, Sg6, Rf6), so the key gives no flight and only exchanges the lines."
   }
  ]
 }

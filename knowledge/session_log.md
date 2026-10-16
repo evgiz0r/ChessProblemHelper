@@ -1347,3 +1347,6 @@ no motive layer to mirror.
   height as well as its width (landscape: board left, palette and tools beside it, Solve pane on the right, all on one screen);
   portrait: compact palette (7 per row), icon-only transforms, a Solve button under the board that scrolls to the report.
   Checked with Playwright at 385x700 and 830x310. Bench republished (version 34).
+- 16 Oct: his bench sitting mvbgkei9 (38 steps, 6 solves): bourd-type3-c5-threat, 1.c5! (2.Qc4#) Sc6 Qd3#, Be6 Qxe2#, sound
+  11+11, gate PASS; judged (medium content, heavy, many plugs; wPg3 removable, verified). Tool fix: trim now refuses a removal
+  that adds a defence (it had offered -bPc2, which keeps the knight's defence single), tested.
