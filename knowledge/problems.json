@@ -2525,6 +2525,34 @@
     "c5"
    ],
    "note": "Python solver: sound, 11+11, gate PASS. Our verdict: medium content (two thematic lines, 2x2), price high: 22 units, 10 pawns; plugs wPb6 (1.Qxb7+), wPd6, bPb7, bPh6, bPc3, bPc2 (keeps the knight's defence single: without it 1...Sc2 also defends), bRh8 (1.dxe7), bBa5 (only the try); Kh2 passive; wPg3 removable (verified: 4r2r/1p6/1P1P1RNp/bQ6/1nP1kNb1/2p5/2p1pBPK/8, same play, 10+11); eight unprovided promotions in the set; the try has a double threat and a plug refutes it; Qxe2 takes a pawn. The field holds d5/e5/f5 itself (Sf4, Sg6, Rf6), so the key gives no flight and only exchanges the lines."
+  },
+  {
+   "id": "bourd-type3-c5-threat-18",
+   "fen": "4r3/3p4/3P1RN1/bQ6/KnP1kNb1/2p5/2p1pBP1/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench mvbgkei9), reduced by Claude 16 Oct 2026",
+   "source": "bourd-type3-c5-threat 11+11 -> 9+9: -wPg3 (superfluous); bPd7 replaces bPb7+wPb6 (guards c6 against Qxc6 after 1...Sc6, so no b7 for 1.Qxb7+) and bRh8+bPh6 (shuts b5-e8, so Re8 needs no protector and Kh2 no shield); the king goes to a4 (off the first rank: e1=Q+/c1=Q+; off the h- and g-files: Rh8+, Kxg4). Found from a removal table (scratch why.py: remove each unit, solve, list what breaks)",
+   "themes": [
+    "Same play: 1.c5! (2.Qc4#) Be6 2.Qxe2#, Sc6 2.Qd3# (set Qe5#, Qd5#); tries 1.Qc5? Bb6!, 1.Qb6? Bxb6!"
+   ],
+   "keys": [
+    "c5"
+   ],
+   "note": "Python solver: sound, 9+9, gate PASS, untrimmable. New: set dual 1...Sa6/Sd3/Sa2 2.Qb7#/Qd5# (b7 empty). Remaining chains: bPc2 keeps 1...Sc2 out and needs bPc3 against its own promotion on c1 (which would guard c4); bPe2 keeps 1...Be2 out; wPd6 holds bPd7 and the d-file."
+  },
+  {
+   "id": "claude-type3-c5-blackqueen",
+   "fen": "8/1p1R4/2N2R2/pQ2p2q/1nP1k3/8/4p3/1KB5",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 16 Oct 2026), his idea",
+   "source": "E. Bourd: the e2-e5/f5 pair \"might even work with 1 piece (Qh5) guarding both ( try to see if you can complete it )\". chesscomp.compose.type3 QUIET=1 FIX=b4,h5 (scratch run 321)",
+   "themes": [
+    "One black queen holds both squares: e5 (the bPe5 along the rank) and e2 (the bPe2 along h5-e2). Set 1...Q~ 2.Qxe5#, 1...S~ 2.Qd5#; 1.c5! (2.Qc4#) Qf7 2.Qxe2#, Sxc6/Sc2 2.Qd3#; try 1.Sxb4? Qf7!"
+   ],
+   "keys": [
+    "c5"
+   ],
+   "note": "Python solver: sound, 7+7, gate PASS. Flaws: both mates of the queen pair capture a pawn (Qxe5, Qxe2); two defences per unit (1...Qf7/Qf5, 1...Sxc6/Sc2, Sxc6 captures); wSc6 serves the set and stops Qxb7+; Kb1 passive; e1 promotion unprovided in the set. Lighter than his 9+9 but less clean (his single quiet defences Be6, Sc6)."
   }
  ]
 }

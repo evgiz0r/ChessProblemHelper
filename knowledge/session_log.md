@@ -1350,3 +1350,6 @@ no motive layer to mirror.
 - 16 Oct: his bench sitting mvbgkei9 (38 steps, 6 solves): bourd-type3-c5-threat, 1.c5! (2.Qc4#) Sc6 Qd3#, Be6 Qxe2#, sound
   11+11, gate PASS; judged (medium content, heavy, many plugs; wPg3 removable, verified). Tool fix: trim now refuses a removal
   that adds a defence (it had offered -bPc2, which keeps the knight's defence single), tested.
+- 16 Oct: judged his bourd-type3-c5-threat; on his questions: removal table (scratch why.py) -> bourd-type3-c5-threat-18
+  (22 -> 18 units, same play, verified); his Qh5 idea completed by type3 QUIET (claude-type3-c5-blackqueen, 7+7, sound); his
+  Bh5/Sh4 idea: two runs, nothing. Compose: "Reduce by chains".

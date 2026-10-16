@@ -234,3 +234,10 @@ king (Pe3: d4, f4, freeing the king and the bPf3 that shielded it), but the guar
 A shift also removes a capture of a line piece (E. Bourd, bench mva9ts5k): one rank down and the bishop on b8, his rook
 cuts the guard line on c7 (1...Rc7) where it had captured the bishop on c8 (1...Rxc8): move the board so the line piece
 leaves the defender's rank or file while its guard line still does the job.
+
+## Reduce by chains (E. Bourd, 16 Oct 2026)
+"Some pieces can be removed even without moving ... understanding why some trims [of cooks] dont work, and try to solve
+them with less pieces". Remove each unit in turn, solve, and write what breaks; the plugs form chains (a guard opens a
+cook, the cook-stopper opens a check, the check needs a shield). Find one unit that starts two chains at once and put
+it there, then re-place the king where no new check reaches. bourd-type3-c5-threat: bPb7+wPb6 and bRh8+bPh6 all went for
+one bPd7 (guards c6, shuts b5-e8), the king h2 -> a4; 22 -> 18 units, same play. trim only removes; this replaces.

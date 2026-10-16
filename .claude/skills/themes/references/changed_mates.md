@@ -141,3 +141,7 @@ Pairs in this geometry: Sb4 d5/d3, Sb6 or a bishop leaving a2-g8 d5/c4, Sc3 d5/e
 His threat version (bench mvbgkei9): bourd-type3-c5-threat, 4r2r/1p6/1P1P1RNp/bQ6/1nP1kNb1/2p3P1/2p1pBPK/8, 1.c5! (2.Qc4#)
 Sc6 Qd3#, Be6 Qxe2# (set Qd5#, Qe5#): the field holds d5/e5/f5 itself, so no flights; Be6 cuts Re8 from e5 in the set and
 leaves e2 after the key. 11+11 (wPg3 can go): the price of the threat in this direction is the field.
+Reduced: bourd-type3-c5-threat-18, 4r3/3p4/3P1RN1/bQ6/KnP1kNb1/2p5/2p1pBP1/8 (bPd7 for four plugs, Ka4). His one-piece pair
+completed: claude-type3-c5-blackqueen, 8/1p1R4/2N2R2/pQ2p2q/1nP1k3/8/4p3/1KB5, 1.c5! (2.Qc4#) Qf7 Qxe2#, Sxc6/Sc2 Qd3# (set
+Q~ Qxe5#): bQh5 holds bPe5 on the rank and bPe2 on the diagonal; 7+7, but captures in both queen mates and two defences each.
+His Bh5 + Sh4 (1...Sf3 frees f5, cuts h5-e2) gave nothing in two runs.
