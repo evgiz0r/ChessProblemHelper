@@ -9,10 +9,11 @@ one mate (holes and duals cost), two units with a change, unique key (every Whit
 It made the f6 knight's defence specific in claude-type3-queen-lines (1...Sd7 cuts Bc8-f5) and found that only a knight
 on e1 holds d3 and f3 there (no other second unit in four runs).
 
-    CORE=... SEED=... KEY=d2e2 MP=d1 [FIX=f6] [NOQTHR=1] [QUIET=1] [PAWNY=3] [THRSQ=f3] [KEYSQ=e3,d3] BUDGET_S=280 python -m chesscomp.compose.type3 JOB OUT
+    CORE=... SEED=... KEY=d2e2 MP=d1 [FIX=f6] [NOQTHR=1] [QUIET=1] [PAWNY=3] [THRSQ=f3] [KEYSQ=e3,d3] [MUTATE=1] BUDGET_S=280 python -m chesscomp.compose.type3 JOB OUT
 
 FIX: Black squares that must stay occupied (the first thematic unit). NOQTHR: the threat may not be made by MP. QUIET: thematic defences that capture do not count. PAWNY=3: each officer costs 3 more than a pawn.
-THRSQ=f3: the threat must land there; KEYSQ=e3,d3: only key mates on these squares count. Confirm every hit with chesscomp.report.
+THRSQ=f3: the threat must land there; KEYSQ=e3,d3: only key mates on these squares count.
+MUTATE=1: a zugzwang key is not penalised (every Black move must then have a mate). Confirm every hit with chesscomp.report.
 """
 from __future__ import annotations
 import os
@@ -24,7 +25,7 @@ from .trychange import legal, mutate
 from .keysel import mate_moves, keys
 
 
-def evaluate(b, key, mp, fix=(), noqthr=False, quiet=False, pawny=0.0, thrsq=None, keysq=None):
+def evaluate(b, key, mp, fix=(), noqthr=False, quiet=False, pawny=0.0, thrsq=None, keysq=None, mutate=False):
     """(score, summary). good[u] lists the defences of Black unit u with the MP change; ndef[u] counts its defences."""
     n = b.copy(); n.push(chess.Move.null())
     if not n.is_valid() or b.is_check():
@@ -40,7 +41,7 @@ def evaluate(b, key, mp, fix=(), noqthr=False, quiet=False, pawny=0.0, thrsq=Non
         return -500, 'fixed unit gone'
     p = b.copy(); p.push(key); q = p.copy(); q.push(chess.Move.null())
     thr = mate_moves(q) if q.is_valid() and not q.is_check() else []
-    s = 15.0 if len(thr) == 1 else (-40 if not thr else -15 * (len(thr) - 1))
+    s = 15.0 if len(thr) == 1 or (mutate and not thr) else (-40 if not thr else -15 * (len(thr) - 1))
     if thrsq is not None and [t.to_square for t in thr] != [thrsq]:
         s -= 60     # the threat must land on this square (E. Bourd: "the threat is due to the f3 square")
     if noqthr and any(t.from_square == mp for t in thr):
@@ -92,12 +93,13 @@ def main(argv=None):
     core_sq = {s for s in chess.SQUARES if core.piece_at(s)}
     key, mp = chess.Move.from_uci(E['KEY']), chess.parse_square(E['MP'])
     fix = [chess.parse_square(x) for x in E.get('FIX', '').split(',') if x]
-    noq, quiet, pawny = bool(E.get('NOQTHR')), bool(E.get('QUIET')), float(E.get('PAWNY', '0'))
+    noq, quiet, pawny = bool(E.get('NOQTHR')), bool(E.get('QUIET')), float(E.get('PAWNY') or 0)
     thrsq = chess.parse_square(E['THRSQ']) if E.get('THRSQ') else None
     keysq = {chess.parse_square(x) for x in E['KEYSQ'].split(',')} if E.get('KEYSQ') else None
+    mut = bool(E.get('MUTATE'))
     random.seed(job * 7919 + int(time.time()))
     seed = chess.Board(E.get('SEED', E['CORE']) + ' w - - 0 1')
-    pop, seen, t0 = [(evaluate(seed, key, mp, fix, noq, quiet, pawny, thrsq, keysq), seed)], {}, time.time()
+    pop, seen, t0 = [(evaluate(seed, key, mp, fix, noq, quiet, pawny, thrsq, keysq, mut), seed)], {}, time.time()
     while time.time() - t0 < float(E.get('BUDGET_S', '240')):
         _, par = random.choice(pop[:6]) if random.random() < 0.8 else random.choice(pop)
         ch = mutate(par, core_sq, int(E.get('MAX_UNITS', '13')))
@@ -105,7 +107,7 @@ def main(argv=None):
             ch = mutate(ch, core_sq)
         if not legal(ch, set()) or ch.board_fen() in seen:
             continue
-        r = evaluate(ch, key, mp, fix, noq, quiet, pawny, thrsq, keysq); seen[ch.board_fen()] = r
+        r = evaluate(ch, key, mp, fix, noq, quiet, pawny, thrsq, keysq, mut); seen[ch.board_fen()] = r
         pop.append((r, ch)); pop.sort(key=lambda x: -x[0][0]); pop = pop[:40]
     with open(out, 'w') as f:
         for fen, (sc, summ) in sorted(seen.items(), key=lambda x: -x[1][0])[:15]:

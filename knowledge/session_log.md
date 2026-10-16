@@ -1337,3 +1337,6 @@ no motive layer to mirror.
 - 16 Oct: his bench sitting mva9ts5k (13 steps, 4 solves): bourd-type3-pawn-g4, 1B6/5r2/1N6/1Kn3p1/2Npk3/6PQ/4P3/8, shift down
   + Bb8 turns 1...Rxc8 into 1...Rc7; re-solved, sound 7+5. His next direction (threat due to f3, mates on e3/d3): type3
   THRSQ/KEYSQ options (tested), four runs, nothing; e3 has no single-unit pair with the diagonal squares.
+- 16 Oct: "find a scheme with the pawn moving the other way like in the bench": his sitting mvattjff (8 steps: Qg4, Pf4,
+  Kd5, f4-f5, two ccw turns, bSb4). Hand: pair list for Qb5/Pc4/Ke4; type3 runs 281-304 (new MUTATE option, PAWNY parse fix,
+  tested): claude-type3-c5-flights-scheme (mutate, two flights given, both answered; cooked, 9+3). No threat version.

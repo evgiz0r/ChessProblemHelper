@@ -37,3 +37,13 @@ def test_keysq_keeps_only_the_named_key_mates():
     only_d3 = evaluate(b, k, mp, noqthr=True, keysq={chess.D3})[1]
     assert "'c5:1/1'" in only_d3 and "'f7" not in only_d3
     assert evaluate(b, k, mp, thrsq=chess.F3)[0] < evaluate(b, k, mp)[0]      # the threat is Sd2#, not on f3
+
+
+def test_mutate_option_drops_the_no_threat_penalty():
+    # claude-type3-c5-flights-scheme: 1.c5 is a zugzwang key
+    b = chess.Board('3N4/8/2RB1p2/1Q5K/1nP1k3/2R5/2P1N3/8 w - - 0 1')
+    k, mp = chess.Move.from_uci('c4c5'), chess.B5
+    plain, mut = evaluate(b, k, mp), evaluate(b, k, mp, mutate=True)
+    assert "good ['b4:5/6', 'f6:1/1']" in plain[1] and not plain[1].startswith('keys')
+    # without the penalty the full key check runs and finds the waiting-move cooks
+    assert mut[1].startswith("keys ['Bf4', 'Bxb4', 'Qf5+', 'Rh3', 'Rg3', 'c5']")

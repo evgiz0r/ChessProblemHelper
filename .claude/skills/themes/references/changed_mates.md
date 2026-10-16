@@ -134,3 +134,7 @@ His step (bench mva9ts5k): bourd-type3-pawn-g4, 1B6/5r2/1N6/1Kn3p1/2Npk3/6PQ/4P3
 Qg4#, Qe6#): a one-rank shift and Bb8 turn the capture 1...Rxc8 into the cut 1...Rc7. Left: 1...Rf3 2.Qxf3#. His way out
 needs a new structure: threat due to f3, thematic mates on e3/d3; no black unit holds e3 with g4/f5/e6 (colours, knight
 squares), so e3 needs a self-block or a line effect.
+Other pawn direction (his bench core mvattjff: Qb5, Pc4, Ke4, bSb4; c4-c5 shuts the 5th rank, opens b5-f1): the key
+strips d5/e5/f5 and gives flights, so it is a mutate. Scheme claude-type3-c5-flights-scheme, 3N4/8/2RB1p2/1Q5K/1nP1k3/2R5/2P1N3/8:
+1.c5 Kd5 Qc4#, Kf5 Sg3#, Sb4~ Qd3# (set Qd5#), f5 Qc4# (set Qe5#); cooked (set hole 1...Sd3 lets Rh3/Rg3 wait), 9+3.
+Pairs in this geometry: Sb4 d5/d3, Sb6 or a bishop leaving a2-g8 d5/c4, Sc3 d5/e2, Sg3 f5/e2; Pf6 e5 + the f5 block.
