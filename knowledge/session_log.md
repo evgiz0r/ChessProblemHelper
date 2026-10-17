@@ -1358,3 +1358,7 @@ no motive layer to mirror.
 - 16 Oct: his scheme mvbifzbn (two rooks, e3/e4 guard selects bishop or knight mates); he wants a threat. Hand: threat c3#,
   key Sg4-f2; type3 runs 341-394 (MP=any, KEYSQ): best claude-two-rooks-c3-scheme (single changed defences Rb3/Rc1, four
   refutations). Not finished. Tool: type3 warns on illegal seeds (three knights cost four rounds).
+- 17 Oct: his bench sitting mvbno7uo (26 steps, 2 solves) finished the two-rook scheme with a threat: bPe3 (no fxe3), a rook
+  threat needing f4 (his d3 before the rotation), board turned, Ka6/a5/b6 patches: bourd-two-rooks-sg6-bench, 1.Sg6! (2.Rf4#)
+  Rh4 Sg5#, Rf1 Sd6# (set Bxf5#, Bd5#), sound 8+7. Judged (medium: one 2x2 change); reduced to bourd-two-rooks-sg6 (8+5):
+  -wPe5 (superfluous probe pawn), Ka3+wPa2 for Ka6+a5+b6; gate PASS, trim nothing; separate.py: no third pair.

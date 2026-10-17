@@ -152,3 +152,7 @@ Two rooks, two mating pieces (his bench mvbifzbn): Re1 holds e2/e3 (Se2#/Be3#), 
 bishop mates, e4 guarded -> knight mates. With a threat: claude-two-rooks-c3-scheme, 8/4K3/2R5/1r6/3kPBN1/4p1N1/2P5/4r3,
 1.Sf2 (2.c3#) Rb3 Sf5#, Rc1 Se2# (set Be5#, Bxe3#); refuted by Rb7+, Re5+, Rc5, exf2. Obstacle: 1...Re3 guards c3 along the
 3rd rank, and only the e1 rook can hold e2+e3. Idea left: knight mates in the set, the key protects e3, so Re3 meets Bxe3#.
+Finished by him (bench mvbno7uo): no fxe3 (a black pawn on the square), a rook threat that needs the square the key
+piece guards, board turned: bourd-two-rooks-sg6, 8/4NN2/4B3/5p1r/4k3/K1P1pR2/P3P3/3r4, 1.Sg6! (2.Rf4#) Rh4 Sg5#, Rf1 Sd6#
+(set Bxf5#, Bd5#). One knight is the selector and the threat's guard: on e7 it holds d5 (bishop mates), on g6 e5 and f4.
+Reduced from his 8+7 (-wPe5, Ka3+wPa2 for Ka6+a5+b6). No third pair from any White first move (separate.py).

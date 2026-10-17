@@ -2578,7 +2578,35 @@
     "Set 1...Rb~ 2.Be5#, 1...Re~ 2.Bxe3#; 1.Sf2 (2.c3#) Rb3 2.Sf5#, Rc1 2.Se2#: single defences, bishop mates -> knight mates (type 2), the key switches the guard from e3 to e4"
    ],
    "keys": [],
-   "note": "SCHEME, not sound: 1.Sf2 is refuted by 1...Rb7+, Re5+ (the king), Rc5 (cuts Rc6 from c4/c3) and exf2. Structural obstacles: only the e1 rook can hold e2+e3 (no knight square attacks both, different colours), and 1...Re3 then guards c3 along the 3rd rank; a white unit on d3 would protect e4 for good and kill the selection. Seeds with three white knights were promoted force and silently ignored (tool now warns). Idea left: swap the phases (knight mates in the set, the key protects e3) so 1...Re3 meets 2.Bxe3#."
+   "note": "SCHEME, not sound: 1.Sf2 is refuted by 1...Rb7+, Re5+ (the king), Rc5 (cuts Rc6 from c4/c3) and exf2. Structural obstacles: only the e1 rook can hold e2+e3 (no knight square attacks both, different colours), and 1...Re3 then guards c3 along the 3rd rank; a white unit on d3 would protect e4 for good and kill the selection. Seeds with three white knights were promoted force and silently ignored (tool now warns). Idea left: swap the phases (knight mates in the set, the key protects e3) so 1...Re3 meets 2.Bxe3#. Finished by him on the bench (mvbno7uo): bourd-two-rooks-sg6-bench, reduced to bourd-two-rooks-sg6."
+  },
+  {
+   "id": "bourd-two-rooks-sg6-bench",
+   "fen": "8/4NN2/Kp2B3/p3Pp1r/4k3/2P1pR2/4P3/3r4",
+   "stip": "#2",
+   "author": "E. Bourd (bench mvbno7uo, 17 Oct 2026)",
+   "source": "His finish of the two-rook scheme (claude-two-rooks-c3-scheme / his mvbifzbn): fxe3 could not be allowed, so a bPe3 self-block; a threat depending on d3 by a rook from c3 (d3 or c4 possible, d3 chosen); board rotated (cw) and patched (Ka6, bPa5, bPb6). 26 steps, 2 solves.",
+   "themes": [
+    "Set 1...Rh~ 2.Bxf5#, 1...Rd~ (rank) 2.Bd5#; 1.Sg6! (2.Rf4#) Rh4 2.Sg5#, Rf1 2.Sd6#: 2x2 changed mates, bishop -> knight; the key moves the guard from d5 (bishop mates) to e5 (knight mates) and guards f4 (threat)"
+   ],
+   "keys": [
+    "Sg6"
+   ],
+   "note": "Python solver: sound 8+7, tries 1.Sg8? Rh6!, 1.Sd5? Rxd5! (triple threat). wPe5 is superfluous (the probe pawn: e5 is guarded by Sf7 before the key and Sg6 after, as a square or as a pawn to capture); Ka6 needs bPa5 (Ra1+) and bPb6 (Rd6+). See bourd-two-rooks-sg6."
+  },
+  {
+   "id": "bourd-two-rooks-sg6",
+   "fen": "8/4NN2/4B3/5p1r/4k3/K1P1pR2/P3P3/3r4",
+   "stip": "#2",
+   "author": "E. Bourd (bench mvbno7uo), reduced by Claude 17 Oct 2026",
+   "source": "bourd-two-rooks-sg6-bench 8+7 -> 8+5: -wPe5 (superfluous); Ka6+bPa5+bPb6 -> Ka3+wPa2 (on the 3rd rank Rd3 is stopped by c3 and Rh3 by Rf3/e3, so only Ra1+ needs a blocker; every square west of the d-file needs one blocker, none uses an existing unit)",
+   "themes": [
+    "Set 1...Rh~ 2.Bxf5#, 1...Rd~ (rank) 2.Bd5#; 1.Sg6! (2.Rf4#) Rh4 2.Sg5#, Rf1 2.Sd6#: 2x2 changed mates by a guard transfer (Se7 holds d5 for the bishop, Sg6 holds e5 for the knight)"
+   ],
+   "keys": [
+    "Sg6"
+   ],
+   "note": "Python solver: sound, 8+5, gate PASS (warnings: non-defences allow Sg5#/Sd6# beside the threat; wPa2 check-stopper), trim: nothing more. Flaws: wPa2 + passive king, Bxf5 captures a pawn, tries not thematic. separate.py: no White first move gives a third pair after Rh4/Rf1 (Bd7/Bc8 change only the Rf1 mate: Bc6#/Bb7#; Sc6 repeats the knight mates without a threat)."
   }
  ]
 }
