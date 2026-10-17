@@ -1403,3 +1403,5 @@ no motive layer to mirror.
   Bench fix: no S~ in the solution line when only the set play has a random move; duals counted among defences only.
 - 17 Oct: "lets try bishop knight battery with 1 square from the king": runs 901-934; post-key play found
   (claude-bishop-knight-adjacent-postkey, holder Sf5 to g7, Sd4 Se8#, Sxe3 Sh5#, threat Sc6#); no key yet (lessons).
+- 17 Oct: his bench mvcxwk0k (adjacent knight, Bc3/Sd4 v Ke5, holder Sd5 attacking the rear): "try to finish". Runs 941-974 and
+  a one-unit addition sweep: draft 8/1p4K1/1R1Pp3/N2nkP2/2BNP3/2B1PP1b/8/8 has keys Be2 and Bd3 (Bf1 kills the other retreats).
