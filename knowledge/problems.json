@@ -2623,6 +2623,20 @@
    ],
    "note": "1.Bh1! (2.Rd3#) Bg3 2.Rd2#; 1.Bg2? Bg3!, 1.Bc6?/Bb7?/Ba8? d5!, 1.Bd5? Kxd5!, 1.Be4? Kxe4!. Flaws: one variation, already set (static); king-refuted Bd5/Be4; random duals 1...Bf2 Rd3#/c3#, 1...Bd2 Rd3#/Rxd2#; bPh4 and Ka6 only stop cooks (without bPh4 1.Rh5! cooks). The knight version 8/8/K2p4/8/1P1k1P1p/5B1R/1N5R/3N1n2 is sound but 1.Bg2? fails to Sg3 and Se3.",
    "solution": "Try: 1.Bg2? (2.Rd3#) but 1...Bg3!\nTry: 1.Bc6? (2.Rd3#) 1...Bg3 2.Rd2# but 1...d5!\nKey: 1.Bh1! (2.Rd3#) 1...Bg3 2.Rd2#"
+  },
+  {
+   "id": "claude-battery-fleck-scheme",
+   "fen": "3n1RBB/8/n3P1N1/R7/4k3/6P1/2Pb1P2/7K",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 17 Oct 2026)",
+   "source": "His request: a battery problem, two variations, then tries. Hand design: battery Bh7/Sg6 (line covers f5 and d3); Ra5 holds d5 along the 5th rank, Rf8 holds f3 down the f-file; one black knight cuts each (Sc5, Sf7) and the only discharge covering the opened square mates. Sf4 is killed because it shuts Rf8's guard of f3, Se5 because it shuts Bh8's guard of d4. wPe6 stops Bd5#, bBd2 guards f4 against Rf4#.",
+   "themes": [
+    "1.Bh7! (2.Se7#/Sh4#) Sc5 2.Se7#, Sf7 2.Sh4#: the defences separate a double battery threat (Fleck form), each cut of a white rook selecting one discharge"
+   ],
+   "keys": [
+    "Bh7"
+   ],
+   "note": "SCHEME: sound (unique key) but the threat is double, the thematic mates are the threat mates, the key piece starts on g8 (out of play), wPe6 and bBd2 are plugs, bSa6 is idle. Structural obstacle: a discharge onto a square next to the king needs a protector, which also guards the square, so a defence can only select discharges that cover a square from a distance, and those then mate in the threat position too."
   }
  ]
 }

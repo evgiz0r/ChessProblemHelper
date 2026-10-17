@@ -171,3 +171,11 @@ Obstacles found by hand (no sound result in 28 type3 runs, 401-428):
 - Pair holders for squares of different lines rarely exist: no knight, bishop or rook guards both c6 and e5.
 Plan: flights as the phase separator in three phases (set Qd7 guards d5 and f5; try 1.Qc8? gives d5, mates cover it;
 key 1.Qd6! gives f5) - a Zagoruiko where the flight alone changes the mates. type3 TRY=, MP=key, FLIGHT=1 (tested).
+Battery variations (E. Bourd, 17 Oct 2026: "a problem with batteries ... just 2 variations, then tries"): sound scheme
+claude-battery-fleck-scheme, 3n1RBB/8/n3P1N1/R7/4k3/6P1/2Pb1P2/7K, 1.Bh7! (2.Se7#/Sh4#) Sc5 Se7#, Sf7 Sh4#: each black knight
+cuts one white rook (Ra5 for d5, Rf8 for f3) and the one discharge covering the opened square mates; the other coverer
+fails because it shuts a guard line itself (Sf4 shuts Rf8, Se5 shuts Bh8). Double threat: the thematic discharges also
+mate before the defence. Why (lessons.jsonl): adjacent landings cannot be selected by an open square (the protector guards
+it), so only distance coverers can, and those threaten. Published battery threats are often 2.S~# with variation
+discharges that fail in the threat position (his Problemesis 2004, psis-0f9bcf61f7): the missing piece is a square open
+before the defence that the defence closes.

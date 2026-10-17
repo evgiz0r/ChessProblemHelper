@@ -1366,3 +1366,6 @@ no motive layer to mirror.
   key, mates by the queen covering the flight; try/key separated by flights). type3 gained KMP, FLIGHT, TRY, MP=key and a
   distinct-mates rule (tests). 28 runs (401-428), no sound 2x2; scans found both basic forms published (Cuppini 2003
   battery, Marandyuk 2005 flight, 12 units). Obstacles and the three-phase flight plan in changed_mates.md.
+- 17 Oct: "lets switch to a problem with batteries ... just 2 variations ... then tries". Runs 429-436 (type3 with KMP) found
+  nothing; hand design reached claude-battery-fleck-scheme (sound, double threat, thematic mates are the threats).
+  Recorded the structural obstacle (adjacent discharges cannot be selected; distance discharges threaten).
