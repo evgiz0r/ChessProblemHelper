@@ -8,7 +8,7 @@ P reaches a square of the battery line after the front piece leaves (it interpos
 capturing key), P captures each, and from the capture square P no longer reaches the line. Only these units are on the
 board, so blockers added later can still help.
 
-    python -m chesscomp.compose.battery_guards d4 d5 d8 c4 e4 [q|r|b|n] [n|p|b|r]   (black holder, White front piece)
+    python -m chesscomp.compose.battery_guards d4 d5 d8 c4 e4 [q|r|b|n] [n|p|b|r] [line|rear|both]   (black holder, White front piece, how it holds)
 Found for Kd4, Sd5, Rd8 (c4/e4): queen f5 with Rc2/Sf2, queen b5 with Sb2/Re2; no rook or bishop configuration.
 """
 from __future__ import annotations
@@ -36,7 +36,14 @@ def _interposes(b, p, front, line):
     return any(p in b2.attackers(chess.BLACK, s) for s in line)
 
 
-def configurations(king, front, rear, sq1, sq2, ptype=chess.QUEEN, ftype=chess.KNIGHT):
+def _holds(b, p, front, line, rear, how):
+    """how='line': P reaches a square of the line once the front piece leaves (interposition, pinned there);
+    how='rear': P attacks the rear piece (E. Bourd's fix, bench mvcop42d: the holder captures the checker, is never
+    pinned on the line); how='both': either."""
+    return (how in ('line', 'both') and _interposes(b, p, front, line)) or (how in ('rear', 'both') and p in b.attackers(chess.BLACK, rear))
+
+
+def configurations(king, front, rear, sq1, sq2, ptype=chess.QUEEN, ftype=chess.KNIGHT, how='line'):
     line = [s for s in chess.SquareSet(chess.between(rear, king))]
     taken = {king, front, rear}
     wk = next(s for s in (chess.A8, chess.H8, chess.A1, chess.H1) if chess.square_distance(s, king) > 2 and s not in taken)
@@ -55,12 +62,12 @@ def configurations(king, front, rear, sq1, sq2, ptype=chess.QUEEN, ftype=chess.K
             a1, a2 = b.attacks(s1), b.attacks(s2)
             if not (sq1 in a1 and sq2 not in a1 and sq2 in a2 and sq1 not in a2):
                 continue
-            if b.is_attacked_by(chess.WHITE, p) or not _interposes(b, p, front, line):
+            if b.is_attacked_by(chess.WHITE, p) or not _holds(b, p, front, line, rear, how):
                 continue
             ok = True
             for s in (s1, s2):
                 b2 = b.copy(); b2.remove_piece_at(p); b2.set_piece_at(s, chess.Piece(ptype, chess.BLACK))
-                if s not in b.attacks(p) or _interposes(b2, s, front, line):
+                if s not in b.attacks(p) or _holds(b2, s, front, line, rear, 'both'):   # after the capture: no hold of any kind
                     ok = False
                     break
             if ok:
@@ -73,7 +80,8 @@ def main(argv=None):
     king, front, rear, sq1, sq2 = (chess.parse_square(x) for x in a[:5])
     ptype = {'q': chess.QUEEN, 'r': chess.ROOK, 'b': chess.BISHOP, 'n': chess.KNIGHT}[a[5] if len(a) > 5 else 'q']
     ftype = {'n': chess.KNIGHT, 'p': chess.PAWN, 'b': chess.BISHOP, 'r': chess.ROOK}[a[6] if len(a) > 6 else 'n']
-    for p, (t1, s1), (t2, s2) in configurations(king, front, rear, sq1, sq2, ptype, ftype):
+    how = a[7] if len(a) > 7 else 'line'
+    for p, (t1, s1), (t2, s2) in configurations(king, front, rear, sq1, sq2, ptype, ftype, how):
         print(chess.square_name(p), chess.piece_symbol(t1).upper() + chess.square_name(s1),
               chess.piece_symbol(t2).upper() + chess.square_name(s2))
 

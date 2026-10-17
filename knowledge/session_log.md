@@ -1393,3 +1393,6 @@ no motive layer to mirror.
   defend before calling moves random (test).
 - 17 Oct: "the position is illegal, so its a fatal flaw": retro check illegal_position (core, critique, gate, all searches,
   bench), tests/test_legality.py. Then "lets go next scheme anyway": bishop-knight battery.
+- 17 Oct: bishop-knight battery: battery_guards how=rear/both (+ post-capture fix, test); runs 801-834. No sound play yet:
+  colour forces rook/knight/queen guards; knight holders' advance interposition cuts their guard; the queen that answers it
+  makes every discharge a solution (lessons).

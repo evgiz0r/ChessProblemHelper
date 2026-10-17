@@ -18,3 +18,11 @@ def test_pawn_front_piece():
 
 def test_no_knight_holds_the_pawn_battery():
     assert not configurations(chess.E4, chess.C2, chess.B1, chess.D4, chess.D5, chess.KNIGHT, chess.PAWN)
+
+
+def test_holder_attacking_the_rear():
+    # E. Bourd's fix (bench mvcop42d): the holder attacks the rear piece instead of interposing. For the bishop-knight
+    # battery Bb1/Sc2 v Ke4 (Sb4 guards d5, Se1 guards f3) a knight on d2 does it with Bb3 and Rf1
+    found = {(chess.square_name(p), chess.square_name(a[1]), chess.square_name(b[1]))
+             for p, a, b in configurations(chess.E4, chess.C2, chess.B1, chess.D5, chess.F3, chess.KNIGHT, chess.KNIGHT, 'rear')}
+    assert ('d2', 'b3', 'f1') in found
