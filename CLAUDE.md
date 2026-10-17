@@ -7,6 +7,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 ## Fatal flaws (never show a position with one of these)
 - A cook, a dual in a thematic variation, or a double threat.
 - A promoted piece in the diagram: a third knight or rook, a second queen, two bishops on one colour.
+- An illegal position (E. Bourd, 17 Oct 2026): more pawn captures than the opponent has lost units, pawns no home files
+  can produce, more promoted units than missing pawns. `chesscomp.core.illegal_position`; the gate and the searches check it.
 - An unprovided check in the set play.
 - A black king with a flight in the diagram (a flight GIVEN by the key is a plus).
 - A key that gives check or captures a piece without a thematic reason; a try refuted by a king move. Capturing a pawn,

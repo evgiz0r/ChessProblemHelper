@@ -388,6 +388,44 @@
       (c.random.duals.length ? ` (dual after ${c.random.duals.join('/')})` : '') +
       `; corrections ${c.corrections.map(x => `${x.move} 2.${x.mates.join('/')}`).join(', ')}`);
   }
+  // Retro legality (E. Bourd, 17 Oct 2026: "the position is illegal, so its a fatal flaw"): pawns on the first or
+  // last rank, pawns no home files can bring where they stand, more pawn captures than the opponent has lost units,
+  // more promoted units than missing pawns. Mirrors illegal_position in chesscomp/core.py.
+  function illegalPosition(fen) {
+    const rows = (fen || '').split(' ')[0].split('/'); if (rows.length !== 8) return [];
+    const grid = rows.map(r => r.replace(/\d/g, d => '.'.repeat(+d)));   // grid[0] is rank 8
+    const out = [];
+    for (const white of [true, false]) {
+      const name = white ? 'White' : 'Black', P = white ? 'P' : 'p';
+      const pawns = [], units = { q: 0, r: 0, n: 0, bl: 0, bd: 0, pawns: 0 };
+      let opp = 0;
+      for (let i = 0; i < 8; i++) for (let f = 0; f < 8; f++) {
+        const c = grid[i][f]; if (!c || c === '.') continue;
+        const rank = 7 - i, mine = white ? c === c.toUpperCase() : c === c.toLowerCase();
+        if (!mine) { opp++; continue; }
+        const t = c.toLowerCase();
+        if (t === 'p') { pawns.push([f, rank]); units.pawns++; }
+        else if (t === 'q') units.q++; else if (t === 'r') units.r++; else if (t === 'n') units.n++;
+        else if (t === 'b') { if ((f + rank) % 2 === 1) units.bl++; else units.bd++; }
+      }
+      if (pawns.some(([, r]) => r === 0 || r === 7)) { out.push(name + ' has a pawn on the first or last rank'); continue; }
+      let best = new Map([[0, 0]]);
+      for (const [f, r] of pawns) {
+        const steps = white ? r - 1 : 6 - r, nxt = new Map();
+        for (const [used, cost] of best) for (let f0 = 0; f0 < 8; f0++) {
+          const d = Math.abs(f - f0); if ((used >> f0) & 1 || d > steps) continue;
+          const k = used | (1 << f0); if (!nxt.has(k) || cost + d < nxt.get(k)) nxt.set(k, cost + d);
+        }
+        best = nxt; if (!best.size) break;
+      }
+      const lost = 16 - opp;
+      if (!best.size) out.push(name + ' pawns stand where no home files can bring them');
+      else { const need = Math.min(...best.values()); if (need > lost) out.push(`${name} pawns need at least ${need} captures, but ${white ? 'Black' : 'White'} has lost only ${lost} units`); }
+      const extra = Math.max(0, units.q - 1) + Math.max(0, units.r - 2) + Math.max(0, units.n - 2) + Math.max(0, units.bl - 1) + Math.max(0, units.bd - 1);
+      if (extra + units.pawns > 8) out.push(`${name} has ${extra} promoted units but only ${8 - units.pawns} pawns missing`);
+    }
+    return out;
+  }
   // Units beyond the original set (E. Bourd: a promoted piece in the diagram is fatal).
   function promotedForce(fen) {
     const rows = fen.split(' ')[0].split('/'), out = [];
@@ -558,6 +596,7 @@
     if (res.error) return res.error;
     const L = [];
     for (const line of promotedForce(res.fen || '')) L.push('PROMOTED FORCE: ' + line + '  (fatal)');
+    for (const line of illegalPosition(res.fen || '')) L.push('ILLEGAL POSITION: ' + line + '  (fatal)');
     if (res.solutions) { L.push(`${res.solutions.length} solution(s): ` + res.solutions.join(' ; ')); return L.join('\n'); }
     const sp = res.phases.find(p => p.type === 'set');
     const al = albumNotation(res, opts && opts.theme);
@@ -608,6 +647,7 @@
     if (res.error) return res.error;
     const L = [];
     for (const line of promotedForce(res.fen || '')) L.push('PROMOTED FORCE: ' + line + '  (fatal)');
+    for (const line of illegalPosition(res.fen || '')) L.push('ILLEGAL POSITION: ' + line + '  (fatal)');
     if (res.solutions) {
       L.push(`${res.solutions.length} solution(s):`);
       res.solutions.forEach(s => L.push('   ' + s));
@@ -710,5 +750,5 @@
     return res;
   }
 
-  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, albumNotation, retractions, keysOf, solveSummary, diffSummary, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce };
+  return { analyse, keyReadiness, formatReport, formatCompact, thematicTable, albumNotation, retractions, keysOf, solveSummary, diffSummary, phaseCompact, setPlay, dualAvoidance, corrections, correctionLines, promotedForce, illegalPosition };
 }));

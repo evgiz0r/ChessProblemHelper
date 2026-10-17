@@ -11,6 +11,7 @@ via keyfind.post_spec: the one threat, the wanted mates, no holes, no duals, no 
 survivors get the full solve (key uniqueness, try refutations). Prints every full hit, and the best near misses
 (post-key exact, key or tries not yet) so a kernel can be repaired by hand.
 """
+from chesscomp.core import illegal_position as _illegal
 import itertools, json, os, sys, time
 from multiprocessing import Pool
 import chess
@@ -23,6 +24,8 @@ UNITS = SPEC.get('units', 'NBRPnbrp')
 
 
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         if len(b.pieces(chess.QUEEN, col)) > 1 or len(b.pieces(chess.ROOK, col)) > 2 or len(b.pieces(chess.KNIGHT, col)) > 2:
             return True

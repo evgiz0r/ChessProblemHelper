@@ -85,6 +85,9 @@ def retractions(post: chess.Board):
 
 
 def _promoted(b: chess.Board) -> bool:
+    from ..core import illegal_position
+    if illegal_position(b):                              # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     if len(b.pieces(chess.QUEEN, chess.WHITE)) > 1 or len(b.pieces(chess.ROOK, chess.WHITE)) > 2 or len(b.pieces(chess.KNIGHT, chess.WHITE)) > 2:
         return True
     bs = list(b.pieces(chess.BISHOP, chess.WHITE))

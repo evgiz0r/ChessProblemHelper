@@ -109,6 +109,57 @@ def san(board: chess.Board, move: chess.Move) -> str:
     return s
 
 
+def _min_pawn_captures(board, col) -> int | None:
+    """Fewest captures that bring this side's pawns from their home files to where they stand (each capture moves a
+    pawn one file and one rank forward, so a pawn on rank r has made at most r-2 of them). None if no assignment."""
+    import chess as _c
+    pawns = [(_c.square_file(sq), _c.square_rank(sq) - 1 if col == _c.WHITE else 6 - _c.square_rank(sq))
+             for sq in board.pieces(_c.PAWN, col)]
+    INF = 99
+    best = {0: 0}
+    for f, steps in pawns:                     # steps: ranks advanced from the home rank
+        nxt = {}
+        for used, cost in best.items():
+            for f0 in range(8):
+                d = abs(f - f0)
+                if used >> f0 & 1 or d > steps:
+                    continue
+                k = used | 1 << f0
+                if cost + d < nxt.get(k, INF):
+                    nxt[k] = cost + d
+        best = nxt
+        if not best:
+            return None
+    return min(best.values())
+
+
+def illegal_position(board) -> list:
+    """Retro checks a diagram must pass (E. Bourd, 17 Oct 2026: "the position is illegal, so its a fatal flaw", on
+    bourd-pawn-battery-queen-sd2, whose Black pawns needed 9 captures with 3 White units gone). One line per failure:
+    pawns on the first or last rank, a pawn structure no home files can produce, more pawn captures than the
+    opponent has lost units, more promoted units than missing pawns."""
+    import chess as _c
+    out = []
+    for col, name in ((_c.WHITE, 'White'), (_c.BLACK, 'Black')):
+        opp = not col
+        if any(_c.square_rank(sq) in (0, 7) for sq in board.pieces(_c.PAWN, col)):
+            out.append(f'{name} has a pawn on the first or last rank')
+            continue
+        lost = 16 - _c.popcount(board.occupied_co[opp])
+        need = _min_pawn_captures(board, col)
+        if need is None:
+            out.append(f'{name} pawns stand where no home files can bring them')
+        elif need > lost:
+            out.append(f'{name} pawns need at least {need} captures, but {"Black" if col else "White"} has lost only {lost} units')
+        q = len(board.pieces(_c.QUEEN, col)); r = len(board.pieces(_c.ROOK, col)); n = len(board.pieces(_c.KNIGHT, col))
+        bs = board.pieces(_c.BISHOP, col)
+        light = sum(1 for sq in bs if (_c.square_file(sq) + _c.square_rank(sq)) % 2 == 1)
+        extra = max(0, q - 1) + max(0, r - 2) + max(0, n - 2) + max(0, light - 1) + max(0, len(bs) - light - 1)
+        if extra + len(board.pieces(_c.PAWN, col)) > 8:
+            out.append(f'{name} has {extra} promoted units but only {8 - len(board.pieces(_c.PAWN, col))} pawns missing')
+    return out
+
+
 def promoted_force(board) -> list:
     """Units beyond the original set: more than one queen, two rooks, two knights, or two bishops on
     one colour. E. Bourd: a promoted piece in the diagram is a fatal flaw. Returns one line per side."""

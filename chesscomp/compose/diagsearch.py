@@ -6,6 +6,7 @@ sound candidates, each major (fatal) finding costing heavily. Diagrams with Whit
 Lesson of its first runs: without the pinner in CORE it drops the theme; it finds unique keys mostly where the diagram
 has a flight (fatal), so read the major list, not the score.
 """
+from chesscomp.core import illegal_position as _illegal
 import sys, random, time, chess
 
 from chesscomp.core import Problem
@@ -18,6 +19,8 @@ core = chess.Board(CORE + ' w - - 0 1'); CSQ = {s: core.piece_at(s) for s in che
 
 
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         w = lambda t: len(b.pieces(t, col))
         if w(chess.QUEEN) > 1 or w(chess.ROOK) > 2 or w(chess.KNIGHT) > 2:

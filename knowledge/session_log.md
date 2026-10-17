@@ -1391,3 +1391,5 @@ no motive layer to mirror.
   the thematic guard protected). Holder attacks the rear (Qb3 v Qd1) instead of interposing; key vacates the double-step
   square. 13+13, dual 1...Qb7. "the solution random move again is somewhat bad": both solvers now require the departure to
   defend before calling moves random (test).
+- 17 Oct: "the position is illegal, so its a fatal flaw": retro check illegal_position (core, critique, gate, all searches,
+  bench), tests/test_legality.py. Then "lets go next scheme anyway": bishop-knight battery.

@@ -2716,7 +2716,7 @@
    "keys": [
     "Sd2"
    ],
-   "note": "Sound (Python solver), gate PASS, trim removes nothing. Flaws: 1...Qb7 2.e3#/e4# (non-thematic defence: the queen behind Bc6 guards f3; b7 lies on the Qxb8 path, so no blocker can stop it alone); 26 units, 13 pawns; cook-stoppers wPc3 (Sc3), wPd3 (Qd4), wPe6 (Bd7+), wPf6 (Sf6+), wKh8; the tries capture pawns (minor). The bench solver called 1...Qb5 'Q~' (random); fixed 17 Oct 2026 in both solvers."
+   "note": "ILLEGAL (fatal, E. Bourd 17 Oct 2026: 'the position is illegal, so its a fatal flaw'): the Black pawns c4 f2 g3 g5 h4 beside e7/h7 need at least 9 captures, White has lost 3 units. The mechanism stands; the construction must be redone legally. Otherwise sound by the solver; flaws: 1...Qb7 2.e3#/e4#; 26 units, 13 pawns; cook-stoppers wPc3, wPd3, wPe6, wPf6, wKh8; the tries capture pawns. The bench solver called 1...Qb5 'Q~' (fixed 17 Oct 2026)."
   }
  ]
 }

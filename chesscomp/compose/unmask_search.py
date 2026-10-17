@@ -10,6 +10,7 @@ The diagram must have no flight and no black check, and the key piece must guard
 e.g. (two black rooks unpin Sc5, 11 Oct 2026; found 1.Bd5-f7! by hand from its failures):
   CORE=8/8/1r6/Q1n1k3/1r6/8/8/8 WANT='{"R6b5":"Qa5c7","R4b5":"Qa5c3"}' KSQ=e7 FSQ=d5 PSQ=a5
 """
+from chesscomp.core import illegal_position as _illegal
 import sys, os, random, time, json, chess
 from chesscomp.compose.keyfind import post_spec
 from chesscomp.core import Problem
@@ -26,6 +27,8 @@ core = chess.Board(CORE + ' b - - 0 1'); CSQ = {s: core.piece_at(s) for s in che
 
 
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         w = lambda t: len(b.pieces(t, col))
         if w(chess.QUEEN) > 1 or w(chess.ROOK) > 2 or w(chess.KNIGHT) > 2:

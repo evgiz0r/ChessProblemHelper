@@ -8,6 +8,7 @@ The composer's part is the kernel (mechanism, box, reason for the key); this onl
 A cheap prefilter (legal, no promoted force, no mate in one, the key still forces mate) runs before the full
 solve. Slices run in parallel and stop at the time budget; partial results are printed as they come.
 Negative results are results: around the three underpromotion miniatures ~150k additions gave nothing."""
+from chesscomp.core import illegal_position as _illegal
 import sys, itertools, time, chess
 from chesscomp.core import Problem
 from chesscomp.analysis import analyse
@@ -31,6 +32,8 @@ def mates1(b):
 
 def promoted(b):
     """Obtrusive force: more than 2 knights/rooks, 2 bishops of one colour, or 2 queens on a side."""
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         if len(b.pieces(chess.QUEEN, col)) > 1 or len(b.pieces(chess.ROOK, col)) > 2 or len(b.pieces(chess.KNIGHT, col)) > 2:
             return True

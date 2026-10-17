@@ -21,6 +21,7 @@ different mates (Qc3/Qf2, Qc2/Qg1, Qc1/Qe3) in four minutes, where chesscomp.com
 pair in twenty. It ignores two-move cooks (1.Qc3+ Bc4 2.Qxc4#): solve every hit with chesscomp.report.
 """
 from __future__ import annotations
+from chesscomp.core import illegal_position as _illegal
 import json, os, random, sys, time
 import chess
 
@@ -39,6 +40,8 @@ def mates(b):
 
 
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         if len(b.pieces(chess.QUEEN, col)) > 1 or len(b.pieces(chess.ROOK, col)) > 2 or len(b.pieces(chess.KNIGHT, col)) > 2:
             return True

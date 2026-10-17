@@ -43,6 +43,7 @@ WCORR=e7 (white correction mode, daily No. 10) needs no DEFS: it scores the move
 NCORR (default 2) distinct correction refutations, no king refutation, every thematic refutation answered in the key;
 mates changed from the random stage score extra. Put the key piece and the black king in CORE.
 """
+from chesscomp.core import illegal_position as _illegal
 import os, sys, random, time, json, chess
 from chesscomp.core import Problem
 from chesscomp.analysis import analyse
@@ -88,6 +89,8 @@ WHITE_TYPES = [chess.QUEEN, chess.ROOK, chess.ROOK, chess.BISHOP, chess.BISHOP, 
 BLACK_TYPES = [chess.ROOK, chess.BISHOP, chess.KNIGHT, chess.PAWN, chess.PAWN, chess.QUEEN]
 
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         if len(b.pieces(chess.QUEEN, col)) > 1 or len(b.pieces(chess.ROOK, col)) > 2 or len(b.pieces(chess.KNIGHT, col)) > 2:
             return True

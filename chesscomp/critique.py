@@ -9,7 +9,7 @@ judgement is taught.
 """
 from __future__ import annotations
 import chess
-from .core import Problem, san, promoted_force
+from .core import Problem, san, promoted_force, illegal_position
 from .analysis import analyse
 from .solver import Engine
 
@@ -261,6 +261,8 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     board = problem.board
     for line in promoted_force(board):
         add('major', 'promoted force', line + ' (fatal, E. Bourd)')
+    for line in illegal_position(board):
+        add('major', 'illegal position', line + ' (fatal, E. Bourd 17 Oct 2026)')
     if board.turn == chess.WHITE and board.is_check():
         add('major', 'white in check', 'White is in check in the diagram: the key only escapes the check (illegal for a problem)')
     if not res.get('keys'):

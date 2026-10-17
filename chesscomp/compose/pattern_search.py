@@ -6,6 +6,7 @@ it, after the key DEF allows A).
 MODE: w1 | w2 | w1b1 | w2b1 (which units to add) | m1 (move one White unit). DEF may list several defences. Run JOBS copies with JOB=0..JOBS-1 in parallel.
 The one-variation Dombrovskis 6K1/1N6/4p3/1PBk3p/8/8/4Q3/6N1 came out of this in seven minutes (w2 mode),
 after five hand-made kernels had died to mates in one."""
+from chesscomp.core import illegal_position as _illegal
 import sys, os, itertools, time, chess
 from chesscomp.core import Problem
 from chesscomp.analysis import analyse
@@ -28,6 +29,8 @@ def mates1(b):
         if mate: return True
     return False
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         if len(b.pieces(chess.QUEEN, col)) > 1 or len(b.pieces(chess.ROOK, col)) > 2 or len(b.pieces(chess.KNIGHT, col)) > 2: return True
         bs = list(b.pieces(chess.BISHOP, col))

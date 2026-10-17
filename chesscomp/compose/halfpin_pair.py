@@ -13,6 +13,7 @@ the key piece; exactly one defence by the rook, answered only by mr; exactly one
 black check. Diagram (Z back on the key's origin): no flight, no black check, the key is the only key, the try tr is
 refuted only by the rook's defence and tb only by the bishop's. The threat is free: the search finds it.
 """
+from chesscomp.core import illegal_position as _illegal
 import json, os, random, sys, time
 import chess
 from chesscomp.compose.keyfind import post_spec
@@ -23,6 +24,8 @@ SPEC = json.loads(os.environ.get('SPEC', '{}'))
 
 
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         n = lambda t: len(b.pieces(t, col))
         if n(chess.QUEEN) > 1 or n(chess.ROOK) > 2 or n(chess.KNIGHT) > 2:

@@ -9,6 +9,7 @@ happily finds other mates for the thematic defences).
 Env EMPTY=e3,f3: squares that must stay empty (a black line the mechanism needs, e.g. a holder's guard from d3 to f3 that
 kills the battery's checking cooks; without it the search blocks the line with pawns, 17 Oct 2026).
 """
+from chesscomp.core import illegal_position as _illegal
 import sys, os, random, time, chess
 from chesscomp.compose.keyfind import post_spec, move_id
 from chesscomp.core import Problem
@@ -47,6 +48,8 @@ CORE = sys.argv[1]; SEED = sys.argv[2]; THREAT = set(sys.argv[3].split(','))
 DEFS = sys.argv[4].split(','); BUDGET = float(sys.argv[5]); random.seed(int(sys.argv[6]))
 core = chess.Board(CORE + ' b - - 0 1'); CSQ = {s: core.piece_at(s) for s in chess.SQUARES if core.piece_at(s)}
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):                # a promoted unit of either colour (E. Bourd, 7 Oct 2026)
         w = lambda t: len(b.pieces(t, col))
         if w(chess.QUEEN) > 1 or w(chess.ROOK) > 2 or w(chess.KNIGHT) > 2: return True

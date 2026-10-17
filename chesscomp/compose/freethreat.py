@@ -10,6 +10,7 @@ king move in the post-key (a flight the threat still mates forces a flight-givin
 Found the post-keys of the two-rooks unpin (11 Oct 2026) and the knight line-closing problem (12 Oct 2026):
     CORE=4Q3/8/8/3k4/8/8/8/2r1nN1b WANT='{"Nc2":"N*c3","Ng2":"Qe8e4"}' -> 4Q3/2K5/8/3k4/2R5/1Pp5/8/1Nr1nN1b
 """
+from chesscomp.core import illegal_position as _illegal
 import sys, os, random, time, json, chess, fnmatch
 from .keyfind import post_spec
 
@@ -23,6 +24,8 @@ def configure(core: str, want: dict, noq: str = 'zz'):
 
 
 def promoted(b):
+    if _illegal(b):                                   # retro: pawn captures, promotions (17 Oct 2026)
+        return True
     for col in (chess.WHITE, chess.BLACK):
         w = lambda t: len(b.pieces(t, col))
         if w(chess.QUEEN) > 1 or w(chess.ROOK) > 2 or w(chess.KNIGHT) > 2:
