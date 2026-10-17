@@ -2607,6 +2607,22 @@
     "Sg6"
    ],
    "note": "Python solver: sound, 8+5, gate PASS (warnings: non-defences allow Sg5#/Sd6# beside the threat; wPa2 check-stopper), trim: nothing more. Flaws: wPa2 + passive king, Bxf5 captures a pawn, tries not thematic. separate.py: no White first move gives a third pair after Rh4/Rf1 (Bd7/Bc8 change only the Rf1 mate: Bc6#/Bb7#; Sc6 repeats the knight mates without a threat)."
+  },
+  {
+   "id": "claude-daily12-corner-selection",
+   "fen": "8/8/K2p4/8/N2k1P1p/1P3B1R/2P4R/3Nb3",
+   "stip": "#2",
+   "author": "Claude (daily No. 12, 17 Oct 2026)",
+   "source": "blog daily No. 12, theme corner key",
+   "themes": [
+    "Corner key by line selection: the bishop must unmask Rh3 and keep e4/d5; every other square of the long diagonal has its own error",
+    "Tries 1.Bg2? Bg3! (g2 shuts Rh2 off d2) and 1.Bc6? d5! (cut behind d5)"
+   ],
+   "keys": [
+    "Bh1"
+   ],
+   "note": "1.Bh1! (2.Rd3#) Bg3 2.Rd2#; 1.Bg2? Bg3!, 1.Bc6?/Bb7?/Ba8? d5!, 1.Bd5? Kxd5!, 1.Be4? Kxe4!. Flaws: one variation, already set (static); king-refuted Bd5/Be4; random duals 1...Bf2 Rd3#/c3#, 1...Bd2 Rd3#/Rxd2#; bPh4 and Ka6 only stop cooks (without bPh4 1.Rh5! cooks). The knight version 8/8/K2p4/8/1P1k1P1p/5B1R/1N5R/3N1n2 is sound but 1.Bg2? fails to Sg3 and Se3.",
+   "solution": "Try: 1.Bg2? (2.Rd3#) but 1...Bg3!\nTry: 1.Bc6? (2.Rd3#) 1...Bg3 2.Rd2# but 1...d5!\nKey: 1.Bh1! (2.Rd3#) 1...Bg3 2.Rd2#"
   }
  ]
 }

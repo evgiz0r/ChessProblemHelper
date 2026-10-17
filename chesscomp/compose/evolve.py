@@ -25,7 +25,8 @@ solver reports with that pattern and a single mate, distinct mates only; a HIT n
 for direct self-pins by the defender, daily No. 8). KEY=e7e8n (fixed-key mode, daily No. 9: underpromotion) needs no DEFS:
 it scores only the phase whose first move is KEY (uci), rewards it being the only key, and rewards NVAR (default 3)
 distinct single mates after its real defences, any defences; a HIT needs exactly that key, at most one threat, NVAR
-such mates and no flight. Put the promoting pawn and the black king in CORE. BRISTOL=1 (with KEY, daily No. 11) also
+such mates and no flight. Put the promoting pawn and the black king in CORE. TRIES=N (with KEY, daily No. 12: corner key) rewards tries by the key piece whose single refutations are distinct and
+answered after the key, and needs N of them for a HIT. BRISTOL=1 (with KEY, daily No. 11) also
 needs the threat to follow KEY along its line (analysis.bristol) for a HIT, and rewards tries by the key piece whose single
 refutation the key answers with a mate (E. Bourd's prototype: 1.Bd8? Bd6!, 1.Bb6? d6!). UNIQUE=1 makes every DEF the only defence of its unit (any other
 move of that unit must let the threat mate; E. Bourd: "realistically all knight moves are the same"). A line starting HIT is a position that meets the whole specification; check it with
@@ -71,6 +72,7 @@ WCORR = os.environ.get('WCORR', '')                  # white correction mode: sq
 KEY = os.environ.get('KEY', '')                      # fixed-key mode: the key's uci, e.g. e7e8n
 BRISTOL = os.environ.get('BRISTOL', '0') == '1'      # fixed-key mode: the threat must follow KEY on its line (daily No. 11)
 NVAR = int(os.environ.get('NVAR', '3'))
+TRIES = int(os.environ.get('TRIES', '0'))            # fixed-key mode: N tries by the key piece, refutations answered (daily No. 12)
 DEFSQ = [x for x in os.environ.get('DEFSQ', '').split(',') if x]   # type-1: thematic units by square (needs TKEY)
 TKEY = os.environ.get('TKEY', '')                    # type-1: the intended key (uci)
 QMATE = os.environ.get('QMATE', '0') == '1'          # type-1: every thematic mate by the queen
@@ -208,7 +210,32 @@ def key_mode(r):
     if BRISTOL:
         bt, btxt, bok = bristol_terms(ph, phases)
         t += bt; ok = ok and bok; summ += ' ' + btxt
+    if TRIES:
+        refs = thematic_tries(ph, phases)
+        t += 12 * min(len(refs), TRIES + 1)
+        ok = ok and len(refs) >= TRIES
+        summ += f" tries={'/'.join(sorted(refs)) or '-'}"
     return t, summ, ok
+
+
+def thematic_tries(ph, phases):
+    """The distinct single refutations of tries by the key piece that the key answers with a mate (corner key,
+    daily No. 12: the key square is chosen because every other square of the piece falls to its own defence)."""
+    fm = ph['first_move']['uci']
+    answered = {v['defence']['san'].rstrip('+#') for v in ph['variations'] if v['continuations'] and not v['threat_repeat']}
+    refs = set()
+    for q in phases:
+        if q['type'] != 'try' or q.get('check_key'):
+            continue
+        u = q['first_move']['uci']
+        if u[:2] != fm[:2] or u == fm:
+            continue
+        rr = q['refutations'] if isinstance(q['refutations'], list) else []
+        if len(rr) == 1:
+            san = (rr[0]['san'] if isinstance(rr[0], dict) else str(rr[0])).rstrip('+#!')
+            if san in answered:
+                refs.add(san)
+    return refs
 
 
 def bristol_terms(ph, phases):
@@ -219,19 +246,7 @@ def bristol_terms(ph, phases):
     fm = ph['first_move']['uci']
     thr = ph.get('threat') or []
     follow = bool(thr) and all(bristol(fm, c['uci']) for c in thr)
-    answered = {v['defence']['san'].rstrip('+#') for v in ph['variations'] if v['continuations'] and not v['threat_repeat']}
-    refs = set()
-    for q in phases:
-        if q['type'] != 'try':
-            continue
-        u = q['first_move']['uci']
-        if u[:2] != fm[:2] or u == fm:
-            continue
-        rr = q['refutations'] if isinstance(q['refutations'], list) else []
-        if len(rr) == 1:
-            san = (rr[0]['san'] if isinstance(rr[0], dict) else str(rr[0])).rstrip('+#!')
-            if san in answered and not (q.get('check_key')):
-                refs.add(san)
+    refs = thematic_tries(ph, phases)
     t = (25 if follow else -30) + 12 * min(len(refs), 3)
     return t, f"bristol={'yes' if follow else 'no'} thematic-tries={'/'.join(sorted(refs)) or '-'}", follow
 
