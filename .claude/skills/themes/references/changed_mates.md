@@ -189,3 +189,8 @@ batteries with the same concept, then tries.
 Clean post-key (no key yet): claude-queen-unguard-postkey-c4, K7/2R2N2/4p1B1/1PBk4/R2Npq2/2P5/2P1P3/3Q4, threat c4#, 1...Qxc7
 Sb3#, 1...Qxf7 Sf3#, nothing else defends. Got there by turning the scheme 180 degrees (postsearch KMP=d4), rear rook ->
 queen, Bg6 behind the black e4 pawn, pawns shutting the queen's lines to c4. Key obstacle: the threat must need the rear piece.
+Pawn battery (Qb1/c2 v Ke4; 2.c3 guards d4, 2.c4 guards d5): claude-pawn-battery-rook-holder, 8/B2r1B2/2b5/4p3/1P2k1Kn/4pp2/2P5/1Q4N1,
+1.Sh3! (2.Sg5#) Rxa7 2.c3#, Rxf7 2.c4# (bRd7 interposes on d3). The interposed holder is pinned, so 2.c3+/c4+ Rd3 and the
+threat cook every key that leaves the threat: bring the threat piece with the key (unmask_search KSQ/FSQ, THREAT=). Dead ends
+(lessons.jsonl): a queen-move threat (needs a d2 blocker; none works), a rook pinning c2 on the 2nd rank, a knight holder.
+Pure tries planned: 1...Rxa7! when e3 is guarded only by Ba7 and the key piece, 1...Rxf7! when the try blocks c4.

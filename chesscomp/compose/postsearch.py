@@ -6,6 +6,8 @@ the named defences must each get one mate, all different, with no holes and no d
 Env SELFBLOCK=1: each named defence's mate must need the defence's self-block (freethreat.self_block_needed).
 Env KMP=d4: each named defence must be mated by the unit on d4 (battery discharges, 17 Oct 2026; without it the search
 happily finds other mates for the thematic defences).
+Env EMPTY=e3,f3: squares that must stay empty (a black line the mechanism needs, e.g. a holder's guard from d3 to f3 that
+kills the battery's checking cooks; without it the search blocks the line with pawns, 17 Oct 2026).
 """
 import sys, os, random, time, chess
 from chesscomp.compose.keyfind import post_spec, move_id
@@ -15,6 +17,7 @@ from chesscomp.compose.freethreat import self_block_needed
 SELFBLOCK = os.environ.get('SELFBLOCK', '0') == '1'
 READY = os.environ.get('READY', '0') == '1'   # also minimise White's other real mates in two (key readiness)
 KMP = os.environ.get('KMP', '')   # the named defences must be mated by the unit on this square (a battery's front piece)
+EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
 
 
 def other_solutions(fen, threat):
@@ -52,7 +55,7 @@ def promoted(b):
     return False
 def score(fen):
     b = chess.Board(fen + ' b - - 0 1')
-    if not b.is_valid() or promoted(b): return -1e9, ''
+    if not b.is_valid() or promoted(b) or any(b.piece_at(x) for x in EMPTY): return -1e9, ''
     w = chess.Board(fen + ' w - - 0 1')
     if not w.is_valid(): return -1e9, ''
     t, d = post_spec(fen)
@@ -81,7 +84,7 @@ def score(fen):
 def mutate(fen):
     b = chess.Board(fen + ' b - - 0 1')
     free = [s for s in chess.SquareSet(b.occupied) if s not in CSQ]
-    empty = [s for s in chess.SQUARES if not b.piece_at(s)]
+    empty = [s for s in chess.SQUARES if not b.piece_at(s) and s not in EMPTY]
     op = random.random()
     if op < .35:
         sym = random.choice('NBRPPpppnbr'); sq = random.choice(empty)

@@ -1379,3 +1379,10 @@ no motive layer to mirror.
 - 17 Oct: "go a bit more": the holder may reach the line only at d4 (bPe3), the threat needs Qd1 (Pc5 for Bc5), cooks removed one
   by one: claude-queen-held-battery-qd1, sound, 1.Qd1! (2.c4#) Qxc7 Sb3#, Qxf7 Sf3#, Qf5 Sxf5#; gate FAIL (key from g1, out of
   play). Unmasking 1.Bd3-g6 nearly works (try 1.Bf5? exf5!) but 1.Bh7 and 1.Bc4+ cook.
+- 17 Oct: "Go next scheme" (pawn battery Qb1/c2 v Ke4, single/double step): battery_guards with a pawn front (rook d7:
+  Ba7/Bf7, Ba7/Se7; rook d6: Bb6/Be6, Se6/Sb6); post-key play found at once (runs 601-602). Key: the holder interposed on
+  d3 is pinned, so 2.c3+/c4+ Rd3 + threat cooks every key that leaves the threat; queen-move threats (Qe1/Qh1, rook unpinned
+  interposes) need d2 blocked and every blocker failed; a rook pinning c2 (Rg2/Ka2) and a knight holder failed too
+  (lessons). unmask_search found 1.Sg1-h3! (2.Sg5#) Rxa7 c3#, Rxf7 c4#: claude-pawn-battery-rook-holder, sound 7+7, gate PASS,
+  static key (a scheme). Thematic tries worked out (e3 guarded by Ba7 + key piece; a try blocking c4), not yet built.
+  Tools: postsearch EMPTY=, battery_guards knight holder (tested).

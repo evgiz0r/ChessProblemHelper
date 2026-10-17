@@ -2687,6 +2687,20 @@
     "Qd1"
    ],
    "note": "Sound (Python solver), but the gate fails: the key piece starts on g1, out of play and idle (fatal, E. Bourd). Also three plugs (c2, f2, g2), 8 pawns, 17 units, 2.Sxf5# captures the defender. Unmasking key tried: a light bishop on d3 masking Qd1 (8/2R2N2/4p3/1PPk4/R2N1q2/2PBp3/2P1P3/1K1Q4): 1.Bg6! with the try 1.Bf5? exf5!, but cooked by 1.Bh7 and by 1.Bc4+ Ke4 2.Qd3#."
+  },
+  {
+   "id": "claude-pawn-battery-rook-holder",
+   "fen": "8/B2r1B2/2b5/4p3/1P2k1Kn/4pp2/2P5/1Q4N1",
+   "stip": "#2",
+   "author": "Claude, on E. Bourd's battery plan (17 Oct 2026: pawn battery single/double step)",
+   "source": "Pawn battery Qb1/c2 against Ke4 held by bRd7 (interposes on d3); guards Ba7 (d4) and Bf7 (d5) from battery_guards; post-key by postsearch KMP=c2 (run 601), key by unmask_search KSQ=h3 FSQ=g1 THREAT=Nh3g5 (run 694).",
+   "themes": [
+    "1.Sh3! (2.Sg5#) Rxa7 (d4 loses its guard) 2.c3#, Rxf7 (d5 loses its guard) 2.c4#: the rook holds the battery by interposing on d3, each capture costs it the d-file and the single or double step re-guards the square; tries 1.Sxf3? Sxf3!, 1.Se2? fxe2!"
+   ],
+   "keys": [
+    "Sh3"
+   ],
+   "note": "Sound, gate PASS, trim removes nothing, 7+7. A scheme, not a problem: static key (both mates set), king boxed by three black pawns (e3, f3, e5), cook-stoppers wPb4 (1...Rxa7 Qb4#), bBc6 (c4+), bSh4; random rook moves non-defences with duals. Why keys are hard: the interposed rook is pinned on d3, so after 2.c3+/c4+ Rd3 any threat mate that does not need the key mates; only keys that bring the threat piece survive. Variant with the knight leaving e3 (b7/B2r1B2/5p2/4pP2/4k1K1/4N3/2Ppn1N1/1Q6, 1.Sd1! threat 2.Sf2#) turns the set dual 1...Rxf7 c3#/c4# into 2.c4#; no thematic tries yet."
   }
  ]
 }
