@@ -2673,6 +2673,20 @@
    ],
    "keys": [],
    "note": "POST-KEY SCHEME: no holes, no duals, single threat, only the two thematic defences. No key yet: 2.c4# needs nothing from Qd1 while Bc5 (or c3) protects d4, so it mates before any queen key; with a pawn on c5 instead (d4 protected by Qd1 only) 1...Qd2 interposes and cuts it (hole); with the battery loaded in the diagram, the checks Sf5+/Sf3+/Sb3+ solve (2.Qxd2 after 1...Qd2). keyfind with one-unit patches: nothing."
+  },
+  {
+   "id": "claude-queen-held-battery-qd1",
+   "fen": "8/2R2N2/4p1B1/1PPk4/R2N1q2/2P1p3/2P2PP1/1K4Q1",
+   "stip": "#2",
+   "author": "Claude, on E. Bourd's bench idea mvcc8z65 (17 Oct 2026)",
+   "source": "From claude-queen-unguard-postkey-c4 ('go a bit more'): the black queen may reach the battery line only at d4 (bPe3, blocked by nothing, shuts f4-e3-d2), so she cannot cut Qd1-d4 by a static interposition, and 1...Qxd4 pins her (2.c4#); Pc5 instead of Bc5 so 2.c4# needs Qd1; the key brings the queen. Cooks removed one at a time: Qh1+ (pawn g2), Qxe3 (pawn f2), c4+ Kxd4 Qa1/c3 (king b1, no e2 pawn: 2.c3+ Kd3), Qb3 threat (pawn c2).",
+   "themes": [
+    "1.Qd1! (2.c4#) Qxc7 (c5 loses its protector) 2.Sb3#, Qxf7 (e5 loses its guard) 2.Sf3#, Qf5 (cuts Bg6-e4) 2.Sxf5#: the black queen holds the battery Qd1/Sd4 and each capture costs her the d4 interposition"
+   ],
+   "keys": [
+    "Qd1"
+   ],
+   "note": "Sound (Python solver), but the gate fails: the key piece starts on g1, out of play and idle (fatal, E. Bourd). Also three plugs (c2, f2, g2), 8 pawns, 17 units, 2.Sxf5# captures the defender. Unmasking key tried: a light bishop on d3 masking Qd1 (8/2R2N2/4p3/1PPk4/R2N1q2/2PBp3/2P1P3/1K1Q4): 1.Bg6! with the try 1.Bf5? exf5!, but cooked by 1.Bh7 and by 1.Bc4+ Ke4 2.Qd3#."
   }
  ]
 }

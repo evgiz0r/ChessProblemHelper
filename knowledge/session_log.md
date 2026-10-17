@@ -1376,3 +1376,6 @@ no motive layer to mirror.
 - 17 Oct: "try rotating, changing pieces and more": postsearch gained KMP (named defences mated by the front piece); runs
   501-528 over rotations/mirror; by hand from the 180-degree hit to a clean post-key, claude-queen-unguard-postkey-c4 (single
   threat, two thematic defences, no holes/duals). No key: the threat c4# does not need the rear queen.
+- 17 Oct: "go a bit more": the holder may reach the line only at d4 (bPe3), the threat needs Qd1 (Pc5 for Bc5), cooks removed one
+  by one: claude-queen-held-battery-qd1, sound, 1.Qd1! (2.c4#) Qxc7 Sb3#, Qxf7 Sf3#, Qf5 Sxf5#; gate FAIL (key from g1, out of
+  play). Unmasking 1.Bd3-g6 nearly works (try 1.Bf5? exf5!) but 1.Bh7 and 1.Bc4+ cook.
