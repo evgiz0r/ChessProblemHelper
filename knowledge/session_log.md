@@ -1401,3 +1401,5 @@ no motive layer to mirror.
 - 17 Oct: his bench sitting mvculjk2 (320 steps, ~100 solves) finished the bishop-knight battery: bourd-bishop-knight-battery-bh7,
   1.Bh7! (2.Sg6#) Sb6 Se8#, Sxe3 Sh5#; tries 1.Be8? Sb6!, 1.Bh5? Sxe3! (the key bishop blocks one discharge square each).
   Bench fix: no S~ in the solution line when only the set play has a random move; duals counted among defences only.
+- 17 Oct: "lets try bishop knight battery with 1 square from the king": runs 901-934; post-key play found
+  (claude-bishop-knight-adjacent-postkey, holder Sf5 to g7, Sd4 Se8#, Sxe3 Sh5#, threat Sc6#); no key yet (lessons).
