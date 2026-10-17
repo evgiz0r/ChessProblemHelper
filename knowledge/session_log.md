@@ -1369,3 +1369,7 @@ no motive layer to mirror.
 - 17 Oct: "lets switch to a problem with batteries ... just 2 variations ... then tries". Runs 429-436 (type3 with KMP) found
   nothing; hand design reached claude-battery-fleck-scheme (sound, double threat, thematic mates are the threats).
   Recorded the structural obstacle (adjacent discharges cannot be selected; distance discharges threaten).
+- 17 Oct: his bench sitting mvcc8z65 (71 steps, 7 solves): the queen-held battery (bourd-queen-unguard-battery-scheme).
+  New tool chesscomp.compose.battery_guards (tested): only a queen, on f5 (Rc2/Sf2) or b5 (Sb2/Re2), does it for Kd4/Sd5/Rd8.
+  claude-rook-knight-queen-unguard-scheme has the thematic pair; the threat is still open. His plan for the next batteries
+  recorded (lessons.jsonl).

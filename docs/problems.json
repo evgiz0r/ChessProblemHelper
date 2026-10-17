@@ -2637,6 +2637,30 @@
     "Bh7"
    ],
    "note": "SCHEME: sound (unique key) but the threat is double, the thematic mates are the threat mates, the key piece starts on g8 (out of play), wPe6 and bBd2 are plugs, bSa6 is idle. Structural obstacle: a discharge onto a square next to the king needs a protector, which also guards the square, so a defence can only select discharges that cover a square from a distance, and those then mate in the threat position too."
+  },
+  {
+   "id": "bourd-queen-unguard-battery-scheme",
+   "fen": "KB1R4/8/1P2PP2/2pN1q2/3kP1R1/8/3P4/2N2B2",
+   "stip": "#2",
+   "author": "E. Bourd (bench mvcc8z65, 17 Oct 2026)",
+   "source": "His bench sitting, 71 steps, 7 solves (post-key sketches). Idea: the battery Rd8/Sd5 is held by the black queen (interposition on d5 via e5); each of her two defences captures a White guard and leaves the 5th rank, and only one discharge restores that guard.",
+   "themes": [
+    "Post-key: 1...Qxg4 (the e4 pawn loses its protector) 2.Sc3#, 1...Qxf1 (c4 loses Bf1) 2.Se3#"
+   ],
+   "keys": [],
+   "note": "SCHEME (post-key, no key): double threat exf5#/Sb3# (Rg4 behind the e4 pawn is a second battery, so exf5 and e5 are discovered checks), holes 1...c4 and 1...Qf4, and five checking first moves solve."
+  },
+  {
+   "id": "claude-rook-knight-queen-unguard-scheme",
+   "fen": "1B1R4/8/1P6/2pN1q2/3k4/8/2RPPN2/K7",
+   "stip": "#2",
+   "author": "Claude, on E. Bourd's bench idea mvcc8z65 (17 Oct 2026)",
+   "source": "chesscomp.compose.battery_guards on Kd4/Sd5/Rd8 with c4/e4: only the queen holds the battery and captures two guards that do not attack her (f5 with Rc2/Sf2, b5 with Sb2/Re2). Here e4 is empty and guarded by Sf2 (no second battery); Sc3 shuts Rc2's file, so the e4 mate is Sf6 and his f6 plug goes; Pb6 stops Sb6.",
+   "themes": [
+    "Post-key: threat 2.e3#; 1...Qxf2 2.Sf6#, 1...Qxc2 2.Se3# (each capture unguards one square, one discharge re-guards it)"
+   ],
+   "keys": [],
+   "note": "SCHEME (post-key, no key): the queen parries 2.e3# in many ways (Qe4/Qe5/Qe6/Qg5/Qh3/Qf3 reach e3, Qd7 unprotects d5), 1...c4 frees c5, and checking discharges solve with White to move. Every line piece protecting d5 also guards c4 or e4 once the knight discharges (Bg8 tried); only a pawn or a knight can protect it. The b5 version (3R2B1/8/8/1qpN4/3k1P2/8/1N2R3/4B2K, threat Bf2#) had Bc3# as a second threat and Bg8 guarding c4 through d5."
   }
  ]
 }

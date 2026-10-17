@@ -179,3 +179,10 @@ mate before the defence. Why (lessons.jsonl): adjacent landings cannot be select
 it), so only distance coverers can, and those threaten. Published battery threats are often 2.S~# with variation
 discharges that fail in the threat position (his Problemesis 2004, psis-0f9bcf61f7): the missing piece is a square open
 before the defence that the defence closes.
+Battery held by a black piece (his bench mvcc8z65, 17 Oct 2026): bourd-queen-unguard-battery-scheme, the black queen
+interposes on the battery line; her two captures each remove a White guard and leave the line, and one discharge
+re-guards the square (Qxg4 Sc3#, Qxf1 Se3#). `python -m chesscomp.compose.battery_guards KING FRONT REAR SQ1 SQ2 [q|r|b]`
+enumerates where the piece and the two guards can stand (Kd4/Sd5/Rd8: queen f5 Rc2/Sf2 or b5 Sb2/Re2). Ours:
+claude-rook-knight-queen-unguard-scheme, 1B1R4/8/1P6/2pN1q2/3k4/8/2RPPN2/K7, Qxf2 Sf6#, Qxc2 Se3# (Sc3 shuts Rc2); the
+threat (2.e3#) is the open problem. His plan next: pawn, bishop-knight, bishop-rook, rook-bishop, distant rook-knight
+batteries with the same concept, then tries.
