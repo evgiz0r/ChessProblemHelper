@@ -1373,3 +1373,6 @@ no motive layer to mirror.
   New tool chesscomp.compose.battery_guards (tested): only a queen, on f5 (Rc2/Sf2) or b5 (Sb2/Re2), does it for Kd4/Sd5/Rd8.
   claude-rook-knight-queen-unguard-scheme has the thematic pair; the threat is still open. His plan for the next batteries
   recorded (lessons.jsonl).
+- 17 Oct: "try rotating, changing pieces and more": postsearch gained KMP (named defences mated by the front piece); runs
+  501-528 over rotations/mirror; by hand from the 180-degree hit to a clean post-key, claude-queen-unguard-postkey-c4 (single
+  threat, two thematic defences, no holes/duals). No key: the threat c4# does not need the rear queen.

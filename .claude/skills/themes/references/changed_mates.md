@@ -186,3 +186,6 @@ enumerates where the piece and the two guards can stand (Kd4/Sd5/Rd8: queen f5 R
 claude-rook-knight-queen-unguard-scheme, 1B1R4/8/1P6/2pN1q2/3k4/8/2RPPN2/K7, Qxf2 Sf6#, Qxc2 Se3# (Sc3 shuts Rc2); the
 threat (2.e3#) is the open problem. His plan next: pawn, bishop-knight, bishop-rook, rook-bishop, distant rook-knight
 batteries with the same concept, then tries.
+Clean post-key (no key yet): claude-queen-unguard-postkey-c4, K7/2R2N2/4p1B1/1PBk4/R2Npq2/2P5/2P1P3/3Q4, threat c4#, 1...Qxc7
+Sb3#, 1...Qxf7 Sf3#, nothing else defends. Got there by turning the scheme 180 degrees (postsearch KMP=d4), rear rook ->
+queen, Bg6 behind the black e4 pawn, pawns shutting the queen's lines to c4. Key obstacle: the threat must need the rear piece.

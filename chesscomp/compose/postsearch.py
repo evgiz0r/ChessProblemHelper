@@ -4,6 +4,8 @@ the named defences must each get one mate, all different, with no holes and no d
     python3 -m chesscomp.compose.postsearch CORE SEED THREAT_IDS DEFS BUDGET_S RNG
     e.g. CORE=3R4/8/8/8/4k3/r7/3PP3/b1Q5 THREAT_IDS=Qc1c6 DEFS=Rc3,Bc3
 Env SELFBLOCK=1: each named defence's mate must need the defence's self-block (freethreat.self_block_needed).
+Env KMP=d4: each named defence must be mated by the unit on d4 (battery discharges, 17 Oct 2026; without it the search
+happily finds other mates for the thematic defences).
 """
 import sys, os, random, time, chess
 from chesscomp.compose.keyfind import post_spec, move_id
@@ -12,6 +14,7 @@ from chesscomp.analysis import analyse
 from chesscomp.compose.freethreat import self_block_needed
 SELFBLOCK = os.environ.get('SELFBLOCK', '0') == '1'
 READY = os.environ.get('READY', '0') == '1'   # also minimise White's other real mates in two (key readiness)
+KMP = os.environ.get('KMP', '')   # the named defences must be mated by the unit on this square (a battery's front piece)
 
 
 def other_solutions(fen, threat):
@@ -62,6 +65,8 @@ def score(fen):
     for dd in DEFS:
         m = names.get(dd)
         if m is None: s -= 20; continue                       # not a defence (threat still mates)
+        if len(m) == 1 and KMP and next(iter(m))[1:3] != KMP:
+            s -= 15; continue                                   # mated, but not by the front piece
         if len(m) == 1:
             s += 10; mates.append(next(iter(m)))
             if SELFBLOCK and not self_block_needed(b, dd, mates[-1]): s -= 20; unblocked.append(dd)

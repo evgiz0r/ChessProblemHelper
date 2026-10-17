@@ -2661,6 +2661,18 @@
    ],
    "keys": [],
    "note": "SCHEME (post-key, no key): the queen parries 2.e3# in many ways (Qe4/Qe5/Qe6/Qg5/Qh3/Qf3 reach e3, Qd7 unprotects d5), 1...c4 frees c5, and checking discharges solve with White to move. Every line piece protecting d5 also guards c4 or e4 once the knight discharges (Bg8 tried); only a pawn or a knight can protect it. The b5 version (3R2B1/8/8/1qpN4/3k1P2/8/1N2R3/4B2K, threat Bf2#) had Bc3# as a second threat and Bg8 guarding c4 through d5."
+  },
+  {
+   "id": "claude-queen-unguard-postkey-c4",
+   "fen": "K7/2R2N2/4p1B1/1PBk4/R2Npq2/2P5/2P1P3/3Q4",
+   "stip": "#2",
+   "author": "Claude, on E. Bourd's bench idea mvcc8z65 (17 Oct 2026)",
+   "source": "His 'try rotating, changing pieces and more': the scheme turned 180 degrees and mirrored (battery from below, Kd5), postsearch with the new KMP option (runs 501-528) converged on 8/2RP1N2/4p3/1BBk4/K2Npq2/8/2P5/3R4 with one hole (1...e3); by hand: Qd1 for Rd1 (so Ra4 can hold c4), Bg6 behind the black e4 pawn (1...e3 then lets the threat mate), Pb5 for c6, pawns c3+c2 (no Qc1 line to c4) and e2 (no Qf1 line, protects f3), king a8.",
+   "themes": [
+    "Post-key (Black to move): threat 2.c4#; 1...Qxc7 (Bc5 loses its protector) 2.Sb3#, 1...Qxf7 (e5 loses Sf7) 2.Sf3#: the queen holds the battery Qd1/Sd4 by interposing on d2 and gives it up with each capture"
+   ],
+   "keys": [],
+   "note": "POST-KEY SCHEME: no holes, no duals, single threat, only the two thematic defences. No key yet: 2.c4# needs nothing from Qd1 while Bc5 (or c3) protects d4, so it mates before any queen key; with a pawn on c5 instead (d4 protected by Qd1 only) 1...Qd2 interposes and cuts it (hole); with the battery loaded in the diagram, the checks Sf5+/Sf3+/Sb3+ solve (2.Qxd2 after 1...Qd2). keyfind with one-unit patches: nothing."
   }
  ]
 }
