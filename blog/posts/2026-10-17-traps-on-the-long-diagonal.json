@@ -62,6 +62,6 @@
   "searches": 26
  },
  "improvement": "evolve's fixed-key mode has TRIES=N: it rewards tries by the key piece whose single refutations are distinct and answered after the key, and a HIT needs N of them, whatever the threat's line (before, this term existed only inside BRISTOL=1); the term is now one function (thematic_tries) shared with the Bristol mode, tested on E. Bourd's Bristol prototype (TRIES=2 hit, TRIES=3 not). Also the open proposal from No. 10 is done: python -m chesscomp.compose.trytable FEN [SQUARE ...] lists every move of a unit with its threat, refutations and mates in about a second (this problem was built with it), tested on today's position and its knight version.",
- "mentor_issue": null,
+ "mentor_issue": 13,
  "feedback": []
 }
