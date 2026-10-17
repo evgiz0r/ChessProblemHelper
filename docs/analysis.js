@@ -483,7 +483,10 @@
       m.set(v.defence, v.threatRepeat ? 'threat' : (ms.length ? ms.join('/') + (ms.length > 1 ? ' DUAL' : '') : '-')); } return m; };
     const C = new Map(res.phases.filter(p => p.type !== 'try' || (p.refutations || []).length === 1).map(p => [p, cellsOf(p)]));
     const real = c => c !== undefined && c !== '-' && c !== 'threat' && !c.includes('DUAL');
-    const groups = corrections(key).length ? corrections(key) : (sp ? corrections(sp) : []);
+    // a random move is named only when the solution itself has one (E. Bourd, 17 Oct 2026, on 1.Bh7! Sb6 Se8#, Sxe3 Sh5#:
+    // "there is still random move notations, when there are no random moves defending"); the set play's S~ group, where
+    // there is no threat and every move counts, is no reason to write 1...S~ in the solution
+    const groups = corrections(key);
     const grouped = new Set(groups.flatMap(g => [...g.random.moves, ...g.corrections.map(x => x.move)]));
     const kc = C.get(key);
     const cand = [...C.keys()].filter(p => p !== key);
@@ -571,7 +574,7 @@
       for (const d of defs || []) out.theme[d] = { set: sp ? cell(sm.get(d)) : '', key: cell(km.get(d)) };
       for (const v of key.variations) { if (v.refutes) continue;
         if (!v.threatRepeat && !v.conts.length) out.holes.push(v.defence);
-        if (v.conts.length > 1) out.duals.push(v.defence); }
+        if (v.conts.length > 1 && !v.threatRepeat) out.duals.push(v.defence); }   // a move that allows the threat has no dual
     }
     return out;
   }

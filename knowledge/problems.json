@@ -2717,6 +2717,22 @@
     "Sd2"
    ],
    "note": "ILLEGAL (fatal, E. Bourd 17 Oct 2026: 'the position is illegal, so its a fatal flaw'): the Black pawns c4 f2 g3 g5 h4 beside e7/h7 need at least 9 captures, White has lost 3 units. The mechanism stands; the construction must be redone legally. Otherwise sound by the solver; flaws: 1...Qb7 2.e3#/e4#; 26 units, 13 pawns; cook-stoppers wPc3, wPd3, wPe6, wPf6, wKh8; the tries capture pawns. The bench solver called 1...Qb5 'Q~' (fixed 17 Oct 2026)."
+  },
+  {
+   "id": "bourd-bishop-knight-battery-bh7",
+   "fen": "5R1B/4p1N1/R3P1B1/3nkP2/4P2N/4PP2/b6K/8",
+   "stip": "#2",
+   "author": "E. Bourd, bench sitting mvculjk2 (17 Oct 2026), from claude-bishop-knight-battery-postkey",
+   "source": "320 steps, about 100 solves. Started from our post-key scheme (Ba8/Sc6 v Ke4, holder Sf6), first finished the plain scheme 'to see its not that hard with the knight closer to black king', then the tries. His method: 'the easiest is to block the knight moves. then i had to choose 2 out of the 4 possible, and arrange a threat. so i need a threatening piece that can block those squares. i cant use a knight. i could try a rook, but then its not that easy to arrange proper play. so i used a bishop, and looked for a threat. then some trimming.' Rotated and shifted to Bh8/Sg7 v Ke5.",
+   "themes": [
+    "1.Bh7! (2.Sg6#) Sb6 (cuts Ra6-d6) 2.Se8#, Sxe3 (takes the f4 guard) 2.Sh5#: the black knight holds the battery Bh8/Sg7 by reaching f6; each defence leaves it unable to and opens one square that only one discharge covers",
+    "the front knight's other moves are blocked by White's own pawns (e6, f5), leaving the two thematic discharges e8 and h5",
+    "thematic tries by the key bishop, each blocking one discharge square: 1.Be8? Sb6!, 1.Bh5? Sxe3!; the key vacates g6 for the threat knight"
+   ],
+   "keys": [
+    "Bh7"
+   ],
+   "note": "Sound (Python solver), legal, 12+4. Flaws: set play identical (1...Sb6 2.Se8#, 1...Sxe3 2.Sh5# set; the content is the try pair); 1...Sf4 2.Se8#/Sh5# (non-thematic defence: the knight guards g6); wKh2 only stops cooks. Solver-only try 1.Ra5? Kd6! is not part of the solution."
   }
  ]
 }

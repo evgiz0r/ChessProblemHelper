@@ -1398,3 +1398,6 @@ no motive layer to mirror.
   makes every discharge a solution (lessons).
 - 17 Oct: showed claude-bishop-knight-battery-postkey (scheme, no key). E. Bourd: "a bit too clumsy, but it can work"; he
   continues on the bench (mvculjk2: knight holder on e3, Sxc2 Sb4#, Sxg4 Scd4#), cleaning up, a decent threat, no queen.
+- 17 Oct: his bench sitting mvculjk2 (320 steps, ~100 solves) finished the bishop-knight battery: bourd-bishop-knight-battery-bh7,
+  1.Bh7! (2.Sg6#) Sb6 Se8#, Sxe3 Sh5#; tries 1.Be8? Sb6!, 1.Bh5? Sxe3! (the key bishop blocks one discharge square each).
+  Bench fix: no S~ in the solution line when only the set play has a random move; duals counted among defences only.
