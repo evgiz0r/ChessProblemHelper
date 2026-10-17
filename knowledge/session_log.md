@@ -1396,3 +1396,5 @@ no motive layer to mirror.
 - 17 Oct: bishop-knight battery: battery_guards how=rear/both (+ post-capture fix, test); runs 801-834. No sound play yet:
   colour forces rook/knight/queen guards; knight holders' advance interposition cuts their guard; the queen that answers it
   makes every discharge a solution (lessons).
+- 17 Oct: showed claude-bishop-knight-battery-postkey (scheme, no key). E. Bourd: "a bit too clumsy, but it can work"; he
+  continues on the bench (mvculjk2: knight holder on e3, Sxc2 Sb4#, Sxg4 Scd4#), cleaning up, a decent threat, no queen.
