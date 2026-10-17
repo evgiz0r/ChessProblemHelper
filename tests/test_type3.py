@@ -54,3 +54,33 @@ def test_any_piece_by_move_recognises_the_strebkovs_swap():
     b = chess.Board('b1Q1N3/5p2/5K2/N1PkP3/1n4R1/8/1n2P3/6b1 w - - 0 1')
     sc, summ = evaluate(b, chess.Move.from_uci('a5b3'), None, bymove=True)
     assert summ.startswith("keys ['Nb3']") and "good ['g1:2/2']" in summ
+
+
+def test_kmp_and_flight_on_the_knight_swap():
+    # claude-knight-swap-c2: 1.Sc2! (2.Qf3#) gives d5; exd4 Qe1# -> Qxd4#, Sd3 Qxd3# -> Qc6#: all mates by the queen
+    b = chess.Board('8/8/5R2/K3p3/1N1Pk3/2Q3p1/5n2/8 w - - 0 1')
+    k = chess.Move.from_uci('b4c2')
+    plain, summ = evaluate(b, k, None, bymove=True)
+    assert "'e5:1/" in summ and "'f2:" in summ
+    assert "good []" in evaluate(b, k, None, bymove=True, kmp=chess.C3)[1]      # key mates by c3, set mates too: none count
+    assert evaluate(b, k, None, bymove=True, flight=True)[0] > plain           # Qe1+ Kd5: the set mate fails to the flight
+    no_flight = chess.Board('8/8/5R2/K3p3/1N1Pk3/2Q3p1/5n2/8 w - - 0 1')
+    assert evaluate(no_flight, chess.Move.from_uci('a5a6'), None, flight=True)[0] < evaluate(no_flight, chess.Move.from_uci('a5a6'), None)[0]
+
+
+def test_try_phase_replaces_the_set():
+    # bourd-two-rooks-sg6: set Bxf5#/Bd5# -> 1.Sg6! Sg5#/Sd6#; the try 1.Sc6 selects the same knight mates (no change)
+    b = chess.Board('8/4NN2/4B3/5p1r/4k3/K1P1pR2/P3P3/3r4 w - - 0 1')
+    k = chess.Move.from_uci('e7g6')
+    assert "'d1:1/" in evaluate(b, k, None)[1] and "'h5:1/" in evaluate(b, k, None)[1]
+    assert "good []" in evaluate(b, k, None, trymv=chess.Move.from_uci('e7c6'))[1]
+    assert evaluate(b, k, None, trymv=k)[1] == 'try'
+    # MP=key: the key piece must mate in both phases; here the f7 knight mates, not the key knight
+    assert "good []" in evaluate(b, k, 'key')[1]
+
+
+def test_one_mate_for_every_unit_is_not_a_2x2():
+    # run 421: Rcxd4, Rdxd4, cxd4 all met by 2.Qe6# after the key (and after the try 1.Qc8): no 2x2
+    b = chess.Board('8/3Q4/7K/2p5/2rBk3/3r2P1/4B3/8 w - - 0 1')
+    k, t = chess.Move.from_uci('d7d6'), chess.Move.from_uci('d7c8')
+    assert evaluate(b, k, 'key', trymv=t, flight=True)[0] < 100

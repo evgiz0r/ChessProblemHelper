@@ -156,3 +156,18 @@ Finished by him (bench mvbno7uo): no fxe3 (a black pawn on the square), a rook t
 piece guards, board turned: bourd-two-rooks-sg6, 8/4NN2/4B3/5p1r/4k3/K1P1pR2/P3P3/3r4, 1.Sg6! (2.Rf4#) Rh4 Sg5#, Rf1 Sd6#
 (set Bxf5#, Bd5#). One knight is the selector and the threat's guard: on e7 it holds d5 (bishop mates), on g6 e5 and f4.
 Reduced from his 8+7 (-wPe5, Ka3+wPa2 for Ka6+a5+b6). No third pair from any White first move (separate.py).
+
+## Battery key, flight-giving key (17 Oct 2026, "another type of 2x2")
+Both basic forms are published, so ours needs a second layer from the start:
+- Battery built by the key, mates on the same squares: Cuppini, Problemesis 2003 (psis-2b6418e028),
+  8/p1P4K/3P4/pN3Q2/k2N4/P2R3R/1PnB4/1bnn4: set 1...Sxa3 Rxa3#, Sxd4 Rxd4#; 1.Qd7! (Q behind Sb5) Sxa3#, Sxd4#.
+- Flight-giving key, the post-key mates by the key piece cover the flight: Marandyuk, Eretria 2005 (psis-d5310cd9be),
+  B7/2Q5/6K1/3pN3/4k3/1N4P1/2n2P2/2br4: set Se3 f3#, Sd4 Sc5#; 1.Qf7! (2.Qf5#) gives Kxe5; Se3 Qf4#, Sd4 Qxd5#,
+  Kxe5 Qe7#. One knight self-blocks d4 or e3; the set mates need Qc7's guard of e5.
+Obstacles found by hand (no sound result in 28 type3 runs, 401-428):
+- Knight battery Re8/Se6 with a key that gives d5: only Sc7 (and Sf4) cover d5, so every other discharge needs d5
+  blocked by Black; one post-key mate, not two. Discharges also repeat the set mates (Sc5/Sg5 check directly).
+- A queen whose set mates cross d5 (Qg8-c4) always has Qd5: any White guard of d5 protects her there.
+- Pair holders for squares of different lines rarely exist: no knight, bishop or rook guards both c6 and e5.
+Plan: flights as the phase separator in three phases (set Qd7 guards d5 and f5; try 1.Qc8? gives d5, mates cover it;
+key 1.Qd6! gives f5) - a Zagoruiko where the flight alone changes the mates. type3 TRY=, MP=key, FLIGHT=1 (tested).

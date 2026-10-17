@@ -1362,3 +1362,7 @@ no motive layer to mirror.
   threat needing f4 (his d3 before the rotation), board turned, Ka6/a5/b6 patches: bourd-two-rooks-sg6-bench, 1.Sg6! (2.Rf4#)
   Rh4 Sg5#, Rf1 Sd6# (set Bxf5#, Bd5#), sound 8+7. Judged (medium: one 2x2 change); reduced to bourd-two-rooks-sg6 (8+5):
   -wPe5 (superfluous probe pawn), Ka3+wPa2 for Ka6+a5+b6; gate PASS, trim nothing; separate.py: no third pair.
+- 17 Oct: "lets try another type of 2x2 changes": battery key (front knight e6/f3/c6/g6) and flight-giving key (queen
+  key, mates by the queen covering the flight; try/key separated by flights). type3 gained KMP, FLIGHT, TRY, MP=key and a
+  distinct-mates rule (tests). 28 runs (401-428), no sound 2x2; scans found both basic forms published (Cuppini 2003
+  battery, Marandyuk 2005 flight, 12 units). Obstacles and the three-phase flight plan in changed_mates.md.
