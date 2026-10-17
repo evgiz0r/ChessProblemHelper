@@ -80,7 +80,10 @@ def _corrections(ph, board=None):
     still allows the random mate is not a correction (it is a random move with a dual).
     E. Bourd (16 Oct 2026, 1...Sd4/Sc3 2.Rf6# on his bench, 8/2pK4/6R1/5kpP/4Np2/3NRB2/4n3/b5r1): "its not a random
     move". The random mate must come from the piece LEAVING its square; if it does not mate when the piece is simply
-    removed (there both landings cut Ba1-f6), the moves are specific defences, not a random move (needs `board`)."""
+    removed (there both landings cut Ba1-f6), the moves are specific defences, not a random move (needs `board`).
+    E. Bourd (17 Oct 2026, 1.Sd2! Qb5 e4#, Qxb8 e3# on his bench): "the solution random move again is somewhat bad". The
+    departure itself must also defend: if the threat still mates with the piece removed, every move of it defends by its
+    arrival (Qb5 cuts Ra5-f5, Qxb8 takes the f4 guard), so there is no random move even when the shared mate works."""
     out = []
     by_piece = {}
     for v in ph.get('variations', []):
@@ -110,6 +113,8 @@ def _corrections(ph, board=None):
         ruci = next(c.get('uci') for v in rnd for c in v['continuations'] if c['id'] == rid)
         if board is not None and ruci and _departure_mates(board, frm, ruci) is False:
             continue                     # the shared mate needs the arrival squares: specific defences
+        if board is not None and any(_departure_mates(board, frm, t['uci']) for t in ph.get('threat', []) if t.get('uci')):
+            continue                     # the threat mates without the piece: its moves defend by arrival
         out.append({'piece': vs[0]['defence']['san'][0] + frm,
                     'random': {'moves': [v['defence']['san'] for v in rnd], 'mate': rsan,
                                'duals': [v['defence']['san'] for v in rnd if len(v['continuations']) > 1]},

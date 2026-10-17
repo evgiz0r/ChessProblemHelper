@@ -67,7 +67,7 @@
     const nullFen = c.fen().replace(/ b /, ' w ');
     let nc = null;
     try { nc = new Chess(nullFen); } catch (e) { nc = null; }
-    if (nc && !nc.isCheck()) ph.threat = matesIn1(nc).map(m => ({ san: S(m.san), id: mid(m) }));
+    if (nc && !nc.isCheck()) ph.threat = matesIn1(nc).map(m => ({ san: S(m.san), id: mid(m), from: m.from, to: m.to }));
     const threatIds = new Set(ph.threat.map(t => t.id));
     for (const d of legal(c)) {
       c.move(d);
@@ -374,6 +374,9 @@
       const rcont = rnd[0].conts.find(c => c.id === rid);
       const rsan = rcont.san;
       if (departureMates(ph.fen, frm, rcont) === false) continue;   // the shared mate needs the arrivals
+      // E. Bourd (17 Oct 2026, 1.Sd2! Qb5 e4#, Qxb8 e3#): "the solution random move again is somewhat bad" - the
+      // departure must also defend; if the threat still mates with the piece removed, its moves defend by arrival.
+      if ((ph.threat || []).some(t => departureMates(ph.fen, frm, t) === true)) continue;
       out.push({ piece: (vs[0].defence || vs[0].san)[0] + frm,
                  random: { moves: rnd.map(v => v.defence || v.san), mate: rsan, duals: rnd.filter(v => v.conts.length > 1).map(v => v.defence || v.san) },
                  corrections: cor.map(v => ({ move: v.defence || v.san, mates: v.conts.map(c => c.san) })) });

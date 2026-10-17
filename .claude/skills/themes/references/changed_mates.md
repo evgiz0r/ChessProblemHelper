@@ -194,3 +194,7 @@ Pawn battery (Qb1/c2 v Ke4; 2.c3 guards d4, 2.c4 guards d5): claude-pawn-battery
 threat cook every key that leaves the threat: bring the threat piece with the key (unmask_search KSQ/FSQ, THREAT=). Dead ends
 (lessons.jsonl): a queen-move threat (needs a d2 blocker; none works), a rook pinning c2 on the 2nd rank, a knight holder.
 Pure tries planned: 1...Rxa7! when e3 is guarded only by Ba7 and the key piece, 1...Rxf7! when the try blocks c4.
+His finished version (bench mvcop42d): bourd-pawn-battery-queen-sd2, 1B4nK/4p1rp/2B1PP1R/R5p1/2p1N1kp/1qPP2p1/4PpP1/3Qbr2,
+1.Sd2! (2.Bf3#) Qb5 2.e4#, Qxb8 2.e3#; tries 1.Sxg5? Qb5!, 1.Sxg3? Qxb8!. The holder attacks the rear (Qb3 v Qd1), so it is
+never pinned on the line; the key vacates the double-step square; each try lands on a square next to the king protected by
+the guard a thematic defence removes, so that defence also opens a capture flight its mate does not cover.

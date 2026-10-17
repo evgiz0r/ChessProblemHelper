@@ -1386,3 +1386,8 @@ no motive layer to mirror.
   (lessons). unmask_search found 1.Sg1-h3! (2.Sg5#) Rxa7 c3#, Rxf7 c4#: claude-pawn-battery-rook-holder, sound 7+7, gate PASS,
   static key (a scheme). Thematic tries worked out (e3 guarded by Ba7 + key piece; a try blocking c4), not yet built.
   Tools: postsearch EMPTY=, battery_guards knight holder (tested).
+- 17 Oct: his bench sitting mvcop42d (311 steps, 72 solves) finished the pawn battery: bourd-pawn-battery-queen-sd2,
+  1.Sd2! (2.Bf3#) Qb5 e4#, Qxb8 e3#, tries 1.Sxg5? Qb5!, 1.Sxg3? Qxb8! (the tries' added error: a capture flight on a square
+  the thematic guard protected). Holder attacks the rear (Qb3 v Qd1) instead of interposing; key vacates the double-step
+  square. 13+13, dual 1...Qb7. "the solution random move again is somewhat bad": both solvers now require the departure to
+  defend before calling moves random (test).

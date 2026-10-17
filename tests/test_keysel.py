@@ -40,6 +40,18 @@ def test_landings_that_cut_a_line_are_not_a_random_move():
     assert key['corrections'] and key['corrections'][0]['random']['mate'] == 'Qg4#'
 
 
+def test_moves_that_defend_by_arrival_are_not_a_random_move():
+    # E. Bourd (17 Oct 2026, his bench mvcop42d): "the solution random move again is somewhat bad" - after 1.Sd2!
+    # (2.Bf3#) the queen's removal leaves Bf3# mating, so 1...Qb5 (cuts Ra5-f5) and 1...Qxb8 (takes the f4 guard)
+    # are specific defences even though the battery mates work with the queen removed.
+    from chesscomp import Problem
+    from chesscomp.analysis import analyse
+    r = analyse(Problem.from_fen('1B4nK/4p1rp/2B1PP1R/R5p1/2p1N1kp/1qPP2p1/4PpP1/3Qbr2 w - - 0 1', '#2'),
+                include_set=False, time_limit=60)
+    key = next(ph for ph in r['phases'] if ph['type'] == 'key')
+    assert key['first_move']['san'] == 'Sd2' and not key['corrections']
+
+
 def test_a_unit_that_stops_solution_duals_is_not_set_play_only():
     # claude-type3-queen-lines: wSg1 protects f3 for the set mates and, after 1.Ke2!, shuts Qh1# out of 1...Sd3/Sc2
     from chesscomp import Problem

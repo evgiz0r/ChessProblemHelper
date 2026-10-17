@@ -2701,6 +2701,22 @@
     "Sh3"
    ],
    "note": "Sound, gate PASS, trim removes nothing, 7+7. A scheme, not a problem: static key (both mates set), king boxed by three black pawns (e3, f3, e5), cook-stoppers wPb4 (1...Rxa7 Qb4#), bBc6 (c4+), bSh4; random rook moves non-defences with duals. Why keys are hard: the interposed rook is pinned on d3, so after 2.c3+/c4+ Rd3 any threat mate that does not need the key mates; only keys that bring the threat piece survive. Variant with the knight leaving e3 (b7/B2r1B2/5p2/4pP2/4k1K1/4N3/2Ppn1N1/1Q6, 1.Sd1! threat 2.Sf2#) turns the set dual 1...Rxf7 c3#/c4# into 2.c4#; no thematic tries yet."
+  },
+  {
+   "id": "bourd-pawn-battery-queen-sd2",
+   "fen": "1B4nK/4p1rp/2B1PP1R/R5p1/2p1N1kp/1qPP2p1/4PpP1/3Qbr2",
+   "stip": "#2",
+   "author": "E. Bourd, bench sitting mvcop42d (17 Oct 2026), from claude-pawn-battery-rook-holder",
+   "source": "311 steps, 72 solves. Loaded our rook-held scheme, rebuilt it at once with the holder attacking the REAR piece (a black rook on b1 against Qc1, then the queen b3 against Qd1) instead of interposing; note at step 52-53: 'the idea to create refutations, is so that the thematic tries will have an additional error which will not allow the mate ... i want those squares to be f3 and f5'; step 83: 'the tries are there sxf5 sxf3, but the whole threat mechanism is rough'; two shifts right (king f4, then g4); sound at step 303. His comment: 'its pretty complicated addition to this specific scheme'.",
+   "themes": [
+    "1.Sd2! (2.Bf3#) Qb5 (cuts Ra5-f5) 2.e4#, Qxb8 (takes Bb8's f4 guard) 2.e3#: the black queen holds the pawn battery Qd1/e2 by attacking the rear (b3-c2-d1); each thematic move leaves that diagonal and unguards one square, and the single or double step re-guards it",
+    "the key vacates e4 for the double step and opens Bc6-f3 for the threat (set: 1...Qxb8 2.e3#, the double step impossible)",
+    "thematic tries by the key knight, each refuted by one thematic defence: 1.Sxg5? Qb5! (the cut also unprotects the knight: Kxg5, which e4 does not cover), 1.Sxg3? Qxb8! (Bb8 protected g3: Kxg3, which e3 does not cover)"
+   ],
+   "keys": [
+    "Sd2"
+   ],
+   "note": "Sound (Python solver), gate PASS, trim removes nothing. Flaws: 1...Qb7 2.e3#/e4# (non-thematic defence: the queen behind Bc6 guards f3; b7 lies on the Qxb8 path, so no blocker can stop it alone); 26 units, 13 pawns; cook-stoppers wPc3 (Sc3), wPd3 (Qd4), wPe6 (Bd7+), wPf6 (Sf6+), wKh8; the tries capture pawns (minor). The bench solver called 1...Qb5 'Q~' (random); fixed 17 Oct 2026 in both solvers."
   }
  ]
 }
