@@ -1405,3 +1405,5 @@ no motive layer to mirror.
   (claude-bishop-knight-adjacent-postkey, holder Sf5 to g7, Sd4 Se8#, Sxe3 Sh5#, threat Sc6#); no key yet (lessons).
 - 17 Oct: his bench mvcxwk0k (adjacent knight, Bc3/Sd4 v Ke5, holder Sd5 attacking the rear): "try to finish". Runs 941-974 and
   a one-unit addition sweep: draft 8/1p4K1/1R1Pp3/N2nkP2/2BNP3/2B1PP1b/8/8 has keys Be2 and Bd3 (Bf1 kills the other retreats).
+- 17 Oct: "try to finish whats in the bench" (he went ahead to compare): his 1.Bd3! version, sound; trimmed to 21 units
+  (bourd-bishop-knight-adjacent-bd3, Ka7, -pe7 -ph7); sweeps found no single unit replacing two cook-stoppers.

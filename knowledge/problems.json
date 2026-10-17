@@ -2733,6 +2733,22 @@
     "Bh7"
    ],
    "note": "Sound (Python solver), legal, 12+4. Flaws: set play identical (1...Sb6 2.Se8#, 1...Sxe3 2.Sh5# set; the content is the try pair); 1...Sf4 2.Se8#/Sh5# (non-thematic defence: the knight guards g6); wKh2 only stops cooks. Solver-only try 1.Ra5? Kd6! is not part of the solution."
+  },
+  {
+   "id": "bourd-bishop-knight-adjacent-bd3",
+   "fen": "8/K2p4/PR1PPp2/N2nkP2/1pBNP2r/1P2PP2/6p1/B7",
+   "stip": "#2",
+   "author": "E. Bourd, bench mvcxwk0k (17 Oct 2026); trimmed by Claude (-bPe7, -bPh7 with Kh8-a7)",
+   "source": "His bench position 7K/3pp2p/PR1PPp2/N2nkP2/1pBNP2r/1P2PP2/6p1/B7 (23 units, sound at step 265). Trim: bPe7 had no job; with bPh7 gone the White king can stand on a7, b7 or d2 (bPh7 only shielded Kh8 from the rook). Sweeps: no single unit replaces any two of Pa6/Pb3/pg2, nor rh4+pg2; trim removes nothing more.",
+   "themes": [
+    "1.Bd3! (2.Sc4#) Sxb6 (d6 loses Rb6's protection) 2.Sb5#, Sxe3 (takes the f4 guard) 2.Se2#: the black knight d5 holds the battery Ba1/Sd4 (adjacent to the king) by reaching c3; each defence also guards c4 and leaves the line",
+    "thematic tries by the key bishop, each blocking one mating square of the knight: 1.Bb5? Sxb6!, 1.Be2? Sxe3!; also 1.Bxd5? Rxe4!",
+    "wPe6 plugs the e6 discharge so 1...Sxe3 has only 2.Se2#; wPf3/wPf5/bPd7 plug the other knight checks"
+   ],
+   "keys": [
+    "Bd3"
+   ],
+   "note": "Sound, legal, gate PASS, 21 units (12 pawns). Flaws: static key (both mates set); cook-stoppers wPa6 (Ba6), wPb3 (Bb3/Ba2), bPg2 (Bf1), bRh4 (Bxd5), bPb4 (protects the holder on c3), wPf3 (double check Sf3); random-move duals among non-defences."
   }
  ]
 }
