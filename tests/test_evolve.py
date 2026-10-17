@@ -136,3 +136,17 @@ def test_bristol_mode_hits_bourd_prototype_with_thematic_tries():
 def test_bristol_mode_refuses_a_non_bristol_threat():
     # 1.Bb6? also threatens 2.Qg3#, but the queen does not follow the bishop's line
     assert _bristol('c7b6').startswith('False')
+
+
+def _tries(key, n):
+    env = dict(os.environ, KEY=key, TRIES=str(n), NVAR='2', DEFS='', PYTHONPATH=ROOT)
+    r = subprocess.run([sys.executable, '-c', BRISTOL_PROBE], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
+    assert r.returncode == 0, r.stderr
+    return r.stdout.strip()
+
+
+def test_tries_mode_counts_answered_refutations_without_bristol():
+    # daily No. 12: TRIES=N scores the key piece's tries on their own (Bd8? Bd6!, Bb6? d6!), whatever the threat's line
+    out = _tries('c7h2', 2)
+    assert out.startswith('True') and 'tries=Bd6/d6' in out
+    assert _tries('c7h2', 3).startswith('False')

@@ -178,9 +178,25 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For a Bristol again, aim for every stop of the clearing piece a try with its own
   refutation, and a box whose units also mate. The try table is worth a kit tool (see Proposals).
 
+## 2026-10-17, No. 12: Corner key
+- Result: 8/8/K2p4/8/N2k1P1p/1P3B1R/2P4R/3Nb3 (9+4), 1.Bh1! (2.Rd3#) Bg3 2.Rd2#; tries 1.Bg2? Bg3! (g2 shuts Rh2) and
+  1.Bc6? d5! (cut behind d5): a line selection into the corner, every other square of the diagonal with its own error.
+  Gate: PASS with warnings (static key, king-refuted 1.Bd5?/Be4?, random duals after Bf2/Bd2, thin play), all named in the
+  post. Light. Mentor issues #7-#12 had no answers; nothing to act on.
+- Setup: the local `main` had diverged again (origin/main was force-updated); worked on `daily-run` from origin/main.
+- Minutes (container clock 23:58-01:15): setup and reading 5, kit change (TRIES mode + test) 5, searches 50 (evolve 12 jobs,
+  a scratch random fill 5 jobs, a scratch hill climb 10 jobs, alongside hand work), hand composing 15, post, trytable
+  tool and records 25. About 60 solves.
+- What wasted time: blind searches around bare cores (no key without a diagram flight; a corner queen takes the edge
+  file's flights); a scratch hill climb without a promoted-force check (three rooks, two light bishops) and with capture
+  keys onto an occupied corner; a `pkill -f` that killed its own waiting shell again.
+- What helped: reading the archive's corner keys first (Pachl, Chepizhny, Ahues: line selections); boxing the king
+  before placing the line pieces; the try table after every one-unit change (knight f1 -> bishop e1 made the try pure).
+- Next run: theme from `next-theme`. For a line selection, write the error table per square first and give each error a
+  different black unit; to lift No. 12, a second variation in the key phase (1...Bf2 cannot defend 2.Rd3#, so the
+  c3#/Rd2# dual avoidance needs another threat).
+
 ## Proposals
-- compose.trytable: the scratch try table of daily No. 10 (every move of one White unit: threat, refutations,
-  non-threat mates; pure python-chess, under a second) as a kit tool with a test.
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
 - A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct, direct self-pin 13 Oct), so those themes can be claimed only when
@@ -189,6 +205,8 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - A theme reference for Novotny, Le Grand and Rudenko (none yet; Grimshaw done 11 Oct).
 - critique 'black piece role' (and the gate warning) calls a unit 'not needed' when the variations survive its removal, but
   ignores a new threat: bPh6 in daily No. 6 stops 2.Qg5# as a second threat. Compare the threat set too before saying 'not needed'.
+- A fast pre-filter for evolve: python-chess alone (mate-in-one tables, early exit at the second refutation) ran about
+  ten times faster than the solver in daily No. 12's scratch hill.py; score with it, confirm hits with the solver.
 - evolve: FLIGHT=1, a score for a flight-giving key in the diagram (no flight before, given flight mated, two more
   distinct mates); the scratch scorer of 9 October is the model.
 - compose.oneunit: every single-unit addition or removal around a diagram, kept when one named key and the named mates

@@ -126,7 +126,8 @@ a second self-block correction because every step was checked at its lightest fo
 because it needed every flight covered from the start: nothing could be added and nothing could move.
 
 ## Tempo
-One solve per change; never sixteen minutes of placing without a solve. If four or five posts of the
+One solve per change; never sixteen minutes of placing without a solve. Between solves, `python -m chesscomp.compose.trytable FEN [SQUARE ...]`
+shows every move of a unit (threat, refutations, mates) in a second: use it for each one-unit change, then the solver. If four or five posts of the
 key piece give only "double threat", "holes" or "no threat", the geometry has no line to exploit:
 clear the board and rebuild from the idea. Rotation and shifting never supply a reason, but they keep the theme and
 change the pawns and the edges: see "Shifts and rotations" below.
