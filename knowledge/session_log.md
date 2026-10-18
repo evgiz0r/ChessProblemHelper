@@ -1473,3 +1473,4 @@ no motive layer to mirror.
   Capture tries stay hidden but still decide which defences are thematic.
 - 18 Oct: first sound rook-bishop problem (claude-rook-bishop-battery-kg8, then -kg8-rd8, gate PASS): 1.Kg8! (2.f8=S#) Bxb5 2.Bc5#, Bxd7 2.Bd4#; tries 1.Ke8? Bxd7+!, 1.Kg7? Bd4+!. Cook-stoppers bBb6, bSb3. Next: a second layer (changed mates by switching which side of the battery is open).
 - 18 Oct: E. Bourd turned the rook-bishop scheme into a half-battery problem on the bench (bourd-rook-bishop-halfbattery-bg5, gate PASS): 1.Bg5! (2.Be7#) Bxa5 2.Bb5#, Bxc7 2.Bc4#, Sc6 2.Sc4#, dxe6 2.Sb5#; tries 1.Bb5? Bxc7!, 1.Bc4? Bxa5! (the refutation takes the non-threatening knight).
+- 18 Oct: rook-knight battery (next in his series): claude-rook-knight-battery-d7, gate PASS, 1.d7! (2.d8=S#) Sxf6 2.Sc8#, Sxf4 2.Sc4#; tries 1.f7? Sxf4!, 1.Ra7? Sc7!. Scheme found by setplay_search (holder d5, NORECAP); setplay_search fixed (full-board crash) and given NORECAP, with tests.

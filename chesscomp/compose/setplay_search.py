@@ -8,6 +8,8 @@ after the scheme works (a key and a threat the defences parry), so nothing here 
 WANT maps a defence (python-chess SAN, N for knights) to a mate pattern (fnmatch on uci, "c3*" = any discharge).
 Env EMPTY=d4: squares that must stay empty (the battery line). Env NOFLIGHT=0 allows king moves in the diagram.
 Env NODOUBLE=1: a double-check mate does not count as the wanted mate (E. Bourd: watch out for double-check mates).
+Env NORECAP=1 (with HOLDER): a mate that captures the holder on its arrival square does not count (E. Bourd, 18 Oct
+2026: "1...Sxc5 2.Bxc5# is bad, need a non recapturing thematic move").
 Env HOLDER=c2: WANT is then a list of mate patterns ('["e3c5","e3g5"]') and any moves of the unit on c2 may supply them:
 for each pattern some move of the holder must be answered by that mate only (distinct moves), so the search chooses
 which defences carry the scheme (18 Oct 2026, rook-bishop battery).
@@ -19,6 +21,7 @@ EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') i
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'
 NODOUBLE = os.environ.get('NODOUBLE', '0') == '1'
 HOLDER = chess.parse_square(os.environ['HOLDER']) if os.environ.get('HOLDER') else None
+NORECAP = os.environ.get('NORECAP', '0') == '1'   # a wanted mate may not land on the holder's arrival square
 CSQ, WANT = {}, {}
 
 
@@ -61,7 +64,8 @@ def score(fen):
         for i, want in enumerate(WANT):
             key = f'{i}:{want}'
             cands = [u for u, ms in per.items() if u not in used and len(ms) == 1 and fnmatch.fnmatch(ms[0].rstrip('+'), want)
-                     and not (NODOUBLE and ms[0].endswith('+')) and ms[0] not in mates]
+                     and not (NODOUBLE and ms[0].endswith('+')) and ms[0] not in mates
+                     and not (NORECAP and ms[0][2:4] == u[2:4])]
             near = [u for u, ms in per.items() if u not in used and any(fnmatch.fnmatch(m.rstrip('+'), want) for m in ms)]
             if cands:
                 s += 12; used.add(cands[0]); mates.add(per[cands[0]][0]); got[key] = cands[0] + '->' + per[cands[0]][0]
@@ -102,6 +106,8 @@ def mutate(fen):
     b = chess.Board(fen + ' b - - 0 1')
     free = [s for s in chess.SquareSet(b.occupied) if s not in CSQ]
     empty = [s for s in chess.SQUARES if not b.piece_at(s) and s not in EMPTY]
+    if not empty:                                      # a walk from an invalid seed can fill the board
+        return fen
     op = random.random()
     if op < .35:
         sym = random.choice('NBRQPPPpppnbr'); sq = random.choice(empty)
@@ -133,7 +139,7 @@ def main(argv=None):
             cur, cs = cand, sc
             if sc > 50 and all(f != cand for _, f, _ in best):
                 best.append((sc, cand, info)); best.sort(reverse=True); best[:] = best[:12]
-        if n % 400 == 0 and cs < -20:
+        if (n % 400 == 0 and cs < -20) or (n % 20 == 0 and cs < -1e8):   # invalid current: back to the seed
             cur, cs = a[1], score(a[1])[0]                 # restart from the seed when lost
     for sc, f, info in best:
         print(f'TOP {sc:.1f} {f} {info}')

@@ -24,3 +24,26 @@ def test_holder_mode_lists_two_different_discharges():
         assert 'e3d4' in info and 'e3f4' in info, info
     finally:
         sp.HOLDER = None
+
+
+def test_mutate_on_a_full_board_returns_the_position():
+    """18 Oct 2026: from an invalid seed (a white knight giving check) the walk accepted every candidate until the
+    board was full and mutate crashed on an empty choice."""
+    from chesscomp.compose import setplay_search as S
+    full = 'pRKPbBrp/NPPpPpbN/pRNpkPPb/PBPpQPnP/PRQRNBrQ/BRnrPpBb/PPBQrprP/rbQNRPpR'
+    assert S.mutate(full) == full
+
+
+def test_norecap_rejects_a_mate_on_the_holder_square():
+    """Holder rook c7: 1...Rc4 2.Sxc4# and 1...Rc8 2.Sxc8# capture the holder; with NORECAP they do not count."""
+    import importlib, os
+    from chesscomp.compose import setplay_search as S
+    fen = '8/2r5/RN2kPK1/4p3/8/8/3R4/8'
+    os.environ['HOLDER'] = 'c7'; os.environ['NORECAP'] = '0'
+    importlib.reload(S); S.WANT = ['b6c4', 'b6c8']
+    assert S.score(fen)[0] > 100
+    os.environ['NORECAP'] = '1'
+    importlib.reload(S); S.WANT = ['b6c4', 'b6c8']
+    assert S.score(fen)[0] < 100
+    del os.environ['HOLDER'], os.environ['NORECAP']
+    importlib.reload(S)

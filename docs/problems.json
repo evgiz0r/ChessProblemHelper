@@ -2974,6 +2974,24 @@
    ],
    "cooked": false,
    "note": "Gate PASS. In the tries the non-refuting capture is answered by any of seven Bd2 discharges (try duals). bBg6 stops 2.Se8# (else dxe6 and the threat of 1.Bc4? double). Set: Sc6 2.Sc4#, dxe6 2.Sb5#; the thematic captures are unprovided in the set. 16 units, 5 pawns."
+  },
+  {
+   "id": "claude-rook-knight-battery-d7",
+   "fen": "8/8/RN1PkPP1/3n1pP1/5B2/1K2P3/3R4/8",
+   "stip": "#2",
+   "author": "Claude, battery series (rook-knight battery, knight three squares from the king), 18 Oct 2026",
+   "source": "set-play scheme found by setplay_search HOLDER=d5 NORECAP=1 (run g2d5: 6r1/3P4/RN2kPP1/3n1pP1/5B2/1K6/3R1p2/8); threat 2.d8=S# and the unmasking key d6-d7 by hand; Pe3 against 1.Re2+ and 1.Ra7",
+   "themes": [
+    "1.d7! (2.d8=S#) Sxf6 (the e7 guard) 2.Sc8#, Sxf4 (the e5 guard) 2.Sc4#: the black knight d5 holds the battery Ra6/Sb6 by interposing on b6 and gives it up with each capture; quiet mates on one side of the king",
+    "the key unmasks the battery (the pawn leaves the line d6) and threatens a minor promotion",
+    "after 1...Sxf6 the rival 2.Sd5+ closes Rd2 from the pawn d7 (2...Kxd7): dual avoidance by the landing square",
+    "tries 1.f7? (2.f8=S#) Sxf4!, 1.Ra7? (zugzwang; Sxf6/Sxf4 2.Re7#) Sc7!: both thematic mates change from try to key"
+   ],
+   "keys": [
+    "d7"
+   ],
+   "cooked": false,
+   "note": "Gate PASS. Flaws: Pe3 only stops 1.Re2+ and 1.Ra7; Kb3 placed for soundness; the holder's random moves also allow 2.Rd6#; scheme nearly symmetric about the 6th rank; 6 pawns."
   }
  ]
 }
