@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-18",
- "note": "E. Bourd's #2 problems (his own or joint with Claude) composed during our sessions that could go to magazines as originals. Built from knowledge/problems.json: every entry re-solved and passed through tools/blog.py check on 18 Oct 2026 (sound, legal, no fatal flaw, no identical position in Problemesis or his PDB). The anticipation check is identical-position only: search yacpdb/PDB before sending. Left out: schemes, sketches, post-key positions, bench demonstrations he called schemes, illegal or promoted-force positions, and versions superseded by a later one. 'fen' overrides the stored FEN where a verified trim exists. Tiers: 1 send first (most content for its flaws), 2 sendable, 3 thin or a clear flaw, single = one phase without tries or changes (E. Bourd, 18 Oct 2026: not for publication unless very complicated or pretty), gate = fails the gate now (needs a fix or his override), public = already shown on the blog. 'tries' names thematic tries the notes describe only in words.",
+ "note": "E. Bourd's #2 problems (his own or joint with Claude) composed during our sessions that could go to magazines as originals. Built from knowledge/problems.json: every entry re-solved and passed through tools/blog.py check on 18 Oct 2026 (sound, legal, no fatal flaw, no identical position in Problemesis or his PDB). The anticipation check is identical-position only: search yacpdb/PDB before sending. Left out: schemes, sketches, post-key positions, bench demonstrations he called schemes, illegal or promoted-force positions, and versions superseded by a later one. 'fen' overrides the stored FEN where a verified trim exists. Tiers: 1 send first (most content for its flaws), 2 sendable, 3 thin or a clear flaw, single = one phase without tries or changes (E. Bourd, 18 Oct 2026: not for publication unless very complicated or pretty), gate = fails the gate now (needs a fix or his override), public = already shown on the blog. 'tries' names thematic tries the notes describe only in words. 'thematic' fixes the thematic defences and their order where the automatic choice (defences whose mate changes or that refute a try) is wrong; 'Sf5~' means the random moves of that unit.",
  "tiers": {
   "1": "Send first",
   "2": "Sendable",
@@ -13,7 +13,13 @@
   {
    "id": "bourd-changed-mates-4",
    "tier": "1",
-   "verdict": "Three changed mates and a changed threat between 1.e6? and 1.Qd2!, two units self-blocking on d4. Flaws: the d4 flight in the diagram (provided), 21 units."
+   "verdict": "Three changed mates and a changed threat between 1.e6? and 1.Qd2!, two units self-blocking on d4. Flaws: the d4 flight in the diagram (provided), 21 units.",
+   "thematic": [
+    "Rd4",
+    "Sd4",
+    "Re6",
+    "Rxe6"
+   ]
   },
   {
    "id": "bourd-two-captures-three-phase",
@@ -45,7 +51,12 @@
   {
    "id": "bourd-e4-selfpins-2",
    "tier": "1",
-   "verdict": "Set self-pins on e4 (pin-mates Rd7#, Rd1#) change after the queen sacrifice 1.Qe6!; the knight now mates twice."
+   "verdict": "Set self-pins on e4 (pin-mates Rd7#, Rd1#) change after the queen sacrifice 1.Qe6!; the knight now mates twice.",
+   "thematic": [
+    "Sxe4",
+    "Qxe4",
+    "Sxe6"
+   ]
   },
   {
    "id": "bourd-halfpin-correction-bc2",
@@ -175,7 +186,12 @@
   {
    "id": "bourd-knight-ambush-correction",
    "tier": "2",
-   "verdict": "Knight correction with a queen ambush behind the knight; corrections close a second line."
+   "verdict": "Knight correction with a queen ambush behind the knight; corrections close a second line.",
+   "thematic": [
+    "Sf5~",
+    "Sd6",
+    "Se3"
+   ]
   },
   {
    "id": "bourd-b5-three-blocks-rg6",
@@ -196,7 +212,14 @@
   {
    "id": "bourd-bench-five-defences-re7",
    "tier": "2",
-   "verdict": "Five defences, five different mates, two key-piece tries. Flaws: 20 units (8 pawns), wKb8 in no mate."
+   "verdict": "Five defences, five different mates, two key-piece tries. Flaws: 20 units (8 pawns), wKb8 in no mate.",
+   "thematic": [
+    "Sc7",
+    "Bg8",
+    "Ra6",
+    "Sf5",
+    "Qb6"
+   ]
   },
   {
    "id": "bourd-bench-two-rooks-c7-bf4",
@@ -216,7 +239,11 @@
   {
    "id": "bourd-two-bishops-sg6",
    "tier": "2",
-   "verdict": "Two bishops cut the e-file far from the king, which opens Kxe5; try 1.Sh7? Be2!."
+   "verdict": "Two bishops cut the e-file far from the king, which opens Kxe5; try 1.Sh7? Be2!.",
+   "thematic": [
+    "Be2",
+    "Be3"
+   ]
   },
   {
    "id": "bourd-bench-sb-pin-bf6",
@@ -226,7 +253,11 @@
   {
    "id": "bourd-bishop-rook-battery-kc5-qg1",
    "tier": "2",
-   "verdict": "White correction on a bishop-rook battery with anticipatory closure (his Qg1 repair of the promoted-force version). Flaws: the queen g1 does a bishop's job, 1...Sxe5 refutes two corrections, 19 units with a heavy black force."
+   "verdict": "White correction on a bishop-rook battery with anticipatory closure (his Qg1 repair of the promoted-force version). Flaws: the queen g1 does a bishop's job, 1...Sxe5 refutes two corrections, 19 units with a heavy black force.",
+   "thematic": [
+    "Sxf6",
+    "Sxe5"
+   ]
   },
   {
    "id": "bourd-bishop-knight-battery-bh7",
@@ -256,7 +287,11 @@
   {
    "id": "bourd-bishop-rook-battery-ke2",
    "tier": "single",
-   "verdict": "King key that unmasks a bishop-rook battery. Flaws: tries are only checks, 1...Sxc7 2.Rf5# already set."
+   "verdict": "King key that unmasks a bishop-rook battery. Flaws: tries are only checks, 1...Sxc7 2.Rf5# already set.",
+   "thematic": [
+    "Sxc7",
+    "Sxd6"
+   ]
   },
   {
    "id": "bourd-changed-mates-3",
@@ -271,7 +306,12 @@
   {
    "id": "bourd-knight-double-correction",
    "tier": "gate",
-   "verdict": "Gate: key rook e8 counted out of play. Double knight correction plus white correction; your override may stand."
+   "verdict": "Gate: key rook e8 counted out of play. Double knight correction plus white correction; your override may stand.",
+   "thematic": [
+    "Sb5~",
+    "Sd4",
+    "Sc3"
+   ]
   },
   {
    "id": "bourd-grimshaw-d3-changed-set",
@@ -281,7 +321,12 @@
   {
    "id": "bourd-correction-two-changes",
    "tier": "gate",
-   "verdict": "Gate: simple block (random knight moves). Two changed mates on the corrections and a flight exchange; the newer gate rule may be too strict here."
+   "verdict": "Gate: simple block (random knight moves). Two changed mates on the corrections and a flight exchange; the newer gate rule may be too strict here.",
+   "thematic": [
+    "Sf5~",
+    "Sxd6",
+    "Sd4"
+   ]
   },
   {
    "id": "bourd-novotny-b4-bc5",

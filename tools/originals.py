@@ -27,27 +27,41 @@ def gate(fen):
         return "TIMEOUT"
 
 
-def _play(ph, only=None):
-    """'1...A/B 2.X#, 1...C 2.Y#' for the variations worth printing: not a threat repeat (king moves kept),
-    and, when `only` is given, a defence in it."""
-    groups = {}
-    for v in ph["variations"]:
-        if v["refutes"] or not v["continuations"]:
-            continue
-        d = v["defence"]["san"]
-        if v["threat_repeat"] and not d.startswith("K"):
-            continue
-        if only is not None and d.rstrip("+#") not in only:
-            continue
-        groups.setdefault("/".join(c["san"] for c in v["continuations"]), []).append(d)
-    def name(ds):   # a random move of one piece: 1...S~
-        return f"{ds[0][0]}~" if len(ds) >= 4 and ds[0][0] in "QRBSK" and all(d[0] == ds[0][0] for d in ds) else "/".join(ds)
-    return ", ".join(f"1...{name(ds)} 2.{m}" for m, ds in groups.items())
+def _strip(san):
+    return san.rstrip("+#")
 
 
 def _mates(ph):
-    return {v["defence"]["san"].rstrip("+#"): set(c["san"] for c in v["continuations"]) for v in ph["variations"]
-            if not v["refutes"] and v["continuations"] and not v["threat_repeat"]}
+    """defence -> mate(s) for every defence answered by a mate other than the threat (king moves kept)."""
+    out = {}
+    for v in ph["variations"]:
+        d = v["defence"]["san"]
+        if v["refutes"] or not v["continuations"] or (v["threat_repeat"] and not d.startswith("K")):
+            continue
+        out[_strip(d)] = (d, "/".join(c["san"] for c in v["continuations"]), v["defence"]["uci"][:2])
+    return out
+
+
+def _vars(m, order, merge=False, randoms=()):
+    """'1...A 2.X#, 1...B/C 2.Y#' in the given order; neighbours with one mate share it (any two with one mate when
+    `merge`, for the by-play); 1...S~ for a random move."""
+    groups = []
+    for d in order:
+        if d not in m:
+            continue
+        san, mate, _ = m[d]
+        same = [g for g in groups if g[1] == mate] if merge else groups[-1:] if groups and groups[-1][1] == mate else []
+        if same:
+            same[0][0].append(san)
+        else:
+            groups.append(([san], mate))
+    def name(ds):   # 1...S~ (the by-play names the square: 1...Sb4~)
+        keys = [_strip(x) for x in ds]
+        named = len(ds) >= 2 and all(k in randoms for k in keys)
+        if named or (len(ds) >= 4 and ds[0][0] in "QRBSK" and all(x[0] == ds[0][0] for x in ds)):
+            return f"{ds[0][0]}{m[keys[0]][2] if merge else ''}~"
+        return "/".join(ds)
+    return ", ".join(f"1...{name(ds)} 2.{mate}" for ds, mate in groups)
 
 
 def _head(ph):
@@ -58,37 +72,94 @@ def _head(ph):
     return head + (" (zugzwang)" if ph.get("zugzwang") else "")
 
 
-def solution(fen, note, extra_tries=()):
-    """Album-style solution: set play only for defences that recur after a first move, only the tries the
-    composer's note names (1.X?), the key with its threat and grouped variations."""
+def solution(fen, note, extra_tries=(), thematic=None):
+    """A publication solution: set play, the tries the composer names (1.X? in the notes, or `extra_tries`), the key;
+    the thematic defences in one order in every phase, by-play in brackets after the key's thematic play, and a
+    last line saying which mates change and which transfer. Thematic = key defences that also have a mate in the
+    set play or a try, or that refute a try (or the `thematic` list); with none, all of the key's play."""
     from chesscomp.analysis import analyse
     from chesscomp.core import Problem
     res = analyse(Problem.from_fen(fen + " w - - 0 1", "#2"), max_refutations=1, include_tries=True,
                   include_set=True, time_limit=60)
     phases = res.get("phases", [])
     def named(p):
-        san = p["first_move"]["san"].rstrip("+#")
+        san = _strip(p["first_move"]["san"])
         return san in extra_tries or re.search(r"(?<![A-Za-z0-9])" + re.escape(san) + r"\?", note)
     tries = [p for p in phases if p["type"] == "try" and named(p)]
-    keys = [p for p in phases if p["type"] == "key"]
-    shown = {v["defence"]["san"].rstrip("+#") for p in tries + keys for v in p["variations"]
-             if not v["refutes"] and v["continuations"] and (not v["threat_repeat"] or v["defence"]["san"].startswith("K"))}
-    lines = []
+    key = next((p for p in phases if p["type"] == "key"), None)
     setp = next((p for p in phases if p["type"] == "set"), None)
+    km = _mates(key) if key else {}
+    others = [(f"set", _mates(setp))] if setp else []
+    others += [(f"1.{t['first_move']['san']}?", _mates(t)) for t in tries]
+    refuters = {_strip(r["san"]) for t in tries for r in t["refutations"]}
+    def overlap(a, b):   # one mate shared (a dual counts as the same mate)
+        return bool(set(a.split("/")) & set(b.split("/")))
+    changing = {d for d in km for _, m in others if d in m and not overlap(m[d][1], km[d][1])}
+    if thematic:   # the composer's order; 'Sf5~' = every move of the f5 unit not named on its own
+        allm = [km] + [m for _, m in others]
+        them, randoms = [], set()
+        for d in thematic:
+            if d.endswith("~"):
+                sq = d[1:-1]
+                for m in allm:
+                    new = [x for x, v in m.items() if v[2] == sq and x not in thematic and x not in them]
+                    them += new
+                    randoms.update(new)
+            else:
+                them.append(d)
+    else:
+        randoms = set()
+        them = [d for d in km if not d.startswith("K") and (d in refuters or d in changing)]
+        if not them:
+            them = [d for d in km if not d.startswith("K")] or list(km)
+    lines = []
     if setp:
-        s = _play(setp, None if keys and keys[0].get("zugzwang") else shown)
+        s = _vars(_mates(setp), them, randoms=randoms)
         if s:
             lines.append(("Set", s))
     for t in tries:
-        play = _play(t)
+        play = _vars(_mates(t), them, randoms=randoms)
         refs = ", ".join(f"1...{r['san']}!" for r in t["refutations"])
         lines.append(("Try", f"{_head(t)} {play + ', ' if play else ''}but {refs}"))
-    for k in keys:
-        lines.append(("Key", f"{_head(k)} {_play(k)}".strip()))
+    if key:
+        byplay = _vars(km, [d for d in km if d not in them], merge=True)
+        play = _vars(km, them, randoms=randoms)
+        lines.append(("Key", f"{_head(key)} {play}" + (f" ({byplay})" if byplay else "")))
+    # which mates change, which transfer (thematic defences only; the key's mate last)
+    changes, transfers = [], []
+    for d in them:
+        if d not in km:
+            continue
+        seq = []                                         # [(labels, mate)] of the phases where the mate differs
+        for lab, m in others:
+            twin = next((x for x in m if x != d and x.replace("x", "") == d.replace("x", "")), None)
+            if d not in m and twin in them:              # 1...Rxe6 in a try, 1...Re6 after the key
+                m = {**m, d: m[twin]}
+            if d in m and not overlap(m[d][1], km[d][1]):
+                if seq and seq[-1][1] == m[d][1]:
+                    seq[-1][0].append(lab)
+                else:
+                    seq.append(([lab], m[d][1]))
+        if seq:
+            text = " → ".join(f"2.{mt} ({', '.join(labs)})" for labs, mt in seq) + f" → 2.{km[d][1]}"
+            same = [c for c in changes if c[1] == text]
+            if same:
+                same[0][0].append(km[d][0])
+            else:
+                changes.append(([km[d][0]], text))
+        for lab, m in others:                            # the key's mate after d stood after another defence d2
+            for d2 in them:
+                if (d2 != d and d2 in m and overlap(m[d2][1], km[d][1]) and not (d in m and overlap(m[d][1], km[d][1]))
+                        and not (d2 in km and overlap(km[d2][1], km[d][1]))):
+                    entry = f"2.{km[d][1]}: 1...{m[d2][0]} ({lab}) → 1...{km[d][0]}"
+                    if entry not in transfers:
+                        transfers.append(entry)
+    if changes:
+        lines.append(("Changed", "; ".join(f"1...{'/'.join(ds)} {text}" for ds, text in changes)))
+    if transfers:
+        lines.append(("Transferred", "; ".join(transfers)))
     # E. Bourd, 18 Oct 2026: a single phase without tries or changes does not pass unless very complicated or pretty
-    km = _mates(keys[0]) if keys else {}
-    changed = {d for p in ([setp] if setp else []) + tries for d, m in _mates(p).items() if d in km and m != km[d]}
-    return lines, {"tries": len(tries), "changes": len(changed)}
+    return lines, {"tries": len(tries), "changes": len(changes)}
 
 
 def counts(fen):
@@ -106,7 +177,7 @@ def card(n, entry, rec, report):
     passed = "GATE: PASS" in report
     flags = [l for l in report.splitlines() if l.startswith(("FATAL", "warn", "plus"))]
     trim = '<span class="chip">trimmed</span>' if entry.get("fen") else ""
-    lines, content = solution(fen, rec['note'] + ' ' + ' '.join(rec['themes']), entry.get('tries', ()))
+    lines, content = solution(fen, rec['note'] + ' ' + ' '.join(rec['themes']), entry.get('tries', ()), entry.get('thematic'))
     phases = f'<span class="chip">{content["tries"]} tries · {content["changes"]} changed</span>'
     return f"""
 <article class="card" id="{rec['id']}">
