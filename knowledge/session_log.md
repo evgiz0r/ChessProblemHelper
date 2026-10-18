@@ -1420,3 +1420,6 @@ no motive layer to mirror.
 - 18 Oct: bench fix: no threat after a checking first move (analysis.js phaseAfter and dualAvoidance; Python already right);
   bench republished. His bench mvdxk1kq finished the bishop-rook battery: bourd-bishop-rook-battery-ke2, 1.Ke2! (2.c3#)
   Sxc7 Rf5#, Sxd6 Rf4#, Bc4+ Rxc4#; trimmed -bPg5 to 16 units; sound, legal.
+- 18 Oct: his bench mve0b8u3 (274 steps): Kc5 version, 1.Bb7! (2.Bb6#) with the thematic try set Bd5? Sxf6!, Be4?/Bf3? Sxe5!
+  (bourd-bishop-rook-battery-kc5-bb7); fatal promoted force (Ba5+Bg1 dark), structural (lesson). Repairs tried (Rc6 threat,
+  Pa5, Qa5, unmask_search: Sb3 threat with a b6 flight) failed.

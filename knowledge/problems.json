@@ -2843,6 +2843,22 @@
     "Ke2"
    ],
    "note": "Sound, legal, 16 units (9+7). Flaws: tries are only checks (1.Rc4+? Bxc4!, 1.Sf5+? gxf5!, 1.Sb5+? axb5!, 1.c3+? Kd3!); wPe6 only stops cooks (Sf5+, Sb5+, Sxe8); 1...Sxc7 2.Rf5# already set; 1...Bc4+ 2.Rxc4# captures the defender; bRh8, bPa6, bPg6, bPh4 are cook-stoppers or try refutations."
+  },
+  {
+   "id": "bourd-bishop-rook-battery-kc5-bb7",
+   "fen": "K3b3/3P4/2B2R2/B1k1NP2/1nP3n1/b1P3pq/5R1P/6B1",
+   "stip": "#2",
+   "author": "E. Bourd, bench mve0b8u3 (18 Oct 2026)",
+   "source": "From his 1.Ke2! problem (bourd-bishop-rook-battery-ke2) with the black king one square further (Kc5, rook three squares away: e3, d4 between), 274 steps, about 70 solves.",
+   "themes": [
+    "1.Bb7! (2.Bb6#: the key unmasks Rf6 along the 6th rank to protect b6) Sxf6 (d6 loses Rf6) 2.Rd2#, Sxe5 (c4 loses Se5) 2.Rf4#; by-play Sc6/Sd5 2.Rxc6#/Rc6#",
+    "the black knight g4 holds the battery Bg1/Rf2 by interposing on e3 (it also attacks f2); each capture releases it",
+    "thematic tries by the key bishop, each landing on the matching discharge line: 1.Bd5? (shuts the d-file of 2.Rd2#) Sxf6!, 1.Be4? (shuts rank 4 of 2.Rf4#) Sxe5!, 1.Bf3? (shuts the f-file) Sxe5!; also 1.Kb7?/Ka7? Sd5!; 1.Bb5?/Ba4?/Bh1? Qg2+!, 1.Bg2? Qxg2+!"
+   ],
+   "keys": [
+    "Bb7"
+   ],
+   "note": "FATAL: promoted force, White has 3 bishops with Ba5 and Bg1 both dark. The flaw is structural: the rear bishop must stand on the king's colour to attack it along the battery, and so must any bishop that checks the king, so a bishop threat always duplicates it. Other flaws: 1...Qg2+ refutes four non-thematic tries; wPf5 and wPd7 are plugs (d7 cuts Be8 from c6); Ka8 stops cooks; key piece attacked by Sb4; 19 units. Tried by Claude: without Ba5 the threat becomes Rc6# but Sb4xc6 refutes it; without Ba5 and Sb4 the check discharges cook again (1.Rd2+ Sf2 2.Rd5#) and b6 is a flight; Pa5 for b6 does not restore the key; Qa5 (with bPb5) adds threats; unmask_search with the tries fixed found the threat Sa1-b3# but a b6 flight in the diagram (keys Kb7/Ka7/Bb7)."
   }
  ]
 }
