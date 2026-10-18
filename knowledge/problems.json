@@ -2749,6 +2749,23 @@
     "Bd3"
    ],
    "note": "Sound, legal, gate PASS, 21 units (12 pawns). Flaws: static key (both mates set); cook-stoppers wPa6 (Ba6), wPb3 (Bb3/Ba2), bPg2 (Bf1), bRh4 (Bxd5), bPb4 (protects the holder on c3), wPf3 (double check Sf3); random-move duals among non-defences."
+  },
+  {
+   "id": "bourd-bishop-knight-adjacent-bc3",
+   "fen": "8/1p6/R2Pp3/2nkP3/1BNP4/KB1PP3/N3np2/8",
+   "stip": "#2",
+   "author": "E. Bourd, bench mvcxwk0k (18 Oct 2026)",
+   "source": "His improvement of bourd-bishop-knight-adjacent-bd3 (21 units): the board shifted one file left so the edge replaces the a6 plug; bRh4, bPb4 and the f-pawns gone; bSe2 and wSa2 added (set Se2~ 2.Sc3#). Trim removes nothing; legal; gate PASS.",
+   "themes": [
+    "1.Bc3! (2.Sb4#) Sxa6 (takes Ra6, the c6 guard) 2.Sa5#, Sxd3 (takes Pd3, the e4 guard) 2.Sd2#: the black knight c5 holds the battery Bb3/Sc4 (adjacent to the king) by attacking the rear bishop; each defence guards b4",
+    "thematic tries by the key bishop, each standing on one mating square of the front knight: 1.Ba5? Sxa6!, 1.Bd2? Sxd3!; the knight 'follows' the bishop's side each time (E. Bourd); also 1.Bxc5? Sxd4!",
+    "two separate mechanisms (E. Bourd): the battery's discharge chosen by the unguarded square, and the tries' error of the key piece standing on a mating square",
+    "set 1...Se2~ 2.Sc3# (wSa2's role; the key takes c3)"
+   ],
+   "keys": [
+    "Bc3"
+   ],
+   "note": "Sound, legal, gate PASS, 17 units (11+6, 8 pawns) against 21. Flaws: static key (both thematic mates set); Ka3 only stops cooks; wPe3 needed but in no post-key mate (set e4# only); holder random moves Sd7/Se4/Sa4 allow three discharges; the key removes the set mate Sc3#."
   }
  ]
 }

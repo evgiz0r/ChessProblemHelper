@@ -7,6 +7,7 @@ mate, the wanted mates all different. Core units never move; every other unit is
 WANT maps a defence (python-chess SAN, N for knights) to a mate pattern (fnmatch on move ids like Qa4c4: "*c4",
 "N*c3"). Env PURE=1 also rejects a defence that guards a threat square from its arrival (impure). Env NOFLIGHT=1 rejects any
 king move in the post-key (a flight the threat still mates forces a flight-giving key; E. Bourd: "limiting").
+Env EMPTY=c4: squares that must stay empty (a battery line; without it the search blocks the battery, 18 Oct 2026).
 Found the post-keys of the two-rooks unpin (11 Oct 2026) and the knight line-closing problem (12 Oct 2026):
     CORE=4Q3/8/8/3k4/8/8/8/2r1nN1b WANT='{"Nc2":"N*c3","Ng2":"Qe8e4"}' -> 4Q3/2K5/8/3k4/2R5/1Pp5/8/1Nr1nN1b
 """
@@ -15,6 +16,7 @@ import sys, os, random, time, json, chess, fnmatch
 from .keyfind import post_spec
 
 CORE, WANT, NOQ, CSQ = '8/8/8/8/8/8/8/8', {}, 'zz', {}
+EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
 
 
 def configure(core: str, want: dict, noq: str = 'zz'):
@@ -62,7 +64,7 @@ def self_block_needed(b: chess.Board, defence_san: str, mate_id: str) -> bool:
 
 def score(fen):
     b = chess.Board(fen + ' b - - 0 1')
-    if not b.is_valid() or promoted(b) or not chess.Board(fen + ' w - - 0 1').is_valid():
+    if not b.is_valid() or promoted(b) or not chess.Board(fen + ' w - - 0 1').is_valid() or any(b.piece_at(x) for x in EMPTY):
         return -1e9, ''
     t, d = post_spec(fen)
     s = 0.0
@@ -119,7 +121,7 @@ def score(fen):
 def mutate(fen):
     b = chess.Board(fen + ' b - - 0 1')
     free = [s for s in chess.SquareSet(b.occupied) if s not in CSQ]
-    empty = [s for s in chess.SQUARES if not b.piece_at(s)]
+    empty = [s for s in chess.SQUARES if not b.piece_at(s) and s not in EMPTY]
     op = random.random()
     if op < .35:
         sym = random.choice('NBRPPPpppnb'); sq = random.choice(empty)

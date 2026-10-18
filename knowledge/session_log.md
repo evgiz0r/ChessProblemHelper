@@ -1407,3 +1407,6 @@ no motive layer to mirror.
   a one-unit addition sweep: draft 8/1p4K1/1R1Pp3/N2nkP2/2BNP3/2B1PP1b/8/8 has keys Be2 and Bd3 (Bf1 kills the other retreats).
 - 17 Oct: "try to finish whats in the bench" (he went ahead to compare): his 1.Bd3! version, sound; trimmed to 21 units
   (bourd-bishop-knight-adjacent-bd3, Ka7, -pe7 -ph7); sweeps found no single unit replacing two cook-stoppers.
+- 18 Oct: his bench mvcxwk0k end: the adjacent battery shifted a file left (bourd-bishop-knight-adjacent-bc3, 1.Bc3!,
+  17 units against 21, no a6 plug, Sa2 with set Se2~ Sc3#). Sound, legal, trim nothing, gate PASS. "geometrically it
+  also looks nice ... the knight follows that way"; "lets go next scheme": bishop-rook battery.
