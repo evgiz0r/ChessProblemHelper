@@ -2892,6 +2892,32 @@
     "Bb7"
    ],
    "note": "Sound, legal, gate PASS, trim --tries nothing, 19 units (10+9). Flaws: wQg1 does a bishop's job; 1...Sxe5 refutes two corrections; the b4 knight's moves are random (one mate for six moves) with 1...Sc6 2.Rxc6# capturing; wPd7 stops Rf4+; Ka8 stands for Bg2+; key piece attacked by Sb4."
+  },
+  {
+   "id": "claude-rook-bishop-bishop-holder-scheme",
+   "fen": "8/3N3R/2b1k3/1N3p2/2P2P2/4B3/8/K3R3",
+   "stip": "#2",
+   "author": "Claude, battery series (rook-bishop battery), 18 Oct 2026",
+   "source": "hand construction after E. Bourd rejected 1...Sxc5 2.Bxc5# (recapture) in the knight-holder sketch",
+   "themes": [
+    "Scheme (Black to move): the black bishop c6 holds the battery Re1/Be3 by interposing on e4 through d5 (bPf5 protects e4); 1...Bxb5 (the d6 guard) 2.Bc5#, 1...Bxd7 (the f6 guard, self-block) 2.Bd4# through e5; both mates quiet; every other bishop move keeps the hold"
+   ],
+   "keys": [],
+   "note": "SCHEME, no threat or key. White to move it is cooked by discharges; see claude-rook-bishop-f7-draft."
+  },
+  {
+   "id": "claude-rook-bishop-f7-draft",
+   "fen": "4B3/3Np3/2b1kP2/1N3p2/2P2R2/4B3/8/K3R3",
+   "stip": "#2",
+   "author": "Claude, battery series (rook-bishop battery), 18 Oct 2026",
+   "source": "the bishop-holder scheme plus a promotion threat (no third knight), Rf4 for Pf4 against 1.Sf8+ Kf6 2.Bd4#",
+   "themes": [
+    "1.f7! (2.f8=S#) Bxb5 2.Bc5#, Bxd7 2.Bd4#: the only checking promotion as threat; the black bishop's two captures each unguard d6 or f6"
+   ],
+   "keys": [
+    "f7"
+   ],
+   "note": "COOKED: 1.Bc5+ Be4 2.Sc7#/Sd4#, 1.Bd4+ Be4 2.Sf8#/Sc5# (the discharge covering a square frees that square's knight). bSb3 kills Sd4/Sc5, bBd8 kills Sc7; Sf8 needs f8 blocked (Kf8, key Kg8) but then 1.Kg7 also solves. Not for showing as a problem."
   }
  ]
 }
