@@ -1417,3 +1417,6 @@ no motive layer to mirror.
 - 18 Oct: his bench mvdxk1kq: weaker pieces, Kd4, battery Bg1/Rf2, holder Sh3 capturing guards (bourd-bishop-rook-battery-postkey,
   10 units, threat Rd5#, Sxf4 Rd2#, Sxg5 Re2#). Key by king mask 1.Kf5-g4! works but check discharges cook (lesson);
   four plugs did not cure it. Next: restructure (holder landing near the king, or interposing holder).
+- 18 Oct: bench fix: no threat after a checking first move (analysis.js phaseAfter and dualAvoidance; Python already right);
+  bench republished. His bench mvdxk1kq finished the bishop-rook battery: bourd-bishop-rook-battery-ke2, 1.Ke2! (2.c3#)
+  Sxc7 Rf5#, Sxd6 Rf4#, Bc4+ Rxc4#; trimmed -bPg5 to 16 units; sound, legal.

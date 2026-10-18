@@ -2826,6 +2826,23 @@
    ],
    "keys": [],
    "note": "POST-KEY SCHEME. Key attempts (Claude, 18 Oct): the threat must be created by the key, so the White king masks the rook on f5 (8/8/8/5KR1/3k1N2/3P1B1n/5R2/3N2B1, card bourd-bishop-rook-battery-kg4-draft): 1.Kg4! (2.Rd5#) Sxg5 2.Re2#, Sxf4 2.Rd2#, Sxf2+ 2.Bxf2#; try 1.Kg6? Sxf4+!. Unsound: c5 flight (the masked rook guarded it), 1.Kf6 (duals), 1.Rd2+ Sxg1 2.Se6#, 1.Rc2+ Sxg1 2.Rc4#, 1.Re2+ Sxg1 2.Re4#. Patches bPd6 (Rg7/Rg8 down the d-file), wPb4 (c5), wPc4 (Rc4), wPf6 (Kf6) still leave Re2+, Rd2+, Be4, Be2. unmask_search cannot build it: it rejects the provided check 1...Sxf2+."
+  },
+  {
+   "id": "bourd-bishop-rook-battery-ke2",
+   "fen": "4n2r/2R3B1/p2NPRp1/8/3kP1Np/5K2/b1P5/8",
+   "stip": "#2",
+   "author": "E. Bourd, bench mvdxk1kq (18 Oct 2026); trimmed by Claude (-bPg5)",
+   "source": "His bench position 4n2r/2R3B1/p2NPRp1/6p1/3kP1Np/5K2/b1P5/8 (step 203, 17 units), from his Kd4/Bg1/Rf2/Sh3 post-key after three quarter turns and a shift; trim removes bPg5 (the set play gains 1...g5 2.Sf5#).",
+   "themes": [
+    "1.Ke2! (2.c3#) Sxc7 (c5 loses Rc7) 2.Rf5#, Sxd6 (e4 loses Sd6) 2.Rf4#: the black knight e8 holds the battery Bg7/Rf6 (attacks both); each capture unguards one square and the rook's f-file discharge chooses the rank that covers it",
+    "by-play cross-check 1...Bc4+ 2.Rxc4#",
+    "the king key creates the threat by guarding d3 (in the diagram 1.c3+? Kd3!) and gives up e4, so the set 1...Sxd6 (five discharges) becomes the single 2.Rf4#",
+    "no discharge cook: after 1.Rf5+/Rf4+ Sxg7 the knight on g7 guards f5 and e6; compare bourd-bishop-rook-battery-postkey (rear g1, Sxg1 guards nothing near the king)"
+   ],
+   "keys": [
+    "Ke2"
+   ],
+   "note": "Sound, legal, 16 units (9+7). Flaws: tries are only checks (1.Rc4+? Bxc4!, 1.Sf5+? gxf5!, 1.Sb5+? axb5!, 1.c3+? Kd3!); wPe6 only stops cooks (Sf5+, Sb5+, Sxe8); 1...Sxc7 2.Rf5# already set; 1...Bc4+ 2.Rxc4# captures the defender; bRh8, bPa6, bPg6, bPh4 are cook-stoppers or try refutations."
   }
  ]
 }
