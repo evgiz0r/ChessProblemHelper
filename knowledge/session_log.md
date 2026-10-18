@@ -1410,3 +1410,7 @@ no motive layer to mirror.
 - 18 Oct: his bench mvcxwk0k end: the adjacent battery shifted a file left (bourd-bishop-knight-adjacent-bc3, 1.Bc3!,
   17 units against 21, no a6 plug, Sa2 with set Se2~ Sc3#). Sound, legal, trim nothing, gate PASS. "geometrically it
   also looks nice ... the knight follows that way"; "lets go next scheme": bishop-rook battery.
+- 18 Oct: bishop-rook battery (his order). Tools: setplay_search (battery set play, NODOUBLE; test), freethreat EMPTY=.
+  Findings (lessons): four single discharges per field side; knight holders with a shared threat square fail by
+  overlap; rank-2 rook holders are cut by Rc2; a1-rook holders never release. Post-key scheme
+  claude-bishop-rook-battery-postkey (bBb1 holder: Bg6 Rb6#, Be4 Rb4#, threat Qd6#), no key yet (discharge cooks).

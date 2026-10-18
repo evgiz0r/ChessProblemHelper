@@ -2784,6 +2784,18 @@
    ],
    "note": "1.Rd6! (2.Rd4#) Bxd6 2.Sf6#, Rxd6 2.Sc5#, Rc4 2.Re6#, Bf6 2.Sxf6#; set Bd6 2.Sf6#, Rd6 2.Sc5#, R~ 2.Re6#. Gate PASS, 9+4. Flaws: the key rook is attacked in the diagram (Rxg6 unprovided in the set), mates transferred not changed (Rice 1966 changed them with a double threat), 1...Bf6 2.Sxf6# recaptures, try 1.Rxc6? bxc6! only, random-move duals, five pawns. Built from chesscomp.compose.novotny_geometry (Ke4 Rc6 Be7 X d6), postsearch KMP=d7 THREAT Rd6d4, keyfind (only from g6), then guards rebuilt by hand (Pc4/Rc1 -> Sb6, Ra6 -> Pb7, Kh7 -> Kg2).",
    "solution": "#2 (9+4)   FEN 8/1p1Nb3/1Nr3R1/8/4k1P1/4P3/4PPK1/B7 w - - 0 1\nSet play:\n   1...Bd6 2.Sf6#\n   1...Rc8/Rc7/Rc4/Rc3/Rc2/Rc1 2.Re6#\n   1...Re6 2.Rxe6#\n   1...Rd6 2.Sc5#\n   R~ random Rc8/Rc7/Re6/Rc4/Rc3/Rc2/Rc1 2.Re6#; corrections Rd6 2.Sc5#\n   unprovided: Bf8, Bd8, Bf6, Bg5, Bc5, Bh4, Bb4, Ba3, Rxg6, Rf6, Rxb6, Rc5\nTry: 1.Rxc6? (threat: 2.Re6#/Rc4#)\n   1...Bf6 2.Sxf6#/Sc5#  [dual]\n   (8 further moves allow the threat)\n   but 1...bxc6!\nKey: 1.Rd6! (threat: 2.Rd4#)\n   1...Bf6 2.Sxf6#\n   1...Bxd6 2.Sf6#\n   1...Rxd6 2.Sc5#\n   1...Rc4 2.Re6#\n   (11 further moves allow the threat)\nPatterns:\n   changed threat: Rc4#/Re6# / Rd4#   [try Rxc6 vs key Rd6]\n(1999 nodes, 0.08s)"
+  },
+  {
+   "id": "claude-bishop-rook-battery-postkey",
+   "fen": "7K/3N4/7Q/2Pk4/7R/1Rp5/Bp6/1b6",
+   "stip": "#2",
+   "author": "Claude, battery series (E. Bourd's order: bishop-rook battery after bishop-knight), 18 Oct 2026",
+   "source": "freethreat run 82 (EMPTY=c4,c2,d3,e4,f5,g6) on the core Kd5, Ba2/Rb3, bBb1 holder, bPb2 (no Rxb1), bPc3 (rank 3 shut: no Rd3+/Re3), Rh4, Qh6, after the other holders failed (knights: shared threat square always overlaps; rook on rank 2: cut by the discharge Rc2; rook a2 for Ba1: never releases, b2 is on the line).",
+   "themes": [
+    "Post-key (Black to move): threat 2.Qd6#; 1...Bg6 (closes the 6th rank: the threat is cut and c6 loses its guard) 2.Rb6#, 1...Be4 (cuts Rh4 from d4) 2.Rb4#: the black bishop b1 holds the battery Ba2/Rb3 by attacking the rear and gives it up with each defence"
+   ],
+   "keys": [],
+   "note": "POST-KEY SCHEME, 11 units: no holes, no duals, one threat, only the two thematic defences. No key yet: with 2.Qd6 available in the diagram every checking discharge solves (1.Rb8+ Bxa2 2.Qd6#), so the key must create the threat; a mask on f6/g6 or a unit on d6 leaves c6/e6 as diagram flights (the queen's rank-6 guard is needed); keyfind/retract: nothing sound; unmask_search runs 91-103 (knight keys threatening Sc7#/Se3#): discharge cooks remain."
   }
  ]
 }
