@@ -1414,3 +1414,6 @@ no motive layer to mirror.
   Findings (lessons): four single discharges per field side; knight holders with a shared threat square fail by
   overlap; rank-2 rook holders are cut by Rc2; a1-rook holders never release. Post-key scheme
   claude-bishop-rook-battery-postkey (bBb1 holder: Bg6 Rb6#, Be4 Rb4#, threat Qd6#), no key yet (discharge cooks).
+- 18 Oct: his bench mvdxk1kq: weaker pieces, Kd4, battery Bg1/Rf2, holder Sh3 capturing guards (bourd-bishop-rook-battery-postkey,
+  10 units, threat Rd5#, Sxf4 Rd2#, Sxg5 Re2#). Key by king mask 1.Kf5-g4! works but check discharges cook (lesson);
+  four plugs did not cure it. Next: restructure (holder landing near the king, or interposing holder).
