@@ -203,7 +203,7 @@ accident, not a design.
 | A key by a piece out of play (a knight on the edge, far from the king) makes the solution obvious | fatal | `out-of-play key` (gate) |
 | A White unit that takes no part in the solution, there only for a thematic try | fatal: "way too big of a price" | `try-only unit` (gate), `superfluous piece` (gate) |
 | A known mechanism with nothing added, or reduced from the published original | not a problem | anticipation check (identical only); judge by hand |
-| A single phase without tries or changes (18 Oct 2026), unless very complicated or pretty | not for publication | gate `single phase`; the judge may except it |
+| A single phase without thematic tries or changes, random tries do not count (18 Oct 2026), unless very complicated or pretty | not for publication | gate `single phase`; the judge may except it |
 | Corrections: few and strong, errors subtle; remove the weaker of two weak ones; no fake blocker that only stops the random move from allowing the correction's mate | flaw | not yet |
 
 ## Session 29: keys that activate idle pieces, and changes that need their own mechanism
