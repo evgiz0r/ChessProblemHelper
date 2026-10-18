@@ -8,6 +8,9 @@ after the scheme works (a key and a threat the defences parry), so nothing here 
 WANT maps a defence (python-chess SAN, N for knights) to a mate pattern (fnmatch on uci, "c3*" = any discharge).
 Env EMPTY=d4: squares that must stay empty (the battery line). Env NOFLIGHT=0 allows king moves in the diagram.
 Env NODOUBLE=1: a double-check mate does not count as the wanted mate (E. Bourd: watch out for double-check mates).
+Env HOLDER=c2: WANT is then a list of mate patterns ('["e3c5","e3g5"]') and any moves of the unit on c2 may supply them:
+for each pattern some move of the holder must be answered by that mate only (distinct moves), so the search chooses
+which defences carry the scheme (18 Oct 2026, rook-bishop battery).
 """
 from chesscomp.core import illegal_position as _illegal
 import sys, os, random, time, json, fnmatch, chess
@@ -15,6 +18,7 @@ import sys, os, random, time, json, fnmatch, chess
 EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'
 NODOUBLE = os.environ.get('NODOUBLE', '0') == '1'
+HOLDER = chess.parse_square(os.environ['HOLDER']) if os.environ.get('HOLDER') else None
 CSQ, WANT = {}, {}
 
 
@@ -47,6 +51,28 @@ def score(fen):
     if not b.is_valid() or not w.is_valid() or promoted(b) or any(b.piece_at(x) for x in EMPTY):
         return -1e9, ''
     s, ok, got = 0.0, True, {}
+    if HOLDER is not None:
+        if not b.piece_at(HOLDER) or b.piece_at(HOLDER).color != chess.BLACK:
+            return -1e9, ''
+        per = {}
+        for mv in [m for m in b.legal_moves if m.from_square == HOLDER]:
+            b.push(mv); per[mv.uci()] = mates_in_one(b); b.pop()
+        used, mates = set(), set()
+        for i, want in enumerate(WANT):
+            key = f'{i}:{want}'
+            cands = [u for u, ms in per.items() if u not in used and len(ms) == 1 and fnmatch.fnmatch(ms[0].rstrip('+'), want)
+                     and not (NODOUBLE and ms[0].endswith('+')) and ms[0] not in mates]
+            near = [u for u, ms in per.items() if u not in used and any(fnmatch.fnmatch(m.rstrip('+'), want) for m in ms)]
+            if cands:
+                s += 12; used.add(cands[0]); mates.add(per[cands[0]][0]); got[key] = cands[0] + '->' + per[cands[0]][0]
+            else:
+                ok = False; s += -3 * min(len(per[u]) - 1 for u in near) if near else -16
+                got[key] = None
+        flights = [b.san(m) for m in b.legal_moves if b.piece_type_at(m.from_square) == chess.KING] if NOFLIGHT else []
+        m1 = mates_in_one(w)
+        s -= 8 * len(flights) + 8 * len(m1) + 0.6 * len(b.piece_map())
+        ok = ok and not flights and not m1
+        return s + (100 if ok else 0), f"defs={got} flights={flights} m1={m1}"
     for san, want in WANT.items():
         try:
             mv = b.parse_san(san)
