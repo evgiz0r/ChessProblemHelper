@@ -66,6 +66,6 @@
   "searches": 14
  },
  "improvement": "A Novotny kit, the theme's first: python -m chesscomp.compose.novotny_geometry K lists, for a black king square, the geometries where each knight-mating square is guarded by both black line pieces (one through the crossing square, one along the capturer's other line), so each capture frees exactly one mate under a single threat; --lines also allows line-piece mating squares. Tested (tests/test_novotny_geometry.py: the e4 geometry, its eight images, today's key). The new theme reference .claude/skills/themes/references/novotny.md has the three single-threat mechanisms in the archive (double guard, departure opening a White line, a crossing unit that guards the threat square), why this scheme cannot change mates, and the dead ends. blog/themes.json now points to it.",
- "mentor_issue": null,
+ "mentor_issue": 14,
  "feedback": []
 }
