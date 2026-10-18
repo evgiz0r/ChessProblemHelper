@@ -2955,6 +2955,25 @@
    ],
    "cooked": false,
    "note": "Gate PASS. Flaws: cook-stoppers bBb6 (c7, c5; Bd4+ against Kg7) and bSb3 (d4 after Bc5 cuts b6-d4); static key (both mates set); the thematic try is refuted by a check; 15 units, 5 pawns. After 1...Bxd8 the promoted knight f8 protects d7."
+  },
+  {
+   "id": "bourd-rook-bishop-halfbattery-bg5",
+   "fen": "1n3K2/1RNp4/1b1kP1b1/N3p3/1P2P3/3B4/3B4/3R4",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench, 18 Oct 2026), from Claude's rook-bishop scheme shifted one file left",
+   "source": "Composing Bench journal mvebn7gl-0024..0086; his idea: a half-battery (two bishops on the d-file in front of Rd1) so that the thematic mates Bc4/Bb5 become tries",
+   "themes": [
+    "1.Bg5! (2.Be7#) Bxa5 2.Bb5#, Bxc7 2.Bc4#, Sc6 2.Sc4#, dxe6 2.Sb5#",
+    "tries by the front bishop d3 standing on the knights' mating squares: 1.Bb5? (2.Sa5-c4#) Bxc7!, 1.Bc4? (2.Sc7-b5#) Bxa5!: each refutation captures the knight that does NOT give the threat (E. Bourd: 'the paradox in the refutations is that i dont capture the threatening piece, but the other one'), because the threat needs the other knight's guard (c6 or d5/e6)",
+    "the try moves come back crosswise as the key's thematic mates (Bxa5 2.Bb5#, Bxc7 2.Bc4#) and the try threats come back as the by-play mates (Sc6 2.Sc4#, dxe6 2.Sb5#)",
+    "half-battery Rd1/Bd2/Bd3: the key takes the rear bishop away so Bd3 becomes the front piece; in the tries Bd2 is the front piece",
+    "the black bishop b6 holds by interposing on d4, protected by bPe5"
+   ],
+   "keys": [
+    "Bg5"
+   ],
+   "cooked": false,
+   "note": "Gate PASS. In the tries the non-refuting capture is answered by any of seven Bd2 discharges (try duals). bBg6 stops 2.Se8# (else dxe6 and the threat of 1.Bc4? double). Set: Sc6 2.Sc4#, dxe6 2.Sb5#; the thematic captures are unprovided in the set. 16 units, 5 pawns."
   }
  ]
 }
