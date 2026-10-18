@@ -2992,6 +2992,23 @@
    ],
    "cooked": false,
    "note": "Gate PASS. Flaws: Pe3 only stops 1.Re2+ and 1.Ra7; Kb3 placed for soundness; the holder's random moves also allow 2.Rd6#; scheme nearly symmetric about the 6th rank; 6 pawns."
+  },
+  {
+   "id": "bourd-queen-knight-battery-bg5",
+   "fen": "7r/5p1p/3P4/QN2kP1N/3n2P1/5B2/p3P1Kb/1nBR4",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench, 18 Oct 2026), battery series: the knight battery three squares from the king with a queen as the rear",
+   "source": "Composing Bench journal mveg32zg-0116..0175",
+   "themes": [
+    "1.Bg5! (2.Bf6#) Sxf5 (the e6 guard) 2.Sc7#, Sxf3 (the e4 guard) 2.Sc3#: the black knight d4 holds the battery Qa5/Sb5 by interposing on b5",
+    "tries by the rear queen leaving the battery line: 1.Qb6? (2.Qc5#/Qxd4#) Sxf3 2.Qe3# but Sxf5!, 1.Qb4? (2.Qc5#/Qxd4#) Sxf5 2.Qe4# but Sxf3!: each thematic defence refutes one try and gets a changed queen mate in the other",
+    "Pd6 occupies the knight's landing next to the king"
+   ],
+   "keys": [
+    "Bg5"
+   ],
+   "cooked": false,
+   "note": "Gate PASS. Flaws: double threat in both tries (Qc5#/Qxd4#); static key (both mates set); 19 units, 7 pawns; Pe2 only stops Qe1+/Re1+; random holder moves also allow Rd5#. Same scheme as claude-rook-knight-battery-d7 found independently (holder knight interposing on the vacated square, guards of the squares above and below the king captured on the f-file)."
   }
  ]
 }
