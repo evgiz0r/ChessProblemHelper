@@ -2859,6 +2859,23 @@
     "Bb7"
    ],
    "note": "FATAL: promoted force, White has 3 bishops with Ba5 and Bg1 both dark. The flaw is structural: the rear bishop must stand on the king's colour to attack it along the battery, and so must any bishop that checks the king, so a bishop threat always duplicates it. Other flaws: 1...Qg2+ refutes four non-thematic tries; wPf5 and wPd7 are plugs (d7 cuts Be8 from c6); Ka8 stops cooks; key piece attacked by Sb4; 19 units. Tried by Claude: without Ba5 the threat becomes Rc6# but Sb4xc6 refutes it; without Ba5 and Sb4 the check discharges cook again (1.Rd2+ Sf2 2.Rd5#) and b6 is a flight; Pa5 for b6 does not restore the key; Qa5 (with bPb5) adds threats; unmask_search with the tries fixed found the threat Sa1-b3# but a b6 flight in the diagram (keys Kb7/Ka7/Bb7)."
+  },
+  {
+   "id": "bourd-bishop-rook-battery-kc5-qg1",
+   "fen": "K3b3/3P4/2B2R2/B1k1NP2/1nP3n1/b1P3pq/5R1P/6Q1",
+   "stip": "#2",
+   "author": "E. Bourd, bench mve0b8u3 and the Qg1 repair (18 Oct 2026)",
+   "source": "His repair of bourd-bishop-rook-battery-kc5-bb7: 'i just put a queen on g1 and its fine'. wPh2 stays: it gives the random bishop move its one refutation (Claude's trim had removed it; trim --tries now keeps it).",
+   "themes": [
+    "White correction by the masking bishop c6 (every move opens Rf6 to b6 and threatens 2.Bb6#): 1.B~? (Bb5/Ba4/Bg2/Bh1, off the long diagonal) Qg2+!; corrections staying on the diagonal close the line of a mate that does not exist yet (anticipatory closure, E. Bourd): 1.Bd5!? (d-file of 2.Rd2#) Sxf6!, 1.Be4!? (rank 4 of 2.Rf4#) Sxe5!, 1.Bf3?! (f-file) Sxe5!; final correction 1.Bb7! closes nothing",
+    "1.Bb7! (2.Bb6#) Sxf6 (d6 loses Rf6) 2.Rd2#, Sxe5 (c4 loses Se5) 2.Rf4#, Sc6 2.Rxc6#, Sd5 2.Rc6#: the black knight g4 holds the battery Qg1/Rf2 by interposing on e3; each capture releases it",
+    "'the refutations are much more unique, as you have to understand the mate in order to figure out the refutation' (E. Bourd): the lines the tries close are invisible in the diagram, they appear only after Black's capture",
+    "also 1.Kb7?/Ka7? Sd5!"
+   ],
+   "keys": [
+    "Bb7"
+   ],
+   "note": "Sound, legal, gate PASS, 19 units (12+7). Flaws: the queen g1 does a bishop's job; 1...Sxe5 refutes two corrections (Bf3?! the weaker one); wPf5 and wPd7 stop cooks (d7 cuts Be8 from c6); Ka8 stands where Qg2+ can refute; key piece attacked by Sb4; 1...Sc6 2.Rxc6# captures the defender; heavy black force (queen, two bishops, two knights)."
   }
  ]
 }

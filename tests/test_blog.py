@@ -80,3 +80,21 @@ def test_mentor_fatal_rules_7_october():
 def test_try_only_unit_even_when_its_tries_carry_changes():
     # c7 pawn: no part in the solution, only promotion tries (with a changed mate) - reported (a drawback)
     assert 'try-only unit' in _rules('4K3/2Pp3B/4k3/8/3Q4/8/8/8')
+
+
+def test_plug_that_also_plays_a_try_is_not_try_only():
+    # E. Bourd's Kc5 bishop-rook battery (18 Oct 2026): wPd7 cuts Be8 from c6 (no solution without it) and also
+    # plays 1.d8=Q?; it is a cook-stopper, not a unit "only for a try"
+    rules = _rules('K3b3/3P4/2B2R2/B1k1NP2/1nP3n1/b1P3pq/5R2/6Q1')
+    assert 'try-only unit' not in rules and 'cook-stopper' in rules
+
+
+def test_white_correction_with_king_tries_in_the_threat_pool():
+    # E. Bourd (18 Oct 2026): 1.B~? Qg2+!, 1.Bd5!? Sxf6!, 1.Be4!? Sxe5!, 1.Bf3?! Sxe5!, 1.Bb7!; 1.Kb7?/Ka7? Sd5! also carry
+    # the threat and must not turn the random stage into 'same refutation'
+    from chesscomp import Problem
+    from chesscomp.critique import critique
+    fs = critique(Problem.from_fen('K3b3/3P4/2B2R2/B1k1NP2/1nP3n1/b1P3pq/5R1P/6Q1 w - - 0 1', '#2'))['findings']
+    wc = [f for f in fs if f['rule'] == 'white correction']
+    assert len(wc) == 1 and 'Qg2+' in wc[0]['msg']
+    assert not any(f['rule'] == 'same refutation' and f['severity'] == 'major' for f in fs)

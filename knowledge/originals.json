@@ -52,6 +52,8 @@
   {"id": "bourd-two-bishops-sg6", "tier": "2", "verdict": "Two bishops cut the e-file far from the king, which opens Kxe5; try 1.Sh7? Be2!."},
   {"id": "bourd-bench-sb-pin-bf6", "tier": "2", "verdict": "Self-blocks by capture of the knight e6, separated by a pin; two tries. His note: worked to make the key proper."},
 
+  {"id": "bourd-bishop-rook-battery-kc5-qg1", "tier": "2", "verdict": "White correction on a bishop-rook battery with anticipatory closure (his Qg1 repair of the promoted-force version). Flaws: the queen g1 does a bishop's job, 1...Sxe5 refutes two corrections, 19 units with a heavy black force."},
+
   {"id": "bourd-bishop-knight-battery-bh7", "tier": "3", "verdict": "Black knight separates a battery threat. Flaw: set play identical to the solution; the content is the try pair."},
   {"id": "bourd-bishop-knight-adjacent-bc3", "tier": "3", "verdict": "Adjacent battery. Flaws: static key (both mates set), Ka3 a cook-stopper."},
   {"id": "bourd-bishop-rook-battery-ke2", "tier": "3", "verdict": "King key that unmasks a bishop-rook battery. Flaws: tries are only checks, 1...Sxc7 2.Rf5# already set."},
