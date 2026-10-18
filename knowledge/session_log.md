@@ -1429,3 +1429,5 @@ no motive layer to mirror.
 - 18 Oct: his explanation of the Kc5/Qg1 problem (white correction, anticipatory closure, wPh2 for the unique B~ refutation):
   record restored to his FEN with Ph2. Tools: trim --tries (keeps every try and its refutations); critique reports the
   white correction when king tries share the threat, once, and a refutation shared by corrections as minor (test).
+- 18 Oct: his airy version (bourd-bishop-rook-battery-kc5-airy): no black queen (Bf1, B~ Bg2+), no wPh2/wPc4, c4 free;
+  sound, gate PASS, trim --tries nothing.
