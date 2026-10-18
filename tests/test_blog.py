@@ -98,3 +98,14 @@ def test_white_correction_with_king_tries_in_the_threat_pool():
     wc = [f for f in fs if f['rule'] == 'white correction']
     assert len(wc) == 1 and 'Qg2+' in wc[0]['msg']
     assert not any(f['rule'] == 'same refutation' and f['severity'] == 'major' for f in fs)
+
+
+def test_single_phase_needs_tries_or_changes():
+    # E. Bourd (18 Oct 2026): "anything that is a single phase without tries or changes is not pass for publication
+    # unless the single phase is very complicated or pretty"
+    from chesscomp import Problem
+    from chesscomp.critique import critique
+    rules = lambda fen: {f['rule'] for f in critique(Problem.from_fen(fen + ' w - - 0 1', '#2'))['findings']}
+    assert 'single phase' in rules('1K6/1B6/8/p1N2Qnp/1b1k4/3P1bN1/1PPn1P2/7q')            # 1.Be4!, no tries
+    assert 'single phase' not in rules('2b1KB2/3p4/4N1N1/1P1kPBp1/1P4R1/1P1pp3/pbrr4/q1R5')  # Dombrovskis tries
+    assert 'single phase' not in rules('8/6Q1/6N1/8/1p2k3/3nNpK1/2rP1P2/1B2n3')            # try pair, a change

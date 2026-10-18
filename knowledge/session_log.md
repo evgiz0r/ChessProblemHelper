@@ -1439,3 +1439,10 @@ no motive layer to mirror.
   trims used (queen-pin self-pin 17 units, Grimshaw d4 8+8). tools/originals.py re-gates each entry and writes
   docs/originals.html (published as https://claude.ai/artifact/9xKrJSL1xQSixJsG79wAJ6). Anticipation was checked
   as identical position only; yacpdb/PDB search still to do before sending.
+* Same session: solutions on the portfolio rewritten album-style by the solver (set play only for defences that recur,
+  only the tries the notes name or originals.json lists, key with threat and grouped variations, 'S~' for random
+  moves); his notes moved to a separate 'Explanation'. E. Bourd's new rule: a single phase without tries or changes is
+  not for publication unless very complicated or pretty. Critique rule 'single phase' (fatal in the gate): no changed
+  mate, no thematic-try plus, and no non-checking try refuted by a key defence. New tier 'single' (Be4 three captures,
+  Ra5 two-knight unpin, Ke2 battery). Of the published daily posts, 14 Oct (a guard for f6) and 18 Oct (Novotny d6)
+  would now fail it. Test test_single_phase_needs_tries_or_changes.

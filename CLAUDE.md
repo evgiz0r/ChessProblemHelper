@@ -16,6 +16,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 - A key by a piece out of play (a knight on the edge far from the king): the key is obvious (E. Bourd, 7 Oct 2026).
 - A White unit that takes no part in the solution and is not needed for soundness either (superfluous).
 - A known mechanism with nothing added, or a reduced form of a published problem: not a problem (E. Bourd).
+- A single phase without tries or changes (E. Bourd, 18 Oct 2026: "not pass for publication unless the single phase is
+  very complicated or pretty"). The gate fails it ('single phase'); only the judge may make the exception, and says why.
 
 ## Working rules
 - The solver before any claim: `python -m chesscomp.report --fen "<FEN> w - - 0 1" "#2" --critique`.
