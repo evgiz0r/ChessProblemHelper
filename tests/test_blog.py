@@ -109,3 +109,12 @@ def test_single_phase_needs_tries_or_changes():
     assert 'single phase' in rules('1K6/1B6/8/p1N2Qnp/1b1k4/3P1bN1/1PPn1P2/7q')            # 1.Be4!, no tries
     assert 'single phase' not in rules('2b1KB2/3p4/4N1N1/1P1kPBp1/1P4R1/1P1pp3/pbrr4/q1R5')  # Dombrovskis tries
     assert 'single phase' not in rules('8/6Q1/6N1/8/1p2k3/3nNpK1/2rP1P2/1B2n3')            # try pair, a change
+
+
+def test_random_tries_are_not_a_second_phase():
+    # E. Bourd (18 Oct 2026): "i meant no thematic tries or changes. random tries dont count" - 1.Bd3! has three bishop
+    # tries, all refuted by 1...Ra3!, which is no defence after the key
+    from chesscomp import Problem
+    from chesscomp.critique import critique
+    fs = critique(Problem.from_fen('2N5/3p1K1p/Q7/3nkB2/rbPn3N/6P1/1B6/8 w - - 0 1', '#2'))['findings']
+    assert any(f['rule'] == 'single phase' for f in fs)

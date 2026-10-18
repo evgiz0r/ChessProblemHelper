@@ -1452,7 +1452,14 @@ no motive layer to mirror.
   (a mate moving to another thematic defence). Thematic = key defences whose mate changes (a shared dual is no change)
   or that refute a named try; originals.json 'thematic' overrides it for nine problems ('Sf5~' = random moves, 1...S~).
   1...Rxe6 (try) and 1...Re6 (key) count as one defence. Open question for him: whether to keep the by-play brackets.
+- 18 Oct: his airy version (bourd-bishop-rook-battery-kc5-airy): no black queen (Bf1, B~ Bg2+), no wPh2/wPc4, c4 free;
+  sound, gate PASS, trim --tries nothing.
 * Same session: thematic variations lettered [a], [b] (one letter per defence across phases, random group shares one;
   a try refuted by a thematic defence shows its letter) and set in bold; tries that capture are left out of the
   solutions. Cost: 1.Qg2! (two captures on e5) loses its middle phase 1.Qxh1?; thematic capture tries also go from
   1.Bh7! (Bxg4?), 1.Bxh6! (Bxe3?), 1.Kf8! (Kxg6?), 1.Bd8! (Bxe5?), 1.Bc3! (Bxc5?), 1.Ra5! (Rxa2?), 1.Bxe7! (Bxb4?).
+* Same session, his correction: random tries do not count for the single-phase rule, only thematic tries or changes.
+  The critique no longer takes 'try set' or 'distinct refutations' as a second phase. Three more problems move to the
+  'single' tier (1.Bd8! knights half-pin, 1.Rg6! three blocks on b5, 1.Bd3! unpin on c3). The airy Kc5 battery
+  (bourd-bishop-rook-battery-kc5-airy, merged from main) replaces the Qg1 version in the portfolio; originals.json
+  gains 'skip_tries' and hand-listed tries now lead in their order. Test test_random_tries_are_not_a_second_phase.

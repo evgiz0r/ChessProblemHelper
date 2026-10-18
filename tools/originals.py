@@ -80,7 +80,7 @@ def _head(ph):
     return head + (" (zugzwang)" if ph.get("zugzwang") else "")
 
 
-def solution(fen, note, extra_tries=(), thematic=None):
+def solution(fen, note, extra_tries=(), thematic=None, skip_tries=()):
     """A publication solution (HTML): set play, the tries the composer names (1.X? in the notes, or `extra_tries`), the key;
     the thematic defences in one order in every phase, by-play in brackets after the key's thematic play, and a
     last line saying which mates change and which transfer. Thematic = key defences that also have a mate in the
@@ -93,7 +93,10 @@ def solution(fen, note, extra_tries=(), thematic=None):
     def named(p):
         san = _strip(p["first_move"]["san"])
         return san in extra_tries or re.search(r"(?<![A-Za-z0-9])" + re.escape(san) + r"\?", note)
-    tries = [p for p in phases if p["type"] == "try" and named(p) and "x" not in p["first_move"]["san"]]
+    tries = [p for p in phases if p["type"] == "try" and named(p) and "x" not in p["first_move"]["san"]
+             and _strip(p["first_move"]["san"]) not in skip_tries]
+    order = list(extra_tries)                            # tries listed by hand come first, in their order
+    tries.sort(key=lambda p: order.index(_strip(p["first_move"]["san"])) if _strip(p["first_move"]["san"]) in order else len(order))
     key = next((p for p in phases if p["type"] == "key"), None)
     setp = next((p for p in phases if p["type"] == "set"), None)
     km = _mates(key) if key else {}
@@ -203,7 +206,7 @@ def card(n, entry, rec, report):
     passed = "GATE: PASS" in report
     flags = [l for l in report.splitlines() if l.startswith(("FATAL", "warn", "plus"))]
     trim = '<span class="chip">trimmed</span>' if entry.get("fen") else ""
-    lines, content = solution(fen, rec['note'] + ' ' + ' '.join(rec['themes']), entry.get('tries', ()), entry.get('thematic'))
+    lines, content = solution(fen, rec['note'] + ' ' + ' '.join(rec['themes']), entry.get('tries', ()), entry.get('thematic'), entry.get('skip_tries', ()))
     phases = f'<span class="chip">{content["tries"]} tries · {content["changes"]} changed</span>'
     return f"""
 <article class="card" id="{rec['id']}">

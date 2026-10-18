@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-18",
- "note": "E. Bourd's #2 problems (his own or joint with Claude) composed during our sessions that could go to magazines as originals. Built from knowledge/problems.json: every entry re-solved and passed through tools/blog.py check on 18 Oct 2026 (sound, legal, no fatal flaw, no identical position in Problemesis or his PDB). The anticipation check is identical-position only: search yacpdb/PDB before sending. Left out: schemes, sketches, post-key positions, bench demonstrations he called schemes, illegal or promoted-force positions, and versions superseded by a later one. 'fen' overrides the stored FEN where a verified trim exists. Tiers: 1 send first (most content for its flaws), 2 sendable, 3 thin or a clear flaw, single = one phase without tries or changes (E. Bourd, 18 Oct 2026: not for publication unless very complicated or pretty), gate = fails the gate now (needs a fix or his override), public = already shown on the blog. 'tries' names thematic tries the notes describe only in words. 'thematic' fixes the thematic defences and their order where the automatic choice (defences whose mate changes or that refute a try) is wrong; 'Sf5~' means the random moves of that unit. Solutions show no try that captures (E. Bourd, 18 Oct 2026); thematic variations carry letters [a], [b] and are set in bold.",
+ "note": "E. Bourd's #2 problems (his own or joint with Claude) composed during our sessions that could go to magazines as originals. Built from knowledge/problems.json: every entry re-solved and passed through tools/blog.py check on 18 Oct 2026 (sound, legal, no fatal flaw, no identical position in Problemesis or his PDB). The anticipation check is identical-position only: search yacpdb/PDB before sending. Left out: schemes, sketches, post-key positions, bench demonstrations he called schemes, illegal or promoted-force positions, and versions superseded by a later one. 'fen' overrides the stored FEN where a verified trim exists. Tiers: 1 send first (most content for its flaws), 2 sendable, 3 thin or a clear flaw, single = one phase without thematic tries or changes (random tries do not count) (E. Bourd, 18 Oct 2026: not for publication unless very complicated or pretty), gate = fails the gate now (needs a fix or his override), public = already shown on the blog. 'tries' names thematic tries the notes describe only in words. 'thematic' fixes the thematic defences and their order where the automatic choice (defences whose mate changes or that refute a try) is wrong; 'Sf5~' means the random moves of that unit. Solutions show no try that captures (E. Bourd, 18 Oct 2026); thematic variations carry letters [a], [b] and are set in bold.",
  "tiers": {
   "1": "Send first",
   "2": "Sendable",
@@ -87,11 +87,6 @@
    "id": "bourd-halfpin-ss-bh7",
    "tier": "2",
    "verdict": "Half-pin of two knights on the f-file; 1.Bh7! clears f5. 17 units after wPe5 was removed."
-  },
-  {
-   "id": "bourd-halfpin-ss-bd8",
-   "tier": "2",
-   "verdict": "Half-pin of two knights on the 5th rank; three tries. 12+8, heavy."
   },
   {
    "id": "bourd-halfpin-diagonal-bb1",
@@ -194,11 +189,6 @@
    ]
   },
   {
-   "id": "bourd-b5-three-blocks-rg6",
-   "tier": "2",
-   "verdict": "Three units close the b-file on b5, each opening a queen line; the key rook blocks and plays, with two tries."
-  },
-  {
    "id": "bourd-changed-mates-2",
    "tier": "2",
    "verdict": "The queen switches from the d-file to the f-file; two changed mates, dual-free after the key."
@@ -227,11 +217,6 @@
    "verdict": "Two rooks defend on c7; each try refuted by one rook. Flaws: key piece attacked by Sh3, wPe6 a stopper, bBc1 idle, 18 units."
   },
   {
-   "id": "bourd-bench-unpin-c3-bd3",
-   "tier": "2",
-   "verdict": "Bishop and knight unpin by interposing on c3; queen mates on both 6th-rank squares."
-  },
-  {
    "id": "bourd-two-bishops-qb5-se8",
    "tier": "2",
    "verdict": "Three units cut one white line (Rh6) with unguard errors. Flaws: g5 stopper, passive Kb8, no thematic try."
@@ -251,12 +236,21 @@
    "verdict": "Self-blocks by capture of the knight e6, separated by a pin; two tries. His note: worked to make the key proper."
   },
   {
-   "id": "bourd-bishop-rook-battery-kc5-qg1",
+   "id": "bourd-bishop-rook-battery-kc5-airy",
    "tier": "2",
-   "verdict": "White correction on a bishop-rook battery with anticipatory closure (his Qg1 repair of the promoted-force version). Flaws: the queen g1 does a bishop's job, 1...Sxe5 refutes two corrections, 19 units with a heavy black force.",
+   "verdict": "White correction on a bishop-rook battery with anticipatory closure: 1.B~? Bg2+!, 1.Bd5? Sxf6!, 1.Be4?/Bf3? Sxe5!, 1.Bb7!. His airy version (no black queen, c4 free) of the Qg1 repair. Flaws: the queen g1 does a bishop's job, the random stage is refuted by a check, 1...Sxe5 refutes two corrections, 19 units.",
    "thematic": [
     "Sxf6",
     "Sxe5"
+   ],
+   "tries": [
+    "Bb5",
+    "Bd5",
+    "Be4",
+    "Bf3"
+   ],
+   "skip_tries": [
+    "d8=Q"
    ]
   },
   {
@@ -273,6 +267,21 @@
    "id": "bourd-one-knight-change",
    "tier": "3",
    "verdict": "One knight move, one change, no flights: clean but simple (the boxed king made it easy, his own note)."
+  },
+  {
+   "id": "bourd-halfpin-ss-bd8",
+   "tier": "single",
+   "verdict": "Half-pin of two knights on the 5th rank; three tries. 12+8, heavy. Single phase: the tries fail to 1...hxg5!/g5! (and 1.Bxe5? is a capture), not to the thematic knight defences."
+  },
+  {
+   "id": "bourd-b5-three-blocks-rg6",
+   "tier": "single",
+   "verdict": "Three units close the b-file on b5, each opening a queen line; the key rook blocks and plays, with two tries. Single phase: 1.Rh6? Sxh6! is a random try and 1.Rxc6? a capture."
+  },
+  {
+   "id": "bourd-bench-unpin-c3-bd3",
+   "tier": "single",
+   "verdict": "Bishop and knight unpin by interposing on c3; queen mates on both 6th-rank squares. Single phase: all three bishop tries fail to the same 1...Ra3!, not a thematic defence."
   },
   {
    "id": "bourd-three-captures-e4",

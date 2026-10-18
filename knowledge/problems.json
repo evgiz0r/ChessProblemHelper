@@ -2876,6 +2876,22 @@
     "Bb7"
    ],
    "note": "Sound, legal, gate PASS, 19 units (12+7). Flaws: the queen g1 does a bishop's job; 1...Sxe5 refutes two corrections (Bf3?! the weaker one); wPf5 and wPd7 stop cooks (d7 cuts Be8 from c6); Ka8 stands where Qg2+ can refute; key piece attacked by Sb4; 1...Sc6 2.Rxc6# captures the defender; heavy black force (queen, two bishops, two knights)."
+  },
+  {
+   "id": "bourd-bishop-rook-battery-kc5-airy",
+   "fen": "K7/2NP1p2/2B2R2/B1k1Np2/1n4n1/b1P3p1/5R2/1r3bQ1",
+   "stip": "#2",
+   "author": "E. Bourd, bench mve4eizj (18 Oct 2026)",
+   "source": "His lighter version of bourd-bishop-rook-battery-kc5-qg1: 'slightly better, feels more airy... without that somewhat ugly queen and pawns on h2'. The black queen gives way to bBf1 (the random refutation becomes Bg2+), wPh2 and wPc4 go, wSc7 takes b5/d5, bRb1 refutes 1.d8=Q? (Rd1!), bPf7 and bPf5 stop cooks.",
+   "themes": [
+    "White correction by the masking bishop c6: 1.B~? (Bb5/Ba4/Bg2/Bh1) Bg2+!; 1.Bd5!? (shuts the d-file of 2.Rd2#) Sxf6!, 1.Be4!? (shuts rank 4 of 2.Rf4#) Sxe5!, 1.Bf3?! Sxe5!; 1.Bb7! (2.Bb6#) Sxf6 2.Rd2#, Sxe5 2.Rf4#; anticipatory closure of lines that exist only after Black's capture",
+    "c4 left empty (E. Bourd): the 'invisible' square at the end of the line f4-e4-d4-c4, as d6 is at the end of d2-d3-d4-d5-d6; the king feels freer",
+    "by-play Sb4~ 2.Rc6#, Sc6 2.Rxc6#; set 1...Sd3 2.Sa6# changed to 2.Rc6#; try 1.d8=Q? Rd1!"
+   ],
+   "keys": [
+    "Bb7"
+   ],
+   "note": "Sound, legal, gate PASS, trim --tries nothing, 19 units (10+9). Flaws: wQg1 does a bishop's job; 1...Sxe5 refutes two corrections; the b4 knight's moves are random (one mate for six moves) with 1...Sc6 2.Rxc6# capturing; wPd7 stops Rf4+; Ka8 stands for Bg2+; key piece attacked by Sb4."
   }
  ]
 }
