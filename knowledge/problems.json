@@ -3009,6 +3009,23 @@
    ],
    "cooked": false,
    "note": "Gate PASS. Flaws: double threat in both tries (Qc5#/Qxd4#); static key (both mates set); 19 units, 7 pawns; Pe2 only stops Qe1+/Re1+; random holder moves also allow Rd5#. Same scheme as claude-rook-knight-battery-d7 found independently (holder knight interposing on the vacated square, guards of the squares above and below the king captured on the f-file)."
+  },
+  {
+   "id": "bourd-queen-knight-battery-bg5-b2",
+   "fen": "8/5p2/K2P2n1/QN2kP1N/3n2P1/1p3B2/1b2P1p1/2BR4",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench, 18 Oct 2026)",
+   "source": "Composing Bench journal mveg32zg-0227..0266: bourd-queen-knight-battery-bg5 with bBb2 guarding d4 so that the tries threaten only 2.Qc5#",
+   "themes": [
+    "1.Bg5! (2.Bf6#) Sxf5 2.Sc7#, Sxf3 2.Sc3#",
+    "tries with single threats: 1.Qb6? (2.Qc5#) Sxf3 2.Qe3#, Ba3 2.Qxd4# but Sxf5!; 1.Qb4? (2.Qc5#) Sxf5 2.Qe4#, Ba3 2.Qxd4# but Sxf3!",
+    "also 1.d7? (2.Qc7#) Ba3!, 1.Qd8? (2.Qf6#) Sxf3!"
+   ],
+   "keys": [
+    "Bg5"
+   ],
+   "cooked": false,
+   "note": "Gate PASS. E. Bourd: 'a bit better, with the tries having single threat'. Flaws: the key bishop c1 stands attacked by Bb2 (1...Bxc1 unprovided in the set); tested Bd2 (blocks Rd1 from d5: 1.Qb6? then fails to both captures), Bd8 and Bh4 (2.Bf6 is threatened at once): none works, so the attack is the price of b2's two jobs (d4 guard, 1...Ba3 against 1.d7?). Static key; 18 units, 7 pawns; Pe2, Ka6 for soundness."
   }
  ]
 }
