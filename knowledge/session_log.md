@@ -1423,3 +1423,13 @@ no motive layer to mirror.
 - 18 Oct: his bench mve0b8u3 (274 steps): Kc5 version, 1.Bb7! (2.Bb6#) with the thematic try set Bd5? Sxf6!, Be4?/Bf3? Sxe5!
   (bourd-bishop-rook-battery-kc5-bb7); fatal promoted force (Ba5+Bg1 dark), structural (lesson). Repairs tried (Rc6 threat,
   Pa5, Qa5, unmask_search: Sb3 threat with a b6 flight) failed.
+
+## Session: originals portfolio (18 Oct 2026, branch claude/bold-pasteur-2o7mjx)
+* E. Bourd asked for all problems he composed in our sessions that could go to magazines as originals.
+  knowledge/originals.json lists 51 of his (or joint) #2s from knowledge/problems.json with a tier and a one-line
+  verdict: 13 send first, 28 sendable, 4 thin, 5 failing the current gate (useless key piece, out-of-play key,
+  simple block), 1 already public (bourd-novotny-b4-bc5, FEN in the 18 Oct blog post). Left out: schemes, post-key
+  positions, bench demonstrations he called schemes, illegal/promoted positions, superseded versions. Two verified
+  trims used (queen-pin self-pin 17 units, Grimshaw d4 8+8). tools/originals.py re-gates each entry and writes
+  docs/originals.html (published as https://claude.ai/artifact/9xKrJSL1xQSixJsG79wAJ6). Anticipation was checked
+  as identical position only; yacpdb/PDB search still to do before sending.
