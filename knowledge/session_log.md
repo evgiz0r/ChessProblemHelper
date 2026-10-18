@@ -1466,3 +1466,8 @@ no motive layer to mirror.
 - 18 Oct: rook-bishop battery started: geometry and colour analysis (lesson), setplay_search HOLDER mode; no scheme yet;
   proposed crossing discharges (Ke6, Bf4 for d6, Bd4 for f6 through e5).
 - 18 Oct: rook-bishop battery, his objection to 1...Sxc5 2.Bxc5# (recapture) met by a black light-bishop holder c6: 1...Bxb5 2.Bc5#, 1...Bxd7 2.Bd4# (scheme claude-rook-bishop-bishop-holder-scheme). Post-key with 2.f8=S# after 1.f7 (claude-rook-bishop-f7-draft) is cooked by the left discharges plus a knight check after 1...Be4; cook-stoppers in progress. Fixed a stuck wait loop (pgrep matched its own command line).
+* Same session, his request ("way too verbose"): the main solution is thematic play only - set play when it changes,
+  each thematic try once (refuted by a thematic defence, or with a changed mate) showing only its changed mates and the
+  refutation, the key's thematic variations, the Changed line. A muted By-play row at the bottom holds repeated tries
+  ("1.Bd3?/Bg2?/Bh1? as 1.Bf3?"), tries refuted by non-thematic moves ("1.Bg6? fxg6!") and the key's other variations.
+  Capture tries stay hidden but still decide which defences are thematic.
