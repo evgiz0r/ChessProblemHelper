@@ -196,13 +196,32 @@ what the next run should try. "Proposals" collects improvements too big for one 
   different black unit; to lift No. 12, a second variation in the key phase (1...Bf2 cannot defend 2.Rd3#, so the
   c3#/Rd2# dual avoidance needs another threat).
 
+## 2026-10-18, No. 13: Novotny
+- Result: 8/1p1Nb3/1Nr3R1/8/4k1P1/4P3/4PPK1/B7 (9+4), 1.Rd6! (2.Rd4#) Bxd6 2.Sf6#, Rxd6 2.Sc5#, Rc4 2.Re6#, Bf6 2.Sxf6#;
+  set Bd6 2.Sf6#, Rd6 2.Sc5#, R~ 2.Re6#: the set Grimshaw on d6 becomes a single-threat Novotny on d6, mates transferred.
+  Gate: PASS with warnings (attacked key piece, random-move duals, 1...Bf6 2.Sxf6# recaptures), all named in the post.
+  Stretch theme: the full (double-threat) form is fatal for the gate, so the single-threat form was published and the
+  mentor asked about the gate. Mentor issues #7-#13 had no answers; nothing to act on.
+- Setup: the local `main` had diverged again (origin/main force-updated); worked on `daily-run` from origin/main.
+- Minutes (container clock, which ran slow): about 60 of work. Setup and reading 5, study 10, searches 15 (8 freethreat,
+  4 postsearch), keyfind and hand cleaning 15, post, tool, reference and records 15. About 40 solves.
+- What wasted time: the first freethreat runs (White bishop on the crossing, threat free): the threat never needed the
+  crossing unit, so the captures did not defend. `pkill -f compose.freethreat` killed its own shell again, losing a
+  script written in the same command.
+- What helped: writing the separation condition down before placing anything (each mating square guarded by both black
+  pieces), a 40-line enumeration of it (now chesscomp.compose.novotny_geometry), then postsearch with the threat and the
+  mating knight fixed (KMP=d7), keyfind, and the anatomy after every change (it showed Kg2 needed in no mate).
+- Next run: theme from `next-theme`. For a Novotny again, if the mentor allows a thematic double threat, try the English
+  Novotny on the same geometry (the crossing unit's two threats are the two knight mates); otherwise look for changed mates
+  through Shire's departure lines, which differ between the set and the solution.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
 - A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct, direct self-pin 13 Oct), so those themes can be claimed only when
   the solver sees them (today only a Grimshaw and a half-pin on the key phase are reported).
 - evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
-- A theme reference for Novotny, Le Grand and Rudenko (none yet; Grimshaw done 11 Oct).
+- A theme reference for Le Grand and Rudenko (none yet; Grimshaw done 11 Oct, Novotny 18 Oct).
 - critique 'black piece role' (and the gate warning) calls a unit 'not needed' when the variations survive its removal, but
   ignores a new threat: bPh6 in daily No. 6 stops 2.Qg5# as a second threat. Compare the threat set too before saying 'not needed'.
 - A fast pre-filter for evolve: python-chess alone (mate-in-one tables, early exit at the second refutation) ran about

@@ -102,7 +102,7 @@
    "order": 13,
    "name": "Novotny",
    "definition": "A white piece sacrifices itself on the intersection of two black lines; each capture interferes with the other line.",
-   "reference": null,
+   "reference": ".claude/skills/themes/references/novotny.md",
    "db_text": "Novotny",
    "stretch": true
   },

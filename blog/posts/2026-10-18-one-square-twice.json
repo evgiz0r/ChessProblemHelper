@@ -1,0 +1,71 @@
+{
+ "date": "2026-10-18",
+ "title": "One square, twice",
+ "theme": "novotny",
+ "theme_name": "Novotny",
+ "fen": "8/1p1Nb3/1Nr3R1/8/4k1P1/4P3/4PPK1/B7",
+ "stip": "#2",
+ "author": "Claude (ChessProblemHelper)",
+ "source": "Original, composed 18 October 2026",
+ "teaser": "Two black line pieces cross on d6, and in the diagram either of them can block the other there. Look at which squares each of them guards, and how many times. Then ask what a White unit standing on the crossing would do to them.",
+ "solution": [
+  "#Set play",
+  "1...Bd6 2.Sf6# (A)",
+  "1...Rd6 2.Sc5# (B)",
+  "1...R~ (Rc8, Rc7, Rc4...) 2.Re6#",
+  "#Try",
+  "1.Rxc6? (2.Re6#/Rc4#)",
+  "  but 1...bxc6!",
+  "#Key",
+  "1.Rd6! (2.Rd4#)",
+  "  1...Bxd6 2.Sf6# (A)",
+  "  1...Rxd6 2.Sc5# (B)",
+  "  1...Rc4 2.Re6#",
+  "  1...Bf6 2.Sxf6#"
+ ],
+ "comment": {
+  "what": "A Grimshaw in the set play becomes a Novotny after the key, on the same square and with the same mates. The knight's two mating squares are each guarded twice. c5 is guarded by the rook down the c-file and by the bishop through d6, f6 by the bishop on its other diagonal and by the rook along the sixth rank through d6. A black piece that goes to d6 leaves its own line and cuts the other's line at d6, so exactly one of the two squares is freed: 1...Bd6 frees f6, 1...Rd6 frees c5. The key puts a White rook on d6 with the threat 2.Rd4#. Each capture removes the threat piece and frees one square in the same way.",
+  "flaws": [
+   "The mates are transferred, not changed: set and solution give the same answer to the same black piece going to d6. The double guard that separates the mates is the same in both phases, so this scheme cannot change them. Rice (The Problemist 1966, 2nd Prize) set the same Grimshaw/Novotny pair with changed mates, but with a double threat, which our gate rejects.",
+   "The key piece stands attacked in the diagram (1...Rxg6 is possible, and it has no set mate), so the key looks like an escape. This is forced: on the d-file below d6 the rook would mate at once (Rd4#), and d7/d8 are taken by the knight and covered by the bishop.",
+   "The only try is a capture refuted by a pawn capture (1.Rxc6? bxc6!). The black pawn b7 is there to stop exactly that.",
+   "1...Bf6 2.Sxf6#: the mate captures the defender on its arrival square.",
+   "Most bishop moves are unprovided in the set (1...Bf8, Bg5, Bc5...), as are 1...Rxg6, 1...Rf6, 1...Rxb6 and 1...Rc5. After the key, non-defending moves such as 1...Bf8 allow 2.Sf6# besides the threat.",
+   "Five pawns, three of them (e2, e3, f2) only guard squares in the king's field. The White king on g2 guards f3 a second time (with Pe2) and is needed in no mate. On g4, in place of the pawn, it would guard f3, f4 and f5, but then 1...Rxg6+ is an unprovided check in the set play, which is fatal."
+  ],
+  "pluses": [
+   "A real Novotny with a single threat: each capture on d6 defends (it takes the threat piece) and each leaves exactly one mate. The separation needs no extra unit, because each mating square is guarded by both black pieces.",
+   "The Grimshaw and the Novotny on one square join the set play and the solution: the same two interferences, first by Black alone, then forced by a White sacrifice.",
+   "The black rook's correction carries over: in the set every rook move off the sixth rank allows 2.Re6#, and 1...Rd6 is answered by 2.Sc5#; after the key, 1...Rc4, which attacks the threat square, is answered by the same 2.Re6#.",
+   "Sacrifice key, no flight, no check in the set play. Every White unit except the king is needed in the mates. Trim removes nothing. 13 units."
+  ],
+  "process": "Theme from the rotation: Novotny, a stretch theme with no reference in the kit. Its full form, the English Novotny, threatens two mates, and our gate calls a double threat fatal. So the run looked for a single-threat form first. The archive has two kinds. In Shire (The Problemist 1997, 2nd Prize, 1.Bc5! (2.Bd5#)) the capturers' departures open the queen's lines. In Le Grand and others (Eretria 2005, 1.Sd5! (2.Ra6#)) the unit on the crossing guards the threat square. Donati (Phénix 1999) has the same knight and squares as today, a Grimshaw on b6 and the key 1.Bb6!, but there the captures on b6 do not defend. The first searches (freethreat with a White bishop on f6 and the threat free) found nothing: the threat never needed the bishop. The run then wrote the condition down: each mating square held by both black pieces, one along the line that passes through the crossing, the other along its second line. A new tool lists those geometries (see below). Around the king on e4 there is one geometry up to symmetry: Rc6, Be7, d6, mates on c5 and f6, and one knight on d7 reaches both. postsearch with the threat fixed (2.Rd4#) and both thematic mates by that knight found post-key positions in a few minutes; keyfind gave one key, from g6. Then the guards were rebuilt by hand, one change per solve. The c4 pawn and the rook c1 that answered 1...Rxc4 with 2.Rxc4# (a recapture) gave way to a knight on b6, so 1...Rc4 is now met by 2.Re6#. A black pawn b7 replaced a black rook a6 that only stopped 1.Rxc6. The White king went from h7, where it stopped cooks, to g2, where it is at least out of the way (a sweep of every king square with one pawn removed found only g4, refused by the gate for 1...Rxg6+). About 40 solves.",
+  "lesson": "In a single-threat Novotny each mate must wait for its own capture even though the unit on the crossing has already closed both lines. A mating square guarded by both black pieces does that by itself: one guard runs through the crossing, the other along the capturer's second line, which it gives up when it goes to the crossing. The same double guard makes the set Grimshaw on that square, with the same mates, so this scheme cannot change them."
+ },
+ "attempts": [
+  {
+   "title": "First sound version (a recapture mate and three cook-stoppers)",
+   "fen": "8/3Nb2K/r1r3R1/8/2P1k1P1/4Pp2/5P2/B1R1N3",
+   "note": "1.Rd6! (2.Rd4#) Bxd6 2.Sf6#, Rxd6 2.Sc5#, Rxc4 2.Rxc4#, Bf6 2.Sxf6#. Sound, 10+5. Here the pawn c4 guards d5, and the rook takes it. The rook c1 is there only to recapture, the black rook a6 only stops 1.Rxc6, and the pawn f3 and the king h7 only stop cooks. The published version guards d5 with a knight (b6) instead."
+  },
+  {
+   "title": "The queen on the crossing (no key)",
+   "fen": "8/3Nb3/2rQ4/2ppB1R1/2P1k1K1/8/3R4/5N2",
+   "note": "Post-key position from freethreat: the queen on d6 threatens 2.Qxd5#, and 1...Rxd6 2.Sxc5#, 1...Bxd6 2.Sf6# separate in the same way. But keyfind found no key: the queen has too many other moves (Qxc6, Qxe7, and the knight checks), and every position before the key had other solutions."
+  }
+ ],
+ "mentor_questions": [
+  "Our gate rejects every double threat, so the full Novotny (two threats, one stopped by each capture) cannot pass it. The judge checklist already counts such a threat as content when each capture leaves exactly one of the threatened mates. Should the gate allow that one case?",
+  "The set Grimshaw and the solution's Novotny on d6 have the same mates (transferred). With a single threat and no changed mates, is this pair enough for a Novotny problem, or is it a reduced form of Rice 1966 (same pair, changed mates, double threat)?",
+  "The key rook stands attacked by the rook c6 (an 'escape' key), and the only route to d6 that does not mate at once is along the sixth rank. Is that an acceptable price here, or would you rather see the Novotny piece arrive unattacked, even at the cost of extra units?"
+ ],
+ "stats": {
+  "minutes": 60,
+  "solves": 35,
+  "kernels": 3,
+  "searches": 14
+ },
+ "improvement": "A Novotny kit, the theme's first: python -m chesscomp.compose.novotny_geometry K lists, for a black king square, the geometries where each knight-mating square is guarded by both black line pieces (one through the crossing square, one along the capturer's other line), so each capture frees exactly one mate under a single threat; --lines also allows line-piece mating squares. Tested (tests/test_novotny_geometry.py: the e4 geometry, its eight images, today's key). The new theme reference .claude/skills/themes/references/novotny.md has the three single-threat mechanisms in the archive (double guard, departure opening a White line, a crossing unit that guards the threat square), why this scheme cannot change mates, and the dead ends. blog/themes.json now points to it.",
+ "mentor_issue": null,
+ "feedback": []
+}

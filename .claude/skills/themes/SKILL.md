@@ -1,6 +1,6 @@
 ---
 name: themes
-description: What this entity knows about specific #2 themes it has worked on - Bristol, changed mates, self-pin by capture, half-pin, king key, corner key, underpromotion, Grimshaw - each with the settings made, the mechanism that worked and the dead ends. Use when a task names a theme.
+description: What this entity knows about specific #2 themes it has worked on - Bristol, changed mates, self-pin by capture, half-pin, king key, corner key, underpromotion, Grimshaw, Novotny - each with the settings made, the mechanism that worked and the dead ends. Use when a task names a theme.
 ---
 
 # Themes
@@ -19,4 +19,5 @@ say so.
 - `references/black_correction.md` - knight correction by capture; the threat -> random defence -> correction order and the dead ends; the adjacent-knight self-block cell and its structural rules; E. Bourd's solution of it, a knight next to the king defending by departure, with the mirrored white correction.
 - `references/white_correction.md` - white correction: Loustau's 4th-degree reading (one diagonal to block, squares that spoil a mate), the error table, why interposition plus line closing gives only one correction, the WCORR search.
 - `references/grimshaw.md` - Grimshaw by a block on the threat piece's path (not on the check line); the square beyond the crossing; one retreat square for the key piece; the cooks met and their cures.
+- `references/novotny.md` - Novotny with a single threat (the gate rejects double threats): the double-guard geometry (`chesscomp.compose.novotny_geometry`), Shire's departure lines, the set Grimshaw on the same square and why it cannot change the mates (daily No. 13).
 - `references/line_opening.md` - one black unit opens the same white line twice (the queen's path through the vacated square), the arrival square choosing the mate; the return-interposition and unprotected-blocker traps.
