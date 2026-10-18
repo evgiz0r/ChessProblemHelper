@@ -1463,3 +1463,8 @@ no motive layer to mirror.
   'single' tier (1.Bd8! knights half-pin, 1.Rg6! three blocks on b5, 1.Bd3! unpin on c3). The airy Kc5 battery
   (bourd-bishop-rook-battery-kc5-airy, merged from main) replaces the Qg1 version in the portfolio; originals.json
   gains 'skip_tries' and hand-listed tries now lead in their order. Test test_random_tries_are_not_a_second_phase.
+* Same session, his request ("way too verbose"): the main solution is thematic play only - set play when it changes,
+  each thematic try once (refuted by a thematic defence, or with a changed mate) showing only its changed mates and the
+  refutation, the key's thematic variations, the Changed line. A muted By-play row at the bottom holds repeated tries
+  ("1.Bd3?/Bg2?/Bh1? as 1.Bf3?"), tries refuted by non-thematic moves ("1.Bg6? fxg6!") and the key's other variations.
+  Capture tries stay hidden but still decide which defences are thematic.

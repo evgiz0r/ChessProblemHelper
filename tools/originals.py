@@ -72,6 +72,11 @@ def _vars(m, order, merge=False, randoms=(), letters=None):
     return ", ".join(one(*g) for g in groups)
 
 
+def _moves(mvs):
+    """['1.Bd3?', '1.Bg2?'] -> '1.Bd3?/Bg2?'"""
+    return "/".join(m if i == 0 else m[2:] for i, m in enumerate(mvs))
+
+
 def _head(ph):
     mark = "!" if ph["type"] == "key" else "?"
     head = f"1.{ph['first_move']['san']}{mark}"
@@ -93,8 +98,8 @@ def solution(fen, note, extra_tries=(), thematic=None, skip_tries=()):
     def named(p):
         san = _strip(p["first_move"]["san"])
         return san in extra_tries or re.search(r"(?<![A-Za-z0-9])" + re.escape(san) + r"\?", note)
-    tries = [p for p in phases if p["type"] == "try" and named(p) and "x" not in p["first_move"]["san"]
-             and _strip(p["first_move"]["san"]) not in skip_tries]
+    named_tries = [p for p in phases if p["type"] == "try" and named(p) and _strip(p["first_move"]["san"]) not in skip_tries]
+    tries = [p for p in named_tries if "x" not in p["first_move"]["san"]]   # no capturing try shown (E. Bourd)
     order = list(extra_tries)                            # tries listed by hand come first, in their order
     tries.sort(key=lambda p: order.index(_strip(p["first_move"]["san"])) if _strip(p["first_move"]["san"]) in order else len(order))
     key = next((p for p in phases if p["type"] == "key"), None)
@@ -102,7 +107,7 @@ def solution(fen, note, extra_tries=(), thematic=None, skip_tries=()):
     km = _mates(key) if key else {}
     others = [(f"set", _mates(setp))] if setp else []
     others += [(f"1.{t['first_move']['san']}?", _mates(t)) for t in tries]
-    refuters = {_strip(r["san"]) for t in tries for r in t["refutations"]}
+    refuters = {_strip(r["san"]) for t in named_tries for r in t["refutations"]}   # capture tries still say what is thematic
     def overlap(a, b):   # one mate shared (a dual counts as the same mate)
         return bool(set(a.split("/")) & set(b.split("/")))
     changing = {d for d in km for _, m in others if d in m and not overlap(m[d][1], km[d][1])}
@@ -139,20 +144,44 @@ def solution(fen, note, extra_tries=(), thematic=None, skip_tries=()):
         else:
             letters[d] = "abcdefghijklmnopqrstuvwxyz"[len(set(letters.values()))]
         prev = d
-    lines = []
+    # main solution: thematic play only; repeated or random tries and the key's other variations go to the by-play
+    lines, extra_tries_bp, seen = [], [], {}
     if setp:
-        s = _vars(_mates(setp), them, randoms=randoms, letters=letters)
-        if s:
-            lines.append(("Set", s))
+        sm = _mates(setp)
+        if any(d in sm and d in km and not overlap(sm[d][1], km[d][1]) for d in them):
+            lines.append(("Set", _vars(sm, them, randoms=randoms, letters=letters)))
+    n_thematic = 0
     for t in tries:
-        play = _vars(_mates(t), them, randoms=randoms, letters=letters)
-        refs = ", ".join(f"1...{r['san']}!" + (f" [{letters[_strip(r['san'])]}]" if _strip(r["san"]) in letters else "")
-                         for r in t["refutations"])
-        lines.append(("Try", f"{html.escape(_head(t))} {play + ', ' if play else ''}but {html.escape(refs)}"))
+        tm = _mates(t)
+        changed = [d for d in them if d in tm and (d not in km or not overlap(tm[d][1], km[d][1]))]
+        refs = [r["san"] for r in t["refutations"]]
+        ref_text = ", ".join(f"1...{r}!" + (f" [{letters[_strip(r)]}]" if _strip(r) in letters else "") for r in refs)
+        if not changed and not any(_strip(r) in letters for r in refs):
+            extra_tries_bp.append((f"1.{t['first_move']['san']}?", ", ".join(f"{r}!" for r in refs)))
+            continue
+        play = _vars(tm, changed, randoms=randoms, letters=letters)
+        sig = (tuple(c["san"] for c in t.get("threat") or []), play, ref_text)
+        if sig in seen:                                  # the same try again: by-play
+            seen[sig].append(f"1.{t['first_move']['san']}?")
+            continue
+        seen[sig] = []
+        n_thematic += 1
+        lines.append(("Try", f"{html.escape(_head(t))} {play + ', ' if play else ''}but {html.escape(ref_text)}"))
+        lines[-1] = lines[-1] + (sig,)
     if key:
-        byplay = _vars(km, [d for d in km if d not in them], merge=True)
-        play = _vars(km, them, randoms=randoms, letters=letters)
-        lines.append(("Key", f"{html.escape(_head(key))} {play}" + (f" ({byplay})" if byplay else "")))
+        lines.append(("Key", f"{html.escape(_head(key))} {_vars(km, them, randoms=randoms, letters=letters)}"))
+    # by-play: repeated tries (as the try they repeat), other tries, the key's other variations
+    bp = []
+    for line in lines:
+        if line[0] == "Try" and seen.get(line[2]):
+            first = re.match(r"1\.(\S+)", re.sub("<[^>]+>", "", line[1])).group(1)
+            bp.append(f"{_moves(seen[line[2]])} as 1.{first}")
+    lines = [l[:2] for l in lines]
+    groups = {}
+    for mv, ref in extra_tries_bp:
+        groups.setdefault(ref, []).append(mv)
+    bp += [f"{_moves(mvs)} {ref}" for ref, mvs in groups.items()]
+    others_key = _vars(km, [d for d in km if d not in them], merge=True)
     # which mates change, which transfer (thematic defences only; the key's mate last)
     changes, transfers = [], []
     for d in them:
@@ -187,8 +216,13 @@ def solution(fen, note, extra_tries=(), thematic=None, skip_tries=()):
                                                        for ds, text in changes))))
     if transfers:
         lines.append(("Transferred", html.escape("; ".join(transfers))))
+    byplay = "; ".join(html.escape(x) for x in bp)
+    if others_key:
+        byplay += ("; " if byplay else "") + others_key
+    if byplay:
+        lines.append(("By-play", byplay))
     # E. Bourd, 18 Oct 2026: a single phase without tries or changes does not pass unless very complicated or pretty
-    return lines, {"tries": len(tries), "changes": len(changes)}
+    return lines, {"tries": n_thematic, "changes": len(changes)}
 
 
 def counts(fen):
@@ -219,7 +253,7 @@ def card(n, entry, rec, report):
     <p class="verdict">{html.escape(entry['verdict'])}</p>
     <p class="meta">Key {html.escape(key)} · {html.escape(rec['author'])}</p>
     <p class="fen"><code>{html.escape(fen)}</code></p>
-    <dl class="solution">{''.join(f'<dt>{k}</dt><dd>{v}</dd>' for k, v in lines)}</dl>
+    <dl class="solution">{''.join((f'<dt class="bp">{k}</dt><dd class="bp">{v}</dd>' if k == 'By-play' else f'<dt>{k}</dt><dd>{v}</dd>') for k, v in lines)}</dl>
     <details><summary>Explanation</summary><p>{html.escape(rec['note'])}</p></details>
     <details><summary>Gate report ({len(flags)} lines)</summary><ul>{''.join(f'<li>{html.escape(f)}</li>' for f in flags)}</ul></details>
   </div>
