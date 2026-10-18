@@ -1454,3 +1454,5 @@ no motive layer to mirror.
   1...Rxe6 (try) and 1...Re6 (key) count as one defence. Open question for him: whether to keep the by-play brackets.
 - 18 Oct: his airy version (bourd-bishop-rook-battery-kc5-airy): no black queen (Bf1, B~ Bg2+), no wPh2/wPc4, c4 free;
   sound, gate PASS, trim --tries nothing.
+- 18 Oct: rook-bishop battery started: geometry and colour analysis (lesson), setplay_search HOLDER mode; no scheme yet;
+  proposed crossing discharges (Ke6, Bf4 for d6, Bd4 for f6 through e5).
