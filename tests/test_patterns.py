@@ -43,3 +43,13 @@ def test_knowledge_jsonl_has_no_merge_markers():
             assert not line.startswith(('<<<<<<<', '=======', '>>>>>>>')), (name, i)
             if line.strip():
                 json.loads(line)
+
+
+def test_knowledge_files_not_truncated():
+    # 18 Oct 2026: a merge resolution written as open(p, 'w').write(f(open(p).read())) emptied lessons.jsonl and
+    # session_log.md (the write truncates before the read); never let an empty knowledge file reach main
+    import os
+    root = os.path.join(os.path.dirname(__file__), '..', 'knowledge')
+    for name, least in (('lessons.jsonl', 300), ('session_log.md', 500), ('problems.json', 1000)):
+        with open(os.path.join(root, name)) as f:
+            assert sum(1 for _ in f) >= least, name
