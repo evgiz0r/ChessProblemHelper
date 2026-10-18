@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-18",
- "note": "E. Bourd's #2 problems (his own or joint with Claude) composed during our sessions that could go to magazines as originals. Built from knowledge/problems.json: every entry re-solved and passed through tools/blog.py check on 18 Oct 2026 (sound, legal, no fatal flaw, no identical position in Problemesis or his PDB). The anticipation check is identical-position only: search yacpdb/PDB before sending. Left out: schemes, sketches, post-key positions, bench demonstrations he called schemes, illegal or promoted-force positions, and versions superseded by a later one. 'fen' overrides the stored FEN where a verified trim exists. Tiers: 1 send first (most content for its flaws), 2 sendable, 3 thin or a clear flaw, single = one phase without tries or changes (E. Bourd, 18 Oct 2026: not for publication unless very complicated or pretty), gate = fails the gate now (needs a fix or his override), public = already shown on the blog. 'tries' names thematic tries the notes describe only in words. 'thematic' fixes the thematic defences and their order where the automatic choice (defences whose mate changes or that refute a try) is wrong; 'Sf5~' means the random moves of that unit.",
+ "note": "E. Bourd's #2 problems (his own or joint with Claude) composed during our sessions that could go to magazines as originals. Built from knowledge/problems.json: every entry re-solved and passed through tools/blog.py check on 18 Oct 2026 (sound, legal, no fatal flaw, no identical position in Problemesis or his PDB). The anticipation check is identical-position only: search yacpdb/PDB before sending. Left out: schemes, sketches, post-key positions, bench demonstrations he called schemes, illegal or promoted-force positions, and versions superseded by a later one. 'fen' overrides the stored FEN where a verified trim exists. Tiers: 1 send first (most content for its flaws), 2 sendable, 3 thin or a clear flaw, single = one phase without tries or changes (E. Bourd, 18 Oct 2026: not for publication unless very complicated or pretty), gate = fails the gate now (needs a fix or his override), public = already shown on the blog. 'tries' names thematic tries the notes describe only in words. 'thematic' fixes the thematic defences and their order where the automatic choice (defences whose mate changes or that refute a try) is wrong; 'Sf5~' means the random moves of that unit. Solutions show no try that captures (E. Bourd, 18 Oct 2026); thematic variations carry letters [a], [b] and are set in bold.",
  "tiers": {
   "1": "Send first",
   "2": "Sendable",
@@ -24,7 +24,7 @@
   {
    "id": "bourd-two-captures-three-phase",
    "tier": "1",
-   "verdict": "Two captures on e5 each open the other battery; Bxe5 gets three mates in three phases. Flaws: 22 units, 10 pawns."
+   "verdict": "Two captures on e5 each open the other battery; both mates change from the set to 1.Qg2!. The third phase (try 1.Qxh1? g2!, Bxe5 2.Qf1#) is a capture and is left out of the solution. Flaws: 22 units, 10 pawns."
   },
   {
    "id": "bourd-queen-pin-selfpin",

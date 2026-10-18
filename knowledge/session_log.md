@@ -1452,3 +1452,7 @@ no motive layer to mirror.
   (a mate moving to another thematic defence). Thematic = key defences whose mate changes (a shared dual is no change)
   or that refute a named try; originals.json 'thematic' overrides it for nine problems ('Sf5~' = random moves, 1...S~).
   1...Rxe6 (try) and 1...Re6 (key) count as one defence. Open question for him: whether to keep the by-play brackets.
+* Same session: thematic variations lettered [a], [b] (one letter per defence across phases, random group shares one;
+  a try refuted by a thematic defence shows its letter) and set in bold; tries that capture are left out of the
+  solutions. Cost: 1.Qg2! (two captures on e5) loses its middle phase 1.Qxh1?; thematic capture tries also go from
+  1.Bh7! (Bxg4?), 1.Bxh6! (Bxe3?), 1.Kf8! (Kxg6?), 1.Bd8! (Bxe5?), 1.Bc3! (Bxc5?), 1.Ra5! (Rxa2?), 1.Bxe7! (Bxb4?).
