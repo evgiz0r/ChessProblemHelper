@@ -48,3 +48,11 @@ Eretria 2005, psis-2ff38272a6: 1.Sd5! (2.Ra6#) Bxd5 2.c5#, Rxd5 2.Sxf7#).
 - A White bishop on X with a threat by another piece (first freethreat runs): the captures did not defend.
 - The queen on X (q1 run): post-keys with the Novotny pair, but every key gave other solutions (Qxc6, Qxe7, knight
   checks).
+
+## E. Bourd's extension (bench, 18 Oct 2026): the crossing unit masked, the tries from the mating squares
+K7/3Np2n/B1P1R3/b2k1P2/1R1BN3/1r1p3r/3n4/8, 1.Bc5! (2.Rd4#) Rxb4 2.Sc3#, Bxb4 2.Sb6#, Sc4 2.Bxc4#, Sf3 2.Bc4#.
+The same double guard (Kd5, Rb3, Ba5, crossing b4, mates c3/b6), but the rook stands on the crossing in the diagram,
+masked by Bd4, which must keep protecting d4. 11 bishop tries: 1.Bb2?/Ba1? Rxb4! and 1.Ba7? Bxb4! (the mating knight
+lands on the bishop's line to d4), 1.Bc3?/Bb6? (on the mating square), 1.Be3?/Bf2?/Bg1? Re3!, 1.Bh8?/Bg7?/Bf6? Sf6!.
+The second layer came from changing the key (unmasking, a white correction), not the mechanism. No Novotny sacrifice
+now: the crossing unit does not move.
