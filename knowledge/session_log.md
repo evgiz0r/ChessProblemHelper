@@ -1423,3 +1423,6 @@ no motive layer to mirror.
 - 18 Oct: his bench mve0b8u3 (274 steps): Kc5 version, 1.Bb7! (2.Bb6#) with the thematic try set Bd5? Sxf6!, Be4?/Bf3? Sxe5!
   (bourd-bishop-rook-battery-kc5-bb7); fatal promoted force (Ba5+Bg1 dark), structural (lesson). Repairs tried (Rc6 threat,
   Pa5, Qa5, unmask_search: Sb3 threat with a b6 flight) failed.
+- 18 Oct: his Qg1 repair of the Kc5 version (bourd-bishop-rook-battery-kc5-qg1, sound, gate PASS; -wPh2 removes the
+  four-fold Qg2+ refutation). Critique fix: a unit the solution needs (plug) that also plays a try is a cook-stopper,
+  not 'try-only' (test).

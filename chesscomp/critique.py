@@ -526,9 +526,11 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
             continue
         verdict = nec.get(name, '')
         own = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == name]
-        if p.piece_type != chess.KING and sq != kmove.from_square and own:
+        for_soundness = verdict.startswith('needed') and 'CONTENT' not in verdict and 'SET PLAY' not in verdict
+        if p.piece_type != chess.KING and sq != kmove.from_square and own and not for_soundness:
             # E. Bourd (7 Oct 2026): a unit in no mate of the solution that only plays tries is fatal,
-            # whatever content the tries carry
+            # whatever content the tries carry. A unit the solution needs (a plug, a cook-stopper) is not "only
+            # for a try" (18 Oct 2026: wPd7 cut Be8 from c6 in his Kc5 battery and was called try-only)
             add('major', 'try-only unit', f"{_pname(board, sq)} takes part in no mate of the solution; it only plays "
                                           + ', '.join('1.' + t + '?' for t in own) + ' (fatal, E. Bourd)')
             continue
@@ -566,11 +568,12 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                 changed_phases = {ph for c in res.get('relations', {}).get('changed', []) for ph in c['phases']}
                 my_tries = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == chess.square_name(sq)
                             and f"try {t['first_move']['san']}" in changed_phases]
-                if my_tries:
+                if my_tries and not why.startswith('no solution'):
                     add('major', 'try-only unit', f"{_pname(board, sq)} takes part in no mate of the solution; it only plays "
                                                   + ', '.join('1.' + t + '?' for t in my_tries) + ' (fatal, E. Bourd)')
                 else:
-                    add('minor', 'cook-stopper', f"{_pname(board, sq)} takes part in no mate; needed for soundness ({why})")
+                    also = (' and also plays ' + ', '.join('1.' + t + '?' for t in my_tries)) if my_tries else ''
+                    add('minor', 'cook-stopper', f"{_pname(board, sq)} takes part in no mate; needed for soundness ({why}){also}")
         elif [t for t in tries if t['first_move']['uci'][:2] == name]:
             own = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == name]
             add('major', 'try-only unit', f"{_pname(board, sq)} takes part in no mate of the solution; it only plays "

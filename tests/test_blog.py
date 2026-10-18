@@ -80,3 +80,10 @@ def test_mentor_fatal_rules_7_october():
 def test_try_only_unit_even_when_its_tries_carry_changes():
     # c7 pawn: no part in the solution, only promotion tries (with a changed mate) - reported (a drawback)
     assert 'try-only unit' in _rules('4K3/2Pp3B/4k3/8/3Q4/8/8/8')
+
+
+def test_plug_that_also_plays_a_try_is_not_try_only():
+    # E. Bourd's Kc5 bishop-rook battery (18 Oct 2026): wPd7 cuts Be8 from c6 (no solution without it) and also
+    # plays 1.d8=Q?; it is a cook-stopper, not a unit "only for a try"
+    rules = _rules('K3b3/3P4/2B2R2/B1k1NP2/1nP3n1/b1P3pq/5R2/6Q1')
+    assert 'try-only unit' not in rules and 'cook-stopper' in rules

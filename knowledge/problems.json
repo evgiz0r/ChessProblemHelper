@@ -2859,6 +2859,21 @@
     "Bb7"
    ],
    "note": "FATAL: promoted force, White has 3 bishops with Ba5 and Bg1 both dark. The flaw is structural: the rear bishop must stand on the king's colour to attack it along the battery, and so must any bishop that checks the king, so a bishop threat always duplicates it. Other flaws: 1...Qg2+ refutes four non-thematic tries; wPf5 and wPd7 are plugs (d7 cuts Be8 from c6); Ka8 stops cooks; key piece attacked by Sb4; 19 units. Tried by Claude: without Ba5 the threat becomes Rc6# but Sb4xc6 refutes it; without Ba5 and Sb4 the check discharges cook again (1.Rd2+ Sf2 2.Rd5#) and b6 is a flight; Pa5 for b6 does not restore the key; Qa5 (with bPb5) adds threats; unmask_search with the tries fixed found the threat Sa1-b3# but a b6 flight in the diagram (keys Kb7/Ka7/Bb7)."
+  },
+  {
+   "id": "bourd-bishop-rook-battery-kc5-qg1",
+   "fen": "K3b3/3P4/2B2R2/B1k1NP2/1nP3n1/b1P3pq/5R2/6Q1",
+   "stip": "#2",
+   "author": "E. Bourd (18 Oct 2026); -wPh2 by Claude",
+   "source": "His repair of bourd-bishop-rook-battery-kc5-bb7: 'i just put a queen on g1 and its fine' (no second dark bishop: the battery is queen-rook). Trim then removes wPh2 (it only made three non-thematic tries refuted by Qg2+).",
+   "themes": [
+    "1.Bb7! (2.Bb6#, the key unmasks Rf6 to protect b6) Sxf6 2.Rd2#, Sxe5 2.Rf4#, Sc6 2.Rxc6#, Sd5 2.Rc6#: the black knight g4 holds the battery Qg1/Rf2 (interposing on e3) and each capture releases it",
+    "thematic tries by the key bishop, each shutting the matching discharge line: 1.Bd5? Sxf6!, 1.Be4? Sxe5!, 1.Bf3? Sxe5!; also 1.Kb7?/Ka7? Sd5!, 1.Bg2? Qxg2+!"
+   ],
+   "keys": [
+    "Bb7"
+   ],
+   "note": "Sound, legal, gate PASS, 18 units (11+7). Flaws: a queen doing a bishop's job (the rear of the battery); Sxe5 and Sd5 each refute two tries; wPf5 and wPd7 stop cooks (d7 cuts Be8 from c6); Ka8 stops cooks; key piece attacked by Sb4; 1...Sc6 2.Rxc6# captures the defender; black queen h3 as a try refuter."
   }
  ]
 }
