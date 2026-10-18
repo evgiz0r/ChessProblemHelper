@@ -2915,9 +2915,46 @@
     "1.f7! (2.f8=S#) Bxb5 2.Bc5#, Bxd7 2.Bd4#: the only checking promotion as threat; the black bishop's two captures each unguard d6 or f6"
    ],
    "keys": [
+    "Bc5+",
+    "Bd4+",
     "f7"
    ],
-   "note": "COOKED: 1.Bc5+ Be4 2.Sc7#/Sd4#, 1.Bd4+ Be4 2.Sf8#/Sc5# (the discharge covering a square frees that square's knight). bSb3 kills Sd4/Sc5, bBd8 kills Sc7; Sf8 needs f8 blocked (Kf8, key Kg8) but then 1.Kg7 also solves. Not for showing as a problem."
+   "note": "COOKED: 1.Bc5+ Be4 2.Sc7#/Sd4#, 1.Bd4+ Be4 2.Sf8#/Sc5# (the discharge covering a square frees that square's knight). bSb3 kills Sd4/Sc5, bBd8 kills Sc7; Sf8 needs f8 blocked (Kf8, key Kg8) but then 1.Kg7 also solves. Not for showing as a problem.",
+   "cooked": true
+  },
+  {
+   "id": "claude-rook-bishop-battery-kg8",
+   "fen": "4BK2/3NpP2/1bb1k3/1N3p2/2P2P2/1n2B3/8/4R3",
+   "stip": "#2",
+   "author": "Claude, battery series (rook-bishop battery), 18 Oct 2026",
+   "source": "claude-rook-bishop-f7-draft with the cooks stopped: Kf8 blocks 2.Sf8 (key 1.Kg8 clears the promotion square), bBb6 covers c7/c5 and refutes 1.Kg7 by Bd4+, bSb3 covers d4 after Bc5 cuts b6-d4",
+   "themes": [
+    "1.Kg8! (2.f8=S#) Bxb5 (the d6 guard) 2.Bc5#, Bxd7 (the f6 guard, self-block) 2.Bd4#: the black bishop c6 holds the battery Re1/Be3 by interposing on e4 and gives it up with each capture; both mates quiet (no recapture)",
+    "try 1.Kg7? (also guards f6) Bd4+! (cross-check, no check against g8)",
+    "clearance key: the king leaves the promotion square of the threat"
+   ],
+   "keys": [
+    "Kg8"
+   ],
+   "cooked": false,
+   "note": "SOUND, gate: single phase (no thematic tries or changes yet), static key (set play has the same mates). Cook-stoppers: bBb6, bSb3, Kf8/Pf4. trim --tries: nothing removable."
+  },
+  {
+   "id": "claude-rook-bishop-battery-kg8-rd8",
+   "fen": "3R1K2/3NpP2/1bb1k3/1N3p2/2P2P2/1n2B3/8/4R3",
+   "stip": "#2",
+   "author": "Claude, battery series (rook-bishop battery), 18 Oct 2026",
+   "source": "claude-rook-bishop-battery-kg8 with Be8 replaced by Rd8 (protects d7, frees e8 for a king try); Bc8 instead would form a battery with Sd7 (every knight move a discovered check after 1.Bd4+ Be4)",
+   "themes": [
+    "1.Kg8! (2.f8=S#) Bxb5 (the d6 guard) 2.Bc5#, Bxd7 (the f6 guard, self-block) 2.Bd4#: the black bishop c6 holds the battery Re1/Be3 by interposing on e4 and gives it up with each capture; quiet mates",
+    "tries by the key piece: 1.Ke8? Bxd7+! (the thematic capture with check), 1.Kg7? Bd4+! (cross-check by the cook-stopper)",
+    "minor-promotion threat; the key clears the promotion square"
+   ],
+   "keys": [
+    "Kg8"
+   ],
+   "cooked": false,
+   "note": "Gate PASS. Flaws: cook-stoppers bBb6 (c7, c5; Bd4+ against Kg7) and bSb3 (d4 after Bc5 cuts b6-d4); static key (both mates set); the thematic try is refuted by a check; 15 units, 5 pawns. After 1...Bxd8 the promoted knight f8 protects d7."
   }
  ]
 }

@@ -1471,3 +1471,4 @@ no motive layer to mirror.
   refutation, the key's thematic variations, the Changed line. A muted By-play row at the bottom holds repeated tries
   ("1.Bd3?/Bg2?/Bh1? as 1.Bf3?"), tries refuted by non-thematic moves ("1.Bg6? fxg6!") and the key's other variations.
   Capture tries stay hidden but still decide which defences are thematic.
+- 18 Oct: first sound rook-bishop problem (claude-rook-bishop-battery-kg8, then -kg8-rd8, gate PASS): 1.Kg8! (2.f8=S#) Bxb5 2.Bc5#, Bxd7 2.Bd4#; tries 1.Ke8? Bxd7+!, 1.Kg7? Bd4+!. Cook-stoppers bBb6, bSb3. Next: a second layer (changed mates by switching which side of the battery is open).
