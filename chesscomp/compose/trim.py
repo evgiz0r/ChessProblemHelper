@@ -6,7 +6,9 @@ A single pass of removals misses such pairs; this explores removal sets breadth-
 in which the key is still the only key, the play of the key phase is unchanged (every defence keeps exactly
 its mates, no new defence at all), there is no diagram flight and no unprovided check in the set play.
 
-    python3 -m chesscomp.compose.trim FEN [--keep e5,d7] [--max 4]
+    python3 -m chesscomp.compose.trim FEN [--keep e5,d7] [--max 4] [--tries]
+--tries also keeps every try with its refutations: without it trim removed his wPh2, the unit that gave the random
+bishop move its one refutation in a white correction (E. Bourd, 18 Oct 2026). Use it whenever the tries are content.
 """
 from __future__ import annotations
 import argparse
@@ -38,7 +40,18 @@ def key_play(fen: str):
     return keys, play, checks
 
 
-def trim(fen: str, keep=(), max_removed=6):
+def try_map(fen: str):
+    """{try san: frozenset of refutation san} of the diagram."""
+    try:
+        r = analyse(Problem.from_fen(fen + ' w - - 0 1', '#2'), include_tries=True, include_set=False, time_limit=20)
+    except Exception:
+        return None
+    return {p['first_move']['san']: frozenset(x['san'] for x in p.get('refutations', []))
+            for p in r['phases'] if p['type'] == 'try'}
+
+
+def trim(fen: str, keep=(), max_removed=6, keep_tries=False):
+    tries0 = try_map(fen) if keep_tries else None
     base = key_play(fen)
     if not base or len(base[0]) != 1:
         raise SystemExit('the diagram is not sound: nothing to trim against')
@@ -68,6 +81,10 @@ def trim(fen: str, keep=(), max_removed=6):
                     continue
                 if set(kp[1]) - set(play0):   # a new defence changes the play: -bPc2 let 1...Sc2 join 1...Sc6
                     continue                  # (bourd-type3-c5-threat, 16 Oct 2026)
+                if tries0 is not None:        # --tries: every try keeps its refutations (E. Bourd, 18 Oct 2026: wPh2
+                    tm = try_map(b.board_fen())   # gave B~ its one refutation Qg2+, and trim removed it)
+                    if tm is None or any(tm.get(t) != r for t, r in tries0.items()):
+                        continue
                 nxt.append(g); found.append((g, b.board_fen()))
         if not nxt:
             break
@@ -78,8 +95,9 @@ def trim(fen: str, keep=(), max_removed=6):
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument('fen'); ap.add_argument('--keep', default=''); ap.add_argument('--max', type=int, default=6)
+    ap.add_argument('--tries', action='store_true', help='also keep every try with its refutations')
     a = ap.parse_args(argv)
-    key, board, found = trim(a.fen.split()[0], [k for k in a.keep.split(',') if k], a.max)
+    key, board, found = trim(a.fen.split()[0], [k for k in a.keep.split(',') if k], a.max, a.tries)
     if not found:
         print(f'1.{key}: no unit (or set of units) can be removed with the same key and play'); return
     best = max(len(g) for g, _ in found)

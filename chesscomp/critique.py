@@ -373,13 +373,22 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                                                       and (not themed or thematic_label(t))]
     them_refs = [(t['first_move']['san'], r['uci'], r['san']) for t in pool for r in t['refutations']]
     rc = Counter(u for _, u, _ in them_refs)
-    for u, n in rc.items():
+    wc_done = False                                  # one white correction: the random stage is the largest group
+    for u, n in sorted(rc.items(), key=lambda x: -x[1]):
         if n > 1:
             s_ = next(x[2] for x in them_refs if x[1] == u)
             # tries by the key piece where some fail to u and another fails to something else are the random stage of a
             # white correction, not a flaw (E. Bourd, 13 Oct 2026: "B~ Bd6! Bf5!? Rd6! Bc2!")
-            others = [t for t in pool if u not in {r['uci'] for r in t['refutations']} and t['refutations']]
-            if u[:2] != ksq and others and all(t['first_move']['uci'][:2] == key_piece_sq for t in pool):
+            # judged among the key piece's own tries: king tries in the same threat pool (his 1.Kb7?/Ka7? Sd5!) do not
+            # turn B~ Qg2+! Bd5!? Sxf6! Be4!? Sxe5! Bb7! into a 'same refutation' flaw (E. Bourd, 18 Oct 2026)
+            kp_pool = [t for t in pool if t['first_move']['uci'][:2] == key_piece_sq]
+            sharing = [t for t in pool if u in {r['uci'] for r in t['refutations']}]
+            others = [t for t in kp_pool if u not in {r['uci'] for r in t['refutations']} and t['refutations']]
+            if wc_done and all(t['first_move']['uci'][:2] == key_piece_sq for t in sharing):
+                add('minor', 'same refutation', f'1...{s_}! refutes {n} corrections of the white correction')
+                continue
+            if u[:2] != ksq and others and all(t['first_move']['uci'][:2] == key_piece_sq for t in sharing):
+                wc_done = True
                 add('plus', 'white correction', f"1.{key['first_move']['san'][0]}~? {s_}! ({n} moves); "
                     + '; '.join(f"1.{t['first_move']['san']}? {'/'.join(r['san'] for r in t['refutations'])}!" for t in others)
                     + f"; 1.{key['first_move']['san']}!")
