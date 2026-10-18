@@ -1,0 +1,67 @@
+<title>Bourd Originals Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: a problem column - diagram left, text right, cards in a two-up grid that stacks on phones */
+:root {
+  --bg: #f3f5f2; --surface: #ffffff; --fg: #1d2620; --muted: #5d6b61; --line: #d6ddd5;
+  --accent: #2f6b4a; --ok: #2f6b4a; --bad: #a0412d;
+  --display: "Newsreader", Georgia, serif; --body: "Instrument Sans", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141a16; --surface: #1c241f; --fg: #e3e9e4; --muted: #9aa89e; --line: #2e3a33;
+  --accent: #7fbf98; --ok: #7fbf98; --bad: #e48a74; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #141a16; --surface: #1c241f; --fg: #e3e9e4; --muted: #9aa89e; --line: #2e3a33;
+  --accent: #7fbf98; --ok: #7fbf98; --bad: #e48a74; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 32px 64px; }
+.wrap { max-width: 1200px; margin: 0 auto; display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; }
+h1 { font-size: 2.4rem; line-height: 1.1; }
+h2 { font-size: 1.6rem; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 20px; }
+h3 { font-size: 1.05rem; font-family: var(--mono); font-weight: 400; overflow-wrap: anywhere; }
+.count { color: var(--muted); font-size: 1rem; font-family: var(--body); }
+.intro { display: grid; gap: 12px; max-width: 72ch; }
+.intro p { margin: 0; color: var(--muted); }
+nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+nav a { color: var(--accent); text-decoration: none; font-weight: 600; }
+nav a:hover, nav a:focus-visible { text-decoration: underline; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 560px), 1fr)); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px;
+  display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 520px) { .card { grid-template-columns: minmax(0, 1fr); } .diagram { max-width: 300px; } }
+.diagram { margin: 0; display: grid; gap: 6px; }
+.diagram svg { width: 100%; height: auto; display: block; }
+figcaption { font-size: 0.85rem; color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
+.body { min-width: 0; display: grid; gap: 8px; }
+.body header { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.chip { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 7px; border-radius: 3px;
+  border: 1px solid var(--line); color: var(--muted); }
+.chip.ok { color: var(--ok); border-color: var(--ok); }
+.chip.bad { color: var(--bad); border-color: var(--bad); }
+.verdict { margin: 0; }
+.meta { margin: 0; font-size: 0.85rem; color: var(--muted); }
+.fen { margin: 0; }
+.fen code { font-family: var(--mono); font-size: 0.8rem; overflow-wrap: anywhere; user-select: all; }
+.solution { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px;
+  font-size: 0.92rem; padding: 10px 12px; border-left: 2px solid var(--accent); background: var(--bg); }
+.solution dt { font-weight: 600; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+.solution dd { margin: 0; overflow-wrap: anywhere; }
+details { font-size: 0.88rem; color: var(--muted); }
+summary { cursor: pointer; color: var(--accent); }
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+details p, details ul { margin: 6px 0 0; }
+details ul { padding-left: 18px; }
+</style>
+<div class="wrap">
+  <div class="intro">
+    <h1>Bourd Originals Portfolio</h1>
+    <p>{{NOTE}}</p>
+    <p>Checked {{DATE}} · source <code>knowledge/originals.json</code>, built by <code>tools/originals.py</code> · <a href="https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916">Composing Bench</a></p>
+    <nav>{{NAV}}</nav>
+  </div>
+  {{SECTIONS}}
+</div>

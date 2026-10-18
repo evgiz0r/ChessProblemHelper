@@ -212,7 +212,8 @@ def build():
 FATAL = {'unsound', 'cook', 'promoted force', 'illegal position', 'unprovided check', 'check key', 'white in check',
          'out-of-play key', 'superfluous piece',   # E. Bourd, 7 Oct 2026 (try-only unit: a drawback since 11 Oct)
          'useless key piece',                                      # E. Bourd, 8 Oct 2026 (an officer, not a pawn)
-         'simple block'}                                           # E. Bourd, 15 Oct 2026: the gate rises
+         'simple block',                                           # E. Bourd, 15 Oct 2026: the gate rises
+         'single phase'}                                           # E. Bourd, 18 Oct 2026 (judge may except)
 
 def check(fen, stip='#2'):
     """Publishing gate. Fatal: unsound, cooked, promoted force, unprovided check in the set play, checking

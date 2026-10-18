@@ -1429,5 +1429,22 @@ no motive layer to mirror.
 - 18 Oct: his explanation of the Kc5/Qg1 problem (white correction, anticipatory closure, wPh2 for the unique B~ refutation):
   record restored to his FEN with Ph2. Tools: trim --tries (keeps every try and its refutations); critique reports the
   white correction when king tries share the threat, once, and a refutation shared by corrections as minor (test).
+
+## Session: originals portfolio (18 Oct 2026, branch claude/bold-pasteur-2o7mjx)
+* E. Bourd asked for all problems he composed in our sessions that could go to magazines as originals.
+  knowledge/originals.json lists 52 of his (or joint) #2s from knowledge/problems.json with a tier and a one-line
+  verdict: 13 send first, 29 sendable, 4 thin, 5 failing the current gate (useless key piece, out-of-play key,
+  simple block), 1 already public (bourd-novotny-b4-bc5, FEN in the 18 Oct blog post). Left out: schemes, post-key
+  positions, bench demonstrations he called schemes, illegal/promoted positions, superseded versions. Two verified
+  trims used (queen-pin self-pin 17 units, Grimshaw d4 8+8). tools/originals.py re-gates each entry and writes
+  docs/originals.html (published as https://claude.ai/artifact/9xKrJSL1xQSixJsG79wAJ6). Anticipation was checked
+  as identical position only; yacpdb/PDB search still to do before sending.
+* Same session: solutions on the portfolio rewritten album-style by the solver (set play only for defences that recur,
+  only the tries the notes name or originals.json lists, key with threat and grouped variations, 'S~' for random
+  moves); his notes moved to a separate 'Explanation'. E. Bourd's new rule: a single phase without tries or changes is
+  not for publication unless very complicated or pretty. Critique rule 'single phase' (fatal in the gate): no changed
+  mate, no thematic-try plus, and no non-checking try refuted by a key defence. New tier 'single' (Be4 three captures,
+  Ra5 two-knight unpin, Ke2 battery). Of the published daily posts, 14 Oct (a guard for f6) and 18 Oct (Novotny d6)
+  would now fail it. Test test_single_phase_needs_tries_or_changes.
 - 18 Oct: his airy version (bourd-bishop-rook-battery-kc5-airy): no black queen (Bf1, B~ Bg2+), no wPh2/wPc4, c4 free;
   sound, gate PASS, trim --tries nothing.

@@ -621,6 +621,18 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
             add('plus', 'theme', f"{p['name']}: {p.get('defence') or ', '.join(p.get('defences', []))}")
     if res['relations'].get('reciprocal'):
         add('plus', 'theme', 'reciprocal change')
+
+    # --- second phase (E. Bourd, 18 Oct 2026): "anything that is a single phase without tries or changes is not pass
+    # for publication unless the single phase is very complicated or pretty". A phase counts when a mate changes
+    # (set or try against the key) or the tries form a thematic set; the exception is the judge's, not the gate's.
+    second = {'try set', 'thematic tries', 'distinct refutations', 'white correction', 'self-pinning tries'}
+    defences = {v['defence']['uci'] for v in real if not v['refutes']}
+    refuted_by_defence = [t for t in tries if not t['first_move']['san'].endswith('+') and len(t['refutations']) == 1
+                          and t['refutations'][0]['uci'] in defences]   # a try refuted by a thematic defence
+    if not res['relations'].get('changed') and not refuted_by_defence \
+            and not any(f['severity'] == 'plus' and f['rule'] in second for f in F):
+        add('major', 'single phase', 'one phase: no changed mates and no thematic tries; publishable only if the '
+            'play is very complicated or pretty (E. Bourd, 18 Oct 2026)')
     return {'findings': F, 'participation': use, 'necessity': nec}
 
 
