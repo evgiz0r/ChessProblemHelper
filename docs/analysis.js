@@ -67,7 +67,8 @@
     const nullFen = c.fen().replace(/ b /, ' w ');
     let nc = null;
     try { nc = new Chess(nullFen); } catch (e) { nc = null; }
-    if (nc && !nc.isCheck()) ph.threat = matesIn1(nc).map(m => ({ san: S(m.san), id: mid(m), from: m.from, to: m.to }));
+    // a checking first move has no threat (E. Bourd, 18 Oct 2026: "Try 1.Sb5+? (2.Rff7#/...)" listed one)
+    if (nc && !nc.isCheck() && !c.isCheck()) ph.threat = matesIn1(nc).map(m => ({ san: S(m.san), id: mid(m), from: m.from, to: m.to }));
     const threatIds = new Set(ph.threat.map(t => t.id));
     for (const d of legal(c)) {
       c.move(d);
@@ -168,7 +169,7 @@
     c.move(keyMove);
     const nullFen = c.fen().replace(/ b /, ' w ');
     let threatIds = new Set();
-    try { const nc = new Chess(nullFen); threatIds = new Set(matesIn1(nc).map(mid)); } catch (e) {}
+    if (!c.isCheck()) try { const nc = new Chess(nullFen); threatIds = new Set(matesIn1(nc).map(mid)); } catch (e) {}
     const defs = [];
     for (const d of legal(c)) {
       c.move(d);
