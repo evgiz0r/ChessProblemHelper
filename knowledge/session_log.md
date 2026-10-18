@@ -1446,3 +1446,9 @@ no motive layer to mirror.
   mate, no thematic-try plus, and no non-checking try refuted by a key defence. New tier 'single' (Be4 three captures,
   Ra5 two-knight unpin, Ke2 battery). Of the published daily posts, 14 Oct (a guard for f6) and 18 Oct (Novotny d6)
   would now fail it. Test test_single_phase_needs_tries_or_changes.
+* Same session, his request: portfolio solutions as in a publication, not a computer listing. tools/originals.py now
+  prints set play, the named tries and the key with the thematic defences in one fixed order in every phase, by-play in
+  brackets after the key's thematic play, and lines 'Changed' (1...X 2.A# (set, 1.Y?) -> 2.B#) and 'Transferred'
+  (a mate moving to another thematic defence). Thematic = key defences whose mate changes (a shared dual is no change)
+  or that refute a named try; originals.json 'thematic' overrides it for nine problems ('Sf5~' = random moves, 1...S~).
+  1...Rxe6 (try) and 1...Re6 (key) count as one defence. Open question for him: whether to keep the by-play brackets.
