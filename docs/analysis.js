@@ -15,6 +15,13 @@
     const f = `${placement} ${turn} - - 0 1`;
     try { return new Chess(f); } catch (e) { return null; }
   }
+  // Black passes: White to move again. The en-passant square of a White double step must go, or chess.js
+  // rejects the FEN ("illegal en-passant square") - the bench failed on post-key play after 1.e4 (E. Bourd, 18 Oct 2026)
+  function passFen(c) {
+    const parts = c.fen().split(' ');
+    parts[1] = 'w'; parts[3] = '-';
+    return parts.join(' ');
+  }
 
   function legal(c) { return c.moves({ verbose: true }); }
 
@@ -64,7 +71,7 @@
     const ph = { type: kind, first: sanFirst, firstId: mid(first), from: first.from, to: first.to,
                  threat: [], variations: [], refutations: [] };
     // threat: what White plays if Black does nothing
-    const nullFen = c.fen().replace(/ b /, ' w ');
+    const nullFen = passFen(c);
     let nc = null;
     try { nc = new Chess(nullFen); } catch (e) { nc = null; }
     // a checking first move has no threat (E. Bourd, 18 Oct 2026: "Try 1.Sb5+? (2.Rff7#/...)" listed one)
@@ -167,7 +174,7 @@
     const c = boardFrom(fen, 'w');
     if (!c) return [];
     c.move(keyMove);
-    const nullFen = c.fen().replace(/ b /, ' w ');
+    const nullFen = passFen(c);
     let threatIds = new Set();
     if (!c.isCheck()) try { const nc = new Chess(nullFen); threatIds = new Set(matesIn1(nc).map(mid)); } catch (e) {}
     const defs = [];
@@ -730,7 +737,7 @@
       const m = c.move(san.replace(/^S/, 'N').replace('=S', '=N'));
       let keeps = false;
       if (!threat.has(mid(m)) && !c.isCheck()) {
-        const nc = new Chess(c.fen().replace(' b ', ' w '));
+        const nc = new Chess(passFen(c));
         keeps = matesIn1(nc).some(x => threat.has(mid(x)));
       }
       c.undo();
