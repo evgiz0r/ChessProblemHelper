@@ -93,7 +93,7 @@ we follow is right. Never quiz questions, never questions the solver can answer.
 Append an entry to `knowledge/daily_log.md`: theme, result, minutes per stage, what wasted time, what tool
 was missing or wrong, what the next run should try. Then make ONE improvement to the kit and test it:
 a faster or smarter search, a new detector or critique rule, a fix, a theme reference that was missing, a
-clearer skill line. Constraints: `python -m pytest -q tests` passes; a change to `chesscomp/analysis.py` is
+clearer skill line. Constraints: `python -m pytest -q tests --full` passes (the routine runs the full regression); a change to `chesscomp/analysis.py` is
 mirrored in `docs/analysis.js`; a solver or critique change gets a regression test; the gate's fatal list
 changes only on the mentor's word. Too big for 30 minutes: write it under "Proposals" in the log and ask
 about it in a mentor question. Summarise the change in the post's `improvement` field.

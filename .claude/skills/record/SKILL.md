@@ -17,5 +17,5 @@ description: Write what a session learned into the repository so the next sessio
    stop-cooks, themes), not only into the raw files; a session reads the references at the moment of use
    and the raw files only on lookup. Sessions with more than a handful of lessons: consolidate now.
 5. Anything that can be tested goes into code: a critique rule, a search filter, a regression test in
-   `tests/test_regression.py` (every stored key is re-solved). Run `python -m pytest -q tests`.
+   `tests/test_regression.py` (every stored key is re-solved). Run `python -m pytest -q tests` (fast run); add `--full` when it prints its reminder or after a solver/critique change.
 6. Commit with a message naming the session and push to the working branch.
