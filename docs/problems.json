@@ -3081,6 +3081,23 @@
    "keys": [],
    "cooked": false,
    "note": "Scheme only: one capture, one interference. The Re1/Se4 pair adds discovered checks; freethreat again finds only 2.f2-f4#, and keyfind no key (same discharge cooks)."
+  },
+  {
+   "id": "bourd-royal-battery-sd8",
+   "fen": "2B5/4N3/3pNp1p/2p1kn2/7R/2K3P1/8/B6b",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench, 19 Oct 2026)",
+   "source": "Composing Bench sitting mvfkmoly (268 steps, 90 solves) from claude-royal-battery-f5-scheme-se3; his final had bSg7, removed here (not needed, it attacked the key piece)",
+   "themes": [
+    "royal battery Ba1-Kc3, holder Sf5: 1.Sd8! (2.Sf7#) Sxe7 2.Kc4#, Sxh4 2.Kd3#, Bd5 2.Sg6#",
+    "the key knight unblocks Bc8-f5: before the key, 1.Kc4+/Kd3+ Sd4 lets the king out to f5",
+    "tries 1.Sf8? (2.Sfg6#) and 1.Sc7? (2.Sg6#), both 1...d5!"
+   ],
+   "keys": [
+    "Sd8"
+   ],
+   "cooked": false,
+   "note": "Sound. Gate would fail single phase (tries refuted by the same non-thematic 1...d5). bBh1 stops 1.Kd3+; Pg3 guards f4 and protects Rh4. His earlier sound version in the sitting: Q7/1p2N1Pb/3p2p1/2pPknP1/8/2K2RN1/6n1/B7, 1.Qf8! (2.Qf6#)."
   }
  ]
 }
