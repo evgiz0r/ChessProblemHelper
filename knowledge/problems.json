@@ -3098,6 +3098,22 @@
    ],
    "cooked": false,
    "note": "Sound. Gate would fail single phase (tries refuted by the same non-thematic 1...d5). bBh1 stops 1.Kd3+; Pg3 guards f4 and protects Rh4. His earlier sound version in the sitting: Q7/1p2N1Pb/3p2p1/2pPknP1/8/2K2RN1/6n1/B7, 1.Qf8! (2.Qf6#)."
+  },
+  {
+   "id": "bourd-royal-battery-rg5",
+   "fen": "n1r4Q/4PP2/3P1KP1/1R1PR2P/3kN3/4p1B1/nN6/1B6",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench, 19 Oct 2026), lightened by Claude",
+   "source": "Composing Bench sitting mvfkmoly steps 332-540 (his final n1r4Q/1p2PP2/1p1P1KP1/1R1PR2P/3kN3/1P2p1B1/n3P3/1B6, 22 units); bPb6/bPb7 removed (trim), Sb2 for wPb3+wPe2",
+   "themes": [
+    "royal battery Qh8-Kf6, masked by Re5; holder Rc8 cuts the guards: 1.Rg5! (2.Be5#) Rc5 2.Ke6#, Rc2 2.Kf5#, e2 2.Bf2#",
+    "tries by the key rook blocking the king's mating squares: 1.Re6? Rc5!, 1.Rf5? Rc2!; also 1.Qxc8? Sc7!"
+   ],
+   "keys": [
+    "Rg5"
+   ],
+   "cooked": false,
+   "note": "Gate PASS. 19 units, 7 pawns (his 22/11). Blockers: Pe7 (Re7, Ke7, the e-file), Pf7 (Kf7, Rf8+), Pg6 (Kg6), Ph5 (Rh5), Pd6 (Rc6+); Sa8 stops 1.Qxc8, Sa2 stops 1.Rb4+ and 1.Qxc8. The rook's key square always keeps a line through e5 (to d5 along the rank, to e4 down the file), so one defence is impure and the neutral discharges need blockers; tested 1.Re7! (with Pg5, no Pe7/Ph5): sound, 19 units/8 pawns, but 1.Rf5? then has two refutations (Re8, Rc2)."
   }
  ]
 }
