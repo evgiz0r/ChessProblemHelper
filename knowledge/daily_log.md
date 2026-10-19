@@ -215,13 +215,33 @@ what the next run should try. "Proposals" collects improvements too big for one 
   Novotny on the same geometry (the crossing unit's two threats are the two knight mates); otherwise look for changed mates
   through Shire's departure lines, which differ between the set and the solution.
 
+## 2026-10-19, No. 14: Le Grand (study post)
+- Result: no sound original; study post on Jonsson, Springaren 1998 3rd Prize (psis-4d1711af7b), 3N4/n7/1kBP4/8/Qp6/8/n1R5/R1b4K,
+  1.Sb7? (2.Qa5#) Sc3 2.Qa6# but Sxc6!, 1.Bb5? Sc3!, 1.Bb7! (2.Qa6#) Sc3 2.Qa5#: Le Grand by a line switch, no flight.
+  Near-misses shown as diagrams: the hinge kernel 7K/8/Q1N2R2/4p3/4kp2/8/6N1/2BB2b1 (Le Grand between 1.Be3? Bxe3! and
+  1.Be2? Bd4!, no key) and the first kernel (duals after Kd5, check cooks). Gate on the study: only the anticipation (it is
+  the archive problem). Mentor issues #7-#14 had no answers; nothing to act on.
+- Setup: the local `main` had diverged again (origin/main force-updated); worked on `daily-run` from origin/main.
+- Minutes (container clock, which runs slow): about 45. Setup and reading 5, evolve 10 (4 jobs, nothing), legrand tool and
+  test 10, legrand climbs 15 (16 runs, nothing), hand kernels with try tables and the pairs layer 15, post and records 10.
+- What wasted time: two bugs in the new climb (mates compared with their departure square, so Qh5-f5 and Qf1-f5 counted as
+  two threats; `if not seed.king(WHITE)` read a king on a1 as missing and added a second one, so three jobs looped without
+  a line of output); then the climb itself, which drifted off every seed. Monitors waiting on `pgrep -f compose.evolve`
+  matched their own command line and never ended.
+- What helped: reading the archive's light Le Grands by mechanism (flight cross-geometry, battery, plug, line switch);
+  writing the guard table of the queen's two mates (which squares each covers v each king square) before placing units;
+  the exhaustive pairs layer (now `legrand pairs`).
+- Next run: theme from `next-theme`. For Le Grand again, start from Jonsson's line switch (a black unit that opens one
+  White line and closes another, no flight) in a new geometry, and enumerate the last layer with `legrand pairs`.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
 - A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct, direct self-pin 13 Oct), so those themes can be claimed only when
   the solver sees them (today only a Grimshaw and a half-pin on the key phase are reported).
 - evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
-- A theme reference for Le Grand and Rudenko (none yet; Grimshaw done 11 Oct, Novotny 18 Oct).
+- A theme reference for Rudenko (none yet; Grimshaw done 11 Oct, Novotny 18 Oct, Le Grand 19 Oct).
+- legrand: replace the hill climb (it drifts off good seeds) by a beam over kernels, or drop it for the pairs layer.
 - critique 'black piece role' (and the gate warning) calls a unit 'not needed' when the variations survive its removal, but
   ignores a new threat: bPh6 in daily No. 6 stops 2.Qg5# as a second threat. Compare the threat set too before saying 'not needed'.
 - A fast pre-filter for evolve: python-chess alone (mate-in-one tables, early exit at the second refutation) ran about
