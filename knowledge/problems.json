@@ -3114,6 +3114,19 @@
    ],
    "cooked": false,
    "note": "Gate PASS. 19 units, 7 pawns (his 22/11). Blockers: Pe7 (Re7, Ke7, the e-file), Pf7 (Kf7, Rf8+), Pg6 (Kg6), Ph5 (Rh5), Pd6 (Rc6+); Sa8 stops 1.Qxc8, Sa2 stops 1.Rb4+ and 1.Qxc8. The rook's key square always keeps a line through e5 (to d5 along the rank, to e4 down the file), so one defence is impure and the neutral discharges need blockers; tested 1.Re7! (with Pg5, no Pe7/Ph5): sound, 19 units/8 pawns, but 1.Rf5? then has two refutations (Re8, Rc2)."
+  },
+  {
+   "id": "claude-rook-pawn-battery-scheme",
+   "fen": "8/8/8/1b2b3/7K/4N3/R2P3k/4R3",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 19 Oct 2026)",
+   "source": "rook-pawn battery Ra2/Pd2 v Kh2, by hand after setplay_search (holders on b1, d1, e1, a4, b4, d4 against Ke2) found nothing",
+   "themes": [
+    "Black to move: the dark bishop leaves the long diagonal (Bb8/Bc7/Bd6/Bf4) 2.d3#; the light bishop leaves the a6-f1 diagonal (Be8/Bd7) 2.d4#: each discharge cuts the path of the bishop that still interposes"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Scheme only. Flaws: 1...Bf6+ and 1...Bg3+ check Kh4 (no mate); 1...Bc6 and 1...Ba4 find other interposition paths (g2, c2); random-move play, no threat yet."
   }
  ]
 }
