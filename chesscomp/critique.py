@@ -368,7 +368,11 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         if u[:2] == ksq:
             add('major', 'king refutes try', f'1.{tr}? is refuted by a king move (1...{s}!)')
     from collections import Counter
-    themed = {x['phases'][0] for x in res['relations'].get('patterns', []) if 'interference try' in x['name']}
+    # a try refuted by a king move is no try (CLAUDE.md fatal flaws): a White interference try that only gives a flight
+    # is not content (19 Oct 2026, his 1.Bh2!: 1.Sg3? Kg2! had passed the single-phase gate as a thematic try)
+    king_refuted = {f"try {t['first_move']['san']}" for t in tries
+                    if t['refutations'] and all(r['uci'][:2] == ksq for r in t['refutations'])}
+    themed = {x['phases'][0] for x in res['relations'].get('patterns', []) if 'interference try' in x['name']} - king_refuted
     thematic_label = lambda t: f"try {t['first_move']['san']}" in themed
     pool = same_threat if len(same_threat) >= 2 else [t for t in tries if t['first_move']['uci'][:2] == key_piece_sq
                                                       and (not themed or thematic_label(t))]
@@ -403,7 +407,8 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                 add('minor', 'mechanism refutation', f'1...{s_}! refutes {n} non-thematic tries by the key piece (forcing mechanism)')
     thematic_tries = [t for t in tries if t['first_move']['uci'][:2] == key['first_move']['uci'][:2]]
     if themed:
-        add('plus', 'thematic tries', 'White interference tries: ' + '; '.join(x['defence'] for x in res['relations']['patterns'] if 'interference try' in x['name']))
+        add('plus', 'thematic tries', 'White interference tries: ' + '; '.join(x['defence'] for x in res['relations']['patterns']
+                                                                                if 'interference try' in x['name'] and x['phases'][0] in themed))
     if len(thematic_tries) >= 2 and len({r['uci'] for t in thematic_tries for r in t['refutations']}) == len(thematic_tries):
         add('plus', 'distinct refutations', f'{len(thematic_tries)} tries by the key piece, each refuted differently')
 

@@ -3153,6 +3153,22 @@
    "keys": [],
    "cooked": false,
    "note": "Bf1 cured: Rg1 protected by Sh3 guards g1/h1/g2 from the east, so the light bishop's overshoot to f1 cuts nothing. No key: with the battery loaded, 1.d3+ Bb2 2.Rxb2# and 1.d4+ Be2 2.Rxe2# (Black cannot protect e2 without a unit that interposes there). Only unmasking key found (unmask_search, Sf2 on the battery line): 8/6b1/7N/1b4P1/7K/5P2/R2P1N1k/6R1, 1.Sh3! unique, but Rg1 is unprotected in the diagram: flight Kxg1, taken by the key (fatal). Given up after three attempts (E. Bourd: 'keep going like 3 times then give up if needed')."
+  },
+  {
+   "id": "bourd-rook-pawn-battery-bh2",
+   "fen": "8/K7/4bbR1/2n5/5B2/p3Pp2/R1P2k2/3Q1N2",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 19 Oct 2026, steps 620-706)",
+   "source": "Composing Bench, from Claude's two-interposer post-key (claude-rook-pawn-battery-postkey-rg1): bishops moved together to e6/f6, king from h2 to f2",
+   "themes": [
+    "rook-pawn battery Ra2/Pc2 v Kf2 with two black bishops: each defence interferes with Rg6 on the g-file, the bishop that left can no longer stop the battery, the step closes the other: 1.Bh2! (2.Bg1#) Bg5 2.c4# (closes e6-a2), Bg4 2.c3# (closes f6-b2); the key bishop takes over g1 from the cut rook",
+    "checking tries 1.c3+? Bxa2!, 1.c4+? Bb2! (b2 protected by bPa3): each discharge refuted by the bishop it does not close"
+   ],
+   "keys": [
+    "Bh2"
+   ],
+   "cooked": false,
+   "note": "Flaws: single phase without changes; 1.Sg3? Kg2! is refuted by the king (no try) and 1.Sh2? (double threat) Bc4! is random; random dark/light bishop moves allow Bg1# and c4#/c3# (6 random duals); wKa7 cook-stopper (stops Bd5+). His answer to Claude's 'no key with the battery loaded': the light bishop attacks the rook itself (Bxa2, no interposition square to protect) and the dark bishop's interposition square b2 is protected by a black pawn that cannot step onto the line (a3, blocked by Ra2). Gate: PASS before the critique fix (1.Sg3? had counted as a thematic try), single phase after it."
   }
  ]
 }

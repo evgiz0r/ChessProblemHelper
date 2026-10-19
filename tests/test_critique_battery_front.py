@@ -12,3 +12,12 @@ def test_pawn_front_piece_takes_part():
     text = ' '.join(f['msg'] for f in critique(p, res)['findings'])
     assert 'wPd2 takes part in no mate' not in text
     assert 'wPf3 takes part in no mate' in text      # a real cook-stopper is still named
+
+
+def test_try_refuted_by_the_king_is_no_second_phase():
+    # E. Bourd's 1.Bh2! (19 Oct 2026): 1.Sg3? cuts Rg6 and is refuted by 1...Kg2!; it is not a thematic try
+    p = Problem.from_fen('8/K7/4bbR1/2n5/5B2/p3Pp2/R1P2k2/3Q1N2 w - - 0 1', '#2')
+    res = analyse(p)
+    assert res['keys'] == ['Bh2']
+    rules = {f['rule'] for f in critique(p, res)['findings']}
+    assert 'thematic tries' not in rules and 'single phase' in rules
