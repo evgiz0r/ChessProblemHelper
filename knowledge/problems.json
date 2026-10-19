@@ -3026,6 +3026,35 @@
    ],
    "cooked": false,
    "note": "Gate PASS. E. Bourd: 'a bit better, with the tries having single threat'. Flaws: the key bishop c1 stands attacked by Bb2 (1...Bxc1 unprovided in the set); tested Bd2 (blocks Rd1 from d5: 1.Qb6? then fails to both captures), Bd8 and Bh4 (2.Bf6 is threatened at once): none works, so the attack is the price of b2's two jobs (d4 guard, 1...Ba3 against 1.d7?). Static key; 18 units, 7 pawns; Pe2, Ka6 for soundness."
+  },
+  {
+   "id": "claude-royal-battery-control-scheme",
+   "fen": "8/8/7R/2p1k3/p3P3/2K2nP1/3N4/B7",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 19 Oct 2026)",
+   "source": "royal battery with control, scheme (Black to move)",
+   "themes": [
+    "royal battery Ba1-Kc3: 1...Sxd2 (takes the e4 guard, controls c4) 2.Kd3#; 1...Se1 (controls d3, c2) 2.Kc4#"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Scheme only. Every diagram with the battery already loaded is cooked by the discharge checks: 1.Kd3+ Sd4 (pinned) and Sd2 mates on c4 or f3, 1.Kc4+ Sd4 2.Bxd4#. Pc5 (d4 guard) can play ...c4 and guard d3 after a threat 2.Sd3#; pinning it lets Bxd4 mate before the key."
+  },
+  {
+   "id": "claude-royal-battery-bb5",
+   "fen": "8/8/b1B4R/p3k3/p3P3/2K2nP1/3N3n/BRN5",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 19 Oct 2026)",
+   "source": "royal battery with control: the d3/c4 guard by bBa6 cut by the key",
+   "themes": [
+    "1.Bb5! (2.Sd3#) Sxd2 2.Kd3#, Se1 2.Kc4#, Bxb5 2.Rxb5#",
+    "set 1...Sxd2 2.Kc2#/Kxd2# (dual): the key gives up Bc6's guard of e4, so the king must guard it himself"
+   ],
+   "keys": [
+    "Bb5"
+   ],
+   "cooked": false,
+   "note": "Sound, gate FAIL (useless key piece in the solution, single phase: the set change has a dual). bBa6 guards d3 and c4 before the key, so the discharge checks are illegal; the key cuts it at b5. Sh2 only stops 1.Sxf3+ (recaptures and holds again); Rb1 only for 1...Bxb5 2.Rxb5# (a recapture). Earlier: Be8 version sound but out-of-play key piece; Bd7 gives Re6#; Bc6 without Sh2 gives 1.Sxf3#; bPg4 instead gives 1.Sxf3+ gxf3 2.Kc2#/Kd2#; bPb3 against the set dual breaks everything (...b2 interposes after any discharge)."
   }
  ]
 }
