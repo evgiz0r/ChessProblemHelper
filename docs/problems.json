@@ -3055,6 +3055,32 @@
    ],
    "cooked": false,
    "note": "Sound, gate FAIL (useless key piece in the solution, single phase: the set change has a dual). bBa6 guards d3 and c4 before the key, so the discharge checks are illegal; the key cuts it at b5. Sh2 only stops 1.Sxf3+ (recaptures and holds again); Rb1 only for 1...Bxb5 2.Rxb5# (a recapture). Earlier: Be8 version sound but out-of-play key piece; Bd7 gives Re6#; Bc6 without Sh2 gives 1.Sxf3#; bPg4 instead gives 1.Sxf3+ gxf3 2.Kc2#/Kd2#; bPb3 against the set dual breaks everything (...b2 interposes after any discharge)."
+  },
+  {
+   "id": "claude-royal-battery-f5-scheme",
+   "fen": "8/4N3/7Q/2p1kn2/8/2K3N1/8/B7",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 19 Oct 2026), holder f5 from his bench sitting mvfgsr2n",
+   "source": "setplay_search HOLDER=f5 NORECAP NODOUBLE on his five units (Ba1, Kc3; Ke5, Pc5, Sf5)",
+   "themes": [
+    "royal battery, Black to move: 1...Sxe7 (d5 guard) 2.Kc4#, 1...Sxg3 (e4 guard) 2.Kd3#"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Scheme only. freethreat gives the threat 2.f2-f4# (e.g. 8/4N3/6R1/2p1kn2/8/2K1P1N1/5P2/B4R2); keyfind finds no key: with the battery loaded, 1.Kc4+/Kd3+/Kd2+ Sd4 are followed by 2.f4# or a knight check from e7 (Kc4 takes over its d5 duty)."
+  },
+  {
+   "id": "claude-royal-battery-f5-scheme-se3",
+   "fen": "2B5/4N3/8/2p1kn2/4N3/2K3P1/8/B3R3",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 19 Oct 2026), holder f5 from his bench sitting mvfgsr2n",
+   "source": "hand sketch on his holder f5",
+   "themes": [
+    "royal battery, Black to move: 1...Sxe7 (d5 guard) 2.Kc4#, 1...Se3 (cuts Re1 from the protected Se4) 2.Kd3#"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Scheme only: one capture, one interference. The Re1/Se4 pair adds discovered checks; freethreat again finds only 2.f2-f4#, and keyfind no key (same discharge cooks)."
   }
  ]
 }
