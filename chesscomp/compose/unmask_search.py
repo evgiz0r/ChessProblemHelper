@@ -6,6 +6,7 @@ The key unit may be any piece (a masking unit leaving the pin line, or the pinne
 Optional env TRIES='{"d5c7": "b6b5"}': tries by first move uci, each with exactly that refutation.
 Optional env SELFBLOCK=1: each wanted mate must need its defence's self-block (freethreat.self_block_needed).
 Optional env THREAT=Qh4e4: the one threat must be that mate (a knight wheel on e4: every knight move guards e4).
+Optional env EMPTY=b2,c2: squares the search never fills (a battery line, as in freethreat; FSQ may be one of them).
 The diagram must have no flight and no black check, and the key piece must guard a square of the king's field.
 e.g. (two black rooks unpin Sc5, 11 Oct 2026; found 1.Bd5-f7! by hand from its failures):
   CORE=8/8/1r6/Q1n1k3/1r6/8/8/8 WANT='{"R6b5":"Qa5c7","R4b5":"Qa5c3"}' KSQ=e7 FSQ=d5 PSQ=a5
@@ -18,6 +19,7 @@ from chesscomp.analysis import analyse
 from chesscomp.compose.freethreat import self_block_needed
 SELFBLOCK = os.environ.get('SELFBLOCK') == '1'
 THREAT = os.environ.get('THREAT')                   # optional: the threat must be exactly this mate id
+EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
 
 CORE, SEED = sys.argv[1], sys.argv[2]
 KSQ, FSQ, PSQ = (chess.parse_square(x) for x in sys.argv[3:6])
@@ -144,7 +146,7 @@ def score(fen):
 def mutate(fen):
     b = chess.Board(fen + ' b - - 0 1')
     free = [s for s in chess.SquareSet(b.occupied) if s not in CSQ]
-    empty = [s for s in chess.SQUARES if not b.piece_at(s) and s != FSQ]
+    empty = [s for s in chess.SQUARES if not b.piece_at(s) and s != FSQ and s not in EMPTY]
     op = random.random()
     if op < .35:
         sym = random.choice('NBRPPPpppnb'); sq = random.choice(empty)

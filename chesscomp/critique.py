@@ -57,8 +57,8 @@ def _mate_positions(problem, res):
 
 def mate_participation(problem, res):
     """For each White piece (by diagram square): the mates in which it takes part.
-    Takes part = gives check, guards a square of the king's field (incl. the square of an adjacent
-    White piece), stands on a square of the field (a guarded blocker), or pins a Black piece. Also records squares guarded more than once (impurity)."""
+    Takes part = makes the mating move (a battery's front piece), gives check, guards a square of the king's field (incl.
+    the square of an adjacent White piece), stands on a square of the field (a guarded blocker), or pins a Black piece. Also records squares guarded more than once (impurity)."""
     use = {}
     for label, b, om in _mate_positions(problem, res):
         k = b.king(chess.BLACK)
@@ -72,9 +72,10 @@ def mate_participation(problem, res):
             if b.is_pinned(chess.BLACK, bs):
                 pinned_lines |= int(b.pin(chess.BLACK, bs))
         checkers = b.checkers()
+        mover = b.peek().to_square if b.move_stack else None   # a battery's front piece plays the mate (19 Oct 2026)
         for sq in chess.SquareSet(b.occupied_co[chess.WHITE]):
             att = int(b.attacks(sq))
-            if (att & fmask) or (sq in checkers) or (sq in field) or (chess.BB_SQUARES[sq] & pinned_lines and b.piece_type_at(sq) != chess.PAWN):
+            if (att & fmask) or (sq in checkers) or (sq in field) or sq == mover or (chess.BB_SQUARES[sq] & pinned_lines and b.piece_type_at(sq) != chess.PAWN):
                 use.setdefault(chess.square_name(om.get(sq, sq)), []).append(label)
     return use
 
