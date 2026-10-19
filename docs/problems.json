@@ -3127,6 +3127,19 @@
    "keys": [],
    "cooked": false,
    "note": "Scheme only. Flaws: 1...Bf6+ and 1...Bg3+ check Kh4 (no mate); 1...Bc6 and 1...Ba4 find other interposition paths (g2, c2); random-move play, no threat yet."
+  },
+  {
+   "id": "claude-rook-pawn-battery-postkey",
+   "fen": "8/8/8/1b2b1P1/5N1K/4NP2/R2P3k/4R3",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 19 Oct 2026)",
+   "source": "freethreat on claude-rook-pawn-battery-scheme with Sf4 in the core, WANT Bd7->d4, Bxf4->d3",
+   "themes": [
+    "post-key, Black to move: threat 2.Se3-g4#; 1...Bd7 (guards g4; the light bishop leaves, only the dark one holds) 2.d4#; 1...Bxf4 (takes the g2 guard; the dark bishop leaves) 2.d3#"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Near miss: hole 1...Bf1 (the light bishop's path through d3 continues to f1 and cuts Re1 from g1/h1, while it still interposes on e2). Light bishop on g6 instead (path g6-f5-e4-d3-c2, defence Bh5): hole 1...Bf5 (guards g4 and stays on its path); on f5 it guards g4 already (no threat). Bxf4 works because g2 needs a guard in the knight mate but lies on the rook's check line in the battery mates."
   }
  ]
 }
