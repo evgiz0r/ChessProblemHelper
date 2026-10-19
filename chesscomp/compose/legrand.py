@@ -14,6 +14,14 @@ DEFK=1: the thematic d must be a king move (Le Grand by flight); DEFK=0 (default
 a bonus to a non-king one. FLIGHT=0 (default 1) refuses diagram flights without a set mate; with FLIGHT=1 a provided
 flight is allowed and a set mate after d that differs from A and B scores extra (a third mate: Le Grand plus a change).
 SAME=1 gives a bonus when the try and the key are moves of one White unit. NPAIR=2 asks for two Le Grand defences.
+
+The hill climb drifts away from good seeds; around a kernel the exhaustive layer works better (daily No. 14: it found
+1.Be3?/1.Be2! with 1...Kd5 swapping 2.Qc4#/2.Qd3# in 100 s, where four 15-minute climbs found nothing):
+
+    python -m chesscomp.compose.legrand pairs KERNEL_FEN [b|bb|bw] [JOBS]
+
+adds every single Black unit (b), pair of Black units (bb) or Black+White pair (bw) and prints the HITs and the
+best fifteen by score.
 """
 from __future__ import annotations
 from chesscomp.core import illegal_position as _illegal
@@ -209,7 +217,47 @@ def mutate(b, core, maxu):
     return b
 
 
+def _pair_eval(args):
+    base, combo = args
+    b = chess.Board(base + ' w - - 0 1')
+    for sq, p in combo:
+        b.set_piece_at(sq, p)
+    if not legal(b):
+        return None
+    s, summ, hit = evaluate(b)
+    return s, b.board_fen(), summ, hit
+
+
+def pairs(base, mode='bb', jobs=4):
+    """Exhaustive last layer around a kernel: every one or two added units, scored by evaluate."""
+    import itertools
+    from multiprocessing import Pool
+    b0 = chess.Board(base + ' w - - 0 1')
+    empty = [sq for sq in chess.SQUARES if not b0.piece_at(sq)]
+    def units(col):
+        return [(sq, chess.Piece(t, col)) for sq in empty for t in (chess.PAWN, chess.KNIGHT, chess.BISHOP, chess.ROOK)
+                if not (t == chess.PAWN and chess.square_rank(sq) in (0, 7))]
+    B, W = units(chess.BLACK), units(chess.WHITE)
+    if mode == 'b':
+        combos = [(u,) for u in B]
+    elif mode == 'bw':
+        combos = [(x, y) for x in B for y in W if x[0] != y[0]]
+    else:
+        combos = [c for c in itertools.combinations(B, 2) if c[0][0] != c[1][0]]
+    out = []
+    with Pool(jobs) as pool:
+        for r in pool.imap_unordered(_pair_eval, ((base, c) for c in combos), chunksize=64):
+            if r:
+                out.append(r)
+    return sorted(out, key=lambda r: (-r[3], -r[0]))
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == 'pairs':
+        res = pairs(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else 'bb', int(sys.argv[4]) if len(sys.argv) > 4 else 4)
+        for s, fen, summ, hit in [r for r in res if r[3]] + res[:15]:
+            print(('HIT ' if hit else 'TOP ') + f'{s:.1f} | {fen} | {summ}')
+        return
     job = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     out = sys.argv[2] if len(sys.argv) > 2 else f'legrand_{job}.txt'
     random.seed(int(os.environ.get('RNG', job)))

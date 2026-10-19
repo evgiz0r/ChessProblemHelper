@@ -111,7 +111,7 @@
    "order": 14,
    "name": "Le Grand",
    "definition": "Threat and variation mate swap between a try and the solution for the same pair of defences.",
-   "reference": "chesscomp/analysis.py (Le Grand detector)",
+   "reference": ".claude/skills/themes/references/le_grand.md",
    "db_text": "Le Grand",
    "stretch": true
   },
