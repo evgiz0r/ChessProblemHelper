@@ -3169,6 +3169,23 @@
    ],
    "cooked": false,
    "note": "Flaws: single phase without changes; 1.Sg3? Kg2! is refuted by the king (no try) and 1.Sh2? (double threat) Bc4! is random; random dark/light bishop moves allow Bg1# and c4#/c3# (6 random duals); wKa7 cook-stopper (stops Bd5+). His answer to Claude's 'no key with the battery loaded': the light bishop attacks the rook itself (Bxa2, no interposition square to protect) and the dark bishop's interposition square b2 is protected by a black pawn that cannot step onto the line (a3, blocked by Ra2). Gate: PASS before the critique fix (1.Sg3? had counted as a thematic try), single phase after it."
+  },
+  {
+   "id": "claude-rook-pawn-battery-ke2-be4",
+   "fen": "8/7R/4bb2/8/8/4p1P1/R1P1k1B1/2Q3K1",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 19 Oct 2026)",
+   "source": "E. Bourd's request: his bourd-rook-pawn-battery-bh2 with the black king one square closer (Ke2). freethreat (WANT Bh3->c3, Bh4->c4), unmask_search (Kg1 for f2), keyfind (1.Bg2-e4!), bPa3 removed (not needed)",
+   "themes": [
+    "rook-pawn battery Ra2/Pc2 v Ke2 with two black bishops: 1.Be4! (2.Rh2#) Bh4 2.c4#, Bh3 2.c3#; each defence blocks the h-file, the bishop that moved can no longer stop the battery, the step closes the other",
+    "unmasking key with two jobs: it opens the rook's rank-2 line and takes over d3, which Pc2 abandons on the discharge",
+    "try 1.Rh2? (2.B~#, six threats) Bh3! (interposes on g2): the thematic defence refutes the try for another reason; threat reversal Rh2/Be4 between try and key, diluted by the try's six threats"
+   ],
+   "keys": [
+    "Be4"
+   ],
+   "cooked": false,
+   "note": "Flaws: the defences only block the threat's path (his cut a guard line); random bishop moves allow Rh2# and c4#/c3# (7 random duals); wPg3 cook-stopper (stops 1...Be5 guarding h2); 1.Ra1? Bxa1! random. Gate PASS, 11 units. Rook-arrival keys tried first: 1.Rd7-h7! (diagram flight Kf2, key piece attacked), 1.Rc7-h7! (idle key piece), 1.Rd7-h7! with Kg1 (cooked by Qd1#/Qf1#)."
   }
  ]
 }
