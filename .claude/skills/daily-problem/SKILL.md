@@ -31,7 +31,9 @@ one where Evgeni (evgiz0r) has answered and no later comment of ours says "Acted
 
 ## 2. Theme (2 min)
 `python tools/blog.py next-theme` gives the theme used least recently, with its definition, the kit's
-reference and the archive label. Take it. A `stretch` theme is attempted in its full form only if a sound
+reference and the archive label. Take it. Themes marked `paused` in `blog/themes.json` are skipped: the dailies
+take themes already practiced with the mentor (E. Bourd, 20 Oct 2026: Le Grand, Zagoruiko and reciprocal changes "a bit
+rough yet"); unpause one only after he has practiced it with us. A `stretch` theme is attempted in its full form only if a sound
 simpler form exists first; otherwise publish the simpler form and say so.
 
 ## 3. Study (15 min)
