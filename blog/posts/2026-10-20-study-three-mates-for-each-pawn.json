@@ -74,6 +74,6 @@
   "searches": 28
  },
  "improvement": "trychange gained MODE=zag, a Zagoruiko score: the set play plus the quiet moves of the key piece (KP=any: of any White unit; THREAT='**' admits blocks) are phases; it builds the longest chain from the key through the tries in which both defences have one mate and each defence's mate is new in every phase, compares mates by piece and arrival square (Rxd3# and Rd3# are one mate), rewards one key, penalises shared refutations, and gives partial credit below one full phase so a climb has a gradient. Tested in tests/test_trychange.py on Rogoshin (3 phases), Delobel (4 phases, all tries refuted by d4) and Foster (3 phases with the knight key, KP=any).",
- "mentor_issue": null,
+ "mentor_issue": 16,
  "feedback": []
 }
