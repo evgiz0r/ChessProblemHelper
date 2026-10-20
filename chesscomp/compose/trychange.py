@@ -13,6 +13,8 @@ KP: square of the key piece, or Q for the White queen wherever she stands. ONLY:
 THREAT=* accepts any threat (MODE=posts): a defence is a move after which no threat mate works.
 FORBID: squares that must stay empty (the thematic lines). TARGET: wanted mates per move SAN, in DEFS order.
 MODE=posts scores one key (KEYS: the wanted ones) with the other moves as tries, each refuted once and differently.
+MODE=zag scores a Zagoruiko: set play, tries and key, each defence's mate new in every phase (KP=any: phases by any
+White unit; THREAT='**' admits blocks).
 MODE=set scores set play against the best key instead (setkey_evaluate): set and key mates single and changed,
 no mate in one, no White check after which every Black reply is mated (check_cooks).
 
@@ -57,13 +59,13 @@ def phase_rows(b, kp, threat, defs, only=()):
     if kp is None:
         kp = next(iter(b.pieces(chess.QUEEN, chess.WHITE)), None)
     for m in list(b.legal_moves):
-        if m.from_square != kp or b.is_capture(m) or b.gives_check(m) or (only and m.uci() not in only):
+        if (kp != 'any' and m.from_square != kp) or b.is_capture(m) or b.gives_check(m) or (only and m.uci() not in only):
             continue
         p = b.copy(); p.push(m)
         n = p.copy(); n.push(chess.Move.null())
         thr = mates(n) if n.is_valid() and not n.is_check() else []
-        if (threat == '*' and not thr) or (threat != '*' and threat not in thr):
-            continue
+        if (threat == '*' and not thr) or (threat not in ('*', '**') and threat not in thr):
+            continue                                       # '**': a block (no threat) is a phase too
         row = {'move': _san(b, m), 'uci': m.uci(), 'thr': len(thr), 'threat': '/'.join(thr), 'defs': [], 'p': p}
         for d in defs:
             if d not in p.legal_moves:
@@ -266,6 +268,60 @@ def posts_evaluate(b, kp, threat, defs, only=(), want_keys=(), target=None):
                                                 for r in phases) + (f" cooks {cooks}" if cooks else '')
 
 
+def zag_evaluate(b, kp, threat, defs, only=()):
+    """(score, summary): a Zagoruiko, the same defences answered by a new mate in every phase (set play, tries, key).
+    Phases are the set play and the quiet moves of the key piece (kp='any': of any White unit) with a threat
+    ('**' accepts blocks). The best chain: the key (no refutation) plus tries refuted once and differently, every
+    phase with one mate per defence and each defence's mate new in each phase (19 Oct 2026, daily No. 15: the posts
+    score rewarded Qf4#/Qd4# repeated after every queen post)."""
+    n = b.copy(); n.push(chess.Move.null())
+    if not n.is_valid():
+        return -1e9, ''
+    s = -25.0 * sum(1 for m in n.legal_moves if m.from_square == n.king(chess.BLACK))
+    if mates(b):
+        s -= 80
+    cooks = check_cooks(b)
+    s -= 30 * len(cooks)
+    def norm(m):                                        # Rxd3# and Rd3# are the same mate: piece and square
+        m = m.rstrip('#+').split('=')[0]
+        return (m[0] if m[0] in 'KQRBS' else 'P') + m[-2:]
+    single = lambda v: all(x and len(x) == 1 for x in v) and len({norm(x[0]) for x in v}) == len(v)
+    sm = set_mates(b, defs)
+    s -= 2 * sum(len(x) - 1 for x in sm if x)
+    rows = phase_rows(b, kp, threat, defs, only)
+    full = [r for r in rows if single(r['defs'])]
+    s -= 2 * sum(1 for r in rows if not single(r['defs']))
+    if not full:                                        # gradient: the best row's defences with one mate each
+        part = max((sum(1 for x in r['defs'] if x and len(x) == 1) for r in rows), default=0)
+        return s - 100 + 10 * single(sm) + 12 * part + 4 * sum(1 for x in sm if x and len(x) == 1), f'no full phase; set {sm}'
+    for r in full:
+        r['refs'] = [r['p'].san(m) for m in refutations(r['p'])]
+    keys = [r for r in full if not r['refs']]
+    s += 40 if len(keys) == 1 else (-25 * (len(keys) - 1) if keys else -40)
+    best, bt = [], -1e9
+    for k in (keys or full[:1]):
+        chain, used = [k], [{norm(x[0])} for x in k['defs']]
+        if single(sm) and all(norm(x[0]) not in u for x, u in zip(sm, used)):
+            chain.insert(0, {'move': 'set', 'defs': sm, 'refs': [], 'thr': 0, 'threat': ''})
+            for x, u in zip(sm, used):
+                u.add(norm(x[0]))
+        refs_seen, same = set(), 0
+        for r in sorted((r for r in full if len(r['refs']) == 1 and r is not k), key=lambda r: (r['refs'][0] in refs_seen, r['thr'])):
+            if any(norm(x[0]) in u for x, u in zip(r['defs'], used)):
+                continue
+            same += r['refs'][0] in refs_seen
+            chain.append(r); refs_seen.add(r['refs'][0])
+            for x, u in zip(r['defs'], used):
+                u.add(norm(x[0]))
+        t = 35.0 * len(chain) + (60 if len(chain) >= 3 else 0) - 6 * sum(max(0, r['thr'] - 1) for r in chain) - 10 * same
+        if t > bt:
+            bt, best = t, chain
+    s += bt - max(0, len(b.piece_map()) - 13)
+    fmt = lambda v: ' '.join('/'.join(x) if x else '-' for x in v)
+    return s, f"phases {len(best)} || " + ' | '.join(f"{r['move']}({r['threat']}) {fmt(r['defs'])} ref {','.join(r['refs'][:2]) or ('-' if r['move'] == 'set' else 'KEY')}"
+                                                  for r in best) + (f" cooks {cooks}" if cooks else '')
+
+
 WT = [chess.ROOK, chess.BISHOP, chess.KNIGHT, chess.KNIGHT, chess.PAWN, chess.PAWN, chess.ROOK, chess.BISHOP]
 BT = [chess.BISHOP, chess.KNIGHT, chess.PAWN, chess.PAWN, chess.PAWN, chess.ROOK]
 
@@ -306,14 +362,16 @@ def main(argv=None):
     e = os.environ
     core = chess.Board(e['CORE'] + ' w - - 0 1')
     core_sq = {sq for sq in chess.SQUARES if core.piece_at(sq)}
-    kp = None if e['KP'] == 'Q' else chess.parse_square(e['KP'])
+    kp = None if e['KP'] == 'Q' else ('any' if e['KP'] == 'any' else chess.parse_square(e['KP']))
     defs = [chess.Move.from_uci(u) for u in e['DEFS'].split(',')]
     only = {x for x in e.get('ONLY', '').split(',') if x}
     forbid = {chess.parse_square(x) for x in e.get('FORBID', '').split(',') if x}
     target = json.loads(e.get('TARGET', '{}'))
     random.seed(job * 7919 + int(time.time()))
     seed = chess.Board(e.get('SEED', e['CORE']) + ' w - - 0 1')
-    if e.get('MODE') == 'set':
+    if e.get('MODE') == 'zag':
+        ev = lambda b: zag_evaluate(b, kp, e['THREAT'], defs, only)
+    elif e.get('MODE') == 'set':
         ev = lambda b: setkey_evaluate(b, kp, e['THREAT'], defs, only)
     elif e.get('MODE') == 'posts':
         wk = {x for x in e.get('KEYS', '').split(',') if x}

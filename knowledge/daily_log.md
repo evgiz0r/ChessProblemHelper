@@ -234,12 +234,29 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For Le Grand again, start from Jonsson's line switch (a black unit that opens one
   White line and closes another, no flight) in a new geometry, and enumerate the last layer with `legrand pairs`.
 
+## 2026-10-20, No. 15: Zagoruiko (study post)
+- Result: no sound original; study post on Foster, The Problemist 2003-II 3rd Prize (psis-f8c659a19d),
+  7Q/2N5/1B1pp1K1/3Ppp2/3pkP2/5R2/4B3/8, tries 1.Qe8? (exf4 Qxe6#, d3 Qa4#) and 1.Qh4? (Qxf4#, Re3#), key 1.Sb5! (Qxd4#,
+  Sc3#): a strict 3x2 Zagoruiko, the third phase by the knight key. Near-misses shown: the pawn shell
+  4Q3/8/3ppp2/4k3/3pPp2/5B2/1B6/K7 (two clean queen phases, sixteen keys) and the search's inversion (cooked). Gate on the
+  study: only the anticipation. Mentor issues #7-#15 had no answers; nothing to act on.
+- Minutes (container clock, slow): about 120 of work. Setup and reading 10, study 10, searches 45 (28 jobs: posts 4, zag 24),
+  MODE=zag and tests 20, hand shell with a queen-square table 20, post and records 15.
+- What wasted time: posts-mode searches whose score let the same mate repeat in every phase; zag searches from bare cores
+  (flat -100 score below one full phase, no gradient: fixed); two seeds with a second White king; a complete-block shell
+  where every waiting move keeps the set mates.
+- What helped: a scratch table of every queen square with the mates after each defence (qtable.py): it showed at once that
+  the shell has two clean posts only. Then the archive: both light pawn-shell Zagoruikos take the third phase from a knight key.
+- Next run: theme from `next-theme`. For a Zagoruiko again, choose the third phase's piece first (a key unit that becomes the
+  mating piece), the queen far away, a threat if possible; run MODE=zag KP=any around a hand kernel, never a bare core.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
 - A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct, direct self-pin 13 Oct), so those themes can be claimed only when
   the solver sees them (today only a Grimshaw and a half-pin on the key phase are reported).
 - evolve: a score term for distinct mating squares among the thematic mates (CORR and DEFS modes).
+- trychange MODE=zag: score two-move cooks (captures of shell pawns as threats) before the solver sees a hit.
 - A theme reference for Rudenko (none yet; Grimshaw done 11 Oct, Novotny 18 Oct, Le Grand 19 Oct).
 - legrand: replace the hill climb (it drifts off good seeds) by a beam over kernels, or drop it for the pairs layer.
 - critique 'black piece role' (and the gate warning) calls a unit 'not needed' when the variations survive its removal, but
