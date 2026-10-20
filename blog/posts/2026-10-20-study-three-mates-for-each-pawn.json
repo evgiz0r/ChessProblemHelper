@@ -1,0 +1,79 @@
+{
+ "date": "2026-10-20",
+ "title": "Study: three mates for each pawn",
+ "theme": "zagoruiko",
+ "theme_name": "Zagoruiko",
+ "fen": "7Q/2N5/1B1pp1K1/3Ppp2/3pkP2/5R2/4B3/8",
+ "stip": "#2",
+ "author": "Geoffrey Foster",
+ "source": "The Problemist 2003-II, 3rd Prize (Problemesis record psis-f8c659a19d)",
+ "teaser": "A study post: today's own attempts did not reach a sound problem, so here is a prize-winner that does what they tried to do. Black has two pawn moves, d4-d3 and exf4. Find three White first moves after which each of them is mated in a new way, and see which White piece the third phase needs.",
+ "solution": [
+  "#Tries",
+  "1.Qe8? (zugzwang)",
+  "  1...exf4 a 2.Qxe6#",
+  "  1...d3 b 2.Qa4#",
+  "  but 1...exd5!",
+  "1.Qh4? (zugzwang)",
+  "  1...exf4 a 2.Qxf4#",
+  "  1...d3 b 2.Re3#",
+  "  but 1...exd5!",
+  "1.Qa8? (zugzwang)",
+  "  1...exd5 2.Qxd5#",
+  "  1...d3 b 2.Qa4#",
+  "  but 1...exf4! a",
+  "1.Qc8? (zugzwang)",
+  "  1...exf4 a 2.Qxe6#",
+  "  1...exd5 2.Qxf5#",
+  "  but 1...d3! b",
+  "#Key",
+  "1.Sb5! (zugzwang, gives d5)",
+  "  1...exf4 a 2.Qxd4#",
+  "  1...d3 b 2.Sc3#",
+  "  1...exd5 2.Sxd6#",
+  "  1...Kxd5 2.Qa8#"
+ ],
+ "comment": {
+  "what": "A study post. Today's searches and hand constructions found no sound original (see How it was made), so the skill's fallback applies: an archive problem of the theme, with full credit. Foster's 3rd Prize is a Zagoruiko 3x2 by our solver's count. The two pawn moves a (exf4) and b (d3) are answered by Qxe6#/Qa4# after 1.Qe8?, by Qxf4#/Re3# after 1.Qh4?, and by Qxd4#/Sc3# after the key 1.Sb5!: six different mates in three phases. Each pawn move is a line opening and a self-block at once. 1...exf4 blocks f4 and opens the e-file; 1...d3 blocks d3 and opens the d4 square. Each queen post exploits them differently. The key is the point: it is not a queen move. The knight leaves c7 for b5 and takes over the mates itself (Sc3#, Sxd6#), while the queen stays on h8 and mates along the long diagonal (Qxd4#).",
+  "flaws": [
+   "A block: the key threatens nothing, and in the diagram 1...d3 and 1...exd5 have no set mate (they hint at the key).",
+   "Mates by capture of a pawn: Qxe6#, Qxf4#, Qxd4#, Sxd6# (minor flaws by E. Bourd's rule of 13 Oct 2026).",
+   "Seven pawns among fourteen units; the queen has many other tries (Qg8?, Qf6?, Qh2?) with the same refutations, so the thematic tries do not stand out by themselves.",
+   "The set play gives exf4 2.Qxd4#, the same mate as after the key, so the diagram is not a fourth phase.",
+   "This is not our work: it is published as a study, credited to its author, because today's original failed."
+  ],
+  "pluses": [
+   "A strict Zagoruiko: three phases, each with a single mate for both defences, all six different (our detector confirms it; in Burda and Solarczyk's 1998 problem on the same structure no three phases share both defences).",
+   "The key gives a flight (d5, mated by 2.Qa8#) and changes the mating piece: two queen phases, then a knight phase.",
+   "Each pawn move has two effects (self-block, line opening), and each phase uses a different one.",
+   "Each try is refuted by one of the defences that another phase answers (1...exd5! against Qe8 and Qh4, 1...exf4! against Qa8, 1...d3! against Qc8)."
+  ],
+  "process": "Theme from the rotation: Zagoruiko, a stretch theme; the kit's reference (changed_mates.md) covers two phases only. About two hours of work, about 40 solves and tables, 28 search jobs. (1) trychange MODE=posts on four bare cores (knight self-blocks, pawn steps): junk, its score does not require each defence's mate to change from phase to phase. (2) A new scorer, MODE=zag (below), on eight cores: nothing from bare cores, as the lesson of 19 Oct predicted. (3) By hand: bK e5 boxed by its own pawns d6, e6, f6 and d4, f4, White Pe4 guarding d5 and f5. 1...d5 opens the b8-h2 diagonal through d6, 1...f5 the a1-h8 diagonal through f6. A table of every queen square found exactly two clean posts: e8 (Qb8#, Qh8#) and d7/e7/f7 (Qc7#, Qg7#). Every square that reaches a third pair (Qd6#/Qf6# with a protector) also reaches a second mate. (4) Around that shell the search found only the two-phase mutate, cooked: in a complete block every White waiting move keeps the set mates, and the queen next to the pawns threatens to capture them. (5) A threat scheme with two black interposers on the queen's sixth-rank threat line (not a Grimshaw) gave nothing in four more jobs. See the attempts below.",
+  "lesson": "In a pawn-shell Zagoruiko the queen cannot carry three phases alone: from any post near the king she reaches two mating squares of the same defence. Foster and Burda-Solarczyk get the third phase from another White piece, the key unit that becomes the mating piece (1.Sb5! Sc3#, 1.Se1! Sd3#/Sf3#), and they put the queen far away (h8, h3), where each post sees only one square of each line. Plan the third phase's piece before the queen's posts, and keep the queen at a distance."
+ },
+ "attempts": [
+  {
+   "title": "The pawn shell: two clean queen phases, sixteen keys",
+   "fen": "4Q3/8/3ppp2/4k3/3pPp2/5B2/1B6/K7",
+   "note": "Set 1...d5 2.Qb8#, 1...f5 2.Qh8#; after 1.Qe7 (or Qd7, Qf7) 1...d5 2.Qc7#, 1...f5 2.Qg7#. Bb2 pins d4, Bf3 stops f3 and protects e4. Tries 1.Qg6? (f5 2.Qg7#, but 1...d5!) and 1.Qc6? (d5 2.Qc7#, but 1...f5!). Gate: FAIL, sixteen keys and two checks (Qb5+, Qh5+): a complete block, so every waiting move keeps the set mates."
+  },
+  {
+   "title": "The search's inversion: Qd7 in the diagram, 1.Qe8",
+   "fen": "8/1K1Q3N/2Pppp2/4k3/3pPp2/5B2/1B6/8",
+   "note": "Set 1...d5 2.Qc7#, 1...f5 2.Qg7#; 1.Qe8! 1...d5 2.Qb8#, 1...f5 2.Qh8#. Gate: FAIL, cooked by 1.Qe7, Qf7, Qg7 (threat 2.Qxf6#), knight and king moves. The python-chess pre-filter missed the queen's captures of d6 and f6 as threats."
+  }
+ ],
+ "mentor_questions": [
+  "Burda and Solarczyk (Sachove umeni 1998, 4th Prize) call their problem a Zagoruiko, but no three of its phases answer both pawn moves (1.Qh4? fails to d4, 1.Kg3? to f4+); each pawn move has three mates over four phases. Foster's has three full phases. For you, does a Zagoruiko need three phases that answer both defences?",
+  "Both prize-winners take the third phase from a knight key that mates itself, after queen tries. If we compose a Zagoruiko on a pawn shell with that division (queen tries, knight key), is the division itself already the known matrix, so that the novelty must come from elsewhere, or is it a free frame?"
+ ],
+ "stats": {
+  "minutes": 120,
+  "solves": 40,
+  "kernels": 3,
+  "searches": 28
+ },
+ "improvement": "trychange gained MODE=zag, a Zagoruiko score: the set play plus the quiet moves of the key piece (KP=any: of any White unit; THREAT='**' admits blocks) are phases; it builds the longest chain from the key through the tries in which both defences have one mate and each defence's mate is new in every phase, compares mates by piece and arrival square (Rxd3# and Rd3# are one mate), rewards one key, penalises shared refutations, and gives partial credit below one full phase so a climb has a gradient. Tested in tests/test_trychange.py on Rogoshin (3 phases), Delobel (4 phases, all tries refuted by d4) and Foster (3 phases with the knight key, KP=any).",
+ "mentor_issue": 16,
+ "feedback": []
+}

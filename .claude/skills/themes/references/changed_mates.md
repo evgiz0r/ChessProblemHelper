@@ -198,3 +198,14 @@ His finished version (bench mvcop42d): bourd-pawn-battery-queen-sd2, 1B4nK/4p1rp
 1.Sd2! (2.Bf3#) Qb5 2.e4#, Qxb8 2.e3#; tries 1.Sxg5? Qb5!, 1.Sxg3? Qxb8!. The holder attacks the rear (Qb3 v Qd1), so it is
 never pinned on the line; the key vacates the double-step square; each try lands on a square next to the king protected by
 the guard a thematic defence removes, so that defence also opens a capture flight its mate does not cover.
+
+## Zagoruiko: three phases (daily No. 15, 20 Oct 2026)
+Definition: two defences, each with a new mate in at least three phases (set, tries, key). The solver's detector
+(analysis.py) wants three phases that each answer BOTH defences with all mates different; Burda-Solarczyk 1998
+(psis-834824910d, called a Zagoruiko) does not pass it, Foster 2003 (psis-f8c659a19d) does.
+Light models: Foster 7Q/2N5/1B1pp1K1/3Ppp2/3pkP2/5R2/4B3/8, 1.Qe8? 1.Qh4? 1.Sb5!; Rogoshin 2003 (provided flight Kd3, fails
+our gate); Delobel 2004 4x2 block (every try refuted by 1...d4); van Woerden 2002, 8/p1pp4/K1kP1Q2/R7/1p4p1/3P4/5pbb/8,
+threats, 1.Qd8! gives a flight.
+Pawn shell (ours, no key): bK e5, bPd6/e6/f6 + d4/f4, wPe4; d5/f5 open the two upper diagonals through e5. The queen
+gives two clean posts (e8, e7); a third pair needs another piece. Both prize-winners use a knight key that mates itself.
+Search: `MODE=zag KP=any THREAT='**' python -m chesscomp.compose.trychange` around a hand kernel; bare cores gave nothing.
