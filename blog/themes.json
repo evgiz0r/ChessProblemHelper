@@ -1,5 +1,5 @@
 {
- "note": "Rotation for the daily problem. tools/blog.py next-theme picks the theme used least recently (ties by order). Add a theme by adding an entry; 'reference' is the kit's own notes, 'db_text' the label Problemesis prints (use it to read examples, never to copy). 'stretch' themes are attempted only when the run has time left after a sound simpler version.",
+ "note": "Rotation for the daily problem. tools/blog.py next-theme picks the theme used least recently (ties by order). Add a theme by adding an entry; 'reference' is the kit's own notes, 'db_text' the label Problemesis prints (use it to read examples, never to copy). 'stretch' themes are attempted only when the run has time left after a sound simpler version. A theme with 'paused' (the reason) is skipped by next-theme: the dailies take themes already practiced with the mentor (E. Bourd, 20 Oct 2026).",
  "themes": [
   {
    "id": "black-correction",
@@ -113,7 +113,8 @@
    "definition": "Threat and variation mate swap between a try and the solution for the same pair of defences.",
    "reference": ".claude/skills/themes/references/le_grand.md",
    "db_text": "Le Grand",
-   "stretch": true
+   "stretch": true,
+   "paused": "E. Bourd, 20 Oct 2026: 'lets try to do in dailies things we practiced, le-grand zaguruiko, reciproal changes is a bit rough yet'. Unpause after practice with him on the bench."
   },
   {
    "id": "zagoruiko",
@@ -122,7 +123,8 @@
    "definition": "Two black defences each get different mates in at least three phases.",
    "reference": ".claude/skills/themes/references/changed_mates.md",
    "db_text": "Zagorou",
-   "stretch": true
+   "stretch": true,
+   "paused": "E. Bourd, 20 Oct 2026: 'lets try to do in dailies things we practiced, le-grand zaguruiko, reciproal changes is a bit rough yet'. Unpause after practice with him on the bench."
   },
   {
    "id": "reciprocal-change",
@@ -131,7 +133,8 @@
    "definition": "Two defences swap their mates between two phases: a A, b B in one; a B, b A in the other.",
    "reference": ".claude/skills/themes/references/changed_mates.md",
    "db_text": "Reciprocal change",
-   "stretch": true
+   "stretch": true,
+   "paused": "E. Bourd, 20 Oct 2026: 'lets try to do in dailies things we practiced, le-grand zaguruiko, reciproal changes is a bit rough yet'. Unpause after practice with him on the bench."
   },
   {
    "id": "rudenko",
@@ -140,7 +143,8 @@
    "definition": "Several tries with double threats; each defence that stops one threat allows the other, and the key shows the cycle.",
    "reference": null,
    "db_text": "Rudenko",
-   "stretch": true
+   "stretch": true,
+   "paused": "Not practiced yet and no reference in the kit (same rule as E. Bourd, 20 Oct 2026, on Le Grand, Zagoruiko and reciprocal changes)."
   }
  ]
 }

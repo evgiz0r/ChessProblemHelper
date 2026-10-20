@@ -263,8 +263,8 @@ def check(fen, stip='#2'):
     return 0 if not fatal else 1
 
 def next_theme():
-    themes = json.load(open(THEMES, encoding='utf-8'))['themes']
-    last = {}
+    themes = [t for t in json.load(open(THEMES, encoding='utf-8'))['themes'] if not t.get('paused')]
+    last = {}                                   # paused themes are skipped (E. Bourd, 20 Oct 2026)
     for p in load_posts():
         last[p.get('theme')] = p['date']
     themes.sort(key=lambda t: (last.get(t['id'], '0000'), t.get('order', 99)))
