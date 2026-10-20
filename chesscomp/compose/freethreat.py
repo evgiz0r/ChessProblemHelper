@@ -8,6 +8,8 @@ WANT maps a defence (python-chess SAN, N for knights) to a mate pattern (fnmatch
 "N*c3"). Env PURE=1 also rejects a defence that guards a threat square from its arrival (impure). Env NOFLIGHT=1 rejects any
 king move in the post-key (a flight the threat still mates forces a flight-giving key; E. Bourd: "limiting").
 Env EMPTY=c4: squares that must stay empty (a battery line; without it the search blocks the battery, 18 Oct 2026).
+Env THREAT=Ne4c5: the one threat must be that mate (as in unmask_search; 20 Oct 2026, a Black correction whose random
+defence opens a line to the threat square).
 Found the post-keys of the two-rooks unpin (11 Oct 2026) and the knight line-closing problem (12 Oct 2026):
     CORE=4Q3/8/8/3k4/8/8/8/2r1nN1b WANT='{"Nc2":"N*c3","Ng2":"Qe8e4"}' -> 4Q3/2K5/8/3k4/2R5/1Pp5/8/1Nr1nN1b
 """
@@ -17,6 +19,7 @@ from .keyfind import post_spec
 
 CORE, WANT, NOQ, CSQ = '8/8/8/8/8/8/8/8', {}, 'zz', {}
 EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
+THREAT = os.environ.get('THREAT')
 
 
 def configure(core: str, want: dict, noq: str = 'zz'):
@@ -71,6 +74,7 @@ def score(fen):
     bad = [x for x in t if x.startswith(NOQ) or x[1:3] == NOQ]
     good = [x for x in t if x not in bad]
     s -= 25 * len(bad) + (30 if not good else 12 * (len(good) - 1))
+    s -= 30 if THREAT and set(t) != {THREAT} else 0
     names = {b.san(chess.Move.from_uci(u)): m for u, m in d.items()}
     holes = [k for k, m in names.items() if not m]; duals = [k for k, m in names.items() if len(m) > 1]
     s -= 6 * len(holes) + 4 * len(duals) + 2 * len([k for k in names if k not in WANT])
@@ -114,7 +118,7 @@ def score(fen):
         flights = [b.san(m) for m in b.legal_moves         # "something without king flight, its a bit limiting")
                    if b.piece_type_at(m.from_square) == chess.KING]
         s -= 15 * len(flights)
-    ok = not flights and not impure and not unblocked and len(t) == 1 and not bad and not holes and not duals and all(wok(names.get(k), w) for k, w in WANT.items()) and not dups
+    ok = not flights and not impure and not unblocked and len(t) == 1 and not bad and (not THREAT or set(t) == {THREAT}) and not holes and not duals and all(wok(names.get(k), w) for k, w in WANT.items()) and not dups
     return s + (100 if ok else 0), f"dups={dups} flights={flights} impure={impure} unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
 
 

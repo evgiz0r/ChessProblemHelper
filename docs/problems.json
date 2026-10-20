@@ -3202,6 +3202,20 @@
    ],
    "cooked": false,
    "note": "Flaws: single phase, static key (both mates set: 1...Bf4 2.c4#, 1...Bf3 2.c3#), random duals (8), wPe6 and wKh7 only stop checks (Bg8+, Be4+), bPg3 stops 1...Bh2 (repeats c4#), bPa3 stops 1.c4+ Bb2 2.Rxb2. Earlier forms: Rf8 with 1...Bf6 2.Sxg3# as a third cut (post-key 5RK1/8/4p3/3bb3/8/4p1pN/R1P1k1P1/1BQ2N2, cooked by Qxe3+/Sxg3+); 1.Rh5-f5! (out of play). Dead end: a dark bishop cutting a diagonal guard of d2 can interpose on d2 (same diagonal)."
+  },
+  {
+   "id": "claude-rook-knight-two-lines-scheme",
+   "fen": "8/8/RN2k1P1/2Bn2K1/2P2P2/8/3R4/8",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 20 Oct 2026)",
+   "source": "E. Bourd: rook-knight battery with additional thematic play (correction, changes, transfers, tries). evolve CORR=d5 from a hand sketch (holder Sd5, Rd2 behind it, threat by the c-pawn)",
+   "themes": [
+    "post-key after 1.Bd6-c5! (unmasks Ra6/Sb6, threat 2.cxd5#), Black to move: the black knight d5 can hold one of two White lines, not both. Holding the battery line (b4 and c7 via the a6 capture, e7 via c6): 2.Re2# (and 1...Sxb6 2.Rxb6#); holding the e-file of 2.Re2 (c3, e3, f6 interpose or capture on it): a battery discharge; 1...Sxf4 (takes the e5 guard) 2.Sd7# only",
+    "tries by the key bishop refuted by the knight's holding moves: 1.Bb4? Sxb4!, 1.Ba3? Sb4!, 1.Bf8? Se7! (diagram 8/8/RN1Bk1P1/3n2K1/2P2P2/8/3R4/8)"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Scheme, not a problem: diagram flight 1...Kxd6 (bishop d6 unprotected; a protecting knight on e8 adds Sg7#/Sc7#); 1...Se7 2.Rd6#/Re2#; 1...Sc3/Se3/Sf6 allow four discharges (Sa4/Sa8/Sc8/Sd7); 1...Sb4 and 1...Sc7 share 2.Re2#. 9 units."
   }
  ]
 }
