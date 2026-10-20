@@ -3186,6 +3186,22 @@
    ],
    "cooked": false,
    "note": "Flaws: the defences only block the threat's path (his cut a guard line); random bishop moves allow Rh2# and c4#/c3# (7 random duals); wPg3 cook-stopper (stops 1...Be5 guarding h2); 1.Ra1? Bxa1! random. Gate PASS, 11 units. Rook-arrival keys tried first: 1.Rd7-h7! (diagram flight Kf2, key piece attacked), 1.Rc7-h7! (idle key piece), 1.Rd7-h7! with Kg1 (cooked by Qd1#/Qf1#)."
+  },
+  {
+   "id": "claude-rook-pawn-battery-fcut-sh3",
+   "fen": "8/7K/4P3/3bbRN1/8/p3p1p1/R1P1k1P1/1Q3N2",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 20 Oct 2026)",
+   "source": "E. Bourd: 'a different threat and mechanism... more room to maybe add two thematic unified tries... more freedom'. Hand scheme (two bishops cut one guard line of a battery-line square), freethreat with Rf5/Qb1/Sh3 fixed, unmask_search (key Sg5-h3)",
+   "themes": [
+    "rook-pawn battery Ra2/Pc2 v Ke2: 1.Sh3! (2.Sg1#) Bf4 2.c4#, Bf3 2.c3#; both defences cut Rf5's f-file guard of f2 (at f4 and f3); the battery mate re-covers f2 along the second rank; the discharge itself opens Qb1-c2-d3, so no unit has to take over d3",
+    "scheme with room: the f2 guard line may come from f5-f8 (from f7/f8 the dark bishop cuts a third time, 1...Bf6, on its own line), the threat is any mate that needs f2 from the f-file"
+   ],
+   "keys": [
+    "Sh3"
+   ],
+   "cooked": false,
+   "note": "Flaws: single phase, static key (both mates set: 1...Bf4 2.c4#, 1...Bf3 2.c3#), random duals (8), wPe6 and wKh7 only stop checks (Bg8+, Be4+), bPg3 stops 1...Bh2 (repeats c4#), bPa3 stops 1.c4+ Bb2 2.Rxb2. Earlier forms: Rf8 with 1...Bf6 2.Sxg3# as a third cut (post-key 5RK1/8/4p3/3bb3/8/4p1pN/R1P1k1P1/1BQ2N2, cooked by Qxe3+/Sxg3+); 1.Rh5-f5! (out of play). Dead end: a dark bishop cutting a diagonal guard of d2 can interpose on d2 (same diagonal)."
   }
  ]
 }
