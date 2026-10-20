@@ -3216,6 +3216,19 @@
    "keys": [],
    "cooked": false,
    "note": "Scheme, not a problem: diagram flight 1...Kxd6 (bishop d6 unprotected; a protecting knight on e8 adds Sg7#/Sc7#); 1...Se7 2.Rd6#/Re2#; 1...Sc3/Se3/Sf6 allow four discharges (Sa4/Sa8/Sc8/Sd7); 1...Sb4 and 1...Sc7 share 2.Re2#. 9 units. E. Bourd (20 Oct 2026): the description 'unmasks the battery and threatens cxd5' was wrong, the move has no link to the threat; and since the threat captures the holder, every knight move parries it by escaping, with no error tied to the threat."
+  },
+  {
+   "id": "claude-rook-knight-selfblock-rooks-scheme",
+   "fen": "3r1rQ1/4p1p1/N7/3PkP2/5R1P/4N1K1/8/4R3",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 20 Oct 2026)",
+   "source": "E. Bourd: 'try different schemes' (after the two-line holder whose threat captured the defender). Hand mechanism, freethreat with WANT Rd6->Sg4, Rf6->Sc4",
+   "themes": [
+    "post-key scheme, Black to move: battery Re1/Se3 v Ke5 (e-file), threat 2.Qg8-e6#; the black rooks parry only by guarding e6 along the 6th rank, and each self-blocks: 1...Rd6 2.Sg4# (f6 still needs the knight), 1...Rf6 2.Sc4# (d6 still needs it); dual avoidance by self-block, the error tied to the parry"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Holes 1...Rxg8 and 1...Rf7 (the queen's square: from g8 the queen stands next to Rf8 and its line crosses f7). Every other queen post for Qe6 is attacked by a rook (c8, e8, d7, f7) or covers d6/f6 itself (the 6th rank, e7), which kills the dual avoidance; the h3-g4-f5 diagonal needs Pf5 removed, and then Sf5 doubles Sc4 after 1...Rf6. Other schemes tried this round: a mutate whose key 1.Ra7 leaves the battery line (set 1...Sxf6 2.Sc8#, after the key 2.Rd6#/2.Re7#) is a random block (gate: simple block) with unprovided checks."
   }
  ]
 }
