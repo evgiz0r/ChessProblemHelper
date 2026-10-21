@@ -99,6 +99,12 @@ Read `references/construction.md` now (the order and the rules with their exampl
 5. **Clean.** Every cook or dual has a one-unit remedy: load `stop-cooks`. One change, one solve.
 6. **Trim, recursively.** `python3 -m chesscomp.compose.trim FEN` removes units in every order until nothing more
    can go with the same key and play: some units are artifacts of others (E. Bourd: bPh6 only stopped bRh5's checks).
+6a. **Trim by reassigning jobs** when `trim` finds nothing (E. Bourd, 21 Oct 2026: "pieces like b1 b7 can be changed
+   to other pieces... thats the next level trimming"). Write each unit's job (anatomy role table, one solve without it),
+   then give two jobs to one piece and free the force for another: a white bishop on e5 closed the e-file and protected
+   d4 (wPe5 + wPc3 out); wPd5 went once a black Ba8 answered 2.Bd5+ and the rook b7 moved to b8 (still protecting b6)
+   with the threat knight g8 -> h7 out of its rank (bourd-rook-knight-rd6-tries, white pawns 8 -> 4). `trypair` with
+   SPEC units='brqp' tries black units for a removed one; `unmask_search` retypes units (PAWNW=3 costs white pawns).
 6b. **Extend before showing** (E. Bourd, 11 Oct 2026). The theme working is a stage, not the end: ask what can be
    added and try it - tries by the key piece refuted by the thematic defences, changed mates, a cleaner position.
    Example: 1.Bf7! (static, theme only) became 1.Sa3! with a knight wheel once the mask moved to b5 and the key

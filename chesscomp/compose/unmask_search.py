@@ -7,6 +7,9 @@ Optional env TRIES='{"d5c7": "b6b5"}': tries by first move uci, each with exactl
 Optional env SELFBLOCK=1: each wanted mate must need its defence's self-block (freethreat.self_block_needed).
 Optional env THREAT=Qh4e4: the one threat must be that mate (a knight wheel on e4: every knight move guards e4).
 Optional env EMPTY=b2,c2: squares the search never fills (a battery line, as in freethreat; FSQ may be one of them).
+Optional env PAWNW=3: extra cost per White pawn (E. Bourd, 21 Oct 2026: "i dont like all the clumped white pawns").
+Mutations add, remove, move, and retype a non-core unit (any piece of either colour): a unit whose job moves elsewhere
+becomes free for another job (E. Bourd, 21 Oct 2026: "pieces like b1 b7 can be changed to other pieces").
 The diagram must have no flight and no black check, and the key piece must guard a square of the king's field.
 e.g. (two black rooks unpin Sc5, 11 Oct 2026; found 1.Bd5-f7! by hand from its failures):
   CORE=8/8/1r6/Q1n1k3/1r6/8/8/8 WANT='{"R6b5":"Qa5c7","R4b5":"Qa5c3"}' KSQ=e7 FSQ=d5 PSQ=a5
@@ -20,12 +23,19 @@ from chesscomp.compose.freethreat import self_block_needed
 SELFBLOCK = os.environ.get('SELFBLOCK') == '1'
 THREAT = os.environ.get('THREAT')                   # optional: the threat must be exactly this mate id
 EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
-
-CORE, SEED = sys.argv[1], sys.argv[2]
-KSQ, FSQ, PSQ = (chess.parse_square(x) for x in sys.argv[3:6])
+PAWNW = float(os.environ.get('PAWNW', '0'))         # optional: extra cost per White pawn
 TRIES = json.loads(os.environ.get('TRIES', '{}'))   # optional: {try uci: its one refutation uci}
-WANT = json.loads(sys.argv[6]); BUDGET = float(sys.argv[7]); random.seed(int(sys.argv[8]))
-core = chess.Board(CORE + ' b - - 0 1'); CSQ = {s: core.piece_at(s) for s in chess.SQUARES if core.piece_at(s)}
+ADD = 'NBRPPPpppnbr'                                 # units the search may add
+RETYPE = 'NBRQPnbrqp'                                # what a non-core unit may become
+CORE = SEED = None; KSQ = FSQ = PSQ = None; WANT = {}; BUDGET = 0.0; CSQ = {}
+
+
+def setup(argv):
+    global CORE, SEED, KSQ, FSQ, PSQ, WANT, BUDGET, CSQ
+    CORE, SEED = argv[1], argv[2]
+    KSQ, FSQ, PSQ = (chess.parse_square(x) for x in argv[3:6])
+    WANT = json.loads(argv[6]); BUDGET = float(argv[7]); random.seed(int(argv[8]))
+    core = chess.Board(CORE + ' b - - 0 1'); CSQ = {s: core.piece_at(s) for s in chess.SQUARES if core.piece_at(s)}
 
 
 def promoted(b):
@@ -66,7 +76,7 @@ def post_score(fen):
         m = names.get(k)
         s += 12 if m == {want} else (-4 if m and want in m else -16)
     checks = [b.san(m) for m in b.legal_moves if b.gives_check(m)]
-    s -= 5 * len(checks) + 0.7 * len(b.piece_map())
+    s -= 5 * len(checks) + 0.7 * len(b.piece_map()) + PAWNW * len(b.pieces(chess.PAWN, chess.WHITE))
     # a by-play that repeats a wanted mate is a big flaw (E. Bourd, 11 Oct 2026): 1...Rd1 2.Sc3# beside 1...Sc2 2.Sc3#
     dups = [k for k, m in names.items() if k not in WANT and m & set(WANT.values())]
     s -= 10 * len(dups)
@@ -148,32 +158,46 @@ def mutate(fen):
     free = [s for s in chess.SquareSet(b.occupied) if s not in CSQ]
     empty = [s for s in chess.SQUARES if not b.piece_at(s) and s != FSQ and s not in EMPTY]
     op = random.random()
-    if op < .35:
-        sym = random.choice('NBRPPPpppnb'); sq = random.choice(empty)
+    if op < .30:
+        sym = random.choice(ADD); sq = random.choice(empty)
         if sym in 'Pp' and chess.square_rank(sq) in (0, 7):
             return fen
         b.set_piece_at(sq, chess.Piece.from_symbol(sym))
-    elif op < .55 and free:
+    elif op < .45 and free:
         s = random.choice(free)
         if b.piece_type_at(s) != chess.KING:
             b.remove_piece_at(s)
+    elif op < .62 and free:                           # retype: the unit stays, its job changes (Sb1 -> a bishop)
+        s = random.choice(free); sym = random.choice(RETYPE)
+        if b.piece_type_at(s) == chess.KING or (sym in 'Pp' and chess.square_rank(s) in (0, 7)):
+            return fen
+        b.set_piece_at(s, chess.Piece.from_symbol(sym))
     elif free:
-        s = random.choice(free); p = b.piece_at(s); b.remove_piece_at(s); b.set_piece_at(random.choice(empty), p)
+        s = random.choice(free); p = b.piece_at(s); to = random.choice(empty)
+        if p.piece_type == chess.PAWN and chess.square_rank(to) in (0, 7):
+            return fen
+        b.remove_piece_at(s); b.set_piece_at(to, p)
     return b.board_fen()
 
 
-t0 = time.time(); pop = [(score(SEED)[0], SEED)]; seen = {SEED}; best = pop[0]
-while time.time() - t0 < BUDGET:
-    pop.sort(key=lambda x: -x[0]); pop = pop[:14]
-    ch = random.choice(pop[:6])[1]
-    for _ in range(random.choice((1, 1, 2))):
-        ch = mutate(ch)
-    if ch in seen:
-        continue
-    seen.add(ch); sc, info = score(ch); pop.append((sc, ch))
-    if sc > best[0]:
-        best = (sc, ch); print('BEST', round(sc, 1), ch, info, flush=True)
-pop.sort(key=lambda x: -x[0])
-for sc, f in pop[:3]:
-    print('TOP', round(sc, 1), f, score(f)[1])
-print('evaluated', len(seen))
+def main(argv):
+    setup(argv)
+    t0 = time.time(); pop = [(score(SEED)[0], SEED)]; seen = {SEED}; best = pop[0]
+    while time.time() - t0 < BUDGET:
+        pop.sort(key=lambda x: -x[0]); pop = pop[:14]
+        ch = random.choice(pop[:6])[1]
+        for _ in range(random.choice((1, 1, 2))):
+            ch = mutate(ch)
+        if ch in seen:
+            continue
+        seen.add(ch); sc, info = score(ch); pop.append((sc, ch))
+        if sc > best[0]:
+            best = (sc, ch); print('BEST', round(sc, 1), ch, info, flush=True)
+    pop.sort(key=lambda x: -x[0])
+    for sc, f in pop[:3]:
+        print('TOP', round(sc, 1), f, score(f)[1])
+    print('evaluated', len(seen))
+
+
+if __name__ == '__main__':
+    main(sys.argv)
