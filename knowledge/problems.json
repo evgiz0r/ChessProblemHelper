@@ -3229,6 +3229,19 @@
    "keys": [],
    "cooked": false,
    "note": "Holes 1...Rxg8 and 1...Rf7 (the queen's square: from g8 the queen stands next to Rf8 and its line crosses f7). Every other queen post for Qe6 is attacked by a rook (c8, e8, d7, f7) or covers d6/f6 itself (the 6th rank, e7), which kills the dual avoidance; the h3-g4-f5 diagonal needs Pf5 removed, and then Sf5 doubles Sc4 after 1...Rf6. Other schemes tried this round: a mutate whose key 1.Ra7 leaves the battery line (set 1...Sxf6 2.Sc8#, after the key 2.Rd6#/2.Re7#) is a random block (gate: simple block) with unprovided checks."
+  },
+  {
+   "id": "claude-rook-knight-adjacent-holder-e3",
+   "fen": "Rb6/pNP5/6K1/R2NkP2/8/2P1n3/3B2Q1/8",
+   "stip": "#2",
+   "author": "Claude (session with E. Bourd, 21 Oct 2026)",
+   "source": "E. Bourd: 'try with the knight adjacent to the king. no flights for black king'. setplay_search HOLDER=e3 NORECAP=1 (WANT Sf6/Sf4), then freethreat NOFLIGHT=1 with threats from d5 excluded (the first runs threatened 2.Sxe3#, capturing the holder)",
+   "themes": [
+    "post-key scheme, Black to move, no king move: battery Ra5/Sd5 adjacent to Ke5, black holder Se3 (it can interpose on d5); threat 2.cxb8=Q# along b8-e5. 1...Sxg2 (the e4 guard the threat needs) 2.Sf6#; 1...Sxf5 (the e6 guard) 2.Sf4#; 1...Sc4 (prepares Sd6 on the threat line, still holds the battery by Sxa5) 2.Bf4# through the vacated e3; 1...Bxc7 2.Re8#. Each defence parries for its own reason; no holes, no duals"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "No key: with White to move the loaded battery wins by discharge checks (1.Sf6+/Sb4+/Sxe3+... Sd5 2.cxb8=Q#), and the threat does not need the battery, so a key loading the battery (1.Ra4-a5) leaves 1.cxb8=Q#. A key must create the threat (a guard of e4/e6/d4 or the c7 pawn) without a diagram flight. Pure releases of the holder (Sc2, Sd1, Sf1, Sg4) allow the threat."
   }
  ]
 }
