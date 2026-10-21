@@ -3242,6 +3242,22 @@
    "keys": [],
    "cooked": false,
    "note": "No key: with White to move the loaded battery wins by discharge checks (1.Sf6+/Sb4+/Sxe3+... Sd5 2.cxb8=Q#), and the threat does not need the battery, so a key loading the battery (1.Ra4-a5) leaves 1.cxb8=Q#. A key must create the threat (a guard of e4/e6/d4 or the c7 pawn) without a diagram flight. Pure releases of the holder (Sc2, Sd1, Sf1, Sg4) allow the threat."
+  },
+  {
+   "id": "bourd-rook-knight-adjacent-bb5",
+   "fen": "8/3R4/N3p3/6K1/1RBNkPb1/3n1p2/2P2P2/2n5",
+   "stip": "#2",
+   "author": "E. Bourd and Claude (bench 21 Oct 2026, steps 1-34; key by unmask_search)",
+   "source": "His bench scheme 8/4N3/4B3/3P2K1/1R1NkP2/2Pn1p2/2P2P2/8 (post-key, threat Bf5#; 'something smaller... added some random threat. try to finish. or to swap threats if needed'). With the battery loaded every key was cooked by discharge checks (1.Sb5+ Sxb4 2.Sd6#, ...); a masking unit on c4 is needed (a knight there mates on d6/d2). unmask_search FSQ=c4 KSQ=b5 swapped the threat to 2.Bc6#",
+   "themes": [
+    "rook-knight battery Rb4/Sd4 next to Ke4; the black knight d3 (also next to the king) holds it by capturing the rook; 1.Bb5! (unmasks the battery and threatens 2.Bc6#) Sxf4 (the e5 guard) 2.Sc6#, Sxf2 (the e3 guard) 2.Sf5#: each capture releases the battery and opens the square only one discharge covers; by-play Se5/Sxb4 (guarding c6) 2.Sc5#",
+    "the key creates the threat: the masking bishop leaves the battery line for b5, from where it threatens Bc6#"
+   ],
+   "keys": [
+    "Bb5"
+   ],
+   "cooked": false,
+   "note": "Flaws: 15 units (9+6); black Bg4, Sc1, pe6 and white Kg5 (doubles f4/f5) are support; 1...Se5 and 1...Sxb4 share 2.Sc5# (Sa6 exists for it); random-move duals (1...Sc5); single phase (1.Bxe6? Bxe6! is not thematic). Gate PASS. trim: nothing removable with the same key and play."
   }
  ]
 }
