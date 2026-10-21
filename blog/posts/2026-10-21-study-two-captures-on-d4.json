@@ -65,5 +65,6 @@
   "searches": 35
  },
  "improvement": "The Dombrovskis theme gets its first reference, .claude/skills/themes/references/dombrovskis.md: the two effects every thematic defence needs, five engines read from the archive (pawn steps on the threat line with one vacated flight, captures of two sole guards, a Grimshaw by capture, king flights and why they are fatal for us, a doubling by addition), the tools, and today's dead ends. tests/test_dombrovskis_reference.py re-solves its three cited positions and checks that the solver reports the paradox on the named defences. blog/themes.json and the themes skill now point to it. Also a fix in chesscomp.compose.evolve: the modes that need no DEFS (PATTERN, CORR, WCORR, KEY, DEFSQ, SELFBLOCK) no longer fall back silently to the default DEFS d6,d5 when DEFS is unset. Four of today's jobs searched for a d6/d5 the position did not have. Tested in tests/test_evolve.py.",
- "feedback": []
+ "feedback": [],
+ "mentor_issue": 17
 }
