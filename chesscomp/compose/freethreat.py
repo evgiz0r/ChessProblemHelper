@@ -10,6 +10,8 @@ king move in the post-key (a flight the threat still mates forces a flight-givin
 Env EMPTY=c4: squares that must stay empty (a battery line; without it the search blocks the battery, 18 Oct 2026).
 Env THREAT=Ne4c5: the one threat must be that mate (as in unmask_search; 20 Oct 2026, a Black correction whose random
 defence opens a line to the threat square).
+Env DOUBLE=2: no named defences needed (WANT may be {}): at least that many distinct mates must be double checks, each
+the only mate of its defence; the score counts them (E. Bourd, 21 Oct 2026: "double check mates").
 Found the post-keys of the two-rooks unpin (11 Oct 2026) and the knight line-closing problem (12 Oct 2026):
     CORE=4Q3/8/8/3k4/8/8/8/2r1nN1b WANT='{"Nc2":"N*c3","Ng2":"Qe8e4"}' -> 4Q3/2K5/8/3k4/2R5/1Pp5/8/1Nr1nN1b
 """
@@ -20,6 +22,7 @@ from .keyfind import post_spec
 CORE, WANT, NOQ, CSQ = '8/8/8/8/8/8/8/8', {}, 'zz', {}
 EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
 THREAT = os.environ.get('THREAT')
+DOUBLE = int(os.environ.get('DOUBLE', '0'))
 
 
 def configure(core: str, want: dict, noq: str = 'zz'):
@@ -63,6 +66,23 @@ def self_block_needed(b: chess.Board, defence_san: str, mate_id: str) -> bool:
     # the king must escape to the emptied square itself; a mate that fails only because the blocker also cut a
     # black line (Sxc4 cutting Ra4-d4 against Qd3+) is an interference, not a self-block (12 Oct 2026)
     return any(m.to_square == d.to_square and bb.piece_type_at(m.from_square) == chess.KING for m in bb.legal_moves)
+
+
+def double_mates(b: chess.Board, names: dict) -> set:
+    """Mate ids that are double checks and the only mate of their defence (b: post-key board, Black to move)."""
+    out = set()
+    for k, m in names.items():
+        if len(m) != 1:
+            continue
+        mid = next(iter(m)); bb = b.copy()
+        bb.push(bb.parse_san(k))
+        mv = next((x for x in bb.legal_moves if f"{bb.piece_at(x.from_square).symbol().upper()}"
+                   f"{chess.square_name(x.from_square)}{chess.square_name(x.to_square)}" == mid), None)
+        if mv is not None:
+            bb.push(mv)
+            if len(bb.checkers()) == 2:
+                out.add(mid)
+    return out
 
 
 def score(fen):
@@ -118,8 +138,12 @@ def score(fen):
         flights = [b.san(m) for m in b.legal_moves         # "something without king flight, its a bit limiting")
                    if b.piece_type_at(m.from_square) == chess.KING]
         s -= 15 * len(flights)
-    ok = not flights and not impure and not unblocked and len(t) == 1 and not bad and (not THREAT or set(t) == {THREAT}) and not holes and not duals and all(wok(names.get(k), w) for k, w in WANT.items()) and not dups
-    return s + (100 if ok else 0), f"dups={dups} flights={flights} impure={impure} unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
+    dbl = set()
+    if DOUBLE:
+        dbl = double_mates(b, names)
+        s += 15 * len(dbl)
+    ok = (not DOUBLE or len(dbl) >= DOUBLE) and not flights and not impure and not unblocked and len(t) == 1 and not bad and (not THREAT or set(t) == {THREAT}) and not holes and not duals and all(wok(names.get(k), w) for k, w in WANT.items()) and not dups
+    return s + (100 if ok else 0), f"double={sorted(dbl)} dups={dups} flights={flights} impure={impure} unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
 
 
 def mutate(fen):

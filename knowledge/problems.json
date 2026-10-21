@@ -3291,6 +3291,22 @@
    ],
    "cooked": false,
    "note": "Flaws: static key (both thematic mates set, the key adds the threat only); 20 units (11+9, 8 pawns, 4 white: c2, f2, f4, g6); black support: Ba8 only answers 2.Bd5+, Rb8 only for 1.Rfxb6?, pb6/pc7/Sb1/ph4 guard c5/d6/d2+c3/g3 against discharge-check cooks; wPg6 stops 1.Rg6; wBf7 guards d5 in the diagram and blocks f7 (duplicated by Rd6 after the key); random-move duals (1...Rb7 2.Sf6#/Bd5#); by-tries 1.Kxh4?/1.Kh6? (2.Sg5#) Rh8! (pin), not thematic; 1.Rfxb6? captures a pawn. Pluses: the two thematic tries are pure, each refuted by the defence whose mate it blocks. Gate PASS; trim --tries: nothing removable; unmask_search with retype from it (4 x 280 s) found nothing lighter. E. Bourd's verdict (21 Oct 2026): 'not the best, but... a decent clear theme with tries'; the rook exists only for the play and the blocks; no changes, but 'could be placed as recommendation in a random tourney'. Claude had judged it below placing (too harsh)."
+  },
+  {
+   "id": "claude-double-check-two-bishops-scheme",
+   "fen": "3R4/1b6/6K1/2p1N3/R1N1k3/5p2/2P5/2B3b1",
+   "stip": "#2",
+   "author": "Claude (21 Oct 2026, double-check mates, E. Bourd's request)",
+   "source": "freethreat DOUBLE mode found single double-check variations (a black bishop guarding the threat square and the battery line); the second variation designed by hand (self-block of the square whose guard the mating knight cuts), post-key by freethreat with named defences, key by solve (Se5-f7), Sf3 cooks removed by a black self-block f3 (unmask_search)",
+   "themes": [
+    "rook-knight battery Ra4/Sc4 v Ke4 with the knight on the king's colour: its only checking landings are d2 and d6 (double checks); bPc5 interposes on c4 against any single-check discharge, so every battery mate is a double check",
+    "two black bishops defend by interference and self-block: 1...Be3 (cuts Bc1-f4, flight f4 against 2.Sg5) 2.Sd2# (Sd6? cuts Rd8-d5, Kd5); 1...Bd5 (cuts Rd8-d4, flight d4) 2.Sd6# (Sd2? cuts Bc1-e3, Ke3): each mating knight cuts a white guard line, each defence self-blocks the square that line guarded"
+   ],
+   "keys": [
+    "Sf7"
+   ],
+   "cooked": false,
+   "note": "A scheme, not a problem: single phase, both mates set (static key; the key knight only leaves e5), only try 1.Sg4? Bd4! (not thematic); Kg6 doubles f5; bPc5 alone makes single checks fail, so the bishops' control of the line (d4, c4) is a duplicate reason. Light: 12 units (7+5, 3 pawns). Tried for a second layer: a try refuted by 1...Bd5 because the threat covers f3 (1.Sxf3? Bd5! but also Kxf3!)."
   }
  ]
 }
