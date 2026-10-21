@@ -22,7 +22,7 @@
    "order": 3,
    "name": "Dombrovskis paradox",
    "definition": "A try threatens mate A and is refuted by defence a; after the key, the same defence a allows mate A.",
-   "reference": "knowledge/lessons.jsonl (topic Dombrovskis); chesscomp/compose/pattern_search.py",
+   "reference": ".claude/skills/themes/references/dombrovskis.md",
    "db_text": "Dombrovskis"
   },
   {

@@ -1,0 +1,70 @@
+{
+ "date": "2026-10-21",
+ "title": "Study: two captures on d4",
+ "theme": "dombrovskis",
+ "theme_name": "Dombrovskis paradox",
+ "fen": "7n/2K1P3/3B4/3kN3/R2N1r2/5P2/2P2b1Q/7B",
+ "stip": "#2",
+ "author": "Mircea Manolescu",
+ "source": "Buletin Problemistic 1984-85, 2nd Prize (Problemesis record psis-e1c54a41bb)",
+ "teaser": "A study post: today's own attempts found no sound original, so here is a prize-winner that does what they tried to do. Two black pieces can take the knight on d4. Find the two tries that each of these captures refutes, then the key after which each capture lets in the mate it stopped.",
+ "solution": [
+  "#Tries",
+  "1.Sec6? (2.c4# A)",
+  "  1...Rxd4 2.Qe5#",
+  "  but 1...Bxd4! a",
+  "1.c3? (2.Ra5# B)",
+  "  1...Bxd4 2.Qa2#",
+  "  but 1...Rxd4! b",
+  "#Key",
+  "1.Qh3! (2.Qe6#)",
+  "  1...Bxd4 a 2.c4# A",
+  "  1...Rxd4 b 2.Ra5# B",
+  "  1...Rf5, Rf6 2.f4#",
+  "  1...Rg4 2.fxg4#"
+ ],
+ "comment": {
+  "what": "A study post. Today's searches and hand constructions found no sound original (see How it was made), so the skill's fallback applies: an archive problem of the theme, with full credit. Manolescu's 2nd Prize is a double Dombrovskis, and both paradoxes rest on one fact: the knight d4 is the only guard of e6. Each capture on d4 removes it. That is the side effect that beats each try: after 1.Sec6? Bxd4! the threat 2.c4+ lets the king out to e6, and after 1.c3? Rxd4! so does 2.Ra5+. The key 1.Qh3! guards e6 along the h3-e6 diagonal and threatens 2.Qe6#, in which the queen stands protected by the same knight. So both captures still defend (they take the protector), and with e6 now covered they let in the try threats. A Grimshaw on d4 decides which one. The bishop on d4 cannot reach c4, so 1...Bxd4 allows 2.c4#. The rook on d4 shuts the f2 bishop out of c5, the only square where Ra5+ could be blocked, so 1...Rxd4 allows 2.Ra5#. Two mates also change against the tries: 1...Rxd4 is met by 2.Qe5# after 1.Sec6? and by 2.Ra5# after the key, 1...Bxd4 by 2.Qa2# after 1.c3? and by 2.c4# after the key.",
+  "flaws": [
+   "The key piece starts out of play. Our gate calls this fatal ('out-of-play key': the queen on h2 is on the edge and guards nothing near the king, because the rook f4 cuts its diagonal). A prize in 1985 shows that judges then weighed it otherwise; we ask about it below.",
+   "1...Rxf3 2.Qxf3#/Bxf3# is a dual, and four rook moves that let the threat through also allow other mates (1...Rf8 2.Qe6#/f4#).",
+   "1...Rg4 2.fxg4#: the mate captures the defender on its arrival square.",
+   "The pawn e7 takes part in no mate. It is needed for soundness (without it there is no solution) and adds the try 1.e8=Q?.",
+   "14 units for two paradoxes. The black knight h8 is a cook-stopper (it answers 1.Qh6? with Sg6!)."
+  ],
+  "pluses": [
+   "A doubled Dombrovskis on one square: both refutations are captures of the same White unit, by the two black line pieces that make a Grimshaw on d4.",
+   "Each try's threat comes back as the mate after its own refutation. Two more mates change between the tries and the key (Qe5# to Ra5#, Qa2# to c4#).",
+   "The key does exactly one thing for the paradox: it guards e6, the square both captures uncover. The threat 2.Qe6# is the reason both captures still defend.",
+   "Only four black units for this much play."
+  ],
+  "process": "Theme from the rotation: Dombrovskis, last used for No. 1 (a single variation). This run aimed at the doubled form and wrote the theme's first reference first (see below). The light archive model is Slesarenko & Gvozdjak (1999), 3n1KB1/3p1n2/2p1k3/8/5P1B/2PQ4/8/8: a pawn beside the king's file stands on the queen's file, both steps block the threat Qxd7 and both vacate d7, and the king key guards d7. Copying that was ruled out. Three families were tried instead. (1) The pawn two files away (Kf5, e7), where neither step vacates a flight. The steps can only defend by blocking a White line or by opening a Black one. With a black bishop on d8, both steps open the d8-h4 diagonal to g5. That gave a sound 6+3 kernel by hand in five solves: 1.Qg7! (2.Qg5#) e6 2.Bc2#, e5 2.Qg6#. But no paradox came from it. pattern_search added every one or two White units, and one White plus one Black (about 25,000 positions). A new scratch scan moved or removed one White unit and added another (22,000 more). Neither found a try refuted by e6 or e5 whose threat the key turns into the mate. The reason, read off the queen's try table: 2.Qg6# needs a queen that reaches g6 and still guards e5, and only g7 (the key) does both. 2.Bc2# needs another guard of e6, and every line that guards e6 runs on to f6/g6, where the kernel already has other guards. The queen table also showed 1.Qe1? (2.Qe6#) e5!, with 2.Qe6# after 1.Qc4 and 1...e5. But that cannot be a paradox: a queen on e6 covers e5 itself, so wherever 2.Qe6# mates after 1...e5 it is already a threat before it. (2) Two pawns beside the king (Ke5, d6, f6), each single step vacating its own flight, so one key must guard both. Evolve found sound kernels with tries, among them 8/4K3/3p1p1R/4k3/8/4B3/6Q1/7N (1.Qf3! d5 2.Qf4#, f5 2.Re6#). There the White king guards both vacated squares all the time, so they never become flights. The paradoxes the scans found there paired two tries, never a try and the key, and most were refuted by king moves. (3) A black knight next to the king (Ke5, e6), which evolve could not climb. Fourteen evolve jobs ran in all, four of them first without DEFS= set; the tool then silently searched for the default d6,d5. That is now fixed (see below). About 35 searches, 30 hand solves, about 70 minutes of work.",
+  "lesson": "A Dombrovskis defence needs two effects: a side effect that beats the try and a main effect that parries the key's threat. The key must be able to cancel the side effect. A pawn whose steps only self-block and open a Black line (the Bd8 kernel) has no side effect that a key can cancel, so no layer of added units could supply the try. Before placing a unit, write each thematic defence's side effect and the unit that will cancel it after the key."
+ },
+ "attempts": [
+  {
+   "title": "The pawn two files away: sound, unified, but no paradox",
+   "fen": "3b4/4p3/8/5k1P/8/1BQ2P1N/8/7K",
+   "note": "1.Qg7! (2.Qg5#) e6 2.Bc2#, e5 2.Qg6#; set 1...e6 2.Bc2#. Both pawn steps defend the same way, by opening d8-h4 so that the bishop guards g5, and each self-blocks its own square. Gate: PASS (6+3), with king-refuted queen tries (1.Qc6? Ke5!, 1.Qc4? Kf6!) and an idle White king. No Dombrovskis: no one- or two-unit change gives a try refuted by e6 or e5 whose threat returns after the key (about 47,000 positions)."
+  },
+  {
+   "title": "Two pawns beside the king: the vacated squares stay guarded",
+   "fen": "8/4K3/3p1p1R/4k3/8/4B3/6Q1/7N",
+   "note": "Found by evolve. 1.Qf3! (zugzwang) d5 2.Qf4#, f5 2.Re6#; set 1...Kf5 2.Rh5#, 1...f5 2.Re6#, and 1...d5 unprovided. Gate: PASS (5+3), but the key takes the provided flight f5 and the play has no theme. The White king on e7 guards d6 and f6 for good, so the steps never open a flight, and no key can turn a refutation into a mate. The scans around it found paradoxes only between two tries."
+  }
+ ],
+ "mentor_questions": [
+  "Our gate makes an out-of-play key fatal, and it fails Manolescu's 1.Qh3! on that rule (the queen on h2, its diagonal cut by Rf4). With a doubled Dombrovskis and two changed mates, would you still call this key a fatal flaw, or does the rule bend with content?",
+  "Every light doubled Dombrovskis on one black pawn that we found is Slesarenko & Gvozdjak's: both steps of a pawn beside the king's file vacate the same flight, which the key guards. Is that frame now so tied to their problem that any new setting is a reduced form, or is it open if the key and the extra content are new?",
+  "The Bd8 kernel (1.Qg7! (2.Qg5#) e6 2.Bc2#, e5 2.Qg6#, 6+3) has two self-blocks that both defend by opening one Black line. Is that unity worth building on for another theme, or is it a common Meredith pattern?"
+ ],
+ "stats": {
+  "minutes": 70,
+  "solves": 30,
+  "kernels": 5,
+  "searches": 35
+ },
+ "improvement": "The Dombrovskis theme gets its first reference, .claude/skills/themes/references/dombrovskis.md: the two effects every thematic defence needs, five engines read from the archive (pawn steps on the threat line with one vacated flight, captures of two sole guards, a Grimshaw by capture, king flights and why they are fatal for us, a doubling by addition), the tools, and today's dead ends. tests/test_dombrovskis_reference.py re-solves its three cited positions and checks that the solver reports the paradox on the named defences. blog/themes.json and the themes skill now point to it. Also a fix in chesscomp.compose.evolve: the modes that need no DEFS (PATTERN, CORR, WCORR, KEY, DEFSQ, SELFBLOCK) no longer fall back silently to the default DEFS d6,d5 when DEFS is unset. Four of today's jobs searched for a d6/d5 the position did not have. Tested in tests/test_evolve.py.",
+ "feedback": [],
+ "mentor_issue": 17
+}

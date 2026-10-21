@@ -250,6 +250,24 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For a Zagoruiko again, choose the third phase's piece first (a key unit that becomes the
   mating piece), the queen far away, a threat if possible; run MODE=zag KP=any around a hand kernel, never a bare core.
 
+## 2026-10-21, No. 16: Dombrovskis (study post)
+- Result: no sound original; study post on Manolescu, Buletin Problemistic 1984-85, 2nd Prize (psis-e1c54a41bb),
+  7n/2K1P3/3B4/3kN3/R2N1r2/5P2/2P2b1Q/7B, 1.Sec6? (2.c4#) Bxd4!, 1.c3? (2.Ra5#) Rxd4!, 1.Qh3! (2.Qe6#) Bxd4 2.c4#, Rxd4
+  2.Ra5#: a double Dombrovskis from one sole guard (Sd4 of e6) taken by the two pieces of a Grimshaw. Gate on the study:
+  the anticipation and our out-of-play key rule (asked in the mentor issue). Attempts shown: the Bd8 kernel
+  3b4/4p3/8/5k1P/8/1BQ2P1N/8/7K (1.Qg7!, sound, no paradox) and the two-pawn zugzwang 8/4K3/3p1p1R/4k3/8/4B3/6Q1/7N.
+  Mentor issues #7-#16 had no answers; nothing to act on.
+- Minutes (container clock 23:59-01:05): setup and reading 5, study 10, reference + test 10, searches and hand work 40
+  (14 evolve jobs, 3 postsearch, 12 pattern_search runs, 8 scratch scans; about 30 hand solves), post and records 15.
+- What wasted time: evolve's silent DEFS default (four PATTERN jobs searched for d6,d5; fixed), a `pkill -f` that killed
+  its own shell again, hand sketches with the queen on the threat line (mates in one every time), and evolve from cores
+  with no gradient toward a two-phase pattern (as with Le Grand and Zagoruiko).
+- What helped: the queen's try table (trytable c3) showed in one second why no try could exist (2.Qg6# needs g6 plus e5,
+  only the key square has both); the anatomy of Manolescu (Sd4 the sole guard of e6) gave the study its explanation.
+- Next run: theme from `next-theme`. For a Dombrovskis again, start from the reference's rule: name each defence's side
+  effect and the unit that cancels it before placing anything; the capture engine (one sole guard taken by two line
+  pieces, Manolescu) is the open one, not yet tried by us in a new geometry.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
@@ -265,7 +283,8 @@ what the next run should try. "Proposals" collects improvements too big for one 
   ten times faster than the solver in daily No. 12's scratch hill.py; score with it, confirm hits with the solver.
 - evolve: FLIGHT=1, a score for a flight-giving key in the diagram (no flight before, given flight mated, two more
   distinct mates); the scratch scorer of 9 October is the model.
-- compose.oneunit: every single-unit addition or removal around a diagram, kept when one named key and the named mates
+- compose.oneunit (daily No. 16 wrote a scratch version that also moves or removes one unit before adding one, 5,500
+  positions per CPU in 7 minutes): every single-unit addition or removal around a diagram, kept when one named key and the named mates
   survive (the scratch one.py of 10 October found 1.Sg7 in daily No. 5).
 - critique: a 'set-only unit' tag (not needed for soundness, every guard in the solution mates duplicated), once the
   mentor says how much it weighs (No. 3, question 1).

@@ -56,7 +56,11 @@ JOB = int(sys.argv[1]) if len(sys.argv) > 1 else 0
 OUT = sys.argv[2] if len(sys.argv) > 2 else f'evolve_{JOB}.txt'
 CORE = os.environ.get('CORE', '8/3p4/8/4k3/8/8/8/8')
 SEED = os.environ.get('SEED', CORE)
-DEFS = [d for d in os.environ.get('DEFS', 'd6,d5').split(',') if d]
+# The modes that need no DEFS start with none when DEFS is unset (daily No. 16: PATTERN=... NPAT=2 without DEFS= silently
+# scored the default d6,d5, which the position did not have, for two minutes of four jobs).
+_NODEFS = any(os.environ.get(k, '') for k in ('PATTERN', 'CORR', 'WCORR', 'KEY', 'DEFSQ')) or \
+    os.environ.get('SELFBLOCK', '0') not in ('', '0')
+DEFS = [d for d in os.environ.get('DEFS', '' if _NODEFS else 'd6,d5').split(',') if d]
 CHANGED = os.environ.get('CHANGED', '0') == '1'
 PATTERN = os.environ.get('PATTERN', '')            # e.g. 'Dombrovskis (refutation)': every DEF must carry it
 TRYCHANGE = os.environ.get('TRYCHANGE', '0') == '1'  # reward tries whose mates for DEFS differ (or swap: reciprocal)
