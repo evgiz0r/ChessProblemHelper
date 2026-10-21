@@ -118,6 +118,11 @@ whether that content pays for them.
   itself: score the logic of the progression, not only the count of changed mates (WCCT 10 A, 1st place).
 - White units with no function after the key (only for tries or set play) cost real points at world level (GBR: "invariably led to
   a reduction"); two of them can sink an otherwise rich entry to the bottom third.
+- A clear, pure try pair is enough for a commendation in an ordinary tourney, even with a static key, no changes and a key piece
+  that exists only for the play (E. Bourd, 21 Oct 2026, on bourd-rook-knight-rd6-tries: "not the best, but... a decent clear theme
+  with tries... even if no changes are shown, its not bad, could be placed as recommendation in a random tourney"). I had said it
+  would not be placed: too harsh. A try refuted by a cook-stopper's recapture (1.Rfxb6? Rxb6!) is not a real try ("i dont consider
+  Rxb6 a real try"): do not count it as content or list it as a plus.
 - In a thematic tourney, effects the set theme's WORDING logically entails are the floor, not extra content (WCCT 9 A: in "threats A
   and B of the tries return as mates", Dombrovskis and Hannelius follow automatically; the textbook entries were 20th-27th). Check
   the definition before discounting: an effect the theme does not force is content (WCCT 8 A, black correction + change of function:
