@@ -3322,7 +3322,7 @@
     "Qc2"
    ],
    "cooked": false,
-   "note": "Not a problem: flights e6 and f6 in the diagram (fatal); static key (all three mates set); single phase; the two black defences both guard f5. 11 units (6+5, 1 pawn). Keys tried: the loaded battery gives eleven other solutions in the post-key; a battery-forming 1.Bb2 leaves Rd4 hanging (Kxd4) and the flights; 1.Qa4-c2 is unique but cannot give e6/f6 (no queen square guards both and reaches c2 or b1 without Qf5 mating at once). With the rook two squares away (Rc3 v Ke5) the double checks Rc5/Re3 can only be separated by cutting dark diagonals through c5/e3, which needs a second dark-square piece besides Bb2."
+   "note": "Not a problem: flights e6 and f6 in the diagram (fatal); static key (all three mates set); single phase; the two black defences both guard f5. 11 units (6+5, 1 pawn). Keys tried: the loaded battery gives eleven other solutions in the post-key; a battery-forming 1.Bb2 leaves Rd4 hanging (Kxd4) and the flights; 1.Qa4-c2 is unique but cannot give e6/f6 (no queen square guards both and reaches c2 or b1 without Qf5 mating at once). With the rook two squares away (Rc3 v Ke5) the double checks Rc5/Re3 can only be separated by cutting dark diagonals through c5/e3, which needs a second dark-square piece besides Bb2. E. Bourd (21 Oct 2026): 'its really nice, the fatal flaws here are kind of worth it. the force is very strong on the black side... 3 double check variations is somewhat the next tier of the 2 phase... a different tier of problem'. No single added unit provides the set flight 1...Ke6 with the key and play unchanged (scratch provide.py, every square and type)."
   }
  ]
 }

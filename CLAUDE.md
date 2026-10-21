@@ -10,7 +10,9 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 - An illegal position (E. Bourd, 17 Oct 2026): more pawn captures than the opponent has lost units, pawns no home files
   can produce, more promoted units than missing pawns. `chesscomp.core.illegal_position`; the gate and the searches check it.
 - An unprovided check in the set play.
-- A black king with a flight in the diagram (a flight GIVEN by the key is a plus).
+- A black king with a flight in the diagram (a flight GIVEN by the key is a plus). A higher tier of content can carry
+  it: three double-check variations from one battery with unprovided flights (E. Bourd, 21 Oct 2026: "its not like 'is
+  variation worth 1 flaw', its a different tier of problem"). The gate still fails it; the judge says which tier pays.
 - A key that gives check or captures a piece without a thematic reason; a try refuted by a king move. Capturing a pawn,
   White's or Black's, in a key, a try or a mate is a minor flaw (E. Bourd, 13 Oct 2026: "these are minor flaws").
 - A key by a piece out of play (a knight on the edge far from the king): the key is obvious (E. Bourd, 7 Oct 2026).

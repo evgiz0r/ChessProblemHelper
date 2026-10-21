@@ -52,6 +52,13 @@ like reciprocal changes. We pay flaws for content, and find the balance." Place 
 | Medium: several thematic variations or one change between two phases | Boros pair of changed mates, a correction with two corrections | a cook-stopper or two, a passive king, an unthematic dual after random moves |
 | Rich: reciprocal changes, Zagoruiko, Le Grand + Dombrovskis together, a cycle | his Wola Gulowska 2015 5th HM (reciprocal change, 25 units), Sredba 2003-05 1st HM (Le Grand, Dombrovskis, Zagoruiko) | heavy force and pawns, several plugs (Pc4, Pb4), a unit standing on a flight (Pf6), try-only units, capturing keys and tries when thematic, unthematic duals left out of the published solution |
 
+A tier is not a price per variation (E. Bourd, 21 Oct 2026, on claude-bishop-rook-double-checks-scheme: three double-check
+mates from one bishop-rook battery, 11 units, unique key, diagram flights e6/f6 unprovided, static key): "its really nice,
+the fatal flaws here are kind of worth it. the force is very strong on the black side... 3 double check variations is
+somewhat the 'next tier' of the 2 phase... its not like 'is variation worth 1 flaw', its a different tier of problem you are
+making". Several variations each by a hard device (a double check that only one defence allows) weigh like a second phase.
+Name the tier first, then the flaws it can carry; do not drop a higher-tier find for a flaw that is fatal only lower down.
+
 Never bought back at any level: a cook, a dual in a thematic variation, a double threat (the gate keeps them
 fatal). Since 15 Oct 2026 also a 'simple block': a zugzwang whose defences are random moves of
 their units, or whose key piece escapes a capture the set leaves unprovided (E. Bourd on claude-type2-rooks-light/full:
