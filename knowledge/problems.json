@@ -3307,6 +3307,22 @@
    ],
    "cooked": false,
    "note": "A scheme, not a problem: single phase, both mates set (static key; the key knight only leaves e5), only try 1.Sg4? Bd4! (not thematic); Kg6 doubles f5; bPc5 alone makes single checks fail, so the bishops' control of the line (d4, c4) is a duplicate reason. Light: 12 units (7+5, 3 pawns). Tried for a second layer: a try refuted by 1...Bd5 because the threat covers f3 (1.Sxf3? Bd5! but also Kxf3!)."
+  },
+  {
+   "id": "claude-bishop-rook-double-checks-scheme",
+   "fen": "8/4pn2/1rB4b/4k3/Q2R2K1/8/1B2N3/8",
+   "stip": "#2",
+   "author": "Claude (21 Oct 2026, bishop-rook double checks, E. Bourd's request)",
+   "source": "freethreat DOUBLE=2 with the core Bb2/Rd4 v Ke5 + Bc6 + Qc2 (light guard lines through the double-check squares d5 and e4) found the post-key 8/4pn2/2B4b/4k3/2RR2K1/8/1BQ5/1n6 with three double-check mates; unmask_search (key Qa4-c2) gave the diagram",
+   "themes": [
+    "bishop-rook battery Bb2/Rd4 with the rook diagonally next to Ke5: its double checks are Rd5 (covers d6, f5) and Re4 (covers e6, f4), each protected by Bc6",
+    "separation by the mating rook cutting a light white guard line: Rd5 cuts Bc6-e4, Re4 cuts Qc2-f5; 1...Sd6 (guards f5, threat 2.Qf5#) 2.Re4#, 1...e6 (guards f5) 2.Rd5#, and the king walking onto the battery diagonal, 1...Kf6 2.Rd6# (double check along the 6th rank)"
+   ],
+   "keys": [
+    "Qc2"
+   ],
+   "cooked": false,
+   "note": "Not a problem: flights e6 and f6 in the diagram (fatal); static key (all three mates set); single phase; the two black defences both guard f5. 11 units (6+5, 1 pawn). Keys tried: the loaded battery gives eleven other solutions in the post-key; a battery-forming 1.Bb2 leaves Rd4 hanging (Kxd4) and the flights; 1.Qa4-c2 is unique but cannot give e6/f6 (no queen square guards both and reaches c2 or b1 without Qf5 mating at once). With the rook two squares away (Rc3 v Ke5) the double checks Rc5/Re3 can only be separated by cutting dark diagonals through c5/e3, which needs a second dark-square piece besides Bb2."
   }
  ]
 }
