@@ -3278,10 +3278,10 @@
   },
   {
    "id": "bourd-rook-knight-rd6-tries",
-   "fen": "6N1/1rp2B2/1p3RP1/3PP1K1/1R1NkP2/2Pn1pP1/2P2P2/1n6",
+   "fen": "6N1/1rp2B2/1p3RP1/3PP1K1/1R1NkP1p/2Pn1p2/2P2P2/1n6",
    "stip": "#2",
    "author": "E. Bourd and Claude (bench 21 Oct 2026, session mvh329m2 steps 35-83; bRb7 by trypair)",
-   "source": "His step 63 (6N1/2p2B2/1p3RP1/3PP1K1/1R1NkP2/2Pn1pP1/2P2P2/1n6: 'Rf5? Rc6? R-somewhere solution'), cooked by 1.Rd6 and 1.Rfxb6. trypair (key f6d6, tries f6f5:d3f2, f6c6:d3f4, one added unit) gave +bRb7: it protects b6, so 1.Rfxb6? Rxb6! guards f6 along the rank. His step 61 (bPc6) was sound but the try was the capture 1.Rxc6?",
+   "source": "His step 63 (6N1/2p2B2/1p3RP1/3PP1K1/1R1NkP2/2Pn1pP1/2P2P2/1n6: 'Rf5? Rc6? R-somewhere solution'), cooked by 1.Rd6 and 1.Rfxb6. trypair (key f6d6, tries f6f5:d3f2, f6c6:d3f4, one added unit) gave +bRb7: it protects b6, so 1.Rfxb6? Rxb6! guards f6 along the rank. His step 61 (bPc6) was sound but the try was the capture 1.Rxc6?. E. Bourd disliked the clumped white pawns ('maybe can replace some with black pieces'): wPg3 -> bPh4 (trypair, black units only); first version 6N1/1rp2B2/1p3RP1/3PP1K1/1R1NkP2/2Pn1pP1/2P2P2/1n6",
    "themes": [
     "rook-knight battery Rb4/Sd4 next to Ke4, black holder Sd3: 1...Sxf2 (the e3 guard) 2.Sf5#, 1...Sxf4 (the e5 guard) 2.Sc6#",
     "the rook on f6 blocks the threat square of 2.Sf6#; every rook move creates the threat; tries by white obstruction of one mating square each: 1.Rf5? Sxf2!, 1.Rc6? Sxf4!; third try 1.Rfxb6? Rxb6!; key 1.Rd6! (1.Re6? cuts Bf7 from d5, Kxd5)"
@@ -3290,7 +3290,7 @@
     "Rd6"
    ],
    "cooked": false,
-   "note": "Flaws: 21 units (14+7, 11 pawns); static key (both thematic mates set, the key adds the threat only); bRb7+bPc7 only for 1.Rfxb6? (bPc7 keeps the rook off f7), bSb1 stops 1.Sb3+ (guards d2), wPg6 stops Rg6/Rh6, wBf7 blocks f7 and guards d5 in the diagram (duplicated by Rd6 after the key); 1.Rfxb6? captures a pawn; random-move discharge duals (1...Sc5/Se1/Sc1). Pluses: three tries by the key piece, each refuted differently, the two thematic ones pure. Gate PASS. trim: nothing removable. Failed lighter versions: wBb6 for bPb6 (guards e3 through d4 after every discharge: 4 keys), Kg6 for wPg6 (1...Sxe5+/Sxf4+)."
+   "note": "Flaws: 21 units (13+8, 11 pawns, 7 white); static key (both thematic mates set, the key adds the threat only); bRb7+bPc7 only for 1.Rfxb6? (bPc7 keeps the rook off f7), bSb1 stops 1.Sb3+ (guards d2), bPh4 stops 1.Sf5+/1.Se2+ (guards g3), wPg6 stops Rg6/Rh6, wBf7 blocks f7 and guards d5 in the diagram (duplicated by Rd6 after the key); 1.Rfxb6? captures a pawn; random-move discharge duals (1...Sc5/Se1/Sc1). Pluses: three tries by the key piece, each refuted differently, the two thematic ones pure. Gate PASS. trim: nothing removable. Failed lighter versions: wBb6 for bPb6 (guards e3 through d4 after every discharge: 4 keys), Kg6 for wPg6 (1...Sxe5+/Sxf4+). No other white pawn can become one or two black units (trypair, full runs): wPc3 protects d4 after 1...Sxb4; wPd5 only with a unit on c6 (capture try) or f5; wPe5 closes the e-file (1.Rf5 Sxf2 2.Re5#); wPg6 stops 1.Rg6/Rh6 and 2.Bg6#."
   }
  ]
 }
