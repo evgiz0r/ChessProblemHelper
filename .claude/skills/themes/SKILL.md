@@ -1,6 +1,6 @@
 ---
 name: themes
-description: What this entity knows about specific #2 themes it has worked on - Bristol, changed mates, self-pin by capture, half-pin, king key, corner key, underpromotion, Grimshaw, Novotny - each with the settings made, the mechanism that worked and the dead ends. Use when a task names a theme.
+description: What this entity knows about specific #2 themes it has worked on - Bristol, changed mates, self-pin by capture, half-pin, king key, corner key, underpromotion, Grimshaw, Novotny, Dombrovskis - each with the settings made, the mechanism that worked and the dead ends. Use when a task names a theme.
 ---
 
 # Themes
@@ -21,4 +21,5 @@ say so.
 - `references/grimshaw.md` - Grimshaw by a block on the threat piece's path (not on the check line); the square beyond the crossing; one retreat square for the key piece; the cooks met and their cures.
 - `references/novotny.md` - Novotny with a single threat (the gate rejects double threats): the double-guard geometry (`chesscomp.compose.novotny_geometry`), Shire's departure lines, the set Grimshaw on the same square and why it cannot change the mates (daily No. 13).
 - `references/le_grand.md` - Le Grand: the four engines in the archive (flight cross-geometry, battery discharges, plug at a crossing, Jonsson's line switch), the hinge trap of daily No. 14, the legrand search and its pairs layer.
+- `references/dombrovskis.md` - Dombrovskis paradox: the two effects every thematic defence needs (a side effect that beats the try, a main effect that parries the threat), the five engines in the archive (pawn steps on the threat line, captures of two sole guards, Grimshaw by capture, king flights, addition), the tools (daily No. 16).
 - `references/line_opening.md` - one black unit opens the same white line twice (the queen's path through the vacated square), the arrival square choosing the mate; the return-interposition and unprotected-blocker traps.

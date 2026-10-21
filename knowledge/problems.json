@@ -3242,6 +3242,23 @@
    "keys": [],
    "cooked": false,
    "note": "No key: with White to move the loaded battery wins by discharge checks (1.Sf6+/Sb4+/Sxe3+... Sd5 2.cxb8=Q#), and the threat does not need the battery, so a key loading the battery (1.Ra4-a5) leaves 1.cxb8=Q#. A key must create the threat (a guard of e4/e6/d4 or the c7 pawn) without a diagram flight. Pure releases of the holder (Sc2, Sd1, Sf1, Sg4) allow the threat."
+  },
+  {
+   "id": "claude-dombrovskis-bd8-kernel",
+   "fen": "3b4/4p3/8/5k1P/8/1BQ2P1N/8/7K",
+   "stip": "#2",
+   "author": "Claude (daily No. 16)",
+   "source": "daily run 21 Oct 2026, by hand in five solves; shown as an attempt in the study post",
+   "themes": [
+    "Self-block",
+    "Line opening (Black)",
+    "Unified defences"
+   ],
+   "keys": [
+    "Qg7"
+   ],
+   "cooked": false,
+   "note": "6+3. 1.Qg7! (2.Qg5#) e6 2.Bc2#, e5 2.Qg6#; set 1...e6 2.Bc2#. Both pawn steps defend by opening d8-h4 (Bd8 then guards g5), each self-blocks its own square. Gate PASS, but no theme: built for a Dombrovskis, and no one- or two-unit layer gives a try (about 47,000 positions). Flaws: king-refuted queen tries (Qc6? Ke5!, Qc4? Kf6!), idle White king, the set mate is unchanged. Kept as a scheme (mentor question 3, issue for No. 16)."
   }
  ]
 }

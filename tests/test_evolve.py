@@ -150,3 +150,22 @@ def test_tries_mode_counts_answered_refutations_without_bristol():
     out = _tries('c7h2', 2)
     assert out.startswith('True') and 'tries=Bd6/d6' in out
     assert _tries('c7h2', 3).startswith('False')
+
+
+DEFS_PROBE = "import chesscomp.compose.evolve as e; print(','.join(e.DEFS))"
+
+
+def _defs(**env_extra):
+    env = {k: v for k, v in os.environ.items() if k not in ('DEFS', 'PATTERN', 'CORR', 'WCORR', 'KEY', 'DEFSQ', 'SELFBLOCK')}
+    env.update(env_extra, PYTHONPATH=ROOT, BUDGET_S='0')
+    r = subprocess.run([sys.executable, '-c', DEFS_PROBE], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
+    assert r.returncode == 0, r.stderr
+    return r.stdout.strip().splitlines()[-1] if r.stdout.strip() else ''
+
+
+def test_modes_without_defs_start_with_none():
+    # daily No. 16: PATTERN=... NPAT=2 with DEFS unset searched for the default d6,d5
+    assert _defs(PATTERN='Dombrovskis (refutation)') == ''
+    assert _defs(SELFBLOCK='2') == ''
+    assert _defs() == 'd6,d5'                                   # the plain mode keeps its documented default
+    assert _defs(PATTERN='Dombrovskis (refutation)', DEFS='e6,e5') == 'e6,e5'
