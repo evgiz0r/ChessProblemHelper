@@ -3452,6 +3452,23 @@
    ],
    "cooked": false,
    "note": "Sound, 12+9. The c-file defence is a quiet interference instead of a rook capture; 1...Bb8 and 1...Bd6 become random moves with both double checks and Se6#."
+  },
+  {
+   "id": "bourd-bench-masked-e4-bh1",
+   "fen": "7B/1PRKp3/5RP1/4b1N1/1PPkB2r/6Qp/1P1r1P2/2nn4",
+   "stip": "#2",
+   "author": "E. Bourd and Claude (bench mvjy8awv steps 714-900 and unmask_search, 22 Oct 2026)",
+   "source": "His idea: the key bishop starts on e4 next to the king (blocks the flight, protected by Sg5; 2.Se6 would allow Kxe4), so every bishop move still guards e4 from a distance and the bishop takes part in the mates; his step 900 (7B/pPRKp2p/1p3R2/4b1N1/1PPkB2r/1p4Q1/1P1r1P2/2nn4) was cooked by Bxh7/Bg2/Bh1. Claude: unmask_search (LOOSE, THREAT=Ng5e6, pure tries) with key squares f3/d3/g6/h1/g2: only h1 worked; first with bSh6 (1.Bg6?/Bh7? Sf5! but 1.Bf5? also Sxf5), then wPg6 for Sh6 and bSc1 (1.Rf5? Sd3!).",
+   "themes": [
+    "masked battery Bh8-Rf6-bBe5 v Kd4, threat 2.Se6#; the key bishop unblocks e4 and guards it from h1 (long key)",
+    "pair of thematic double checks through the x-ray squares: 1...Bxc7 (captures the c-file guard of c4) 2.Rf4#, 1...Bxg3 (captures the queen, guard of d3) 2.Rd6#",
+    "pure try pair by the key bishop, white self-interference on the double-check lines: 1.Bd5? (blocks d6-d4) Bxg3!, 1.Bf5? (blocks f6-f4) Bxc7!; 1.Bg2? hxg2!, 1.Rf5? Sd3!"
+   ],
+   "keys": [
+    "Bh1"
+   ],
+   "cooked": false,
+   "note": "13+8, gate PASS (no 'useless key piece': the bishop guards e4 in the threat and in both double checks), trim: nothing removable. Flaws: cook-stoppers wPg6 (Bg6, Bh7), wPb7 (Bb7, Ba8), Kd7; wPb2 and wPc4 only in set mates (needed); Rh4 attacks the key piece (set 1...Rxe4 2.Se6#); random dual 1...Bf4 2.Rxf4#/Rd6#; 1.Bf5? threatens Se6# and Sf3#; 8 pawns. Side versions: with bSh6 instead of wPg6+bSc1 (7B/1PRKp3/5R1n/4b1N1/1PPkB2r/6Qp/1P1r1P2/3n4) the key bishop's other squares fail to interferences on its e4 line (1.Bg6?/Bh7? Sf5!, 1.Bc2? Rxc2!, 1.Bb1? Rc2!, 1.Bg2? hxg2!) but 1.Bf5? is refuted by Sxf5 too."
   }
  ]
 }
