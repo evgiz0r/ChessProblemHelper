@@ -3469,6 +3469,23 @@
    ],
    "cooked": false,
    "note": "13+8, gate PASS (no 'useless key piece': the bishop guards e4 in the threat and in both double checks), trim: nothing removable. Flaws: cook-stoppers wPg6 (Bg6, Bh7), wPb7 (Bb7, Ba8), Kd7; wPb2 and wPc4 only in set mates (needed); Rh4 attacks the key piece (set 1...Rxe4 2.Se6#); random dual 1...Bf4 2.Rxf4#/Rd6#; 1.Bf5? threatens Se6# and Sf3#; 8 pawns. Side versions: with bSh6 instead of wPg6+bSc1 (7B/1PRKp3/5R1n/4b1N1/1PPkB2r/6Qp/1P1r1P2/3n4) the key bishop's other squares fail to interferences on its e4 line (1.Bg6?/Bh7? Sf5!, 1.Bc2? Rxc2!, 1.Bb1? Rc2!, 1.Bg2? hxg2!) but 1.Bf5? is refuted by Sxf5 too."
+  },
+  {
+   "id": "bourd-bench-masked-sa7-bg1",
+   "fen": "1n4Bq/NRKp2p1/p3R3/3b1N2/1PkB2r1/5Qp1/P1r1P3/2n5",
+   "stip": "#2",
+   "author": "E. Bourd (bench mvjy8awv steps 901-1174, 22 Oct 2026), from bourd-bench-masked-e4-bh1",
+   "source": "His changes to bourd-bench-masked-e4-bh1: the cook-stopper wPb7 became a white knight (the second knight, free since Sc3 left) that also guards the flight next to the king, so the c5 pawn went; board shifted one file left (Kc4) to free the h-file: bQh8 refutes 1.Re5? by Qxg8 and 1.Bxg7? by Qxg7, bPg7 refutes 1.Bf6? by gxf6 (the wPg6 cook-stopper gone), bPg3 refutes 1.Bf2? and keeps Rg4 off g1.",
+   "themes": [
+    "masked battery Bg8-Re6-bBd5 v Kc4, threat 2.Sd6#; the key bishop unblocks d4 and guards it from g1",
+    "pair of thematic double checks: 1...Bxb7 2.Re4#, 1...Bxf3 2.Rc6#",
+    "pure try pair 1.Be5? Bxb7!, 1.Bc5? Bxf3!; every other bishop move refuted by its own move: 1.Bf6? gxf6!, 1.Bxg7? Qxg7!, 1.Bf2? gxf2!, 1.Bb2? Rxb2!, 1.Ba1? Rb2! (1.Bb6/1.Be3 threaten nothing, 1.Bc3 three refutations); also 1.Re5? Qxg8!, 1.Sc8? Bxb7!"
+   ],
+   "keys": [
+    "Bg1"
+   ],
+   "cooked": false,
+   "note": "11+11, gate-level flaws none fatal (critique: key piece attacked by Rg4, set 1...Rxd4 2.Sd6#; dual 1...Be4 2.Rxe4#/Rc6#; 1.Be5? and the long-diagonal tries threaten Sd6# and Se3#; Kc7 stops cooks; Pa2/Pb4 only set mates but needed). Unit jobs by removal: Sb8 stops 1.Sc6 (and needs bPa6 against Sa6+), Qh8 stops Bxg7/Re5, pd7 Rc6+/Sc6, pg3 is needed (Bf2, Rg1), Pe2 stops Re2. No single unit replaces Sb8+pa6 or Pb4 (scans). His sibling with bPh2 for bPg3: 1n4Bq/NRKp2p1/p3R3/3b1N2/1PkB2r1/5Q2/P1r1P2p/2n5, 1.Bf2! (1.Bg1? hxg1=Q!)."
   }
  ]
 }
