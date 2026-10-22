@@ -3386,6 +3386,38 @@
    "keys": [],
    "cooked": true,
    "note": "Not finished: cooked by 1.Bc8 and 1.Bc4 besides the intended 1.Bd7 (solver keys Bc8, Bd7, Bc4). The key must not guard d3 (1.Bc4 does, and then 1...Bg3 allows both double checks). Random mask moves (Bd6, Bf4) allow both double checks. With the white rook on c8 (2R2N1K/5PB1/pn2BR2/4b1p1/1P1k2P1/qpN4Q/4pPnp/4r3) 1.Bc4 is unique with four bishop tries (Bd5? Bg3!, Bf5? Bc7!, Bd7? Sxc8!, Bxb3? Qxb3!) but threatens 2.Qd3# too. unmask_search makes 1.Bd7 unique only with Ke8 and 1...Qa4+ (refutes the tries too; unprovided check)."
+  },
+  {
+   "id": "bourd-bench-masked-sg5-bg4",
+   "fen": "7B/2RKpP2/4BR2/1p2b1N1/bP1k3r/1pN3QP/3r1Pn1/2n5",
+   "stip": "#2",
+   "author": "E. Bourd and Claude (bench mvjy8awv steps 85-461, 22 Oct 2026)",
+   "source": "His step 249 (2n4B/2RK1P1p/1p2BR2/1p2b1N1/qP1k3r/1pN3QP/4pPn1/2n5: threat knight moved f8 -> g5, 1.Bg4!, pure tries, but three black knights). Claude, from unmask_search LOOSE runs seeded with it: Sc8 -> bPe7 (exd6 against the single 2.Rd6+ once the key opens the 6th rank), Qa4 -> bBa4 (still 1.Bc4? bxc4+), bRd2 for the e2 pawn (refutes 1.Qf3? by Rxf2, guards e2), bPh7, bPb6 gone; Sc1 kept (only a knight recapture on e2 keeps c3 guarded against 1.Sxe2+ Bxe2 2.Qc3#).",
+   "themes": [
+    "masked battery Bh8-Rf6-bBe5 v Kd4; the threat 2.Se6# needs the white bishop to leave e6; the knight on g5 guards e4 in the diagram, so the threat is less visible than from f8",
+    "pair of thematic double checks through the x-ray squares beyond the king: 1...Bxc7 (captures the c-file guard of c4) 2.Rf4#, 1...Bxg3 (captures the queen, guard of d3) 2.Rd6#",
+    "pure try pair by the key bishop, white self-interference on the double-check lines: 1.Bd5? (blocks d6-d4) Bxg3!, 1.Bf5? (blocks f6-f4) Bxc7!"
+   ],
+   "keys": [
+    "Bg4"
+   ],
+   "cooked": false,
+   "note": "Gate FAIL only on 'useless key piece' (Be6 gives no mate after the key; its content is the try pair). Key by elimination: Kd7 (d7, blocks c8), Pf7 (f7, g8), Ph3 (h3), 1.Bc4? Rd3/Sd3/bxc4+, 1.Bxb3? Bxb3!. Duals after random moves: 1...Bf4 2.Rxf4#/Rd6#, 1...Sf4 2.Rxf4#/Qe3#, 1...Bd6 three mates. 1.Bf5? threatens Se6#/Sf3#. 12+10, legal (two knights, bishops on both colours). Trim: nothing removable."
+  },
+  {
+   "id": "claude-masked-sg5-qh1-keyline",
+   "fen": "7B/2RKp3/p3BR2/4b1N1/1PPk3r/2N3Q1/r4Pn1/7q",
+   "stip": "#2",
+   "author": "Claude (22 Oct 2026, side road of bourd-bench-masked-sg5-bg4)",
+   "source": "unmask_search LOOSE seeded with his step 249 (run 21).",
+   "themes": [
+    "the same x-ray double checks (1...Bxc7 2.Rf4#, 1...Bxg3 2.Rd6#) with a reason for the key: the black queen h1 reaches e6 by 1...Qh3 unless the bishop stands on the h3-e6 line (g4 or f5)"
+   ],
+   "keys": [
+    "Bg4"
+   ],
+   "cooked": false,
+   "note": "Not a result: 1.Bd5? is refuted by Bxg3 and Qh3+, so only one pure try (1.Bf5? Bxc7!); 1.Bf7?/Bg8?/Bh3? all fail to Qh3+ (same refutation). 11+8. A line reason favouring g4 also favours f5 and never d5: the two thematic tries leave e6 on different diagonals."
   }
  ]
 }
