@@ -3337,6 +3337,23 @@
    "keys": [],
    "cooked": false,
    "note": "Post-key only. No key: in this position White also solves by 2.Rc5+, Re3+ (single rook checks: once the rook leaves c3 the mask is pinned by Bb2 and cannot take on c5/e3) and by queen moves on the f-file. A black knight on f6 (it interposes on d5 and e4) brings holes; no full hit in four runs."
+  },
+  {
+   "id": "claude-masked-battery-bb2",
+   "fen": "8/6Kn/2pp2R1/4k1pN/3b4/2R5/6B1/2B2Q2",
+   "stip": "#2",
+   "author": "Claude (22 Oct 2026, E. Bourd's masked-battery idea; 'reduce the symmetry, replacing pieces, rethinking the threat')",
+   "source": "freethreat with named asymmetric defences (Bf2->Rc5, Bxc3->Bxc3) seeded from claude-masked-bishop-rook-postkey; keyfind --patch added bPc6 and gave 1.Bb2",
+   "themes": [
+    "masked bishop-rook battery Bb2-Rc3-bBd4-Ke5 formed by the key 1.Bc1-b2",
+    "the threat 2.Re3# is the rook's own check: the rook's departure pins the mask; after the mask's random moves (Ba7, Bb6, Bc5, Be3, Bg1) the threat still mates, now as a double check",
+    "1...Bf2 (cuts Qf1's guard of f4/f5, so Re3 fails) 2.Rc5# double check; 1...Bxc3 (the mask takes the front piece) 2.Bxc3#; 1...Sf6 (to interpose on e4) 2.Qxf6#: three different mates, no mirrored pair"
+   ],
+   "keys": [
+    "Bb2"
+   ],
+   "cooked": false,
+   "note": "Gate PASS. Flaws: two of the three mates capture the defender on its arrival square (Qxf6, Bxc3; minor); only one double-check variation; random-move duals (1...Sf8 2.Re3/Qf6); Kg7 in no mate (doubles f6); a battery-forming bishop key from c1 is easy to find. Pluses: asymmetric play, the mask pinned in the threat and unmasking in the defences, set play changes (the mask's moves are unprovided before the key), thematic try 1.Qf3? d5! (cuts Bg2). 13 units (7+6, 3 pawns)."
   }
  ]
 }
