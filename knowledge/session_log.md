@@ -1511,3 +1511,5 @@ no motive layer to mirror.
 - 22 Oct: his bench steps 462-713: knight-g5 schemes with Qc7/Ke8 (cooked), then he loaded claude-masked-sg5-qh1-keyline and made both tries pure with bPh3 + wPf7: bourd-bench-masked-qh1-ph3 (12+9, 1.Bg4!), Rc8 variant with the quiet 1...Bc7 (step 707) also sound. Claude re-solved both, trim, and verified wPh3 for bQh1+bPh3 (13+7, sound, by-play dual Sf4).
 - 22 Oct: his bench steps 714-900, the key bishop from e4 (his idea). Claude: 10 unmask_search runs over key squares f3/d3/g6/h1/g2; only h1 sound: bourd-bench-masked-e4-bh1, 1.Bh1! (13+8, gate PASS, pure tries kept, the key bishop now in every mate).
 - 22 Oct: his bench steps 901-1174: Pb7 -> white knight, shift left, Qh8/pg7/pg3: bourd-bench-masked-sa7-bg1, 1.Bg1! (11+11), every bishop move refuted by its own move; Bf2 sibling with bPh2. Claude: re-solved, removal test of every unit, trytable, scans for replacing Sb8+pa6 and Pb4 (none).
+- 22 Oct: his steps 1175-1247: unshifted knight-b7 version with bQa7 (bourd-bench-masked-sb7-qa7-bh1, 1.Bh1!, 12+10), then back to the shifted 1.Bg1 version; later experiments cooked. Claude's verdict asked ('what do you think?').
+
