@@ -10,6 +10,9 @@ Cheap filters run first (legal, no promoted force, no diagram flight, no White m
 via keyfind.post_spec: the one threat, the wanted mates, no holes, no duals, no by-play repeating a wanted mate); only
 survivors get the full solve (key uniqueness, try refutations). Prints every full hit, and the best near misses
 (post-key exact, key or tries not yet) so a kernel can be repaired by hand.
+SPEC "loose": true keeps only the wanted play (threat, wanted mates, key, tries): random-move duals, by-play repeating a
+thematic mate and black checks are allowed (E. Bourd's bench schemes have them while still soft, 22 Oct 2026); holes are
+never allowed (a hole refutes the key).
 """
 from chesscomp.core import illegal_position as _illegal
 import itertools, json, os, sys, time
@@ -62,6 +65,10 @@ def cheap(fen):
     want = SPEC['want']
     if any(names.get(k) != {v} for k, v in want.items()):
         return None
+    if any(not m for m in names.values()):
+        return None                                           # holes
+    if SPEC.get('loose'):
+        return post, len(names)
     if any(not m or len(m) > 1 for m in names.values()):
         return None                                           # holes and duals
     if any(k not in want and m & set(want.values()) for k, m in names.items()):

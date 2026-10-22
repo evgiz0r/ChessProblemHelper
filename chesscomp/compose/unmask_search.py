@@ -8,6 +8,8 @@ Optional env SELFBLOCK=1: each wanted mate must need its defence's self-block (f
 Optional env THREAT=Qh4e4: the one threat must be that mate (a knight wheel on e4: every knight move guards e4).
 Optional env EMPTY=b2,c2: squares the search never fills (a battery line, as in freethreat; FSQ may be one of them).
 Optional env PAWNW=3: extra cost per White pawn (E. Bourd, 21 Oct 2026: "i dont like all the clumped white pawns").
+Optional env LOOSE=1: duals and by-play repeats count only for the WANT defences (his bench schemes keep random-move
+duals while the key and tries are being settled, 22 Oct 2026); holes always count (a hole refutes the key).
 Mutations add, remove, move, and retype a non-core unit (any piece of either colour): a unit whose job moves elsewhere
 becomes free for another job (E. Bourd, 21 Oct 2026: "pieces like b1 b7 can be changed to other pieces").
 The diagram must have no flight and no black check, and the key piece must guard a square of the king's field.
@@ -24,6 +26,7 @@ SELFBLOCK = os.environ.get('SELFBLOCK') == '1'
 THREAT = os.environ.get('THREAT')                   # optional: the threat must be exactly this mate id
 EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
 PAWNW = float(os.environ.get('PAWNW', '0'))         # optional: extra cost per White pawn
+LOOSE = os.environ.get('LOOSE') == '1'               # optional: judge only the WANT defences
 TRIES = json.loads(os.environ.get('TRIES', '{}'))   # optional: {try uci: its one refutation uci}
 ADD = 'NBRPPPpppnbr'                                 # units the search may add
 RETYPE = 'NBRQPnbrqp'                                # what a non-core unit may become
@@ -71,6 +74,8 @@ def post_score(fen):
     s -= 25 * len(bad) + (30 if not good else 12 * (len(good) - 1))
     s -= 30 if THREAT and set(t) != {THREAT} else 0
     holes = [k for k, m in names.items() if not m]; duals = [k for k, m in names.items() if len(m) > 1]
+    if LOOSE:
+        duals = [k for k in duals if k in WANT]
     s -= 6 * len(holes) + 4 * len(duals) + 2 * len([k for k in names if k not in WANT])
     for k, want in WANT.items():
         m = names.get(k)
@@ -78,7 +83,7 @@ def post_score(fen):
     checks = [b.san(m) for m in b.legal_moves if b.gives_check(m)]
     s -= 5 * len(checks) + 0.7 * len(b.piece_map()) + PAWNW * len(b.pieces(chess.PAWN, chess.WHITE))
     # a by-play that repeats a wanted mate is a big flaw (E. Bourd, 11 Oct 2026): 1...Rd1 2.Sc3# beside 1...Sc2 2.Sc3#
-    dups = [k for k, m in names.items() if k not in WANT and m & set(WANT.values())]
+    dups = [] if LOOSE else [k for k, m in names.items() if k not in WANT and m & set(WANT.values())]
     s -= 10 * len(dups)
     unblocked = [k for k, w in WANT.items() if SELFBLOCK and names.get(k) == {w} and not self_block_needed(b, k, w)]
     s -= 20 * len(unblocked)

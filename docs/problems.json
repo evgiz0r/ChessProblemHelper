@@ -3371,6 +3371,21 @@
    ],
    "cooked": false,
    "note": "Gate fails 'single phase'. Flaws: both thematic double checks are set (static key; the set even shows random B~ 2.Rc5# with duals and the correction Bb6 2.Re3#); 19 units (10+9... heavy black force: queen, two rooks, two knights); two by-play mates capture the defender; random-move duals. trim: nothing removable."
+  },
+  {
+   "id": "bourd-bench-masked-bd7-v1",
+   "fen": "5N1K/2R2PB1/pn2BR2/4b1p1/1P1k2P1/qpN4Q/4pPnp/4r3",
+   "stip": "#2",
+   "author": "E. Bourd and Claude (bench mvjy8awv, 22 Oct 2026, from claude-masked-battery-two-doubles-sf6 turned 180 degrees)",
+   "source": "His bench steps 1-84 (last: 2n2N1K/2R2PB1/p3BR2/1p2b1p1/1P1k2P1/qpN4Q/4pPn1/2n1r3, three black knights, cooked by Bd7/Bxc8/Bc4). Claude: Sc8+Sc1 -> Sb6 (interposes on d5 against the single 2.Rd6+, captures on c8 and c4), from unmask_search LOOSE runs; his Kh8, wPf7, wPg4 kept.",
+   "themes": [
+    "masked battery Bg7-Rf6-bBe5 v Kd4; the threat 2.Se6# needs the white bishop to leave e6",
+    "asymmetric pair of thematic double checks through the x-ray squares beyond the king: 1...Bxc7 (captures the c-file guard of c4) 2.Rf4# (its check reaches c4), 1...Bg3 (cuts Qh3's 3rd-rank guard of d3) 2.Rd6# (its check reaches d3)",
+    "pure try pair by the key bishop, white self-interference on the double-check lines: 1.Bd5? (blocks d6-d4) Bg3!, 1.Bf5? (blocks the rook's path f6-f4) Bxc7!; 1.Bxb3? Qxb3!"
+   ],
+   "keys": [],
+   "cooked": true,
+   "note": "Not finished: cooked by 1.Bc8 and 1.Bc4 besides the intended 1.Bd7 (solver keys Bc8, Bd7, Bc4). The key must not guard d3 (1.Bc4 does, and then 1...Bg3 allows both double checks). Random mask moves (Bd6, Bf4) allow both double checks. With the white rook on c8 (2R2N1K/5PB1/pn2BR2/4b1p1/1P1k2P1/qpN4Q/4pPnp/4r3) 1.Bc4 is unique with four bishop tries (Bd5? Bg3!, Bf5? Bc7!, Bd7? Sxc8!, Bxb3? Qxb3!) but threatens 2.Qd3# too. unmask_search makes 1.Bd7 unique only with Ke8 and 1...Qa4+ (refutes the tries too; unprovided check)."
   }
  ]
 }

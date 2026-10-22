@@ -36,3 +36,18 @@ def test_white_pawn_weight_costs():
         assert us.post_score(SEED)[0] == s0 - 3.0 * len(chess.BaseBoard(SEED).pieces(chess.PAWN, chess.WHITE))
     finally:
         us.PAWNW = 0.0
+
+
+def test_loose_ignores_duals_of_unnamed_defences():
+    # his bench scheme: random mask moves Bd6/Bf4 allow both double checks; only Bxc7/Bg3 are named
+    post = '2n2N1K/2RB1PB1/p4R2/1p2b1p1/1P1k2P1/qpN4Q/4pPn1/4r3'
+    us.setup(['x', '5N2/2RB2B1/5R2/4b3/3k4/7Q/8/8', post, 'd7', 'e6', 'a8',
+              '{"Bxc7": "Rf6f4", "Bg3": "Rf6d6"}', '1', '7'])
+    us.LOOSE = False
+    strict = us.post_score(post)[2]
+    us.LOOSE = True
+    try:
+        loose = us.post_score(post)[2]
+    finally:
+        us.LOOSE = False
+    assert "duals=[]" not in strict and "duals=[]" in loose
