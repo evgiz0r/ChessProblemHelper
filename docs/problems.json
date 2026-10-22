@@ -3354,6 +3354,23 @@
    ],
    "cooked": false,
    "note": "Gate PASS. Flaws: two of the three mates capture the defender on its arrival square (Qxf6, Bxc3; minor); only one double-check variation; random-move duals (1...Sf8 2.Re3/Qf6); Kg7 in no mate (doubles f6); a battery-forming bishop key from c1 is easy to find. Pluses: asymmetric play, the mask pinned in the threat and unmasking in the defences, set play changes (the mask's moves are unprovided before the key), thematic try 1.Qf3? d5! (cuts Bg2). 13 units (7+6, 3 pawns)."
+  },
+  {
+   "id": "claude-masked-battery-two-doubles-sf6",
+   "fen": "b3N3/1n3p2/Q6q/1N2k1rp/1r1b4/2R3P1/1Bn3B1/5R1K",
+   "stip": "#2",
+   "author": "Claude (22 Oct 2026; E. Bourd: 'we need two thematic double checks, anything less is not it')",
+   "source": "freethreat (NOQ=a6, guards swapped: Qa6 on the 6th rank, Rf1 on the f-file, threat rethought) gave the post-key b7/1n6/Q4N2/1N2k2p/3b4/2R3P1/1Bn3B1/5R1K; unmask_search with retype (key Se8-f6, threat Sd7) gave the diagram; sibling with 1.Sg8-f6: b5N1/1n3p2/Q5r1/1N2k3/3b4/1rR3P1/1Bn1K1B1/5R2 (17 units, key knight attacked by Rg6)",
+   "themes": [
+    "masked bishop-rook battery Bb2-Rc3-bBd4-Ke5: the mask's retreats cut the white guard lines and the rook mates by double check on the other landing square: 1...Bb6 (cuts Qa6 on the 6th rank, e6) 2.Re3#, 1...Bf2 (cuts Rf1 on the f-file, f5) 2.Rc5#",
+    "single rook checks are answered by the black knights (Sxc5 from b7, Sxe3 from c2), which cannot parry a double check",
+    "1.Sf6! (2.Sd7#) Sd6 2.Qxd6#, Sc5 2.Qd6#, Qxf6 2.Qxf6#"
+   ],
+   "keys": [
+    "Sf6"
+   ],
+   "cooked": false,
+   "note": "Gate fails 'single phase'. Flaws: both thematic double checks are set (static key; the set even shows random B~ 2.Rc5# with duals and the correction Bb6 2.Re3#); 19 units (10+9... heavy black force: queen, two rooks, two knights); two by-play mates capture the defender; random-move duals. trim: nothing removable."
   }
  ]
 }
