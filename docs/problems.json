@@ -3418,6 +3418,40 @@
    ],
    "cooked": false,
    "note": "Not a result: 1.Bd5? is refuted by Bxg3 and Qh3+, so only one pure try (1.Bf5? Bxc7!); 1.Bf7?/Bg8?/Bh3? all fail to Qh3+ (same refutation). 11+8. A line reason favouring g4 also favours f5 and never d5: the two thematic tries leave e6 on different diagonals."
+  },
+  {
+   "id": "bourd-bench-masked-qh1-ph3",
+   "fen": "7B/2RKpP2/p3BR2/4b1N1/1PPk3r/2N3Qp/r4Pn1/7q",
+   "stip": "#2",
+   "author": "E. Bourd and Claude (bench mvjy8awv steps 665-713, 22 Oct 2026)",
+   "source": "His bench: from claude-masked-sg5-qh1-keyline he added bPh3 (shuts the queen's route to h3, so 1.Bd5? is refuted only by Bxg3) and wPf7 (stops 1.Bf7/1.Bg8, which Qh3+ no longer refutes). Ended where he started his last experiments (Rc8 at 707, Bg7 at 710, both taken back).",
+   "themes": [
+    "masked battery Bh8-Rf6-bBe5 v Kd4, threat 2.Se6# after the white bishop leaves e6",
+    "pair of thematic double checks through the x-ray squares: the c-file guard of c4 removed -> 2.Rf4#, 1...Bxg3 (the queen, guard of d3) 2.Rd6#",
+    "pure try pair by the key bishop, white self-interference on the double-check lines: 1.Bd5? Bxg3!, 1.Bf5? (blocks f6-f4) Bxc7!"
+   ],
+   "keys": [
+    "Bg4"
+   ],
+   "cooked": false,
+   "note": "12+9, legal, one black knight. Key by elimination: Kd7 (d7, c8), Pf7 (f7, g8), Pc4 (c4, b3), 1.Bxh3? Qxh3+! (a capture try refuted by recapture: bQh1 and bPh3 do only this now; the queen line h3-e6 of the source version is shut). 1.Bf5? threatens Se6# and Qd3# (Bf5 protects d3). Random dual 1...Bf4 2.Rxf4#/Rd6#. Verified side options: wPh3 for bQh1+bPh3 (7B/2RKpP2/p3BR2/4b1N1/1PPk3r/2N3QP/r4Pn1/8, 13+7) is sound with the same key and pure tries but adds the by-play dual 1...Sf4 2.Rxf4#/Qe3#; trim removes bPh3 and wPf7 only back to the impure source version. Gate: 'useless key piece' (Be6 in no mate after the key)."
+  },
+  {
+   "id": "bourd-bench-masked-qh1-ph3-rc8",
+   "fen": "2R4B/3KpP2/p3BR2/4b1N1/1PPk3r/2N3Qp/r4Pn1/7q",
+   "stip": "#2",
+   "author": "E. Bourd (bench mvjy8awv step 707, 22 Oct 2026)",
+   "source": "His step 707: the white rook c7 -> c8; he moved it back at step 708.",
+   "themes": [
+    "masked battery Bh8-Rf6-bBe5 v Kd4, threat 2.Se6# after the white bishop leaves e6",
+    "pair of thematic double checks: 1...Bc7 (quiet interference on the c-file guard of c4) 2.Rf4#, 1...Bxg3 (captures the queen, guard of d3) 2.Rd6#",
+    "pure try pair by the key bishop, white self-interference on the double-check lines: 1.Bd5? Bxg3!, 1.Bf5? (blocks f6-f4) Bc7!"
+   ],
+   "keys": [
+    "Bg4"
+   ],
+   "cooked": false,
+   "note": "Sound, 12+9. The c-file defence is a quiet interference instead of a rook capture; 1...Bb8 and 1...Bd6 become random moves with both double checks and Se6#."
   }
  ]
 }
