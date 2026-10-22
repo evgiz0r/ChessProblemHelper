@@ -169,3 +169,37 @@ def test_modes_without_defs_start_with_none():
     assert _defs(SELFBLOCK='2') == ''
     assert _defs() == 'd6,d5'                                   # the plain mode keeps its documented default
     assert _defs(PATTERN='Dombrovskis (refutation)', DEFS='e6,e5') == 'e6,e5'
+
+
+BLOCK_PROBE = """
+import chess, chesscomp.compose.evolve as e
+s, summ, hit = e.score(chess.Board('{fen} w - - 0 1'))
+print(hit, round(s, 1), summ)
+"""
+
+
+def _score(fen, **env):
+    env = dict(os.environ, DEFS='', PYTHONPATH=ROOT, **env)
+    r = subprocess.run([sys.executable, '-c', BLOCK_PROBE.format(fen=fen)], capture_output=True, text=True, env=env,
+                       cwd=ROOT, timeout=120)
+    assert r.returncode == 0, r.stderr
+    hit, sc, summ = r.stdout.strip().split(' ', 2)
+    return hit == 'True', float(sc), summ
+
+
+def test_simple_block_is_no_hit():
+    # daily No. 17: 1.Qb5! (zugzwang) R~ 2.Sxd2#, Rd5 2.Qe2#, Rc4 2.Qxc4#, the rook the only Black unit with moves: the gate
+    # fails it as a 'simple block', and the search returned it as a HIT
+    fen = '8/B7/8/4PpP1/3rkp2/1Q3N2/3p4/3K3B'
+    old_hit, old_score, _ = _score(fen, CORR='d4', NCORR='2', CTHREAT='0')
+    new_hit, new_score, _ = _score(fen, CORR='d4', NCORR='2')
+    assert old_hit and not new_hit and new_score < old_score
+
+
+def test_try_refuted_by_correction_scores():
+    # claude-knight-correction: 1.Qc4! S~ 2.Qc7#, Sxd4 2.Qxd4#; the try 1.Qc2? fails only to the correction Sxd4!
+    fen = 'b3N3/8/ppn1p3/4k3/3R2P1/4P3/7K/2Q5'
+    _, base, _ = _score(fen, CORR='c6', NCORR='1')
+    _, s1, summ = _score(fen, CORR='c6', NCORR='1', CTRY='1')
+    assert 'try Qc2? Sxd4!' in summ and s1 == base + 12
+    assert not _score(fen, CORR='c6', NCORR='1', CTRY='2')[0]

@@ -1,0 +1,66 @@
+{
+ "date": "2026-10-22",
+ "title": "Study: the interposer on d6",
+ "theme": "black-correction",
+ "theme_name": "Black correction",
+ "fen": "K7/3N4/Q2nP3/3kB3/8/3pR2B/1p6/3Nb3",
+ "stip": "#2",
+ "author": "Milan Velimirović",
+ "source": "Wola Gulowska 2002, 4th Prize (Problemesis record psis-6398733b04)",
+ "teaser": "A study post: today's attempts found no original that passes our gate, so here is a prize-winner that does what they tried to do. Before the key the black knight d6 holds the whole position together. Find out what it is guarding, which two of its moves try to keep that guard, and what each of them gives away. Then find the key that changes every one of those mates.",
+ "solution": [
+  "#Set play",
+  "  1...S~ 2.Bg2# A",
+  "  1...Sb5! 2.Qxb5# B",
+  "  1...Se4! 2.Rxd3# C",
+  "#Key",
+  "1.Re4! (2.Rd4#)",
+  "  1...Sb5 2.Qb7#",
+  "  1...Sf5 2.Qc4#",
+  "  1...Sxe4 2.Se3#",
+  "  1...Kxe4 2.Qc6#",
+  "  1...Bc3, Bf2 2.S(x)c3#"
+ ],
+ "comment": {
+  "what": "A study post. Today's work found sound rook-correction settings but none that passes the gate (see How it was made), so the skill's fallback applies: an archive problem of the theme, with full credit. In the set play the knight d6 is the only thing that stops 2.Bg2+. It can interpose on e4, and it stands between the queen a6 and the pawn e6, so the king may take on e6. Any knight move gives up both, and 2.Bg2# follows (A). Two moves try to keep the check out and each makes a new error. 1...Sb5! cuts the queen's a6-c4 diagonal, so 2.Bg2+ is met by Kc4, but the knight now stands where the queen takes it with mate (B). 1...Se4! blocks the long diagonal in advance, but it self-blocks e4, so 2.Rxd3# can leave the e-file (C; after a random move such as 1...Sf5, 2.Rxd3+ Ke4 escapes). The key 1.Re4! offers the rook (1...Kxe4 2.Qc6#), threatens 2.Rd4#, and closes the h1-a8 diagonal, so A is gone for good. After it the knight's two moves that guard d4 are met by new mates (1...Sb5 2.Qb7#, 1...Sf5 2.Qc4#), and the capture of the rook by a third (1...Sxe4 2.Se3#). Three changed mates on the knight: B to Qb7, A to Qc4, C to Se3.",
+  "flaws": [
+   "The correction exists only in the set play. After the key the knight's moves are plain defences (two guard d4, one captures the key piece), and its other moves let the threat through with duals (1...Sb7 2.Rd4#/Qb7#/Qc4#). We ask below whether this still counts as a correction problem.",
+   "Duals in the set play: 1...Se8, Sc8, Sf7 2.Qb5#/Bg2#, and 1...Sc4 allows three mates. The black bishop's 1...Ba5, Bb4, Bd2 and the promotions on b1 are unprovided before the key.",
+   "1...Sb5 2.Qxb5# and 1...Bc3 2.Sxc3#: the mate captures the defender on its arrival square.",
+   "13 units, three of them pawns. The pawns b2 and d3 and the bishop e1 give Black the by-play that the knights d1 and d7 answer."
+  ],
+  "pluses": [
+   "A full black correction before the key: a random move and two corrections, each correction with its own new error (a capture square, a self-block).",
+   "The key changes all three mates of that play. A sacrifice that gives a flight (e4) and shuts the line of the random mate in the same move.",
+   "The knight d6 does two jobs at once in the set: it can interpose on e4 and it shields e6 from the queen. The random move's error is losing both.",
+   "Only five black units."
+  ],
+  "process": "Theme from the rotation: Black correction, last used for No. 2 (a bishop, in a block). This run aimed at a correction with a threat and a second phase, and tried a new piece: a rook. The scheme was a black rook on d4 next to the king e4, with a white bishop a7 behind it on the a7-e3 diagonal. Every rook move opens that diagonal to d4 and e3. The rook's move to d5 cuts the queen's fifth rank and its move to c4 cuts the queen's b5-d3 diagonal. Done by hand: a queen key from b3 to b5 that gives the flight e3. Before the key the queen holds e3 along the third rank, so the bishop's line is not needed yet. That gave a sound block with a flight-giving key, found by evolve from the hand sketch (first attempt below). But the gate fails it as a 'simple block': no threat, and the rook is the only black unit that can move. The next step was a threat: 1.Qc3! threatening 2.Qxd4#, with a pin as one of the corrections (1...Rd3 pins the knight f3 against the king h3, 2.Qe5#). It is sound in ten units (second attempt below). But under E. Bourd's rule of 17 October it is no correction at all: every rook move still guards d4 when it arrives, so the threat is parried by arrival, not by departure, and our solver rightly reports no R~. The gate fails it as a single phase anyway. A threat that the rook's departure parries needs a black line through d4 (a black bishop b6 behind the rook, the threat 2.Sf2#). Sketched by hand and searched, it never got its guards in order. Two knight sketches in E. Bourd's 'departure opens, arrival closes' frame were also searched: a knight f2 between Be1 and Qg1, and a knight c4 between Ba6 and Qb3. The first gave S~ 2.Qe3#, Sxg4 2.Qxg4#, Sd1 2.d3# in two evolve rounds, always with a diagram flight and no key. 42 evolve jobs ran in all (about 280 seconds each), with about 30 hand solves and try tables, in about 75 minutes. The last round used the two new score terms (see below). It found a rook block with three corrections and two tries refuted by them (8/B4B2/3PP3/5p2/3rkp2/1Q3N2/6K1/6N1, 1.Qb5!), but with an unprovided set check (1...Rd2+) and an idle bishop f7.",
+  "lesson": "A rook beside the king makes an easy random move and easy corrections (each arrival cuts a white line), but its moves along its own lines keep guarding what they guarded. So a threat that attacks the rook or its square is parried by arrival, and there is no random move (E. Bourd, 17 Oct 2026). In a block the rook gives a correction play that the gate calls simple. The rook needs a threat parried by its departure: a black line behind it through its square, chosen before the white guards."
+ },
+ "attempts": [
+  {
+   "title": "The rook in a block: sound, flight-giving key, gate fails it as a simple block",
+   "fen": "8/B7/8/4PpP1/3rkp2/1Q3N2/3p4/3K3B",
+   "note": "1.Qb5! (zugzwang, gives e3) Ke3 2.Qe2#, R~ (Rd8, Rd7, Rd6, Rb4, Ra4, Rd3) 2.Sxd2#, Rd5! 2.Qe2#, Rc4! 2.Qxc4#. Every random rook move opens the bishop a7 to d4 and e3. 2.Sxd2 is a double check with the bishop h1, and the queen on b5 now protects the pawn e5. Rd5 cuts that protection (2.Sxd2+ Kxe5), Rc4 cuts the queen's guard of d3. Gate: FAIL ('simple block': no threat, and the rook is the only black unit with moves). Also a try refuted by a king move (1.Qc3? Kd5!), the pawn g5 is a cook-stopper (against 1.Sg5+), and the random mate captures a pawn."
+  },
+  {
+   "title": "A capture threat: sound, but the rook defends by arriving",
+   "fen": "8/B7/8/5p2/2Prkp2/1Q3N1K/6P1/8",
+   "note": "1.Qc3! (2.Qxd4#) Rd8, Rd7, Rd6, Rd5, Rd1 2.Sg5#, Rd3 2.Qe5# (the rook pins the knight f3 against the king h3), Rxc4 2.Qxc4#, Rd2 2.Sxd2#/Sg5#. Ten units, one queen key, a pin correction. But each rook move parries the threat because the rook still guards d4 from its new square. Under E. Bourd's rule of 17 October that is no random move, and the solver reports none. Gate: FAIL ('single phase': no try and no change). The queen cannot make a try either: away from the third rank it gives up d3 and e3 (1.Qb6? Ke3!, Kd3!)."
+  }
+ ],
+ "mentor_questions": [
+  "In Velimirović's problem the black correction is only in the set play. After the key the knight's moves are plain defences with three changed mates. Do you call that a correction problem with changed mates, or a changed-mates problem whose set play happens to be a correction?",
+  "Our gate fails a block whose only mobile black unit is a random-moving piece, even when that piece has two or three corrections, as in our first attempt below (1.Qb5!, flight-giving, R~ and two corrections). Should corrections lift a block out of 'simple block', or is a one-unit correction block not worth publishing whatever the number of corrections?",
+  "A threat to capture the correcting piece (2.Qxd4# against a rook on d4) makes every one of its moves defend by arriving. We treat that as no random move, after your 17 October remark on 1...Qb5/Qxb8. Is that right for line pieces in general, or only when the arrivals each do something different?"
+ ],
+ "stats": {
+  "minutes": 75,
+  "solves": 30,
+  "kernels": 6,
+  "searches": 42
+ },
+ "improvement": "chesscomp.compose.evolve, correction mode (CORR): two new score terms that follow the gate. CTHREAT=1 (default) refuses a HIT that the gate would fail as a 'simple block' (no threat, every black unit but the king answered by one mate on three or more of its moves). Today's first round returned exactly such a block as a HIT. CTRY=N rewards quiet tries that are refuted only by one move of the correcting piece that the key answers with a mate, one per distinct refutation, and needs N of them for a HIT. Without a try or a change the gate fails a single phase, and the search had no way to see that. Tested in tests/test_evolve.py on today's block and on the knight correction b3N3/8/ppn1p3/4k3/3R2P1/4P3/7K/2Q5 (try 1.Qc2? Sxd4!).",
+ "feedback": []
+}

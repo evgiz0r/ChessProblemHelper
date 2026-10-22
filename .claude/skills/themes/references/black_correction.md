@@ -81,3 +81,21 @@ but 1...Bxe5!
   flight, and every attempt to give e3 with the key failed (8/B7/8/1Q3p2/3rk3/2p2NK1/8/8 is a zugzwang
   set refuted only by pawn tempo moves).
 - Tool: `CORR=d4 NCORR=2 DEFS= SEED=<hand sketch> python -m chesscomp.compose.evolve JOB OUT` (see docstring).
+
+## Rook beside the king (daily No. 17, 22 October 2026, no sound threat version)
+- Scheme: bK e4, bR d4, wB a7 behind it on a7-e3, wQ on b5 (5th rank and b5-d3 diagonal), wS f3. Every rook move opens
+  the bishop to d4 and e3 (the random error). Rd5 cuts the queen's rank to e5, Rc4 her diagonal to d3, Rd3 pins Sf3
+  against a king on h3. The key Qb3-b5 gives the flight e3 (the queen held it along the third rank).
+- Block: 8/B7/8/4PpP1/3rkp2/1Q3N2/3p4/3K3B, 1.Qb5! R~ Sxd2# (double check with Bh1), Rd5 Qe2#, Rc4 Qxc4#. Sound, but the
+  gate fails a block whose only mobile unit is the corrector ('simple block').
+- Capture threat: 8/B7/8/5p2/2Prkp2/1Q3N1K/6P1/8, 1.Qc3! (2.Qxd4#) R~ Sg5#, Rd3 Qe5#, Rxc4 Qxc4#. Sound, but a rook moving
+  along its lines still guards d4 from its new square: the threat is parried by arrival, no random move (E. Bourd, 17 Oct;
+  analysis.py `_corrections` drops it).
+- Open: a threat parried by the rook's DEPARTURE, i.e. a black line through d4 (bB b6 -> e3/f2, threat 2.Sf2#), with the
+  white line through d4 (Rd8 on the d-file) giving the random mate. Sketch 1Q1R4/8/1b6/5p2/3rkp2/... never got its guards.
+- Search: `CORR=d4 CTRY=1` (evolve refuses simple blocks by default; CTRY wants a try refuted by a correction).
+
+## Study: Velimirovic, Wola Gulowska 2002, 4th Prize (psis-6398733b04)
+K7/3N4/Q2nP3/3kB3/8/3pR2B/1p6/3Nb3. Set: S~ 2.Bg2#, Sb5 2.Qxb5#, Se4 2.Rxd3#. Key 1.Re4! (2.Rd4#) Sb5 Qb7#, Sf5 Qc4#,
+Sxe4 Se3#, Kxe4 Qc6#. The knight d6 interposes on e4 and shields e6 from Qa6: two jobs, so the random move's error is
+double. The key shuts the random mate's line and changes all three mates; the correction itself lives only in the set.

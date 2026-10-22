@@ -268,6 +268,24 @@ what the next run should try. "Proposals" collects improvements too big for one 
   effect and the unit that cancels it before placing anything; the capture engine (one sole guard taken by two line
   pieces, Manolescu) is the open one, not yet tried by us in a new geometry.
 
+## 2026-10-22, No. 17: Black correction (study post)
+- Result: no original that passes the gate; study post on Velimirovic, Wola Gulowska 2002, 4th Prize (psis-6398733b04),
+  K7/3N4/Q2nP3/3kB3/8/3pR2B/1p6/3Nb3: set S~ Bg2#, Sb5 Qxb5#, Se4 Rxd3#; 1.Re4! (2.Rd4#) Sb5 Qb7#, Sf5 Qc4#, Sxe4 Se3#.
+  Attempts shown: the rook block 8/B7/8/4PpP1/3rkp2/1Q3N2/3p4/3K3B (1.Qb5!, sound, gate 'simple block') and the capture
+  threat 8/B7/8/5p2/2Prkp2/1Q3N1K/6P1/8 (1.Qc3!, sound, no random move by the 17 Oct rule, gate 'single phase').
+  Gate on the study: only the anticipation. Mentor issues #7-#17 had no answers; nothing to act on.
+- Minutes (container clock 23:59-01:10): setup and reading 5, study 5, searches and hand work 50 (42 evolve jobs in 10
+  rounds, about 30 hand solves and try tables), kit change and tests 10, post and records 15.
+- What wasted time: two rounds before the rook block turned out to be fatal in the gate (the search called it a HIT: fixed,
+  CTHREAT); the capture threat built by hand before checking it against the 17 Oct departure rule (analysis `_corrections`
+  says it at once: run the report and look for the R~ line before building on a correction); a sketch with the queen on
+  a8 behind a knight on c6 that pinned the knight to its own king.
+- What helped: trytable on the queen showed in one second that only c3 threatens without giving d3/e3; python-chess
+  move-by-move checks to read the study's mechanism (the knight d6 both interposes on e4 and shields e6).
+- Next run: theme from `next-theme`. For a black correction again: name the departure effect that parries the threat
+  (a black line through the corrector's square) before any white unit; run evolve with CORR=<sq> CTRY=1 from a hand
+  sketch of that line; check every candidate's report for the S~ line before cleaning it.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).

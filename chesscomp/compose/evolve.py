@@ -13,7 +13,11 @@ Score (higher is better): soundness first (unique key; for unsound positions, fe
 best try is better), then the thematic variations, then purity (no duals, quiet key, single threat),
 then economy. CORR=d4 (Black correction mode) rewards, for the Black piece on that square, a random move with
 one mate and corrections each with their own single mate (the solver's S~ lines); NCORR (default 2) corrections
-are needed for a HIT, every move of that piece must defend, and DEFS may be empty. NOFLIGHT=1 (default) penalises
+are needed for a HIT, every move of that piece must defend, and DEFS may be empty. CTHREAT=1 (default) refuses a HIT
+that the gate fails as a 'simple block': no threat, and every Black unit but the king answered by one mate on three or more
+of its moves, corrections or not (daily No. 17 found 1.Qb5! R~ Sxd2#, Rd5 Qe2#, Rc4 Qxc4# that way); CTHREAT=0 allows them. CTRY=N (CORR mode)
+rewards quiet tries refuted only by one move of the CORR piece that the key answers, one per distinct refutation, and
+needs N of them for a HIT: without a try or a change the gate fails a single phase. NOFLIGHT=1 (default) penalises
 every diagram flight and refuses it in a HIT (the constitution makes it fatal); NOFLIGHT=0 restores the old
 score, where only an unprovided flight costs. KEYROLE=1 (default) penalises a key piece out of play (fatal, E. Bourd on
 daily No. 2) or idle in the diagram (guards nothing near the king, no set mate, blocks no line) and refuses both in a
@@ -66,6 +70,8 @@ PATTERN = os.environ.get('PATTERN', '')            # e.g. 'Dombrovskis (refutati
 TRYCHANGE = os.environ.get('TRYCHANGE', '0') == '1'  # reward tries whose mates for DEFS differ (or swap: reciprocal)
 CORR = os.environ.get('CORR', '')                  # Black correction mode: square of the correcting piece
 NCORR = int(os.environ.get('NCORR', '2'))
+CTHREAT = os.environ.get('CTHREAT', '1') == '1'       # CORR mode: no HIT that the gate fails as a simple block
+CTRY = int(os.environ.get('CTRY', '0'))              # CORR mode: N quiet tries each refuted only by a correction
 NPAT = int(os.environ.get('NPAT', '2'))               # PATTERN with no DEFS: distinct pattern mates for a HIT
 SELFBLOCK = int(os.environ.get('SELFBLOCK', '0'))      # self-block mode: N distinct self-block mates for a HIT
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram flight is fatal, so no HIT has one
@@ -131,6 +137,18 @@ def var_map(ph):
         out[v['defence']['san'].rstrip('+#')] = v
     return out
 
+def simple_block(ph):
+    """The gate's 'simple block' (critique): a phase with no threat in which every Black unit but the king has one mate
+    answering three or more of its moves. A correction alone does not save it."""
+    if ph.get('threat'):
+        return False
+    groups = {}
+    for v in ph['variations']:
+        if v['defence']['san'][0] != 'K':
+            groups.setdefault(v['defence']['uci'][:2], []).append(frozenset(c['id'] for c in v['continuations']))
+    return bool(groups) and all(max(ms.count(m) for m in ms) >= 3 for ms in groups.values())
+
+
 def corr_score(ph):
     """(score, summary, ok) of the correction play of the piece on CORR in phase ph."""
     if not CORR:
@@ -150,6 +168,9 @@ def corr_score(ph):
         t += 15
     ok = (not r['duals'] and len(single) == len(c['corrections']) >= NCORR and distinct
           and all(v['continuations'] and not v['threat_repeat'] for v in mine))
+    if CTHREAT and ph['type'] == 'key' and simple_block(ph):
+        t -= 15                    # the gate fails it ('simple block', daily No. 17)
+        ok = False
     return t, f"S~ {r['mate']} | " + ' '.join(f"{x['move']}:{'/'.join(x['mates'])}" for x in c['corrections']), ok
 
 
@@ -445,7 +466,31 @@ def score(b):
             km = chess.Move.from_uci(ph['first_move']['uci'])
             ok = not out_of_play_key(b, km) and (b.piece_type_at(km.from_square) == chess.KING or not idle_key_piece(b, km, phases))
         hit = ok
+    if CORR and CTRY:
+        ct, csum = corr_tries(phases)
+        s += 12 * min(ct, CTRY + 1)
+        best_sum += csum
+        hit = hit and ct >= CTRY
     return s, f"keys={keys} {best_sum}", hit
+
+
+def corr_tries(phases):
+    """(count, summary) of quiet tries refuted only by a move of the CORR piece that the key answers with a mate, one per
+    distinct refutation: the gate's second phase for a correction (daily No. 17: a single phase fails the gate)."""
+    key = next((ph for ph in phases if ph['type'] == 'key'), None)
+    if not key:
+        return 0, ''
+    answered = {v['defence']['uci'] for v in key['variations'] if v['continuations'] and not v['threat_repeat']}
+    got = {}
+    for ph in phases:
+        refs = ph.get('refutations')
+        if (ph['type'] != 'try' or ph.get('check_key') or ph['first_move']['san'].endswith('+')
+                or not isinstance(refs, list) or len(refs) != 1):
+            continue
+        u = refs[0]['uci']
+        if u[:2] == CORR and u in answered:
+            got.setdefault(u, f" try {ph['first_move']['san']}? {refs[0]['san']}!")
+    return len(got), ''.join(got.values())
 
 def pattern_mates(r, got):
     """Distinct single mates of the key-phase defences that carry PATTERN (PATTERN with no DEFS)."""
