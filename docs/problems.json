@@ -3549,6 +3549,23 @@
    ],
    "cooked": false,
    "note": "A scheme: the key 1.Rf1-d1 (2.Rd5#) is by a rook out of play (fatal) and static (all variations set); 18 units, 7 pawns. Rules found: a rook interposing next to the white king on the pin rank checks it (1...Rf2+), and the pinner's capture of the knight needs a mating recapture, possible only when the knight stands on a line to the black king with the squares between free."
+  },
+  {
+   "id": "bourd-bench-unpin-knight-qf5",
+   "fen": "3r2n1/6b1/2p1Q3/4N3/5P2/2KpkPP1/6R1/3B4",
+   "stip": "#2",
+   "author": "E. Bourd and Claude (bench mvkda7e2, 23 Oct 2026, from claude-unpin-white-knight-scheme)",
+   "source": "His sitting: the scheme simplified (8/b7/3R4/1NN1k3/nr2p3/1pp1K3/7P/8, the white king on the pin diagonal next to the action), shifted and rotated to Ke3/Kc3 with Bg7 pinning Se5; his post-key 3r2n1/6b1/2p4p/4NQ2/5P2/2KpkP2/6R1/3B4 and findkey's unique queen keys; his Be4-h1 clearance key stayed fatal (1...Bxe5+ unprovided: the bishop on e4 blocks the recapture's check). Claude: the queen key from e6 (his findkey 1.Qe6-f5), wPg3 for the diagram flight f4, bPh6 trimmed.",
+   "themes": [
+    "Black unpins a White knight by two different units on the two sides of it: 1...Sf6 (between pinner and knight, guards g4) 2.Sc4#, 1...Rd4 (between knight and white king, guards c4) 2.Sg4#; both arrivals guard the threat square e4",
+    "in the set the pinned knight is the front of a Qe6 battery on the e-file: each unpin allows both knight mates as double checks (set duals); the key 1.Qe6-f5! gives up the battery, so the unpinners' guards select one mate",
+    "the pinner's capture 1...Bxe5+ is answered by 2.Qxe5# in set and solution (the queen keeps the e-file or the 5th rank); every queen move off them fails to 1...Bxe5+"
+   ],
+   "keys": [
+    "Qf5"
+   ],
+   "cooked": false,
+   "note": "14 units, gate PASS. Tries: 1.Qg6? (2.Qe4#) Bxe5+!, 1.Qf6? Bxf6!, 1.Qa2? Bxe5+!, 1.Kc4? Rd4+!. Flaws: set duals after both unpins (double checks), random duals, 2.Qxe5# captures the defender, wPg3 only guards f4 in the diagram. Idea not yet tried: a reciprocal change, set 1...Sf6 2.Sg4#, 1...Rd4 2.Sc4# (double checks, selected by flights the unpinners cut) against the solution's 2.Sc4#/2.Sg4#."
   }
  ]
 }
