@@ -69,7 +69,7 @@ else:
  </div></div></body></html>'''
 with sync_playwright() as p:
     import glob
-    exe = next(iter(sorted(glob.glob('/opt/pw-browsers/chromium-*/chrome-linux/chrome'))), None)  # web-session Chromium
+    exe = next(iter(sorted(glob.glob('/opt/pw-browsers/chromium-*/chrome-linux*/chrome'))), None)  # web-session Chromium
     br = p.chromium.launch(executable_path=exe, args=['--no-sandbox']) if exe else p.chromium.launch(args=['--no-sandbox'])
     pg = br.new_page(viewport={'width': 360 if BOARD else (440 if PORTRAIT else 780), 'height': 360 if BOARD else 420}, device_scale_factor=2)
     pg.set_content(page); pg.wait_for_timeout(300)
