@@ -10,6 +10,9 @@ Optional env EMPTY=b2,c2: squares the search never fills (a battery line, as in 
 Optional env PAWNW=3: extra cost per White pawn (E. Bourd, 21 Oct 2026: "i dont like all the clumped white pawns").
 Optional env LOOSE=1: duals and by-play repeats count only for the WANT defences (his bench schemes keep random-move
 duals while the key and tries are being settled, 22 Oct 2026); holes always count (a hole refutes the key).
+Optional env ALLOWCHECK=1: a black check in the post-key passes when it is answered by a mate (it still costs score); an
+unanswered check is a hole. Needed when a pinner can take the pinned White piece with check (1...Bxc3+ 2.Sxc3#, 23 Oct 2026).
+In the diagram it also passes a black check that has a set mate (an unprovided set check stays fatal).
 Mutations add, remove, move, and retype a non-core unit (any piece of either colour): a unit whose job moves elsewhere
 becomes free for another job (E. Bourd, 21 Oct 2026: "pieces like b1 b7 can be changed to other pieces").
 The diagram must have no flight and no black check, and the key piece must guard a square of the king's field.
@@ -27,6 +30,7 @@ THREAT = os.environ.get('THREAT')                   # optional: the threat must 
 EMPTY = {chess.parse_square(x) for x in os.environ.get('EMPTY', '').split(',') if x}
 PAWNW = float(os.environ.get('PAWNW', '0'))         # optional: extra cost per White pawn
 LOOSE = os.environ.get('LOOSE') == '1'               # optional: judge only the WANT defences
+ALLOWCHECK = os.environ.get('ALLOWCHECK') == '1'     # optional: black checks answered by a mate are allowed
 TRIES = json.loads(os.environ.get('TRIES', '{}'))   # optional: {try uci: its one refutation uci}
 ADD = 'NBRPPPpppnbr'                                 # units the search may add
 RETYPE = 'NBRQPnbrqp'                                # what a non-core unit may become
@@ -87,9 +91,19 @@ def post_score(fen):
     s -= 10 * len(dups)
     unblocked = [k for k, w in WANT.items() if SELFBLOCK and names.get(k) == {w} and not self_block_needed(b, k, w)]
     s -= 20 * len(unblocked)
-    ok = len(t) == 1 and not bad and (not THREAT or set(t) == {THREAT}) and not holes and not duals and not checks and not dups and not unblocked \
+    ok = len(t) == 1 and not bad and (not THREAT or set(t) == {THREAT}) and not holes and not duals and (ALLOWCHECK or not checks) and not dups and not unblocked \
         and all(names.get(k) == {w} for k, w in WANT.items())
     return s, ok, f"unblocked={unblocked} threat={sorted(t)} holes={holes} duals={duals} dups={dups} checks={checks} defs={ {k: sorted(v) for k, v in names.items()} }"
+
+
+def mated_after(b, m):
+    """True when White, after Black's move m in b, has a mate in one (a provided check)."""
+    x = b.copy(); x.push(m)
+    for w in list(x.legal_moves):
+        x.push(w); mate = x.is_checkmate(); x.pop()
+        if mate:
+            return True
+    return False
 
 
 def idle_units(fen, t0):
@@ -123,7 +137,7 @@ def score(fen):
     if not chess.Board(D + ' w - - 0 1').is_valid():
         return s - 80, info
     bb = chess.Board(D + ' b - - 0 1')
-    dchecks = [bb.san(m) for m in bb.legal_moves if bb.gives_check(m)]
+    dchecks = [bb.san(m) for m in bb.legal_moves if bb.gives_check(m) and not (ALLOWCHECK and mated_after(bb, m))]
     dflights = [bb.san(m) for m in bb.legal_moves if bb.piece_type_at(m.from_square) == chess.KING]
     s -= 6 * len(dchecks) + 20 * len(dflights)
     if not ok:

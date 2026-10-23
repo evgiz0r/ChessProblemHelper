@@ -1514,3 +1514,4 @@ no motive layer to mirror.
 - 22 Oct: his steps 1175-1247: unshifted knight-b7 version with bQa7 (bourd-bench-masked-sb7-qa7-bh1, 1.Bh1!, 12+10), then back to the shifted 1.Bg1 version; later experiments cooked. Claude's verdict asked ('what do you think?').
 
 - 23 Oct (daily No. 18, routine): changed mates; published claude-knight-swap-c2-kd7 (light knight swap, king a5 -> d7). Tool: evolve CHANGED refuses set duals (set_duals, tested). Failures recorded in themes/references/changed_mates.md and lessons.jsonl.
+- 23 Oct: theme 'Black unpins a White piece': read Shire, Pachl, Pilchenko/Shavyrin, Ahues, Lincoln in the database; basic scheme claude-unpin-white-queen-scheme (1.Bd7!, single phase); about 30 freethreat/unmask_search runs over self-pin, unmasking, knight, rook and bishop keys and a four-unpin queen pinner; unmask_search gained ALLOWCHECK (tested).

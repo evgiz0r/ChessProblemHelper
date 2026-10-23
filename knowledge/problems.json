@@ -3517,6 +3517,22 @@
     "Sc2"
    ],
    "note": "Python solver: sound, 5+4, gate PASS (daily No. 18). Flaws: no knight try, Qxd4# takes the defender, Sd3/Kd5 share Qc6#, set hole 1...g2 (bPg3 is the tempo pawn that stops waiting moves). Pluses: flight-giving quiet key, one cause for both changes, every White unit works."
+  },
+  {
+   "id": "claude-unpin-white-queen-scheme",
+   "fen": "1N5K/8/1Rp4R/3k4/5P2/2QP1n1B/r4B2/bN1r4",
+   "stip": "#2",
+   "author": "Claude (23 Oct 2026, theme 'Black unpins a White piece', E. Bourd)",
+   "source": "freethreat (post-key, Sb8 fixed as the c6 guard) then unmask_search ALLOWCHECK=1 (key Bh3-d7).",
+   "themes": [
+    "Black unpins a White piece (indirect unpin): Ba1 pins Qc3 to Kh8; the knight f3 interposes on d4 or e5, beyond the queen where the pinner cannot follow; both arrivals guard the threat square c6",
+    "dual avoidance by arrival: 1...Se5 (guards c4) 2.Qc5#, 1...Sd4 2.Qc4#; 1...Bxc3+ 2.Sxc3#; long key 1.Bh3-d7! (2.Bxc6#)"
+   ],
+   "keys": [
+    "Bd7"
+   ],
+   "cooked": false,
+   "note": "A scheme, not a problem: single phase, both unpins set with the same mates (static key); the mechanism is H. Ahues, Problem Forum 2001, 3rd Prize (psis-2ceda8bcd7: Ba1 pins Qc3, Sf3-d4/e5, threat Bxc6#). Obstacles met: a self-pinning queen key leaves the white king in check in the diagram; an unmasking key (a white unit leaving the pin line) frees the queen in the diagram (mates in one); the pinner's capture 1...Bxc3+ needs a set mate whose flight c6 must be guarded by a unit that is not the threat piece (Sb8 here). Four unpins with a black queen pinner (Qa4/Qa6 direct + Sd4/Se5 indirect) converged on one mate (Qc5) in four freethreat runs."
   }
  ]
 }

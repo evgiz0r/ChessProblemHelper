@@ -51,3 +51,26 @@ def test_loose_ignores_duals_of_unnamed_defences():
     finally:
         us.LOOSE = False
     assert "duals=[]" not in strict and "duals=[]" in loose
+
+
+def test_allowcheck_passes_a_check_answered_by_mate():
+    # Black unpins White (23 Oct 2026): Ba1 pins Qc3 to Kh8, 1...Bxc3+ is answered by 2.Sxc3#
+    post = '7K/8/3N3R/1B1k4/5P2/2Q2n2/8/bN4B1'
+    us.setup(['x', '7K/8/8/3k4/8/2Q2n2/8/b7', post, 'c3', 'c7', 'a1',
+              '{"Ne5": "Qc3c5", "Nd4": "Qc3c4"}', '1', '7'])
+    us.ALLOWCHECK = False
+    assert us.post_score(post)[1] is False
+    us.ALLOWCHECK = True
+    try:
+        assert us.post_score(post)[1] is True
+    finally:
+        us.ALLOWCHECK = False
+
+
+def test_allowcheck_diagram_needs_a_set_mate():
+    # 1.Bb5! diagram: 1...Bxc3+ has no set mate (Sxc3+ Kc6), so it stays a diagram check
+    d = chess.Board('7K/8/3N3R/3k4/5P2/2Q2n2/8/bN3BB1 b - - 0 1')
+    m = d.parse_san('Bxc3+')
+    assert us.mated_after(d, m) is False
+    p = chess.Board('7K/8/3N3R/1B1k4/5P2/2Q2n2/8/bN4B1 b - - 0 1')
+    assert us.mated_after(p, p.parse_san('Bxc3+')) is True
