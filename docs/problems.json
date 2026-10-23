@@ -3611,6 +3611,39 @@
    ],
    "cooked": false,
    "note": "Unique key, but only by a device: every try (Bc7, Bg3, Bh2, Bxa3) fails to the same 1...Rxc8, and the set play already has both mates (the bishop on d6 guards e5 and f4 through e5), so the key changes no mate. Not recommended. Structural reason: e5 and f4 lie on one line through d6, so the bishop keeps both or neither; Be5 and Bf4 stand on the Java lines (Ra5's rank, Rf1's file) and are refuted by both unpins."
+  },
+  {
+   "id": "bourd-bench-unpin-java-bg4",
+   "fen": "5N2/b2Bpp1q/R5p1/4k1p1/nB1NP3/2P1K1P1/5R2/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 23 Oct 2026, sessions mvlfs0ei/mvlj46nh), from claude-unpin-knight-java-scheme",
+   "source": "His bench; re-solved by the Python solver, gate PASS, trim: nothing removable.",
+   "themes": [
+    "Black unpins a White knight (Ba7 pins Sd4 to Ke3) by one knight step: 1...Sb6 2.Sc6#, 1...Sc5 2.Sf3#; Java dual avoidance on f6 (Ra6 / Rf2)",
+    "the key bishop stands on the threat square d7 (2.Sd7#); white correction: 1.B~? Qh3! (the queen reaches d7 along h3-d7)",
+    "white interference tries on the same square f6: 1.Be6? (cuts Ra6) Sc5!, 1.Bf5? (cuts Rf2) Sb6!; 1.Bh3? Qxh3!; key 1.Bg4! closes the queen's line and cuts nothing",
+    "1...Bxd4+ 2.cxd4#"
+   ],
+   "keys": [
+    "Bg4"
+   ],
+   "cooked": false,
+   "note": "18 units (10+8, 7 pawns). Flaws: static key (the set already has 1...Sb6 2.Sc6#, 1...Sc5 2.Sf3#: the bishop on d7 already guards e6/f5); Pg3 and bPg5 only shield Ke3 from Qh3+/Qh6+; bPe7, bPf7, bPg6 stop the contact mates Bd6, Re6, Rf5 (the queen also guards g6/f7 against Sxg6+ and Rxf7); 1...Bb8 lets Sc6/Sf3 besides the threat. Lower sibling bourd-bench-unpin-java-bg3 (19 units). A black bishop f1 in place of Qh7+Pg3+bPg5 fails: Sxg6+, Re6+, Rxf7 cook and 1...Bb5 refutes the key."
+  },
+  {
+   "id": "bourd-bench-unpin-java-bg3",
+   "fen": "5n2/5N2/b2Bpp1q/R5p1/4k1p1/nB1NP3/2P1K1P1/5R2",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 23 Oct 2026, session mvlfs0ei)",
+   "source": "His bench; re-solved by the Python solver.",
+   "themes": [
+    "the same scheme one rank down: 1.Bg3! (2.Sd6#), 1.B~? Qh2!, 1.Be5? Sc4!, 1.Bf4? Sb5!, 1.Bh2? Qxh2!; 1...Sb5 2.Sc5#, 1...Sc4 2.Sf2#, 1...Bxd3+ 2.cxd3#"
+   ],
+   "keys": [
+    "Bg3"
+   ],
+   "cooked": false,
+   "note": "19 units (bSf8 more than the 1.Bg4 version); same static-key flaw."
   }
  ]
 }
