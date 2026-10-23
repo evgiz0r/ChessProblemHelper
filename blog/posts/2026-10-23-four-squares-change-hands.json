@@ -64,5 +64,6 @@
   "kernels": 6,
   "searches": 26
  },
- "improvement": "evolve CHANGED mode now refuses a HIT when a thematic defence has two set mates and scores each extra set mate down (set_duals); the set play is a thematic phase in changed mates. Tested in tests/test_evolve.py."
+ "improvement": "evolve CHANGED mode now refuses a HIT when a thematic defence has two set mates and scores each extra set mate down (set_duals); the set play is a thematic phase in changed mates. Tested in tests/test_evolve.py.",
+ "mentor_issue": 19
 }
