@@ -3566,6 +3566,20 @@
    ],
    "cooked": false,
    "note": "14 units, gate PASS. Tries: 1.Qg6? (2.Qe4#) Bxe5+!, 1.Qf6? Bxf6!, 1.Qa2? Bxe5+!, 1.Kc4? Rd4+!. Flaws: set duals after both unpins (double checks), random duals, 2.Qxe5# captures the defender, wPg3 only guards f4 in the diagram. Idea not yet tried: a reciprocal change, set 1...Sf6 2.Sg4#, 1...Rd4 2.Sc4# (double checks, selected by flights the unpinners cut) against the solution's 2.Sc4#/2.Sg4#."
+  },
+  {
+   "id": "claude-unpin-adjacent-knight-postkey",
+   "fen": "1r6/b2RBRNB/8/4k1P1/p2N4/6P1/r5p1/3Q2K1",
+   "stip": "#2",
+   "author": "Claude (23 Oct 2026, theme 'unpin a white knight, at another distance from the king', E. Bourd)",
+   "source": "freethreat, five cores (one rook guarding both mating squares from c3, then f6, then two rooks).",
+   "themes": [
+    "Black unpins a White knight standing next to the black king (Sd4, Ke5): its mates 2.Sc6#/2.Sf3# both cover d4 again",
+    "two black rooks, one on each side of the knight on the pin line a7-g1: 1...Rb6 (guards c6, and f6 along the 6th rank) 2.Sf3#, 1...Rf2 (guards f3, and f6 up the f-file) 2.Sc6#; threat 2.Bf6#; 1...Bxd4+ 2.Qxd4#"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Post-key position only (White to move also solves by Rf5+, Qe2+, Qe1+, Rf6, Bd8); no key yet. Unique keys found by unmask_search were 1.Sd4 (self-pin, but the white king is then in check in the diagram) and 1.Rh7-f7 (out of play, 1...Bxd4+ unprovided). Traps met: a single rook guarding both mating squares (c3 or f6) has no common defence for its two interpositions; the pinner's slide to the pinner-side interposition square (Bc5, Bb6) cuts the same white lines, so that interposer must defend by its own guard."
   }
  ]
 }
