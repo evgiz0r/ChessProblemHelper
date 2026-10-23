@@ -3595,6 +3595,22 @@
    "keys": [],
    "cooked": false,
    "note": "Scheme, post-key position only (Black to move): one threat, every defence answered. No key yet: with White to move it also wins by Sxg6+, Re6+, Bd6+, Rf5+ (keyfind: only Sd4/Sf8 carry no such line). bPe7, bPf7, bPg6 only stop the contact mates Bd6, Re6/Sg6, Rf5 that the pinned knight's guards (e6, f5) make possible. In the shifted version (Ba8 pins Sd5 to Ke4: no exit for the pinner) the same mechanism has four contact mates and no two-unit stopper set: Black cannot guard e7 from rank 8."
+  },
+  {
+   "id": "claude-unpin-java-bd6-bb8",
+   "fen": "r1N5/1p6/b2Bpp2/R5p1/4k3/nBPN4/2P1K3/5R2",
+   "stip": "#2",
+   "author": "Claude (23 Oct 2026, from E. Bourd's bench board 8/5N2/b2Bpp1p/R5p1/4k3/nBPN2P1/2P1K3/5R2: the Java scheme one rank down, the key bishop standing on the threat square d6)",
+   "source": "unmask_search (KSQ b8, FSQ d6, core = his mechanism with the threat knight on c8), 240 s; three sister runs (c7, g3, b8 with pure tries required) found no pure try.",
+   "themes": [
+    "Black unpins a White knight (Ba6 pins Sd3 to Ke2): 1...Sb5 2.Sc5#, 1...Sc4 2.Sf2#, 1...Bxd3+ 2.cxd3#; Java selection (Ra5 / Rf1 / Bb3)",
+    "the key bishop vacates the threat square d6 (2.Sd6#) and shuts the black Ra8 off the threat knight c8"
+   ],
+   "keys": [
+    "Bb8"
+   ],
+   "cooked": false,
+   "note": "Unique key, but only by a device: every try (Bc7, Bg3, Bh2, Bxa3) fails to the same 1...Rxc8, and the set play already has both mates (the bishop on d6 guards e5 and f4 through e5), so the key changes no mate. Not recommended. Structural reason: e5 and f4 lie on one line through d6, so the bishop keeps both or neither; Be5 and Bf4 stand on the Java lines (Ra5's rank, Rf1's file) and are refuted by both unpins."
   }
  ]
 }
