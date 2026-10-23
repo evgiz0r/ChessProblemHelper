@@ -8,7 +8,8 @@ nudge a unit, keep the better candidates, repeat until the time budget runs out.
 
 CORE: units that never move or disappear (the theme's pieces). SEED: the starting position (must contain
 CORE). DEFS: the thematic Black defences (SAN as the solver prints them) that must each get one mate,
-all different, after a unique key. CHANGED=1 also rewards set mates for DEFS that the key changes.
+all different, after a unique key. CHANGED=1 also rewards set mates for DEFS that the key changes;
+a set dual after a DEF costs score and refuses a HIT (the set play is thematic).
 Score (higher is better): soundness first (unique key; for unsound positions, fewer refutations of the
 best try is better), then the thematic variations, then purity (no duals, quiet key, single threat),
 then economy. CORR=d4 (Black correction mode) rewards, for the Black piece on that square, a random move with
@@ -136,6 +137,11 @@ def var_map(ph):
     for v in ph['variations']:
         out[v['defence']['san'].rstrip('+#')] = v
     return out
+
+def set_duals(setmap, defs):
+    """The thematic defences whose set variation has more than one mate. In changed mates the set phase is thematic,
+    so a set dual blurs the change (daily No. 18: CHANGED hits were accepted with 1...exd4 2.Qf4#/Qe2#/Qe1# in the set)."""
+    return [d for d in defs if d in setmap and len(setmap[d]['continuations']) > 1]
 
 def simple_block(ph):
     """The gate's 'simple block' (critique): a phase with no threat in which every Black unit but the king has one mate
@@ -363,6 +369,7 @@ def score(b):
                 if sv and sv['continuations']:
                     sm = {c['san'] for c in sv['continuations']}
                     t += 12 if v['continuations'][0]['san'] not in sm else 3
+                    t -= 5 * (len(sm) - 1)                # a dual in the thematic set play
                     if QMATE:
                         t += 6 * (v['continuations'][0]['san'][0] == 'Q') + 6 * all(m[0] == 'Q' for m in sm) - 4 * (len(sm) - 1)
         if UNIQUE:                                   # other moves of a DEF's unit must let the threat mate
@@ -453,6 +460,7 @@ def score(b):
             ok = bool(s0 and s1 and [c['san'] for c in s0['continuations']] == [k1] and [c['san'] for c in s1['continuations']] == [k0])
         if ok and CHANGED:
             ok = all(d in setmap and setmap[d]['continuations'] and vm[d]['continuations'][0]['san'] not in {c['san'] for c in setmap[d]['continuations']} for d in DEFS)
+            ok = ok and not set_duals(setmap, DEFS)
         if ok and DEFSQ:
             ok = ph['type'] == 'key' and ph['first_move']['uci'] == TKEY
         if ok and QMATE:

@@ -1,0 +1,68 @@
+{
+ "date": "2026-10-23",
+ "title": "Four squares change hands",
+ "theme": "changed-mates",
+ "theme_name": "Changed mates",
+ "fen": "5R2/3K4/8/4p3/1N1Pk3/2Q3p1/5n2/8",
+ "stip": "#2",
+ "author": "Claude (ChessProblemHelper), after an idea of Evgeni Bourd",
+ "source": "Original. The setting with the White king on a5 was found on 16 October 2026 in a session with E. Bourd (his 2x2 guard swap by a knight move); the king d7 and rook f8, which give the king a role, are from 23 October 2026",
+ "teaser": "Black has two ways to disturb the box around his king, and both are answered already. Count the squares the knight on b4 guards, then the squares it could guard instead, and what that costs.",
+ "solution": [
+  "#Set play",
+  "1...exd4 a 2.Qe1# A",
+  "1...Sd3 b 2.Qxd3# B",
+  "1...S~ 2.Qd3#",
+  "#Try",
+  "1.Rf3? (2.Qe3#)",
+  "  1...Sd3 2.Qxd3#",
+  "  but 1...exd4!",
+  "#Key",
+  "1.Sc2! (2.Qf3#)",
+  "  1...exd4 a 2.Qxd4# C",
+  "  1...Sd3 b 2.Qc6# D",
+  "  1...Kd5 2.Qc6#"
+ ],
+ "comment": {
+  "what": "Two changed mates from one knight move. On b4 the knight guards d3 and d5; on c2 it guards d4 and e3. In the set the pawn capture 1...exd4 is met by 2.Qe1# (the knight holds d3 and d5, the queen the e-file) and the knight's block 1...Sd3 by 2.Qxd3#. The key swaps the knight's pair of squares: it gives d5 to the king, takes over d4 and e3, and threatens 2.Qf3#. Now 1...exd4 is met by 2.Qxd4# and 1...Sd3, which shuts the queen's c3-e1 diagonal, by 2.Qc6#, the mate that also answers the new flight 1...Kd5. A light form: five White units, one changed pair and a flight.",
+  "flaws": [
+   "Thin content: two changed mates, all by the queen, and no thematic try. Every other knight move gives d5 without a mate (1.Sc6? Kd5!, 1.Sd5? Kxd5!), so the key cannot be shown against a rival.",
+   "1...exd4 2.Qxd4#: the mate captures the defender on its arrival square. In the set, 2.Qxd3# also captures.",
+   "1...Sd3 and 1...Kd5 share the mate 2.Qc6#.",
+   "1...g2 has no set mate, which hints that White must make a threat. That hole is the job of the pawn g3: without it the set play is complete and every waiting move solves (1.Kc7, 1.Rf7, 1.Qd2, 1.d5 ...), so the pawn is a cook-stopper.",
+   "The pawn d4 is in no mate as a guard: it is the target of the thematic capture.",
+   "The only try, 1.Rf3? (2.Qe3#) exd4!, keeps the set mates: it adds a refutation by a thematic defence but no change."
+  ],
+  "pluses": [
+   "Flight-giving key, and a quiet knight move, not a capture or a check.",
+   "The change has one cause: the knight's guard pair moves from d3/d5 to d4/e3, and both changed mates and the threat follow from that swap.",
+   "Miniature, 5+4, every White unit has a job: the king on d7 guards c6 in the flight mate and d6/e6 with the queen (on a5, where it stood on 16 October, it only stopped cooks).",
+   "Dual avoidance with one motive: after each defence the other queen mates fail to a king flight."
+  ],
+  "process": "Theme from the rotation: changed mates. The run tried for a richer setting first and failed, in four ways. Blind evolve cores (two black units reaching one square next to the king; then a Grimshaw on d6 or c6 next to Ke4, which gives each defence a real reason) gave no thematic variation in 18 jobs of ten minutes. A one-queen, two-line setting from type1_geometry for the king on f4 (bR d5 holds e5/f5, bB e2 holds f3/g4, the queen c3 goes to c8) broke on its own geometry: the defence Bd3 blocks the set mate Qf3, and with the bishop on d1 instead the e3 guard always gives 2.Qe3# in the diagram. Evolve on that corrected core (DEFSQ, QMATE, UNIQUE) found nothing in five minutes. postsearch for a black knight g7 whose two self-blocks (Se6, Sf5) both guard d4 against 2.Qd4# found no mate for either block in 400,000 positions: those blocks make no mating picture with that threat. Then the run went back to the light knight swap of 16 October and let evolve add units around it, rewarding a try with changes: it found 16 hits, all the same play, and showed that the White king can stand almost anywhere. So the king went to d7, where it holds c6 for the flight mate, and the rook to f8. Gate PASS. About 35 solves and 26 search jobs.",
+  "lesson": "A tool's geometry list is not a mechanism: type1_geometry paired lines and guards for Kf4 without checking that the thematic defence does not block the set mate (Bd3 on the c3-f3 rank) or that the static guard of e3 does not make Qe3 a mate in one. Before building on a pair, play each set mate on the board with the defence made."
+ },
+ "attempts": [
+  {
+   "title": "One queen, two lines, king on f4 (mates in one in the diagram)",
+   "fen": "8/8/5B2/3r4/5k1N/2Q3NK/3P2P1/3b4",
+   "note": "Planned: set 1...Bc2 2.Qf3#, 1...Rd6 2.Qe5#; 1.Qc8! (2.Sg6#) Bc2 2.Qg4#, Rd6 2.Qf5#. In the diagram 2.Sg6# and 2.Qe3# already mate: the knight g3 covers f5 and the pawn d2 protects e3. Any White guard of e3 protects the queen there, so this pair of lines needs e3 blocked by Black."
+  },
+  {
+   "title": "The setting of 16 October (king without a role)",
+   "fen": "8/8/5R2/K3p3/1N1Pk3/2Q3p1/5n2/8",
+   "note": "The same play with the king on a5 and the rook on f6, where the rook guards c6/d6/e6 in 2.Qc6#. Sound, gate PASS; the king takes part in no mate."
+  }
+ ],
+ "mentor_questions": [
+  "Two changed mates and a flight in a 5+4 setting, with no try by the knight (every other knight move gives d5 without a mate; the only try, 1.Rf3? exd4!, changes nothing): is this enough for publication as a light problem, or is it a scheme?",
+  "King d7 + rook f8 (the king guards c6 in the flight mate) against king a5 + rook f6 (the king does nothing, the rook guards the 6th rank): which do you prefer?"
+ ],
+ "stats": {
+  "minutes": 50,
+  "solves": 35,
+  "kernels": 6,
+  "searches": 26
+ },
+ "improvement": "evolve CHANGED mode now refuses a HIT when a thematic defence has two set mates and scores each extra set mate down (set_duals); the set play is a thematic phase in changed mates. Tested in tests/test_evolve.py."
+}

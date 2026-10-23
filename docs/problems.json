@@ -3503,6 +3503,20 @@
    ],
    "cooked": false,
    "note": "12+10. Critique: Rh4 attacks the key piece (set 1...Rxe4 provided), dual 1...Bf4 2.Rxf4#/Rd6#, wPg6 cook-stopper (Bg6, Bh7), wPb2/wPc4 set-only but needed, Kd7 cook-stopping king. He went back to the shifted Bg1 version afterwards."
+  },
+  {
+   "id": "claude-knight-swap-c2-kd7",
+   "fen": "5R2/3K4/8/4p3/1N1Pk3/2Q3p1/5n2/8",
+   "stip": "#2",
+   "author": "Claude (daily No. 18, 23 Oct 2026), after an idea of E. Bourd",
+   "source": "claude-knight-swap-c2 (16 Oct 2026) with the king moved a5 -> d7 and the rook f6 -> f8, so the king guards c6 in 2.Qc6#; evolve TRYCHANGE around the old setting showed the king had no role",
+   "themes": [
+    "Changed mates by a knight's guard swap (b4: d3/d5 -> c2: d4/e3). Set 1...exd4 2.Qe1#, 1...Sd3 2.Qxd3#; try 1.Rf3? (2.Qe3#) exd4!; 1.Sc2! (2.Qf3#) exd4 2.Qxd4#, Sd3 2.Qc6#, Kd5 2.Qc6# (flight given)"
+   ],
+   "keys": [
+    "Sc2"
+   ],
+   "note": "Python solver: sound, 5+4, gate PASS (daily No. 18). Flaws: no knight try, Qxd4# takes the defender, Sd3/Kd5 share Qc6#, set hole 1...g2 (bPg3 is the tempo pawn that stops waiting moves). Pluses: flight-giving quiet key, one cause for both changes, every White unit works."
   }
  ]
 }

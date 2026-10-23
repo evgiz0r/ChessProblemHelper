@@ -203,3 +203,22 @@ def test_try_refuted_by_correction_scores():
     _, s1, summ = _score(fen, CORR='c6', NCORR='1', CTRY='1')
     assert 'try Qc2? Sxd4!' in summ and s1 == base + 12
     assert not _score(fen, CORR='c6', NCORR='1', CTRY='2')[0]
+
+
+SETDUAL_PROBE = """
+import chess, chesscomp.compose.evolve as e
+from chesscomp import Problem
+from chesscomp.analysis import analyse
+for fen in ('8/8/5R2/K3p3/1N1Pk3/2Q3p1/5n2/8', '8/8/5R2/K3p3/1N1Pk3/6p1/3Q1n2/8'):
+    r = analyse(Problem.from_fen(fen + ' w - - 0 1', '#2'), include_set=True, include_tries=False)
+    sp = [ph for ph in r['phases'] if ph['type'] == 'set'][0]
+    print(','.join(e.set_duals(e.var_map(sp), ['exd4', 'Sd3'])) or '-')
+"""
+
+
+def test_changed_mode_sees_set_duals():
+    # claude-knight-swap-c2: set 1...exd4 2.Qe1# alone; with the queen on d2 the set mate splits into Qf4/Qe2/Qe1
+    env = dict(os.environ, CHANGED='1', DEFS='exd4,Sd3', PYTHONPATH=ROOT)
+    r = subprocess.run([sys.executable, '-c', SETDUAL_PROBE], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
+    assert r.returncode == 0, r.stderr
+    assert r.stdout.split() == ['-', 'exd4']

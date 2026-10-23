@@ -209,3 +209,7 @@ threats, 1.Qd8! gives a flight.
 Pawn shell (ours, no key): bK e5, bPd6/e6/f6 + d4/f4, wPe4; d5/f5 open the two upper diagonals through e5. The queen
 gives two clean posts (e8, e7); a third pair needs another piece. Both prize-winners use a knight key that mates itself.
 Search: `MODE=zag KP=any THREAT='**' python -m chesscomp.compose.trychange` around a hand kernel; bare cores gave nothing.
+Daily No. 18 (23 Oct 2026) published the knight swap with the king given a role: claude-knight-swap-c2-kd7,
+5R2/3K4/8/4p3/1N1Pk3/2Q3p1/5n2/8 (Kd7 guards c6 in 2.Qc6#). Failed that day: type1_geometry's Kf4 pair (the defence Bd3
+blocks the set mate Qf3; any e3 guard protects 2.Qe3#), Grimshaw cores on d6/c6 next to Ke4 in blind evolve, and a
+knight g7 whose self-blocks e6/f5 guard d4 (postsearch: no mate for either block). evolve CHANGED now refuses set duals.

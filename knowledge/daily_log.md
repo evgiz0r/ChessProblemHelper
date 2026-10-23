@@ -286,6 +286,18 @@ what the next run should try. "Proposals" collects improvements too big for one 
   (a black line through the corrector's square) before any white unit; run evolve with CORR=<sq> CTRY=1 from a hand
   sketch of that line; check every candidate's report for the S~ line before cleaning it.
 
+## 2026-10-23, No. 18: Changed mates
+- Result: claude-knight-swap-c2-kd7, 5R2/3K4/8/4p3/1N1Pk3/2Q3p1/5n2/8, gate PASS: set 1...exd4 2.Qe1#, Sd3 2.Qxd3#; try 1.Rf3?
+  exd4!; 1.Sc2! (2.Qf3#) exd4 2.Qxd4#, Sd3 2.Qc6#, Kd5 2.Qc6#. A light form: the 16 Oct knight swap (his 2x2 idea) with the
+  king moved a5 -> d7 to guard c6 in the flight mate. No richer setting found. Mentor issues #7-#18 had no answers.
+- Minutes (container clock 23:58-00:55): setup and reading 5, study 3, searches and hand work 40 (26 jobs: 18 evolve with
+  bare/Grimshaw/type-1 cores, 4 postsearch, 4 evolve around the light setting; about 35 hand solves), kit change 5, post 10.
+- What wasted time: building on a type1_geometry pair before playing its set mates on the board (Bd3 blocks Qf3; any e3
+  guard protects Qe3, a mate in one); a core with the wrong bishop square ran 3 minutes before I saw it; blind Grimshaw cores.
+- What helped: evolve around the finished light setting with most units fixed showed in minutes which unit had no role.
+- Next run: theme from `next-theme`. For changed mates again: a real second phase (a try with changes) needs a selector
+  whose wrong moves fail for a thematic reason; start from the defences' errors (`compose.errors`), not from a core.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
@@ -295,8 +307,10 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - trychange MODE=zag: score two-move cooks (captures of shell pawns as threats) before the solver sees a hit.
 - A theme reference for Rudenko (none yet; Grimshaw done 11 Oct, Novotny 18 Oct, Le Grand 19 Oct).
 - legrand: replace the hill climb (it drifts off good seeds) by a beam over kernels, or drop it for the pairs layer.
-- critique 'black piece role' (and the gate warning) calls a unit 'not needed' when the variations survive its removal, but
-  ignores a new threat: bPh6 in daily No. 6 stops 2.Qg5# as a second threat. Compare the threat set too before saying 'not needed'.
+- (Done, 16 Oct: critique's removal test now reports 'needed (stops the double threat ...)'.) critique 'black piece role'
+  ignored a new threat (bPh6 in daily No. 6 stopped 2.Qg5# as a second threat).
+- type1_geometry: drop pairs whose thematic defence lands on the queen's set mating line (Kf4: Bd3 on c3-f3), and flag
+  'left' squares whose static guard would protect a queen check there (daily No. 18).
 - A fast pre-filter for evolve: python-chess alone (mate-in-one tables, early exit at the second refutation) ran about
   ten times faster than the solver in daily No. 12's scratch hill.py; score with it, confirm hits with the solver.
 - evolve: FLIGHT=1, a score for a flight-giving key in the diagram (no flight before, given flight mated, two more

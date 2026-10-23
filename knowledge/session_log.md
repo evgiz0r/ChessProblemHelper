@@ -1513,3 +1513,4 @@ no motive layer to mirror.
 - 22 Oct: his bench steps 901-1174: Pb7 -> white knight, shift left, Qh8/pg7/pg3: bourd-bench-masked-sa7-bg1, 1.Bg1! (11+11), every bishop move refuted by its own move; Bf2 sibling with bPh2. Claude: re-solved, removal test of every unit, trytable, scans for replacing Sb8+pa6 and Pb4 (none).
 - 22 Oct: his steps 1175-1247: unshifted knight-b7 version with bQa7 (bourd-bench-masked-sb7-qa7-bh1, 1.Bh1!, 12+10), then back to the shifted 1.Bg1 version; later experiments cooked. Claude's verdict asked ('what do you think?').
 
+- 23 Oct (daily No. 18, routine): changed mates; published claude-knight-swap-c2-kd7 (light knight swap, king a5 -> d7). Tool: evolve CHANGED refuses set duals (set_duals, tested). Failures recorded in themes/references/changed_mates.md and lessons.jsonl.
