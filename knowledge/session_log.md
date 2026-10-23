@@ -1515,3 +1515,4 @@ no motive layer to mirror.
 
 - 23 Oct (daily No. 18, routine): changed mates; published claude-knight-swap-c2-kd7 (light knight swap, king a5 -> d7). Tool: evolve CHANGED refuses set duals (set_duals, tested). Failures recorded in themes/references/changed_mates.md and lessons.jsonl.
 - 23 Oct: theme 'Black unpins a White piece': read Shire, Pachl, Pilchenko/Shavyrin, Ahues, Lincoln in the database; basic scheme claude-unpin-white-queen-scheme (1.Bd7!, single phase); about 30 freethreat/unmask_search runs over self-pin, unmasking, knight, rook and bishop keys and a four-unpin queen pinner; unmask_search gained ALLOWCHECK (tested).
+- 23 Oct: 'unpinning of a white knight': three cores (Sd2 on the 2nd rank, Sd2 with a bishop interposer, Sc5 on the a7-g1 diagonal); 16 freethreat/unmask_search runs; claude-unpin-white-knight-scheme 1.Rfd1! (sound, out-of-play static key).

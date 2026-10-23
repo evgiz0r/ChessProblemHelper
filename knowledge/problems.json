@@ -3533,6 +3533,22 @@
    ],
    "cooked": false,
    "note": "A scheme, not a problem: single phase, both unpins set with the same mates (static key); the mechanism is H. Ahues, Problem Forum 2001, 3rd Prize (psis-2ceda8bcd7: Ba1 pins Qc3, Sf3-d4/e5, threat Bxc6#). Obstacles met: a self-pinning queen key leaves the white king in check in the diagram; an unmasking key (a white unit leaving the pin line) frees the queen in the diagram (mates in one); the pinner's capture 1...Bxc3+ needs a set mate whose flight c6 must be guarded by a unit that is not the threat piece (Sb8 here). Four unpins with a black queen pinner (Qa4/Qa6 direct + Sd4/Se5 indirect) converged on one mate (Qc5) in four freethreat runs."
+  },
+  {
+   "id": "claude-unpin-white-knight-scheme",
+   "fen": "2n5/b4BB1/3P1P2/1NN1kpp1/7r/5PP1/7P/2R2RK1",
+   "stip": "#2",
+   "author": "Claude (23 Oct 2026, theme 'Black unpins a White knight', E. Bourd)",
+   "source": "freethreat (core: Ba7 pins Sc5 to Kg1, Sc8, Rh4, Rc1 for the recapture) then unmask_search ALLOWCHECK=1 (key Rf1-d1).",
+   "themes": [
+    "Black unpins a White knight, by two different units on the two sides of it: 1...Sb6 (between the pinner and the knight, guards d7) 2.Sd3#, 1...Rd4 (between the knight and the white king, guards d3) 2.Sd7#",
+    "the pinner's capture with check 1...Bxc5+ is answered by 2.Rxc5# (the pinned knight stands on the king's rank, so a recapture there checks)"
+   ],
+   "keys": [
+    "Rfd1"
+   ],
+   "cooked": false,
+   "note": "A scheme: the key 1.Rf1-d1 (2.Rd5#) is by a rook out of play (fatal) and static (all variations set); 18 units, 7 pawns. Rules found: a rook interposing next to the white king on the pin rank checks it (1...Rf2+), and the pinner's capture of the knight needs a mating recapture, possible only when the knight stands on a line to the black king with the squares between free."
   }
  ]
 }
