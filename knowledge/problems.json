@@ -3644,6 +3644,23 @@
    ],
    "cooked": false,
    "note": "19 units (bSf8 more than the 1.Bg4 version); same static-key flaw."
+  },
+  {
+   "id": "bourd-bench-unpin-java-bg4-airy",
+   "fen": "5N2/b1pB1pnp/R7/1p2k3/nB1NP3/2P1K3/5R2/5b2",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 23 Oct 2026, session mvlj46nh steps 8-50), from bourd-bench-unpin-java-bg4",
+   "source": "His bench; re-solved by the Python solver, gate PASS, trim: nothing removable; Claude's swap searches (two stoppers for one unit: none; one for one: bPb5 = pawn c4/d3/e2, bPc7 = bPe7, bSg7 = bPg6/bSg3/bRg5, the last two worse).",
+   "themes": [
+    "as bourd-bench-unpin-java-bg4: 1...Sb6 2.Sc6#, 1...Sc5 2.Sf3#, 1...Bxd4+ 2.cxd4#; Java on f6",
+    "white correction by a black bishop: 1.B~? Bh3!; 1.Be6? (cuts Ra6) Sc5!, 1.Bf5? (cuts Rf2) Sb6!, 1.Bh3? Bxh3!; 1.Bg4!",
+    "by-play 1...Sf5+ 2.Rxf5#"
+   ],
+   "keys": [
+    "Bg4"
+   ],
+   "cooked": false,
+   "note": "18 units (9+9), 6 pawns, only 2 White pawns (both in the mates). The queen became a bishop f1 (only the refutation Bh3), its road to b5-d7 blocked by bPb5; Pg3 and bPg5 (shields against the queen's checks) gone; bSg7 (e6, f5), bPf7, bPh7, bPc7 stop Re6, Rf5, Sg6+, Rxf7, Bd6. Flaws: static key; 1...Se8/Se6/Sh5 and 1...Bb8 allow other mates besides the threat; the stoppers cluster on f7-g7-h7."
   }
  ]
 }
