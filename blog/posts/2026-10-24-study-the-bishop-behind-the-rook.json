@@ -66,5 +66,6 @@
   "searches": 22
  },
  "improvement": "Two changes, both tested. (1) chesscomp.compose.evolve has a flight-giving key mode, FLIGHT=N (a proposal in the daily log since 9 Oct). It rewards king moves to squares the king could not reach in the diagram, each answered by its own mate that is not the threat, all distinct. With FSECOND=1 (default) a HIT also needs what the gate calls a second phase: a changed mate against the key (set or try; promotion tries do not count) or a quiet try refuted only by a key-phase defence (not a king move). FNVAR=2 distinct mates are needed against thin play. Kisis's problem is a HIT, and our two-flight knight sacrifice is not. (2) The gate's single-phase test (chesscomp/critique.py) counted any changed mate, also one between two tries with the key unchanged. It now counts only changes against the key, as its own rule says ('set or try against the key'). The full regression passes; tests in tests/test_evolve.py and tests/test_critique_single_phase_vs_key.py.",
- "feedback": []
+ "feedback": [],
+ "mentor_issue": 20
 }
