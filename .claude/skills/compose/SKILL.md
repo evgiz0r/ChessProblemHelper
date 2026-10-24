@@ -149,6 +149,11 @@ square next to the king, getting two phases) before the mates, the mates before 
 non-thematic duals last. If a requirement keeps resisting, consider a level switch (threat to zugzwang), which
 can turn the same Black moves into corrections. Give every construction unit a stated purpose.
 
+## A scheme is its core (E. Bourd, 24 Oct 2026)
+His bench scheme fixes the idea, not the squares: "whatever small movement is not even a thing you should ask, it should
+be trivial as it keeps the scheme the same." Claude asked before moving his Kb4 to a4 (the black bishop's route to d4
+passed c5, next to Kb4); moving it was simply the next step. Only a change of the mechanism itself is his decision.
+
 ## Restructure, do not patch (E. Bourd, 11 Oct 2026)
 "The really small steps cant do it... its whole restructuring." When cooks keep returning or no key comes, keep the
 thematic core and rebuild a whole side at once from the mechanism's needs, then solve that as one change. One-unit

@@ -46,6 +46,9 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   the enhancement... a basic scheme is needed to play around... if the basic scheme turns to be very limited already, we
   need to somewhat limit expectation of the content"). Exception: alphabetic changes (reciprocal, Lacny, Shedey, Le Grand)
   start from a paradoxical scheme before any piece is placed.
+- A scheme is its core, not its placement (E. Bourd, 24 Oct 2026: "scheme has the liberty of moving whatever needed to
+  extend, as long as the core problem remains... whatever small movement is not even a thing you should ask"). Move a
+  king a square, slide a piece along its line, shift or mirror the board whenever it keeps the mechanism; say what moved.
 - When a position resists (no key, cooks coming back), small steps cannot do it: restructure a whole side at once,
   reasoning from what the mechanism needs (E. Bourd, 11 Oct 2026: "i am pretty open to just switching a whole side
   around, the really small steps cant do it... its not step by step. its whole restructuring"). Keep the thematic
