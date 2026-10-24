@@ -3782,6 +3782,21 @@
    ],
    "cooked": false,
    "note": "Fatal: 1...Rxc4+ in the set play has no mate. No single white unit gives one, and no two-unit rank-3 battery (Pd3 + a rook or queen behind) works: the discovered check is blocked by 1...Be3 or by the d2 knight on b3. Static key (every mate is set). Shown as the reason the pin of the pinner must exist in the diagram."
+  },
+  {
+   "id": "claude-unpin-pinned-pinner-rf8",
+   "fen": "3R4/2pp4/1b3n2/7B/K1N3r1/5k2/3n3Q/4R3",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026), diagsearch on E. Bourd's frame mvmtgvyz",
+   "source": "diagsearch D (seed: rook d6 west, black Bh7) found a black knight f6 blocking the threat square and the key 1.Rd8-f8 pinning it down the f-file; diagsearch F moved it to 1.Rh7-f7 (8/2p4R/1b3n2/7B/K1N3r1/5k2/3n3Q/4R3).",
+   "themes": [
+    "The key pins a black knight on f6 (White pins, Black unpins): 1.Rf8! (threat 2.Rxf6#) 1...Bd4 2.Sxd2#, 1...Se4 2.Se5#, 1...Be3 2.Rxe3#; set 1...Sfe4/Sde4 2.Se5#"
+   ],
+   "keys": [
+    "Rf8"
+   ],
+   "cooked": false,
+   "note": "Sound but not a problem yet: the key rook comes from the edge (idle, out of play; from f7 also attacked by Sf6), every mate is set (static key), single phase. Searches A-F on this frame: no key that both has a job and avoids a diagram flight; the structural reason is that the threat 2.Rf6# needs nothing the theme provides."
   }
  ]
 }
