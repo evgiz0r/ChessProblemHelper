@@ -3705,6 +3705,22 @@
    ],
    "cooked": false,
    "note": "Sound, 14 units (9+5), no diagram flight, trim: nothing removable; gate FAIL: single phase (other bishop moves fail to both unpins: only d7 guards e6 and f5). Flaws: recapture dual after 1...Rxd4+ (Kc4 instead of Kb4 is in check from bPd5; with a white Pd5 the g2 knight gives Sxe3+; Bf2 for d4 adds Bxd4#), random rook moves allow the knight mates, the two selections have different motives."
+  },
+  {
+   "id": "claude-bench-two-knights-e4-se2",
+   "fen": "8/4R3/5n1q/1P1kB1n1/1KN3r1/3P1PN1/8/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench sketch mvlpbcgh-0169, 8/8/5n1q/3k2n1/1KN3r1/3P1P2/N7/8) and Claude (24 Oct 2026)",
+   "source": "freethreat on his sketch (THREAT=Na2c3, NOFLIGHT, pin line empty) -> 8/4R3/5n1q/1P1kB1n1/1KN3r1/3P4/N3R3/8; key by hand: the threat knight from g3 (only Se2 reaches a square threatening c3; from a4 it would also mate on b6), Pf3 for e4 after 1...Rxc4+ 2.dxc4.",
+   "themes": [
+    "Black unpins a White knight on the 4th rank: two black knights interpose on the same square e4, each opening the queen h6 onto the other mating square: 1...Sfe4 (Qh6-b6 open) 2.Se3#, 1...Sge4 (Qh6-e3 open) 2.Sb6#; both defend by guarding c3",
+    "1.Se2! (threat 2.Sc3#); 1...Rxc4+ 2.dxc4#"
+   ],
+   "keys": [
+    "Se2"
+   ],
+   "cooked": false,
+   "note": "Sound, 13 units (8+5), trim: nothing removable; dual avoidance unified (line opened by the defence, critique). Flaws: single phase (gate), static key (the set has the same mates), the key piece stands attacked by Rg4 (escape look), random-move duals (1...Rf4 Sxf4#/Sc3#), 1...Rxc4+ 2.dxc4# captures the defender. The c1-knight key 1.Sa2! is also sound but out of play (fatal)."
   }
  ]
 }
