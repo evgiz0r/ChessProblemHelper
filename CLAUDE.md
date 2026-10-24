@@ -61,6 +61,10 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   with the solution beside it, for a file or a database record: `tools/card_png.py out.png --portrait` or `--id psis-…`.
 - Every session gives him the link to the Composing Bench, in its first reply and with every diagram:
   https://claude.ai/code/artifact/acc24a96-d9f6-4076-98a9-7915ed586916 (E. Bourd, 10 Oct 2026).
+- Keep reading his bench while working, in every session and on every task (E. Bourd, 24 Oct 2026: "while working, keep
+  checking if im advancing in the bench in general. if yes also take into consideration if i advanced"): query the
+  `journal` for steps newer than the last one read before each solve batch and before each answer. If he advanced,
+  build on his newest board, not on the one you started from, and say what you took from it; if not, answer as normal.
 - A unit there only for a try is a drawback, weighed against what the try buys (E. Bourd, 11 Oct 2026; on
   7 Oct he had called it fatal).
 - Tolerance to flaws grows with content (E. Bourd, 12 Oct 2026): "a small 1 variation problem cannot be compared to

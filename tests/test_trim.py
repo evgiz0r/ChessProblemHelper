@@ -13,3 +13,13 @@ def test_trim_works_for_a_zugzwang_key():
     key, board, found = trim('8/2n5/2B2RK1/4k3/3R4/2P1P1n1/8/8', max_removed=2)
     assert key == 'Bd7'
     assert {f for _, f in found} == {'8/2n5/2B2RK1/4k3/3R4/4P1n1/8/8', '8/2n5/2B2RK1/4k3/3R4/2P3n1/8/8'}
+
+
+def test_trim_allow_flight_keeps_a_structural_flight():
+    # 24 Oct 2026, his masked pin 1.Bf2!: e4 is the only answer to the free knight's checks, so the diagram flight
+    # is the price of the scheme; without --allow-flight trim refused the diagram, with it wPc2 or bPd3 can go
+    fen = 'b2r4/2Q1R3/1p3n1q/1N1kPpnp/r1NB3K/1P1p1pP1/2P5/8'
+    key, board, found = trim(fen, max_removed=1, allow_flight=True)
+    assert key == 'Bf2'
+    assert {f for _, f in found} == {'b2r4/2Q1R3/1p3n1q/1N1kPpnp/r1NB3K/1P1p1pP1/8/8',
+                                     'b2r4/2Q1R3/1p3n1q/1N1kPpnp/r1NB3K/1P3pP1/2P5/8'}

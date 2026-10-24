@@ -29,6 +29,10 @@ Solve details start with the verdict (COOKED / Key / No solution), then threat a
    gap between two steps is usually a break, not deliberation. Count steps and solves, not minutes; never
    report a sitting's length or a pause as effort, and never infer that a step was hard from the gap before it.
 
+While working on anything (E. Bourd, 24 Oct 2026, in general, not only in one session): query the journal for steps
+newer than the last one read before each solve batch and before each answer. If he advanced, build on his newest
+board and say what you took from it (his 1.Bf2! came on the bench while Claude was still searching his older board).
+
 Transforms respect pawns (session 29): with pawns on the board a rotation or the up-down mirror is made with
 a warning naming the pawns to re-place (fine for cook-stoppers and blocks, undo when a pawn move is
 thematic; pawns landing on rank 1 or 8 are named as illegal). An up/down shift that puts a pawn on rank 1

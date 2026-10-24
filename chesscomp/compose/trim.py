@@ -9,6 +9,8 @@ its mates, no new defence at all), there is no diagram flight and no unprovided 
     python3 -m chesscomp.compose.trim FEN [--keep e5,d7] [--max 4] [--tries]
 --tries also keeps every try with its refutations: without it trim removed his wPh2, the unit that gave the random
 bishop move its one refutation in a white correction (E. Bourd, 18 Oct 2026). Use it whenever the tries are content.
+--allow-flight keeps the diagram's own flights (no new one): for a scheme that pays a flight for its content, like
+his masked pin 1.Bf2! where e4 is the only answer to the free knight's checks (E. Bourd, 24 Oct 2026).
 """
 from __future__ import annotations
 import argparse
@@ -17,13 +19,20 @@ from ..core import Problem
 from ..analysis import analyse
 
 
-def key_play(fen: str):
-    """(keys, {defence: frozenset(mates)} of the key phase, unprovided checks in the set) or None."""
+def diagram_flights(fen: str) -> set:
+    """Squares the Black king can move to in the diagram (Black to move)."""
+    n = chess.Board(fen + ' w - - 0 1'); n.push(chess.Move.null())
+    return {m.to_square for m in n.legal_moves if m.from_square == n.king(chess.BLACK)}
+
+
+def key_play(fen: str, flights: set | None = None):
+    """(keys, {defence: frozenset(mates)} of the key phase, unprovided checks in the set) or None.
+    flights: the diagram flights allowed to stay (None: no flight at all)."""
     b = chess.Board(fen + ' w - - 0 1')
     if not b.is_valid():
         return None
     n = b.copy(); n.push(chess.Move.null())
-    if not n.is_valid() or any(m.from_square == n.king(chess.BLACK) for m in n.legal_moves):
+    if not n.is_valid() or not diagram_flights(fen) <= (flights or set()):
         return None
     try:
         r = analyse(Problem.from_fen(b.fen(), '#2'), include_tries=False, include_set=True, time_limit=10)
@@ -50,9 +59,10 @@ def try_map(fen: str):
             for p in r['phases'] if p['type'] == 'try'}
 
 
-def trim(fen: str, keep=(), max_removed=6, keep_tries=False):
+def trim(fen: str, keep=(), max_removed=6, keep_tries=False, allow_flight=False):
     tries0 = try_map(fen) if keep_tries else None
-    base = key_play(fen)
+    flights = diagram_flights(fen) if allow_flight else None
+    base = key_play(fen, flights)
     if not base or len(base[0]) != 1:
         raise SystemExit('the diagram is not sound: nothing to trim against')
     keys0, play0, _ = base
@@ -73,7 +83,7 @@ def trim(fen: str, keep=(), max_removed=6, keep_tries=False):
                 b = board.copy()
                 for x in g:
                     b.remove_piece_at(x)
-                kp = key_play(b.board_fen())
+                kp = key_play(b.board_fen(), flights)
                 if not kp or kp[0] != keys0 or kp[2]:
                     continue
                 if any(kp[1].get(d) != m for d, m in play0.items() if m) or \
@@ -96,8 +106,9 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument('fen'); ap.add_argument('--keep', default=''); ap.add_argument('--max', type=int, default=6)
     ap.add_argument('--tries', action='store_true', help='also keep every try with its refutations')
+    ap.add_argument('--allow-flight', action='store_true', help="keep the diagram's own flights (no new one)")
     a = ap.parse_args(argv)
-    key, board, found = trim(a.fen.split()[0], [k for k in a.keep.split(',') if k], a.max, a.tries)
+    key, board, found = trim(a.fen.split()[0], [k for k in a.keep.split(',') if k], a.max, a.tries, a.allow_flight)
     if not found:
         print(f'1.{key}: no unit (or set of units) can be removed with the same key and play'); return
     best = max(len(g) for g, _ in found)

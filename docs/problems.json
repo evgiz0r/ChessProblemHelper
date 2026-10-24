@@ -3721,6 +3721,22 @@
    ],
    "cooked": false,
    "note": "Sound, 13 units (8+5), trim: nothing removable; dual avoidance unified (line opened by the defence, critique). Flaws: single phase (gate), static key (the set has the same mates), the key piece stands attacked by Rg4 (escape look), random-move duals (1...Rf4 Sxf4#/Sc3#), 1...Rxc4+ 2.dxc4# captures the defender. The c1-knight key 1.Sa2! is also sound but out of play (fatal)."
+  },
+  {
+   "id": "bourd-bench-unpin-masked-bf2",
+   "fen": "b2r4/2Q1R3/1p3n1q/1N1kPpnp/r1NB3K/1P1p1pP1/8/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench mvmq9a5m, 171 steps, 24 Oct 2026); Claude: trim of wPc2",
+   "source": "his two-knight e4 scheme with the self-block tries on b6/e3: Bd4 on the pin line masks the pin (Sc4 free in the diagram), king and rook swapped (Kh4, Ra4) at step 95, sound at step 101, step 166 b2r4/2Q1R3/1p3n1q/1N1kPpnp/r1NB3K/1P1p1pP1/2P5/8; trim --allow-flight: wPc2 or bPd3 can go (one of them covers d3 after 1...Ke4); wPc2 removed (9+12).",
+   "themes": [
+    "Black unpins a White knight on the 4th rank (Ra4-Sc4-Kh4): the key unmasks the pin (White self-pin), the two black knights interpose on e4, self-block it and open the queen h6 onto the other mating square: 1...Sfe4 2.Se3#, 1...Sge4 2.Sxb6#; the same mates set (self-block only, no pin)",
+    "Tries by the key piece blocking a mating square: 1.Bxb6? Sge4!, 1.Be3? Sfe4!; 1.Bg1? f2!; 1.Qxb6? Rxc4!; key 1.Bf2! (threat 2.Sc3#), 1...Ke4 2.Sc3#, 1...Rxc4+ 2.Qxc4#"
+   ],
+   "keys": [
+    "Bf2"
+   ],
+   "cooked": false,
+   "note": "Sound, 21 units (9+12, 8 pawns), trim --allow-flight --tries: nothing more. Gate FAIL: diagram flight e4 unprovided. It is structural: with the pin masked Sc4 is free and 1.Se3+/1.Sxb6+ are met only by Ke4, so a set mate for Ke4 would cook. It buys the three bishop moves: with the pin real, a bishop adding the d4 guard must come from off the a7-g1 diagonal and reaches only one of b6/e3/f2. E. Bourd: 'yes its a fatal flaw, but here it is part of the scheme... the content does give a lot of value despite the fatal flaw, and its a decent problem even with it.' Other flaws: no changed mates (set = solution mates, the key adds the unpin motive), 1.Bxb6? captures a pawn, 1...Bb7 2.Qxb7#/Sc3# random dual, 1...Rxc4+ 2.Qxc4#, cook-stoppers Ba8 (Qb7#), Rd8 (Qd6+), Pb6 (Qc5+), Ph5 (Qh6 on Kh4). 1.Bb2/Ba1 threaten nothing (Sc3 cuts the bishop off d4), 1.Bc3 blocks the threat square."
   }
  ]
 }
