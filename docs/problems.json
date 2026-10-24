@@ -3661,6 +3661,20 @@
    ],
    "cooked": false,
    "note": "18 units (9+9), 6 pawns, only 2 White pawns (both in the mates). The queen became a bishop f1 (only the refutation Bh3), its road to b5-d7 blocked by bPb5; Pg3 and bPg5 (shields against the queen's checks) gone; bSg7 (e6, f5), bPf7, bPh7, bPc7 stop Re6, Rf5, Sg6+, Rxf7, Bd6. Flaws: static key; 1...Se8/Se6/Sh5 and 1...Bb8 allow other mates besides the threat; the stoppers cluster on f7-g7-h7."
+  },
+  {
+   "id": "claude-unpin-orthogonal-rf3-scheme",
+   "fen": "8/8/2p4B/4k3/3R4/2K1NrpB/Q7/8",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026, theme 'unpin of a white knight, the pin on an orthogonal line', E. Bourd)",
+   "source": "freethreat (core Kc3, Se3, bRf3, bKe5, Bh3, bPg3; EMPTY=d3), from a hand core; 4+4+3 earlier runs on other cores.",
+   "themes": [
+    "the pinner unpins by self-blocking: Rf3 pins Se3 to Kc3 along the 3rd rank; 1...Rf6 2.Sc4#, 1...Rf5 2.Sg4#; threat 2.Qe6#",
+    "1...Rf6 guards e6, 1...Rf5 cuts Bh3 from e6; Java on e6: Rf5 + Sc4 (cuts Qa2) leave e6 free; after Rf6, Sg4 cuts Bh3 from f5"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Post-key scheme only. Hole: 1...Rxe3+ (the pinner takes the pinned knight with check; d3 must stay empty for the pin, so it is always check). Tried: a rook on e2 (battery behind the knight: every knight move mates), cross-check knights on d3 (the rook takes d3), a royal battery Bb2/Ba1 (Rd4 blocks d4), Qh3/Ba2 swapped (1...Rf5 gets Qxf5# too, 2.Qxe3+ Kf5)."
   }
  ]
 }
