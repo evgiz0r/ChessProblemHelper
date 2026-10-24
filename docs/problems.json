@@ -3737,6 +3737,22 @@
    ],
    "cooked": false,
    "note": "Sound, 22 units (10+12, 9 pawns). wPc2 plays only 1.cxd3? (and covers d3 after 1...Ke4 with bPd3): E. Bourd, 24 Oct 2026: 'i wanted c2 for the try, i know its fake, but it somewhat \"proves\" the knight is unpinned, and the key pins it'. Gate FAIL: diagram flight e4 unprovided. It is structural: with the pin masked Sc4 is free and 1.Se3+/1.Sxb6+ are met only by Ke4, so a set mate for Ke4 would cook. It buys the three bishop moves: with the pin real, a bishop adding the d4 guard must come from off the a7-g1 diagonal and reaches only one of b6/e3/f2. E. Bourd: 'yes its a fatal flaw, but here it is part of the scheme... the content does give a lot of value despite the fatal flaw, and its a decent problem even with it.' Other flaws: no changed mates (set = solution mates, the key adds the unpin motive), 1.Bxb6? captures a pawn, 1...Bb7 2.Qxb7#/Sc3# random dual, 1...Rxc4+ 2.Qxc4#, cook-stoppers Ba8 (Qb7#), Rd8 (Qd6+), Pb6 (Qc5+), Ph5 (Qh6 on Kh4). 1.Bb2/Ba1 threaten nothing (Sc3 cuts the bishop off d4), 1.Bc3 blocks the threat square."
+  },
+  {
+   "id": "claude-unpin-knight-far-bg3-scheme",
+   "fen": "8/2B5/5n2/8/r1N4K/R2B1k2/4R3/8",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026), on E. Bourd's bench start mvmtgvyz (bK f3, wS c4)",
+   "source": "freethreat CORE 8/8/5n2/8/r1N4K/5k2/8/8 (Kh4, pinner Ra4, EMPTY d4-g4, NOFLIGHT, WANT Ne4->Se5, Ng4->Sd2) -> post-key 8/8/5n2/8/r1N4K/R2B1kB1/4R3/8 (6+3, threat Rf2#, 1...Rxc4+ 2.Bxc4# by the a3-rook battery); keyfind: 1.Bg3! from c7/b8 (long) or e5/d6.",
+   "themes": [
+    "Black unpins a White knight three files and one rank from the king (Sc4, Kf3; mates Sd2#/Se5#), pinned on the 4th rank (Ra4-Sc4-Kh4): Black knight correction, 1...S~ 2.Rf2#, 1...Sg4 (guards f2, unpins, guards e5) 2.Sd2#, 1...Se4 (guards f2, unpins, guards d2) 2.Se5#",
+    "1.Bg3! (threat 2.Rf2#); 1...Rxc4+ 2.Bxc4# (battery Ra3-Bd3); set 1...Sg4 2.Sd2#, 1...Se4 unprovided (2.Se5 cuts Bc7 from f4/g3); tries 1.Rxa4? Se4!, 1.Kh3? Se4!"
+   ],
+   "keys": [
+    "Bg3"
+   ],
+   "cooked": false,
+   "note": "Sound, 9 units (6+3), no pawns, gate PASS. A scheme: one selector knight, selection by direct guard of the other mating square, both free-knight tries refuted by 1...Se4, the pinner's departures give extra mates (minor), 1...Rxc4+ 2.Bxc4# recaptures the checking defender. Second-layer attempt: bishop d2 with Pg3 (8/8/5n2/8/r1N4K/R2B1kP1/3BR3/8): 1.Be1! and the white interference try 1.Be3? Rxc4+! (cuts the battery), but 1.Bf4 cooks (interposes on the pin line, frees the knight)."
   }
  ]
 }
