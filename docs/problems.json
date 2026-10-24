@@ -3675,6 +3675,20 @@
    "keys": [],
    "cooked": false,
    "note": "Post-key scheme only. Hole: 1...Rxe3+ (the pinner takes the pinned knight with check; d3 must stay empty for the pin, so it is always check). Tried: a rook on e2 (battery behind the knight: every knight move mates), cross-check knights on d3 (the rook takes d3), a royal battery Bb2/Ba1 (Rd4 blocks d4), Qh3/Ba2 swapped (1...Rf5 gets Qxf5# too, 2.Qxe3+ Kf5)."
+  },
+  {
+   "id": "claude-unpin-orthogonal-rank4-postkey",
+   "fen": "2B1N3/8/R7/3pk3/1K1N3r/2PPP1P1/6n1/7b",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026, from E. Bourd's bench pin 8/8/8/4k3/1K1N3r/2P1P3/8/8: Rh4 pins Sd4 to Kb4 along the 4th rank)",
+   "source": "freethreat (core his pin + Pc3, pin line empty, NOFLIGHT) gave the threat Ra6-e6 and 1...Rh6 2.Sf3#; the second variation (bSg2-f4 unmasking bBh1) and the cleaning (Bc8, Se8, Pd3, Pg3) by hand with play.py, one change per check.",
+   "themes": [
+    "Black unpins a White knight on an orthogonal line (4th rank) twice, each unpin also guarding the threat square e6: 1...Rh6 (the pinner leaves the line; guards e6 and c6) 2.Sf3#, 1...Sf4 (interposition; guards e6, unmasks Bh1 onto f3) 2.Sc6#; threat 2.Re6#",
+    "no flight in the selection: one mate is stopped by the arrival guard of its square (Rh6 -> c6), the other by black line opening (Sg2-f4 -> Bh1-f3); 1...Rxd4+ 2.exd4#/cxd4#"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Post-key only. keyfind: no sound key; closest 1.Be6-c8 (white bishop on the threat square) cooked by Bd7/Bg4/Bh3, with bPf5 by Bd7/Bf7/Bg8 (the bishop guards e6 from both diagonals); Ra6-from-a-file keys cooked by white king moves (the king leaving the 4th rank unpins). Flaws: 1...Rxd4+ recapture dual, random rook moves allow the knight mates, Pg3 only for 1...Sxe3."
   }
  ]
 }
