@@ -3689,6 +3689,22 @@
    "keys": [],
    "cooked": false,
    "note": "Post-key only. keyfind: no sound key; closest 1.Be6-c8 (white bishop on the threat square) cooked by Bd7/Bg4/Bh3, with bPf5 by Bd7/Bf7/Bg8 (the bishop guards e6 from both diagonals); Ra6-from-a-file keys cooked by white king moves (the king leaving the 4th rank unpins). Flaws: 1...Rxd4+ recapture dual, random rook moves allow the knight mates, Pg3 only for 1...Sxe3."
+  },
+  {
+   "id": "claude-unpin-orthogonal-rank4-bd7",
+   "fen": "4N3/8/R1B5/3pk3/1K1N3r/2PPP1P1/6n1/7b",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026, on E. Bourd's bench pin Kb4/Sd4/Rh4)",
+   "source": "From claude-unpin-orthogonal-rank4-postkey: the key bishop placed on c6 (blocking the threat rook and the mating square) by hand after keyfind, keyfind --patch and three diagsearch runs found only flight or cooked keys.",
+   "themes": [
+    "1.Bd7! (threat 2.Re6#): the key opens the a6 rook's line and the mating square c6, and guards e6/f5 for both mates",
+    "two unpins of the White knight on the 4th rank, both guarding the threat square: 1...Rh6 2.Sf3# (pinner leaves, guards c6), 1...Sf4 2.Sc6# (interposition, unmasks Bh1 onto f3); 1...Rxd4+ 2.cxd4#/exd4#"
+   ],
+   "keys": [
+    "Bd7"
+   ],
+   "cooked": false,
+   "note": "Sound, 14 units (9+5), no diagram flight, trim: nothing removable; gate FAIL: single phase (other bishop moves fail to both unpins: only d7 guards e6 and f5). Flaws: recapture dual after 1...Rxd4+ (Kc4 instead of Kb4 is in check from bPd5; with a white Pd5 the g2 knight gives Sxe3+; Bf2 for d4 adds Bxd4#), random rook moves allow the knight mates, the two selections have different motives."
   }
  ]
 }
