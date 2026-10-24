@@ -3767,6 +3767,21 @@
    "keys": [],
    "cooked": false,
    "note": "Post-key without a good key yet. No holes; random duals after 1...Ba5 and 1...c5 (Rf6#/Re3#). With White to move the h6 rook also solves (Rg6, Rh7, Rhe6, Rc6, Rxb6), so keys that leave it are cooked. A free pinner in the diagram always has 1...Rxc4+, which no mate can answer (no recapture checks f3)."
+  },
+  {
+   "id": "claude-unpin-pinned-pinner-bh5-try",
+   "fen": "8/3R1B2/1b1P4/8/K1N3r1/5k2/3n3Q/4R3",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026), diagsearch on E. Bourd's frame mvmtgvyz",
+   "source": "diagsearch B (CORE frame + Bb6/Sd2, bishop free, seed with Bf7) -> 8/2BR1B2/1b1P4/8/K1N3r1/5k2/3n3Q/4R3; wBc7 removed (superfluous).",
+   "themes": [
+    "1.Bh5! double purpose: clears f7 for 2.Rf7# and pins the pinner Rg4 (so it cannot interpose on f4); 1...Bd4 2.Sxd2#, 1...Se4 2.Se5#, 1...Be3 2.Rxe3#"
+   ],
+   "keys": [
+    "Bh5"
+   ],
+   "cooked": false,
+   "note": "Fatal: 1...Rxc4+ in the set play has no mate. No single white unit gives one, and no two-unit rank-3 battery (Pd3 + a rook or queen behind) works: the discovered check is blocked by 1...Be3 or by the d2 knight on b3. Static key (every mate is set). Shown as the reason the pin of the pinner must exist in the diagram."
   }
  ]
 }
