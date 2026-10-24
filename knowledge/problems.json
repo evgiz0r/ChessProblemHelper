@@ -3595,6 +3595,72 @@
    "keys": [],
    "cooked": false,
    "note": "Scheme, post-key position only (Black to move): one threat, every defence answered. No key yet: with White to move it also wins by Sxg6+, Re6+, Bd6+, Rf5+ (keyfind: only Sd4/Sf8 carry no such line). bPe7, bPf7, bPg6 only stop the contact mates Bd6, Re6/Sg6, Rf5 that the pinned knight's guards (e6, f5) make possible. In the shifted version (Ba8 pins Sd5 to Ke4: no exit for the pinner) the same mechanism has four contact mates and no two-unit stopper set: Black cannot guard e7 from rank 8."
+  },
+  {
+   "id": "claude-unpin-java-bd6-bb8",
+   "fen": "r1N5/1p6/b2Bpp2/R5p1/4k3/nBPN4/2P1K3/5R2",
+   "stip": "#2",
+   "author": "Claude (23 Oct 2026, from E. Bourd's bench board 8/5N2/b2Bpp1p/R5p1/4k3/nBPN2P1/2P1K3/5R2: the Java scheme one rank down, the key bishop standing on the threat square d6)",
+   "source": "unmask_search (KSQ b8, FSQ d6, core = his mechanism with the threat knight on c8), 240 s; three sister runs (c7, g3, b8 with pure tries required) found no pure try.",
+   "themes": [
+    "Black unpins a White knight (Ba6 pins Sd3 to Ke2): 1...Sb5 2.Sc5#, 1...Sc4 2.Sf2#, 1...Bxd3+ 2.cxd3#; Java selection (Ra5 / Rf1 / Bb3)",
+    "the key bishop vacates the threat square d6 (2.Sd6#) and shuts the black Ra8 off the threat knight c8"
+   ],
+   "keys": [
+    "Bb8"
+   ],
+   "cooked": false,
+   "note": "Unique key, but only by a device: every try (Bc7, Bg3, Bh2, Bxa3) fails to the same 1...Rxc8, and the set play already has both mates (the bishop on d6 guards e5 and f4 through e5), so the key changes no mate. Not recommended. Structural reason: e5 and f4 lie on one line through d6, so the bishop keeps both or neither; Be5 and Bf4 stand on the Java lines (Ra5's rank, Rf1's file) and are refuted by both unpins."
+  },
+  {
+   "id": "bourd-bench-unpin-java-bg4",
+   "fen": "5N2/b2Bpp1q/R5p1/4k1p1/nB1NP3/2P1K1P1/5R2/8",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 23 Oct 2026, sessions mvlfs0ei/mvlj46nh), from claude-unpin-knight-java-scheme",
+   "source": "His bench; re-solved by the Python solver, gate PASS, trim: nothing removable.",
+   "themes": [
+    "Black unpins a White knight (Ba7 pins Sd4 to Ke3) by one knight step: 1...Sb6 2.Sc6#, 1...Sc5 2.Sf3#; Java dual avoidance on f6 (Ra6 / Rf2)",
+    "the key bishop stands on the threat square d7 (2.Sd7#); white correction: 1.B~? Qh3! (the queen reaches d7 along h3-d7)",
+    "white interference tries on the same square f6: 1.Be6? (cuts Ra6) Sc5!, 1.Bf5? (cuts Rf2) Sb6!; 1.Bh3? Qxh3!; key 1.Bg4! closes the queen's line and cuts nothing",
+    "1...Bxd4+ 2.cxd4#"
+   ],
+   "keys": [
+    "Bg4"
+   ],
+   "cooked": false,
+   "note": "18 units (10+8, 7 pawns). Flaws: static key (the set already has 1...Sb6 2.Sc6#, 1...Sc5 2.Sf3#: the bishop on d7 already guards e6/f5); Pg3 and bPg5 only shield Ke3 from Qh3+/Qh6+; bPe7, bPf7, bPg6 stop the contact mates Bd6, Re6, Rf5 (the queen also guards g6/f7 against Sxg6+ and Rxf7); 1...Bb8 lets Sc6/Sf3 besides the threat. Lower sibling bourd-bench-unpin-java-bg3 (19 units). A black bishop f1 in place of Qh7+Pg3+bPg5 fails: Sxg6+, Re6+, Rxf7 cook and 1...Bb5 refutes the key."
+  },
+  {
+   "id": "bourd-bench-unpin-java-bg3",
+   "fen": "5n2/5N2/b2Bpp1q/R5p1/4k1p1/nB1NP3/2P1K1P1/5R2",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 23 Oct 2026, session mvlfs0ei)",
+   "source": "His bench; re-solved by the Python solver.",
+   "themes": [
+    "the same scheme one rank down: 1.Bg3! (2.Sd6#), 1.B~? Qh2!, 1.Be5? Sc4!, 1.Bf4? Sb5!, 1.Bh2? Qxh2!; 1...Sb5 2.Sc5#, 1...Sc4 2.Sf2#, 1...Bxd3+ 2.cxd3#"
+   ],
+   "keys": [
+    "Bg3"
+   ],
+   "cooked": false,
+   "note": "19 units (bSf8 more than the 1.Bg4 version); same static-key flaw."
+  },
+  {
+   "id": "bourd-bench-unpin-java-bg4-airy",
+   "fen": "5N2/b1pB1pnp/R7/1p2k3/nB1NP3/2P1K3/5R2/5b2",
+   "stip": "#2",
+   "author": "E. Bourd (bench, 23 Oct 2026, session mvlj46nh steps 8-50), from bourd-bench-unpin-java-bg4",
+   "source": "His bench; re-solved by the Python solver, gate PASS, trim: nothing removable; Claude's swap searches (two stoppers for one unit: none; one for one: bPb5 = pawn c4/d3/e2, bPc7 = bPe7, bSg7 = bPg6/bSg3/bRg5, the last two worse).",
+   "themes": [
+    "as bourd-bench-unpin-java-bg4: 1...Sb6 2.Sc6#, 1...Sc5 2.Sf3#, 1...Bxd4+ 2.cxd4#; Java on f6",
+    "white correction by a black bishop: 1.B~? Bh3!; 1.Be6? (cuts Ra6) Sc5!, 1.Bf5? (cuts Rf2) Sb6!, 1.Bh3? Bxh3!; 1.Bg4!",
+    "by-play 1...Sf5+ 2.Rxf5#"
+   ],
+   "keys": [
+    "Bg4"
+   ],
+   "cooked": false,
+   "note": "18 units (9+9), 6 pawns, only 2 White pawns (both in the mates). The queen became a bishop f1 (only the refutation Bh3), its road to b5-d7 blocked by bPb5; Pg3 and bPg5 (shields against the queen's checks) gone; bSg7 (e6, f5), bPf7, bPh7, bPc7 stop Re6, Rf5, Sg6+, Rxf7, Bd6. Flaws: static key; 1...Se8/Se6/Sh5 and 1...Bb8 allow other mates besides the threat; the stoppers cluster on f7-g7-h7."
   }
  ]
 }
