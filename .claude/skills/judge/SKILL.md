@@ -26,6 +26,14 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
      E. Bourd 11 Oct 2026). Unified play beats a mixed set (defences that all
      guard one square, tries on one scheme), E. Bourd. A protected key piece the king attacks is no flaw
      when the key has several jobs (gives a flight, opens a line, guards the threat square).
+3b. Cause before verdict (E. Bourd, 24 Oct 2026: "a good critique is a good composer... this pure raw flaw count needs
+   some element of understanding the anatomy, freedom of the position"). For every flaw the critique flags, say what it
+   is FOR before calling it a flaw: which unit or line makes it, what it does in the scheme, and what the obvious repair
+   would break (reason it from the anatomy; one solve if unsure). Structural (the repair kills the idea or cooks it):
+   it is the price of the idea, judged with the idea. Constructional (another construction does the job): a real flaw,
+   repair it before showing. Read every try as a sentence: what does it show about the diagram? His masked pin 1.Bf2!:
+   the e4 flight is the only answer to the free knight's checks (a set mate for Ke4 cooks), and wPc2 plays
+   1.cxd3?, which shows that knight free before the key pins it; both were flagged, both are the idea.
 4. Weigh, do not count; tolerance grows with content (E. Bourd, 12 Oct: "we pay flaws for content, and find
    the balance"). Place the problem on the scale in `references/checklist.md` (light / medium / rich) first.
    Weigh, do not count: a doubled or tripled theme can carry flaws that would be fatal in a simple
