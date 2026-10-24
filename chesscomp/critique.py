@@ -637,7 +637,10 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     defences = {v['defence']['uci'] for v in real if not v['refutes']}
     refuted_by_defence = [t for t in tries if not t['first_move']['san'].endswith('+') and len(t['refutations']) == 1
                           and t['refutations'][0]['uci'] in defences]   # a try refuted by a thematic defence
-    if not res['relations'].get('changed') and not refuted_by_defence \
+    # a change counts only against the key, as the rule says (daily No. 19: a black pawn added to a single-phase
+    # flight-giving key changed 1...e4 between the tries 1.Sf5? and 1.Sa6? and the gate passed it)
+    vs_key = [c for c in res['relations'].get('changed') or [] if any(p.startswith('key ') for p in c['phases'])]
+    if not vs_key and not refuted_by_defence \
             and not any(f['severity'] == 'plus' and f['rule'] in second for f in F):
         add('major', 'single phase', 'one phase: no changed mates and no thematic tries (random tries do not count); '
             'publishable only if the '

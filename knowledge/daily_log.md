@@ -298,6 +298,22 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For changed mates again: a real second phase (a try with changes) needs a selector
   whose wrong moves fail for a thematic reason; start from the defences' errors (`compose.errors`), not from a core.
 
+## 2026-10-24, No. 19: Flight-giving key (study post)
+- Result: no sound original that passes the gate; study post on Kisis, Heureka! 1992-93, 3rd Prize (psis-5b56c6c8d6),
+  1b6/5N1n/1B2p3/1p3b1Q/4k3/4P3/B1R5/2N4K, 1.Rd2? Bg4!, 1.Rf2? (Bg4 Bb1#) Sg5!, 1.Bb1! (2.Rd2#) Bg4 2.Rf2#, Kd5 2.Rc5#.
+  Attempts shown: our knight sacrifice + bPf6 (a change between two tries only; the gate passed it, fixed), the junk hit
+  7B/2P5/4p1K1/3pN3/2p1k3/8/3Q4/8, and the bishop moved g6 -> b1 (no key). Mentor issues #7-#19 had no answers.
+- Minutes (container clock 23:59-02:05): setup and reading 10, study 10, evolve FLIGHT mode and tests 20, searches 50
+  (22 evolve jobs in 5 rounds, one keyfind scan of 187 post-key positions), hand work 15, critique fix and full run 10, post 15.
+- What wasted time: the first rounds scored a change between two tries and a promotion try as a second phase (fixed, and
+  the same hole was in the gate); a mechanism (Bd4 next to the king) whose contradiction (no knight threat also guards d4)
+  I saw only after five jobs; `pkill -f` and `pgrep -f scan.py` matching their own shells again (anchor with ^python).
+- What helped: aligning the search's second phase with the gate's (critique line 'single phase') before the second round;
+  reading Kisis with the solver and the anatomy (the key builds a battery, so the tries are the same pieces reordered).
+- Next run: theme from `next-theme`. For a flight-giving key again: start from the try, not the flight. Choose a key piece
+  that builds a battery or vacates a threat square, name the defence that refutes its try and the key's mate for it, then
+  run evolve FLIGHT=1 around that sketch.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
@@ -313,8 +329,7 @@ what the next run should try. "Proposals" collects improvements too big for one 
   'left' squares whose static guard would protect a queen check there (daily No. 18).
 - A fast pre-filter for evolve: python-chess alone (mate-in-one tables, early exit at the second refutation) ran about
   ten times faster than the solver in daily No. 12's scratch hill.py; score with it, confirm hits with the solver.
-- evolve: FLIGHT=1, a score for a flight-giving key in the diagram (no flight before, given flight mated, two more
-  distinct mates); the scratch scorer of 9 October is the model.
+- (Done, 24 Oct: evolve FLIGHT=N, FSECOND, FNVAR.) evolve: a score for a flight-giving key in the diagram.
 - compose.oneunit (daily No. 16 wrote a scratch version that also moves or removes one unit before adding one, 5,500
   positions per CPU in 7 minutes): every single-unit addition or removal around a diagram, kept when one named key and the named mates
   survive (the scratch one.py of 10 October found 1.Sg7 in daily No. 5).

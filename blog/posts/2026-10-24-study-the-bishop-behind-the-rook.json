@@ -1,0 +1,71 @@
+{
+ "date": "2026-10-24",
+ "title": "Study: the bishop behind the rook",
+ "theme": "flight-giving-key",
+ "theme_name": "Flight-giving key",
+ "fen": "1b6/5N1n/1B2p3/1p3b1Q/4k3/4P3/B1R5/2N4K",
+ "stip": "#2",
+ "author": "Imants Kisis",
+ "source": "Heureka! 1992-93, 3rd Prize (Problemesis record psis-5b56c6c8d6)",
+ "teaser": "A study post: today's attempts found no original that passes our gate, so here is a prize-winner that has what they lacked. The key gives the black king a square, and its own mate answers it. But look at the two tries first: each threatens a different mate, and the key threatens a third. Which white unit becomes which, and why does the same black bishop move refute one try and fail in the other?",
+ "solution": [
+  "#Tries",
+  "1.Rd2? (2.Bb1#)",
+  "  but 1...Bg4!",
+  "1.Rf2? (2.Qf3#)",
+  "  1...Bg4 2.Bb1#",
+  "  but 1...Sg5!",
+  "#Key",
+  "1.Bb1! (2.Rd2#)",
+  "  1...Bg4 2.Rf2#",
+  "  1...Kd5 2.Rc5#"
+ ],
+ "comment": {
+  "what": "A study post. Today's work found no original that passes the gate (see How it was made), so the skill's fallback applies: an archive problem of the theme, with full credit. In the diagram the bishop a2 guards d5 along a2-d5, and the rook c2 stands on its other diagonal, b1-e4. The key 1.Bb1! leaves the a2-d5 diagonal, so the king gets d5. The bishop goes behind the rook, so every rook move is now a discovered check. The threat is 2.Rd2#, which covers d3, d4 and d5. The flight is answered by a different rook discovery: 1...Kd5 2.Rc5#. The one real defence, 1...Bg4, cuts the queen h5 from f3, so 2.Rd2+ Kf3 escapes. Then 2.Rf2# covers f3 instead. The two tries play the same pieces in the other order. 1.Rd2? threatens the bishop's discovery 2.Bb1# and fails to 1...Bg4! (f3). 1.Rf2? guards f3 and threatens 2.Qf3#. After it, 1...Bg4 is answered by 2.Bb1#, but 1...Sg5! refutes. Threat reversal between 1.Rd2? and 1.Bb1!, and a Dombrovskis: Bg4, the refutation of 1.Rd2?, is met in 1.Rf2? by 1.Rd2's threat.",
+  "flaws": [
+   "1...Bg6 and 1...Bh3 are each answered by twelve different rook discoveries. They are by-play, not thematic, but the duals are many.",
+   "The white king h1 takes no part. The knight c1 is needed in no mate: it guards d3 only to stop 1.Bb1? Kd3 (without it the key fails).",
+   "The flight is given by the key's departure only. The key is not a sacrifice and the flight is a plain line opening (a2-d5).",
+   "Only one real black defence after the key (1...Bg4) besides the flight. The tries carry the content."
+  ],
+  "pluses": [
+   "Three phases on one rook-bishop pair: the tries threaten Bb1# and Qf3#, the key threatens Rd2#. Threat reversal between 1.Rd2? and 1.Bb1!.",
+   "A Dombrovskis on 1...Bg4: it refutes 1.Rd2?, and in 1.Rf2? it is answered by 1.Rd2's threat 2.Bb1#. Changed mate on 1...Bg4: 2.Bb1# (try) -> 2.Rf2# (key).",
+   "The key does three jobs: it gives the flight, it builds the battery, and it makes the rook's departure the threat.",
+   "The flight's mate is a battery mate by the same rook (Rc5#), so it belongs to the play and is not a by-play mate."
+  ],
+  "process": "Theme from the rotation: flight-giving key, last used for No. 4 (also a study post). The gate fails a single phase, so the plan was a flight-giving key with a second layer: a set mate the key changes, or a try refuted by a defence that the key answers. Four rounds of evolve with a new FLIGHT mode (see below), 21 jobs of 10-12 minutes, and about 25 hand solves and try tables. Round 1 started from our own two-flight knight sacrifice (claude-two-flight-knight-sacrifice, 1.Se4! on E. Bourd's scheme, Kxe6 2.Qc6#, Kxe4 2.Qd3#) and from sketches. It returned only that problem: its tries 1.Sd7?/1.Sa6? fail to 1...Bd3, which the key does not answer but prevents (the knight on e4 closes the line). Round 2 added a black pawn f6, and the score called it a hit. Its only 'change' is between two tries (1...e4 2.Qd4# after 1.Sf5?, 2.Sc7# after 1.Sa6?), with the key unchanged. Our gate passed it too: that was a bug, fixed today (first attempt below). Round 3 was my own mechanism: a bishop on the long diagonal guarding d4 and e5 for Ke4, with black pawns d5 and e6 that cut it from either side, and the key on d4. It has a contradiction I saw too late. An unprotected bishop on d4 gives the flight Kxd4, and no knight check on e4 also guards d4, so no knight threat survives the capture. The search's 'hit' there was junk: a zugzwang with one mate and a promotion try (second attempt below). Round 4 put a protected white unit next to the king for the key to move away; nothing in 48 minutes of search. Then a scan of our own collection: for each of 187 post-key positions, keyfind took back every white unit and kept flight-giving keys. Of the 14 found, all but two were already the problem's own key, and those two are E. Bourd's positions. Last, by hand: keep 1...Bd3 as a real defence by bringing the black bishop to b1, on the other side of d3. It breaks the scheme twice: the bishop now guards d3, so 1...Kxe4 2.Qd3+ is no mate, and 1...Ba2 guards c4 (third attempt below).",
+  "lesson": "A flight-giving key alone is a single phase; the second layer has to be planned with the flight. In the two-flight knight scheme the tries fail to a move (1...Bd3) that the key prevents by closing its line. That is not a try the key answers. Kisis gets his second layer the other way. The key piece builds a battery, so the tries are the same two pieces in the other order: the threats reverse, and the defence that refutes one try is met in another. Before searching, name the defence that will refute the try and the mate the key has for it."
+ },
+ "attempts": [
+  {
+   "title": "Our two-flight knight sacrifice with a black pawn f6: a fake second phase",
+   "fen": "2R2B1b/8/4PpbN/2Nkp3/p4p2/2Q5/3K4/8",
+   "note": "1.Se4! (2.Qc4#) Kxe6 2.Qc6#, Kxe4 2.Qd3#. Tries 1.Sd7?/1.Sa6? Bd3!, 1.Sf5? Bxf5!. The pawn f6 makes 1...e4 change between two tries (2.Qd4# after 1.Sf5?, 2.Sc7# after 1.Sa6?), and the key is untouched. The gate passed it on that 'change' this morning. Since today's fix (only changes against the key count) it fails it: FATAL 'single phase'. Also no real black defence after the key (thin play), and 1...Bd3! refutes both thematic tries."
+  },
+  {
+   "title": "The search's first hit on the long-diagonal bishop: junk",
+   "fen": "7B/2P5/4p1K1/3pN3/2p1k3/8/3Q4/8",
+   "note": "1.Qc3! (zugzwang, gives f4) Kf4 2.Qf3#, d4 2.Qf3#. One mate, one real black move, and a pawn c7 that only makes promotion tries (1.c8=B? d4 2.Bb7# but 1...c3!). The FLIGHT score counted that promotion try as a change against the key. It now ignores promotion tries and needs two distinct mates."
+  },
+  {
+   "title": "The black bishop moved to b1, so that 1...Bd3 must be answered: no key",
+   "fen": "2R2B1b/8/4P2N/2Nkp3/p4p2/2Q5/3K4/1b6",
+   "note": "1.Se4? (2.Qc4#) Kxe6 2.Qc6#, but 1...Kxe4!, 1...Bd3! and 1...Ba2!. From b1 the bishop guards d3, so after 1...Kxe4 the queen cannot mate on d3. 1...Ba2 guards c4, the threat square. The g6 bishop did three jobs in the original: it refuted the tries by Bd3, it closed d3 only when the king itself stood on e4, and it never reached c4."
+  }
+ ],
+ "mentor_questions": [
+  "Today I changed the gate's single-phase test so that a changed mate counts only when one of the two phases is the key (set v key, try v key). Before, a change between two tries passed, as in the first attempt below. Is that your rule, or does a set-v-try change with the key unchanged also make a second phase?",
+  "In the two-flight knight scheme (1.Se4!), the tries 1.Sd7? and 1.Sa6? give the same flights and fail to 1...Bd3!, which the key prevents by closing the bishop's line rather than answering it. Is a try whose refutation the key makes impossible a thematic try for you, or a random one?",
+  "In Kisis's problem the knight c1 only guards d3 against 1.Bb1? Kd3, and the white king takes no part. For a three-phase problem with a threat reversal, is a pure cook-stopper like that the normal price, or would you still try to give it a mate?"
+ ],
+ "stats": {
+  "minutes": 125,
+  "solves": 25,
+  "kernels": 5,
+  "searches": 22
+ },
+ "improvement": "Two changes, both tested. (1) chesscomp.compose.evolve has a flight-giving key mode, FLIGHT=N (a proposal in the daily log since 9 Oct). It rewards king moves to squares the king could not reach in the diagram, each answered by its own mate that is not the threat, all distinct. With FSECOND=1 (default) a HIT also needs what the gate calls a second phase: a changed mate against the key (set or try; promotion tries do not count) or a quiet try refuted only by a key-phase defence (not a king move). FNVAR=2 distinct mates are needed against thin play. Kisis's problem is a HIT, and our two-flight knight sacrifice is not. (2) The gate's single-phase test (chesscomp/critique.py) counted any changed mate, also one between two tries with the key unchanged. It now counts only changes against the key, as its own rule says ('set or try against the key'). The full regression passes; tests in tests/test_evolve.py and tests/test_critique_single_phase_vs_key.py.",
+ "feedback": [],
+ "mentor_issue": 20
+}

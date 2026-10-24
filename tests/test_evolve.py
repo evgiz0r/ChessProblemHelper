@@ -222,3 +222,31 @@ def test_changed_mode_sees_set_duals():
     r = subprocess.run([sys.executable, '-c', SETDUAL_PROBE], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
     assert r.returncode == 0, r.stderr
     assert r.stdout.split() == ['-', 'exd4']
+
+
+def test_flight_mode_counts_given_flights_and_wants_a_second_layer():
+    # claude-two-flight-knight-sacrifice: 1.Se4! (2.Qc4#) Kxe6 2.Qc6#, Kxe4 2.Qd3#: two flights given by the key, each
+    # with its own mate. It has neither a set change nor a thematic try, so FSECOND (the gate's single phase) refuses it.
+    fen = '2R2B1b/8/4P1bN/2Nkp3/p4p2/2Q5/3K4/8'
+    hit, sc, summ = _score(fen, FLIGHT='2', FSECOND='0')
+    assert hit and 'Kxe6:Qc6#' in summ and 'Kxe4:Qd3#' in summ
+    assert not _score(fen, FLIGHT='2')[0]
+    assert not _score(fen, FLIGHT='3', FSECOND='0')[0]
+
+
+def test_flight_mode_hits_kisis_with_a_try_and_a_change():
+    # Kisis, Heureka! 1992-93, 3rd Prize: 1.Bb1! (2.Rd2#) Kd5 2.Rc5#, Bg4 2.Rf2#; try 1.Rd2? Bg4! - the gate's second phase
+    hit, sc, summ = _score('1b6/5N1n/1B2p3/1p3b1Q/4k3/4P3/B1R5/2N4K', FLIGHT='1')
+    assert hit and 'Kd5:Rc5#' in summ and 'Rd2?Bg4' in summ
+
+
+def test_flight_mode_ignores_a_change_between_two_tries():
+    # daily No. 19: bPf6 added to claude-two-flight-knight-sacrifice changes 1...e4 between 1.Sf5? (Qd4#) and 1.Sa6? (Sc7#)
+    hit, sc, summ = _score('2R2B1b/8/4PpbN/2Nkp3/p4p2/2Q5/3K4/8', FLIGHT='2')
+    assert not hit and 'changed=0' in summ
+
+
+def test_flight_mode_refuses_promotion_tries_and_thin_play():
+    # daily No. 19's first hit: 1.Qc3! (zugzwang) Kf4/d4 2.Qf3#, its 'change' against the try 1.c8=B? (d4 Bb7#)
+    hit, sc, summ = _score('7B/2P5/4p1K1/3pN3/2p1k3/8/3Q4/8', FLIGHT='1')
+    assert not hit and 'changed=0' in summ

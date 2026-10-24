@@ -53,3 +53,11 @@ e4 (self-interference, flight 1...Ke4 2.Sc3#, the knight covering d5), 1...exd4 
 one Black tempo move unanswered in the set. Study example of the theme: J. M. Rice, The Problemist 2002-03
 (R7/4N3/4p3/1k1nR3/3B3Q/1PP5/8/5K2): 1.Bc5! interposes on the pin line Re5-Kb5, unpins the knight and offers
 itself (1...Kxc5 2.Qb4#); the tries Bb6?/Ba7? give flights with no mate.
+
+## The second layer (daily No. 19, 24 October 2026)
+The gate fails a single phase, and a flight alone is one phase. The two-flight knight sacrifice above has tries (1.Sd7?,
+1.Sa6? Bd3!) but its key prevents the refutation (Se4 closes g6-d3) instead of answering it, so they are no second phase.
+Study example: I. Kisis, Heureka! 1992-93, 3rd Prize, 1b6/5N1n/1B2p3/1p3b1Q/4k3/4P3/B1R5/2N4K. 1.Bb1! leaves a2-d5 (flight d5)
+and goes behind Rc2, so every rook move discovers check: threat 2.Rd2#, Kd5 2.Rc5#, Bg4 (cuts Qh5-f3) 2.Rf2#. Tries
+1.Rd2? (2.Bb1#) Bg4! and 1.Rf2? (2.Qf3#) Bg4 2.Bb1# but Sg5!: threat reversal and a Dombrovskis. The key piece builds the
+battery, so the tries are the same two pieces in the other order. Search with `evolve` FLIGHT=N (FSECOND=1 by default).
