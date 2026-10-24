@@ -3797,6 +3797,41 @@
    ],
    "cooked": false,
    "note": "Sound but not a problem yet: the key rook comes from the edge (idle, out of play; from f7 also attacked by Sf6), every mate is set (static key), single phase. Searches A-F on this frame: no key that both has a job and avoids a diagram flight; the structural reason is that the threat 2.Rf6# needs nothing the theme provides."
+  },
+  {
+   "id": "claude-two-knights-e6-sf5",
+   "fen": "8/K1n5/5Rp1/1b2k1nN/2BN2p1/3Q1p2/8/8",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026, request 'two black knights defend on the same square')",
+   "source": "Hand scheme (Ke5, Sc7/Sg5 -> e6, Qd3 behind the threat knight d4) -> unmask_search KSQ=e2/b3/c2/b5 (claude-two-knights-e6-sb3 stage) -> second layer by hand: Rf6's 6th-rank guard of d6 through e6, key square f5 (the only landing guarding d6 that Black cannot take with a knight) -> unmask_search CORE Ke5/Sc7/Sg5/pf3/Qd3/Rf6/Sf5, EMPTY=e6,d6, TRIES d4->b3/e6 refuted by g5e6. Trim and four improvement runs: nothing better.",
+   "themes": [
+    "Two black knights defend on the same square e6 (guard d4 against 2.Qd4#); departure selects the mate: 1...Sce6 (d5 unguarded) 2.Qd5#, 1...Sge6 (the e4 interposer gone) 2.Qe3#; each sibling mate fails to the knight that stayed (2.Qd5+? Sxd5, 2.Qe3+? Se4)",
+    "White correction: 1.S~ (b3, c2, e6) threatens 2.Qd4# but 1...Sge6! (the arrival on e6 cuts Rf6 from d6: 2.Qe3+ Kd6); 1.Se6? Scxe6 2.Qd5# but 1...Sgxe6!; 1.Sxb5? Sxb5+!; correction 1.Sf5! guards d6",
+    "Set: 1...Sh7/Sf7/Sh3 2.Qe3# (random g5 moves); 1...Sge6 has no set mate (the same e6 cut)"
+   ],
+   "keys": [
+    "Sf5"
+   ],
+   "cooked": false,
+   "note": "Sound, 13 units (6+7, 3 pawns), gate PASS, trim: nothing removable. The common arrival effect (the e6 block cutting the 6th rank) is what refutes the random tries, and the key is the landing that re-guards the cut square d6. Flaws: no try is refuted by 1...Sce6 alone (no pure pair; the only landing that cuts a line 2.Qd5# needs is f5, the key, and a rook guarding f4 through f5 mates on f5 in the diagram); 1...gxf5 2.Rxf5# (bPg6 stops 1.Sxf3+, 1.Sc6+ and the S~ tries from solving, removal test); cook-stoppers Ka7 (1.Sxb5? Sxb5+! only), bBb5 (Sc6#, Re6+, and the b5 square), bPg4 (Sxf3+, Qe3+), bPf3 (2.Qe2# duals after Sge6/Sf3); random-move duals after the knights' non-defending moves (1...Se8 Qd5#/Qd4#); set Sce6/Sge6 unprovided. Level: medium (two thematic variations with one dual-avoidance motive plus a white correction).",
+   "solution": "#2 (6+7)   FEN 8/K1n5/5Rp1/1b2k1nN/2BN2p1/3Q1p2/8/8 w - - 0 1\nSet play:\n   1...Sh7/Sf7/Sh3 2.Qe3#\n   1...Bc6 2.Sxc6#\n   1...Ba6/Bxc4 2.Sc6#\n   unprovided: Se8, Sa8, Sce6, Sa6, Sd5, Sge6, Se4, Be8, Bd7, Ba4, gxh5, g3, f2\nTry: 1.Sxb5? (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   1...Sge6 2.Qe3#\n   (11 further moves allow the threat)\n   but 1...Sxb5+!\nTry: 1.Se6? (threat: 2.Qd4#)\n   1...Scxe6 2.Qd5#\n   1...Sd5 2.Qxd5#\n   (16 further moves allow the threat)\n   but 1...Sgxe6!\nTry: 1.Sb3? (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   (17 further moves allow the threat)\n   but 1...Sge6!\nTry: 1.Sc2? (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   (17 further moves allow the threat)\n   but 1...Sge6!\nKey: 1.Sf5! (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   1...Sge6 2.Qe3#\n   1...gxf5 2.Rxf5#\n   (17 further moves allow the threat)\nPatterns:\n   White interference try: 1.Se6? cuts Rf6 -> d6; 1...Sgxe6!   [try Se6]\n(6419 nodes, 0.29s)"
+  },
+  {
+   "id": "claude-two-knights-e6-sb3",
+   "fen": "8/2n2p2/p1K2Rp1/1p2k1nN/3N4/3Q1p2/2P5/3b4",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026), unmask_search KSQ=b3 FSQ=d4 THREAT=Qd3d4",
+   "source": "First sound setting of the e6 scheme, before the second layer.",
+   "themes": [
+    "Two black knights to e6 guard d4: 1...Sce6 2.Qd5#, 1...Sge6 2.Qe3#; 1.Sb3! (2.Qd4#)"
+   ],
+   "keys": [
+    "Sb3"
+   ],
+   "cooked": false,
+   "rejected": "single phase: the knight's tries are refuted by pawn captures (axb5, fxe6, gxf5) and the set 1...Sge6 2.Qe3# is the same mate; superseded by claude-two-knights-e6-sf5",
+   "note": "15 units (6+9). Stage only.",
+   "solution": "#2 (6+9)   FEN 8/2n2p2/p1K2Rp1/1p2k1nN/3N4/3Q1p2/2P5/3b4 w - - 0 1\nSet play:\n   1...Sh7/Sge6/Sh3 2.Qe3#\n   1...gxh5 2.Rf5#\n   unprovided: Se8, Sa8, Sce6, Sd5, Se4, Be2, Bxc2, a5, b4, f2\nTry: 1.Sxb5? (threat: 2.Qd4#)\n   1...Sce6/Sxb5 2.Qd5#\n   1...Sge6 2.Qe3#\n   (11 further moves allow the threat)\n   but 1...axb5!\nTry: 1.Kd7? (threat: 2.Sc6#)\n   1...gxh5 2.Rf5#\n   (13 further moves allow the threat)\n   but 1...Kd5!\nTry: 1.Se6? (threat: 2.Qd4#)\n   1...Scxe6 2.Qd5#\n   1...Sgxe6 2.Qe3#\n   (12 further moves allow the threat)\n   but 1...fxe6!\nTry: 1.Sf5? (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   1...Sge6 2.Qe3#\n   (12 further moves allow the threat)\n   but 1...gxf5!\nKey: 1.Sb3! (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   1...Sge6 2.Qe3#\n   (12 further moves allow the threat)\nPatterns:\n   changed threat: Qd4# / Sc6#   [try Sxb5 vs try Kd7]\n   changed threat: Sc6# / Qd4#   [try Kd7 vs try Se6]\n   changed threat: Sc6# / Qd4#   [try Kd7 vs try Sf5]\n   changed threat: Sc6# / Qd4#   [try Kd7 vs key Sb3]\n(4817 nodes, 0.15s)"
   }
  ]
 }
