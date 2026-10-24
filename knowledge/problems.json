@@ -3753,6 +3753,20 @@
    ],
    "cooked": false,
    "note": "Sound, 9 units (6+3), no pawns, gate PASS. A scheme: one selector knight, selection by direct guard of the other mating square, both free-knight tries refuted by 1...Se4, the pinner's departures give extra mates (minor), 1...Rxc4+ 2.Bxc4# recaptures the checking defender. Second-layer attempt: bishop d2 with Pg3 (8/8/5n2/8/r1N4K/R2B1kP1/3BR3/8): 1.Be1! and the white interference try 1.Be3? Rxc4+! (cuts the battery), but 1.Bf4 cooks (interposes on the pin line, frees the knight)."
+  },
+  {
+   "id": "claude-unpin-pinned-pinner-postkey",
+   "fen": "8/2p5/1b5R/7B/K1N3r1/5kP1/3n3Q/4R3",
+   "stip": "#2 (post-key, Black to move)",
+   "author": "Claude (24 Oct 2026), on E. Bourd's frame mvmtgvyz (Rg4 pinned by Bh5, Sc4 pinned to the king)",
+   "source": "his frame with Kb4 -> a4 (the black bishop reaches d4 via c5 without check); freethreat H/I showed the threat Rf6# and both unpins; built by hand: black Sd2 (its moves never reach f4/f5 and cannot take h5), bPc7 (stops Bc7/Bd8), Qh2 + Re1 (Rg1 fell to Bxg1).",
+   "themes": [
+    "Two Black corrections, each correction an unpin of the pinned knight: 1...B~ 2.Rf6#, 1...Bd4 (guards f6 and e5) 2.Sxd2#, 1...Be3 2.Rxe3#; 1...S~ 2.Rf6#, 1...Se4 (guards f6 and d2) 2.Se5#",
+    "Keys tested: 1.Bh5 from f7 (pins the pinner; cooked by 1.Rf6+ Rf4 2.Rxf4#, set 1...Rxc4+ unprovided), 1.Re1 from d1 (sound, idle key piece, diagram flight e4, single phase)"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Post-key without a good key yet. No holes; random duals after 1...Ba5 and 1...c5 (Rf6#/Re3#). With White to move the h6 rook also solves (Rg6, Rh7, Rhe6, Rc6, Rxb6), so keys that leave it are cooked. A free pinner in the diagram always has 1...Rxc4+, which no mate can answer (no recapture checks f3)."
   }
  ]
 }
