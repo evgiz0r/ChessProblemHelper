@@ -11,6 +11,9 @@
   protected by a bishop and a knight (3R4/4P1N1/4bB2/8/4k3/R7/6N1/K7).
 - Two free Black rooks reach every rank and file, so no White king square is check-proof by distance:
   shield it with thematic blockers (8/7B/p6K/r4N2/1N1Pk3/2P4P/6PQ/5r2).
+- A square orthogonally next to the king cannot be protected from a distance along the rank or file that runs on
+  to the king: that line checks (Re1 for e4 v Ke5). Distant protection there is diagonal only; two such squares of one
+  colour need two bishops of that colour (promoted) unless a knight, pawn or the king takes one (24 Oct 2026).
 - A pinner on the rank + a White pawn on the pin square + a queen nearby = a discovered-check cook
   (1.d5+ in 3rN2b/1p5b/8/2Q5/1R1Pk1P1/4P3/4K3/8). Give Black the blocker before anything else.
 
