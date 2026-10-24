@@ -20,3 +20,8 @@
 - Rotating and shifting a scheme whose captures stop nothing: 45 minutes, six transformations, no key.
 - Black line opening with the check along the opened line (battery behind the defender): the defender steps back to its
   origin square and interposes. And a lone unprotected blocker in front of the queen: 1.Qx(blocker). See themes/line_opening.md.
+- Flight-giving key by an unprotected bishop next to the king (Bd4 v Ke4, black pawns d5/e6 cutting the long diagonal from
+  either side, daily No. 19): no knight check on e4 also guards d4, so every knight threat fails to Kxd4. Five evolve jobs
+  (12 min each) on that core returned a zugzwang with one mate.
+- Second layer for claude-two-flight-knight-sacrifice by moving the refuting bishop to the other side of d3 (g6 -> b1): it
+  then guards d3 (no 2.Qd3# after Kxe4) and reaches c4 (1...Ba2). The g6 bishop's three jobs cannot be split.

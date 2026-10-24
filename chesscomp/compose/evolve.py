@@ -43,6 +43,12 @@ QMATE=1 wants every thematic mate, set and solution, given by the queen. Use wit
 CANDS=Pd2,Sb2,Bf8,Kd8,pe7,sb3 restricts mutation to those units on those squares (upper case White, lower case Black,
 S/s for knights): add one, remove one, or swap a unit for another candidate of the same colour. Use it when the guard
 analysis has already named the job of every square; the blind search wastes most solves on units with no role.
+FLIGHT=N (flight-giving key mode, daily No. 19) needs no DEFS: it rewards key-phase king moves to squares the king could not
+reach in the diagram (flights given by the key), each answered by one mate that is not the threat, all distinct; a HIT needs N
+of them. FSECOND=1 (default) also needs a second layer for a HIT, since the gate fails a single phase: a set mate the key
+changes (a defence with one set mate and a different single mate after the key, or the solver's changed mates against the
+key; promotion tries never count) or a quiet try by any unit refuted only by a key-phase defence (not a king move). FNVAR
+(default 2) distinct single mates in the key phase, the flights' included, are needed against thin play. Combine with DEFS.
 WCORR=e7 (white correction mode, daily No. 10) needs no DEFS: it scores the moves of the White unit on that square
 (chesscomp.compose.white_correction): a unique quiet key by it, a random refutation shared by at least two of its tries,
 NCORR (default 2) distinct correction refutations, no king refutation, every thematic refutation answered in the key;
@@ -63,7 +69,7 @@ CORE = os.environ.get('CORE', '8/3p4/8/4k3/8/8/8/8')
 SEED = os.environ.get('SEED', CORE)
 # The modes that need no DEFS start with none when DEFS is unset (daily No. 16: PATTERN=... NPAT=2 without DEFS= silently
 # scored the default d6,d5, which the position did not have, for two minutes of four jobs).
-_NODEFS = any(os.environ.get(k, '') for k in ('PATTERN', 'CORR', 'WCORR', 'KEY', 'DEFSQ')) or \
+_NODEFS = any(os.environ.get(k, '') for k in ('PATTERN', 'CORR', 'WCORR', 'KEY', 'DEFSQ', 'FLIGHT')) or \
     os.environ.get('SELFBLOCK', '0') not in ('', '0')
 DEFS = [d for d in os.environ.get('DEFS', '' if _NODEFS else 'd6,d5').split(',') if d]
 CHANGED = os.environ.get('CHANGED', '0') == '1'
@@ -88,6 +94,9 @@ TRIES = int(os.environ.get('TRIES', '0'))            # fixed-key mode: N tries b
 DEFSQ = [x for x in os.environ.get('DEFSQ', '').split(',') if x]   # type-1: thematic units by square (needs TKEY)
 TKEY = os.environ.get('TKEY', '')                    # type-1: the intended key (uci)
 QMATE = os.environ.get('QMATE', '0') == '1'          # type-1: every thematic mate by the queen
+FLIGHT = int(os.environ.get('FLIGHT', '0'))          # flight-giving key mode: N given flights with own mates
+FSECOND = os.environ.get('FSECOND', '1') == '1'      # FLIGHT mode: a HIT also needs a set change or a thematic try
+FNVAR = int(os.environ.get('FNVAR', '2'))            # FLIGHT mode: distinct single mates (not the threat) for a HIT
 BUDGET = float(os.environ.get('BUDGET_S', '900'))
 CANDS = [(chess.parse_square(t[1:]), chess.Piece.from_symbol(t[0].replace('S', 'N').replace('s', 'n')))
          for t in os.environ.get('CANDS', '').split(',') if t]
@@ -285,6 +294,60 @@ def bristol_terms(ph, phases):
     return t, f"bristol={'yes' if follow else 'no'} thematic-tries={'/'.join(sorted(refs)) or '-'}", follow
 
 
+def flight_score(b, ph, phases, setmap, rel=None):
+    """FLIGHT mode (daily No. 19): (score, summary, ok) of the flights the first move of ph gives. A given flight is a
+    king move to a square the king could not reach in the diagram; it counts when one mate answers it and that mate is
+    not the threat (reference flight_giving_key.md: 'each flight needs a mate that is not the threat')."""
+    if not FLIGHT:
+        return 0.0, '', True
+    n = b.copy(); n.push(chess.Move.null())
+    before = {m.to_square for m in n.legal_moves if n.piece_type_at(m.from_square) == chess.KING}
+    k = b.king(chess.BLACK)
+    thr = {c['san'] for c in (ph.get('threat') or [])}
+    good, bad = [], 0
+    for v in ph['variations']:
+        u = v['defence']['uci']
+        if chess.parse_square(u[:2]) != k or chess.parse_square(u[2:4]) in before:
+            continue
+        cs = v['continuations']
+        if len(cs) == 1 and not v['threat_repeat'] and cs[0]['san'] not in thr:
+            good.append((v['defence']['san'], cs[0]['san']))
+        else:
+            bad += 1
+    fm = {m for _, m in good}
+    t = 25 * min(len(good), FLIGHT + 1) - 8 * bad - 15 * (len(good) - len(fm))
+    changed = 0
+    for v in ph['variations']:
+        sv = setmap.get(v['defence']['san'].rstrip('+#'))
+        if (sv and len(sv['continuations']) == 1 and len(v['continuations']) == 1 and not v['threat_repeat']
+                and v['continuations'][0]['san'] != sv['continuations'][0]['san']):
+            changed += 1
+    if ph['type'] == 'key' and rel is not None:
+        # the gate's own list, but only changes against the key: a change between two tries is no second phase
+        # (daily No. 19: bPf6 gave 1...e4 Qd4# in 1.Sf5? and Sc7# in 1.Sa6?, both tries, and the score called it a HIT)
+        kp = f"key {ph['first_move']['san']}"
+        changed = max(changed, sum(1 for c in rel.get('changed') or [] if kp in c.get('phases', [])
+                                   and not any('=' in x for x in c.get('phases', []))))   # a promotion try is no phase
+    # the gate's second phase: a quiet try whose single refutation is a key-phase defence with a mate (not a king move,
+    # which is fatal); by any White unit, not only the key piece
+    answered = {v['defence']['uci'] for v in ph['variations'] if v['continuations'] and not v['threat_repeat']}
+    tries = set()
+    for q in phases:
+        rr = q.get('refutations')
+        if (q['type'] == 'try' and not q.get('check_key') and not q['first_move']['san'].endswith('+')
+                and isinstance(rr, list) and len(rr) == 1 and isinstance(rr[0], dict) and rr[0]['uci'] in answered
+                and not rr[0]['san'].startswith('K') and '=' not in q['first_move']['san']):
+            tries.add(f"{q['first_move']['san']}?{rr[0]['san']}")
+    t += 12 * min(changed, 3) + 12 * min(len(tries), 2)
+    allm = {v['continuations'][0]['san'] for v in ph['variations']
+            if len(v['continuations']) == 1 and not v['threat_repeat'] and v['continuations'][0]['san'] not in thr}
+    t += 6 * min(len(allm), FNVAR + 1)
+    ok = (len(good) >= FLIGHT and len(fm) == len(good) and (not FSECOND or bool(changed or tries))
+          and len(allm) >= FNVAR)
+    summ = 'FL ' + (' '.join(f'{d}:{m}' for d, m in good) or '-') + f' bad={bad} changed={changed} tries={"/".join(sorted(tries)) or "-"}'
+    return t, summ, ok
+
+
 def dyn_defs(ph, setmap=None):
     """Type-1 mode: each DEFSQ unit's defending move in phase ph: one whose set mate exists and changes first (not
     a by-play like 1...Rd5 2.Qxd5#), then fewest mates; '-sq' when the unit has no defending move."""
@@ -404,7 +467,9 @@ def score(b):
         t += ct
         st, ssum, _ = sb_score(b, ph)
         t += st
-        csum = (csum + ' ' + ssum).strip()
+        ft, fsum, _ = flight_score(b, ph, phases, setmap, r.get('relations'))
+        t += ft
+        csum = (csum + ' ' + ssum + ' ' + fsum).strip()
         if t > best_theme:
             best_theme, best_sum = t, f"{ph['type']} {ph['first_move']['san']} " + ' '.join(f'{d}:{m}' for d, m in zip(DEFS, mates)) + (' ' + csum if csum else '')
     s += best_theme
@@ -469,6 +534,7 @@ def score(b):
         if ok and TARGET:
             ok = all(vm[d]['continuations'][0]['san'] == TARGET[d] for d in TARGET if d in vm)
         ok = ok and corr_score(ph)[2] and sb_score(b, ph)[2] and not (NOFLIGHT and kmoves)
+        ok = ok and flight_score(b, ph, phases, setmap, r.get('relations'))[2]
         ok = ok and not (UNIQUE and any(extra_defences(ph, DEFS).values()))
         if ok and KEYROLE:
             km = chess.Move.from_uci(ph['first_move']['uci'])
