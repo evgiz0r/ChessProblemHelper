@@ -65,5 +65,6 @@
   "kernels": 9,
   "searches": 28
  },
- "improvement": "Gate: a change against a try that a king move refutes no longer counts as a second phase (critique 'single phase'; a draft of today passed on 1.Scd4? Ke5!). evolve: SELFBLOCK mode now needs the gate's second layer for a HIT (SBSECOND=1, shared helper second_layer with FLIGHT mode, which also ignores king-refuted tries). Tests in tests/test_critique_single_phase_vs_key.py and tests/test_evolve.py."
+ "improvement": "Gate: a change against a try that a king move refutes no longer counts as a second phase (critique 'single phase'; a draft of today passed on 1.Scd4? Ke5!). evolve: SELFBLOCK mode now needs the gate's second layer for a HIT (SBSECOND=1, shared helper second_layer with FLIGHT mode, which also ignores king-refuted tries). Tests in tests/test_critique_single_phase_vs_key.py and tests/test_evolve.py.",
+ "mentor_issue": 21
 }
