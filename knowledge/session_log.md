@@ -1535,3 +1535,19 @@ no motive layer to mirror.
 - 24 Oct: new theme from his bench (Kf3, Sc4, '1x4'): 2 freethreat runs (Kh4/Ra4 found the battery answer to Rxc4+; Kb4/Rh4 did not), keyfind -> claude-unpin-knight-far-bg3-scheme 1.Bg3! (6+3, gate PASS, a scheme); second-layer test bishop d2: 1.Be1! with 1.Be3? Rxc4+!, cooked by 1.Bf4.
 - 24 Oct: his frame (Rg4 pinned by Bh5): 7 freethreat runs (C-H; two restarts after my own mistakes: a light bishop on a8, a pkill that killed its own shell). Kb4: only 1...Se4 survives; Ka4 + Bb6 + Sg5: both unpins against 2.Rf6#, heavy sketch 8/P1P4p/1b1PR3/6nB/K1N3r1/2N2k1b/4R1pB/8.
 - 24 Oct: pinned-pinner post-key by hand (claude-unpin-pinned-pinner-postkey, 7+5, two Black corrections with unpin): keys 1.Bh5 (cooked, set Rxc4+ unprovided) and 1.Re1 (idle, flight) tested; no good key yet.
+
+## Session 25 Oct 2026 (chat, "two black knights defend on the same square")
+- Read: his bench (no new two-knight sitting since mvmq9a5m; the newest board mvmtgvyz is the pinned-pinner frame), the
+  database (67 published #2s with two knights to one square: Delobel 2005, Ahues 1998, Stojnic 2004, Cheylan 2000, his own
+  Problemesis 2004 psis-6ceeea4d02 with the pawn tries 1.g4? Sdf3!, 1.g3? Sef3!, 1.gxh3!).
+- Fresh core: Ke8, Se4 (mates d6/f6), bSc4/bSg4 -> e5 guarding the threat square. freethreat (3 seeds) found the sound
+  post-key 4k3/2Q3KB/3p3p/8/2n1N1n1/8/8/8 (9 units, threat Bg6#) and the Ke6+Pe7 box version (7 units). keyfind: no key
+  (candidates only the threat bishop and the mating knight). 3 diagsearch, 2 more freethreat and 10 evolve runs (CHANGED,
+  TRYCHANGE, FLIGHT, plain, fixed-key): only flight-taking keys, pawn/piece captures and zugzwangs (6-unit block 1.Kg7!,
+  unprovided Sh6+; 7-unit 1.e3!; 8-unit 1.Qc7! with both knights capturing e5). All 'simple block'.
+- Hand designs (about 25) for a key with a thematic try: rook unblocking g6 (Rf6 -> Rf8#), knight unblocking g6 (six
+  cooks), king on g6 (checked by Sxe5), rook threats along the d/f-file (Rd8#/Rf8#), rook along the 7th rank with a bishop
+  blocker (the blocker's spare moves cook: b8, b6, a5, d8 or f8, h8), pinned blockers (the pinner captures on e5 with
+  check), black bishop d3 cut by the key knight (1...Bxf5 doubles the try's refutation), king key from g6 (Kh6 illegal,
+  Sxe5+). Structural reasons recorded in lessons.jsonl. Result: the theme in its lightest form as a scheme; no
+  gate-passing problem this session. Next: a central king with long guard lines in the Bourd-2004 manner.
