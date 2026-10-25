@@ -353,6 +353,18 @@
     try { c2.move({ from: cont.from, to: cont.to, promotion: 'q' }); } catch (e) { return false; }
     return c2.isCheckmate();
   }
+  // Does the White move `cont` mate if Black simply passes (Black to move in `fen`)?
+  function passMates(fen, cont) {
+    if (!fen || !cont || !cont.from) return null;
+    let c2;
+    try {
+      const parts = fen.split(' ');
+      parts[1] = 'w'; parts[3] = '-';
+      c2 = new Chess(parts.join(' '));
+    } catch (e) { return null; }
+    try { c2.move({ from: cont.from, to: cont.to, promotion: 'q' }); } catch (e) { return false; }
+    return c2.isCheckmate();
+  }
   // E. Bourd s27: random move = the moves of one piece allowing one and the same mate; a correction is a
   // move of that piece after which that mate no longer works and another does. A move with another mate
   // that still allows the random mate is a random move with a dual, not a correction.
@@ -381,6 +393,8 @@
       if (!cor.length) continue;
       const rcont = rnd[0].conts.find(c => c.id === rid);
       const rsan = rcont.san;
+      // E. Bourd (24 Oct 2026): "if a piece doesnt defend, its not anything. correction of what? of non defending move?"
+      if (passMates(ph.fen, rcont) === true) continue;   // the shared mate works with no Black move: nothing defends
       if (departureMates(ph.fen, frm, rcont) === false) continue;   // the shared mate needs the arrivals
       // E. Bourd (17 Oct 2026, 1.Sd2! Qb5 e4#, Qxb8 e3#): "the solution random move again is somewhat bad" - the
       // departure must also defend; if the threat still mates with the piece removed, its moves defend by arrival.

@@ -15,6 +15,15 @@ Two units capturing on one square: the capture square on two battery lines (depa
 self-blocks the other); the queen's post selects which departure mates; three phases for one defence.
 Fast start for "two pieces defend on the same square": let them CAPTURE a White unit there
 (8/3n4/8/3kP3/8/4r3/8/8), then arrange the mates, then the threat.
+Two black knights to one square, quiet (24 Oct 2026, claude-two-knights-e6-sf5, 8/K1n5/5Rp1/1b2k1nN/2BN2p1/3Q1p2/8/8):
+Ke5, Sc7/Sg5 -> e6 guard d4; a white knight on d4 is the threat piece (every move threatens 2.Qd4# from d3); departure
+picks the mate (Sce6 frees d5: Qd5#; Sg5 was the e4 interposer: Qe3#). Second layer from the COMMON arrival effect:
+both knights on e6 cut Rf6's guard of d6, so 1.S~? Sge6! and 1.Se6? Sgxe6!, and 1.Sf5! (the only landing guarding d6
+that no knight can take) corrects. Bounds found: no pure pair (a rook guarding f4 through f5 gives Rf5# in the
+diagram; rank/file protection of d5/e4 is a check line, diagonal protection of both needs two light bishops); a
+sacrifice on b5 to the c7 knight repeats its mate (same departure); set Sf3# needs f3, the g5 knight's third square.
+Search: unmask_search with KSQ and THREAT fixed; bare cores in freethreat gave nothing. Published layers to beat:
+tries refuted by each knight (Bourd 2004 psis-6ceeea4d02, Kapros, Ahues), changed mates (Stojnic 2004 1st Prize).
 Two captures of the threat's guard (daily No. 3): Sd7xe5 and Re3xe5 both remove d6's only guard. Set mates by
 the lines the departures open (Rd8#, Qd2# through e3); 1.Qe7 leaves the g5-d2 line and the mates change to the
 knight's unguard of c5 (Qc5#) and the rook's self-block of e5 (Qxd7#). Evolve CHANGED=1 seeded with the core

@@ -3745,14 +3745,14 @@
    "author": "Claude (24 Oct 2026), on E. Bourd's bench start mvmtgvyz (bK f3, wS c4)",
    "source": "freethreat CORE 8/8/5n2/8/r1N4K/5k2/8/8 (Kh4, pinner Ra4, EMPTY d4-g4, NOFLIGHT, WANT Ne4->Se5, Ng4->Sd2) -> post-key 8/8/5n2/8/r1N4K/R2B1kB1/4R3/8 (6+3, threat Rf2#, 1...Rxc4+ 2.Bxc4# by the a3-rook battery); keyfind: 1.Bg3! from c7/b8 (long) or e5/d6.",
    "themes": [
-    "Black unpins a White knight three files and one rank from the king (Sc4, Kf3; mates Sd2#/Se5#), pinned on the 4th rank (Ra4-Sc4-Kh4): Black knight correction, 1...S~ 2.Rf2#, 1...Sg4 (guards f2, unpins, guards e5) 2.Sd2#, 1...Se4 (guards f2, unpins, guards d2) 2.Se5#",
+    "Black unpins a White knight three files and one rank from the king (Sc4, Kf3; mates Sd2#/Se5#), pinned on the 4th rank (Ra4-Sc4-Kh4): the knight's other moves do not defend 2.Rf2#; 1...Sg4 (guards f2, unpins, guards e5) 2.Sd2#, 1...Se4 (guards f2, unpins, guards d2) 2.Se5#",
     "1.Bg3! (threat 2.Rf2#); 1...Rxc4+ 2.Bxc4# (battery Ra3-Bd3); set 1...Sg4 2.Sd2#, 1...Se4 unprovided (2.Se5 cuts Bc7 from f4/g3); tries 1.Rxa4? Se4!, 1.Kh3? Se4!"
    ],
    "keys": [
     "Bg3"
    ],
    "cooked": false,
-   "note": "Sound, 9 units (6+3), no pawns, gate PASS. A scheme: one selector knight, selection by direct guard of the other mating square, both free-knight tries refuted by 1...Se4, the pinner's departures give extra mates (minor), 1...Rxc4+ 2.Bxc4# recaptures the checking defender. Second-layer attempt: bishop d2 with Pg3 (8/8/5n2/8/r1N4K/R2B1kP1/3BR3/8): 1.Be1! and the white interference try 1.Be3? Rxc4+! (cuts the battery), but 1.Bf4 cooks (interposes on the pin line, frees the knight)."
+   "note": "Sound, 9 units (6+3), no pawns, gate PASS. A scheme (no Black correction: the knight's random moves do not defend): one selector knight, selection by direct guard of the other mating square, both free-knight tries refuted by 1...Se4, the pinner's departures give extra mates (minor), 1...Rxc4+ 2.Bxc4# recaptures the checking defender. Second-layer attempt: bishop d2 with Pg3 (8/8/5n2/8/r1N4K/R2B1kP1/3BR3/8): 1.Be1! and the white interference try 1.Be3? Rxc4+! (cuts the battery), but 1.Bf4 cooks (interposes on the pin line, frees the knight)."
   },
   {
    "id": "claude-unpin-pinned-pinner-postkey",
@@ -3761,12 +3761,77 @@
    "author": "Claude (24 Oct 2026), on E. Bourd's frame mvmtgvyz (Rg4 pinned by Bh5, Sc4 pinned to the king)",
    "source": "his frame with Kb4 -> a4 (the black bishop reaches d4 via c5 without check); freethreat H/I showed the threat Rf6# and both unpins; built by hand: black Sd2 (its moves never reach f4/f5 and cannot take h5), bPc7 (stops Bc7/Bd8), Qh2 + Re1 (Rg1 fell to Bxg1).",
    "themes": [
-    "Two Black corrections, each correction an unpin of the pinned knight: 1...B~ 2.Rf6#, 1...Bd4 (guards f6 and e5) 2.Sxd2#, 1...Be3 2.Rxe3#; 1...S~ 2.Rf6#, 1...Se4 (guards f6 and d2) 2.Se5#",
+    "Three defences of 2.Rf6#, two of them unpins of the pinned knight: 1...Bd4 (guards f6 and e5) 2.Sxd2#, 1...Se4 (guards f6 and d2) 2.Se5#, 1...Be3 2.Rxe3#; the other bishop and knight moves do not defend (no Black correction: E. Bourd, 24 Oct 2026, 'if a piece doesnt defend, its not anything')",
     "Keys tested: 1.Bh5 from f7 (pins the pinner; cooked by 1.Rf6+ Rf4 2.Rxf4#, set 1...Rxc4+ unprovided), 1.Re1 from d1 (sound, idle key piece, diagram flight e4, single phase)"
    ],
    "keys": [],
    "cooked": false,
    "note": "Post-key without a good key yet. No holes; random duals after 1...Ba5 and 1...c5 (Rf6#/Re3#). With White to move the h6 rook also solves (Rg6, Rh7, Rhe6, Rc6, Rxb6), so keys that leave it are cooked. A free pinner in the diagram always has 1...Rxc4+, which no mate can answer (no recapture checks f3)."
+  },
+  {
+   "id": "claude-unpin-pinned-pinner-bh5-try",
+   "fen": "8/3R1B2/1b1P4/8/K1N3r1/5k2/3n3Q/4R3",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026), diagsearch on E. Bourd's frame mvmtgvyz",
+   "source": "diagsearch B (CORE frame + Bb6/Sd2, bishop free, seed with Bf7) -> 8/2BR1B2/1b1P4/8/K1N3r1/5k2/3n3Q/4R3; wBc7 removed (superfluous).",
+   "themes": [
+    "1.Bh5! double purpose: clears f7 for 2.Rf7# and pins the pinner Rg4 (so it cannot interpose on f4); 1...Bd4 2.Sxd2#, 1...Se4 2.Se5#, 1...Be3 2.Rxe3#"
+   ],
+   "keys": [
+    "Bh5"
+   ],
+   "cooked": false,
+   "note": "Fatal: 1...Rxc4+ in the set play has no mate. No single white unit gives one, and no two-unit rank-3 battery (Pd3 + a rook or queen behind) works: the discovered check is blocked by 1...Be3 or by the d2 knight on b3. Static key (every mate is set). Shown as the reason the pin of the pinner must exist in the diagram."
+  },
+  {
+   "id": "claude-unpin-pinned-pinner-rf8",
+   "fen": "3R4/2pp4/1b3n2/7B/K1N3r1/5k2/3n3Q/4R3",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026), diagsearch on E. Bourd's frame mvmtgvyz",
+   "source": "diagsearch D (seed: rook d6 west, black Bh7) found a black knight f6 blocking the threat square and the key 1.Rd8-f8 pinning it down the f-file; diagsearch F moved it to 1.Rh7-f7 (8/2p4R/1b3n2/7B/K1N3r1/5k2/3n3Q/4R3).",
+   "themes": [
+    "The key pins a black knight on f6 (White pins, Black unpins): 1.Rf8! (threat 2.Rxf6#) 1...Bd4 2.Sxd2#, 1...Se4 2.Se5#, 1...Be3 2.Rxe3#; set 1...Sfe4/Sde4 2.Se5#"
+   ],
+   "keys": [
+    "Rf8"
+   ],
+   "cooked": false,
+   "note": "Sound but not a problem yet: the key rook comes from the edge (idle, out of play; from f7 also attacked by Sf6), every mate is set (static key), single phase. Searches A-F on this frame: no key that both has a job and avoids a diagram flight; the structural reason is that the threat 2.Rf6# needs nothing the theme provides."
+  },
+  {
+   "id": "claude-two-knights-e6-sf5",
+   "fen": "8/K1n5/5Rp1/1b2k1nN/2BN2p1/3Q1p2/8/8",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026, request 'two black knights defend on the same square')",
+   "source": "Hand scheme (Ke5, Sc7/Sg5 -> e6, Qd3 behind the threat knight d4) -> unmask_search KSQ=e2/b3/c2/b5 (claude-two-knights-e6-sb3 stage) -> second layer by hand: Rf6's 6th-rank guard of d6 through e6, key square f5 (the only landing guarding d6 that Black cannot take with a knight) -> unmask_search CORE Ke5/Sc7/Sg5/pf3/Qd3/Rf6/Sf5, EMPTY=e6,d6, TRIES d4->b3/e6 refuted by g5e6. Trim and four improvement runs: nothing better.",
+   "themes": [
+    "Two black knights defend on the same square e6 (guard d4 against 2.Qd4#); departure selects the mate: 1...Sce6 (d5 unguarded) 2.Qd5#, 1...Sge6 (the e4 interposer gone) 2.Qe3#; each sibling mate fails to the knight that stayed (2.Qd5+? Sxd5, 2.Qe3+? Se4)",
+    "White correction: 1.S~ (b3, c2, e6) threatens 2.Qd4# but 1...Sge6! (the arrival on e6 cuts Rf6 from d6: 2.Qe3+ Kd6); 1.Se6? Scxe6 2.Qd5# but 1...Sgxe6!; 1.Sxb5? Sxb5+!; correction 1.Sf5! guards d6",
+    "Set: 1...Sh7/Sf7/Sh3 2.Qe3# (random g5 moves); 1...Sge6 has no set mate (the same e6 cut)"
+   ],
+   "keys": [
+    "Sf5"
+   ],
+   "cooked": false,
+   "note": "Sound, 13 units (6+7, 3 pawns), gate PASS, trim: nothing removable. The common arrival effect (the e6 block cutting the 6th rank) is what refutes the random tries, and the key is the landing that re-guards the cut square d6. Flaws: no try is refuted by 1...Sce6 alone (no pure pair; the only landing that cuts a line 2.Qd5# needs is f5, the key, and a rook guarding f4 through f5 mates on f5 in the diagram); 1...gxf5 2.Rxf5# (bPg6 stops 1.Sxf3+, 1.Sc6+ and the S~ tries from solving, removal test); cook-stoppers Ka7 (1.Sxb5? Sxb5+! only), bBb5 (Sc6#, Re6+, and the b5 square), bPg4 (Sxf3+, Qe3+), bPf3 (2.Qe2# duals after Sge6/Sf3); random-move duals after the knights' non-defending moves (1...Se8 Qd5#/Qd4#); set Sce6/Sge6 unprovided. Level: medium (two thematic variations with one dual-avoidance motive plus a white correction).",
+   "solution": "#2 (6+7)   FEN 8/K1n5/5Rp1/1b2k1nN/2BN2p1/3Q1p2/8/8 w - - 0 1\nSet play:\n   1...Sh7/Sf7/Sh3 2.Qe3#\n   1...Bc6 2.Sxc6#\n   1...Ba6/Bxc4 2.Sc6#\n   unprovided: Se8, Sa8, Sce6, Sa6, Sd5, Sge6, Se4, Be8, Bd7, Ba4, gxh5, g3, f2\nTry: 1.Sxb5? (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   1...Sge6 2.Qe3#\n   (11 further moves allow the threat)\n   but 1...Sxb5+!\nTry: 1.Se6? (threat: 2.Qd4#)\n   1...Scxe6 2.Qd5#\n   1...Sd5 2.Qxd5#\n   (16 further moves allow the threat)\n   but 1...Sgxe6!\nTry: 1.Sb3? (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   (17 further moves allow the threat)\n   but 1...Sge6!\nTry: 1.Sc2? (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   (17 further moves allow the threat)\n   but 1...Sge6!\nKey: 1.Sf5! (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   1...Sge6 2.Qe3#\n   1...gxf5 2.Rxf5#\n   (17 further moves allow the threat)\nPatterns:\n   White interference try: 1.Se6? cuts Rf6 -> d6; 1...Sgxe6!   [try Se6]\n(6419 nodes, 0.29s)"
+  },
+  {
+   "id": "claude-two-knights-e6-sb3",
+   "fen": "8/2n2p2/p1K2Rp1/1p2k1nN/3N4/3Q1p2/2P5/3b4",
+   "stip": "#2",
+   "author": "Claude (24 Oct 2026), unmask_search KSQ=b3 FSQ=d4 THREAT=Qd3d4",
+   "source": "First sound setting of the e6 scheme, before the second layer.",
+   "themes": [
+    "Two black knights to e6 guard d4: 1...Sce6 2.Qd5#, 1...Sge6 2.Qe3#; 1.Sb3! (2.Qd4#)"
+   ],
+   "keys": [
+    "Sb3"
+   ],
+   "cooked": false,
+   "rejected": "single phase: the knight's tries are refuted by pawn captures (axb5, fxe6, gxf5) and the set 1...Sge6 2.Qe3# is the same mate; superseded by claude-two-knights-e6-sf5",
+   "note": "15 units (6+9). Stage only.",
+   "solution": "#2 (6+9)   FEN 8/2n2p2/p1K2Rp1/1p2k1nN/3N4/3Q1p2/2P5/3b4 w - - 0 1\nSet play:\n   1...Sh7/Sge6/Sh3 2.Qe3#\n   1...gxh5 2.Rf5#\n   unprovided: Se8, Sa8, Sce6, Sd5, Se4, Be2, Bxc2, a5, b4, f2\nTry: 1.Sxb5? (threat: 2.Qd4#)\n   1...Sce6/Sxb5 2.Qd5#\n   1...Sge6 2.Qe3#\n   (11 further moves allow the threat)\n   but 1...axb5!\nTry: 1.Kd7? (threat: 2.Sc6#)\n   1...gxh5 2.Rf5#\n   (13 further moves allow the threat)\n   but 1...Kd5!\nTry: 1.Se6? (threat: 2.Qd4#)\n   1...Scxe6 2.Qd5#\n   1...Sgxe6 2.Qe3#\n   (12 further moves allow the threat)\n   but 1...fxe6!\nTry: 1.Sf5? (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   1...Sge6 2.Qe3#\n   (12 further moves allow the threat)\n   but 1...gxf5!\nKey: 1.Sb3! (threat: 2.Qd4#)\n   1...Sce6 2.Qd5#\n   1...Sge6 2.Qe3#\n   (12 further moves allow the threat)\nPatterns:\n   changed threat: Qd4# / Sc6#   [try Sxb5 vs try Kd7]\n   changed threat: Sc6# / Qd4#   [try Kd7 vs try Se6]\n   changed threat: Sc6# / Qd4#   [try Kd7 vs try Sf5]\n   changed threat: Sc6# / Qd4#   [try Kd7 vs key Sb3]\n(4817 nodes, 0.15s)"
   },
   {
    "id": "claude-two-knights-e5-postkey",

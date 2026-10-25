@@ -73,6 +73,20 @@ def _departure_mates(board, frm, uci):
     return b.is_checkmate()
 
 
+def _pass_mates(board, uci):
+    """Does the White move `uci` mate if Black simply passes (Black to move in `board`)? True/False/None."""
+    b = board.copy(stack=False)
+    b.turn = chess.WHITE
+    b.ep_square = None
+    if not b.is_valid():
+        return None
+    m = chess.Move.from_uci(uci)
+    if m not in b.legal_moves:
+        return False
+    b.push(m)
+    return b.is_checkmate()
+
+
 def _corrections(ph, board=None):
     """E. Bourd s27: for each Black piece (not king, not pawn) with several defences, the RANDOM move
     is the set of its moves that allow one and the same mate; a CORRECTION is a move of the same piece
@@ -83,7 +97,10 @@ def _corrections(ph, board=None):
     removed (there both landings cut Ba1-f6), the moves are specific defences, not a random move (needs `board`).
     E. Bourd (17 Oct 2026, 1.Sd2! Qb5 e4#, Qxb8 e3# on his bench): "the solution random move again is somewhat bad". The
     departure itself must also defend: if the threat still mates with the piece removed, every move of it defends by its
-    arrival (Qb5 cuts Ra5-f5, Qxb8 takes the f4 guard), so there is no random move even when the shared mate works."""
+    arrival (Qb5 cuts Ra5-f5, Qxb8 takes the f4 guard), so there is no random move even when the shared mate works.
+    E. Bourd (24 Oct 2026): "its not a correction btw, if a piece doesnt defend, its not anything. correction of what? of
+    non defending move?" A random move must defend: if its shared mate also works when Black passes (the set play of a
+    position whose threat is already on, 1...B~ 2.Rf6#), the moves do not defend and nothing corrects them."""
     out = []
     by_piece = {}
     for v in ph.get('variations', []):
@@ -111,6 +128,8 @@ def _corrections(ph, board=None):
             continue
         rsan = next(c['san'] for v in rnd for c in v['continuations'] if c['id'] == rid)
         ruci = next(c.get('uci') for v in rnd for c in v['continuations'] if c['id'] == rid)
+        if board is not None and ruci and _pass_mates(board, ruci):
+            continue                     # the shared mate works with no Black move at all: nothing defends
         if board is not None and ruci and _departure_mates(board, frm, ruci) is False:
             continue                     # the shared mate needs the arrival squares: specific defences
         if board is not None and any(_departure_mates(board, frm, t['uci']) for t in ph.get('threat', []) if t.get('uci')):
