@@ -3797,6 +3797,21 @@
    ],
    "cooked": false,
    "note": "Sound but not a problem yet: the key rook comes from the edge (idle, out of play; from f7 also attacked by Sf6), every mate is set (static key), single phase. Searches A-F on this frame: no key that both has a job and avoids a diagram flight; the structural reason is that the threat 2.Rf6# needs nothing the theme provides."
+  },
+  {
+   "id": "claude-unpin-e5-correction-scheme",
+   "fen": "8/2Bn2QB/4p2r/KN3rp1/2P1k3/5n1q/2P1NPP1/8",
+   "stip": "#2 (post-key, Black to move)",
+   "author": "Claude (25 Oct 2026), on E. Bourd's bench frame mvmxfkoj step 117 (Ke4, Sb5 pinned to Ka5 by Rf5, Rf5 pinned by Bh7)",
+   "source": "His step 117 (1B6/7B/4p2q/KN3rp1/2PPk3/5n1r/2P1NPP1/8): threat 2.Se2-c3#, 1...e5 2.Sbc3#, 1...Se5 2.Sd6#, six holes after the other moves of Sf3. Those moves open Rh3 to c3, so they defend: a Black correction without its mate. Pd4 removed, White queen on the long diagonal (2.Qd4#), black Sd7 guards e5 so that 2.Qxe5 fails after the correction; Rh3 -> Qh3 and Qh6 -> Rh6 for legality (corr1/corr2/diag scratch searches, by hand after that).",
+   "themes": [
+    "Black correction: 1...S(f3)~ (opens h3-c3, defends against 2.Se2-c3) 2.Qd4#, 1...Sxd4 2.Qxd4#; 1...Sfe5! (unpins Sb5, cuts the queen at e5) 2.Sd6#",
+    "Two units interpose on e5 and unpin the knight; each departure opens a black line onto the other mating square: 1...e5 (h6-d6) 2.Sbc3#, 1...Sfe5 (h3-c3) 2.Sd6#; both cut Bc7-f4, so Se2 must stay: the threat's square c3 is taken by the other knight",
+    "A third unit on e5: 1...Sde5 2.Sd6#/Sbc3# (dual)"
+   ],
+   "keys": [],
+   "cooked": false,
+   "note": "Scheme, no key. Flaws: the dual after 1...Sde5 (the black guard of e5 must be a knight here, and a knight that guards e5 can always go there); 10+8. The cure, Rd8 behind the d7 knight (1...Sde5 then opens the d-file to d6, 2.Sbc3# only), needs a fourth black rook or queen: f5 pinner, 3rd rank, 6th rank, d-file - promoted. 3r4/p1Bn2QB/4p2r/KN3rp1/2P1k3/5n1r/2P1NPP1/8 is sound with Sde5 2.Sbc3# but has four rooks (illegal); with Bf8+Pe7 for the 6th rank the e7 pawn guards d6 (fails)."
   }
  ]
 }
