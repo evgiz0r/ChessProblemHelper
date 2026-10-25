@@ -1555,3 +1555,4 @@ no motive layer to mirror.
   check), black bishop d3 cut by the key knight (1...Bxf5 doubles the try's refutation), king key from g6 (Kh6 illegal,
   Sxe5+). Structural reasons recorded in lessons.jsonl. Result: the theme in its lightest form as a scheme; no
   gate-passing problem this session. Next: a central king with long guard lines in the Bourd-2004 manner.
+- 25 Oct (same session, after merging main): the parallel session's claude-two-knights-e6-sf5 (8/K1n5/5Rp1/1b2k1nN/2BN2p1/3Q1p2/8/8, 1.Sf5!) re-solved here: sound, gate PASS (white correction 1.S~? Sge6!, 1.Se6? Sgxe6!, 1.Sxb5? Sxb5+!), 13 units; its card drawn. It is the deliverable for this theme; my e8 schemes are the lighter form that refuses a key.
