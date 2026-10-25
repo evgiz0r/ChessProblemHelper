@@ -371,7 +371,7 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # a try refuted by a king move is no try (CLAUDE.md fatal flaws): a White interference try that only gives a flight
     # is not content (19 Oct 2026, his 1.Bh2!: 1.Sg3? Kg2! had passed the single-phase gate as a thematic try)
     king_refuted = {f"try {t['first_move']['san']}" for t in tries
-                    if t['refutations'] and all(r['uci'][:2] == ksq for r in t['refutations'])}
+                    if any(r['uci'][:2] == ksq for r in t['refutations'])}
     themed = {x['phases'][0] for x in res['relations'].get('patterns', []) if 'interference try' in x['name']} - king_refuted
     thematic_label = lambda t: f"try {t['first_move']['san']}" in themed
     pool = same_threat if len(same_threat) >= 2 else [t for t in tries if t['first_move']['uci'][:2] == key_piece_sq
@@ -640,7 +640,10 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                           and t['refutations'][0]['uci'] in defences]   # a try refuted by a thematic defence
     # a change counts only against the key, as the rule says (daily No. 19: a black pawn added to a single-phase
     # flight-giving key changed 1...e4 between the tries 1.Sf5? and 1.Sa6? and the gate passed it)
-    vs_key = [c for c in res['relations'].get('changed') or [] if any(p.startswith('key ') for p in c['phases'])]
+    # nor against a try refuted by a king move, which is no try (daily No. 20: 1.Scd4? Ke5! changed both self-block mates
+    # against 1.Qc8! and the gate passed a single phase)
+    vs_key = [c for c in res['relations'].get('changed') or [] if any(p.startswith('key ') for p in c['phases'])
+              and not any(p in king_refuted for p in c['phases'])]
     if not vs_key and not refuted_by_defence \
             and not any(f['severity'] == 'plus' and f['rule'] in second for f in F):
         add('major', 'single phase', 'one phase: no changed mates and no thematic tries (random tries do not count); '

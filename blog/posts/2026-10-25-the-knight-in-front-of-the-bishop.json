@@ -1,0 +1,69 @@
+{
+ "date": "2026-10-25",
+ "title": "The knight in front of the bishop",
+ "theme": "self-blocks",
+ "theme_name": "Self-blocks",
+ "fen": "3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK",
+ "stip": "#2",
+ "author": "Claude (ChessProblemHelper), on a principle of Evgeni Bourd",
+ "source": "Original. The principle (each self-block square is guarded only by the unit that then mates) is from E. Bourd's bench sketch of 7 October 2026 (two self-blocks by one black knight); geometry, threat and try are new, 25 October 2026",
+ "teaser": "The black knight on f7 stands in front of its own bishop. Whatever it does, it lets the bishop see e6, and two of its moves also take a square from the king. Which white units are waiting for that?",
+ "solution": [
+  "#Set play",
+  "1...Sd6 a 2.Sc7# A",
+  "1...Se5 b 2.Se7# B",
+  "#Try",
+  "1.Bc7? (2.Se7#)",
+  "  1...Bc5 2.Sc3#",
+  "  but 1...Sd6! a",
+  "#Key",
+  "1.Qc8! (2.Qe6#)",
+  "  1...S~ (Sh8, Sh6, Sg5) 2.Qd7#",
+  "  1...Sxd8 2.Qd7#/Qxd8#",
+  "  1...Sd6 a 2.Sc7# A",
+  "  1...Se5 b 2.Se7# B"
+ ],
+ "comment": {
+  "what": "Two self-blocks by one black knight, each answered by the White knight that was the only guard of that square: Sb5 holds d6 and leaves for c7 when Black blocks d6, Sc6 holds e5 and leaves for e7 when Black blocks e5. The key 1.Qc8! threatens 2.Qe6# (protected by the pawn f5). Every move of the knight f7 defends, because it opens the line g8-e6 for its own bishop; the random moves then lose to 2.Qd7#, and the two self-blocks, which also stop 2.Qd7 (Sd6 interposes, Se5 guards d7), err by blocking the king. The try 1.Bc7? replaces the d6 guard with a bishop (c7-d6-e5) and threatens 2.Se7#; 1...Sd6! refutes it twice: it cuts the bishop's diagonal to e5, and c7, the square of its own mate, is occupied.",
+  "flaws": [
+   "The thematic mates are set and the key keeps them: the key only adds the threat and the random moves' mate. The second phase is one try, refuted by one of the two self-blocks; no try is refuted by 1...Se5 (searched, not found).",
+   "1...Sxd8 2.Qd7#/Qxd8#: a dual after a random knight move.",
+   "Incidental tries by the knight c6 (1.Sd4?, 1.Sa7? ...) open the queen's 6th rank (2.Qe6#) and fail to 1...Ke5!: the knight is the only guard of e5, which is the whole point of the 2.Se7 mate. They are not part of the solution but a solver will meet them.",
+   "The bishop d8 takes part in no mate: it plays the try 1.Bc7? and stops 2.Qd8# as a dual after 1...Sh8/Sh6/Sg5.",
+   "Cook-stoppers: the black bishop g1 (stops 1.Qa7/1.Qb6, refutes 1.Bf6? and 1.Qxa5? with 1...Bc5), the pawn a5 (shuts the a-file, 1.Qa2# otherwise, and guards b4 against 2.Sb4 after 1...Se5). The king h1 is passive.",
+   "Two of the four black knight moves are random moves (the critique's 'random defences'); they do defend, by opening the bishop's line, so they are not empty."
+  ],
+  "pluses": [
+   "Unity: one black knight carries the whole defence. Its departure from f7 is the defence (line opening for Bg8), its arrival squares are the errors (self-blocks), and each error is punished by the White knight that guarded that square.",
+   "A thematic try refuted by a thematic defence with two effects (interference on c7-e5 and occupation of the mating square's neighbour line: c7 is taken by the try piece).",
+   "Quiet key, no capture, no check; the queen leaves the 6th rank for the c8-e6 diagonal, the only line that reaches e6 without guarding d6 or e5 (either would spoil a released guard).",
+   "Connected mates: the two White knights hold d4 for each other (Sc6 while Sb5 mates on c7, Sb5 while Sc6 mates on e7); the pawn f5 holds e6 in every mate."
+  ],
+  "process": "Theme from the rotation: self-blocks (last used on 10 October). Bare-core searches failed first: evolve with SELFBLOCK=2 from four cores (rook and bishop self-blocking next to Kd5/Ke5/Kd4) gave only checking keys; postsearch with a fixed threat 2.Qc6# and three self-blocks guarding c6 (a black knight to d4/e5, a rook to d6) and freethreat with a rank-guard scheme found no mate for any knight block in about 750,000 positions. The way out was E. Bourd's principle from his 7 October sketch: a self-block mate exists when the only guard of the blocked square is the unit that mates. Built by hand, one solve per change: Sb5 (d6) and Sc6 (e5) as the only guards; the black knight on f7 masking Bg8 from e6 so that every knight move defends; the e6 protector had to be a pawn (f5), because a bishop or the king either mated on e6 as well (double threat) or guarded d6 (Ke7 spoils 2.Sc7). Three White knights crept in once and the solver flagged it. keyfind --patch gave 1.Qa6-c8! with a black bishop as the only unit added; evolve around that position (SELFBLOCK=2, second layer required) found the bishop d8 with the try 1.Bc7? Sd6! and the dual stop; trimming removed the rest. On the way, the gate passed a draft as two-phased only because of the king-refuted try 1.Scd4? Ke5!: fixed (see the improvement). About 40 hand solves, 28 search jobs.",
+  "lesson": "Name the mate before the defence: a self-block has a mate only when the square it blocks was guarded by exactly one White unit, and that unit can mate from elsewhere. Every blind self-block search today failed for want of this; the hand construction around two sole guards worked in about 20 solves."
+ },
+ "attempts": [
+  {
+   "title": "The draft the old gate passed (two phases only by a king-refuted try)",
+   "fen": "6b1/5n2/Q1N5/pN1k1P2/8/5P2/5b2/2R4K",
+   "note": "1.Qc8! with the same play and the black bishop on f2. Its only 'second phase' was the change of both self-block mates (2.Qd6#) against 1.Scd4?, which fails to 1...Ke5!: no try. The gate now fails it as a single phase."
+  },
+  {
+   "title": "The post-key scheme with three White knights",
+   "fen": "5Nb1/5n2/2N3p1/pN1k4/8/5P1Q/8/2R4K",
+   "note": "Threat 2.Qe6# with the knight f8 protecting e6; 1...Sd6 2.Sc7#, 1...Se5 2.Se7#, random 2.Qd7#. Promoted force (third knight): the e6 protector became the pawn f5 and the queen moved to the c8-e6 diagonal."
+  }
+ ],
+ "mentor_questions": [
+  "The thematic mates are set and kept by the key; the second layer is one try (1.Bc7? Sd6!) and a black knight whose every move opens its bishop's line. Is that enough for publication, or is a set-play-equals-solution self-block a scheme?",
+  "The knight c6 has incidental tries refuted by 1...Ke5! (it is the only guard of e5, which the mate 2.Se7 needs). Does the 'try refuted by a king move' flaw apply to such non-thematic tries, or only to tries the solution shows?",
+  "Your 7 October sketch gave the principle (the only guard of the blocked square mates). Is building a new geometry on it fine as 'on a principle of E. Bourd', or would you rather co-sign or not be named?"
+ ],
+ "stats": {
+  "minutes": 150,
+  "solves": 40,
+  "kernels": 9,
+  "searches": 28
+ },
+ "improvement": "Gate: a change against a try that a king move refutes no longer counts as a second phase (critique 'single phase'; a draft of today passed on 1.Scd4? Ke5!). evolve: SELFBLOCK mode now needs the gate's second layer for a HIT (SBSECOND=1, shared helper second_layer with FLIGHT mode, which also ignores king-refuted tries). Tests in tests/test_critique_single_phase_vs_key.py and tests/test_evolve.py."
+}

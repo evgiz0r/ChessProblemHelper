@@ -25,7 +25,8 @@ daily No. 2) or idle in the diagram (guards nothing near the king, no set mate, 
 HIT; KEYROLE=0 restores the old score. SELFBLOCK=N (self-block mode, daily No. 5) needs no DEFS: it rewards every
 variation whose defence is a functional self-block (the motive 'self-block on ..': the defender stands next to its
 king and the mate would fail without it), with distinct single mates; a HIT needs N such mates and no dual after a
-self-block. PATTERN with no DEFS (e.g. PATTERN=Half-pin NPAT=3, daily No. 7) rewards every key-phase defence the
+self-block; SBSECOND=1 (default) also needs the gate's second phase, as FSECOND (SBSECOND=0 restores the old HIT).
+PATTERN with no DEFS (e.g. PATTERN=Half-pin NPAT=3, daily No. 7) rewards every key-phase defence the
 solver reports with that pattern and a single mate, distinct mates only; a HIT needs NPAT of them (PATTERN=Self-pin
 for direct self-pins by the defender, daily No. 8). KEY=e7e8n (fixed-key mode, daily No. 9: underpromotion) needs no DEFS:
 it scores only the phase whose first move is KEY (uci), rewards it being the only key, and rewards NVAR (default 3)
@@ -81,6 +82,7 @@ CTHREAT = os.environ.get('CTHREAT', '1') == '1'       # CORR mode: no HIT that t
 CTRY = int(os.environ.get('CTRY', '0'))              # CORR mode: N quiet tries each refuted only by a correction
 NPAT = int(os.environ.get('NPAT', '2'))               # PATTERN with no DEFS: distinct pattern mates for a HIT
 SELFBLOCK = int(os.environ.get('SELFBLOCK', '0'))      # self-block mode: N distinct self-block mates for a HIT
+SBSECOND = os.environ.get('SBSECOND', '1') == '1'    # SELFBLOCK mode: a HIT also needs a set change or a thematic try
 NOFLIGHT = os.environ.get('NOFLIGHT', '1') == '1'   # constitution: a diagram flight is fatal, so no HIT has one
 KEYROLE = os.environ.get('KEYROLE', '1') == '1'     # E. Bourd: no HIT whose key piece is out of play or idle in the diagram
 RECIP = os.environ.get('RECIP', '0') == '1'          # set play and key swap the mates of the two DEFS
@@ -214,12 +216,22 @@ def selfblocks(b, ph):
     return mates, duals
 
 
-def sb_score(b, ph):
-    """(score, summary, ok) of the self-block play in phase ph (SELFBLOCK mode)."""
+def sb_score(b, ph, phases=(), setmap=None, rel=None):
+    """(score, summary, ok) of the self-block play in phase ph (SELFBLOCK mode). SBSECOND=1 (default) also needs the
+    gate's second phase for a HIT (a set mate the key changes, or a quiet try refuted by a key-phase defence): daily No. 5
+    and every block found since were single phases, which the gate fails (18 Oct 2026)."""
     if not SELFBLOCK:
         return 0.0, '', True
     mates, duals = selfblocks(b, ph)
-    return 22 * len(mates) - 8 * duals, f"SB {'/'.join(sorted(mates))} duals={duals}", len(mates) >= SELFBLOCK and not duals
+    t = 22 * len(mates) - 8 * duals
+    ok = len(mates) >= SELFBLOCK and not duals
+    summ = f"SB {'/'.join(sorted(mates))} duals={duals}"
+    if SBSECOND and ph['type'] == 'key':
+        changed, tries = second_layer(ph, phases, setmap or {}, rel)
+        t += 12 * min(changed, 3) + 12 * min(len(tries), 2)
+        ok = ok and bool(changed or tries)
+        summ += f' changed={changed} tries={"/".join(sorted(tries)) or "-"}'
+    return t, summ, ok
 
 
 def key_mode(r):
@@ -294,6 +306,38 @@ def bristol_terms(ph, phases):
     return t, f"bristol={'yes' if follow else 'no'} thematic-tries={'/'.join(sorted(refs)) or '-'}", follow
 
 
+def second_layer(ph, phases, setmap, rel=None):
+    """(changed, tries) of phase ph: the gate's second phase. changed counts set mates the key changes (single mate
+    before and after, or the solver's changes against the key); tries is the set of quiet tries whose single refutation
+    is a defence of ph answered by a mate (not a king move). Shared by FLIGHT and SELFBLOCK modes."""
+    changed = 0
+    for v in ph['variations']:
+        sv = setmap.get(v['defence']['san'].rstrip('+#'))
+        if (sv and len(sv['continuations']) == 1 and len(v['continuations']) == 1 and not v['threat_repeat']
+                and v['continuations'][0]['san'] != sv['continuations'][0]['san']):
+            changed += 1
+    if ph['type'] == 'key' and rel is not None:
+        # the gate's own list, but only changes against the key: a change between two tries is no second phase
+        # (daily No. 19: bPf6 gave 1...e4 Qd4# in 1.Sf5? and Sc7# in 1.Sa6?, both tries, and the score called it a HIT)
+        kp = f"key {ph['first_move']['san']}"
+        # nor a try that a king move refutes, which is no try (the gate's rule, daily No. 20: 1.Scd4? Ke5!)
+        kref = {f"try {q['first_move']['san']}" for q in phases if q['type'] == 'try' and isinstance(q.get('refutations'), list)
+                and any(isinstance(x, dict) and x['san'].startswith('K') for x in q['refutations'])}
+        changed = max(changed, sum(1 for c in rel.get('changed') or [] if kp in c.get('phases', [])
+                                   and not any('=' in x or x in kref for x in c.get('phases', []))))   # no promotion try
+    # the gate's second phase: a quiet try whose single refutation is a key-phase defence with a mate (not a king move,
+    # which is fatal); by any White unit, not only the key piece
+    answered = {v['defence']['uci'] for v in ph['variations'] if v['continuations'] and not v['threat_repeat']}
+    tries = set()
+    for q in phases:
+        rr = q.get('refutations')
+        if (q['type'] == 'try' and not q.get('check_key') and not q['first_move']['san'].endswith('+')
+                and isinstance(rr, list) and len(rr) == 1 and isinstance(rr[0], dict) and rr[0]['uci'] in answered
+                and not rr[0]['san'].startswith('K') and '=' not in q['first_move']['san']):
+            tries.add(f"{q['first_move']['san']}?{rr[0]['san']}")
+    return changed, tries
+
+
 def flight_score(b, ph, phases, setmap, rel=None):
     """FLIGHT mode (daily No. 19): (score, summary, ok) of the flights the first move of ph gives. A given flight is a
     king move to a square the king could not reach in the diagram; it counts when one mate answers it and that mate is
@@ -316,28 +360,7 @@ def flight_score(b, ph, phases, setmap, rel=None):
             bad += 1
     fm = {m for _, m in good}
     t = 25 * min(len(good), FLIGHT + 1) - 8 * bad - 15 * (len(good) - len(fm))
-    changed = 0
-    for v in ph['variations']:
-        sv = setmap.get(v['defence']['san'].rstrip('+#'))
-        if (sv and len(sv['continuations']) == 1 and len(v['continuations']) == 1 and not v['threat_repeat']
-                and v['continuations'][0]['san'] != sv['continuations'][0]['san']):
-            changed += 1
-    if ph['type'] == 'key' and rel is not None:
-        # the gate's own list, but only changes against the key: a change between two tries is no second phase
-        # (daily No. 19: bPf6 gave 1...e4 Qd4# in 1.Sf5? and Sc7# in 1.Sa6?, both tries, and the score called it a HIT)
-        kp = f"key {ph['first_move']['san']}"
-        changed = max(changed, sum(1 for c in rel.get('changed') or [] if kp in c.get('phases', [])
-                                   and not any('=' in x for x in c.get('phases', []))))   # a promotion try is no phase
-    # the gate's second phase: a quiet try whose single refutation is a key-phase defence with a mate (not a king move,
-    # which is fatal); by any White unit, not only the key piece
-    answered = {v['defence']['uci'] for v in ph['variations'] if v['continuations'] and not v['threat_repeat']}
-    tries = set()
-    for q in phases:
-        rr = q.get('refutations')
-        if (q['type'] == 'try' and not q.get('check_key') and not q['first_move']['san'].endswith('+')
-                and isinstance(rr, list) and len(rr) == 1 and isinstance(rr[0], dict) and rr[0]['uci'] in answered
-                and not rr[0]['san'].startswith('K') and '=' not in q['first_move']['san']):
-            tries.add(f"{q['first_move']['san']}?{rr[0]['san']}")
+    changed, tries = second_layer(ph, phases, setmap, rel)
     t += 12 * min(changed, 3) + 12 * min(len(tries), 2)
     allm = {v['continuations'][0]['san'] for v in ph['variations']
             if len(v['continuations']) == 1 and not v['threat_repeat'] and v['continuations'][0]['san'] not in thr}
@@ -465,7 +488,7 @@ def score(b):
         t -= 3 * sum(1 for v in ph['variations'] if v['dual'] and v['defence']['san'].rstrip('+#') not in DEFS)
         ct, csum, _ = corr_score(ph)
         t += ct
-        st, ssum, _ = sb_score(b, ph)
+        st, ssum, _ = sb_score(b, ph, phases, setmap, r.get('relations'))
         t += st
         ft, fsum, _ = flight_score(b, ph, phases, setmap, r.get('relations'))
         t += ft
@@ -533,7 +556,7 @@ def score(b):
                      and setmap[d]['continuations'][0]['san'][0] == 'Q' for d in DEFS)
         if ok and TARGET:
             ok = all(vm[d]['continuations'][0]['san'] == TARGET[d] for d in TARGET if d in vm)
-        ok = ok and corr_score(ph)[2] and sb_score(b, ph)[2] and not (NOFLIGHT and kmoves)
+        ok = ok and corr_score(ph)[2] and sb_score(b, ph, phases, setmap, r.get('relations'))[2] and not (NOFLIGHT and kmoves)
         ok = ok and flight_score(b, ph, phases, setmap, r.get('relations'))[2]
         ok = ok and not (UNIQUE and any(extra_defences(ph, DEFS).values()))
         if ok and KEYROLE:

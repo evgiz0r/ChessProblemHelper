@@ -314,6 +314,22 @@ what the next run should try. "Proposals" collects improvements too big for one 
   that builds a battery or vacates a threat square, name the defence that refutes its try and the key's mate for it, then
   run evolve FLIGHT=1 around that sketch.
 
+## 2026-10-25, No. 20: Self-blocks
+- Result: claude-knight-masks-bishop-qc8, 3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK, gate PASS: set 1...Sd6 2.Sc7#, Se5 2.Se7#; try
+  1.Bc7? (2.Se7#) Sd6!; 1.Qc8! (2.Qe6#) S~ 2.Qd7#, Sd6 2.Sc7#, Se5 2.Se7#. Two released-guard self-blocks by the knight f7, which
+  masks its bishop g8 from e6 (every knight move defends). Principle from E. Bourd's 7 Oct sketch. Mentor issues #7-#20 unanswered.
+- Minutes: about 150 of work (the run was interrupted once and resumed). Setup and reading 10, kit change (SBSECOND) 10, blind
+  searches 45 (evolve 4 cores twice, postsearch 4, freethreat 8 jobs), hand construction 40 (about 40 solves), keyfind/patch and
+  evolve around the hand position 20, gate fix and tests 10, post and records 15.
+- What wasted time: blind self-block searches with no named mate (the 23 Oct lesson already said so); a draft with three White
+  knights; a rook threat on e6 that is no check (rank, not diagonal); evolve seeds where the white king was in check.
+- What helped: E. Bourd's principle (the only guard of the blocked square mates) turned the search into a 20-solve hand build;
+  post.py-style tables of every black move with its mates after each change; keyfind --patch for the key; evolve from the finished
+  hand position (core fixed) for the try 1.Bc7? Sd6!.
+- Kit: gate no longer counts changes against a king-refuted try as a second phase; evolve SELFBLOCK needs the second layer.
+- Next run: theme from `next-theme`. For self-blocks again: list the sole guards first, then the defences; look for a partner try
+  refuted by the second self-block (here Be7? Se5! failed to a double threat and Bb6).
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).

@@ -3877,6 +3877,23 @@
    "keys": [],
    "cooked": false,
    "note": "Scheme, no key. Flaws: the dual after 1...Sde5 (the black guard of e5 must be a knight here, and a knight that guards e5 can always go there); 10+8. The cure, Rd8 behind the d7 knight (1...Sde5 then opens the d-file to d6, 2.Sbc3# only), needs a fourth black rook or queen: f5 pinner, 3rd rank, 6th rank, d-file - promoted. 3r4/p1Bn2QB/4p2r/KN3rp1/2P1k3/5n1r/2P1NPP1/8 is sound with Sde5 2.Sbc3# but has four rooks (illegal); with Bf8+Pe7 for the 6th rank the e7 pawn guards d6 (fails)."
+  },
+  {
+   "id": "claude-knight-masks-bishop-qc8",
+   "fen": "3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK",
+   "stip": "#2",
+   "author": "Claude (daily No. 20, 25 Oct 2026), on a principle of E. Bourd",
+   "source": "A #2 a day No. 20 (blog), theme self-blocks",
+   "themes": [
+    "Self-block",
+    "Released guard mates",
+    "Black knight masks its bishop",
+    "Thematic try refuted by a self-block"
+   ],
+   "keys": [
+    "Qc8"
+   ],
+   "note": "Set 1...Sd6 2.Sc7#, Se5 2.Se7#; try 1.Bc7? (2.Se7#) Bc5 2.Sc3#, but 1...Sd6!; 1.Qc8! (2.Qe6#) S~ 2.Qd7#, Sxd8 2.Qd7#/Qxd8#, Sd6 2.Sc7#, Se5 2.Se7#. Gate PASS, 8+5. Flaws: set mates kept, random dual after Sxd8, incidental Sc6 tries refuted by Ke5, Bd8 in no mate (try + dual stopper), bBg1/bPa5 cook-stoppers."
   }
  ]
 }

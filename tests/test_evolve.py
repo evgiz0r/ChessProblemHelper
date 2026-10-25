@@ -59,7 +59,7 @@ for fen in ('2R5/3n1p2/1B6/1K1kP1Q1/1P4B1/4rP2/8/8', '8/3N3K/2b4p/kBR2p2/1p1Q4/8
 
 
 def _selfblock(n):
-    env = dict(os.environ, SELFBLOCK=str(n), DEFS='', PYTHONPATH=ROOT)
+    env = dict(os.environ, SELFBLOCK=str(n), SBSECOND='0', DEFS='', PYTHONPATH=ROOT)
     r = subprocess.run([sys.executable, '-c', SB_PROBE], capture_output=True, text=True, env=env, cwd=ROOT, timeout=120)
     assert r.returncode == 0, r.stderr
     return r.stdout.splitlines()
@@ -75,6 +75,19 @@ def test_selfblock_mode_counts_functional_self_blocks():
 
 def test_selfblock_mode_demands_n_mates():
     assert _selfblock(2)[0].startswith('False')
+
+
+def test_selfblock_mode_wants_a_second_layer():
+    # daily No. 17's capture threat: 1.Qc3! Rxd4... a self-block mate (Qe5#) but a single phase, which the gate fails;
+    # SBSECOND (default) refuses it as a HIT, as FSECOND does in FLIGHT mode
+    fen = '8/B7/8/5p2/2Prkp2/1Q3N1K/6P1/8'
+    hit, sc, summ = _score(fen, SELFBLOCK='1', SBSECOND='0')
+    assert hit and 'SB Qe5#' in summ
+    hit, sc, summ = _score(fen, SELFBLOCK='1')
+    assert not hit and 'changed=0 tries=-' in summ
+    # daily No. 5: the try 1.Sd6? Rxd6! is answered after the key (2.Qf5#): a second layer, still a HIT
+    hit, sc, summ = _score('3r1r2/4p3/5pR1/3PkNBp/2R4P/5B1Q/4n2K/8', SELFBLOCK='1')
+    assert hit and 'Sd6?Rxd6' in summ
 
 
 HALFPIN = """
