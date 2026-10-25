@@ -330,6 +330,12 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For self-blocks again: list the sole guards first, then the defences; look for a partner try
   refuted by the second self-block (here Be7? Se5! failed to a double threat and Bb6).
 
+- Mentor answer (issue #21, same day): a single try is not enough when the theme is two variations; the extension must be
+  aligned with both. Acted on: critique 'one-sided extension' (fatal in the gate), evolve SELFBLOCK requires it, skills and
+  principles updated. Extension attempt for No. 20: near-miss 3B2b1/b4n2/Q1N5/pN1k1P2/8/5P2/2R5/7K has 1.Bc7? Sd6! and
+  1.Sxa7? (2.Qd3#) Se5!, but 1.Qxa7 also solves; evolve (8 jobs) and an all-single-unit scan found no unit that keeps both
+  tries and kills it. Open for the next self-block run.
+
 ## Proposals
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).

@@ -661,6 +661,12 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         san_of = {v['defence']['uci']: v['defence']['san'].rstrip('+#') for v in real}
         covered = {san_of.get(t['refutations'][0]['uci']) for t in refuted_by_defence} | \
                   {c.get('defence', '').rstrip('+#') for c in vs_key}
+        # a try refuted by a random move of a correcting unit reaches the whole correction family: each correction of
+        # that unit answers the same random defence (E. Bourd's session-28 original: 1.Qb1? S~ Sxd4!, S~/Sd6/Se3)
+        frm = {v['defence']['san'].rstrip('+#'): v['defence']['uci'][:2] for v in real}
+        for d in list(covered):
+            if d in mate_of and d not in thematic and not d.startswith('K'):
+                covered |= {t for t in thematic if frm.get(t) == frm.get(d)}
         if len(thematic) >= 2 and len(covered & thematic) < 2:
             add('major', 'one-sided extension',
                 f"the second layer reaches {len(covered & thematic)} of {len(thematic)} thematic variations "
