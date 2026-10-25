@@ -110,6 +110,9 @@ Read `references/construction.md` now (the order and the rules with their exampl
    Example: 1.Bf7! (static, theme only) became 1.Sa3! with a knight wheel once the mask moved to b5 and the key
    piece became a knight whose other moves block the queen's mates. Avoid symmetry for its own sake: it is a
    flaw in general.
+   With two thematic variations the extension must reach both (E. Bourd, mentor issue #21: "only 1 is not enough, its
+   too short and usually spoils a lot"): a try pair refuted by each thematic defence, changes of both mates, a transfer.
+   One try for one variation is a 'one-sided extension', fatal in the gate (daily No. 20: 1.Bc7? Sd6!, nothing for Se5).
 6c. **Make a try's refutation thematic** (E. Bourd, 15 Oct 2026: "how would you find that improvement, its not just
    trimming"). Read why the try fails (anatomy: "Sc2+: flight e4"): the try lacks a guard the key has. If its only guard is a
    pawn or a short-range unit, the refutation can only capture it. Re-guard the square with a line piece whose line crosses a

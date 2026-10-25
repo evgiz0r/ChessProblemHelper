@@ -21,6 +21,8 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
      only the set play (big flaw when completely redundant), cook-stoppers (acceptable: usual cost), unprovided moves, heavy pawn count,
      thin play (one mating move), defences that merely guard the threat square in a single-phase problem (with changed
      mates they are pure single moves, no flaw: E. Bourd 14 Oct 2026), a mate that recaptures the defender on its arrival square.
+   - A second layer that reaches one of two thematic variations (one try, one change) is not enough (E. Bourd, issue #21):
+     the gate fails it as 'one-sided extension'.
    - Pluses: flight-giving key, long key, unified defences, dual avoidance with one motive, tries whose
      refutation uses the theme, changed mates, economy, connected variations (the mating units hold a square for each other: anatomy LINKS,
      E. Bourd 11 Oct 2026). Unified play beats a mixed set (defences that all

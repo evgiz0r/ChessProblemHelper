@@ -228,9 +228,20 @@ def sb_score(b, ph, phases=(), setmap=None, rel=None):
     summ = f"SB {'/'.join(sorted(mates))} duals={duals}"
     if SBSECOND and ph['type'] == 'key':
         changed, tries = second_layer(ph, phases, setmap or {}, rel)
-        t += 12 * min(changed, 3) + 12 * min(len(tries), 2)
-        ok = ok and bool(changed or tries)
-        summ += f' changed={changed} tries={"/".join(sorted(tries)) or "-"}'
+        # the extension must reach both thematic variations (E. Bourd, mentor issue #21): count the self-block
+        # defences reached by a try's refutation or by a change against the key
+        sbdefs = {v['defence']['san'].rstrip('+#') for v in ph['variations']
+                  if len(v['continuations']) == 1 and v['continuations'][0]['san'] in mates}
+        kp = f"key {ph['first_move']['san']}"
+        kref = {f"try {q['first_move']['san']}" for q in phases if q['type'] == 'try' and isinstance(q.get('refutations'), list)
+                and any(isinstance(x, dict) and x['san'].startswith('K') for x in q['refutations'])}
+        reached = {x.split('?')[1].rstrip('+#') for x in tries} | {
+            c.get('defence', '').rstrip('+#') for c in (rel or {}).get('changed') or []
+            if kp in c.get('phases', []) and not any(x in kref or '=' in x for x in c.get('phases', []))}
+        n = len(reached & sbdefs)
+        t += 12 * min(changed, 3) + 12 * min(len(tries), 2) + 15 * min(n, 2)
+        ok = ok and n >= min(2, len(sbdefs))
+        summ += f' changed={changed} tries={"/".join(sorted(tries)) or "-"} reached={"/".join(sorted(reached & sbdefs)) or "-"}'
     return t, summ, ok
 
 

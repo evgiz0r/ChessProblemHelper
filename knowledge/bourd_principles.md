@@ -359,3 +359,10 @@ the [a], [b] for the mates that change thematically."
 - Weight follows the theme (12 Oct 2026, on 1.Sg6!): "i think the position is decent, its reasonable in terms for
   composing, your earlier versions showed simple themes. more complex themes require more pieces and more heavy
   positions." 7+9 with a try pair and two thematic variations is acceptable weight.
+
+## The second layer reaches every thematic variation (mentor issue #21, 25 Oct 2026)
+"If the thematic content consists of 2 variations, only 1 is not enough, its too short and usually spoils a lot. The
+extention has to be aligned with both thematic variations somehow (tries, transfers and so on)." One try refuted by one
+of two thematic defences (daily No. 20: 1.Bc7? Sd6!, nothing for 1...Se5) is not a second phase. Tool rule:
+critique 'one-sided extension' (fatal in the gate): tries refuted by thematic defences and changes against the key must
+reach at least two thematic variations (defences with their own mate; king flights belong to the key).

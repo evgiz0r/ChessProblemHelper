@@ -72,7 +72,7 @@ solves, kernels tried, searches run, minutes.
 - `python tools/blog.py check "<FEN>"` must print `GATE: PASS`. Fatal: unsound, cook, promoted force,
   unprovided check in the set play, checking key, dual in a thematic variation, a major diagram flight,
   anticipation (same or mirrored position in the archive or on the blog). Nothing else may override it.
-- Then the `judge` skill: flaws first, in his order. Every gate warning appears among the post's flaws, or
+- Then the `judge` skill: flaws first, in his order. The second layer must reach every thematic variation ('one-sided extension', E. Bourd issue #21). Every gate warning appears among the post's flaws, or
   "What it is" says why it is not one. Claim a theme only if the solver's report shows it where a detector
   exists (Patterns, Changed continuations, the S~ correction lines).
 - Fallback, in this order: a sound simpler form of the theme (fewer variations) is a normal post that says

@@ -85,9 +85,10 @@ def test_selfblock_mode_wants_a_second_layer():
     assert hit and 'SB Qe5#' in summ
     hit, sc, summ = _score(fen, SELFBLOCK='1')
     assert not hit and 'changed=0 tries=-' in summ
-    # daily No. 5: the try 1.Sd6? Rxd6! is answered after the key (2.Qf5#): a second layer, still a HIT
+    # daily No. 5: the try 1.Sd6? Rxd6! is answered after the key, but by a capture, not by the self-block 1...Rd6
+    # (2.Qf5#), so it reaches no self-block variation: no HIT since mentor issue #21 (the extension must reach them)
     hit, sc, summ = _score('3r1r2/4p3/5pR1/3PkNBp/2R4P/5B1Q/4n2K/8', SELFBLOCK='1')
-    assert hit and 'Sd6?Rxd6' in summ
+    assert not hit and 'Sd6?Rxd6' in summ and 'reached=-' in summ
 
 
 HALFPIN = """
@@ -263,3 +264,9 @@ def test_flight_mode_refuses_promotion_tries_and_thin_play():
     # daily No. 19's first hit: 1.Qc3! (zugzwang) Kf4/d4 2.Qf3#, its 'change' against the try 1.c8=B? (d4 Bb7#)
     hit, sc, summ = _score('7B/2P5/4p1K1/3pN3/2p1k3/8/3Q4/8', FLIGHT='1')
     assert not hit and 'changed=0' in summ
+
+
+def test_selfblock_mode_wants_both_variations_reached():
+    # daily No. 20 (E. Bourd, mentor issue #21): one try 1.Bc7? Sd6! reaches one of the two self-blocks: no HIT
+    hit, sc, summ = _score('3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK', SELFBLOCK='2')
+    assert not hit and 'reached=Sd6' in summ

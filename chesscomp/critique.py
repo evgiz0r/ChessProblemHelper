@@ -649,6 +649,23 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
         add('major', 'single phase', 'one phase: no changed mates and no thematic tries (random tries do not count); '
             'publishable only if the '
             'play is very complicated or pretty (E. Bourd, 18 Oct 2026)')
+    # the second layer must reach every thematic variation (E. Bourd, mentor issue #21, 25 Oct 2026: "if the thematic
+    # content consists of 2 variations, only 1 is not enough, its too short and usually spoils a lot. the extention has
+    # to be aligned with both thematic variations somehow (tries, transfers and so on)"). Thematic variation here: a
+    # key-phase defence whose single mate answers no other defence (random moves sharing one mate are not thematic).
+    elif not any(f['severity'] == 'plus' and f['rule'] in second for f in F):
+        mate_of = {v['defence']['san'].rstrip('+#'): v['continuations'][0]['san'] for v in real
+                   if not v['refutes'] and len(v['continuations']) == 1}
+        mates = Counter(mate_of.values())
+        thematic = {d for d, m in mate_of.items() if mates[m] == 1 and not d.startswith('K')}   # a flight is the key's
+        san_of = {v['defence']['uci']: v['defence']['san'].rstrip('+#') for v in real}
+        covered = {san_of.get(t['refutations'][0]['uci']) for t in refuted_by_defence} | \
+                  {c.get('defence', '').rstrip('+#') for c in vs_key}
+        if len(thematic) >= 2 and len(covered & thematic) < 2:
+            add('major', 'one-sided extension',
+                f"the second layer reaches {len(covered & thematic)} of {len(thematic)} thematic variations "
+                f"({', '.join(sorted(covered & thematic)) or 'none'} of {', '.join(sorted(thematic))}): "
+                "it must be aligned with both (E. Bourd, mentor issue #21)")
     return {'findings': F, 'participation': use, 'necessity': nec}
 
 

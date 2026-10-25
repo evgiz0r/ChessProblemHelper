@@ -27,3 +27,15 @@ def test_change_against_a_king_refuted_try_is_no_second_phase():
     # fails to 1...Ke5!, which is no try (CLAUDE.md), and the gate had passed the single phase on it
     keys, rules = _rules('6b1/5n2/Q1N5/pN1k1P2/8/5P2/5b2/2R4K')
     assert keys == ['Qc8'] and 'single phase' in rules
+
+
+def test_second_layer_must_reach_both_thematic_variations():
+    # daily No. 20 (E. Bourd, mentor issue #21): the one try 1.Bc7? Sd6! reaches only one of the two self-blocks
+    keys, rules = _rules('3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK')
+    assert keys == ['Qc8'] and 'one-sided extension' in rules and 'single phase' not in rules
+
+
+def test_flight_mate_is_the_keys_content_not_a_variation_to_reach():
+    # Kisis: the try 1.Rd2? Bg4! and the change reach 1...Bg4; the flight 1...Kd5 belongs to the key
+    keys, rules = _rules('1b6/5N1n/1B2p3/1p3b1Q/4k3/4P3/B1R5/2N4K')
+    assert 'one-sided extension' not in rules
