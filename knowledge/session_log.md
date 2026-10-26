@@ -1582,3 +1582,4 @@ no motive layer to mirror.
 - Issue #18 Q2 answered (little play, not the zugzwang, is what keeps the rook block below standard): 'simple block' message reworded (same verdict), lesson, principle, post feedback. Issue #18 complete.
 - Issue #17 Q1 answered (Manolescu's 1.Qh3: in play, she mates Qa2#/Qe5# from h2 in the tries): out_of_play_key takes the phases (critique, evolve, keyfind); test; post No. 16 flaw moved to pluses; CLAUDE.md line; lesson, principle.
 - Issue #17 Q2 answered (a known frame is open to a small improvement; the aim is new schemes): dombrovskis.md, lesson, post feedback.
+- Issue #17 Q3 answered (two pawn steps opening one line: a common, easy defence pattern, not Meredith, not a unity): lesson, principle, post feedback. Issue #17 complete.
