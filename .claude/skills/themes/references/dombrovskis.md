@@ -20,6 +20,9 @@ unit; a defence with one effect cannot be paradoxical.
    stands on the queen's file: both steps block the threat Qxd7 and self-block, both vacate d7 (the side effect);
    the king key guards d7. Each try's other step is met by Qh3#, so the key also changes two mates. The model of
    the doubled form; do not mirror it.
+   The frame is not closed (E. Bourd, 26 Oct 2026): "its likely its similar to other mechanisms, but part of composing
+   if finding novel schemes. sometimes people improve just by a bit". A new setting of it is fair when it improves
+   something (the key, the economy, extra content); a copy or a reduced form is not. Prefer a new scheme.
 2. **Captures of two sole guards** (E. Bourd, session 28, bourd-double-dombrovskis in knowledge/problems.json):
    a knight is the only guard of d4, a pawn the only guard of d6; dxe6 and Bxe5 remove one each and refute the tries
    whose threat needs that square; the key 1.Bc5! covers both squares and threatens a mate both captures parry for
