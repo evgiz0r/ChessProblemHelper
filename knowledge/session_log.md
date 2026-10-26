@@ -1573,3 +1573,8 @@ no motive layer to mirror.
   king-only "flaws" removed from posts 10-17, 10-19, 10-24, 10-25; judge skill and checklist, principles, lesson.
 - Issue #19 Q2 answered: king d7 + rook f8 "probably", "almost identical" to king a5 + rook f6 (lesson, No. 18 feedback).
   Shown next: No. 17 (Velimirović, our rook block 1.Qb5!, our capture threat 1.Qc3!) with its three questions.
+- Issue #18 Q3 answered ("if we are attacking it, a random of it defends. thats for sure a random move"): the
+  departure test in _corrections (analysis.py and analysis.js) leaves out threats that capture the piece, so 1.Qc3!
+  (2.Qxd4#) shows R~ 2.Sg5# with corrections Rd3, Rxc4; tests in test_corrections.py and test_bench_js.py; bench
+  republished (v41); post No. 17 text, lesson, principle. His request: one question at a time, the diagram with the
+  full solution and the question under it (Velimirović given with every move).

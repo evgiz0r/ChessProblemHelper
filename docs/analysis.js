@@ -398,7 +398,9 @@
       if (departureMates(ph.fen, frm, rcont) === false) continue;   // the shared mate needs the arrivals
       // E. Bourd (17 Oct 2026, 1.Sd2! Qb5 e4#, Qxb8 e3#): "the solution random move again is somewhat bad" - the
       // departure must also defend; if the threat still mates with the piece removed, its moves defend by arrival.
-      if ((ph.threat || []).some(t => departureMates(ph.fen, frm, t) === true)) continue;
+      // E. Bourd (26 Oct 2026): "if we are attacking it, a random of it defends. thats for sure a random move" - a threat
+      // that captures the piece is parried by its departure, so it is left out of this test.
+      if ((ph.threat || []).some(t => t.to !== frm && departureMates(ph.fen, frm, t) === true)) continue;
       out.push({ piece: (vs[0].defence || vs[0].san)[0] + frm,
                  random: { moves: rnd.map(v => v.defence || v.san), mate: rsan, duals: rnd.filter(v => v.conts.length > 1).map(v => v.defence || v.san) },
                  corrections: cor.map(v => ({ move: v.defence || v.san, mates: v.conts.map(c => c.san) })) });

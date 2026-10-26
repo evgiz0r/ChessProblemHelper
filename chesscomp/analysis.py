@@ -100,7 +100,9 @@ def _corrections(ph, board=None):
     arrival (Qb5 cuts Ra5-f5, Qxb8 takes the f4 guard), so there is no random move even when the shared mate works.
     E. Bourd (24 Oct 2026): "its not a correction btw, if a piece doesnt defend, its not anything. correction of what? of
     non defending move?" A random move must defend: if its shared mate also works when Black passes (the set play of a
-    position whose threat is already on, 1...B~ 2.Rf6#), the moves do not defend and nothing corrects them."""
+    position whose threat is already on, 1...B~ 2.Rf6#), the moves do not defend and nothing corrects them.
+    E. Bourd (26 Oct 2026): "correction might be neuanced, but if we are attacking it, a random of it defends. thats for
+    sure a random move." A threat that captures the piece does not count in the departure test above."""
     out = []
     by_piece = {}
     for v in ph.get('variations', []):
@@ -132,7 +134,10 @@ def _corrections(ph, board=None):
             continue                     # the shared mate works with no Black move at all: nothing defends
         if board is not None and ruci and _departure_mates(board, frm, ruci) is False:
             continue                     # the shared mate needs the arrival squares: specific defences
-        if board is not None and any(_departure_mates(board, frm, t['uci']) for t in ph.get('threat', []) if t.get('uci')):
+        # E. Bourd (26 Oct 2026, the threat 2.Qxd4# on a black rook d4): "if we are attacking it, a random of it defends.
+        # thats for sure a random move" - a threat that captures the piece is parried by its departure
+        if board is not None and any(_departure_mates(board, frm, t['uci']) for t in ph.get('threat', [])
+                                     if t.get('uci') and t['uci'][2:4] != frm):
             continue                     # the threat mates without the piece: its moves defend by arrival
         out.append({'piece': vs[0]['defence']['san'][0] + frm,
                     'random': {'moves': [v['defence']['san'] for v in rnd], 'mate': rsan,
