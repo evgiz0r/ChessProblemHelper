@@ -24,7 +24,6 @@
   "what": "A study post. Today's work found no original that passes the gate (see How it was made), so the skill's fallback applies: an archive problem of the theme, with full credit. In the diagram the bishop a2 guards d5 along a2-d5, and the rook c2 stands on its other diagonal, b1-e4. The key 1.Bb1! leaves the a2-d5 diagonal, so the king gets d5. The bishop goes behind the rook, so every rook move is now a discovered check. The threat is 2.Rd2#, which covers d3, d4 and d5. The flight is answered by a different rook discovery: 1...Kd5 2.Rc5#. The one real defence, 1...Bg4, cuts the queen h5 from f3, so 2.Rd2+ Kf3 escapes. Then 2.Rf2# covers f3 instead. The two tries play the same pieces in the other order. 1.Rd2? threatens the bishop's discovery 2.Bb1# and fails to 1...Bg4! (f3). 1.Rf2? guards f3 and threatens 2.Qf3#. After it, 1...Bg4 is answered by 2.Bb1#, but 1...Sg5! refutes. Threat reversal between 1.Rd2? and 1.Bb1!, and a Dombrovskis: Bg4, the refutation of 1.Rd2?, is met in 1.Rf2? by 1.Rd2's threat.",
   "flaws": [
    "1...Bg6 and 1...Bh3 are each answered by twelve different rook discoveries. They are by-play, not thematic, but the duals are many.",
-   "The white king h1 takes no part. The knight c1 is needed in no mate: it guards d3 only to stop 1.Bb1? Kd3 (without it the key fails).",
    "The flight is given by the key's departure only. The key is not a sacrifice and the flight is a plain line opening (a2-d5).",
    "Only one real black defence after the key (1...Bg4) besides the flight. The tries carry the content."
   ],
@@ -66,6 +65,8 @@
   "searches": 22
  },
  "improvement": "Two changes, both tested. (1) chesscomp.compose.evolve has a flight-giving key mode, FLIGHT=N (a proposal in the daily log since 9 Oct). It rewards king moves to squares the king could not reach in the diagram, each answered by its own mate that is not the threat, all distinct. With FSECOND=1 (default) a HIT also needs what the gate calls a second phase: a changed mate against the key (set or try; promotion tries do not count) or a quiet try refuted only by a key-phase defence (not a king move). FNVAR=2 distinct mates are needed against thin play. Kisis's problem is a HIT, and our two-flight knight sacrifice is not. (2) The gate's single-phase test (chesscomp/critique.py) counted any changed mate, also one between two tries with the key unchanged. It now counts only changes against the key, as its own rule says ('set or try against the key'). The full regression passes; tests in tests/test_evolve.py and tests/test_critique_single_phase_vs_key.py.",
- "feedback": [],
+ "feedback": [
+  "E. Bourd (26 Oct, chat): the knight c1 and the king h1 are not cook-stoppers, they are part of the problem: \"what cook exactly are they stopping. they are just guarding or existing (the king)\". A king with a role is a plus; one that just exists is usually no flaw. Solver: the king's square is a role, not a flaw: on h1 it blocks the queen's 1.Qh1# (with the king on g1 or a1 the problem is cooked)."
+ ],
  "mentor_issue": 20
 }

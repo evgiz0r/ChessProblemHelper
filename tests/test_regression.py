@@ -205,6 +205,17 @@ def test_cook_stopping_king_is_no_flaw():
     assert 'passive king' not in rules and 'cook-stopping king' in rules
 
 
+def test_cook_stopping_king_names_the_cook():
+    """E. Bourd (26 Oct 2026), on Kisis's Kh1 (Heureka! 1992-93): "what cook exactly are they stopping ... if it just
+    exists it usually not regarded as a flaw". The note names the cook: on g1 the king lets in 1.Qh1#."""
+    from chesscomp.core import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    p = Problem.from_fen('1b6/5N1n/1B2p3/1p3b1Q/4k3/4P3/B1R5/2N4K w - - 0 1', '#2')
+    f = {x['rule']: x for x in critique(p, analyse(p), necessity=False)['findings']}
+    assert f['cook-stopping king']['severity'] == 'note' and '1.Qh1# also solves' in f['cook-stopping king']['msg']
+
+
 def test_format_critique_prints_notes():
     """Daily No. 5: a 'note' finding (cook-stopping king) crashed `report --critique` with KeyError."""
     from chesscomp.critique import format_critique

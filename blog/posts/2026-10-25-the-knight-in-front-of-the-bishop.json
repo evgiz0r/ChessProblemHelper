@@ -29,7 +29,7 @@
    "The thematic mates are set and the key keeps them: the key only adds the threat and the random moves' mate. The second phase is one try, refuted by one of the two self-blocks; no try is refuted by 1...Se5 (searched, not found).",
    "1...Sxd8 2.Qd7#/Qxd8#: a dual after a random knight move.",
    "The bishop d8 takes part in no mate: it plays the try 1.Bc7? and stops 2.Qd8# as a dual after 1...Sh8/Sh6/Sg5.",
-   "Cook-stoppers: the black bishop g1 (stops 1.Qa7/1.Qb6, refutes 1.Bf6? and 1.Qxa5? with 1...Bc5), the pawn a5 (shuts the a-file, 1.Qa2# otherwise, and guards b4 against 2.Sb4 after 1...Se5). The king h1 is passive.",
+   "Cook-stoppers: the black bishop g1 (stops 1.Qa7/1.Qb6, refutes 1.Bf6? and 1.Qxa5? with 1...Bc5), the pawn a5 (shuts the a-file, 1.Qa2# otherwise, and guards b4 against 2.Sb4 after 1...Se5).",
    "The knight f7's other four moves (Sh8, Sh6, Sg5, Sxd8) stop the threat only because the bishop's line opens, and 2.Qd7# answers them all: random moves, not defences (E. Bourd, 26 Oct 2026)."
   ],
   "pluses": [

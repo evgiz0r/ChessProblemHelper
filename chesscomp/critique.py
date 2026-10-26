@@ -230,29 +230,30 @@ def piece_necessity(problem, res, time_limit=20):
     return out
 
 
-def _king_stops_cooks(problem, res, ksq, tries=16) -> bool:
-    """True when the White king's square matters: moving it to some other legal square spoils the problem
-    (cooked or unsound), so it stands where it does to stop cooks (E. Bourd s30: not a flaw)."""
+def _king_stops_cooks(problem, res, ksq, tries=16):
+    """The cook the White king stops where it stands: moved to a nearby square, another key solves as well.
+    Returns 'on <square>: 1.<key> also solves' or None. Only a real cook counts (E. Bourd, 26 Oct 2026, on Kisis's
+    Kh1: "what cook exactly are they stopping ... if the king has some role its an advantange, but if it just exists it
+    usually not regarded as a flaw"); a square where the key merely stops working is no cook."""
     board = problem.board
     key = next((ph for ph in res['phases'] if ph['type'] == 'key'), None)
     if key is None:
-        return False
+        return None
     bk = board.king(chess.BLACK)
     cands = sorted((s for s in chess.SQUARES if not board.piece_at(s) and chess.square_distance(s, bk) >= 2),
                    key=lambda s: chess.square_distance(s, ksq))[:tries]     # the nearby squares tell most
-    tested = 0
     for s in cands:
         b = board.copy(); b.remove_piece_at(ksq); b.set_piece_at(s, chess.Piece(chess.KING, chess.WHITE))
         if not b.is_valid() or b.is_check():
             continue
-        tested += 1
         try:
             r = analyse(Problem.from_fen(b.fen(), '#2'), max_refutations=0, include_tries=False, include_set=False, time_limit=5)
         except Exception:
             continue
-        if r.get('keys') != res.get('keys') or r.get('cooked'):
-            return True           # placed elsewhere it lets a cook in (or breaks the key): a cook-stopper
-    return False
+        extra = [k for k in r.get('keys') or [] if k not in (res.get('keys') or [])]
+        if extra and len(r.get('keys') or []) >= 2:
+            return f"on {chess.square_name(s)}: 1.{extra[0]} also solves"
+    return None
 
 
 def critique(problem: Problem, res: dict | None = None, necessity: bool = True) -> dict:
@@ -559,9 +560,10 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
             if anchors:
                 add('plus', 'thematic king', f"{_pname(board, sq)} takes part in no mate but anchors a pin the defence creates: "
                                              + ', '.join(anchors))
-            elif _king_stops_cooks(problem, res, sq):
-                # E. Bourd (s30): "king specifically as cook-stopper is not a flaw, it's ok"
-                add('note', 'cook-stopping king', f"{_pname(board, sq)} takes part in no mate but stops cooks where it stands")
+            elif (cook := _king_stops_cooks(problem, res, sq)):
+                # E. Bourd (s30): "king specifically as cook-stopper is not a flaw, it's ok"; name the cook (26 Oct 2026)
+                add('note', 'cook-stopping king', f"{_pname(board, sq)} takes part in no mate but stops a cook where it "
+                                                  f"stands ({cook})")
             else:
                 # E. Bourd (mentor issue #4): "passive king is ok, it's usually a piece that is hard to give a role
                 # when many black pieces exist" - a note, not a flaw
@@ -588,11 +590,17 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                 changed_phases = {ph for c in res.get('relations', {}).get('changed', []) for ph in c['phases']}
                 my_tries = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == chess.square_name(sq)
                             and f"try {t['first_move']['san']}" in changed_phases]
+                also = (' and also plays ' + ', '.join('1.' + t + '?' for t in my_tries)) if my_tries else ''
                 if my_tries and not why.startswith('no solution'):
                     add('major', 'try-only unit', f"{_pname(board, sq)} takes part in no mate of the solution; it only plays "
                                                   + ', '.join('1.' + t + '?' for t in my_tries) + ' (a drawback weighed against what the try buys, E. Bourd)')
+                elif why.startswith('no solution'):
+                    # a unit the key needs (it guards a square, plugs a line) is part of the problem, not a cook-stopper
+                    # (E. Bourd, 26 Oct 2026, on Kisis's Sc1, which guards d3 against 1.Bb1 Kd3: "what cook exactly are
+                    # they stopping ... the c1 knight is just a piece, its not a cookstopper or whatever")
+                    add('note', 'solution guard', f"{_pname(board, sq)} takes part in no mate, but there is no solution "
+                                                  f"without it: part of the problem, not a cook-stopper{also}")
                 else:
-                    also = (' and also plays ' + ', '.join('1.' + t + '?' for t in my_tries)) if my_tries else ''
                     add('minor', 'cook-stopper', f"{_pname(board, sq)} takes part in no mate; needed for soundness ({why}){also}")
         elif [t for t in tries if t['first_move']['uci'][:2] == name]:
             own = [t['first_move']['san'] for t in tries if t['first_move']['uci'][:2] == name]
@@ -799,7 +807,7 @@ def key_piece_captures_unprovided(board, kmove, phases):
 
 
 def format_critique(c):
-    order = {'major': 0, 'minor': 1, 'note': 2, 'plus': 3}     # 'note': a cook-stopping king (E. Bourd), no flaw
+    order = {'major': 0, 'minor': 1, 'note': 2, 'plus': 3}     # 'note': no flaw (a cook-stopping king, a solution guard)
     icon = {'major': '✗✗', 'minor': '✗ ', 'note': '· ', 'plus': '✓ '}
     lines = [f"{icon[f['severity']]} [{f['rule']}] {f['msg']}" for f in sorted(c['findings'], key=lambda f: order[f['severity']])]
     return '\n'.join(lines)

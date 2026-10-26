@@ -1567,3 +1567,7 @@ no motive layer to mirror.
   'random defences'; a random move with a dual is still random), test in tests/test_simplicity.py; post No. 20's flaw
   list corrected; CLAUDE.md, judge skill and principles say which tries the king-refutation flaw covers. Q3 "dont name
   me, its ok" -> No. 20's byline is Claude alone (post, card, problems.json); principle line on credit.
+- Issue #20 Q3 answered ("they are not cook stoppers, they are part of the problem. what cook exactly are they
+  stopping"): critique 'cook-stopper' no longer fires for a unit the solution needs ('solution guard', a note); the
+  cook-stopping king note names its cook (Kisis's Kh1 blocks 1.Qh1#: with the king on a1, cooked by Qh1#/Rc4+);
+  king-only "flaws" removed from posts 10-17, 10-19, 10-24, 10-25; judge skill and checklist, principles, lesson.

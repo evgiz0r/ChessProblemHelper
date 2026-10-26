@@ -16,8 +16,10 @@
 | A simple motive shared with a published problem (self-block, unguard, two units to one square) | not an anticipation unless pushed to a limit (E. Bourd, 13 Oct); only the specific multi-phase layer counts | - |
 | Try refuted by a king move | big flaw | `king refutes try` |
 | Same refutation for several thematic tries (not when they are the random stage of a white correction: B~? Bd6!, Bf5!? Rd6!, Bc2!, E. Bourd 13 Oct) | flaw | `same refutation` / plus `white correction` |
-| White unit taking part in no mate (key piece forgivable; pin-anchor king thematic) | flaw | `passive piece`, `passive king`, `cook-stopper` |
-| Unit needed only for soundness | flaw | `cook-stopper` |
+| White unit taking part in no mate (key piece forgivable; pin-anchor king thematic) | flaw | `passive piece`, `cook-stopper` |
+| A king that just exists (no mate, no role) | usually no flaw (E. Bourd, 26 Oct 2026); a role is a plus | `passive king` (note) |
+| Unit that stops a named cook or dual (another key, a short mate, a second mate) | small flaw, the usual cost | `cook-stopper` (names what it stops) |
+| Unit the solution needs (it guards a square or plugs a line so the key works) | no flaw: part of the problem, not a cook-stopper (E. Bourd, 26 Oct 2026: "what cook exactly are they stopping") | `solution guard` (note) |
 | Obvious Black defence with no answer | flaw | `unprovided move` |
 | Defences that merely guard the threat square, mates that merely exploit the unguard, in a single-phase problem | weak content | `guard/unguard play` |
 | The same with changed mates: pure single-purpose defences, the change is the content (E. Bourd, 14 Oct) | no flaw | `pure guard defences` (note) |

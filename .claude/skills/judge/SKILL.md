@@ -9,7 +9,9 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
    including the "further moves allow the threat" counts and the try list.
 2. Roles: `python -m chesscomp.anatomy --fen "<FEN>" --tries 1` (king field per mate, essential pins, role
    table). A unit flagged "no part" or "needed in no mate" (removal test) gets one solve without it: cook-stopper or
-   try-only unit (a drawback, E. Bourd 11 Oct). The critique does not check this.
+   try-only unit (a drawback, E. Bourd 11 Oct). The critique does not check this. Call a unit a cook-stopper only when
+   you can name the cook it stops; a unit the solution needs (it guards a flight the key would give) is part of the
+   problem, and a king that just exists is no flaw (E. Bourd, 26 Oct 2026: "what cook exactly are they stopping").
    Count the force yourself (the critique does not): a third knight or rook, a second queen, two
    bishops on one colour = promoted piece = fatal unless the idea cannot exist without it.
 3. Verdict in this order, see `references/checklist.md`:

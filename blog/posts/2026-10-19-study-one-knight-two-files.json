@@ -25,7 +25,7 @@
   "flaws": [
    "The try 1.Sb7? is refuted by a capture of the bishop, 1...Sxc6!, which is not a thematic defence.",
    "Thin play after the key: only 1...Sc3 has its own mate; the other knight moves (Sc8, Sc6, Sb5) allow both the threat and 2.Rc6#, a by-play dual that the published solution leaves out.",
-   "The White king h1 takes no part, and the pawn d6 is needed in no mate of the solution (the anatomy's removal test): it guards c7, a square the queen's mates also cover, and is there for soundness.",
+   "The pawn d6 is needed in no mate of the solution (the anatomy's removal test): it guards c7, a square the queen's mates also cover, and is there for soundness.",
    "In the diagram 1...Sc3 already has two mates (2.Qxa7# and 2.Qa5#), so the set play shows no clean third answer.",
    "This is not our work: it is published as a study, credited to its author, because today's original failed."
   ],

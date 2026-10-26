@@ -26,7 +26,7 @@
    "1.Bd5? and 1.Be4? also threaten 2.Rd3#, and only the king refutes them (1...Kxd5!, 1...Kxe4!). They are not given as tries, but a solver will try them.",
    "One refutation for three squares: 1...d5! answers 1.Bc6?, 1.Bb7? and 1.Ba8? alike. It is one error (the line can be cut behind d5), but only 1.Bc6? is worth writing down.",
    "Duals after moves that do not defend: 1...Bf2 2.Rd3#/c3# (the bishop leaves c3), 1...Bd2 2.Rd3#/Rxd2#.",
-   "Units that only stop cooks: the black pawn h4 shuts the h-file (without it 1.Rh5! threatens 2.Rd5#), and the white king a6 takes no part. Five pawns, and c3 is guarded twice (Sa4, Sd1).",
+   "A unit that only stops a cook: the black pawn h4 shuts the h-file (without it 1.Rh5! threatens 2.Rd5#). Five pawns, and c3 is guarded twice (Sa4, Sd1).",
    "Most black moves are unprovided in the diagram (1...Ba5, Bb4, Bc3, Bf2, d5): only 1...Bg3 and 1...Bd2 have set mates."
   ],
   "pluses": [

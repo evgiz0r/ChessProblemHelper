@@ -84,9 +84,13 @@ def test_try_only_unit_even_when_its_tries_carry_changes():
 
 def test_plug_that_also_plays_a_try_is_not_try_only():
     # E. Bourd's Kc5 bishop-rook battery (18 Oct 2026): wPd7 cuts Be8 from c6 (no solution without it) and also
-    # plays 1.d8=Q?; it is a cook-stopper, not a unit "only for a try"
-    rules = _rules('K3b3/3P4/2B2R2/B1k1NP2/1nP3n1/b1P3pq/5R2/6Q1')
-    assert 'try-only unit' not in rules and 'cook-stopper' in rules
+    # plays 1.d8=Q?; it is not a unit "only for a try". Nor a cook-stopper: the solution needs it, so it is part of the
+    # problem (E. Bourd, 26 Oct 2026, on Kisis's Sc1: "what cook exactly are they stopping")
+    from chesscomp import Problem
+    from chesscomp.critique import critique
+    f = critique(Problem.from_fen('K3b3/3P4/2B2R2/B1k1NP2/1nP3n1/b1P3pq/5R2/6Q1 w - - 0 1', '#2'))['findings']
+    d7 = {x['rule'] for x in f if x['msg'].startswith('wPd7')}
+    assert d7 == {'solution guard'}                  # wPf5 stays a real cook-stopper: it stops 1.Bd5
 
 
 def test_white_correction_with_king_tries_in_the_threat_pool():
