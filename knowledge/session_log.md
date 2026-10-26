@@ -1579,3 +1579,4 @@ no motive layer to mirror.
   republished (v41); post No. 17 text, lesson, principle. His request: one question at a time, the diagram with the
   full solution and the question under it (Velimirović given with every move).
 - Issue #18 Q1 answered (Velimirović: "its both"): black_correction.md section, lesson, principle, post No. 17 flaw reworded.
+- Issue #18 Q2 answered (little play, not the zugzwang, is what keeps the rook block below standard): 'simple block' message reworded (same verdict), lesson, principle, post feedback. Issue #18 complete.

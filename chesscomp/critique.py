@@ -757,10 +757,18 @@ def simplicity(board, res, key, real, ksq):
     if board.piece_type_at(kmove.from_square) != chess.KING and black_captures(board, kmove.from_square):
         escape = bool(key_piece_captures_unprovided(board, kmove, res['phases']))
     allrandom = bool(groups) and all(sq in rnd for sq in groups)
-    if zz and (allrandom or escape):
-        out.append(('simple block', 'major', 'a zugzwang ' + ('whose defences are random moves of their units'
-                    if allrandom else 'whose key piece escapes a capture the set leaves unprovided')
-                    + ': too simple to publish (E. Bourd, 15 Oct 2026: "the gate of passing needs to slightly increase")'))
+    if zz and allrandom:
+        # E. Bourd (26 Oct 2026, on a rook R~ with two corrections after a flight-giving 1.Qb5!): "the threat is not the
+        # issue, zugzwang might be ok as well sometimes. the issue is probably the little amount of play ... i would
+        # prefer something a bit extra (tries, transfers, some more interesting unified line play)"
+        play = ', '.join(f"{board.piece_at(chess.parse_square(sq)).symbol().upper().replace('N', 'S')}~ and "
+                         f"{len(groups[sq]) - n} correction(s)" for sq, n in rnd.items())
+        out.append(('simple block', 'major', f'too little play: a block whose only play is a random move ({play}); '
+                    'the zugzwang is not the flaw, the amount of play is: below the standard without something extra '
+                    '(tries, transfers, unified line play; E. Bourd, 15 and 26 Oct 2026)'))
+    elif zz and escape:
+        out.append(('simple block', 'major', 'a zugzwang whose key piece escapes a capture the set leaves unprovided'
+                    ': too simple to publish (E. Bourd, 15 Oct 2026: "the gate of passing needs to slightly increase")'))
     return out
 
 

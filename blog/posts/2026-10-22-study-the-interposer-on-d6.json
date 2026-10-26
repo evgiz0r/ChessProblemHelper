@@ -64,7 +64,8 @@
  "improvement": "chesscomp.compose.evolve, correction mode (CORR): two new score terms that follow the gate. CTHREAT=1 (default) refuses a HIT that the gate would fail as a 'simple block' (no threat, every black unit but the king answered by one mate on three or more of its moves). Today's first round returned exactly such a block as a HIT. CTRY=N rewards quiet tries that are refuted only by one move of the correcting piece that the key answers with a mate, one per distinct refutation, and needs N of them for a HIT. Without a try or a change the gate fails a single phase, and the search had no way to see that. Tested in tests/test_evolve.py on today's block and on the knight correction b3N3/8/ppn1p3/4k3/3R2P1/4P3/7K/2Q5 (try 1.Qc2? Sxd4!).",
  "feedback": [
   "E. Bourd (26 Oct, chat), on the capture-threat attempt 1.Qc3! (2.Qxd4#): \"correction might be neuanced, but if we are attacking it, a random of it defends. thats for sure a random move\". Both solvers now report R~ there (chesscomp/analysis.py, docs/analysis.js; bench v41).",
-  "E. Bourd (26 Oct, chat), on whether this is a correction problem: \"its both. the correction does exist, and its part of the problem. correction moves becomes defenses, and mates on them change\"."
+  "E. Bourd (26 Oct, chat), on whether this is a correction problem: \"its both. the correction does exist, and its part of the problem. correction moves becomes defenses, and mates on them change\".",
+  "E. Bourd (26 Oct, chat), on our rook block 1.Qb5! (flight, R~ and two corrections): \"the threat is not the issue, zugzwang might be ok as well sometimes. the issue is probably the little amount of play. here we give a flight, and have 2 variations, its OK. i would prefer something a bit extra (tries, transfers, some more interesting unified line play) for it to be publishable ... i would just say they are below the wanted standard\"."
  ],
  "mentor_issue": 18
 }
