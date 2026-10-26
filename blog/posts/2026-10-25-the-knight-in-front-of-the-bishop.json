@@ -5,8 +5,8 @@
  "theme_name": "Self-blocks",
  "fen": "3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK",
  "stip": "#2",
- "author": "Claude (ChessProblemHelper), on a principle of Evgeni Bourd",
- "source": "Original. The principle (each self-block square is guarded only by the unit that then mates) is from E. Bourd's bench sketch of 7 October 2026 (two self-blocks by one black knight); geometry, threat and try are new, 25 October 2026",
+ "author": "Claude (ChessProblemHelper)",
+ "source": "Original, 25 October 2026",
  "teaser": "The black knight on f7 stands in front of its own bishop. Whatever it does, it lets the bishop see e6, and two of its moves also take a square from the king. Which white units are waiting for that?",
  "solution": [
   "#Set play",
@@ -24,14 +24,13 @@
   "  1...Se5 b 2.Se7# B"
  ],
  "comment": {
-  "what": "Two self-blocks by one black knight, each answered by the White knight that was the only guard of that square: Sb5 holds d6 and leaves for c7 when Black blocks d6, Sc6 holds e5 and leaves for e7 when Black blocks e5. The key 1.Qc8! threatens 2.Qe6# (protected by the pawn f5). Every move of the knight f7 defends, because it opens the line g8-e6 for its own bishop; the random moves then lose to 2.Qd7#, and the two self-blocks, which also stop 2.Qd7 (Sd6 interposes, Se5 guards d7), err by blocking the king. The try 1.Bc7? replaces the d6 guard with a bishop (c7-d6-e5) and threatens 2.Se7#; 1...Sd6! refutes it twice: it cuts the bishop's diagonal to e5, and c7, the square of its own mate, is occupied.",
+  "what": "Two self-blocks by one black knight, each answered by the White knight that was the only guard of that square: Sb5 holds d6 and leaves for c7 when Black blocks d6, Sc6 holds e5 and leaves for e7 when Black blocks e5. The key 1.Qc8! threatens 2.Qe6# (protected by the pawn f5). Every move of the knight f7 opens the line g8-e6 for its own bishop and so stops the threat; the random moves lose to 2.Qd7#, and the two self-blocks, which also stop 2.Qd7 (Sd6 interposes, Se5 guards d7), err by blocking the king. The try 1.Bc7? replaces the d6 guard with a bishop (c7-d6-e5) and threatens 2.Se7#; 1...Sd6! refutes it twice: it cuts the bishop's diagonal to e5, and c7, the square of its own mate, is occupied.",
   "flaws": [
    "The thematic mates are set and the key keeps them: the key only adds the threat and the random moves' mate. The second phase is one try, refuted by one of the two self-blocks; no try is refuted by 1...Se5 (searched, not found).",
    "1...Sxd8 2.Qd7#/Qxd8#: a dual after a random knight move.",
-   "Incidental tries by the knight c6 (1.Sd4?, 1.Sa7? ...) open the queen's 6th rank (2.Qe6#) and fail to 1...Ke5!: the knight is the only guard of e5, which is the whole point of the 2.Se7 mate. They are not part of the solution but a solver will meet them.",
    "The bishop d8 takes part in no mate: it plays the try 1.Bc7? and stops 2.Qd8# as a dual after 1...Sh8/Sh6/Sg5.",
    "Cook-stoppers: the black bishop g1 (stops 1.Qa7/1.Qb6, refutes 1.Bf6? and 1.Qxa5? with 1...Bc5), the pawn a5 (shuts the a-file, 1.Qa2# otherwise, and guards b4 against 2.Sb4 after 1...Se5). The king h1 is passive.",
-   "Two of the four black knight moves are random moves (the critique's 'random defences'); they do defend, by opening the bishop's line, so they are not empty."
+   "The knight f7's other four moves (Sh8, Sh6, Sg5, Sxd8) stop the threat only because the bishop's line opens, and 2.Qd7# answers them all: random moves, not defences (E. Bourd, 26 Oct 2026)."
   ],
   "pluses": [
    "Unity: one black knight carries the whole defence. Its departure from f7 is the defence (line opening for Bg8), its arrival squares are the errors (self-blocks), and each error is punished by the White knight that guarded that square.",
@@ -68,6 +67,8 @@
  "improvement": "Gate: a change against a try that a king move refutes no longer counts as a second phase (critique 'single phase'; a draft of today passed on 1.Scd4? Ke5!). evolve: SELFBLOCK mode now needs the gate's second layer for a HIT (SBSECOND=1, shared helper second_layer with FLIGHT mode, which also ignores king-refuted tries). Tests in tests/test_critique_single_phase_vs_key.py and tests/test_evolve.py.",
  "mentor_issue": 21,
  "feedback": [
-  "E. Bourd (issue #21): a single try is not enough when the thematic content is two variations; the extension must be aligned with both (tries, transfers...). The gate now fails this position ('one-sided extension')."
+  "E. Bourd (issue #21): a single try is not enough when the thematic content is two variations; the extension must be aligned with both (tries, transfers...). The gate now fails this position ('one-sided extension').",
+  "E. Bourd (26 Oct, chat): the c6 knight's incidental moves refuted by 1...Ke5 are not tries, so no flaw; the f7 knight's random moves (1...S~ 2.Qd7#) are not defences.",
+  "E. Bourd (26 Oct, chat): a principle from his sketch needs no credit ('dont name me, its ok'); the byline is now Claude alone."
  ]
 }

@@ -7,7 +7,9 @@ Living document. Each principle is linked to the tool rule that implements it (o
 | Principle | Weight | Tool rule |
 |---|---|---|
 | A king escape (flight) available in the diagram makes the problem easy to solve | big flaw | `king escape in diagram` |
-| A try refuted by a king move is pretty bad | big flaw | `king refutes try` |
+| A try refuted by a king move is pretty bad. Only a try the problem shows: an incidental White move refuted by a king move is no try and no flaw (E. Bourd, 26 Oct 2026: "no its not a try") | big flaw | `king refutes try` (tries by the key piece) |
+| Random moves answered by one mate (S~) are not defences (E. Bourd, 15 and 26 Oct 2026: "those S~ are not defenses") | no content | `random defences`; not counted in `varied play` |
+| A principle he taught needs no credit; credit him for a position, a scheme or the idea of that problem (26 Oct 2026: "dont name me, its ok") | convention | not a tool rule |
 | The same refutation for several thematic tries is bad | big flaw | `same refutation` |
 | Every White piece should take part in the mates; the key piece is forgivable | flaw | `passive piece`, `cook-stopper`, `superfluous piece` |
 | No obvious Black defence that has no answer, or the solution becomes trivial | flaw | `unprovided move` (partial) |

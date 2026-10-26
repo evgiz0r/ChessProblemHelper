@@ -3882,7 +3882,7 @@
    "id": "claude-knight-masks-bishop-qc8",
    "fen": "3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK",
    "stip": "#2",
-   "author": "Claude (daily No. 20, 25 Oct 2026), on a principle of E. Bourd",
+   "author": "Claude (daily No. 20, 25 Oct 2026)",
    "source": "A #2 a day No. 20 (blog), theme self-blocks",
    "themes": [
     "Self-block",
@@ -3893,7 +3893,7 @@
    "keys": [
     "Qc8"
    ],
-   "note": "Set 1...Sd6 2.Sc7#, Se5 2.Se7#; try 1.Bc7? (2.Se7#) Bc5 2.Sc3#, but 1...Sd6!; 1.Qc8! (2.Qe6#) S~ 2.Qd7#, Sxd8 2.Qd7#/Qxd8#, Sd6 2.Sc7#, Se5 2.Se7#. Gate PASS, 8+5. Flaws: set mates kept, random dual after Sxd8, incidental Sc6 tries refuted by Ke5, Bd8 in no mate (try + dual stopper), bBg1/bPa5 cook-stoppers."
+   "note": "Set 1...Sd6 2.Sc7#, Se5 2.Se7#; try 1.Bc7? (2.Se7#) Bc5 2.Sc3#, but 1...Sd6!; 1.Qc8! (2.Qe6#) S~ 2.Qd7#, Sxd8 2.Qd7#/Qxd8#, Sd6 2.Sc7#, Se5 2.Se7#. Gate PASS, 8+5. Flaws: set mates kept, random dual after Sxd8, Bd8 in no mate (try + dual stopper), bBg1/bPa5 cook-stoppers."
   }
  ]
 }

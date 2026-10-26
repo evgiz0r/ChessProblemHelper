@@ -1557,3 +1557,13 @@ no motive layer to mirror.
   gate-passing problem this session. Next: a central king with long guard lines in the Bourd-2004 manner.
 - 25 Oct (same session, after merging main): the parallel session's claude-two-knights-e6-sf5 (8/K1n5/5Rp1/1b2k1nN/2BN2p1/3Q1p2/8/8, 1.Sf5!) re-solved here: sound, gate PASS (white correction 1.S~? Sge6!, 1.Se6? Sgxe6!, 1.Sxb5? Sxb5+!), 13 units; its card drawn. It is the deliverable for this theme; my e8 schemes are the lighter form that refuses a key.
 - 25 Oct: his 'a scheme where it will be easy to add even more content, just finishing is not the point': stopped freethreat J/K (option 1's Rd4 hole); read his bench 83-308 (new frame Ke4/Sb5/Rf5/Bh7: two units interpose on e5, each departure opens a line onto the other mating square; then the rotated Ke5/Sd2/Rd6/Bc7 frame with the bishop key and 1...Bd5 refuting every try). freethreat L/M on his step 117 (double threat or nothing); scratch searches corr1/corr2/diag found the correction layer: claude-unpin-e5-correction-scheme (S~ 2.Qd4#, Sfe5! 2.Sd6#, e5 2.Sbc3#; dual after Sde5; the cure needs a fourth black heavy piece). On his step 303: why 1...Bd5 refutes all tries (guards e6 and c4; 2.Sf3 cuts Qf2's f-file); +Pe3 gives the diagram a 2.Qf5# threat.
+
+## Session 26 Oct 2026 (chat, "show me the recent blogs, and continue asking the questions")
+- Bench read: one new sitting (mvpc14nh, K+R v K, findkey), a tool test; nothing to build on.
+- Showed posts No. 16-20 (square boards docs/blog/cards/blog-<slug>.png) and asked the open mentor questions in chat, each
+  with its diagram and solution (his request: "show the diagram and solution with the question").
+- Issue #21 answered: Q2 "no its not a try. and those S~ are not defenses" (incidental 1.Scd4? Ke5! is no try, no flaw;
+  random moves are not defences) -> critique 'varied play' no longer counts a random group (`_random_moves`, shared with
+  'random defences'; a random move with a dual is still random), test in tests/test_simplicity.py; post No. 20's flaw
+  list corrected; CLAUDE.md, judge skill and principles say which tries the king-refutation flaw covers. Q3 "dont name
+  me, its ok" -> No. 20's byline is Claude alone (post, card, problems.json); principle line on credit.

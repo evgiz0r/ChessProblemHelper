@@ -13,7 +13,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
 - A black king with a flight in the diagram (a flight GIVEN by the key is a plus). A higher tier of content can carry
   it: three double-check variations from one battery with unprovided flights (E. Bourd, 21 Oct 2026: "its not like 'is
   variation worth 1 flaw', its a different tier of problem"). The gate still fails it; the judge says which tier pays.
-- A key that gives check or captures a piece without a thematic reason; a try refuted by a king move. Capturing a pawn,
+- A key that gives check or captures a piece without a thematic reason; a try refuted by a king move (a try the problem
+  shows: an incidental White move refuted by a king move is no try, E. Bourd 26 Oct 2026). Capturing a pawn,
   White's or Black's, in a key, a try or a mate is a minor flaw (E. Bourd, 13 Oct 2026: "these are minor flaws").
 - A key by a piece out of play (a knight on the edge far from the king): the key is obvious (E. Bourd, 7 Oct 2026).
 - A White unit that takes no part in the solution and is not needed for soundness either (superfluous).

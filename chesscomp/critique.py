@@ -441,9 +441,13 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     if recap:
         add('minor', 'mate captures defender', 'the mate captures the defender on its arrival square: ' + ', '.join(recap) +
             ' (E. Bourd, 14 Oct 2026: defences away from the thematic squares are cleaner)')
-    mates = {c['id'] for v in real for c in v['continuations']}
-    if len(real) >= 3 and len(mates) >= 3:
-        add('plus', 'varied play', f'{len(real)} defences, {len(mates)} different mates')
+    # random moves are not defences (E. Bourd, 26 Oct 2026, on daily No. 20's 1...S~ 2.Qd7#: "those S~ are not
+    # defenses"): a random group counts neither as defences nor its shared mate as variety
+    rand = set().union(*_random_moves(real, ksq).values())
+    defs = [v for v in real if v['defence']['uci'] not in rand]
+    mates = {c['id'] for v in defs for c in v['continuations']}
+    if len(defs) >= 3 and len(mates) >= 3:
+        add('plus', 'varied play', f'{len(defs)} defences, {len(mates)} different mates')
     for rule, sev, msg in simplicity(board, res, key, real, ksq):
         add(sev, rule, msg)
 
@@ -685,6 +689,23 @@ def _reflect(sq, k, t):
     return chess.square(f, r) if 0 <= f < 8 and 0 <= r < 8 else None
 
 
+def _random_moves(real, ksq):
+    """Moves of one unit (the king aside) that share one mate with at least two others: {from square: defence ucis}.
+    Random moves, not defences (E. Bourd, 15 Oct 2026; 26 Oct 2026: "those S~ are not defenses")."""
+    from collections import Counter
+    groups = {}
+    for v in real:
+        if v['defence']['uci'][:2] != ksq:
+            groups.setdefault(v['defence']['uci'][:2], []).append(
+                (v['defence']['uci'], frozenset(c['id'] for c in v['continuations'])))
+    out = {}
+    for sq, ms in groups.items():
+        top, n = Counter(m for _, m in ms).most_common(1)[0]
+        if n >= 3:
+            out[sq] = {u for u, m in ms if top <= m}         # a random move with a dual is still a random move
+    return out
+
+
 def simplicity(board, res, key, real, ksq):
     """E. Bourd (15 Oct 2026), on claude-type2-rooks-light/full: "this is too symmetrical and simple. The zugzwang and the
     piece moving from capture is bad. The random moves by the knights are annoying. ... the gate of passing needs to
@@ -701,11 +722,7 @@ def simplicity(board, res, key, real, ksq):
     for v in real:
         if v['defence']['uci'][:2] != ksq:
             groups.setdefault(v['defence']['uci'][:2], []).append(frozenset(c['id'] for c in v['continuations']))
-    rnd = {}
-    for sq, ms in groups.items():
-        top, n = Counter(ms).most_common(1)[0]
-        if n >= 3:
-            rnd[sq] = n
+    rnd = {sq: len(us) for sq, us in _random_moves(real, ksq).items()}
     if rnd:
         out.append(('random defences', 'minor', 'one mate answers many moves of the same unit ('
                     + ', '.join(f"{board.piece_at(chess.parse_square(s)).symbol().upper().replace('N', 'S')}{s}: {n} moves"
