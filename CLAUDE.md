@@ -17,6 +17,7 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   shows: an incidental White move refuted by a king move is no try, E. Bourd 26 Oct 2026). Capturing a pawn,
   White's or Black's, in a key, a try or a mate is a minor flaw (E. Bourd, 13 Oct 2026: "these are minor flaws").
 - A key by a piece out of play (a knight on the edge far from the king): the key is obvious (E. Bourd, 7 Oct 2026).
+  A piece that mates from its diagram square in the set play or the tries is in play (E. Bourd, 26 Oct 2026).
 - A White unit that takes no part in the solution and is not needed for soundness either (superfluous).
 - A known mechanism with nothing added, or a reduced form of a published problem: not a problem (E. Bourd).
 - A single phase without thematic tries or changes; random tries do not count (E. Bourd, 18 Oct 2026: "not pass for publication unless the single phase is

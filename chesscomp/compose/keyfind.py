@@ -108,7 +108,7 @@ def judge(pre: chess.Board, key: chess.Move, res: dict):
         return None
     if pre.is_capture(key):
         s -= 6; notes.append('capture')
-    if out_of_play_key(pre, key):
+    if out_of_play_key(pre, key, res['phases']):
         return None                                    # fatal (E. Bourd, 7 Oct 2026)
     if pre.piece_type_at(key.from_square) != chess.KING and idle_key_piece(pre, key, res['phases']):
         s -= 5; notes.append('idle key piece')

@@ -337,7 +337,7 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # Out of play: a knight or bishop on the edge of the board, three or more squares from the Black king,
     # guarding no square of the king's field. Queens and rooks too (E. Bourd, 8 Oct 2026, on 1.Qb1 from h1: "very
     # bad key, queen completely out of play").
-    if out_of_play_key(board, kmove):
+    if out_of_play_key(board, kmove, res['phases']):
         add('major', 'out-of-play key', f"the key piece {_pname(board, kmove.from_square)} stands out of play "
                                         "(edge, far from the king, guarding nothing near it): the key is obvious (fatal, E. Bourd)")
     dist = chess.square_distance(kmove.from_square, kmove.to_square)
@@ -850,10 +850,29 @@ def idle_key_piece(board, kmove, phases):
     return True
 
 
-def out_of_play_key(board, kmove):
+def _mates_from(phases, sq):
+    """Does a White unit mate from square sq (diagram square) in the set play or in a try?"""
+    name = chess.square_name(sq)
+    for ph in phases:
+        if ph['type'] not in ('set', 'try'):
+            continue
+        conts = [c for v in ph.get('variations', []) for c in v.get('continuations', [])]
+        if ph['type'] == 'try' and ph.get('first_move', {}).get('uci', '')[:2] == name:
+            continue                                    # the piece itself plays this try: it left its square
+        if any(c.get('uci', '')[:2] == name for c in conts):
+            return True
+    return False
+
+
+def out_of_play_key(board, kmove, phases=None):
     """E. Bourd (7 Oct 2026, daily No. 2): a piece on the edge, three or more squares from the black king,
     guarding no square of its field, makes the key obvious (fatal). Knights and bishops first; queens and rooks
-    since 8 Oct 2026 ("very bad key, queen completely out of play", on 1.Qb1 from h1)."""
+    since 8 Oct 2026 ("very bad key, queen completely out of play", on 1.Qb1 from h1).
+    E. Bourd (26 Oct 2026, Manolescu's 1.Qh3! from h2, which mates Qa2# and Qe5# from h2 in the tries): "you cant just
+    look at the solution in isolation ... the queen is far from 'out of play' in her original square". With `phases`,
+    a key piece that mates from its diagram square in the set play or a try is in play."""
+    if phases and _mates_from(phases, kmove.from_square):
+        return False
     bk = board.king(chess.BLACK)
     kfield = chess.BB_KING_ATTACKS[bk] | chess.BB_SQUARES[bk]
     f0, r0 = chess.square_file(kmove.from_square), chess.square_rank(kmove.from_square)

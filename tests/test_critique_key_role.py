@@ -19,3 +19,15 @@ def test_set_role_of_attacked_key_piece():
     assert key_piece_captures_unprovided(p.board, key, res['phases']) == ['Sxc7']
     msg = [f['msg'] for f in critique(p, res, necessity=False)['findings'] if f['rule'] == 'attacked key piece'][0]
     assert 'milder' in msg and 'Rxe5#' in msg and 'Sxc7' in msg
+
+
+def test_key_piece_that_mates_from_its_square_in_the_tries_is_in_play():
+    # E. Bourd (26 Oct 2026), Manolescu, Buletin Problemistic 1984-85: 1.Qh3! from h2, where the queen mates 2.Qa2#
+    # (1.c3? Bxd4) and 2.Qe5# (1.Sec6? Rxd4) in the tries: "its far from fatal flaw here, its intended ... you cant just
+    # look at the solution in isolation"
+    from chesscomp import Problem
+    from chesscomp.analysis import analyse
+    from chesscomp.critique import critique
+    p = Problem.from_fen('7n/2K1P3/3B4/3kN3/R2N1r2/5P2/2P2b1Q/7B w - - 0 1', '#2')
+    rules = {f['rule'] for f in critique(p, analyse(p, max_refutations=1), necessity=False)['findings']}
+    assert 'out-of-play key' not in rules

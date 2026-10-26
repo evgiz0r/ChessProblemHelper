@@ -207,6 +207,7 @@ accident, not a design.
 | Principle | Weight | Tool rule |
 |---|---|---|
 | A key by a piece out of play (a knight on the edge, far from the king) makes the solution obvious | fatal | `out-of-play key` (gate) |
+| ... but a key piece that mates from its diagram square in the set play or the tries is in play: judge the whole problem, not the solution alone (26 Oct 2026, Manolescu's 1.Qh3 from h2: "you cant just look at the solution in isolation") | not a flaw | `out-of-play key` with phases |
 | A White unit that takes no part in the solution, there only for a thematic try | fatal: "way too big of a price" | `try-only unit` (gate), `superfluous piece` (gate) |
 | A known mechanism with nothing added, or reduced from the published original | not a problem | anticipation check (identical only); judge by hand |
 | A single phase without thematic tries or changes, random tries do not count (18 Oct 2026), unless very complicated or pretty | not for publication | gate `single phase`; the judge may except it |

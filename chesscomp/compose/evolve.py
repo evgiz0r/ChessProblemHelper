@@ -416,7 +416,7 @@ def score(b):
         t -= 15 * nfl + 1.5 * max(0, units(b) - 10)
         if KEYROLE and keys:
             km = next((chess.Move.from_uci(ph['first_move']['uci']) for ph in phases if ph['type'] == 'key'), None)
-            if km and (out_of_play_key(b, km) or idle_key_piece(b, km, phases)):
+            if km and (out_of_play_key(b, km, phases) or idle_key_piece(b, km, phases)):
                 t -= 25; ok = False
         return t, f'keys={keys} {summ}', ok and not (NOFLIGHT and nfl)
     if KEY:
@@ -486,7 +486,7 @@ def score(b):
             t -= 25
         if KEYROLE and not ph.get('check_key'):
             km = chess.Move.from_uci(ph['first_move']['uci'])
-            if out_of_play_key(b, km):
+            if out_of_play_key(b, km, phases):
                 t -= 30
             elif b.piece_type_at(km.from_square) != chess.KING and idle_key_piece(b, km, phases):
                 t -= 12
@@ -572,7 +572,7 @@ def score(b):
         ok = ok and not (UNIQUE and any(extra_defences(ph, DEFS).values()))
         if ok and KEYROLE:
             km = chess.Move.from_uci(ph['first_move']['uci'])
-            ok = not out_of_play_key(b, km) and (b.piece_type_at(km.from_square) == chess.KING or not idle_key_piece(b, km, phases))
+            ok = not out_of_play_key(b, km, phases) and (b.piece_type_at(km.from_square) == chess.KING or not idle_key_piece(b, km, phases))
         hit = ok
     if CORR and CTRY:
         ct, csum = corr_tries(phases)
