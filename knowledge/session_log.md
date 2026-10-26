@@ -1571,3 +1571,5 @@ no motive layer to mirror.
   stopping"): critique 'cook-stopper' no longer fires for a unit the solution needs ('solution guard', a note); the
   cook-stopping king note names its cook (Kisis's Kh1 blocks 1.Qh1#: with the king on a1, cooked by Qh1#/Rc4+);
   king-only "flaws" removed from posts 10-17, 10-19, 10-24, 10-25; judge skill and checklist, principles, lesson.
+- Issue #19 Q2 answered: king d7 + rook f8 "probably", "almost identical" to king a5 + rook f6 (lesson, No. 18 feedback).
+  Shown next: No. 17 (Velimirović, our rook block 1.Qb5!, our capture threat 1.Qc3!) with its three questions.
