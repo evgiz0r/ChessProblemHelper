@@ -1578,3 +1578,4 @@ no motive layer to mirror.
   (2.Qxd4#) shows R~ 2.Sg5# with corrections Rd3, Rxc4; tests in test_corrections.py and test_bench_js.py; bench
   republished (v41); post No. 17 text, lesson, principle. His request: one question at a time, the diagram with the
   full solution and the question under it (Velimirović given with every move).
+- Issue #18 Q1 answered (Velimirović: "its both"): black_correction.md section, lesson, principle, post No. 17 flaw reworded.

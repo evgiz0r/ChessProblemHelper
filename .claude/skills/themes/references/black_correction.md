@@ -5,6 +5,13 @@ built in E. Bourd's order.
 
 1.Qc4! (2.Re4#)  1...S~ 2.Qc7#  1...Sxd4! 2.Qxd4#.  Try 1.Qc2? (2.Qe4#) S~ 2.Qc7# but 1...Sxd4!
 
+## A set-play correction counts (E. Bourd, 26 Oct 2026)
+Velimirović, Wola Gulowska 2002, 4th Prize (K7/3N4/Q2nP3/3kB3/8/3pR2B/1p6/3Nb3): set S~ 2.Bg2#, Sb5! 2.Qxb5#,
+Se4! 2.Rxd3#; 1.Re4! closes the long diagonal, and the correction moves become plain defences with changed mates
+(Sb5 2.Qb7#, Sf5 2.Qc4#, Sxe4 2.Se3#). His reading: "its both. the correction does exist, and its part of the
+problem. correction moves becomes defenses, and mates on them change". The correction need not survive the key: a
+set-play correction whose moves change their mates after the key is correction AND changed mates.
+
 ## The order (E. Bourd)
 1. **Threat.** Re4#: the rook leaves d4, the queen on c4 keeps e4 and f4 covered along the rank.
 2. **Random defence.** The knight on c6 sits on two lines: the black bishop's a8-e4 (opening it lets
