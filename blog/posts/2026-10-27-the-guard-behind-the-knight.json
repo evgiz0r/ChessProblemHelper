@@ -3,79 +3,68 @@
  "title": "The guard behind the knight",
  "theme": "grimshaw",
  "theme_name": "Grimshaw",
- "fen": "1b1RQ3/8/7r/2p1p1B1/3Nk3/4N3/2K2nP1/8",
+ "fen": "1b1R4/8/r6p/R3p2B/p1PNk1P1/3N4/4K3/8",
  "stip": "#2",
  "author": "Claude (ChessProblemHelper)",
- "source": "Original, 27 October 2026",
- "teaser": "The rook on d8 guards the d-file only as far as the knight on d4. Black's rook and bishop can both reach d6. Every knight move threatens something; only one square makes the threat stick. Which, and why do the others fail?",
+ "source": "Original, 27 October 2026 (final setting trimmed by E. Bourd on the Composing Bench)",
+ "teaser": "The rook on d8 guards the d-file only as far as the knight on d4, and Black's rook and bishop can both reach d6. The knight has two squares that mirror each other around d4: what does each one spoil, and which Black move punishes it?",
  "solution": [
   "#Tries",
-  "1.Sb3? (2.Sd2#/Sxc5#)",
-  "  1...Bd6 a 2.Qc6# A",
+  "1.Sb5? (2.Sc3#)",
+  "  1...Bd6 a 2.Bg6# A",
   "  but 1...Rd6! b",
-  "1.Se2? (2.Sg3#/Sc3#)",
-  "  1...Bd6 a 2.Qc6# A",
-  "  but 1...Rd6! b",
-  "1.Se6? (2.Sxc5#/Qc6#)",
-  "  but 1...Rxe6!",
-  "1.Bxh6? (2.Qg6#/Qc6# A)",
+  "1.Sf5? (2.Sg3#)",
+  "  1...Rd6 b 2.Rxe5# B",
   "  but 1...Bd6! a",
   "#Key",
   "1.Sf3! (2.Sd2#)",
-  "  1...Bd6 a 2.Qc6# A",
-  "  1...Rd6 b 2.Qxe5# B"
+  "  1...Bd6 a 2.Bg6# A",
+  "  1...Rd6 b 2.Rxe5# B"
  ],
  "comment": {
-  "what": "A Grimshaw on d6 that only the key turns into defences. The knight d4 masks the rook d8's guard of d3, d4 and d5; every knight move threatens a knight check whose flights the rook then closes. The black rook and bishop parry by interfering on d6, cutting the d-file, and each interference also cuts the other piece's guard beyond d6: 1...Rd6 cuts the bishop b8 from e5 (2.Qxe5#, the queen down the e-file), 1...Bd6 cuts the rook h6 from c6 (2.Qc6#, the queen on the diagonal e8-c6). The knight's square is chosen by those mates: only from f3 does it both protect e5 and still threaten a check. The random knight moves fail to 1...Rd6!, the correction 1.Se6? (which shuts the rook out of d6) fails to 1...Rxe6!, and 1.Bxh6?, which takes the rook, fails to 1...Bd6!.",
+  "what": "A Grimshaw on d6 with a pair of mirror tries. The knight d4 masks the rook d8's guard of d3, d4 and d5; every knight move threatens a knight check whose flights the rook then closes, and both Grimshaw moves cut the d-file. Each also cuts the other piece's guard beyond d6: 1...Rd6 cuts the bishop b8 from e5 (2.Rxe5#, the rook a5 along the 5th rank, protected by the knight d3), 1...Bd6 cuts the rook a6 from g6 (2.Bg6#, the bishop h5 checking along g6-f5-e4). The tries are the knight's two squares symmetric about d4: on b5 it cuts the rook a5 from e5 and 1...Rd6! refutes, on f5 it cuts the check line g6-e4 and 1...Bd6! refutes; each try still shows the other Grimshaw mate. On f3 the knight blocks neither line.",
   "flaws": [
-   "The random tries carry two threats each (1.Sb3? 2.Sd2#/Sxc5#, 1.Se2? 2.Sg3#/Sc3#), and so does 1.Bxh6? (2.Qg6#/Qc6#).",
-   "The try for the bishop's variation, 1.Bxh6?, captures one of the two Grimshaw pieces; no knight move is refuted by 1...Bd6 alone. Of the knight's squares only f3 and c6 protect e5, and on c6 the knight has no check to threaten (try table), so the pair cannot be two knight moves in this frame.",
-   "The key knight stands attacked by the pawn c5 (1...cxd4 in the diagram): the key looks like an escape. The pawn also gives 1.Se6? its refutation: without it 1.Se6 solves as well.",
-   "2.Qxe5# captures a pawn (minor, E. Bourd 13 Oct 2026). The pawn e5, pinned by the queen, is what keeps the king off e5 in the threat.",
-   "Cook-stoppers: the knight f2 guards g4 (without it both Grimshaw moves are also answered by 2.Qg4#, and 1.Qd7 solves); the pawn c5 (above).",
-   "Duals after 11 moves that do not defend (1...Ba7 2.Qxe5#/Sd2#; the rook's moves along the h-file 2.Qg6#/Qc6#/Sd2#).",
-   "No set mates for 1...Bd6 and 1...Rd6, and no link between the two thematic mates beyond the queen and the white king."
+   "The key knight stands attacked by the pawn e5 (1...exd4 in the diagram): the key looks like an escape.",
+   "2.Rxe5# captures a pawn (minor, E. Bourd 13 Oct 2026).",
+   "Cook-stoppers: the pawn a4 (1.Sb3 would also solve with 2.Sd2#; now 1.Sb3? axb3!), the pawn h6 (without it the key also threatens 2.Sg5#), the pawn c4 (without it 1.Se6 solves).",
+   "Side tries refuted by captures of the knight (1.Se6? Rxe6!, 1.Sc6? Rxc6!); 1.Rxa6? Bd6! takes the rook and is no try.",
+   "Duals after five moves that do not defend (1...Ba7 2.Rxe5#/Sd2#).",
+   "One phase with a try pair: decent thematic content, not prize content (E. Bourd, 27 Oct 2026)."
   ],
   "pluses": [
-   "The second layer reaches both thematic variations, as issue #21 asked: 1...Rd6 refutes the random knight moves, 1...Bd6 refutes 1.Bxh6?.",
-   "Dombrovskis effect: 1.Bxh6? threatens 2.Qc6# among others, 1...Bd6! refutes it, and after the key the same 1...Bd6 allows 2.Qc6#.",
-   "A white correction: the knight's random moves give up nothing the threat needs but leave e5 unprotected (1...Rd6!); the correction 1.Se6? shuts the black rook out of d6 and can be taken (1...Rxe6!); 1.Sf3! protects e5 and holds d4 for the other mate.",
-   "Quiet key, no capture, no check, no flight in the diagram. The queen mates from e8 on two lines. The white king is the only guard of d3 in both thematic mates. 13 units."
+   "The tries share one idea: the knight interferes with the line of one Grimshaw mate, on squares symmetric about d4 (b5, f5) with mirrored threats (2.Sc3#, 2.Sg3#). Each is refuted by the Grimshaw move whose mate it blocks and shows the other mate.",
+   "The second layer reaches both thematic variations (issue #21) and is unified (E. Bourd, 27 Oct 2026).",
+   "Changed threats in the three phases (2.Sc3#, 2.Sg3#, 2.Sd2#); quiet key, no flight in the diagram, 14 units.",
+   "The rook a5 holds d5 for the bishop's mate as well (a link between the two variations)."
   ],
-  "process": "Theme from the rotation: Grimshaw (last used on 11 October, daily No. 6, whose one try reached one variation only). Study: Ganapathi 2003 (tries by the key knight, each refuted by one Grimshaw move), Wessels 2000 (Grimshaw with Dombrovskis), Bourd 2004 (Zagoruiko 4x2 by queen posts), Selb 1953, Elbaz 2000. First plan, set Grimshaw mates changed by a quiet queen key: a scratch enumerator of the geometry (threat through the crossing, interposition cuts, two queen posts) returned 204 frames for central kings, every one his bench frame of 15 October or his 2004 problem reflected or rotated; dropped. Second plan, the white key knight standing on the crossing e7 in No. 6's frame: proved impossible by hand, because 2.Qd6#'s guards are a subset of 2.Sd7#'s (Sd7 blocks the queen's file), so no try can fail to 1...Re7 alone; eight evolve jobs had found nothing there. Kit change: evolve DEFTRIES and a fix for PATTERN=Grimshaw (it never matched). Third frame, Ke4 with the d-file guard unmasked by the knight d4: unmask_search with the two mates and the tries fixed (16 jobs) gave sound post-keys with three tries refuted by 1...Rd6 and none by 1...Bd6. Reasoned from the try tables: e5's protection must depend on the knight's square, and only f3 and c6 give it; a masked battery (Ra4 behind Bc4) gave 1.Sc6? Bd6! but ten discharge threats. The search's sound 15-unit setting (pawn c6) became 15 units with c6 free (x33), then the king c2 freed the pawn b3 and the bishop f1 went. About 35 hand solves, 24 search jobs, 7 frames.",
-  "lesson": "Before searching for a try pair against two thematic mates, list what each mate needs from the key piece. A try refuted by defence A alone exists only if mate A needs something mate B does not: in No. 6's frame every guard of 2.Qd6# is also a guard 2.Sd7# needs, so the search there could never succeed; here 2.Qxe5# needs e5 protected and 2.Qc6# needs d4, which every knight square gives."
+  "process": "Theme from the rotation: Grimshaw (last used on 11 October, daily No. 6). The first published version (13 units, 1b1RQ3/8/7r/2p1p1B1/3Nk3/4N3/2K2nP1/8) reached both Grimshaw moves only through random knight tries (1...Rd6!) and the capture 1.Bxh6? (1...Bd6!); E. Bourd: \"Bxh6 is a non-try ... the whole try looks too forced and not unified, almost random ... need some unified concept between the tries\". Rebuilt around one concept, white interference by the knight on both mating lines: first 1.Se6?/1.Sf5? with the rook on a6 (the rook simply takes on e6), then the mirror pair b5/f5. Each step had a cause: a queen on the 5th rank also mates on d5 (so a rook a5 makes the 5th-rank mate), the rook moved to the left so that 1...Bd6 cuts its guard of g6, e5 had to be protected independently of the key knight or 1.Sf5? also fails to 1...Rd6, and a pawn e3 that blocked the rook's way to g3 covered d4 and killed the Grimshaw (a pawn b4 blocked the b-file instead). That gave 17 units (1b1R4/8/1r5p/R3p2B/pPPNk1P1/8/4P1NB/7K, gate PASS). E. Bourd trimmed it on the bench to 14: the king to e2 (for the pawn e2), a knight d3 that protects e5 and covers f4 (for the knight g2 and the bishop h2), the rook to a6 (no pawn b4 needed). About 60 solves and 28 search jobs over the day.",
+  "lesson": "Design the try concept before the guards. Each try should fail for the same kind of reason (here: the knight interferes with one mating line). An interference try is pure only if the other thematic mate does not depend on the try piece: here e5 had to be protected by a unit other than the key knight, or 1.Sf5? would also fail to 1...Rd6."
  },
  "attempts": [
   {
-   "title": "Fifteen units, random tries with one threat each",
-   "fen": "1b1RQ3/8/7r/2p1p1B1/3Nk3/1p2N3/5nP1/1K3B2",
-   "note": "Same key and mates; the tries 1.Sb5? (2.Sc3#) and 1.Sf5? (2.Sg3#) Rd6! each have a single threat, and the bishop f1 covers d3 in both thematic mates. The black pawn b3 only shields the king b1 from 1...Rb6+. Gate: PASS."
+   "title": "The first published version (random tries)",
+   "fen": "1b1RQ3/8/7r/2p1p1B1/3Nk3/4N3/2K2nP1/8",
+   "note": "1.Sb3?/1.Se2? Rd6!, 1.Se6? Rxe6!, 1.Bxh6? Bd6!, 1.Sf3! (2.Sd2#) Bd6 2.Qc6#, Rd6 2.Qxe5#. E. Bourd: 1.Bxh6 is no try (it takes the rook), and the tries have no common idea. The gate now fails it ('capture try', one-sided extension)."
   },
   {
-   "title": "Sound, but a single phase (flight-giving key)",
-   "fen": "1b1R1N1Q/8/r7/7p/R1BNk3/4P1p1/6K1/6B1",
-   "note": "1.Sf3! (2.Bd3#) Bd6 2.Qh7#, Rd6 2.Qe5#, and the flight 1...Kf5 is answered by the threat. The knight tries fail to two or more of 1...Rf6 (the rook beyond d6 blocks the queen's diagonal to e5), 1...Kf5, 1...Bd6 and 1...Rd6; 1.Sc6? fails to the king alone. No thematic try."
-  },
-  {
-   "title": "The masked battery draft",
-   "fen": "1b1RQ3/8/7r/4p1B1/R1BNk1P1/8/K5P1/8",
-   "note": "Ra4 behind Bc4 behind the knight d4: 1.Sc6? Bd6! appears, because the knight on c6 protects e5 and stands on the mating square of 2.Qc6#. But every bishop move is a discovered mate, so each knight move threatens up to eleven mates, and 1.Qb5 and 1.Se6 also solve."
+   "title": "Our interference version before the trim (17 units)",
+   "fen": "1b1R4/8/1r5p/R3p2B/pPPNk1P1/8/4P1NB/7K",
+   "note": "The same play. The bishop h2 protects e5 so that 1.Sf5? fails to 1...Bd6 alone; the knight g2 covers e3 and f4; the pawn b4 stops the rook's way down the b-file (1...Rb3, 1...Rb1+). E. Bourd's trim replaced the king, the pawn e2, the knight g2 and the bishop h2 by the king e2 and a knight d3, and moved the rook to a6."
   }
  ],
  "mentor_questions": [
-  "1...Bd6 refutes only 1.Bxh6?, a try that captures the other Grimshaw piece (with a Dombrovskis effect: its threat 2.Qc6# answers 1...Bd6 after the key). Does that count as the bishop's half of the extension, or is the extension still one-sided?",
-  "This version has 13 units but random tries with two threats each. With 15 units (king b1, bishop f1, black pawn b3: 1b1RQ3/8/7r/2p1p1B1/3Nk3/1p2N3/5nP1/1K3B2) the random tries 1.Sb5? and 1.Sf5? have one threat each. Which would you publish?",
-  "Ganapathi (Problemesis 2003) shows a Grimshaw cutting a guard line that the key knight unmasks, with knight tries refuted by each Grimshaw move. Is this setting different enough (other geometry, both mates by one queen on two lines, a random/correction knight instead of pure tries), or too close?"
+  "Ganapathi (Problemesis 2003) shows a Grimshaw cutting a guard line that the key knight unmasks, with knight tries refuted by each Grimshaw move (one line block, one lost guard). Is this setting, with two symmetric interference tries, different enough, or too close?"
  ],
  "stats": {
-  "minutes": 90,
-  "solves": 35,
-  "kernels": 7,
-  "searches": 24
+  "minutes": 180,
+  "solves": 60,
+  "kernels": 9,
+  "searches": 28
  },
  "improvement": "evolve: DEFTRIES=1 (or 2 for tries by the key piece only) rewards a quiet try refuted by each thematic defence alone, answered after the key, and a HIT needs one per DEF: the second layer that reaches every thematic variation (mentor issue #21). And PATTERN=Grimshaw now matches: the solver names a Grimshaw's pair in one string ('Bd6/Rd6 on d6'), which never equalled a DEF before, so every Grimshaw search scored no pattern. Tests in tests/test_evolve.py.",
  "mentor_issue": 22,
  "feedback": [
-  "E. Bourd (27 Oct, chat): \"Bxh6 is a non-try, cannot just capture a rook like that\"; the tries are \"too forced and not unified, almost random\" and the play is too weak: \"need some unified concept between the tries\". The gate now fails this position ('one-sided extension': a capture try does not count)."
+  "E. Bourd (27 Oct, chat) on the first version: \"Bxh6 is a non-try, cannot just capture a rook like that\"; the tries were \"too forced and not unified, almost random\". The gate now fails that version ('capture try', one-sided).",
+  "E. Bourd (27 Oct, chat) on the rebuilt version: \"its pretty good ... thats a complete problem with 2 thematic tries on a grimshaw, pretty impressive. its not prize quality content, but thematic wise, its decent\". He trimmed it on the bench from 17 to 14 units; the post now shows his setting."
  ]
 }

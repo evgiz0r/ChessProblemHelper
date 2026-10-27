@@ -3910,7 +3910,24 @@
    "keys": [
     "Sf3"
    ],
-   "note": "Tries 1.Sb3? (2.Sd2#/Sxc5#) Bd6 2.Qc6#, but 1...Rd6!; 1.Se2? (2.Sg3#/Sc3#) Bd6 2.Qc6#, but 1...Rd6!; 1.Se6? but 1...Rxe6!; 1.Bxh6? (2.Qg6#/Qc6#) but 1...Bd6!; 1.Sf3! (2.Sd2#) Bd6 2.Qc6#, Rd6 2.Qxe5#. The knight d4 masks the rook d8's d-file; each Grimshaw move cuts it. Gate PASS, 7+6. Flaws: double threats in the random tries and 1.Bxh6?, the bishop's try captures the rook, key knight attacked by c5, Qxe5 takes a pawn, cook-stoppers Sf2 (g4) and c5 (1.Se6)."
+   "note": "Superseded (E. Bourd, 27 Oct 2026: 1.Bxh6 is no try; random tries, no common idea). Tries 1.Sb3? (2.Sd2#/Sxc5#) Bd6 2.Qc6#, but 1...Rd6!; 1.Se2? (2.Sg3#/Sc3#) Bd6 2.Qc6#, but 1...Rd6!; 1.Se6? but 1...Rxe6!; 1.Bxh6? (2.Qg6#/Qc6#) but 1...Bd6!; 1.Sf3! (2.Sd2#) Bd6 2.Qc6#, Rd6 2.Qxe5#. The knight d4 masks the rook d8's d-file; each Grimshaw move cuts it. Gate PASS, 7+6. Flaws: double threats in the random tries and 1.Bxh6?, the bishop's try captures the rook, key knight attacked by c5, Qxe5 takes a pawn, cook-stoppers Sf2 (g4) and c5 (1.Se6)."
+  },
+  {
+   "id": "claude-bourd-grimshaw-mirror-interference-sf3",
+   "fen": "1b1R4/8/r6p/R3p2B/p1PNk1P1/3N4/4K3/8",
+   "stip": "#2",
+   "author": "Claude (daily No. 21, 27 Oct 2026), final setting trimmed by E. Bourd",
+   "source": "A #2 a day No. 21 (blog), theme Grimshaw",
+   "themes": [
+    "Grimshaw",
+    "White interference tries",
+    "Thematic tries refuted by both Grimshaw moves",
+    "Changed threats"
+   ],
+   "keys": [
+    "Sf3"
+   ],
+   "note": "1.Sb5? (2.Sc3#) Bd6 2.Bg6#, but 1...Rd6!; 1.Sf5? (2.Sg3#) Rd6 2.Rxe5#, but 1...Bd6!; 1.Sf3! (2.Sd2#) Bd6 2.Bg6#, Rd6 2.Rxe5#. The knight d4 masks the d-file; mirror squares b5/f5 interfere with one Grimshaw mate each. Gate PASS, 8+6. E. Bourd: 'a complete problem with 2 thematic tries on a grimshaw ... not prize quality content, but thematic wise, its decent'. Our 17-unit version: 1b1R4/8/1r5p/R3p2B/pPPNk1P1/8/4P1NB/7K."
   }
  ]
 }

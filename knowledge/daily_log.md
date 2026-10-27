@@ -365,6 +365,13 @@ what the next run should try. "Proposals" collects improvements too big for one 
   fails to Bd6 alone; the b-file blocked by Pb4 (Rb3 defended g3, Rb1+ checked); a pawn e3 had covered d4 and killed the
   Grimshaw. Shown to him before replacing the post.
 
+- Mentor answer (chat, same day, on the rebuilt version): "its pretty good, i was able to remove a bit of pieces on the bench.
+  but yeah thats a complete problem with 2 thematic tries on a grimshaw, pretty impressive. its not prize quality content,
+  but thematic wise, its decent". His trim (bench mvr0fkkl, 18:19-18:36): 1b1R4/8/r6p/R3p2B/p1PNk1P1/3N4/4K3/8 (8+6), king e2
+  for the pawn e2, a knight d3 (protects e5, covers f4) for the knight g2 and the bishop h2, the rook on a6 (no pawn b4).
+  Gate PASS. Post No. 21 now shows his setting (the first version and ours as attempts); collection entry
+  claude-bourd-grimshaw-mirror-interference-sf3.
+
 ## Proposals
 - unmask_search: an env to forbid adding units of a type (round 2 of daily No. 21 kept adding a second black rook to kill
   the other knight landings), and a 'needed only in a try' unit allowed when TRIES names it (it scored the e8 rook idle).
