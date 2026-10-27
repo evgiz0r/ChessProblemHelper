@@ -52,12 +52,28 @@ guard the landing square (e3, d5).
 - Next to try: Velimirovic's own mechanism with a real Grimshaw (both units cut a White guard of the threat square on X,
   e.g. wRh6 guarding d6 through e6), so the queen's posts are free of the line; `chesscomp.compose.trychange` with KP=Q.
 
+## Tries reaching both Grimshaw moves (daily No. 21, 27 Oct 2026)
+claude-grimshaw-d6-unmasked-file-sf3, 1b1RQ3/8/7r/2p1p1B1/3Nk3/4N3/2K2nP1/8 (7+6): the knight d4 masks Rd8's guard of
+d3-d5; every knight move threatens a knight check; Rd6/Bd6 cut the d-file. Rd6 cuts Bb8 from e5 (2.Qxe5#, protected only
+by the knight on f3 or c6), Bd6 cuts Rh6 from c6 (2.Qc6#, d4 held by any knight square). Random 1.Sb3?/1.Se2? Rd6!, the
+correction 1.Se6? (shuts the rook out of d6) Rxe6!, 1.Bxh6? Bd6! (Dombrovskis effect), 1.Sf3!.
+- Write each thematic mate's needs from the key piece first. A try refuted by one Grimshaw move alone needs a mate whose
+  needs the other mate does not share. No. 6's frame fails this: Sd7 blocks the queen's file, so 2.Qd6#'s guards are a
+  subset of 2.Sd7#'s and no landing fails to Re7 alone.
+- A Grimshaw with set mates changed by queen posts (threat through X, interposition cuts) is E. Bourd's own family: a
+  scratch enumeration found only his shape (bench 15 Oct; Problemesis 2004, Zagoruiko 4x2).
+- The threat decides which landing can be a try: with a knight-check threat, a landing with no check (c6 here) is no try.
+- evolve `DEFTRIES=1|2 PATTERN=Grimshaw DEFS=...` scores the try per Grimshaw move (2: by the key piece). unmask_search with
+  WANT and TRIES fixed found the sound post-keys of this frame in 5 minutes; EMPTY keeps a mating square free.
+
 ## Dead ends
 - Bare or lightly seeded `compose.evolve` (DEFS=Re7,Be7 / Rg6,Bg6): checking keys only, as for every theme so far.
 - The threat 2.Qe8# on the e-file through e7: the defenders interpose after the check (rule 1).
 - A bishop as the threat piece (2.Bd8-f6#) so the queen cannot cook along rank 8: after 1...Re7 the rook
   simply takes the mating bishop on c7.
 - The c3 Grimshaw of 8 Oct (claude-grimshaw-c3-qc1): sound only with an edge queen key that does nothing.
+- The white knight standing on the crossing (No. 6's frame, Se7 vacating e7): no try fails to Re7 alone (see above).
+- A masked battery (Ra4 behind Bc4 behind the knight d4): every bishop move is a discovered mate, ten threats.
 
 ## Archive models (read, never copy)
 - B. Delobel, Problemesis 2006 (psis-7ba72c1d6b), 6+7: 1.Re7! (2.Qd7#) Re6 2.Rc3#, Be6 2.Rxd6#.

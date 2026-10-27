@@ -336,7 +336,26 @@ what the next run should try. "Proposals" collects improvements too big for one 
   1.Sxa7? (2.Qd3#) Se5!, but 1.Qxa7 also solves; evolve (8 jobs) and an all-single-unit scan found no unit that keeps both
   tries and kills it. Open for the next self-block run.
 
+## 2026-10-27, No. 21: Grimshaw
+- Result: claude-grimshaw-d6-unmasked-file-sf3, 1b1RQ3/8/7r/2p1p1B1/3Nk3/4N3/2K2nP1/8 (7+6), gate PASS: tries 1.Sb3?/1.Se2? Rd6!,
+  1.Se6? Rxe6!, 1.Bxh6? Bd6!; 1.Sf3! (2.Sd2#) Bd6 2.Qc6#, Rd6 2.Qxe5#. The knight d4 masks Rd8's d-file; the Grimshaw cuts it.
+  Both Grimshaw moves refute a try (the bishop's try is a capture of the rook, with a Dombrovskis effect). Run started from a
+  chat ("continue the blog from here"); no post on 26 Oct. Mentor: issues #17, #18, #21 answered in the 26 Oct chat and acted
+  on then; #7-#16, #19 Q1/Q3, #20 Q1/Q2 unanswered.
+- Minutes (container clock 15:15-16:35): setup and reading 10, mentor and bench 3, study 7, geometry enumerator 10, kit change
+  and tests 15, searches 25 (8 evolve, 16 unmask_search), hand work 15, post and records 15.
+- What wasted time: eight evolve jobs on two frames before writing each mate's needs: in No. 6's frame (knight on the crossing
+  e7) the needs of 2.Qd6# are a subset of 2.Sd7#'s, so the wanted try cannot exist; the enumerator for the queen-post change
+  (it only returned E. Bourd's own frame); a masked battery whose front bishop had ten discharge mates.
+- What helped: unmask_search with WANT and TRIES fixed (sound post-keys in 5 minutes); the try table read as 'which landing
+  gives which guard' (only f3 and c6 protect e5); a one-loop king-square scan to drop a king shield (pawn b3); the removal test.
+- Kit: evolve DEFTRIES (a try per thematic defence) and PATTERN=Grimshaw fixed (it never matched the solver's 'Bd6/Rd6 on d6').
+- Next run: theme from `next-theme`. For a try pair: write each thematic mate's needs from the key piece before any search,
+  and choose the threat before choosing the correction square (a knight-check threat gives a no-check landing no try).
+
 ## Proposals
+- unmask_search: an env to forbid adding units of a type (round 2 of daily No. 21 kept adding a second black rook to kill
+  the other knight landings), and a 'needed only in a try' unit allowed when TRIES names it (it scored the e8 rook idle).
 - Merge the unmerged YACPDB crawl (branch claude/clever-knuth-kdog9b: 217,505 twomovers, plus 22,700 from
   selivanov.world) into the anticipation check of the gate; today it checks Problemesis only (7,912).
 - A detector for Novotny (and a set-play Grimshaw) in `chesscomp/analysis.py` (half-pin done 12 Oct, direct self-pin 13 Oct), so those themes can be claimed only when

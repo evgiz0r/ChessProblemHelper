@@ -56,7 +56,8 @@ set-play changes, PATTERN for a detected pattern on each defence, or PATTERN wit
 mates the search may choose itself, e.g. PATTERN=Half-pin; TRYCHANGE=1 for changes against a try; KEY=<uci> NVAR=n when the theme is the key itself, e.g. an underpromotion:
 it is slow, so seed it with the post-key mechanism or prefer postsearch with the promoted piece already in place;
 FLIGHT=N for a flight-giving key with N given flights and the gate's second phase (a change against the key or a try
-refuted by a key-phase defence; daily No. 19), WCORR=<square> for a white correction by the unit on that square, seeded with the error table already placed; TRIES=N with KEY for N tries by the key piece with distinct refutations that the key answers).
+refuted by a key-phase defence; daily No. 19), WCORR=<square> for a white correction by the unit on that square, seeded with the error table already placed; TRIES=N with KEY for N tries by the key piece with distinct refutations that the key answers; DEFTRIES=1 with DEFS for a
+quiet try refuted by each thematic defence alone, DEFTRIES=2 for tries by the key piece only, daily No. 21).
 For hand work, one change per solve: `python -m chesscomp.compose.trytable FEN [SQUARE ...]` lists every move of a unit
 with its threat, refutations and mates in about a second (daily No. 12 was built with it); the solver confirms.
 Run one job per CPU with different king squares or seeds (start them from a script file and stop them
