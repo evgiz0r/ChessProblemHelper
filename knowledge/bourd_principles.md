@@ -18,6 +18,7 @@ Living document. Each principle is linked to the tool rule that implements it (o
 | Every White piece should take part in the mates; the key piece is forgivable | flaw | `passive piece`, `cook-stopper`, `superfluous piece` |
 | No obvious Black defence that has no answer, or the solution becomes trivial | flaw | `unprovided move` (partial) |
 | Simple defences (pawn moves opening lines for the king) are weak: they defend against anything and help the solver. Heavy pieces moving and leaving squares are better | preference | not yet (defence-motive classification) |
+| A theme's name means its formal form (Zagoruiko = three phases each answering both defences); a new interpretation is good content, but describe it, do not cling to the label (27 Oct 2026: "we just shouldnt be too attached to the names") | naming | solver pattern 'Zagoruiko 3x2' |
 | Two pawn steps that both open one black line are a common, easy way to make two defences (a pawn has two moves), not a unity to build on (26 Oct 2026: "nothing to do with meredith") | not content | judge |
 | Economy and an airy position are valued, but aesthetics yield to content as ideas get richer | balance | `economy` |
 | A natural, game-like look adds points | plus | not yet |

@@ -120,7 +120,7 @@
    "id": "zagoruiko",
    "order": 15,
    "name": "Zagoruiko",
-   "definition": "Two black defences each get different mates in at least three phases.",
+   "definition": "Two black defences each get different mates in at least three phases, each phase answering both (E. Bourd, 26 Oct 2026: \"zagoruiko is 3 phases\"; three mates per defence spread over more phases is a new interpretation, fine, but not the formal theme).",
    "reference": ".claude/skills/themes/references/changed_mates.md",
    "db_text": "Zagorou",
    "stretch": true,
