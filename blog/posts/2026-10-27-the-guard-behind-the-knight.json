@@ -74,6 +74,6 @@
   "searches": 24
  },
  "improvement": "evolve: DEFTRIES=1 (or 2 for tries by the key piece only) rewards a quiet try refuted by each thematic defence alone, answered after the key, and a HIT needs one per DEF: the second layer that reaches every thematic variation (mentor issue #21). And PATTERN=Grimshaw now matches: the solver names a Grimshaw's pair in one string ('Bd6/Rd6 on d6'), which never equalled a DEF before, so every Grimshaw search scored no pattern. Tests in tests/test_evolve.py.",
- "mentor_issue": null,
+ "mentor_issue": 22,
  "feedback": []
 }

@@ -342,7 +342,7 @@ what the next run should try. "Proposals" collects improvements too big for one 
   Both Grimshaw moves refute a try (the bishop's try is a capture of the rook, with a Dombrovskis effect). Run started from a
   chat ("continue the blog from here"); no post on 26 Oct. Mentor: issues #17, #18, #21 answered in the 26 Oct chat and acted
   on then; #7-#16, #19 Q1/Q3, #20 Q1/Q2 unanswered.
-- Minutes (container clock 15:15-16:40): setup and reading 10, mentor and bench 3, study 7, geometry enumerator 10, kit change
+- Minutes (container clock 15:15-16:35): setup and reading 10, mentor and bench 3, study 7, geometry enumerator 10, kit change
   and tests 15, searches 25 (8 evolve, 16 unmask_search), hand work 15, post and records 15.
 - What wasted time: eight evolve jobs on two frames before writing each mate's needs: in No. 6's frame (knight on the crossing
   e7) the needs of 2.Qd6# are a subset of 2.Sd7#'s, so the wanted try cannot exist; the enumerator for the queen-post change
