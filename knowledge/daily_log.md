@@ -353,6 +353,18 @@ what the next run should try. "Proposals" collects improvements too big for one 
 - Next run: theme from `next-theme`. For a try pair: write each thematic mate's needs from the key piece before any search,
   and choose the threat before choosing the correction square (a knight-check threat gives a no-check landing no try).
 
+- Mentor answer (chat, same day): "these tries are really bad Bxh6 is a non-try, cannot just captre a rook like that. the
+  double tries are something, but the whole try looks too forced and not unified, almost random and the play is too bad.
+  need some unified concept between the tries". Acted on: critique 'capture try' (a try taking a black officer does not
+  count) and 'random white correction' (a correction refuted by a move the key does not answer); the gate now fails No. 21
+  as 'one-sided extension'; principle, lesson, judge skill, post feedback, test tests/test_critique_capture_try.py.
+  New version with one try concept (white interference, mirror squares b5/f5 around d4): 1b1R4/8/1r5p/R3p2B/pPPNk1P1/8/4P1NB/7K
+  (11+6), gate PASS: 1.Sb5? (2.Sc3#) Bd6 2.Bg6#, but 1...Rd6! (the knight cuts a5-e5); 1.Sf5? (2.Sg3#) Rd6 2.Rxe5#, but
+  1...Bd6! (the knight cuts g6-e4); 1.Sf3! (2.Sd2#) Bd6 2.Bg6#, Rd6 2.Rxe5#. Steps: rook to the left (b6) so Bd6 cuts g6;
+  the queen replaced by a rook a5 (a queen on the 5th rank mates on d5 at once); e5 protected independently (Bh2), so 1.Sf5?
+  fails to Bd6 alone; the b-file blocked by Pb4 (Rb3 defended g3, Rb1+ checked); a pawn e3 had covered d4 and killed the
+  Grimshaw. Shown to him before replacing the post.
+
 ## Proposals
 - unmask_search: an env to forbid adding units of a type (round 2 of daily No. 21 kept adding a second black rook to kill
   the other knight landings), and a 'needed only in a try' unit allowed when TRIES names it (it scored the e8 rook idle).

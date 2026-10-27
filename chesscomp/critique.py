@@ -395,6 +395,18 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                 continue
             if u[:2] != ksq and others and all(t['first_move']['uci'][:2] == key_piece_sq for t in sharing):
                 wc_done = True
+                # the corrections must fail to defences the key answers, or the try set is random (E. Bourd, 27 Oct 2026,
+                # on daily No. 21's 1.S~? Rd6!, 1.Se6? Rxe6!: "the whole try looks too forced and not unified, almost
+                # random"): a correction refuted by a capture of the correcting piece shows no concept
+                answered = {v['defence']['uci'] for v in key['variations'] if v['continuations'] and not v['threat_repeat']}
+                # (one such correction is enough; an incidental capture try beside it, as 1.Bxg6? hxg6+! next to
+                # 1.Bd3? Rb6!, does not make the set random)
+                if not any(all(r['uci'] in answered for r in t['refutations']) for t in others) or u not in answered:
+                    add('note', 'random white correction', f"1.{key['first_move']['san'][0]}~? {s_}! ({n} moves); "
+                        + '; '.join(f"1.{t['first_move']['san']}? {'/'.join(r['san'] for r in t['refutations'])}!" for t in others)
+                        + ': a correction fails to a move the key does not answer, so the try set has no common idea '
+                          '(E. Bourd, 27 Oct 2026)')
+                    continue
                 add('plus', 'white correction', f"1.{key['first_move']['san'][0]}~? {s_}! ({n} moves); "
                     + '; '.join(f"1.{t['first_move']['san']}? {'/'.join(r['san'] for r in t['refutations'])}!" for t in others)
                     + f"; 1.{key['first_move']['san']}!")
@@ -648,8 +660,18 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # count"): a try set or distinct refutations alone are not a second phase
     second = {'thematic tries', 'white correction', 'self-pinning tries'}
     defences = {v['defence']['uci'] for v in real if not v['refutes']}
+    # a try that captures a black officer is no try (E. Bourd, 27 Oct 2026, on daily No. 21's 1.Bxh6? Bd6!: "Bxh6 is a
+    # non-try, cannot just capture a rook like that"); a pawn capture in a try stays a minor flaw (13 Oct 2026)
+    def _takes_officer(t):
+        m = chess.Move.from_uci(t['first_move']['uci'])
+        c = board.piece_at(m.to_square)
+        return c is not None and c.color == chess.BLACK and c.piece_type != chess.PAWN
+    for t in tries:
+        if _takes_officer(t) and len(t['refutations']) == 1 and t['refutations'][0]['uci'] in defences:
+            add('minor', 'capture try', f"1.{t['first_move']['san']}? takes a black piece: no try, it does not count "
+                                        "as a second phase (E. Bourd, 27 Oct 2026)")
     refuted_by_defence = [t for t in tries if not t['first_move']['san'].endswith('+') and len(t['refutations']) == 1
-                          and t['refutations'][0]['uci'] in defences]   # a try refuted by a thematic defence
+                          and t['refutations'][0]['uci'] in defences and not _takes_officer(t)]   # refuted by a defence
     # a change counts only against the key, as the rule says (daily No. 19: a black pawn added to a single-phase
     # flight-giving key changed 1...e4 between the tries 1.Sf5? and 1.Sa6? and the gate passed it)
     # nor against a try refuted by a king move, which is no try (daily No. 20: 1.Scd4? Ke5! changed both self-block mates

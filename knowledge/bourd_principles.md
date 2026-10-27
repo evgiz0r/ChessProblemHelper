@@ -374,3 +374,12 @@ extention has to be aligned with both thematic variations somehow (tries, transf
 of two thematic defences (daily No. 20: 1.Bc7? Sd6!, nothing for 1...Se5) is not a second phase. Tool rule:
 critique 'one-sided extension' (fatal in the gate): tries refuted by thematic defences and changes against the key must
 reach at least two thematic variations (defences with their own mate; king flights belong to the key).
+
+## Tries need one idea (27 Oct 2026, on daily No. 21)
+"these tries are really bad Bxh6 is a non-try, cannot just captre a rook like that. the double tries are something, but
+the whole try looks too forced and not unified, almost random and the play is too bad. need some unified concept between
+the tries". Reaching both thematic variations is not enough: the tries must share a concept, each failing for the same
+kind of reason (both interfere with a mating line, both give up one of the two guards the key holds, both pre-empt a
+Grimshaw move...). A try that captures a black officer is no try (critique 'capture try'); a white correction whose
+correction fails to a capture of the try piece is random (critique 'random white correction'). Today's 1.S~? Rd6!,
+1.Se6? Rxe6!, 1.Bxh6? Bd6! was three unrelated reasons.

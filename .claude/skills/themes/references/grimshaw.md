@@ -66,7 +66,11 @@ correction 1.Se6? (shuts the rook out of d6) Rxe6!, 1.Bxh6? Bd6! (Dombrovskis ef
 - evolve `DEFTRIES=1|2 PATTERN=Grimshaw DEFS=...` scores the try per Grimshaw move (2: by the key piece). unmask_search with
   WANT and TRIES fixed found the sound post-keys of this frame in 5 minutes; EMPTY keeps a mating square free.
 
-## Dead ends
+- Mirror interference tries (after E. Bourd's verdict on No. 21: "need some unified concept between the tries"):
+  1b1R4/8/1r5p/R3p2B/pPPNk1P1/8/4P1NB/7K, 1.Sb5? Rd6!, 1.Sf5? Bd6!, 1.Sf3!. Each try blocks the line of one Grimshaw mate
+  (a5-e5 rook, h5-g6 bishop checking via f5). For a pure interference try the other mate's guards must not depend on the
+  try piece (e5 protected by Bh2, not only by the key knight). A queen on the 5th rank also mates on d5 (Rd8 protects it).
+
 - Bare or lightly seeded `compose.evolve` (DEFS=Re7,Be7 / Rg6,Bg6): checking keys only, as for every theme so far.
 - The threat 2.Qe8# on the e-file through e7: the defenders interpose after the check (rule 1).
 - A bishop as the threat piece (2.Bd8-f6#) so the queen cannot cook along rank 8: after 1...Re7 the rook
