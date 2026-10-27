@@ -222,3 +222,11 @@ Daily No. 18 (23 Oct 2026) published the knight swap with the king given a role:
 5R2/3K4/8/4p3/1N1Pk3/2Q3p1/5n2/8 (Kd7 guards c6 in 2.Qc6#). Failed that day: type1_geometry's Kf4 pair (the defence Bd3
 blocks the set mate Qf3; any e3 guard protects 2.Qe3#), Grimshaw cores on d6/c6 next to Ke4 in blind evolve, and a
 knight g7 whose self-blocks e6/f5 guard d4 (postsearch: no mate for either block). evolve CHANGED now refuses set duals.
+
+## Zagoruiko: the formal theme is three full phases (E. Bourd, 26 Oct 2026)
+"its fake zagoruiko, a novel swtich froim the formal theme. zagoruiko is 3 phases. anything else is a new
+interpretation of the theme, not thats its wrong, different is good, we just shouldnt be too attached to the names"
+(on Burda & Solarczyk, Sachove umeni 1998, 8/4B3/2P3P1/3pkp2/4p3/7Q/B1N1R1K1/8: d4 and f4 get three mates each over
+four phases, but only 1.Qb3? and 1.Se1! answer both). Claim 'Zagoruiko' only for three phases that each answer both
+defences with different mates (the solver's 'Zagoruiko 3x2' pattern; Foster, The Problemist 2003, is the model).
+Another distribution is a free interpretation: describe what it does, do not argue over the label.
