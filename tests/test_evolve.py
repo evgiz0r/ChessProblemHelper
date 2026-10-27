@@ -270,3 +270,44 @@ def test_selfblock_mode_wants_both_variations_reached():
     # daily No. 20 (E. Bourd, mentor issue #21): one try 1.Bc7? Sd6! reaches one of the two self-blocks: no HIT
     hit, sc, summ = _score('3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK', SELFBLOCK='2')
     assert not hit and 'reached=Sd6' in summ
+
+
+DEF_PROBE = """
+import chess, chesscomp.compose.evolve as e
+s, summ, hit = e.score(chess.Board('{fen} w - - 0 1'))
+print(hit, summ)
+"""
+
+
+def _defs_score(fen, **env):
+    env = dict(os.environ, PYTHONPATH=ROOT, **env)
+    r = subprocess.run([sys.executable, '-c', DEF_PROBE.format(fen=fen)], capture_output=True, text=True, env=env,
+                       cwd=ROOT, timeout=120)
+    assert r.returncode == 0, r.stderr
+    hit, summ = r.stdout.strip().split(' ', 1)
+    return hit == 'True', summ
+
+
+def test_pattern_grimshaw_matches_its_pair():
+    # daily No. 21: the solver names a Grimshaw's pair in one string ('Re7/Be7 on e7'), so PATTERN=Grimshaw never matched a
+    # DEF and no Grimshaw search could HIT. Daily No. 6 (1.Rf3! Re7 2.Qd6#, Be7 2.Sd7#) is a HIT now.
+    hit, summ = _defs_score('3Q1bb1/2N3r1/1N3Rpp/1pP1k3/3p4/3P4/5K2/8', DEFS='Re7,Be7', PATTERN='Grimshaw')
+    assert hit and 'Re7:Qd6#' in summ
+
+
+def test_deftries_wants_a_try_for_every_thematic_defence():
+    # Ganapathi, Problemesis 2003: 1.Sf6? Be6!, 1.Sf2? Re6!, 1.Sc3! - both Grimshaw moves refute a try by the key knight
+    hit, summ = _defs_score('2b1Q3/8/3r4/1B3p2/1K1kN3/1p2N3/4R3/6b1', DEFS='Be6,Re6', PATTERN='Grimshaw', DEFTRIES='2')
+    assert hit and 'try Sf6? Be6!' in summ and 'try Sf2? Re6!' in summ
+    # daily No. 6 has one try, 1.Qxf8? Re7!, for one of its two variations (mentor issue #21): no HIT
+    hit, summ = _defs_score('3Q1bb1/2N3r1/1N3Rpp/1pP1k3/3p4/3P4/5K2/8', DEFS='Re7,Be7', PATTERN='Grimshaw', DEFTRIES='1')
+    assert not hit and 'Re7!' in summ and 'Be7!' not in summ
+
+
+def test_deftries_two_counts_only_the_key_piece():
+    # daily No. 21: 1.Sb3? Rd6! (key knight) and 1.Bxh6? Bd6! (another unit) - enough for DEFTRIES=1, not for DEFTRIES=2
+    fen = '1b1RQ3/8/7r/2p1p1B1/3Nk3/4N3/2K2nP1/8'
+    hit, summ = _defs_score(fen, DEFS='Bd6,Rd6', PATTERN='Grimshaw', DEFTRIES='1')
+    assert hit and 'Bxh6? Bd6!' in summ and 'Rd6!' in summ
+    hit, summ = _defs_score(fen, DEFS='Bd6,Rd6', PATTERN='Grimshaw', DEFTRIES='2')
+    assert not hit and 'Bxh6?' not in summ

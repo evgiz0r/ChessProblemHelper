@@ -3894,6 +3894,23 @@
     "Qc8"
    ],
    "note": "Set 1...Sd6 2.Sc7#, Se5 2.Se7#; try 1.Bc7? (2.Se7#) Bc5 2.Sc3#, but 1...Sd6!; 1.Qc8! (2.Qe6#) S~ 2.Qd7#, Sxd8 2.Qd7#/Qxd8#, Sd6 2.Sc7#, Se5 2.Se7#. Gate PASS, 8+5. Flaws: set mates kept, random dual after Sxd8, Bd8 in no mate (try + dual stopper), bBg1/bPa5 cook-stoppers."
+  },
+  {
+   "id": "claude-grimshaw-d6-unmasked-file-sf3",
+   "fen": "1b1RQ3/8/7r/2p1p1B1/3Nk3/4N3/2K2nP1/8",
+   "stip": "#2",
+   "author": "Claude (daily No. 21, 27 Oct 2026)",
+   "source": "A #2 a day No. 21 (blog), theme Grimshaw",
+   "themes": [
+    "Grimshaw",
+    "White correction",
+    "Thematic tries refuted by both Grimshaw moves",
+    "Dombrovskis effect"
+   ],
+   "keys": [
+    "Sf3"
+   ],
+   "note": "Tries 1.Sb3? (2.Sd2#/Sxc5#) Bd6 2.Qc6#, but 1...Rd6!; 1.Se2? (2.Sg3#/Sc3#) Bd6 2.Qc6#, but 1...Rd6!; 1.Se6? but 1...Rxe6!; 1.Bxh6? (2.Qg6#/Qc6#) but 1...Bd6!; 1.Sf3! (2.Sd2#) Bd6 2.Qc6#, Rd6 2.Qxe5#. The knight d4 masks the rook d8's d-file; each Grimshaw move cuts it. Gate PASS, 7+6. Flaws: double threats in the random tries and 1.Bxh6?, the bishop's try captures the rook, key knight attacked by c5, Qxe5 takes a pawn, cook-stoppers Sf2 (g4) and c5 (1.Se6)."
   }
  ]
 }

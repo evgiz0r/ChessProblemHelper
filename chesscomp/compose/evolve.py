@@ -54,6 +54,9 @@ WCORR=e7 (white correction mode, daily No. 10) needs no DEFS: it scores the move
 (chesscomp.compose.white_correction): a unique quiet key by it, a random refutation shared by at least two of its tries,
 NCORR (default 2) distinct correction refutations, no king refutation, every thematic refutation answered in the key;
 mates changed from the random stage score extra. Put the key piece and the black king in CORE.
+DEFTRIES=1 (with DEFS, daily No. 21) rewards a quiet try per DEF refuted by that DEF alone, the key answering it with a single
+mate, and a HIT needs one for every DEF (a second layer that reaches every thematic variation, mentor issue #21);
+DEFTRIES=2 counts only tries by the key piece (Ganapathi 2003: 1.Sf6? Be6!, 1.Sf2? Re6!, 1.Sc3!). Combine with PATTERN.
 """
 from chesscomp.core import illegal_position as _illegal
 import os, sys, random, time, json, chess
@@ -96,6 +99,7 @@ TRIES = int(os.environ.get('TRIES', '0'))            # fixed-key mode: N tries b
 DEFSQ = [x for x in os.environ.get('DEFSQ', '').split(',') if x]   # type-1: thematic units by square (needs TKEY)
 TKEY = os.environ.get('TKEY', '')                    # type-1: the intended key (uci)
 QMATE = os.environ.get('QMATE', '0') == '1'          # type-1: every thematic mate by the queen
+DEFTRIES = int(os.environ.get('DEFTRIES', '0'))       # each DEF refutes its own quiet try (2: tries by the key piece)
 FLIGHT = int(os.environ.get('FLIGHT', '0'))          # flight-giving key mode: N given flights with own mates
 FSECOND = os.environ.get('FSECOND', '1') == '1'      # FLIGHT mode: a HIT also needs a set change or a thematic try
 FNVAR = int(os.environ.get('FNVAR', '2'))            # FLIGHT mode: distinct single mates (not the threat) for a HIT
@@ -519,7 +523,7 @@ def score(b):
             s -= 15
     pats = (r.get('relations') or {}).get('patterns', [])
     if PATTERN:
-        got = {pt.get('defence') for pt in pats if pt['name'] == PATTERN}
+        got = pattern_defs(pats)
         s += 25 * sum(1 for d in DEFS if d in got)
         if not DEFS:
             s += 25 * min(NPAT + 1, len(pattern_mates(r, got)))
@@ -551,7 +555,7 @@ def score(b):
         # search learned to plant a black unit for the key to take, and to accept triple threats)
         ok = ok and len(ph.get('threat') or []) <= 1 and 'x' not in ph['first_move']['san']
         if ok and PATTERN:
-            got = {pt.get('defence') for pt in (r.get('relations') or {}).get('patterns', []) if pt['name'] == PATTERN}
+            got = pattern_defs((r.get('relations') or {}).get('patterns', []))
             ok = all(d in got for d in DEFS) and (bool(DEFS) or len(pattern_mates(r, got)) >= NPAT)
         if ok and RECIP and len(DEFS) == 2:
             s0, s1 = setmap.get(DEFS[0]), setmap.get(DEFS[1])
@@ -579,6 +583,11 @@ def score(b):
         s += 12 * min(ct, CTRY + 1)
         best_sum += csum
         hit = hit and ct >= CTRY
+    if DEFTRIES and DEFS:
+        got, dsum = def_tries(phases, DEFS, DEFTRIES == 2)
+        s += 14 * len(got)
+        best_sum += dsum
+        hit = hit and len(got) == len(DEFS)
     return s, f"keys={keys} {best_sum}", hit
 
 
@@ -599,6 +608,42 @@ def corr_tries(phases):
         if u[:2] == CORR and u in answered:
             got.setdefault(u, f" try {ph['first_move']['san']}? {refs[0]['san']}!")
     return len(got), ''.join(got.values())
+
+def def_tries(phases, defs, by_key_piece=False):
+    """DEFTRIES (daily No. 21, Grimshaw): the DEFS each refuting a quiet try of their own, one refutation only, that the key
+    answers with a single mate: a try per thematic variation, so the second layer reaches all of them (E. Bourd, mentor
+    issue #21; the 'one-sided extension' of the gate). by_key_piece: only tries by the key piece count (Ganapathi 2003:
+    1.Sf6? Be6!, 1.Sf2? Re6!, 1.Sc3!). Returns (the DEFS reached, summary)."""
+    key = next((ph for ph in phases if ph['type'] == 'key'), None)
+    if not key:
+        return set(), ''
+    single = {v['defence']['san'].rstrip('+#') for v in key['variations']
+              if len(v['continuations']) == 1 and not v['threat_repeat']}
+    got = {}
+    for ph in phases:
+        refs = ph.get('refutations')
+        if (ph['type'] != 'try' or ph.get('check_key') or ph['first_move']['san'].endswith('+')
+                or not isinstance(refs, list) or len(refs) != 1):
+            continue
+        if by_key_piece and ph['first_move']['uci'][:2] != key['first_move']['uci'][:2]:
+            continue
+        d = refs[0]['san'].rstrip('+#!')
+        if d in defs and d in single:
+            got.setdefault(d, f" try {ph['first_move']['san']}? {refs[0]['san']}!")
+    return set(got), ''.join(got[d] for d in defs if d in got)
+
+def pattern_defs(pats):
+    """The defences that carry PATTERN. A Grimshaw names its pair as one string ('Be6/Re6 on e6'),
+    so it is split into both moves (daily No. 21: PATTERN=Grimshaw never matched a DEF before)."""
+    got = set()
+    for pt in pats:
+        if pt['name'] != PATTERN:
+            continue
+        d = pt.get('defence') or ''
+        got.add(d)
+        if pt['name'] == 'Grimshaw' and ' on ' in d:
+            got.update(d.split(' on ')[0].split('/'))
+    return got
 
 def pattern_mates(r, got):
     """Distinct single mates of the key-phase defences that carry PATTERN (PATTERN with no DEFS)."""

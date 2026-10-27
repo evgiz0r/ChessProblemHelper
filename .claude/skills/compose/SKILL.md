@@ -113,6 +113,8 @@ Read `references/construction.md` now (the order and the rules with their exampl
    With two thematic variations the extension must reach both (E. Bourd, mentor issue #21: "only 1 is not enough, its
    too short and usually spoils a lot"): a try pair refuted by each thematic defence, changes of both mates, a transfer.
    One try for one variation is a 'one-sided extension', fatal in the gate (daily No. 20: 1.Bc7? Sd6!, nothing for Se5).
+   Before searching for the pair, write what each thematic mate needs from the key piece: a try fails to defence A alone
+   only if mate A needs something mate B does not (daily No. 21; in No. 6's frame no such try exists). evolve DEFTRIES=1|2.
 6c. **Make a try's refutation thematic** (E. Bourd, 15 Oct 2026: "how would you find that improvement, its not just
    trimming"). Read why the try fails (anatomy: "Sc2+: flight e4"): the try lacks a guard the key has. If its only guard is a
    pawn or a short-range unit, the refutation can only capture it. Re-guard the square with a line piece whose line crosses a
