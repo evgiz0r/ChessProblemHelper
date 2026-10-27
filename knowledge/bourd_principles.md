@@ -384,3 +384,6 @@ kind of reason (both interfere with a mating line, both give up one of the two g
 Grimshaw move...). A try that captures a black officer is no try (critique 'capture try'); a white correction whose
 correction fails to a capture of the try piece is random (critique 'random white correction'). Today's 1.S~? Rd6!,
 1.Se6? Rxe6!, 1.Bxh6? Bd6! was three unrelated reasons.
+
+- Credit (27 Oct 2026): "its fine to name me, i dont really care". Name him for what he contributed to a position
+  (a setting, a trim, a scheme); a general principle of his still needs no byline.

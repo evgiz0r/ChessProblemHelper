@@ -37,3 +37,11 @@ bRh5 retakes and then guards e5, at the price of every bishop move defending (B~
 A pure pair is out with this key: no knight landing spoils Rxg4#, so no try fails to Re6. Plan the try piece
 from the rook's mate line (g1-g4) before choosing the mask. Result: 4R3/4N1NB/6r1/3ppb1r/3Bk1p1/2P1P3/4P3/3K2R1,
 1.Sg8! Re6 2.Rxg4#, B~ 2.Sf6#; try 1.Sc8? B~ 2.Sd6#, but 1...Bxc8!.
+
+## Half-pin with set mates changed (27 Oct 2026, with E. Bourd, unfinished)
+evolve CHANGED=1 PATTERN=Half-pin DEFS=Sf4,Rc5 from the Qf7 family found 8/2BN2Q1/8/8/4k3/3nN1K1/1prP4/1Br1n3 (7+6, gate
+PASS): set 1...S~ 2.Sc5# (Rc2 pinned), 1...Rc5 2.Qg4# (Sd3 pinned); 1.Qf7! (2.Qd5#) Sf4/Sb4 2.Qc4#, Rc5 2.Qf4#, Kd4 (flight
+given). The key play is the 13 Oct Qf7 problem's; the set play is the addition. bRc1 stops 1...Rc5 2.Sxc5# in the set.
+Conflict with his pure pair (1.Qg8? Rc5!, 1.Qd7? Sf4!): 1.Qg8? fails to Rc5 only if the g-file is shut (no Qg4), and the
+set mate after Rc5 is Qg4 from g7 down the same file. evolve CHANGED=1 + DEFTRIES=1 (4 jobs, 5 min) found nothing.
+A knight cannot do a type-1 change around Ke4: no two knight squares a move apart reach two different pairs of check squares.

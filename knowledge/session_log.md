@@ -1585,3 +1585,10 @@ no motive layer to mirror.
 - Issue #17 Q3 answered (two pawn steps opening one line: a common, easy defence pattern, not Meredith, not a unity): lesson, principle, post feedback. Issue #17 complete.
 - 27 Oct: issue #16 Q1 answered (Zagoruiko is three full phases; other distributions are new interpretations, fine, names matter less): themes.json definition, changed_mates.md section, lesson, principle, post feedback.
 - 27 Oct: issue #16 Q2 answered (reuse of a known division: undefined, like varying a step of a proof; depends on the change and its scope): lesson, post feedback. Issue #16 complete.
+
+## Session 27 Oct 2026 (chat, "continue the blog from here")
+- Daily No. 21 (Grimshaw) composed and published; E. Bourd rejected its tries ("Bxh6 is a non-try ... not unified"): gate rules
+  'capture try' and 'random white correction'; rebuilt with mirror interference tries 1.Sb5? Rd6!, 1.Sf5? Bd6!; he trimmed it on
+  the bench 17 -> 14 units and called it "a complete problem with 2 thematic tries on a grimshaw ... thematic wise, its decent";
+  the post shows his setting. He is fine with being named.
+- Next composition (half-pin from the rotation): set mates changed by 1.Qg7-f7 (see half_pin_king_key.md), shown to him.
