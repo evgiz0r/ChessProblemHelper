@@ -387,3 +387,6 @@ correction fails to a capture of the try piece is random (critique 'random white
 
 - Credit (27 Oct 2026): "its fine to name me, i dont really care". Name him for what he contributed to a position
   (a setting, a trim, a scheme); a general principle of his still needs no byline.
+
+- New schemes (27 Oct 2026): "I would rather start a new scheme, not doing small changes to existing. At this stage at
+  least." Start each new problem from a fresh geometry and idea, not from a variation of an earlier position.
