@@ -45,3 +45,25 @@ given). The key play is the 13 Oct Qf7 problem's; the set play is the addition. 
 Conflict with his pure pair (1.Qg8? Rc5!, 1.Qd7? Sf4!): 1.Qg8? fails to Rc5 only if the g-file is shut (no Qg4), and the
 set mate after Rc5 is Qg4 from g7 down the same file. evolve CHANGED=1 + DEFTRIES=1 (4 jobs, 5 min) found nothing.
 A knight cannot do a type-1 change around Ke4: no two knight squares a move apart reach two different pairs of check squares.
+
+## Bishop + knight half-pin on the e-file, Ke4 (27 Oct 2026, unfinished, a new scheme with E. Bourd)
+Re8-Be6-Se5-Ke4. After a knight move the bishop cannot interpose on d5/f5: mates Qc6/Qb7 (via d5), Qg6 (via f5).
+After a bishop move the knight cannot interpose on d3/f3 or take on c4/g4/c6/g6: mates Qc2/Bc2, Bg2/Qg2, Qc4, Qg4.
+Sound basic setting (unmask_search um1): 1Q2R3/8/2p1bP1N/2R1n3/4k1p1/2Pn2K1/1B2NP2/1r3B2, 1.Qd6! (2.Qd4#) Bd5 2.Bg2#,
+Sf3 2.Qxc6#; try 1.Qd8? Sf3! - one-sided (fatal since issue #21), 18 units. What blocks the second layer:
+- With the threat Qd4#, 1...Bd5 defends only by blocking the queen's path from above (d6-d8). Every mate after Bd5
+  that does not itself cover d4 needs another d4 guard, and that guard protects Qd4: Bd5 stops defending. So the
+  Bd5 mate must cover d4 itself: a rank-4 check from the right (Qg4/Rg4, x-ray d4) or an adjacent Qd3/Qe3.
+- A queen on d7 or c8 reaches f5 through the vacated e6 after Bd5: 2.Qf5# ignores the pin of the knight (the knight
+  cannot touch f5), a half-pin variation in name only; 2.Qg4# uses it. A queen on d7 is en prise to Se5 (escape key).
+- Mates on c6 and g6 from the 6th rank (either side of e6): after a knight move 2.Qxe6+ (check down the opened
+  e-file) mates whenever Qc6 does, unless Black defends e6, and a pawn f7 that does guards g6.
+- The pinner takes the pinned knight with mate (2.Rxe5#) after a bishop move whenever e5 is guarded for the
+  knight-move mates (the king's new e5 flight). A Black recapture on e5 (a knight on d3, as in um1) cures it.
+- With the queen able to reach d3 and d3 guarded (Qc6 needs d3 covered), 2.Qd3# is a dual of Qc6 after every
+  knight move: block d3 with a Black unit (um1's Nd3) or let Black guard it (a knight on c5).
+- A knight on e6 never reaches d5/f5: with Se6 over Be5 the self-blocks are on d4/f4 (Sd4, Sf4, Bd4, Bf4).
+Known concept, do not repeat it bare: queen posts on a black half-pin (Delobel, Problemesis 2003, psis-aba981b8d6:
+1.Qd1/Qb5? Rd2!, 1.Qb3/Qd7? Se5!, 1.Qa6!), interference tries by the key knight (Kapros 2002, psis-0dd597ba62).
+Blind searches from a bare core (evolve, an add-only beam over post_spec) lock onto a mask on e7 or capture mates:
+seed them with a planned guard scheme.

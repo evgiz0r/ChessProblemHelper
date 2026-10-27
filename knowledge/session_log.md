@@ -1592,3 +1592,8 @@ no motive layer to mirror.
   the bench 17 -> 14 units and called it "a complete problem with 2 thematic tries on a grimshaw ... thematic wise, its decent";
   the post shows his setting. He is fine with being named.
 - Next composition (half-pin from the rotation): set mates changed by 1.Qg7-f7 (see half_pin_king_key.md), shown to him.
+- New scheme after "start a new scheme": e-file half-pin Re8/Be6/Se5/Ke4. Hand designs failed for structural reasons
+  (written up in half_pin_king_key.md: the Qd4 threat vs 1...Bd5 mates, 2.Qf5# ignoring the pin, Qxe6/Rxe5/Qd3 duals).
+  evolve DEFTRIES=1 from um1 found the 6th-rank pair; four removals (bBf1, bPg4, wPc4, wSe2) gave 12 units, gate PASS:
+  1Q2R3/8/2p1b2N/2R1n3/4k3/2Pn2K1/5P2/8, 1.Qd6! (2.Qd4#) Bd5 2.Qg6#, Sf3 2.Qxc6#; try 1.Qb1? (zugzwang) Bd5 2.Qh1#,
+  but 1...Sf3!. No try fails to 1...Bd5 alone (trytable). Shown to him (card halfpin-queen-crosses-e6.png).
