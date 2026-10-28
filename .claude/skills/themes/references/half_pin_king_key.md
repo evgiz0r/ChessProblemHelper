@@ -77,3 +77,9 @@ x 6th rank, 2.Qd5#/2.Qg6#, tries 1.Qd8? Bd5!, 1.Qb6? Sf3!) dies on the diagram f
 protects 2.Qxd5# after 1...Bd5. E. Bourd rotated it on the bench (4th-rank pin Rh4-Bf4-Se4-Kd4, queen f5): there both
 mates pass the vacated square (1...Sg5 2.Qd3# through e4, 1...Be5 2.Qf2# down the f-file through f4), so f5 is the
 crossing of the f-file and the b1-h7 diagonal and the one-line posts (f8, g6/h7) separate the mates.
+E. Bourd's rotated setting (bench, 28 Oct 19:08): b7/3p1K2/Q4pB1/R1bnkN2/7R/q1np4/5N2/3r4, half-pin Ra5-Bc5-Sd5-Ke5. Set
+S~ 2.Qd6#, B~ 2.Qxf6#; 1.Qc4! (2.Sg4#) Se3 2.Qd4#, Bxf2 2.Qf4#, Bd4 2.Qxd4#. Why the changes work here and not on the
+file: with the pin along a rank, each pinned unit guards a square on both sides of the pin line (Bc5: d6 and d4; Sd5: f6
+and f4), so the queen mates from the 6th rank in the set and from the 4th after the key, every mate using the pin.
+bBa8 and bPf6 are not needed (15 units, set mate 2.Qf6# without capture, gate PASS). bQa3 stops 1.Rxc5 and 1.Rd4;
+single pawns that do the same (b6, c6, d6, c7, e7) block the 6th rank or guard d6/f6 and kill the set play.
