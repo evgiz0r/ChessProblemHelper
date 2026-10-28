@@ -67,3 +67,13 @@ Known concept, do not repeat it bare: queen posts on a black half-pin (Delobel, 
 1.Qd1/Qb5? Rd2!, 1.Qb3/Qd7? Se5!, 1.Qa6!), interference tries by the key knight (Kapros 2002, psis-0dd597ba62).
 Blind searches from a bare core (evolve, an add-only beam over post_spec) lock onto a mask on e7 or capture mates:
 seed them with a planned guard scheme.
+Second layer for the 12-unit setting 1Q2R3/8/2p1b2N/2R1n3/4k3/2Pn2K1/5P2/8 (28 Oct, E. Bourd: "either 2 changes, or 2
+tries. just 1 is almost ruining it"): structurally blocked in this frame. After 1...Bd5 every queen mate on the
+f5-g6-h7 line works too, so any queen post that answers 1...Sf3 that way also answers 1...Bd5; only d6 avoids it (it
+reaches g6 only through e6). Sweeps of every single change around it (and from the queen on c7, f8, d8) found no try
+refuted by 1...Bd5 alone and no two distinct set mates; the only two-change form is a split: queen f8 with bPg4, set
+1...Sf3/Bd5 2.Qf5# -> 2.Qxc6#/2.Qg6# (4RQ2/8/2p1b2N/2R1n3/4k1p1/2Pn2K1/5P2/8, gate PASS). The crossing idea (d6 = d-file
+x 6th rank, 2.Qd5#/2.Qg6#, tries 1.Qd8? Bd5!, 1.Qb6? Sf3!) dies on the diagram flight d5: any guard of d5 also
+protects 2.Qxd5# after 1...Bd5. E. Bourd rotated it on the bench (4th-rank pin Rh4-Bf4-Se4-Kd4, queen f5): there both
+mates pass the vacated square (1...Sg5 2.Qd3# through e4, 1...Be5 2.Qf2# down the f-file through f4), so f5 is the
+crossing of the f-file and the b1-h7 diagonal and the one-line posts (f8, g6/h7) separate the mates.
