@@ -106,3 +106,23 @@ but 1...Bxe5!
 K7/3N4/Q2nP3/3kB3/8/3pR2B/1p6/3Nb3. Set: S~ 2.Bg2#, Sb5 2.Qxb5#, Se4 2.Rxd3#. Key 1.Re4! (2.Rd4#) Sb5 Qb7#, Sf5 Qc4#,
 Sxe4 Se3#, Kxe4 Qc6#. The knight d6 interposes on e4 and shields e6 from Qa6: two jobs, so the random move's error is
 double. The key shuts the random mate's line and changes all three mates; the correction itself lives only in the set.
+
+## Rook correction on a crossing square (28 Oct 2026, sound, single phase so far)
+- 6N1/6K1/1b1p1R1P/3rk3/2Q1b3/B2p4/8/8, 1.Se7! (2.Sc6#). Set and solution: R~ (Rb5/Ra5) 2.Bxd6#, 1...Rc5! 2.Bb2#,
+  1...Rd4! 2.Qe6#. Every rook move opens bBe4-d5-c6 against the threat (defence by departure).
+- Errors: off the d-file the rook no longer guards d6 (Bxd6) and can no longer interpose on d4 (Bb2+). After Rb5/Ra5
+  Bb2+ fails to Rxb2 / Bd4 (bBb6 through c5). 1...Rc5 stands on both diagonals: it cuts Ba3-d6 (no Bxd6) and its own
+  b6-d4 (no Bd4), so Bb2# - a Novotny-like self-interference. 1...Rd4 keeps the file (d6 guarded) and blocks d4, so
+  the queen may leave c4 (Qe6#); after a random move Qe6 leaves d4 free. The queen on c4 is the only square that covers
+  d4 and d5 and reaches e6 through d5.
+- How it was found: the flight version (bK e4, bR d4, bPd3 guarded along the file, wQc5, 1...Rd5 Qe3#) had the hole
+  1...dxc5 from the blocker pawn d6; flipping the board top to bottom points the blocker's captures away from the
+  queen (black pawns do not flip), and the flip created Bb2# through the d4 square that a black pawn cannot step back
+  to. The black bishop b6 then made Bb2 the correction's mate; its own 1...Bd4 was a hole until the threat moved to
+  the knight (2.Sc6#, masked by the rook on bBe4's diagonal).
+- Flaws: the key only adds the threat (gate 'single phase', 'static key'); wPh6 stops 1.Sh6 (Sf7/Sg4); the bBe4
+  random moves have duals. retract gives only flight-taking keys (1.Kg7, 1.Rf6); evolve CTRY=1 and CHANGED=1 found no
+  second layer in 280 s each.
+- Dead ends of the day: a white queen behind the rook on the d-file (cs3: R~ Qd5#, Rd3 Qg4# x-ray) always leaves the
+  moves toward the line piece (Rd2, Rxd1) without an error; the rook guarding d4 along the 4th rank (R~ Qd4#, Rc4
+  cuts bBb3-d5: Qd5#) gives Ra4 no error and a post-key full of other solutions.
