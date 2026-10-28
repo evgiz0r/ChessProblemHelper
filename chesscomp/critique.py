@@ -154,6 +154,8 @@ def piece_necessity(problem, res, time_limit=20):
     key = res['keys'][0] if res.get('keys') else None
     key_ph = next((ph for ph in res.get('phases', []) if ph['type'] == 'key'), None)
     key_uci = key_ph['first_move']['uci'] if key_ph else None
+    sp0 = next((ph for ph in res.get('phases', []) if ph['type'] == 'set'), None)
+    base_set = None if sp0 is None else {v['defence']['uci'] for v in sp0.get('variations', []) if v.get('dual')}
     out = {}
     for sq in chess.SQUARES:
         p = problem.board.piece_at(sq)
@@ -198,6 +200,16 @@ def piece_necessity(problem, res, time_limit=20):
                 new_kinds = set(_da(b, km).get('thematic_kinds', []))
             except Exception:
                 base_kinds = new_kinds = set()
+            # a unit may keep a defence its unit's only one: without it the same unit gets a second defence with the
+            # same mate (E. Bourd, 28 Oct 2026, his bPf6: "to avoid the nf6 defense as a thematic 'dual' ... worth a
+            # pawn"; 14 Oct: "realistically all knight moves are the same")
+            base_mates = {(v['defence']['uci'][:2], c['san']): v['defence']['san']
+                          for v in base_real if len(v['continuations']) == 1 for c in v['continuations']}
+            base_ucis = {v['defence']['uci'] for v in base_real}
+            repeats = [(v['defence']['san'], base_mates[(v['defence']['uci'][:2], v['continuations'][0]['san'])],
+                        v['continuations'][0]['san'])
+                       for v in real if v['defence']['uci'] not in base_ucis and len(v['continuations']) == 1
+                       and (v['defence']['uci'][:2], v['continuations'][0]['san']) in base_mates]
             base_sp = next((ph for ph in res['phases'] if ph['type'] == 'set'), None)
             new_sp = next((ph for ph in r.get('phases', []) if ph['type'] == 'set'), None)
             new_unprov = set(new_sp.get('unprovided', [])) - set(base_sp.get('unprovided', [])) if (base_sp and new_sp) else set()
@@ -214,6 +226,10 @@ def piece_necessity(problem, res, time_limit=20):
                                               + ', '.join(sorted({'1...' + d for d, _ in lost_changes})) + ' are lost')
             elif lost > 0:
                 out[chess.square_name(sq)] = f'needed for the CONTENT: {lost} variation(s) lost without it'
+            elif repeats:
+                out[chess.square_name(sq)] = ('needed for the CONTENT: without it ' + ', '.join(
+                    f'1...{d} repeats the mate of 1...{o} ({m})' for d, o, m in repeats[:2])
+                    + ': the defence is no longer its unit\'s only one')
             elif new_unprov:
                 out[chess.square_name(sq)] = ('needed for the SET PLAY: without it '
                                               + ', '.join('1...' + x for x in sorted(new_unprov)) + ' is unprovided')
@@ -227,6 +243,19 @@ def piece_necessity(problem, res, time_limit=20):
         else:
             extra = [k for k in keys if k != key]
             out[chess.square_name(sq)] = f"needed (stops {', '.join(extra[:4])})" if extra else 'needed'
+        # the set play's dual avoidance is a job too, whatever else the unit does (E. Bourd, 28 Oct 2026, his bQa3:
+        # "the queen is part of the mechanism ... it serves the dual avoidance in the set play": the bishop's
+        # departure from c5 opens a3-d6, so 1...Bxf2 is answered by 2.Qxf6# alone)
+        new_sp_ = next((ph for ph in r.get('phases', []) if ph['type'] == 'set'), None)
+        if base_set is not None and new_sp_ is not None:
+            sduals = [v for v in new_sp_.get('variations', []) if v.get('dual') and v['defence']['uci'] not in base_set]
+            if sduals:
+                txt = ', '.join(f"1...{v['defence']['san']} {'/'.join(c['san'] for c in v['continuations'])}"
+                                for v in sduals[:2])
+                v0 = out.get(chess.square_name(sq), '')
+                out[chess.square_name(sq)] = ('needed for the SET PLAY: its dual avoidance (without it ' + txt + ')'
+                                              if v0.startswith('not needed') else
+                                              v0 + '; it also holds the set play\'s dual avoidance (without it ' + txt + ')')
     return out
 
 

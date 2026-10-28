@@ -390,3 +390,13 @@ correction fails to a capture of the try piece is random (critique 'random white
 
 - New schemes (27 Oct 2026): "I would rather start a new scheme, not doing small changes to existing. At this stage at
   least." Start each new problem from a fresh geometry and idea, not from a variation of an earlier position.
+
+- Anatomy before depth (28 Oct 2026): "i think in general you should study the anatomy or how the position works before
+  running too deep. the core dual avoidance mechanism. there are many to be created around line opening closing,
+  keeping on the same line". Before a search, a removal test or a verdict on a unit, write down the dual avoidance of
+  each thematic variation (which sibling mate fails, and which line or guard makes it fail). His rotated half-pin:
+  after a knight move the d5 flight forces the mate onto the d-file (d6/d4); after a bishop move bQa3 sees d6 through
+  the vacated c5 (set) and the bishop stays on the a7-g1 line guarding d4 (after the key), so the mate goes to f6/f4.
+  "the queen is part of the mechanism, maybe it can be changed somehow but not by simple removal." Likewise his bPf6
+  ("to avoid the nf6 defense as a thematic 'dual' ... i thought it was worth a pawn"): a unit that keeps a defence
+  its unit's only one has a role a removal test does not see.

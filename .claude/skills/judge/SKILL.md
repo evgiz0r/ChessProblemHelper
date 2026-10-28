@@ -42,6 +42,9 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
    repair it before showing. Read every try as a sentence: what does it show about the diagram? His masked pin 1.Bf2!:
    the e4 flight is the only answer to the free knight's checks (a set mate for Ke4 cooks), and wPc2 plays
    1.cxd3?, which shows that knight free before the key pins it; both were flagged, both are the idea.
+   A removal test sees cooks and lost variations, not every job: first write each thematic variation's dual avoidance
+   (which sibling mate fails, by which line or guard). His bQa3 (28 Oct 2026) looked like a cook-stopper and was the
+   set play's dual avoidance (d6 seen through the vacated c5); his bPf6 kept 1...Se3 the knight's only defence.
 4. Weigh, do not count; tolerance grows with content (E. Bourd, 12 Oct: "we pay flaws for content, and find
    the balance"). Place the problem on the scale in `references/checklist.md` (light / medium / rich) first.
    Weigh, do not count: a doubled or tripled theme can carry flaws that would be fatal in a simple
