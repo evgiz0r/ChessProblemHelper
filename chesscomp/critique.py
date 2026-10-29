@@ -427,10 +427,14 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
                 # the corrections must fail to defences the key answers, or the try set is random (E. Bourd, 27 Oct 2026,
                 # on daily No. 21's 1.S~? Rd6!, 1.Se6? Rxe6!: "the whole try looks too forced and not unified, almost
                 # random"): a correction refuted by a capture of the correcting piece shows no concept
+                # the corrections' refutations must be defences the key meets with a mate; the random refutation may also
+                # just allow the threat after the key (E. Bourd's 1.B~? Qg2+!, 1.Bb7!: after the key Qg2 is no check and the
+                # threat follows). Daily No. 21's 1.Se6? Rxe6! stays random: after the key h6e6 only allows the threat
                 answered = {v['defence']['uci'] for v in key['variations'] if v['continuations'] and not v['threat_repeat']}
+                passes = {v['defence']['uci'] for v in key['variations'] if v['continuations']}
                 # (one such correction is enough; an incidental capture try beside it, as 1.Bxg6? hxg6+! next to
                 # 1.Bd3? Rb6!, does not make the set random)
-                if not any(all(r['uci'] in answered for r in t['refutations']) for t in others) or u not in answered:
+                if not any(all(r['uci'] in answered for r in t['refutations']) for t in others) or u not in passes:
                     add('note', 'random white correction', f"1.{key['first_move']['san'][0]}~? {s_}! ({n} moves); "
                         + '; '.join(f"1.{t['first_move']['san']}? {'/'.join(r['san'] for r in t['refutations'])}!" for t in others)
                         + ': a correction fails to a move the key does not answer, so the try set has no common idea '
