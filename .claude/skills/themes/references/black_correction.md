@@ -126,3 +126,18 @@ double. The key shuts the random mate's line and changes all three mates; the co
 - Dead ends of the day: a white queen behind the rook on the d-file (cs3: R~ Qd5#, Rd3 Qg4# x-ray) always leaves the
   moves toward the line piece (Rd2, Rxd1) without an error; the rook guarding d4 along the 4th rank (R~ Qd4#, Rc4
   cuts bBb3-d5: Qd5#) gives Ra4 no error and a post-key full of other solutions.
+
+## His bench scheme: rook beside the king, corrections on its own rank (29 Oct 2026)
+- His kernel (bench steps 331-341): bK d4, bR e5, bPf5 and bPb5 closing the 5th rank, wBb8 (threat Bxe5#), wSh6
+  (R~ off the rank unguards f5: Sxf5#), wPf4 (protects e5; 2.fxe5 is no check, a white pawn on e5 attacks d6/f6).
+  Corrections 1...Rd5! and 1...Rc5! keep the f5 guard and self-block a flight.
+- Dual avoidance it needs: Sxf5 needs c5 and d5 guarded after R~, so the guard of each self-block square must be the
+  unit that mates after that self-block and leaves the square doing it. Sb4 guards d5 and mates Sc6# after Rd5
+  (Sc6 after R~ leaves d5); Qc2 guards c5 down the c-file and mates Qd3# after Rc5 (Qd3 after R~ leaves c5).
+  (A knight CAN guard d5 and check d4 in one move: b4 -> c6; my parity argument was wrong.)
+- Sound: 1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8, 1.Qc2! (2.Bxe5#): the queen unmasks b8-e5 and stays on the c-file;
+  set R~ Sxf5#, after the key also Rd5 Sc6#, Rc5 Qd3#, Re3+ fxe3#. bPg7 stops 1.fxe5 (1...g6 guards f5), wPb6 stops
+  the dual Ba7#. Zugzwang version without the bishop: 8/8/2Qp3N/1p2rp2/1N1k1P2/5K2/5P2/8, 1.Qc2! zz (bPd6 protects e5).
+- Not working: the threatening bishop on the long diagonal pins the rook (every mate becomes a threat); on g3 the
+  pawn f5 interposes 1...f4; the queen's other c-file squares (Qc8/Qc6/Qc1) all fail to both corrections, since only
+  c2 lets the queen guard d3 for Sc6 and mate on d3. Second layer still open (gate: single phase).
