@@ -141,3 +141,11 @@ double. The key shuts the random mate's line and changes all three mates; the co
 - Not working: the threatening bishop on the long diagonal pins the rook (every mate becomes a threat); on g3 the
   pawn f5 interposes 1...f4; the queen's other c-file squares (Qc8/Qc6/Qc1) all fail to both corrections, since only
   c2 lets the queen guard d3 for Sc6 and mate on d3. Second layer still open (gate: single phase).
+- His second change (bench steps 342-547): set 1...Rd5 2.Sc2#, 1...Rc5 2.Qf4# (queen c7), after 1.Qc2! Sc6# / Qd3#.
+  Step 383 (1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/4pP2/1P2P3/1n4bK) is sound with the first change only. Guard table, bare frame:
+  set R~ Sxf5 leaves e4, set Sc2 d3+e4, set Qf4 c3, threat Bxe5 e3 and needs an e5 protector, post Sc6 e3; Kf3 + Pd2 + Pe2
+  cover them. The protector is the problem: Qf4 needs f4 free, so after the key only an e-file rook can protect e5,
+  and it cooks (1.Rxe5; 1.Sxf5+ Rxf5 2.Re4#; 1.Sc2+ Kd5 2.Rxe5#). His pin of Re7 by bBh4 against Kd8 (Pd7 shielding
+  Rd5+) stops those, but the pinner takes the rook with check: 1...Bxe7+ is an unprovided check (step 544 solves only
+  by 1.e3+). A two-phase beam with the solver's cook count (scratch twophase2/3.py) bottomed out at three checking
+  cooks (Sxf5+, Sc2+, e3+).
