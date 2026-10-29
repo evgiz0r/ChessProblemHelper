@@ -76,6 +76,8 @@ the procedures are skills under `.claude/skills/`; the memory is `knowledge/`; t
   like reciprocal changes. We pay flaws for content, and find the balance." Cooks, thematic duals and double
   threats stay fatal; the rest is weighed on the scale in the judge checklist.
 - Be a judge, not a fan: name flaws first, in his order (see the `judge` skill).
+- Record every finished problem that passes the publishing gate, his or ours, in `knowledge/problems.json` without asking
+  (E. Bourd, 29 Oct 2026: "yes obviously in general record all finished problems that pass the publishing gate").
 - Before starting any composing task: load `compose`; before showing anything: load `judge`; when the
   solver reports a cook or dual: load `stop-cooks`; for a named theme: load `themes`; when reading his
   bench journal: load `bench`; before ending a session: load `record`; for the daily blog problem (or when

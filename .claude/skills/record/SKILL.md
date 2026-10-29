@@ -7,7 +7,9 @@ description: Write what a session learned into the repository so the next sessio
 
 1. `knowledge/problems.json` (and the identical `docs/problems.json`): every position worth keeping, with
    id, FEN, author, themes, a note that says what it is and what is wrong with it, the solver output, the
-   key(s). Rejected positions stay, marked rejected with the reason.
+   key(s). Rejected positions stay, marked rejected with the reason. Every finished problem that passes the gate
+   (`tools/blog.py check`: 2+ thematic variations and a unified extension on both) is recorded without asking, his
+   from the bench included (E. Bourd, 29 Oct 2026: "yes obviously in general record all finished problems that pass").
 2. `knowledge/lessons.jsonl`: one line per RULE that predicts something in a new position, per dead end, or per
    process step (E. Bourd: facts are infinite; an enumeration's counts are a check on a claim, not a lesson -
    record the mechanism it confirmed, once, with one example): `{date, source, topic, kind, text,

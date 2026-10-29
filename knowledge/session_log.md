@@ -1597,3 +1597,22 @@ no motive layer to mirror.
   evolve DEFTRIES=1 from um1 found the 6th-rank pair; four removals (bBf1, bPg4, wPc4, wSe2) gave 12 units, gate PASS:
   1Q2R3/8/2p1b2N/2R1n3/4k3/2Pn2K1/5P2/8, 1.Qd6! (2.Qd4#) Bd5 2.Qg6#, Sf3 2.Qxc6#; try 1.Qb1? (zugzwang) Bd5 2.Qh1#,
   but 1...Sf3!. No try fails to 1...Bd5 alone (trytable). Shown to him (card halfpin-queen-crosses-e6.png).
+
+## Black rook correction (28-29 Oct 2026)
+* Request "try black rook correction". Studied Paslack (psis-6cc13d6496: threat captures the rook, two universal errors),
+  Cuppini (psis-342f423f6e: rook on the 3rd rank, self-block corrections, try/key changes), Veliky, Cheylan first.
+* My schemes, with a post-key beam scorer (scratch corrsweep*.py: one threat, every rook move defends, random group,
+  distinct correction mates, capture penalties): (1) queen behind the rook on the d-file (R~ Qd5#, Rd3 Qg4# x-ray):
+  the moves toward the line piece have no error; (2) the rook's rank guard of d4 (Rc4 cuts its own Bb3-d5): no error for
+  Ra4; (3) flight scheme with the guarded pawn d3 (Rd5 Qe3#): the blocker pawn d6 takes the queen; flipping the board
+  (pawns do not flip) gave (4) the c5 crossing, 6N1/6K1/1b1p1R1P/3rk3/2Q1b3/B2p4/8/8, 1.Se7!, sound but single phase.
+  He: "cool, nice mechanism. probably not easy to find threats here without changing a lot".
+* His kernel (bench 331-341, bK d4 bR e5 bPf5/b5 wBb8 wSh6 wPf4: Bxe5 threat, R~ Sxf5, Rd5!/Rc5!). Made sound with
+  1.Qc2! (queen c7 unmasks b8-e5, keeps the c-file); the guard rule: each self-block square is guarded by the unit that
+  mates after it. My error: I counted 2.fxe5 as a threat (a white pawn on e5 attacks d6/f6).
+* He added changes (set Rd5 Sc2, Rc5 Qf4). A two-phase beam (twophase*.py, with the solver's cook count) and a guard table
+  showed the problem was the e5 protector (Qf4 needs f4 free; an e-file rook above cooks). He finished it on the bench at
+  step 581 with the rook on e3 below: 1B6/2Q1p3/1p5N/1p2rp2/1N1k4/4R3/5K2/b7, gate PASS (recorded).
+* His rulings: Re4's dual (keeps the random error, adds another) and duals of moves that do not defend are no flaws
+  (critique: both now notes, tests added); record every finished problem that passes the gate (constitution, record
+  skill). His half-pin rank problems (v1, v2) recorded too.

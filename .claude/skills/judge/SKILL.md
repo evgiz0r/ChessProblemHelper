@@ -20,6 +20,9 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
      an incidental White move refuted by a king move is no try and no flaw, E. Bourd 26 Oct 2026). Random moves
      answered by one mate (S~) are not defences: never count them as content (E. Bourd, 26 Oct 2026).
      A pawn capture (key, try, mate, refutation) is minor (E. Bourd, 13 Oct 2026); do not lead a verdict with it.
+     A dual is a flaw only after a move that defends and corrects: a move of the correcting piece that still allows the
+     random mate (it keeps the error and adds another, 1...Re4 2.Sxf5#/Rd3#) and a move that does not defend the threat
+     have no duals worth naming (E. Bourd, 29 Oct 2026: "logically its not a flaw as its not a logical progression").
    - Flaws: same refutation of several tries, passive units (the key piece is forgivable; a king that
      anchors a pin a defence creates is thematic; a passive king is acceptable, E. Bourd), a unit that serves
      only the set play (big flaw when completely redundant), cook-stoppers (acceptable: usual cost), unprovided moves, heavy pawn count,

@@ -267,12 +267,13 @@ def test_passive_king_is_a_note():
 
 def test_critique_reports_duals_after_random_moves():
     """1B6/7p/B7/3p3R/2n1k3/2P5/4K3/6N1: after 1.Sh3 the knight's random moves allow Sf2#, Bd3# and Re5#.
-    The report hides them under 'further moves allow the threat'; the critique must name them."""
+    The report hides them under 'further moves allow the threat'; the critique names them, as a note, not a flaw:
+    E. Bourd (29 Oct 2026), moves that do not even defend the threat have no duals."""
     from chesscomp.core import Problem
     from chesscomp.critique import critique
     res = critique(Problem.from_fen('1B6/7p/B7/3p3R/2n1k3/2P5/4K3/6N1 w - - 0 1', '#2'))
-    kinds = [f['rule'] for f in res['findings']]
-    assert 'random-move duals' in kinds
+    found = [f for f in res['findings'] if f['rule'] == 'random-move duals']
+    assert found and found[0]['severity'] == 'note'
 
 
 def test_white_correction_is_not_same_refutation():

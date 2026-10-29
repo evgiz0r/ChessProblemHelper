@@ -149,3 +149,10 @@ double. The key shuts the random mate's line and changes all three mates; the co
   Rd5+) stops those, but the pinner takes the rook with check: 1...Bxe7+ is an unprovided check (step 544 solves only
   by 1.e3+). A two-phase beam with the solver's cook count (scratch twophase2/3.py) bottomed out at three checking
   cooks (Sxf5+, Sc2+, e3+).
+
+## His finished version (29 Oct 2026, bench step 581): bourd-rook-correction-changes-qc2
+- 1B6/2Q1p3/1p5N/1p2rp2/1N1k4/4R3/5K2/b7, set R~ Sxf5#, Rd5 Sc2#, Rc5 Qf4#; 1.Qc2! (2.Bxe5#) Rd5 Sc6#, Rc5 Qd3#. The
+  e5 protector is a rook BELOW on e3 (it also covers c3/d3/e4, the guard table's free squares); bPe7 closes the file
+  upward and refutes 1.Rxe5 (e6!), bPb6 kills Qc5, bBa1 Sc2+. Gate PASS, 13 units.
+- 1...Re4 2.Sxf5#/Rd3# is no flaw for him: the move keeps the random error and adds another, it corrects nothing
+  (critique: 'random move with a second error', a note). Same for moves that do not defend the threat.

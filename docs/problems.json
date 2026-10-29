@@ -3928,6 +3928,88 @@
     "Sf3"
    ],
    "note": "1.Sb5? (2.Sc3#) Bd6 2.Bg6#, but 1...Rd6!; 1.Sf5? (2.Sg3#) Rd6 2.Rxe5#, but 1...Bd6!; 1.Sf3! (2.Sd2#) Bd6 2.Bg6#, Rd6 2.Rxe5#. The knight d4 masks the d-file; mirror squares b5/f5 interfere with one Grimshaw mate each. Gate PASS, 8+6. E. Bourd: 'a complete problem with 2 thematic tries on a grimshaw ... not prize quality content, but thematic wise, its decent'. Our 17-unit version: 1b1R4/8/1r5p/R3p2B/pPPNk1P1/8/4P1NB/7K."
+  },
+  {
+   "id": "bourd-rook-correction-changes-qc2",
+   "fen": "1B6/2Q1p3/1p5N/1p2rp2/1N1k4/4R3/5K2/b7",
+   "author": "E. Bourd (Composing Bench, sitting mvr1gvha, 29 Oct 2026, step 581), on his own kernel (steps 331-341)",
+   "source": "Composing Bench; composed with Claude in session (black rook correction)",
+   "themes": [
+    "Black correction (rook)",
+    "Changed mates (set/solution)",
+    "Self-block corrections",
+    "Unmasking key"
+   ],
+   "keys": [
+    "Qc2"
+   ],
+   "note": "Set: R~ Sxf5#, Rd5 Sc2#, Rc5 Qf4#. 1.Qc2! (2.Bxe5#) R~ (Re6/Rxe3) Sxf5#, Rd5 Sc6#, Rc5 Qd3#; both corrections change. Each mate is given by the unit that guarded the self-blocked square (Sb4 for d5, the queen's c-file for c5). Tries 1.Kf3? Rxe3+!, 1.Qc6? Rc5!, 1.Rxe5? e6!. 1...Re4 2.Sxf5#/Rd3# is no flaw (E. Bourd: 'it doesnt correct the random move error, it just creates another one ... logically its not a flaw as its not a logical progression of the problem'). Flaw: by-play 1...Bc3 2.Qxc3#. Gate PASS, 6+7. Found after the guard table showed the e5 protector problem: the rook e3 protects e5 from below and covers c3/d3/e4.",
+   "stip": "#2",
+   "solution": "#2 (6+7)   FEN 1B6/2Q1p3/1p5N/1p2rp2/1N1k4/4R3/5K2/b7 w - - 0 1\nSet play:\n   1...Re6 2.Sxf5#\n   1...Rd5 2.Sc2#\n   1...Rc5 2.Qf4#\n   1...Re4 2.Sxf5#/Rd3#  [dual]\n   1...Bc3 2.Qxc3#\n   R~ random Re6/Re4 2.Sxf5# (dual after Re4); corrections Rd5 2.Sc2#, Rc5 2.Qf4#\n   unprovided: Rxe3, Bb2, e6, f4\nTry: 1.Rxe5? (threat: 2.Sxf5#)\n   (3 further moves allow the threat)\n   but 1...e6!\nTry: 1.Qc6? (threat: 2.Bxe5#/Sc2#/Rd3#)\n   1...Rxe3 2.Sxf5#\n   (7 further moves allow the threat)\n   but 1...Rc5!\nTry: 1.Kf3? (threat: 2.Rd3#)\n   1...Rc5 2.Qf4#\n   (7 further moves allow the threat)\n   but 1...Rxe3+!\nKey: 1.Qc2! (threat: 2.Bxe5#)\n   1...Re6/Rxe3 2.Sxf5#\n   1...Rd5 2.Sc6#\n   1...Rc5 2.Qd3#\n   1...Re4 2.Sxf5#/Rd3#  [dual]\n   1...Bc3 2.Qxc3#\n   (3 further moves allow the threat)\n   R~ random Re6/Re4/Rxe3 2.Sxf5# (dual after Re4); corrections Rd5 2.Sc6#, Rc5 2.Qd3#\nChanged continuations:\n   1...Rc5: Qf4# -> Qd3#   [set play vs key Qc2]\n   1...Rd5: Sc2# -> Sc6#   [set play vs key Qc2]\n   1...Rc5: Qf4# -> Qd3#   [try Kf3 vs key Qc2]\nPatterns:\n   changed threat: Sxf5# / Bxe5#/Rd3#/Sc2#   [try Rxe5 vs try Qc6]\n   changed threat: Sxf5# / Rd3#   [try Rxe5 vs try Kf3]\n   changed threat: Sxf5# / Bxe5#   [try Rxe5 vs key Qc2]\n   changed threat: Rd3# / Bxe5#   [try Kf3 vs key Qc2]\n(2919 nodes, 0.18s)"
+  },
+  {
+   "id": "bourd-halfpin-rank-changes",
+   "fen": "b7/3p1K2/Q4pB1/R1bnkN2/7R/q1np4/5N2/3r4",
+   "author": "E. Bourd (Composing Bench, 28 Oct 2026), rotating Claude's e-file half-pin to a rank",
+   "source": "Composing Bench, half-pin session (28 Oct 2026)",
+   "themes": [
+    "Half-pin",
+    "Changed mates (set/solution)"
+   ],
+   "keys": [
+    "Qc4"
+   ],
+   "note": "Half-pin on the 5th rank (Bc5/Sd5); two pin-using changes. bPf6 keeps 1...Se3 the knight's only defence (stops Sf6 repeating its mate, and the Qxf6 recapture); bQa3 holds the set play's dual avoidance (without it Bxf2/Be3/Ba7/Bd4 allow Qd6#). Flaws: 1...Se4 dual Rxe4/Qxe4, random knight duals, 17 units. Gate PASS. Superseded by bourd-halfpin-rank-changes-v2.",
+   "stip": "#2",
+   "solution": "#2 (7+10)   FEN b7/3p1K2/Q4pB1/R1bnkN2/7R/q1np4/5N2/3r4 w - - 0 1\nSet play:\n   1...Se7/Sc7/Sf4/Sb4/Se3 2.Qd6#\n   1...Bf8/Ba7/Bd4/Bb4/Be3/Bxf2 2.Qxf6#\n   1...Sb5/Sa4/Se2/Sa2/Sb1 2.Re4#\n   1...Se4 2.Rxe4#\n   1...Rh1/Rg1/Rf1/Re1/Rc1/Rb1/Ra1 2.Sxd3#\n   1...d2 2.Sd3#\n   unprovided: Bb7, Bc6, Sb6, Be7, Bd6, Bb6, Qxa5, Qb4, Qa4, Qb3, Qb2, Qa2, Qc1, Qa1, Rd2, d6\nTry: 1.Rd4? (threat: 2.Sg4#)\n   1...Se3 2.Qxf6#/Qd6#  [dual]\n   1...Se4 2.Rxe4#\n   1...Rg1 2.Sxd3#\n   (35 further moves allow the threat)\n   but 1...Bxd4!\nKey: 1.Qc4! (threat: 2.Sg4#)\n   1...Se3 2.Qd4#\n   1...Bd4 2.Qxd4#\n   1...Bxf2 2.Qf4#\n   1...Se4 2.Rxe4#/Qxe4#  [dual]\n   1...Rg1 2.Sxd3#\n   (36 further moves allow the threat)\nChanged continuations:\n   1...Bd4: Qxf6# -> Qd4#   [set play vs key Qc4]\n   1...Bxf2: Qxf6# -> Qf4#   [set play vs key Qc4]\n   1...Se3: Qd6# -> Qd4#   [set play vs key Qc4]\nPatterns:\n   Half-pin: Se3   [key]\n   Half-pin: Bxf2   [key]\nTransferred continuations:\n   Sxd3#: after d2 -> after Rg1   [set play vs try Rd4]\n   Sxd3#: after d2 -> after Rg1   [set play vs key Qc4]\n(7078 nodes, 0.4s)"
+  },
+  {
+   "id": "bourd-halfpin-rank-changes-v2",
+   "fen": "b7/3p1K2/Q4pB1/R1bnkN2/7R/q2p4/3n1N2/8",
+   "author": "E. Bourd (Composing Bench, sitting mvr1gvha, 28 Oct 2026, step 318)",
+   "source": "Composing Bench, half-pin session (28 Oct 2026)",
+   "themes": [
+    "Half-pin",
+    "Changed mates (set/solution)"
+   ],
+   "keys": [
+    "Qc4"
+   ],
+   "note": "His lighter version: the queen also guards d3 ('she has a bigger role overall'). Set Bd4 Qxf6#, Bxf2 Qxf6#, Se3 Qd6#; 1.Qc4! (2.Sg4#) Bd4 Qxd4#, Bxf2 Qf4#, Se3 Qd4#. Flaws: 1...Se4 Rxe4#/Qxe4#, random knight duals. Gate PASS, 16 units.",
+   "stip": "#2",
+   "solution": "#2 (7+9)   FEN b7/3p1K2/Q4pB1/R1bnkN2/7R/q2p4/3n1N2/8 w - - 0 1\nSet play:\n   1...Se7/Sc7/Sf4/Sb4/Se3/Sc3 2.Qd6#\n   1...Bf8/Ba7/Bd4/Bb4/Be3/Bxf2 2.Qxf6#\n   1...Qxa5/Qb4/Qa4/Qb2/Qa2/Qc1/Qa1 2.Sxd3#\n   1...Se4 2.Rxe4#\n   1...Sc4/Sf3/Sf1/Sb1 2.Re4#\n   1...Sb3 2.Sxd3#/Re4#  [dual]\n   unprovided: Bb7, Bc6, Sb6, Be7, Bd6, Bb6, Qc3, Qb3, d6\nTry: 1.Rd4? (threat: 2.Sg4#)\n   1...Se3 2.Qxf6#/Qd6#  [dual]\n   1...Se4 2.Rxe4#\n   (29 further moves allow the threat)\n   but 1...Bxd4!\nKey: 1.Qc4! (threat: 2.Sg4#)\n   1...Se3 2.Qd4#\n   1...Bd4 2.Qxd4#\n   1...Bxf2 2.Qf4#\n   1...Se4 2.Rxe4#/Qxe4#  [dual]\n   1...Sxc4 2.Re4#\n   (29 further moves allow the threat)\nChanged continuations:\n   1...Bd4: Qxf6# -> Qd4#   [set play vs key Qc4]\n   1...Bxf2: Qxf6# -> Qf4#   [set play vs key Qc4]\n   1...Se3: Qd6# -> Qd4#   [set play vs key Qc4]\nPatterns:\n   Half-pin: Se3   [key]\n   Half-pin: Bxf2   [key]\n(5938 nodes, 0.29s)"
+  },
+  {
+   "id": "claude-rook-correction-c5-crossing",
+   "fen": "6N1/6K1/1b1p1R1P/3rk3/2Q1b3/B2p4/8/8",
+   "author": "Claude (28 Oct 2026)",
+   "source": "session (black rook correction)",
+   "themes": [
+    "Black correction (rook)",
+    "Self-interference on a crossing square"
+   ],
+   "keys": [
+    "Se7"
+   ],
+   "note": "REJECTED as a problem (gate: single phase, static key): the whole correction is set. 1.Se7! (2.Sc6#) R~ Bxd6#, Rc5! Bb2# (cuts Ba3-d6 and its own Bb6-d4 interposition), Rd4! Qe6#. wPh6 stops 1.Sh6. Kept as a scheme; E. Bourd: 'cool, nice mechanism. probably not easy to find threats here without changing a lot'.",
+   "stip": "#2",
+   "solution": "#2 (6+6)   FEN 6N1/6K1/1b1p1R1P/3rk3/2Q1b3/B2p4/8/8 w - - 0 1\nSet play:\n   1...Rc5 2.Bb2#\n   1...Rb5/Ra5 2.Bxd6#\n   1...Rd4 2.Qe6#\n   1...Bh7/Bg6/Bf3/Bg2/Bh1 2.Qf4#\n   R~ random Rb5/Ra5 2.Bxd6#; corrections Rc5 2.Bb2#, Rd4 2.Qe6#\n   unprovided: Bd8, Bc7, Ba7, Bc5, Ba5, Bd4, Be3, Bf2, Bg1, Bf5, d2\nKey: 1.Se7! (threat: 2.Sc6#)\n   1...Rc5 2.Bb2#\n   1...Rb5/Ra5 2.Bxd6#\n   1...Rd4 2.Qe6#\n   (16 further moves allow the threat)\n   R~ random Rb5/Ra5 2.Bxd6#; corrections Rc5 2.Bb2#, Rd4 2.Qe6#\n(2465 nodes, 0.13s)"
+  },
+  {
+   "id": "claude-rook-correction-rd5-rc5-single",
+   "fen": "1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8",
+   "author": "Claude (29 Oct 2026), on E. Bourd's bench kernel",
+   "source": "session (black rook correction)",
+   "themes": [
+    "Black correction (rook)",
+    "Unmasking key"
+   ],
+   "keys": [
+    "Qc2"
+   ],
+   "note": "REJECTED (gate: single phase). 1.Qc2! (2.Bxe5#) R~ Sxf5#, Rd5 Sc6#, Rc5 Qd3#, Re3+ fxe3#; superseded by his bourd-rook-correction-changes-qc2 with both corrections changed.",
+   "stip": "#2",
+   "solution": "#2 (8+5)   FEN 1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8 w - - 0 1\nSet play:\n   1...Re8/Re7/Re6/Re4/Re2/Re1 2.Sxf5#\n   1...Re3+ 2.fxe3#\n   R~ random Re8/Re7/Re6/Re4/Re2/Re1 2.Sxf5#; corrections Re3+ 2.fxe3#\n   unprovided: Rd5, Rc5, gxh6, g6, g5\nKey: 1.Qc2! (threat: 2.Bxe5#)\n   1...Re8/Re7/Re6/Re4/Re2/Re1 2.Sxf5#\n   1...Rd5 2.Sc6#\n   1...Rc5 2.Qd3#\n   1...Re3+ 2.fxe3#\n   (3 further moves allow the threat)\n   R~ random Re8/Re7/Re6/Re4/Re2/Re1 2.Sxf5#; corrections Rd5 2.Sc6#, Rc5 2.Qd3#, Re3+ 2.fxe3#\n(1264 nodes, 0.1s)"
   }
  ]
 }

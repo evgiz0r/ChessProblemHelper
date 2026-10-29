@@ -457,15 +457,30 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # --- defences
     real = [v for v in key['variations'] if not v['threat_repeat'] and v['continuations']]
     duals = [v for v in real if v['dual']]
+    # E. Bourd (29 Oct 2026, 1...Re4 2.Sxf5#/Rd3# in bourd-rook-correction-changes-qc2): "it doesnt correct the random move
+    # error, it just creates another one ... logically its not a flaw as its not a logical progression of the problem".
+    # A move of a correcting piece that still allows the random mate is a random move; a second mate it allows is no flaw.
+    rnd_mates = {}
+    for cr in key.get('corrections', []):
+        for mv in cr['random']['moves']:
+            rnd_mates[mv] = cr['random']['mate']
+    keep = [v for v in duals if rnd_mates.get(v['defence']['san']) in {c['san'] for c in v['continuations']}]
+    for v in keep:
+        add('note', 'random move with a second error', f"1...{v['defence']['san']} allows "
+            f"{'/'.join(c['san'] for c in v['continuations'])}: it keeps the random error ({rnd_mates[v['defence']['san']]}) "
+            f"and adds another, so it corrects nothing - not a flaw (E. Bourd)")
+    duals = [v for v in duals if v not in keep]
     for v in duals:
         add('major' if len(real) <= 2 else 'minor', 'dual', f"1...{v['defence']['san']} allows {'/'.join(c['san'] for c in v['continuations'])}")
-    # non-defences (the threat still works) that also allow other mates: duals outside the thematic play.
-    # report hides them under 'further moves allow the threat' (E. Bourd's knight-cuts scheme, 10 Oct 2026)
+    # non-defences (the threat still works) that also allow other mates. Reported as a note, not a flaw (E. Bourd, 29 Oct
+    # 2026: "the same happens on the bench sometimes, when i am shown duals of moves that dont even defend the threat"):
+    # a move that does not defend is answered by the threat, so its other mates are no duals.
     loose = [v for v in key['variations'] if v['threat_repeat'] and len(v['continuations']) > 1]
     if loose:
         ex = loose[0]
-        add('minor', 'random-move duals', f"{len(loose)} move(s) that allow the threat also allow other mates "
-            f"(1...{ex['defence']['san']} {'/'.join(c['san'] for c in ex['continuations'])})")
+        add('note', 'random-move duals', f"{len(loose)} move(s) that allow the threat also allow other mates "
+            f"(1...{ex['defence']['san']} {'/'.join(c['san'] for c in ex['continuations'])}): they do not defend, "
+            f"so these are no duals (E. Bourd)")
     nk = [v for v in real if v['defence']['uci'][:2] != ksq]
     kv = [v for v in real if v['defence']['uci'][:2] == ksq]
     if len(nk) < 2:
