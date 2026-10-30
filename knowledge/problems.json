@@ -4010,6 +4010,25 @@
    "note": "REJECTED (gate: single phase). 1.Qc2! (2.Bxe5#) R~ Sxf5#, Rd5 Sc6#, Rc5 Qd3#, Re3+ fxe3#; superseded by his bourd-rook-correction-changes-qc2 with both corrections changed.",
    "stip": "#2",
    "solution": "#2 (8+5)   FEN 1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8 w - - 0 1\nSet play:\n   1...Re8/Re7/Re6/Re4/Re2/Re1 2.Sxf5#\n   1...Re3+ 2.fxe3#\n   R~ random Re8/Re7/Re6/Re4/Re2/Re1 2.Sxf5#; corrections Re3+ 2.fxe3#\n   unprovided: Rd5, Rc5, gxh6, g6, g5\nKey: 1.Qc2! (threat: 2.Bxe5#)\n   1...Re8/Re7/Re6/Re4/Re2/Re1 2.Sxf5#\n   1...Rd5 2.Sc6#\n   1...Rc5 2.Qd3#\n   1...Re3+ 2.fxe3#\n   (3 further moves allow the threat)\n   R~ random Re8/Re7/Re6/Re4/Re2/Re1 2.Sxf5#; corrections Rd5 2.Sc6#, Rc5 2.Qd3#, Re3+ 2.fxe3#\n(1264 nodes, 0.1s)"
+  },
+  {
+   "id": "bourd-knight-correction-bf7",
+   "fen": "6K1/4Q3/8/2RBn3/3k2p1/R7/8/5b2",
+   "stip": "#2",
+   "author": "E. Bourd's scheme (Composing Bench mvu6ww43, 30 Oct 2026: Qxe5 - S~ Qe3#, Sd3!, Sc4!), setting by Claude (specbeam + evolve)",
+   "source": "session (black knight correction)",
+   "themes": [
+    "Black correction (knight)",
+    "Self-block corrections",
+    "Flight-giving key",
+    "Line-opening key"
+   ],
+   "keys": [
+    "Bf7"
+   ],
+   "note": "1.Bf7! (2.Qxe5#) - the bishop opens c5-e5 for the rook (protecting e5), keeps d5/c4 from f7, gives e4. S~ (Sxf7/Sd7/Sg6/Sc6/Sf3) 2.Qe3# (Ra3 protects e3); 1...Sc4! (guards e3, self-block c4) 2.Rd5#; 1...Sd3! (cuts Ra3's guard of e3, self-block d3) 2.Rc4#: both corrections answered by the rook c5 leaving the line the knight blocked. Gate PASS, 5+4. Flaws: the second phase is thin - tries 1.Rb5?/1.Rca5? (Sc4/Sd3 both 2.Qe4#, random duals) fail to the cook-stopper bBf1 (1...Bxb5!/Bb5!); wKg8 stops 1.Bg8. bPg4 is needed (no solution without it).",
+   "solution": "#2 (5+4)   FEN 6K1/4Q3/8/2RBn3/3k2p1/R7/8/5b2 w - - 0 1\nSet play:\n   1...Sf7/Sd7/Sg6/Sc6/Sf3 2.Qe3#\n   unprovided: Sc4, Sd3, Ba6, Bb5, Bc4, Bh3, Bd3, Bg2, Be2, g3\nTry: 1.Rb5? (threat: 2.Qa7#/Qc5#)\n   1...Sf7/Sd7/Sg6/Sc6/Sf3 2.Qe4#/Qe3#  [dual]\n   1...Sc4/Sd3 2.Qe4#\n   (6 further moves allow the threat)\n   but 1...Bxb5!\nTry: 1.Rca5? (threat: 2.Qa7#/Qc5#)\n   1...Sf7/Sd7/Sg6/Sc6/Sf3 2.Qe4#/Qe3#  [dual]\n   1...Sc4/Sd3 2.Qe4#\n   (7 further moves allow the threat)\n   but 1...Bb5!\nKey: 1.Bf7! (threat: 2.Qxe5#)\n   1...Sxf7/Sd7/Sg6/Sc6/Sf3 2.Qe3#\n   1...Sc4 2.Rd5#\n   1...Sd3 2.Rc4#\n   (9 further moves allow the threat)\n   S~ random Sxf7/Sd7/Sg6/Sc6/Sf3 2.Qe3#; corrections Sc4 2.Rd5#, Sd3 2.Rc4#\nChanged continuations:\n   1...Sc4: Qe4# -> Rd5#   [try Rb5 vs key Bf7]\n   1...Sd3: Qe4# -> Rc4#   [try Rb5 vs key Bf7]\n   1...Sc4: Qe4# -> Rd5#   [try Rca5 vs key Bf7]\n   1...Sd3: Qe4# -> Rc4#   [try Rca5 vs key Bf7]\nPatterns:\n   changed threat: Qa7#/Qc5# / Qxe5#   [try Rb5 vs key Bf7]\n   changed threat: Qa7#/Qc5# / Qxe5#   [try Rca5 vs key Bf7]\n(5081 nodes, 0.4s)",
+   "cooked": false
   }
  ]
 }

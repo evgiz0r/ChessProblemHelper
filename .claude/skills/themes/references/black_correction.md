@@ -156,3 +156,14 @@ double. The key shuts the random mate's line and changes all three mates; the co
   upward and refutes 1.Rxe5 (e6!), bPb6 kills Qc5, bBa1 Sc2+. Gate PASS, 13 units.
 - 1...Re4 2.Sxf5#/Rd3# is no flaw for him: the move keeps the random error and adds another, it corrects nothing
   (critique: 'random move with a second error', a note). Same for moves that do not defend the threat.
+
+## Knight correction on his bench scheme (30 Oct 2026): bourd-knight-correction-bf7
+- His kernel (bench mvu6ww43): bK d4, bS e5, wQ e8, wR a3 (+bPg4): threat Qxe5#, S~ Qe3# (Ra3 protects e3), Sd3! cuts
+  Ra3's guard of e3, Sc4! guards e3 itself; both self-block. Two different correction reasons from five units.
+- The guard rule again: the random mate needs d3 and c4 guarded, so the mate after each self-block must be given by the
+  square's guard leaving it. A rook on c5 does both: Rd5# after Sc4 (leaves the c-file), Rc4# after Sd3 (leaves the
+  5th rank) - one unit, two mates.
+- 9 units: 6K1/4Q3/8/2RBn3/3k2p1/R7/8/5b2, 1.Bf7! (2.Qxe5#): the bishop unblocks c5-e5 (the rook protects e5), keeps
+  d5/c4 from f7 and gives e4. Gate PASS; the tries 1.Rb5?/Rca5? (both corrections 2.Qe4#) fail only to the cook-stopper
+  bBf1, so the second layer is still to be built. Found by specbeam.py (spec-bound post-key beam: named threat, random
+  mate and corrections, solver cook count) then evolve CORR=e5 from the cooked 1.Bd5-f7 retraction.
