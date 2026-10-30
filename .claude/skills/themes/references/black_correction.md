@@ -180,3 +180,13 @@ double. The key shuts the random mate's line and changes all three mates; the co
 - Key 1.Kh5! from g6 (opens the file, protects g5). Gate PASS, 11 units. Tries 1.Qd8?/Qh8? Sf3! (Be3 needs the queen
   on the g-file for g3), 1.Kh6? Sf7+! (a check). Alternatives: 1.h4! with Ph3 blocking Sh3 (set play S~ Qg3, Sf3 Be3;
   cooked by 1.Re3, a bBh1 stops it, 13 units); Bc5 masking Ra5-e5 (Ba7?/Bb6? d5!, but the diagram gives e5).
+- Thematic tries for 1.Kh5! (E. Bourd: "tries that dont hit f3/e5"; the queen tries only take g3 away). From the guard
+  table: Sh3#'s field shares every guard with the other mates except g4 (the queen covers it from the file), so 1...Se4
+  alone refutes only if h3 is occupied or Sf2 bound; 1...Sf3 alone only if e3/c5/d4 is occupied or the bishop leaves
+  a7-g1. No unit found that does either AND creates 2.Qxg5#. evolve CORR=g5 DEFS=Se4,Sf3 DEFTRIES=1 NOTRYFROM=g8
+  (new option) from two seeds: nothing in 5 minutes. Bg7-d4 (opening the file) gives 1.Bf6?/Bh8?/Bf8? Sf3! but
+  1.Be5+ dxe5 2.Qxg5# is built in (the route g7-d4 passes e5).
+- Geometry with the knight on d2 (no e6 square): 8/4R3/8/5p1K/3B1k2/3R4/Q2n3P/8 (after the key): 2.Qxd2+; S~ (4) Qf2#;
+  Se4! Be5# (cuts Re7's e-file guard of e4), Sf3! Be3# (cuts Rd3's guard of f3). One bishop, two guard-freeing
+  interferences; a bishop on a7-g1 fails only to Se4, on a1-h8 only to Sf3, but a key Bd4 comes along one diagonal,
+  so its tries are one-sided. Many queen cooks in the post-key position; no key yet.

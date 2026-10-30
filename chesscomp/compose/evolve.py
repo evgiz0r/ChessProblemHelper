@@ -57,6 +57,8 @@ mates changed from the random stage score extra. Put the key piece and the black
 DEFTRIES=1 (with DEFS, daily No. 21) rewards a quiet try per DEF refuted by that DEF alone, the key answering it with a single
 mate, and a HIT needs one for every DEF (a second layer that reaches every thematic variation, mentor issue #21);
 DEFTRIES=2 counts only tries by the key piece (Ganapathi 2003: 1.Sf6? Be6!, 1.Sf2? Re6!, 1.Sc3!). Combine with PATTERN.
+NOTRYFROM=g8 (with CTRY or DEFTRIES) ignores tries by the units on those squares: E. Bourd (30 Oct 2026) wants tries that do not
+just take a guard away (1.Qd8? Sf3! only because the queen leaves g3), so the search must not be paid for them.
 """
 from chesscomp.core import illegal_position as _illegal
 import os, sys, random, time, json, chess
@@ -100,6 +102,7 @@ DEFSQ = [x for x in os.environ.get('DEFSQ', '').split(',') if x]   # type-1: the
 TKEY = os.environ.get('TKEY', '')                    # type-1: the intended key (uci)
 QMATE = os.environ.get('QMATE', '0') == '1'          # type-1: every thematic mate by the queen
 DEFTRIES = int(os.environ.get('DEFTRIES', '0'))       # each DEF refutes its own quiet try (2: tries by the key piece)
+NOTRYFROM = set(filter(None, os.environ.get('NOTRYFROM', '').split(',')))  # squares whose units' tries do not count
 FLIGHT = int(os.environ.get('FLIGHT', '0'))          # flight-giving key mode: N given flights with own mates
 FSECOND = os.environ.get('FSECOND', '1') == '1'      # FLIGHT mode: a HIT also needs a set change or a thematic try
 FNVAR = int(os.environ.get('FNVAR', '2'))            # FLIGHT mode: distinct single mates (not the threat) for a HIT
@@ -605,7 +608,7 @@ def corr_tries(phases):
                 or not isinstance(refs, list) or len(refs) != 1):
             continue
         u = refs[0]['uci']
-        if u[:2] == CORR and u in answered:
+        if u[:2] == CORR and u in answered and ph['first_move']['uci'][:2] not in NOTRYFROM:
             got.setdefault(u, f" try {ph['first_move']['san']}? {refs[0]['san']}!")
     return len(got), ''.join(got.values())
 
@@ -626,6 +629,8 @@ def def_tries(phases, defs, by_key_piece=False):
                 or not isinstance(refs, list) or len(refs) != 1):
             continue
         if by_key_piece and ph['first_move']['uci'][:2] != key['first_move']['uci'][:2]:
+            continue
+        if ph['first_move']['uci'][:2] in NOTRYFROM:
             continue
         d = refs[0]['san'].rstrip('+#!')
         if d in defs and d in single:
