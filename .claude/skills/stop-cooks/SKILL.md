@@ -25,3 +25,8 @@ the try and the other move the key (1.Sc7? Sc4!, 1.Qh5! in 3rN2b/7b/8/n1Q5/1R1Pk
 
 Always: one change, one solve, then re-read the whole report; a fix that stops one cook often opens
 another line. Test removals in pairs before declaring a unit superfluous.
+
+## Let the cook open a check (E. Bourd, 30 Oct 2026)
+When a quiet cook resists every cook-stopper and the White king is free, put the king where the cook's own move opens a
+black check line, for example a random move of the thematic piece. In bourd-bishop-correction-kd8, Kc7 behind Qb6 makes
+1.Qd4? Ba5+!. Check that the line stays shut in the diagram and after the key, so the set play gains no check.
