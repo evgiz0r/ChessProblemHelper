@@ -226,3 +226,9 @@ is a knight and the f6 guard a rook cut on f7 by a light bishop. Kc6 covers d5/d
 (the threat depends only on Kc6, Sd3 and Rf8), so the key is the knight arriving. From h6 only 1.Rf5 cooked. The single
 black unit that refutes it is Bh7 (...Bxf5), whose ...Be4+ on Kc6 is fatal, so bPd5 blocks it. From g3 the key is not an escape.
 Gate: FAIL. No thematic try: the tries 1.Rf5? and 1.Be8? are refuted by the cook-stopper. The second layer is still to do.
+His bench, rotated (sitting mvvg7rz1, 30 Oct 2026): bKe3, bBd1, wSf2 (threat Sxd1, random Sxg4, Be2/Bf3). Rc6 masks Ba8's guard
+of e4, so every rook move makes the threat. His rook tries were already thematic: 1.Rc7?/Rd6? cut Bb8-f4 (1...Bf3!) and 1.Rc5?
+cuts the queen's b6-e3 line (1...Be2!). Sound fix of his step 310: BB6/8/1pR5/1Qb2R2/1n2P1p1/2P1k3/3p1N2/3b2K1, 1.Rxb6!
+(Be2 2.Qxc5#). His bPd2 from step 301 replaces Sb1+Bc1, which frees Black's dark bishop for c5. Conflict: 1.Qc4 guards e4
+through d4, and only a black unit that can reach d4 stops it, but such a unit also interposes on b6-c5-d4-e3, where the Be2
+mates run. So Be2 refutes every rook try and the Bf3/Be2 split of the tries is lost.
