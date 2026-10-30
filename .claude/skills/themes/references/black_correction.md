@@ -216,3 +216,13 @@ double. The key shuts the random mate's line and changes all three mates; the co
   bSb8 and bRh8 are black cook-stoppers (Rxd6, Rf7 / Sc7+, Se6). Gate: one-sided extension (no try for Be7).
 - Found by hand (geometry) plus evolve CORR=d6 for the cook-stoppers; Rf5 rather than f1-f4 so Bf4 does not cut the
   file, a pawn g6 for f7 instead of a light bishop (Bf7 would be a second interference mate after Bf8).
+
+## His simpler bishop scheme: the knight makes the threat and the random mate (30 Oct 2026): claude-bishop-correction-sf5
+Core (his bench, sitting mvvfuofc): bKe6, bBd4, bPc3, bPg7, wSf5. Threat Sxd4; random moves along a7-g1 unguard g7
+(Sxg7#); Be5 and Bf6 keep g7 and self-block. Sound: 5R2/4p1pb/2K1k3/3p3B/3b2P1/2pN2N1/8/8, 1.Sf5! - Be5 2.Sc5# (Sd3 was
+the only e5 guard, and c5 is free because both corrections leave a7-g1), Bf6 2.Bf7# (Bh5 cuts Rf8 from f6), Bxf5 2.gxf5#.
+How it was found: a queen or rook that can reach d6/e7 (both protected by Sf5) always mates in one there, so the e5 guard
+is a knight and the f6 guard a rook cut on f7 by a light bishop. Kc6 covers d5/d6/d7 and bPe7 fills e7. No retraction gives a key
+(the threat depends only on Kc6, Sd3 and Rf8), so the key is the knight arriving. From h6 only 1.Rf5 cooked. The single
+black unit that refutes it is Bh7 (...Bxf5), whose ...Be4+ on Kc6 is fatal, so bPd5 blocks it. From g3 the key is not an escape.
+Gate: FAIL. No thematic try: the tries 1.Rf5? and 1.Be8? are refuted by the cook-stopper. The second layer is still to do.
