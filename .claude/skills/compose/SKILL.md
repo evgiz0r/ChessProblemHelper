@@ -196,6 +196,14 @@ on the square that the threat needs (1.Qd6!, 1.Bf4!, 1.Bf6! with a pin as separa
 works if it is a double check (no interposition): 1.Qd3! (2.Rc7#, unmasking Bf8 through d6). Zugzwang is the last
 resort. A sacrifice key captured three ways is anticipated (Strebkovs 2003); capture defences after a quiet key are not.
 
+## A vacating key screams tries (E. Bourd, 30 Oct 2026)
+"anytime you have a piece just vacating a square, it screams tries". When the key only vacates a square or opens a
+line, list what the key piece must still do from its new square (one guard per thematic mate), then place it so that
+each other direction keeps only one of the jobs: each direction is then a try refuted by one thematic defence. His
+knight correction 6Q1/8/4RBn1/5k2/2R5/8/2K4b/8: the bishop leaving f6 must protect f6 (Rf6# after Se5) and e5
+(Re5# after Sf4); 1.Bd8?/Be7?/Bh4? Sf4!, 1.Bc3?/Bb2?/Ba1? Se5! (the corrector also cuts the bishop's line), 1.Bh8!.
+He got there by shifting the whole board (up one, two files right), which put the key square in the corner.
+
 ## Tries by the key piece (E. Bourd, 12 Oct 2026)
 "Usually by the same piece that moves away to open a line or to guard a square." Choose the try piece before the
 guards: one White unit whose every move creates the threat (a knight on the threat square: each move vacates it and

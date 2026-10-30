@@ -407,7 +407,17 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     pool = same_threat if len(same_threat) >= 2 else [t for t in tries if t['first_move']['uci'][:2] == key_piece_sq
                                                       and (not themed or thematic_label(t))]
     them_refs = [(t['first_move']['san'], r['uci'], r['san']) for t in pool for r in t['refutations']]
-    rc = Counter(u for _, u, _ in them_refs)
+    # tries by one line piece along one ray from its square are one try, a direction (E. Bourd, 30 Oct 2026, his 1.Bh8!:
+    # "the bishop going in multiple directions getting answered by those knight corrections" - 1.Bc3?/Bb2?/Ba1? Se5!)
+    def _ray(t):
+        m = chess.Move.from_uci(t['first_move']['uci'])
+        pc = board.piece_at(m.from_square)
+        if pc is None or pc.piece_type not in (chess.BISHOP, chess.ROOK, chess.QUEEN):
+            return t['first_move']['uci']
+        dx = chess.square_file(m.to_square) - chess.square_file(m.from_square)
+        dy = chess.square_rank(m.to_square) - chess.square_rank(m.from_square)
+        return (m.from_square, (dx > 0) - (dx < 0), (dy > 0) - (dy < 0))
+    rc = Counter(u for u, _ in {(r['uci'], _ray(t)) for t in pool for r in t['refutations']})
     wc_done = False                                  # one white correction: the random stage is the largest group
     for u, n in sorted(rc.items(), key=lambda x: -x[1]):
         if n > 1:

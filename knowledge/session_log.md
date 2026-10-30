@@ -1616,3 +1616,9 @@ no motive layer to mirror.
 * His rulings: Re4's dual (keeps the random error, adds another) and duals of moves that do not defend are no flaws
   (critique: both now notes, tests added); record every finished problem that passes the gate (constitution, record
   skill). His half-pin rank problems (v1, v2) recorded too.
+* Knight correction (30 Oct): my battery schemes (Bb2-Rc3 with Sc4/Sd3 cutting the battery) were sound after the key but
+  needed a diagram flight or many specifics (his verdict: "very complex play ... a lot of flaws ... start with an easier
+  scheme"). His bench kernel (Qxe5 - S~ Qe3#, Sd3!, Sc4!) with specbeam.py (spec-bound post-key beam) + evolve gave a
+  9-unit setting, 1.Bf7! (recorded). He shifted it (up one, right two, pawn dropped) to 1.Bh8!: tries by the bishop in
+  two directions each refuted by one correction (recorded, gate PASS, 8 units). "anytime you have a piece just vacating
+  a square, it screams tries". Critique fix: tries along one ray with one refutation are one try (test added).
