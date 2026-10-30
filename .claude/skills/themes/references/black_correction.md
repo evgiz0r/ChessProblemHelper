@@ -203,3 +203,16 @@ double. The key shuts the random mate's line and changes all three mates; the co
   Sd4 for Se6/Se2): after a self-block nearly every knight check mates, so the tries become cooks.
 - Crossed rook mates (Re3 guarding e4 and f3: Se4 Rf3#, Sf3 Re4#) cannot work: the unit protecting one mating square
   covers it as a flight and makes the other mate a dual after the random moves.
+
+## Bishop correction with two self-blocks (30 Oct 2026): claude-bishop-selfblock-corrections
+- A bishop that moves along a diagonal still sees the squares behind it on that diagonal, so its random moves can still
+  reach a self-block square on that line (and interpose there). Put both self-block squares on ONE diagonal, let the
+  random moves run on the OTHER diagonal, and close the self-block diagonal behind the bishop with a black pawn BELOW the
+  bishop (a pawn above it protects the bishop against the threat capture: bPg7 for Bf6, bPg4 for Bf3, bPb4 for Bc3 all
+  failed that way). The far end must be the edge.
+- Setting: bK e8, bB d6, bP c5; self-blocks e7, f8; random squares c7, e5, f4, g3, h2 (b8 taken by bSb8).
+  1nK1k2r/8/1R1b2P1/2pN1R2/8/8/3N4/8, 1.Se4! (2.Sxd6#) B~ 2.Re6# (Rb6 through d6), 1...Be7! 2.Sc7# (Sd5 guarded e7),
+  1...Bf8! 2.Sef6# (the knight cuts Rf5's guard of f8; the key adds this mate). Try 1.Sc4? Bf8! (no Sf6 from c4).
+  bSb8 and bRh8 are black cook-stoppers (Rxd6, Rf7 / Sc7+, Se6). Gate: one-sided extension (no try for Be7).
+- Found by hand (geometry) plus evolve CORR=d6 for the cook-stoppers; Rf5 rather than f1-f4 so Bf4 does not cut the
+  file, a pawn g6 for f7 instead of a light bishop (Bf7 would be a second interference mate after Bf8).
