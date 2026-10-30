@@ -404,3 +404,13 @@ correction fails to a capture of the try piece is random (critique 'random white
   "the queen is part of the mechanism, maybe it can be changed somehow but not by simple removal." Likewise his bPf6
   ("to avoid the nf6 defense as a thematic 'dual' ... i thought it was worth a pawn"): a unit that keeps a defence
   its unit's only one has a role a removal test does not see.
+
+## 2x2 unified content: his favourite shape (30 Oct 2026)
+"i like such problems of 2x2 unified content. some theme ( correction, unpin, half-pins, special line play ) + 2 additional
+unified extention for each variation of the main thematic content". The pattern has two parts:
+- Two thematic variations, for example two corrections, two unpins or two half-pin mates.
+- One extension per variation, both of one kind: two tries by one unit, each refuted by one thematic defence through its own
+  error, or two changes made the same way.
+Example, his bourd-bishop-correction-kd8: 1.Kd8! (the masking king opens the battery); 1.Kd7? (blocks Bc8-g4) Bg3!,
+1.Kc6? (stands on the mating square c6) Bf2!. The extensions are the second dimension, not decoration: plan both of them
+with the theme, and judge a 2x2 as medium content that is complete in itself.

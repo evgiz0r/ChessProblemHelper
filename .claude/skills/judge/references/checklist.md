@@ -54,6 +54,11 @@ like reciprocal changes. We pay flaws for content, and find the balance." Place 
 | Medium: several thematic variations or one change between two phases | Boros pair of changed mates, a correction with two corrections | a cook-stopper or two, a passive king, an unthematic dual after random moves |
 | Rich: reciprocal changes, Zagoruiko, Le Grand + Dombrovskis together, a cycle | his Wola Gulowska 2015 5th HM (reciprocal change, 25 units), Sredba 2003-05 1st HM (Le Grand, Dombrovskis, Zagoruiko) | heavy force and pawns, several plugs (Pc4, Pb4), a unit standing on a flight (Pf6), try-only units, capturing keys and tries when thematic, unthematic duals left out of the published solution |
 
+His favourite shape (E. Bourd, 30 Oct 2026): "2x2 unified content". Two thematic variations, plus one extension for each
+variation, both of one kind (two tries by one unit, each refuted by one thematic defence through its own error; or two changes
+made the same way). Example: bourd-bishop-correction-kd8. It is a complete medium problem. Name it when you see it, and aim
+for it when composing.
+
 A tier is not a price per variation (E. Bourd, 21 Oct 2026, on claude-bishop-rook-double-checks-scheme: three double-check
 mates from one bishop-rook battery, 11 units, unique key, diagram flights e6/f6 unprovided, static key): "its really nice,
 the fatal flaws here are kind of worth it. the force is very strong on the black side... 3 double check variations is

@@ -122,6 +122,12 @@ Read `references/construction.md` now (the order and the rules with their exampl
    THEME DEFS` (his 1.Qf7? Bxf3! -> -Pf3 +Bg6, 1.Qf7? Rf5!, found alone in 13 s).
 7. **Judge before showing**: load `judge`. Draw the board, give the FEN, name the flaws first.
 
+## Target shape: 2x2 unified (E. Bourd, 30 Oct 2026)
+Unless he asks for something else, aim for two thematic variations, each with one extension, both extensions of one kind.
+For example, two tries by the key piece, each spoiling exactly one thematic mate and refuted by that defence. Decide the
+try unit and its two errors while the mechanism is still soft (bourd-bishop-correction-kd8: the masking king, which
+blocks one mating line or stands on one mating square).
+
 ## Shrink before you grow
 When the mechanism is known, find its minimal form first: the mate picture with the fewest units, kings and
 the key piece moved one square per solve (E. Bourd: 12 units -> 4 in nine solves, 7K/3P1k2/3Q4/8/8/8/8/8).
