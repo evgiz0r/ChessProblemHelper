@@ -25,7 +25,8 @@ description: Judge a #2 the way Evgeni Bourd does - run the solver and critique,
      have no duals worth naming (E. Bourd, 29 Oct 2026: "logically its not a flaw as its not a logical progression").
    - Flaws: same refutation of several tries, passive units (the key piece is forgivable; a king that
      anchors a pin a defence creates is thematic; a passive king is acceptable, E. Bourd), a unit that serves
-     only the set play (big flaw when completely redundant), cook-stoppers (acceptable: usual cost), unprovided moves, heavy pawn count,
+     only the set play (big flaw when completely redundant), White cook-stoppers (acceptable: usual cost; a black
+     cook-stopper is no flaw at all, E. Bourd 30 Oct 2026: "thats not a flaw"), unprovided moves, heavy pawn count,
      thin play (one mating move), defences that merely guard the threat square in a single-phase problem (with changed
      mates they are pure single moves, no flaw: E. Bourd 14 Oct 2026), a mate that recaptures the defender on its arrival square.
    - A second layer that reaches one of two thematic variations (one try, one change) is not enough (E. Bourd, issue #21):
