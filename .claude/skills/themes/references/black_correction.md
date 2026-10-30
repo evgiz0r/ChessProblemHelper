@@ -167,3 +167,16 @@ double. The key shuts the random mate's line and changes all three mates; the co
   d5/c4 from f7 and gives e4. Gate PASS; the tries 1.Rb5?/Rca5? (both corrections 2.Qe4#) fail only to the cook-stopper
   bBf1, so the second layer is still to be built. Found by specbeam.py (spec-bound post-key beam: named threat, random
   mate and corrections, solver cook count) then evolve CORR=e5 from the cooked 1.Bd5-f7 retraction.
+
+## Self-blocks that free a guard (30 Oct 2026): claude-knight-selfblock-kh5
+- His meaning of "both corrections are self-blocks" (bench mvu6ww43 steps 41-51: bK e4, bS f5, Qf7, Ra3, Ba6, Se2):
+  the self-block makes a White guard of that square free to mate - 1...Se3 2.Bd3# (the bishop cuts Ra3's guard of e3),
+  1...Sd4 2.Sg3# (Se2 leaves d4). Random S~ 2.Qf3# (Ra3 protects f3): Se3 cuts that protection, Sd4 guards f3.
+- On his squares 1...Sh4 also guards f3 (a third correction). One file right it would be on i4: bK f4, bS g5, Rb3,
+  Bb6, Sf2, queen on the g-file; Sf3! Be3#, Se4! Sh3#, S~ Qg3#.
+- Post-key 6Q1/8/1B1pp3/5pnK/2N2k2/1R6/5N2/8: bPf5 blocks f5 and kills Qf6/Qg4 (fxg4); Sc4 guards e5 for the threat;
+  Qg8 rather than Qg7 (Qe5/Qd4 duals); bPd6 stops Bc7+, bPe6 stops 1.Qd5 (both black cook-stoppers). Bishops checking
+  f4 and bishops protecting g5 share a colour (e3-f4-g5 is one diagonal), so g5 needs a non-bishop protector.
+- Key 1.Kh5! from g6 (opens the file, protects g5). Gate PASS, 11 units. Tries 1.Qd8?/Qh8? Sf3! (Be3 needs the queen
+  on the g-file for g3), 1.Kh6? Sf7+! (a check). Alternatives: 1.h4! with Ph3 blocking Sh3 (set play S~ Qg3, Sf3 Be3;
+  cooked by 1.Re3, a bBh1 stops it, 13 units); Bc5 masking Ra5-e5 (Ba7?/Bb6? d5!, but the diagram gives e5).
