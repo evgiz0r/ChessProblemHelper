@@ -190,3 +190,16 @@ double. The key shuts the random mate's line and changes all three mates; the co
   Se4! Be5# (cuts Re7's e-file guard of e4), Sf3! Be3# (cuts Rd3's guard of f3). One bishop, two guard-freeing
   interferences; a bishop on a7-g1 fails only to Se4, on a1-h8 only to Sf3, but a key Bd4 comes along one diagonal,
   so its tries are one-sided. Many queen cooks in the post-key position; no key yet.
+- E. Bourd on the try pair (30 Oct 2026): "as long as the motivation might be something unified, ideally somehow the
+  try has an error, which doesnt allow the mate in the solution. it could be just a random try, but if its just too
+  random and unrelated, its worse." Tries by different units are allowed.
+- What blocks it in these settings: every try must create the same threat as the key, so a try can only come from a
+  unit that supplies what the diagram lacks. When that unit also serves both correction mates, its absence spoils both
+  (double refutation); when a static unit replaces it, the try becomes a cook. In 1.Kh5! only the king creates the
+  threat, and no king move occupies h3 or binds Sf2.
+- Geometry of a clean pair: a bishop whose two diagonals each reach one interference square fails to the opposite
+  correction (crossing d4: from c5/b6/a7 the tries Bb6/Ba7 reach only e3, Bd6 only e5), but c5/b6/a7 must lie on the
+  threat line (knight g5 + queen on the 5th rank: 2.Qe5 becomes a second threat). Knight wheel (Sc2 opening Qa2's rank,
+  Sd4 for Se6/Se2): after a self-block nearly every knight check mates, so the tries become cooks.
+- Crossed rook mates (Re3 guarding e4 and f3: Se4 Rf3#, Sf3 Re4#) cannot work: the unit protecting one mating square
+  covers it as a flight and makes the other mate a dual after the random moves.
