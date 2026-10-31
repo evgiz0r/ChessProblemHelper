@@ -30,3 +30,14 @@ Setting: claude-bishop-opens-d-file, 4N2K/5p2/2R2P1p/4k1p1/3bP3/5P2/4p3/2BQ4 (11
 2N5/3p1K1p/Q7/3nkB2/rbPn3N/6P1/1B6/8, 1.Bd3! (2.Sf3#) Sc3 2.Qf6#, Bc3 2.Qd6#. Bb2 pins Sd4, both defenders interpose
 on c3, each departure gives up the square the queen then mates on. My keys were idle or cooked; his: give Black a rook
 (a4) and make the key close its line in advance (Bf5-d3 against Ra3).
+
+## Closing counterpart, three closers and a masking key (31 Oct 2026): claude-line-closed-thrice-sd2
+3R4/B7/2P5/1rp1kPK1/Rp2p3/1N2P3/B3b3/8, 1.Sd2! (2.Rd5#, Ba2 protects d5). 1...Bc4 2.Sxc4#, 1...c4 2.Bd4#, 1...b3 2.Rxe4#.
+The closed line is the protection of the threat's mating square. Black cutting it lets the king take the checker, and the
+mates after the cuts need nothing on d5, which was the trap of the guard-line versions. In those, every mate had to
+re-cover the cut square, and no knight check on e5 covers d5. Pawn closers (single steps) have no random moves. Their
+departure opens the mating lines: c5 opens a7-d4 and b4 opens the 4th rank. Model: Ahues, Die Schwalbe 1998, 3rd prize
+(three units close Qa8's line on c6). The key is a knight that masks the line on a closing square (b3). Its departure
+frees the square for a closer and gives it two jobs, c4 and e4. Each wrong landing keeps one job, and those are the pure
+tries: 1.Sxc5? Bc4!, 1.Sa5? b3!. Dead ends on the way: guard-line cores (Rh6, Ra6 with d7/e7 pawns) where the far cut had
+no error of its own; 1.Bb1-a2 from the corner (sound, but idle and out of play); a third knight or rook as the mask.
