@@ -1622,3 +1622,22 @@ no motive layer to mirror.
   9-unit setting, 1.Bf7! (recorded). He shifted it (up one, right two, pawn dropped) to 1.Bh8!: tries by the bishop in
   two directions each refuted by one correction (recorded, gate PASS, 8 units). "anytime you have a piece just vacating
   a square, it screams tries". Critique fix: tries along one ray with one refutation are one try (test added).
+
+## Session 2 Nov 2026 (chat, "lets compose a new problem")
+- Bench journal: nothing after step 468 (30 Oct, his 1.Kd8! bishop correction, recorded).
+- Theme chosen by Claude: Schiffmann defence (not in our collection; nine #2s in Problemesis). Read Aliovsadzade 2005
+  (psis-248d80a8fd), Kovacevic & Subotic 2000, Dyachuk et al. 2003, Robert 2004-05; Aliovsadzade is the closest
+  relative (pinned pawn next to the king, knight and pawn captures, rear arrival giving the flight).
+- Tool: `detect_schiffmann` in chesscomp/motives.py, reported in the solver's Patterns (evolve PATTERN=Schiffmann);
+  tests on Aliovsadzade and Kovacevic & Subotic (the pin mask is the whole line: the pinner is the slider with the unit
+  between itself and the king, not the first White unit on the line).
+- Composing: postsearch on the Bb1-Sc2 / Ra4-Pd4 core. Without EMPTY= it cheated (a black knight on b4). The threat
+  Sb4 was never unique with bPd5 (every flight static): a black b-file rook made it unique but cost three rook defences.
+  Removing bPd5 made d5 the flight only Sb4 covers; postsearch then found the departure mates; by hand: Qb8 (Sxd4 ->
+  Qxe5#; exd4 opens b8-f4 -> Se3#), Pf4 for e5, bPd7 against Qb7/Qa8, Pf5+Pg4 for the Kd5 mate. Sound post-key, no key
+  (keyfind: White to move also mates by dxe5+ and the discharges once d5 is guarded); evolve too slow (200-1100
+  positions per job). Aliovsadzade's pinner-attacker as bSb6 gave the unique key 1.Ba2-b1!; trim removed bPd7.
+  Result claude-schiffmann-bb1 (12+4), recorded as a draft: one-sided extension (1.Sb4? and 1.Qd6? both fail to exd4).
+- Gate fix (critique 'one-sided extension'): it was skipped when the tries earned the 'thematic tries' plus, and the
+  flight's shared mate (Kd5/exd4 2.Se3#) hid the thematic exd4; test added; full regression 409 passed.
+- Theme reference: .claude/skills/themes/references/schiffmann.md.

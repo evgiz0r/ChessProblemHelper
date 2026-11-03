@@ -745,10 +745,13 @@ def critique(problem: Problem, res: dict | None = None, necessity: bool = True) 
     # content consists of 2 variations, only 1 is not enough, its too short and usually spoils a lot. the extention has
     # to be aligned with both thematic variations somehow (tries, transfers and so on)"). Thematic variation here: a
     # key-phase defence whose single mate answers no other defence (random moves sharing one mate are not thematic).
-    elif not any(f['severity'] == 'plus' and f['rule'] in second for f in F):
+    # 2 Nov 2026: also when the tries earn the 'thematic tries' plus (interference tries reaching one of two Schiffmann
+    # defences passed the gate), and a flight's mate does not make its sibling non-thematic (1...Kd5 2.Se3# hid the
+    # thematic 1...exd4 2.Se3# in claude-schiffmann-bb1)
+    else:
         mate_of = {v['defence']['san'].rstrip('+#'): v['continuations'][0]['san'] for v in real
                    if not v['refutes'] and len(v['continuations']) == 1}
-        mates = Counter(mate_of.values())
+        mates = Counter(m for d, m in mate_of.items() if not d.startswith('K'))
         thematic = {d for d, m in mate_of.items() if mates[m] == 1 and not d.startswith('K')}   # a flight is the key's
         san_of = {v['defence']['uci']: v['defence']['san'].rstrip('+#') for v in real}
         covered = {san_of.get(t['refutations'][0]['uci']) for t in refuted_by_defence} | \

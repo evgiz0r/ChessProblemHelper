@@ -1,6 +1,6 @@
 ---
 name: themes
-description: What this entity knows about specific #2 themes it has worked on - Bristol, changed mates, self-pin by capture, half-pin, king key, corner key, underpromotion, Grimshaw, Novotny, Dombrovskis - each with the settings made, the mechanism that worked and the dead ends. Use when a task names a theme.
+description: What this entity knows about specific #2 themes it has worked on - Bristol, changed mates, self-pin by capture, half-pin, king key, corner key, underpromotion, Grimshaw, Novotny, Dombrovskis, Schiffmann - each with the settings made, the mechanism that worked and the dead ends. Use when a task names a theme.
 ---
 
 # Themes
@@ -23,3 +23,4 @@ say so.
 - `references/le_grand.md` - Le Grand: the four engines in the archive (flight cross-geometry, battery discharges, plug at a crossing, Jonsson's line switch), the hinge trap of daily No. 14, the legrand search and its pairs layer.
 - `references/dombrovskis.md` - Dombrovskis paradox: the two effects every thematic defence needs (a side effect that beats the try, a main effect that parries the threat), the five engines in the archive (pawn steps on the threat line, captures of two sole guards, Grimshaw by capture, king flights, addition), the tools (daily No. 16).
 - `references/line_opening.md` - one black unit opens the same white line twice (the queen's path through the vacated square), the arrival square choosing the mate; the return-interposition and unprotected-blocker traps.
+- `references/schiffmann.md` - Schiffmann defence: the threat is a battery discharge onto the pin line; the White unit next to the king is a second battery front; threat uniqueness by a flight only the landing covers decides the key; the detector and the one-sided 1.Bb1! setting (2 Nov 2026).

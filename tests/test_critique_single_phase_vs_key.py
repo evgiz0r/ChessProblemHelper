@@ -39,3 +39,10 @@ def test_flight_mate_is_the_keys_content_not_a_variation_to_reach():
     # Kisis: the try 1.Rd2? Bg4! and the change reach 1...Bg4; the flight 1...Kd5 belongs to the key
     keys, rules = _rules('1b6/5N1n/1B2p3/1p3b1Q/4k3/4P3/B1R5/2N4K')
     assert 'one-sided extension' not in rules
+
+
+def test_interference_try_reaching_one_schiffmann_defence_is_one_sided():
+    # claude-schiffmann-bb1 (2 Nov 2026): 1.Bb1! Sxd4 2.Qxe5#, exd4 2.Se3#, Kd5 2.Se3#; the only tries, 1.Sb4? and 1.Qd6?,
+    # fail to exd4. The 'thematic tries' plus used to skip the check, and the flight's shared mate hid exd4.
+    keys, rules = _rules('1Q6/8/1nn5/4pP2/R2PkPP1/2P5/B1N1P3/2B4K')
+    assert keys == ['Bb1'] and 'one-sided extension' in rules
