@@ -1641,3 +1641,9 @@ no motive layer to mirror.
 - Gate fix (critique 'one-sided extension'): it was skipped when the tries earned the 'thematic tries' plus, and the
   flight's shared mate (Kd5/exd4 2.Se3#) hid the thematic exd4; test added; full regression 409 passed.
 - Theme reference: .claude/skills/themes/references/schiffmann.md.
+- 3 Nov: his bench sitting mw0wemvu (104 steps) from claude-schiffmann-bb1: a third defender (bRd7), the pin moved to
+  the 5th rank (Ra5, Pd5, Ke5), battery Bc3-Sd4, threat Sb5, every mate a discharge ("all the moves end in a battery").
+  His post-key had no key (White to move also won by 2.Sxc6+, a double check: c6 is a knight square of e5). Finished:
+  rear from b4 (guards d6, the given flight), bBa8 protects c6 in the diagram, wSe2 for wPe2 (protects d4 in the
+  diagram; the king on d3 failed to 1...Rxd5), trim -wPg5: bourd-schiffmann-three-bc3, sound, gate FAIL single phase
+  (recorded as a draft).

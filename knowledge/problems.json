@@ -4122,6 +4122,25 @@
    "status": "draft: gate FAIL (one-sided extension, rule fixed 2 Nov 2026)",
    "note": "1.Bb1! (2.Sb4#): the rear of the Bb1-Sc2 battery arrives and gives d5, which only the threat's landing covers. 1...Sxd4 and 1...exd4 pin themselves on Ra4's rank; 2.Sb4 would close it and the knight could interpose on c2, the pawn on d3 (Schiffmann). 1...Sxd4 2.Qxe5# (the knight's departure from c6 unguards e5, Pf4 protects), 1...exd4 2.Se3# (the pawn's departure opens Qb8-e5-f4; in the threat Se3 cuts Bc1's guard of f4), 1...Kd5 2.Se3#. Try 1.Sb4? (2.Bb1#, threat reversal) exd4!: the knight already on b4 shields the pin, so the capture is no self-pin and ...d3 parries; also 1.Qd6? exd4!. Flaws: one-sided extension (no try fails to Sxd4 alone, and none can: Qxe5 needs neither the pin nor the battery); close to Aliovsadzade, Problemesis 2005 (psis-248d80a8fd: rear arrival giving the flight the front's landing covers, knight and pawn Schiffmann captures of the pawn next to the king); Kd5 and exd4 share Se3; Qxe5 takes a pawn; 7 pawns (Pf5+Pg4 shut the b1-h7 diagonal and protect f5, Pe2 guards d3/f3); bSb6 a black cook-stopper (answers dxe5+/d5+ by Sxa4, interposes on d5 against Qb7+/Qa8+); wKh1 passive.",
    "solution": "#2 (12+4)   FEN 1Q6/8/1nn5/4pP2/R2PkPP1/2P5/B1N1P3/2B4K w - - 0 1\nSet play:\n   1...Sd8/Se7/Sa7/Sa5/Sxd4/Sb4 2.Qxe5#\n   1...exf4 2.Qxf4#\n   unprovided: Sxb8, Sc8, Sa8, Sd7, Sd5, Sc4, Sxa4, exd4\nTry: 1.Qd6? (zugzwang)\n   1...Sd8/Sb8/Se7/Sa7/Sa5/Sxd4/Sb4 2.Qxe5#\n   1...Sc8/Sa8/Sd7/Sxa4 2.Qxc6#/Qd5#/Bd5#  [dual]\n   1...Sd5 2.Qxd5#/Bxd5#  [dual]\n   1...Sc4 2.Qxc6#\n   1...exf4 2.Qxf4#\n   S~ random Sc8/Sa8/Sd7/Sc4/Sxa4 2.Qxc6# (dual after Sc8/Sa8/Sd7/Sxa4); corrections Sd5 2.Qxd5#/Bxd5#\n   but 1...exd4!\nTry: 1.Sb4? (threat: 2.Bb1#)\n   1...Sxd4/Sxb4 2.Qxe5#\n   (12 further moves allow the threat)\n   but 1...exd4!\nKey: 1.Bb1! (threat: 2.Sb4#)\n   1...Sxd4 2.Qxe5#\n   1...Kd5 2.Se3#\n   1...exd4 2.Se3#\n   (13 further moves allow the threat)\nPatterns:\n   White interference try: 1.Sb4? cuts Ra4 -> d4; 1...exd4!   [try Sb4]\n   changed threat: Bb1# / Sb4#   [try Sb4 vs key Bb1]\n   Threat reversal:    [try Sb4 vs key Bb1]\n   Schiffmann: Sxd4   [key]\n   Schiffmann: exd4   [key]\n   Self-pin: exd4   [key]\n(3482 nodes, 0.31s)"
+  },
+  {
+   "id": "bourd-schiffmann-three-bc3",
+   "fen": "b1B4b/2pr1p2/Q1p2n1R/R2Pkp2/1BPN1p2/1K3P2/2P1N3/8",
+   "stip": "#2",
+   "author": "Evgeni Bourd (bench, 3 Nov 2026, from claude-schiffmann-bb1: third defender, every mate by the battery); key and soundness by Claude",
+   "source": "bench session mw0wemvu (104 steps, post-key 2B4b/2pr1p2/Q1p2n1R/R2PkpP1/2PN1p2/1KB2P2/2P1P3/8); Claude: rear Bc3 -> b4 (key), +bBa8, wPe2 -> wSe2, -wPg5 (trim)",
+   "themes": [
+    "Schiffmann defence (three)",
+    "Battery mates",
+    "Flight-giving key",
+    "Line opening by the defences"
+   ],
+   "keys": [
+    "Bc3"
+   ],
+   "status": "draft: gate FAIL (single phase); candidate for the judge's exception (tripled theme)",
+   "note": "1.Bc3! (2.Sb5#): the rear of the Bc3-Sd4 battery arrives from b4 and gives d6, which the threat's landing covers. Three captures of d5 pin themselves on Ra5's rank; 2.Sb5 would close it (Schiffmann). Every mate is a discharge of the battery, and each defence opens a White line onto the flight field: 1...Rxd5 2.Sxf5# (d7 vacated: Bc8 sees e6), 1...Sxd5 2.Sxc6# (f6 vacated: Rh6 sees d6/e6; double check), 1...cxd5 2.Se6# (c6 vacated: Qa6 sees d6). By-play 1...Se4 2.Sxc6#, 1...Kd6 2.Sxf5#. Flaws: single phase (the key piece reaches only c3 from b4, and the battery cannot be loaded in the diagram: with d6 guarded 2.Sxc6 is a double-check mate in one); Sxf5 and Sxc6 take pawns; Se4 and Kd6 repeat thematic mates; 22 units, 9 pawns; wPc2 stops 2.Sc2 duals, wSe2 only protects d4 in the diagram, wKb3 passive; black cook-stoppers bBa8 (c6 in the diagram), bBh8 (f6: else 1...cxd5 2.Qxf6#); bPf7 guards e6 (else Re6#/Qe6# duals).",
+   "solution": "#2 (12+10)   FEN b1B4b/2pr1p2/Q1p2n1R/R2Pkp2/1BPN1p2/1K3P2/2P1N3/8 w - - 0 1\nTry: 1.Rh5? (threat: 2.Rxf5#)\n   (14 further moves allow the threat)\n   but 1...Sxh5!\nKey: 1.Bc3! (threat: 2.Sb5#)\n   1...Rxd5 2.Sxf5#\n   1...Sxd5/Se4 2.Sxc6#\n   1...Kd6 2.Sxf5#\n   1...cxd5 2.Se6#\n   (11 further moves allow the threat)\nPatterns:\n   changed threat: Rxf5# / Sb5#   [try Rh5 vs key Bc3]\n   Schiffmann: Rxd5   [key]\n   Schiffmann: Sxd5   [key]\n   Schiffmann: cxd5   [key]\n   Self-pin: Rxd5   [key]\n   Self-pin: cxd5   [key]\n(2889 nodes, 0.17s)"
   }
  ]
 }

@@ -42,3 +42,11 @@ must depend on the post-key battery or pin (two discharges, as in Aliovsadzade).
 (critique fix: the one-sided check now runs with interference tries, and a flight's mate no longer hides a sibling).
 Path: postsearch with the core fixed (threat Nc2b4, EMPTY for the pin squares) found the departure mates; the
 b6 knight came from reading Aliovsadzade's Rh6; trim removed bPd7 (the b6 knight also interposes on d5 against Qb7+).
+
+## His three-defence version: bourd-schiffmann-three-bc3 (3 Nov 2026, draft: single phase)
+b1B4b/2pr1p2/Q1p2n1R/R2Pkp2/1BPN1p2/1K3P2/2P1N3/8, 1.Bc3! (2.Sb5#) Rxd5 2.Sxf5#, Sxd5 2.Sxc6#, cxd5 2.Se6#: every mate
+is a discharge, and each defence opens a White line onto d6/e6 (Bc8 through d7, Rh6 through f6, Qa6 through c6). His
+bench answer to the one-sided 1.Bb1!: with all mates on the battery, tries that touch the battery reach every variation.
+The key came from the rule above (rear from the flight's diagonal) plus a black protector of the direct-check landing
+c6. The key piece has one battery square from b4, so no tries by it: a second phase needs a rear with two battery
+squares (a queen) or a different loaded/unloaded switch.
