@@ -36,6 +36,21 @@ def test_half_pin_is_not_a_direct_self_pin():
     assert not [p for p in _patterns('7b/8/1K1p2Q1/3N4/1Nknr2R/P6R/2rp4/B7') if p['name'] == 'Self-pin']
 
 
+def test_schiffmann_reported_per_defence():
+    # Aliovsadzade, Problemesis 2005 (psis-248d80a8fd): 1.Be3! (2.Sf5#) Sxd5 and cxd5 pin themselves on Qh5's rank;
+    # 2.Sf5 would close it and the knight could take e3 or the pawn interpose on d4. Not Self-pin-only: the pinner is
+    # the line piece beyond the White pawn b5 on the same rank in Kovacevic & Subotic (2000, psis-3f6a82c74a).
+    sf = [p for p in _patterns('4B1b1/7R/1pp2nRr/1pkP3Q/1p1NPBp1/1P3N2/2K1P3/8') if p['name'] == 'Schiffmann']
+    assert sorted(p['defence'] for p in sf) == ['Sxd5', 'cxd5'] and {p['pinner'] for p in sf} == {'Qh5'}
+    sf = [p for p in _patterns('1r1R4/1p1Bp2K/nB1N1bN1/1PpkP2R/3q2P1/1PPn1P2/8/1b1Q4') if p['name'] == 'Schiffmann']
+    assert {'Qxe5', 'Sxe5'} <= {p['defence'] for p in sf} and {p['pinner'] for p in sf} == {'Rh5'}
+
+
+def test_avner_self_pin_is_not_schiffmann():
+    # the threat 2.Sd5 lands on no pin line: the self-pins are exploited, not answered by an unpinning threat
+    assert not [p for p in _patterns('3R3B/1b5K/3N1Np1/4b3/3k1P1R/Q7/3Pnp2/3n3B') if p['name'] == 'Schiffmann']
+
+
 def test_knowledge_jsonl_has_no_merge_markers():
     # 12 Oct 2026: a merge left <<<<<<< / ======= / >>>>>>> lines in lessons.jsonl on main
     for name in ('lessons.jsonl',):

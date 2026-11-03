@@ -472,8 +472,11 @@ def analyse(problem: Problem, max_refutations: int = 1, include_tries: bool = Tr
             res['phases'] = phases
             res['relations'] = compare_phases(phases, board)
             try:
-                from .motives import explain_key_phase, detect_grimshaw, detect_half_pin, detect_self_pin
+                from .motives import explain_key_phase, detect_grimshaw, detect_half_pin, detect_self_pin, detect_schiffmann
                 ex = explain_key_phase(problem, res)
+                for sf in detect_schiffmann(problem, res):  # one entry per defence (evolve PATTERN=Schiffmann)
+                    res['relations']['patterns'].append({'name': 'Schiffmann', 'phases': ['key'], 'defence': sf['defence'],
+                                                         'square': sf['square'], 'pinner': sf['pinner'], 'mates': sf['mates']})
                 res['motives'] = ex
                 for g in detect_grimshaw(ex):
                     res['relations']['patterns'].append({'name': 'Grimshaw', 'phases': ['key'], 'defence': f"{'/'.join(g['defences'])} on {g['square']}"})

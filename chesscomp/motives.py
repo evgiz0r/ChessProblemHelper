@@ -231,6 +231,56 @@ def detect_self_pin(explained: list[dict]) -> list[dict]:
     return found
 
 
+def detect_schiffmann(problem, res) -> list[dict]:
+    """Schiffmann defence (2 Nov 2026): the defence pins the moved unit against its own king, and the threat would
+    unpin it by landing on the pin line between the White pinner and the unit, after which the unit parries the
+    threat. Aliovsadzade 2005 (psis-248d80a8fd), 1.Be3! (2.Sf5#): Sxd5 and cxd5 self-pin on Qh5's rank, Sf5
+    would close it, and the knight takes e3 or the pawn interposes on d4. One entry per defence and key phase."""
+    found = []
+    for ph in res.get('phases', []):
+        if ph['type'] != 'key':
+            continue
+        b = problem.board.copy(); b.push(chess.Move.from_uci(ph['first_move']['uci']))
+        threats = [chess.Move.from_uci(t['uci']) for t in ph['threat']]
+        k = b.king(chess.BLACK)
+        for v in ph['variations']:
+            if v['threat_repeat']:
+                continue
+            d = chess.Move.from_uci(v['defence']['uci'])
+            if b.piece_type_at(d.from_square) == chess.KING:
+                continue
+            b.push(d)
+            try:
+                sq = d.to_square
+                if not b.is_pinned(chess.BLACK, sq):
+                    continue
+                ray = b.pin(chess.BLACK, sq)
+                pinner = next((x for x in chess.SquareSet(ray & b.occupied_co[chess.WHITE])   # the mask is the whole line
+                               if b.piece_type_at(x) in (chess.QUEEN, chess.ROOK, chess.BISHOP)
+                               and sq in chess.SquareSet(chess.between(x, k))
+                               and not (chess.SquareSet(chess.between(x, sq)) & chess.SquareSet(b.occupied))), None)
+                if pinner is None:
+                    continue
+                gap = chess.SquareSet(chess.between(pinner, sq))
+                for t in threats:
+                    if t.to_square not in gap or t not in b.legal_moves:
+                        continue
+                    tsan = b.san(t); pname = nm(b, pinner)
+                    b.push(t)
+                    try:
+                        parries = [b.san(m) for m in b.legal_moves if m.from_square == sq]
+                        if not b.is_checkmate() and parries:
+                            found.append({'name': 'Schiffmann', 'defence': v['defence']['san'], 'square': chess.square_name(sq),
+                                          'pinner': pname, 'threat': tsan,
+                                          'parries': parries, 'mates': [c['san'] for c in v['continuations']]})
+                            break
+                    finally:
+                        b.pop()
+            finally:
+                b.pop()
+    return found
+
+
 def detect_grimshaw(explained: list[dict]) -> list[dict]:
     """Two defences on the same square by different Black pieces, each mate exploiting interference
     with the OTHER piece (Grimshaw, or Novotny-type if White forced it)."""
