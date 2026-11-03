@@ -22,3 +22,21 @@ Dead ends:
 - A first-rank line puts the clearing piece on the edge: out-of-play key (fatal in the gate) when the black king is
   three or more squares away and the piece guards nothing near it.
 - Interference tries by a rook on a rank need diagonal lines through the stops; a rook on a file takes a file pin over.
+
+## Tries as stops on the line beyond the mating square (3 Nov 2026, attempts, not finished)
+Aim: the 2x2 shape with a new error type: the clearing piece stops on one of three squares beyond the follower's
+mating square M; each wrong stop shuts a White line that one thematic mate needs (unified interference tries).
+Traps met, in order (each is structural, not a placement problem):
+- M next to the king on the line: the clearing piece can stop on M and mate itself (1.Be4# v Kf3), and with the king
+  next to two squares of a diagonal the follower has two mating squares (Qe4/Qf5 v Kf4). Mate from a distance along a
+  line crossing the Bristol line, as in his prototype (2.Qg3 along the 3rd rank).
+- With a distant check, a defender that interposes on the CHECK LINE kills the threat itself (Qc3+ f3 / Bd3 v Kh3): the
+  thematic defences must close the follower's PATH (before M) and the defending units must be unable to reach the check
+  line or M once the follower has arrived. His prototype: bPd7 and bBe7 reach d6 but not the 3rd rank.
+- Black knights next to the king fail that test (they interpose or take M), and a knight blocking a side line usually
+  has two defensive moves (Sd4 and Sg3), so a try would have two refutations.
+- Side-mate rooks are threats of their own in the post-key unless a black unit shuts their line; the thematic defence
+  is then that unit's departure (line opening), which is the dual avoidance, but it has to be the unit's only move that
+  stops the threat. Pawns (one move) and bishops on long lines fit; knights rarely.
+- Search: evolve KEY/BRISTOL/TRIES manages 60-1300 diagrams in 280 s here and finds sound one-phase Bristols without
+  tries; postsearch on the post-key reaches 60-80k positions but needs a threat that already mates in the core.
