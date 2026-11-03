@@ -56,3 +56,12 @@ Traps met, in order (each is structural, not a placement problem):
   Qa5) are on the a-file and the 1st-rank mates (Qc1, Qg1) are blocked by the d4/c3 interpositions; with Qa1/Ke3 both
   defences on d4 (d5-d4, Sd4) leave only 1st-rank mates. postsearch (EMPTY on the side lines) finds post-keys whose
   second mate is the queen capturing the interposer on the path (Qxd4#, Qxc3#), a recapture mate and no side line.
+- (fourth attempt, 3 Nov, structural) The Kh3 corner version (Qh8, Bg7, bBe7/bPf7 Grimshaw on f6, 1.Ba1! 2.Qc3#, f6
+  2.Qxh4#, Bf6 2.Qc8#, tries 1.Bh6? f6!, 1.Bf8? Bf6!) is his prototype's mechanism in another corner: same Grimshaw,
+  same black correction (random Be7 unguards the capture square), same leaving tries. Nothing added.
+- The prototype's Grimshaw fixes the geometry: the pawn's next step (Y, below X) must lie on a line to the king, and the
+  bishop's line through X must end next to the king. Of 494 placements of queen, line piece, X, M and king that meet
+  both (scratch geom.py, pure geometry), none has two stops beyond M whose other lines reach the king's field; at most
+  one does, the stop next to M. Stop tries cannot be added to this Grimshaw. They need another pair of defences.
+- A queen as the line piece (the queen's stop selecting its mates) fails: from any stop beyond M the queen returns to
+  M and gives the follower's check herself, so a closure of the follower's path is no defence.
