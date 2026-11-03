@@ -60,6 +60,16 @@
     border-left:2px solid var(--rule);padding:14px 16px;margin:0;min-height:220px;overflow-wrap:anywhere}
   .note{font-size:15px;color:var(--grey);margin:10px 0 0}
   .hint{font-size:13.5px;color:var(--grey)}
+  /* Rook Rally, the paddle game between solves */
+  .rally{margin-top:48px;border-top:2px solid var(--rule);padding-top:14px}
+  .rally-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+  .rally h2{font-size:22px;font-weight:600;margin:0}
+  .rally-head p{margin:0;color:var(--grey);font-size:15px;max-width:60ch}
+  canvas.rally-field{display:block;width:100%;max-width:900px;margin:0 auto;cursor:pointer;outline:none}
+  canvas.rally-field:focus-visible{outline:2px solid var(--award);outline-offset:3px}
+  .rally-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+    max-width:900px;margin:10px auto 0}
+  .rally-bar .note{margin:0}
   footer{margin-top:44px;border-top:1px solid var(--hatch);padding-top:12px;font-size:14px;color:var(--grey)}
   a{color:var(--ink)}
 </style>
@@ -68,7 +78,7 @@
 <div class="wrap">
 <header>
   <h1>Chess Problem Helper</h1>
-  <p>Set up a position, solve it, and read the play the way a problem magazine prints it: set play, tries with their refutations, the key, and what changes between them. <a href="blog/">A #2 a day</a>: the problem composed today.</p>
+  <p>Set up a position, solve it, and read the play the way a problem magazine prints it: set play, tries with their refutations, the key, and what changes between them. <a href="blog/">A #2 a day</a>: the problem composed today. <a href="#rook-rally">Rook Rally</a>: a game between solves.</p>
 </header>
 
 <div class="cols">
@@ -111,6 +121,20 @@
   </section>
 </div>
 
+<section class="rally" id="rook-rally" aria-labelledby="rallyTitle">
+  <div class="rally-head">
+    <h2 id="rallyTitle">Rook Rally</h2>
+    <p>A game between solves. Your White rook against the Black rook, with a pawn for the ball. Eight returns
+      in one rally promote it to a queen: faster, and the point counts double. First to 7 points wins.</p>
+  </div>
+  <canvas class="rally-field" id="rally" tabindex="0" aria-label="Rook Rally playing field"
+          aria-describedby="rallyStatus"></canvas>
+  <div class="rally-bar">
+    <p class="note" id="rallyStatus" aria-live="polite"></p>
+    <button class="act" id="rallyPlay">Play</button>
+  </div>
+</section>
+
 <footer>
   Runs entirely in your browser. The same analysis is available offline as the Python package in this
   repository: <code>python -m chesscomp.report --fen "…" "#2" --critique</code>.
@@ -119,6 +143,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0-beta.8/chess.min.js"></script>
 <script src="analysis.js"></script>
+<script src="rally.js"></script>
 <script>
 const GLYPH={K:'\u2654',Q:'\u2655',R:'\u2656',B:'\u2657',N:'\u2658',P:'\u2659',
              k:'\u265A',q:'\u265B',r:'\u265C',b:'\u265D',n:'\u265E',p:'\u265F'};
