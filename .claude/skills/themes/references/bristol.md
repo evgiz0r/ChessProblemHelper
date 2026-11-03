@@ -40,3 +40,11 @@ Traps met, in order (each is structural, not a placement problem):
   stops the threat. Pawns (one move) and bishops on long lines fit; knights rarely.
 - Search: evolve KEY/BRISTOL/TRIES manages 60-1300 diagrams in 280 s here and finds sound one-phase Bristols without
   tries; postsearch on the post-key reaches 60-80k positions but needs a threat that already mates in the core.
+- (second attempt, 3 Nov) King orthogonally next to M on a diagonal Bristol (Ke3, M = e4 on b1-h7): the bishop on M
+  gives no check, and the other line square next to the king (d3) can be guarded by a black knight (f4), which then has
+  a single defence (Sd3, opening the f-file for Rf3#); a black rook g5 with Re5 opens the g-file for Rg3#; the bishop's
+  off-line squares can be shut (Sb3, Kd1) so that e4 may be protected statically without off-line keys. But the bishop
+  beyond M protects the square behind M (d3): 1...Sd3 is answered by 2.Qxd3# as well, and f2 has no guard without new
+  checks (Be1 gives Bd2+/Bf2+, a d1 knight checks e3). The distant-check geometry of his prototype keeps the line's
+  squares out of the king's field; the next attempt should start from it: pawn defenders interposing on the path (one
+  move each, never on the check line), whose departures or arrivals select the mates.
