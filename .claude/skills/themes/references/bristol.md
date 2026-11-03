@@ -48,3 +48,11 @@ Traps met, in order (each is structural, not a placement problem):
   checks (Be1 gives Bd2+/Bf2+, a d1 knight checks e3). The distant-check geometry of his prototype keeps the line's
   squares out of the king's field; the next attempt should start from it: pawn defenders interposing on the path (one
   move each, never on the check line), whose departures or arrivals select the mates.
+- (third attempt, 3 Nov) Distant check with pawn defenders on the path (Kd8, Qa1-d4; Kc5, Qa1-e5): pawns interposing on
+  the path stand far from the king and cannot select between side mates; the selection has to come from what the
+  defenders' departures or arrivals do near the king (his prototype: the d7 pawn's double step to d5, the bishop d6
+  guarding b4). Option 2 (tries leaving the line onto the follower's other lines, his prototype's concept): the two
+  side mates must use two DIFFERENT follower lines, one per thematic defence. With Qa1/Kc5 both natural mates (Qa3,
+  Qa5) are on the a-file and the 1st-rank mates (Qc1, Qg1) are blocked by the d4/c3 interpositions; with Qa1/Ke3 both
+  defences on d4 (d5-d4, Sd4) leave only 1st-rank mates. postsearch (EMPTY on the side lines) finds post-keys whose
+  second mate is the queen capturing the interposer on the path (Qxd4#, Qxc3#), a recapture mate and no side line.
