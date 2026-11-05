@@ -65,3 +65,24 @@ Traps met, in order (each is structural, not a placement problem):
   one does, the stop next to M. Stop tries cannot be added to this Grimshaw. They need another pair of defences.
 - A queen as the line piece (the queen's stop selecting its mates) fails: from any stop beyond M the queen returns to
   M and gives the follower's check herself, so a closure of the follower's path is no defence.
+
+## His short-Bristol schemes (bench, 5 Nov 2026)
+He put three cores on the bench after rejecting the corner Grimshaw-Bristol as too close to his prototype. All three are
+short Bristols: the queen mates NEXT to the king, protected by the line piece from its stop ("the bristols dont have to
+be long"); the stop chooses the protected square, and two phases (two stops, or two line pieces) carry changed play.
+1. `7K/8/8/3k4/8/4B3/5Q2/8` Be3/Qf2 v Kd5: "bishop moving along the diagonal and mates are on Qc5/Qd4".
+2. `7K/8/8/8/4k3/3RB3/3Q4/8` Rd3+Be3/Qd2 v Ke4: "both the bishop and the rook perform 2 phases ... changed mates and more".
+3. `K7/8/8/3k4/8/4R3/4Q3/8` Re3/Qe2 v Kd5: "rook-queen bristol with maybe 2 phases with some changed play".
+What the first attempts showed (scratch climb.py: python-chess hill-climb, key + tries + required threats):
+- A rook next to the king's line gives a check-cook: 1.Rd4+ (scheme 2), 1.Re5+ (scheme 3) mate or force mate (1.Rd4+ Rxd4
+  2.Qxd4#). Cure: Black guards the square twice with pawns (bPc5+bPe5 on d4; bPd6+bPf6 on e5), which also kills the
+  queen mate on that square, so the threat moves to the next square (Qd3# after 1.Rd5, Qe4# after 1.Re6).
+- A black guard of d4 down the d-file is cut by every rook stop d5-d8, not only the short one; a guard on the bishop's own
+  diagonal (bBh6 v Be3) is simply captured (1.Bxh6).
+- Every move of a line piece opens the queen's line, so each wrong stop (and the sideways moves) needs its own reason to
+  fail; the stops differ by what the line piece guards from the stop (rank 5 from d5, rank 6 from e6) and by which queen
+  squares it protects: from e7/e8 the rook also protects e6, so the long phase gains Qe6 (scheme 3).
+- Scheme 1: Ra6 makes 1.Bb6 cut rank 6 (c6), so after 1.Bb6 only Qc5 threatens while 1.Bc5 keeps Qd4; a black pawn e4,
+  blocked by Be3 in the diagram, gets ...e3 (closing f2-d4) only after the key: a defence common to both phases.
+- Sound sketch of scheme 3 (gate FAIL, one-sided): 8/2nK1R2/3p1p2/1npk4/8/1Np1R3/4Qp2/8, 1.Re6! (2.Qe4#) Sxe6 2.Qxe6#,
+  Sd4 2.Rxd6#, f5 2.Rxf5#; 1.Re8? (Sxe8 2.Qe6#, Se6 2.Qxe6#) and 1.Ree7? both Sd4!: only from e6 does the rook take d6.

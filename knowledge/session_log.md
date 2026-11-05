@@ -1647,3 +1647,15 @@ no motive layer to mirror.
   rear from b4 (guards d6, the given flight), bBa8 protects c6 in the diagram, wSe2 for wPe2 (protects d4 in the
   diagram; the king on d3 failed to 1...Rxd5), trim -wPg5: bourd-schiffmann-three-bc3, sound, gate FAIL single phase
   (recorded as a draft).
+
+## Session 3-5 Nov 2026 (chat, "lets try now - bristol")
+- His instruction: Bristol, complexity left to Claude. Claude aimed at his 2x2 shape (Bristol key, two thematic defences,
+  two unified tries). The corner version (Qh8/Bg7 v Kh3, bBe7/bPf7 Grimshaw on f6) stayed cooked and turned out to be his
+  prototype's mechanism again; a pure-geometry count showed that this Grimshaw admits no stop tries (at most one stop
+  beyond M touches the king's field); a queen as line piece fails (she returns to M). His verdict: "a bit too close to my
+  own problem".
+- 5 Nov: he put three short-Bristol schemes on the bench (session mw420wzt, notes; bristol.md). Claude built scratch
+  searches (twophase.py random, climb.py hill-climb with required threats), then hand boxes. Results: scheme 3 sound
+  sketch claude-bristol-s3-sketch (1.Re6! v 1.Re8?/1.Ree7? Sd4!, gate FAIL one-sided, recorded as a draft); scheme 2:
+  1.Rd4+ cured by bPc5+bPe5, 1.Rd5? (2.Qd3#) c4!, but no reason for 1.Bf4 among the bishop moves (a guard on c1-h6 is
+  captured); scheme 1: Ra6 + bPe4 idea (1...e3 in both phases), nothing sound. No changed mates yet in any scheme.

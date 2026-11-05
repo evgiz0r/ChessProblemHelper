@@ -4141,6 +4141,24 @@
    "status": "accepted single phase (E. Bourd, 3 Nov 2026: \"its fine, i think for single phase, this is ok. obviously would want more content\")",
    "note": "1.Bc3! (2.Sb5#): the rear of the Bc3-Sd4 battery arrives from b4 and gives d6, which the threat's landing covers. Three captures of d5 pin themselves on Ra5's rank; 2.Sb5 would close it (Schiffmann). Every mate is a discharge of the battery, and each defence opens a White line onto the flight field: 1...Rxd5 2.Sxf5# (d7 vacated: Bc8 sees e6), 1...Sxd5 2.Sxc6# (f6 vacated: Rh6 sees d6/e6; double check), 1...cxd5 2.Se6# (c6 vacated: Qa6 sees d6). By-play 1...Se4 2.Sxc6#, 1...Kd6 2.Sxf5#. Flaws: single phase (the key piece reaches only c3 from b4, and the battery cannot be loaded in the diagram: with d6 guarded 2.Sxc6 is a double-check mate in one); Sxf5 and Sxc6 take pawns; Se4 and Kd6 repeat thematic mates; 22 units, 9 pawns; wPc2 stops 2.Sc2 duals, wSe2 only protects d4 in the diagram, wKb3 passive; black cook-stoppers bBa8 (c6 in the diagram), bBh8 (f6: else 1...cxd5 2.Qxf6#); bPf7 guards e6 (else Re6#/Qe6# duals).",
    "solution": "#2 (12+10)   FEN b1B4b/2pr1p2/Q1p2n1R/R2Pkp2/1BPN1p2/1K3P2/2P1N3/8 w - - 0 1\nTry: 1.Rh5? (threat: 2.Rxf5#)\n   (14 further moves allow the threat)\n   but 1...Sxh5!\nKey: 1.Bc3! (threat: 2.Sb5#)\n   1...Rxd5 2.Sxf5#\n   1...Sxd5/Se4 2.Sxc6#\n   1...Kd6 2.Sxf5#\n   1...cxd5 2.Se6#\n   (11 further moves allow the threat)\nPatterns:\n   changed threat: Rxf5# / Sb5#   [try Rh5 vs key Bc3]\n   Schiffmann: Rxd5   [key]\n   Schiffmann: Sxd5   [key]\n   Schiffmann: cxd5   [key]\n   Self-pin: Rxd5   [key]\n   Self-pin: cxd5   [key]\n(2889 nodes, 0.17s)"
+  },
+  {
+   "id": "claude-bristol-s3-sketch",
+   "fen": "8/2nK1R2/3p1p2/1npk4/8/1Np1R3/4Qp2/8",
+   "stip": "#2",
+   "author": "Claude (5 Nov 2026), on E. Bourd's bench scheme 3 (K7/8/8/3k4/8/4R3/4Q3/8: Re3/Qe2 v Kd5)",
+   "source": "chat 5 Nov 2026; hill-climb (scratch climb.py) from the core Qe2/Re3/Kd5 + bPd6/bPf6",
+   "themes": [
+    "Bristol (short)",
+    "Choice of stop",
+    "Bristol in variation"
+   ],
+   "keys": [
+    "Re6"
+   ],
+   "status": "draft (gate FAIL: one-sided extension)",
+   "note": "1.Re6! (2.Qe4#) Sxe6 2.Qxe6#, Sd4 2.Rxd6#, f5 2.Rxf5#; tries 1.Re8? (Sxe8 2.Qe6#, Se6 2.Qxe6#) and 1.Ree7? both fail to Sd4!: only from e6 does the rook take d6, so the short Bristol is the key and the long ones tries. bPd6/bPf6 guard e5 (1.Re5+ refuted twice, no Qe5). Flaws: the tries reach only the Sd4 variation (one-sided, gate FAIL); one refutation for both tries; no changed mates (Se6/Sxe6 both 2.Qxe6#); Sxe6 Qxe6 and f5 Rxf5 capture the defender; wKd7 unnatural; bPc3 and bPf2 are cook-stoppers (bPf2 stops 1.Rxf6). Not shown as a problem; his request was two phases with changed play.",
+   "solution": "#2 (5+8)   FEN 8/2nK1R2/3p1p2/1npk4/8/1Np1R3/4Qp2/8 w - - 0 1\nSet play:\n   1...Sa7/Sa3 2.Qd3#\n   1...f5 2.Rxf5#\n   1...c4 2.Qf3#\n   unprovided: Se8, Sa8, Se6, Sa6, Sd4, c2, f1=Q, f1=R, f1=B, f1=S\nTry: 1.Re8? (threat: 2.Qe4#)\n   1...Sxe8 2.Qe6#\n   1...Se6 2.Qxe6#\n   1...f5 2.Rxf5#\n   (10 further moves allow the threat)\n   but 1...Sd4!\nTry: 1.Ree7? (threat: 2.Qe4#)\n   1...Se6 2.Qxe6#\n   1...f5 2.Rxf5#\n   (11 further moves allow the threat)\n   but 1...Sd4!\nTry: 1.Qg4? (threat: 2.Qe4#)\n   1...f5 2.Rxf5#\n   (12 further moves allow the threat)\n   but 1...Sd4!\nKey: 1.Re6! (threat: 2.Qe4#)\n   1...Sxe6 2.Qxe6#\n   1...Sd4 2.Rxd6#\n   1...f5 2.Rxf5#\n   (11 further moves allow the threat)\nPatterns:\n   Bristol: 1.Re8 + 2.Qe4#   [try Re8]\n   Bristol (in variation): 1.Re8 Sxe8 2.Qe6#   [try Re8]\n   Bristol (in variation): 1.Re8 Se6 2.Qxe6#   [try Re8]\n   Bristol: 1.Ree7 + 2.Qe4#   [try Ree7]\n   Bristol (in variation): 1.Ree7 Se6 2.Qxe6#   [try Ree7]\n   Bristol: 1.Re6 + 2.Qe4#   [key Re6]\n(4106 nodes, 0.27s)"
   }
  ]
 }
