@@ -147,7 +147,7 @@ def main(argv=None):
         render(html, out, 840, 900, scale=2)
     else:
         html = f'<html><body style="margin:0;background:#fff">{svg(b, kind, 400)}</body></html>'
-        render(html, out, 400, 400)
+        render(html, out, 400, 400, scale=2)
     print(out)
 
 
