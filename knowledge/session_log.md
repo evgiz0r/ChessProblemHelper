@@ -1659,3 +1659,16 @@ no motive layer to mirror.
   sketch claude-bristol-s3-sketch (1.Re6! v 1.Re8?/1.Ree7? Sd4!, gate FAIL one-sided, recorded as a draft); scheme 2:
   1.Rd4+ cured by bPc5+bPe5, 1.Rd5? (2.Qd3#) c4!, but no reason for 1.Bf4 among the bishop moves (a guard on c1-h6 is
   captured); scheme 1: Ra6 + bPe4 idea (1...e3 in both phases), nothing sound. No changed mates yet in any scheme.
+
+## Session 6 Nov 2026 (chat, "the experiment on how to visualize the board better for an AI")
+- He asked for the board-visualization experiment. Nothing here mentioned it: it ran on 9 Oct in the Personaldashboard
+  repository (`chesslab/`, branch ccr-859f3d72-q4pgb7, unmerged), session "Chess position visualization". Attaching that
+  repository was refused in this session, so it was rebuilt from that session's transcript (two read-only agents):
+  his messages, the round results, `views.py`, FINDINGS.md and BACKLOG.md.
+- Recorded: knowledge/experiments/board_views_2026-10-09.md (question, method, the nine views shown on his
+  bourd-selfpin-changed-mates-2, results, composing, conclusions), the lab's FINDINGS/BACKLOG verbatim beside it,
+  tools/board_views.py (the views, code unchanged, with a CLI) and tests/test_board_views.py, a row in
+  experiments/README.md, two lessons, one paragraph in the compose skill (read by enumerating checks and captures).
+- The three composed miniatures re-solved with the critique: sound, but all fail the gate (single phase, flights,
+  out-of-play key). The lab's composing score was soundness only.
+- requirements.txt gained pytest: this container had none, so the test rule in CLAUDE.md could not run in a fresh session.

@@ -242,6 +242,11 @@ Connect the variations by reusing the mating pieces (E. Bourd): let the mating u
 holds in the other's mate (Sa6 and Qb5 both on c5: Qb5 holds it for Sb4#, Sa6 for Qb3#). Check it with
 `python -m chesscomp.anatomy --fen FEN`, section LINKS; "none" means two distant variations.
 
+Reading a position by hand, between solves: the misses are White's checks and captures and what a move changes, not
+the lines (board-views experiment, knowledge/experiments/board_views_2026-10-09.md: both cooks were missed knight checks
+and a capture). `python tools/board_views.py FEN tree1` lists every check and capture with all of Black's replies;
+`annotated` gives each unit's lines of sight with the x-ray behind the first blocker. Still solve before any claim.
+
 ## Shifts and rotations (E. Bourd, 11 Oct 2026)
 "They do not ruin the base of the theme": the line pieces keep their geometry (the two bishops change colour together).
 What changes is the pawns (direction, captures, promotion) and the edges (room for the White king). Reach for it when

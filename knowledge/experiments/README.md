@@ -88,3 +88,8 @@ Download them into /tmp/claude-0/sealed/ and do not open the score files before 
     countries agree with each other at 0.00. Three fields of the better problems (WCCT 7, 8, 9) all show near-zero agreement among
     the real judges and our panel inside their range. Content lesson: a blend is judged by its weakest group, and in a single-phase
     problem the key carries the most weight.
+
+## Other experiments
+| experiment | result | file |
+|---|---|---|
+| Board views for a model (9 Oct 2026, run in Personaldashboard/chesslab, recorded here 6 Nov): FEN, grid, lines, relations, annotated, salient, kingzone, tree1 read by blind subagents; a #2 composed with each | Format barely matters for seeing (F1 0.95-1.00 in every view); search is the bottleneck (mate in 2 unhinted 0-4 of 6, hinted 11-12 of 12); both composing cooks were missed White forcing moves, fixed by one round of solver output | board_views_2026-10-09.md, tools/board_views.py |
