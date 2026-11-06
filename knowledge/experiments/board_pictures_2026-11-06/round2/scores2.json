@@ -1,0 +1,55 @@
+{
+ "fen": {
+  "totals": {
+   "keys_ok": 4,
+   "claims": 53,
+   "mate": 49,
+   "check": 4,
+   "nocheck": 0,
+   "illegal": 0,
+   "defences": 19,
+   "found": 19
+  },
+  "notes": [
+   "P4 after key: 1...Rxc4 2.Qe5 -> check",
+   "P4 after key: 1...Rxc4 2.Nf5 -> check",
+   "P4 set: 1...Re5 2.Qxe5 -> check",
+   "P4 set: 1...Rxc4 2.Qe5 -> check"
+  ]
+ },
+ "annotated": {
+  "totals": {
+   "keys_ok": 4,
+   "claims": 46,
+   "mate": 44,
+   "check": 2,
+   "nocheck": 0,
+   "illegal": 0,
+   "defences": 19,
+   "found": 18
+  },
+  "notes": [
+   "P1 defences missed: 1 of 4 Qd6",
+   "P4 set: 1...Bb7 2.Qe4 -> check",
+   "P4 set: 1...Ba8 2.Qe4 -> check"
+  ]
+ },
+ "pic_rays": {
+  "totals": {
+   "keys_ok": 4,
+   "claims": 40,
+   "mate": 37,
+   "check": 3,
+   "nocheck": 0,
+   "illegal": 0,
+   "defences": 19,
+   "found": 18
+  },
+  "notes": [
+   "P1 set: 1...Qf7 2.Qxe5 -> check",
+   "P1 set: 1...Qxd8 2.Qxe5 -> check",
+   "P1 set: 1...Qg6 2.Qxe5 -> check",
+   "P1 defences missed: 1 of 4 Qd6"
+  ]
+ }
+}

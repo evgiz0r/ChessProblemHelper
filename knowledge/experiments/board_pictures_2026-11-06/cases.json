@@ -1,0 +1,58 @@
+[
+ {
+  "id": "A",
+  "fen": "3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8",
+  "source": "session 3 sight test (11 Sep)",
+  "error": "thought Bc4 checks a king on d4 (c4-d4 is a rank); gave 2.Bc4# as a set mate (not even check); missed 1...Qd6 2.Qd3#",
+  "type": "diagonal vs rank"
+ },
+ {
+  "id": "B",
+  "fen": "b2R4/b6p/8/N2pPQ2/2Npp2R/1pPk3P/1Pp5/2n2KB1",
+  "source": "session 11, his extended half-battery (Sep)",
+  "error": "missed that the key 1.Qf4 unpins bPe4, pinned by Qf5 against Kd3 (and the switchback Qf5#)",
+  "type": "pin (diagonal)"
+ },
+ {
+  "id": "C",
+  "fen": "8/1N2K1B1/2p5/2pk4/Q7/3P4/3N4/2r1n2b",
+  "source": "lesson 12 Oct (composing)",
+  "error": "diagram cooked by checks Qe4+ Bxe4 dxe4# and Qc4+ Rxc4 dxc4#: queen checks along long lines with a pawn recapture next to the king",
+  "type": "long line"
+ },
+ {
+  "id": "D",
+  "fen": "1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8",
+  "source": "29 Oct (his rook-correction kernel)",
+  "error": "counted 2.fxe5 as a check / second threat against Kd4 (a white pawn on e5 attacks d6/f6)",
+  "type": "pawn direction"
+ },
+ {
+  "id": "E",
+  "fen": "b5BQ/4K3/4p2B/1N6/1p2P3/1P1krpN1/1R6/8",
+  "source": "bourd-kingkey-double-paradox after the key, White to move again",
+  "error": "added case (session-18 type: mate in one along a long queen line)",
+  "type": "long line"
+ },
+ {
+  "id": "F",
+  "fen": "8/7B/p6K/r4N2/1N1Pk3/2P3QP/6P1/5r2",
+  "source": "claude-two-rook-selfpin-v1 after the key, White to move again",
+  "error": "added case (knight and queen mates in one)",
+  "type": "knight"
+ },
+ {
+  "id": "G",
+  "fen": "Q1K5/8/8/8/5p1p/R1n5/4NN1k/7B",
+  "source": "claude-bristol-corner after the key, White to move again",
+  "error": "added case (mate in one along the long diagonal)",
+  "type": "long line"
+ },
+ {
+  "id": "H",
+  "fen": "8/2p3p1/2b1Q1B1/r1r5/p1Pk2P1/3NN3/3K4/8",
+  "source": "bourd-grimshaw-d5-7x7 after the key, White to move again",
+  "error": "added case (knight mate in one)",
+  "type": "knight"
+ }
+]

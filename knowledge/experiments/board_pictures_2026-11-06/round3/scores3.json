@@ -1,0 +1,266 @@
+{
+ "fen": {
+  "by_kind": {
+   "true: knight": [
+    15,
+    15
+   ],
+   "true: capture": [
+    7,
+    7
+   ],
+   "false: bishop on the king's rank/file": [
+    14,
+    14
+   ],
+   "false: knight near the king": [
+    10,
+    10
+   ],
+   "false: blocked line": [
+    15,
+    15
+   ],
+   "true: near": [
+    14,
+    14
+   ],
+   "true: long line": [
+    13,
+    14
+   ],
+   "false: pawn next to the king": [
+    3,
+    3
+   ],
+   "false: near the king": [
+    11,
+    11
+   ],
+   "false: rook on the king's diagonal": [
+    9,
+    9
+   ],
+   "true: discovered": [
+    4,
+    8
+   ]
+  },
+  "wrong": [
+   "P06 Rh2: said N, is check (true: discovered)",
+   "P07 dxe5: said N, is check (true: discovered)",
+   "P19 Nh5: said N, is check (true: discovered)",
+   "P19 Ne8: said N, is check (true: discovered)",
+   "P33 Qb5: said N, is check (true: long line)"
+  ]
+ },
+ "grid_list": {
+  "by_kind": {
+   "true: knight": [
+    15,
+    15
+   ],
+   "true: capture": [
+    7,
+    7
+   ],
+   "false: bishop on the king's rank/file": [
+    11,
+    14
+   ],
+   "false: knight near the king": [
+    10,
+    10
+   ],
+   "false: blocked line": [
+    15,
+    15
+   ],
+   "true: near": [
+    14,
+    14
+   ],
+   "true: long line": [
+    14,
+    14
+   ],
+   "false: pawn next to the king": [
+    3,
+    3
+   ],
+   "false: near the king": [
+    11,
+    11
+   ],
+   "false: rook on the king's diagonal": [
+    9,
+    9
+   ],
+   "true: discovered": [
+    8,
+    8
+   ]
+  },
+  "wrong": [
+   "P06 Bd5: said Y, is no check (false: bishop on the king's rank/file)",
+   "P11 Bd4: said Y, is no check (false: bishop on the king's rank/file)",
+   "P22 Bd5: said Y, is no check (false: bishop on the king's rank/file)"
+  ]
+ },
+ "annotated": {
+  "by_kind": {
+   "true: knight": [
+    15,
+    15
+   ],
+   "true: capture": [
+    7,
+    7
+   ],
+   "false: bishop on the king's rank/file": [
+    13,
+    14
+   ],
+   "false: knight near the king": [
+    10,
+    10
+   ],
+   "false: blocked line": [
+    15,
+    15
+   ],
+   "true: near": [
+    14,
+    14
+   ],
+   "true: long line": [
+    14,
+    14
+   ],
+   "false: pawn next to the king": [
+    3,
+    3
+   ],
+   "false: near the king": [
+    11,
+    11
+   ],
+   "false: rook on the king's diagonal": [
+    8,
+    9
+   ],
+   "true: discovered": [
+    8,
+    8
+   ]
+  },
+  "wrong": [
+   "P06 Re5: said Y, is no check (false: rook on the king's diagonal)",
+   "P21 Be5: said Y, is no check (false: bishop on the king's rank/file)"
+  ]
+ },
+ "pic_plain": {
+  "by_kind": {
+   "true: knight": [
+    15,
+    15
+   ],
+   "true: capture": [
+    7,
+    7
+   ],
+   "false: bishop on the king's rank/file": [
+    13,
+    14
+   ],
+   "false: knight near the king": [
+    10,
+    10
+   ],
+   "false: blocked line": [
+    15,
+    15
+   ],
+   "true: near": [
+    14,
+    14
+   ],
+   "true: long line": [
+    14,
+    14
+   ],
+   "false: pawn next to the king": [
+    3,
+    3
+   ],
+   "false: near the king": [
+    11,
+    11
+   ],
+   "false: rook on the king's diagonal": [
+    8,
+    9
+   ],
+   "true: discovered": [
+    7,
+    8
+   ]
+  },
+  "wrong": [
+   "P06 Rh2: said N, is check (true: discovered)",
+   "P11 Bd4: said Y, is no check (false: bishop on the king's rank/file)",
+   "P12 Rg2: said Y, is no check (false: rook on the king's diagonal)"
+  ]
+ },
+ "pic_rays": {
+  "by_kind": {
+   "true: knight": [
+    15,
+    15
+   ],
+   "true: capture": [
+    7,
+    7
+   ],
+   "false: bishop on the king's rank/file": [
+    13,
+    14
+   ],
+   "false: knight near the king": [
+    10,
+    10
+   ],
+   "false: blocked line": [
+    15,
+    15
+   ],
+   "true: near": [
+    14,
+    14
+   ],
+   "true: long line": [
+    14,
+    14
+   ],
+   "false: pawn next to the king": [
+    3,
+    3
+   ],
+   "false: near the king": [
+    11,
+    11
+   ],
+   "false: rook on the king's diagonal": [
+    9,
+    9
+   ],
+   "true: discovered": [
+    8,
+    8
+   ]
+  },
+  "wrong": [
+   "P11 Bd4: said Y, is no check (false: bishop on the king's rank/file)"
+  ]
+ }
+}

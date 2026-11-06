@@ -1,0 +1,6 @@
+[
+ {"id": "P1", "fen": "3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8", "key": "Bxf5", "source": "Novice Composers TT 2002, 5th Place (yacpdb 2753): the session-3 sight test (Bc4 slip, missed Qd6)"},
+ {"id": "P2", "fen": "b2R4/b6p/8/N2pPQ2/2Npp2R/1pPk3P/1Pp5/2n2KB1", "key": "Qf4", "source": "E. Bourd's extended half-battery (session 11: missed unpin of Pe4)"},
+ {"id": "P3", "fen": "1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8", "key": "Qc2", "source": "claude-rook-correction-rd5-rc5-single (29 Oct: fxe5 counted as check)"},
+ {"id": "P4", "fen": "8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8", "key": "Qe6", "source": "bourd-grimshaw-d5-7x7 (knight mates, added)"}
+]

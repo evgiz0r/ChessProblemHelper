@@ -1,0 +1,802 @@
+{
+ "A": {
+  "fen": "3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8",
+  "claims": [
+   {
+    "move": "Ne6",
+    "check": true,
+    "kind": "true: knight"
+   },
+   {
+    "move": "Rxd5",
+    "check": true,
+    "kind": "true: capture"
+   },
+   {
+    "move": "Bc4",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   }
+  ]
+ },
+ "B": {
+  "fen": "b2R4/b6p/8/N2pPQ2/2Npp2R/1pPk3P/1Pp5/2n2KB1",
+  "claims": [
+   {
+    "move": "Qxe4",
+    "check": true,
+    "kind": "true: capture"
+   },
+   {
+    "move": "Nxb3",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "Rd7",
+    "check": false,
+    "kind": "false: blocked line"
+   }
+  ]
+ },
+ "C": {
+  "fen": "8/1N2K1B1/2p5/2pk4/Q7/3P4/3N4/2r1n2b",
+  "claims": [
+   {
+    "move": "Qe4",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Nd6",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "Qa2",
+    "check": true,
+    "kind": "true: long line"
+   }
+  ]
+ },
+ "D": {
+  "fen": "1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8",
+  "claims": [
+   {
+    "move": "Qa7",
+    "check": false,
+    "kind": "false: blocked line"
+   },
+   {
+    "move": "fxe5",
+    "check": false,
+    "kind": "false: pawn next to the king"
+   },
+   {
+    "move": "Qd8",
+    "check": true,
+    "kind": "true: long line"
+   }
+  ]
+ },
+ "P01": {
+  "fen": "8/1r6/1p1PRn2/1KpkNB2/2p1p2r/2Q5/b2P4/8",
+  "claims": [
+   {
+    "move": "Qxc4",
+    "check": true,
+    "kind": "true: capture"
+   },
+   {
+    "move": "Bxe4",
+    "check": true,
+    "kind": "true: capture"
+   },
+   {
+    "move": "Qb3",
+    "check": false,
+    "kind": "false: blocked line"
+   }
+  ]
+ },
+ "P02": {
+  "fen": "8/7K/4P3/3bbRN1/8/p3p1p1/R1P1k1P1/1Q3N2",
+  "claims": [
+   {
+    "move": "Qb5",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Ne4",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "Qc1",
+    "check": false,
+    "kind": "false: near the king"
+   }
+  ]
+ },
+ "P03": {
+  "fen": "B3K3/3N4/6pN/6p1/5k2/Qp2b2R/4Pr2/1b1r4",
+  "claims": [
+   {
+    "move": "Qb4",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Qc1",
+    "check": false,
+    "kind": "false: blocked line"
+   },
+   {
+    "move": "Qf8",
+    "check": true,
+    "kind": "true: long line"
+   }
+  ]
+ },
+ "P04": {
+  "fen": "8/8/8/1b2b1P1/5N1K/4NP2/R2P3k/4R3",
+  "claims": [
+   {
+    "move": "Re2",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Rg1",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   },
+   {
+    "move": "Rb2",
+    "check": false,
+    "kind": "false: blocked line"
+   }
+  ]
+ },
+ "P05": {
+  "fen": "1R1R4/p3p3/1n6/4p3/4kPP1/6P1/B1KPP3/6N1",
+  "claims": [
+   {
+    "move": "Rd4",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Nf3",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "d3",
+    "check": true,
+    "kind": "true: near"
+   }
+  ]
+ },
+ "P06": {
+  "fen": "K7/8/8/6R1/3k1N2/3P1B1n/5R2/3N2B1",
+  "claims": [
+   {
+    "move": "Re5",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   },
+   {
+    "move": "Bd5",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Rh2",
+    "check": true,
+    "kind": "true: discovered"
+   }
+  ]
+ },
+ "P07": {
+  "fen": "1Q6/8/1nn5/4pP2/R2PkPP1/2P5/B1N1P3/2B4K",
+  "claims": [
+   {
+    "move": "e3",
+    "check": false,
+    "kind": "false: pawn next to the king"
+   },
+   {
+    "move": "Qxe5",
+    "check": true,
+    "kind": "true: capture"
+   },
+   {
+    "move": "dxe5",
+    "check": true,
+    "kind": "true: discovered"
+   }
+  ]
+ },
+ "P08": {
+  "fen": "b7/3p1K2/Q4pB1/R1bnkN2/7R/q2p4/3n1N2/8",
+  "claims": [
+   {
+    "move": "Rb5",
+    "check": false,
+    "kind": "false: blocked line"
+   },
+   {
+    "move": "Ng7",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "Nxd3",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P09": {
+  "fen": "8/3R1B2/1b1P4/8/K1N3r1/5k2/3n3Q/4R3",
+  "claims": [
+   {
+    "move": "Bh5",
+    "check": false,
+    "kind": "false: blocked line"
+   },
+   {
+    "move": "Qh1",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Qg3",
+    "check": true,
+    "kind": "true: near"
+   }
+  ]
+ },
+ "P10": {
+  "fen": "2B5/4N3/8/2p1kn2/4N3/2K3P1/8/B3R3",
+  "claims": [
+   {
+    "move": "Nxf5",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "Nd6",
+    "check": true,
+    "kind": "true: discovered"
+   },
+   {
+    "move": "Re3",
+    "check": false,
+    "kind": "false: blocked line"
+   }
+  ]
+ },
+ "P11": {
+  "fen": "8/4R3/5n1q/1P1kB1n1/1KN3r1/3P1PN1/8/8",
+  "claims": [
+   {
+    "move": "Bd4",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Rd7",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Rb7",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   }
+  ]
+ },
+ "P12": {
+  "fen": "8/2B5/5n2/8/r1N4K/R2B1k2/4R3/8",
+  "claims": [
+   {
+    "move": "Rg2",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   },
+   {
+    "move": "Bg6",
+    "check": true,
+    "kind": "true: discovered"
+   },
+   {
+    "move": "Bf4",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   }
+  ]
+ },
+ "P13": {
+  "fen": "2Q2K2/1B1N1P2/3p3p/1p6/1n1k4/1P5r/3P1N2/8",
+  "claims": [
+   {
+    "move": "Qc4",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Qd8",
+    "check": false,
+    "kind": "false: blocked line"
+   },
+   {
+    "move": "Qc5",
+    "check": true,
+    "kind": "true: near"
+   }
+  ]
+ },
+ "P14": {
+  "fen": "Q1K5/1B6/8/8/3n1p1p/8/4NN1k/4N3",
+  "claims": [
+   {
+    "move": "Nf3",
+    "check": true,
+    "kind": "true: knight"
+   },
+   {
+    "move": "Nxf4",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "Qa2",
+    "check": false,
+    "kind": "false: blocked line"
+   }
+  ]
+ },
+ "P15": {
+  "fen": "3N4/b3BK2/6p1/3pk3/R6R/N2P1p1B/4P3/2r5",
+  "claims": [
+   {
+    "move": "Rh5",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Bc5",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Nc4",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P16": {
+  "fen": "8/8/RN1PkPP1/3n1pP1/5B2/1K2P3/3R4/8",
+  "claims": [
+   {
+    "move": "Nc8",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "Re2",
+    "check": false,
+    "kind": "false: blocked line"
+   },
+   {
+    "move": "g7",
+    "check": false,
+    "kind": "false: near the king"
+   }
+  ]
+ },
+ "P17": {
+  "fen": "3B2b1/5n2/Q1N5/pN1k1P2/8/5P2/2R5/6bK",
+  "claims": [
+   {
+    "move": "Bxa5",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Rd2",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Nb4",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P18": {
+  "fen": "4N1B1/8/6P1/4kp2/3bP3/5P2/4p2R/2BQ2nK",
+  "claims": [
+   {
+    "move": "Qxd4",
+    "check": true,
+    "kind": "true: capture"
+   },
+   {
+    "move": "exf5",
+    "check": false,
+    "kind": "false: pawn next to the king"
+   },
+   {
+    "move": "g7",
+    "check": false,
+    "kind": "false: near the king"
+   }
+  ]
+ },
+ "P19": {
+  "fen": "5R1B/4p1N1/R3P1B1/3nkP2/4P2N/4PP2/b6K/8",
+  "claims": [
+   {
+    "move": "Kg3",
+    "check": false,
+    "kind": "false: near the king"
+   },
+   {
+    "move": "Nh5",
+    "check": true,
+    "kind": "true: discovered"
+   },
+   {
+    "move": "Ne8",
+    "check": true,
+    "kind": "true: discovered"
+   }
+  ]
+ },
+ "P20": {
+  "fen": "K7/2R2N2/4p1B1/1PBk4/R2Npq2/2P5/2P1P3/3Q4",
+  "claims": [
+   {
+    "move": "Rc6",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   },
+   {
+    "move": "b6",
+    "check": false,
+    "kind": "false: near the king"
+   },
+   {
+    "move": "Nb3",
+    "check": true,
+    "kind": "true: discovered"
+   }
+  ]
+ },
+ "P21": {
+  "fen": "8/2Bn2QB/4p2r/KN3rp1/2P1k3/5n1q/2P1NPP1/8",
+  "claims": [
+   {
+    "move": "Be5",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Nc3",
+    "check": true,
+    "kind": "true: knight"
+   },
+   {
+    "move": "Ng3",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P22": {
+  "fen": "2Q2K2/1B1N4/3p4/1p6/1n1k1P2/1Ppp2R1/2b2N2/2b5",
+  "claims": [
+   {
+    "move": "Bd5",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Qd8",
+    "check": false,
+    "kind": "false: blocked line"
+   },
+   {
+    "move": "Qxc3",
+    "check": true,
+    "kind": "true: capture"
+   }
+  ]
+ },
+ "P23": {
+  "fen": "4r3/3p4/3P1RN1/bQ6/KnP1kNb1/2p5/2p1pBP1/8",
+  "claims": [
+   {
+    "move": "Qb7",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Qd5",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Qxb4",
+    "check": false,
+    "kind": "false: blocked line"
+   }
+  ]
+ },
+ "P24": {
+  "fen": "8/4NN2/4B3/5p1r/4k3/K1P1pR2/P3P3/3r4",
+  "claims": [
+   {
+    "move": "Bc4",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Rxf5",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   },
+   {
+    "move": "Nd6",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P25": {
+  "fen": "nK6/3B4/N2PP2R/2Bk2P1/5P2/2b2P2/2b1Q3/8",
+  "claims": [
+   {
+    "move": "Qd2",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Qd1",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Bd4",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   }
+  ]
+ },
+ "P26": {
+  "fen": "2B5/4N3/3pNp1p/2p1kn2/7R/2K3P1/8/B6b",
+  "claims": [
+   {
+    "move": "Rc4",
+    "check": false,
+    "kind": "false: near the king"
+   },
+   {
+    "move": "Nxc5",
+    "check": false,
+    "kind": "false: knight near the king"
+   },
+   {
+    "move": "Nc6",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P27": {
+  "fen": "8/8/K2p4/8/N2k1P1p/1P3B1R/2P4R/3Nb3",
+  "claims": [
+   {
+    "move": "Rd2",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Bg4",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "c3",
+    "check": true,
+    "kind": "true: near"
+   }
+  ]
+ },
+ "P28": {
+  "fen": "7b/8/5n2/R7/4k3/1p2P3/3K4/1R1Qn1N1",
+  "claims": [
+   {
+    "move": "Rd5",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   },
+   {
+    "move": "Ra4",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Qxe1",
+    "check": false,
+    "kind": "false: blocked line"
+   }
+  ]
+ },
+ "P29": {
+  "fen": "3Q1R2/1r6/8/2pNN3/4kP2/2P5/8/3RK3",
+  "claims": [
+   {
+    "move": "Rd4",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Nf6",
+    "check": true,
+    "kind": "true: knight"
+   },
+   {
+    "move": "c4",
+    "check": false,
+    "kind": "false: near the king"
+   }
+  ]
+ },
+ "P30": {
+  "fen": "1K6/2R1p3/1p1n4/4p3/1BpkP1Q1/N2q1P2/5P2/1BR5",
+  "claims": [
+   {
+    "move": "Rg1",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   },
+   {
+    "move": "Qf5",
+    "check": false,
+    "kind": "false: near the king"
+   },
+   {
+    "move": "Nb5",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P31": {
+  "fen": "1Q4N1/1p2Nr2/8/3p1pp1/4k3/2r1P3/3PPK2/8",
+  "claims": [
+   {
+    "move": "Kg3",
+    "check": false,
+    "kind": "false: near the king"
+   },
+   {
+    "move": "Qe5",
+    "check": true,
+    "kind": "true: near"
+   },
+   {
+    "move": "Nf6",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P32": {
+  "fen": "2N1B3/p1R5/p3pK2/3k1n2/8/2P1pP2/8/8",
+  "claims": [
+   {
+    "move": "Bf7",
+    "check": false,
+    "kind": "false: blocked line"
+   },
+   {
+    "move": "Ne7",
+    "check": true,
+    "kind": "true: knight"
+   },
+   {
+    "move": "Bh5",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   }
+  ]
+ },
+ "P33": {
+  "fen": "8/4pn2/1rB4b/4k3/Q2R2K1/8/1B2N3/8",
+  "claims": [
+   {
+    "move": "Qb5",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Bd5",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Rd1",
+    "check": true,
+    "kind": "true: discovered"
+   }
+  ]
+ },
+ "P34": {
+  "fen": "1B6/7p/B7/3p3R/2n1k3/2P5/4K3/6N1",
+  "claims": [
+   {
+    "move": "Rh4",
+    "check": true,
+    "kind": "true: long line"
+   },
+   {
+    "move": "Bg3",
+    "check": false,
+    "kind": "false: near the king"
+   },
+   {
+    "move": "Nf3",
+    "check": false,
+    "kind": "false: knight near the king"
+   }
+  ]
+ },
+ "P35": {
+  "fen": "1b1R4/8/r6p/R3p2B/p1PNk1P1/3N4/4K3/8",
+  "claims": [
+   {
+    "move": "Nc5",
+    "check": true,
+    "kind": "true: knight"
+   },
+   {
+    "move": "Rd6",
+    "check": false,
+    "kind": "false: near the king"
+   },
+   {
+    "move": "Nf2",
+    "check": true,
+    "kind": "true: knight"
+   }
+  ]
+ },
+ "P36": {
+  "fen": "8/3n4/R2p4/3pkPQN/4p3/3nP3/b2B4/K7",
+  "claims": [
+   {
+    "move": "Ba5",
+    "check": false,
+    "kind": "false: bishop on the king's rank/file"
+   },
+   {
+    "move": "Rxd6",
+    "check": false,
+    "kind": "false: rook on the king's diagonal"
+   },
+   {
+    "move": "Bc3",
+    "check": true,
+    "kind": "true: near"
+   }
+  ]
+ }
+}

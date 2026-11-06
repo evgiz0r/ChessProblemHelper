@@ -242,10 +242,13 @@ Connect the variations by reusing the mating pieces (E. Bourd): let the mating u
 holds in the other's mate (Sa6 and Qb5 both on c5: Qb5 holds it for Sb4#, Sa6 for Qb3#). Check it with
 `python -m chesscomp.anatomy --fen FEN`, section LINKS; "none" means two distant variations.
 
-Reading a position by hand, between solves: the misses are White's checks and captures and what a move changes, not
-the lines (board-views experiment, knowledge/experiments/board_views_2026-10-09.md: both cooks were missed knight checks
-and a capture). `python tools/board_views.py FEN tree1` lists every check and capture with all of Black's replies;
-`annotated` gives each unit's lines of sight with the x-ray behind the first blocker. Still solve before any claim.
+Reading a position by hand, between solves (experiments knowledge/experiments/board_views_2026-10-09.md and
+board_pictures_2026-11-06.md): the static board is read correctly; the misses are (1) a bishop or rook NEXT TO the king
+taken for a check (Bc4 v Kd4: name the line, rank/file or diagonal), (2) discovered checks, (3) departure effects in a
+claimed mate: what the mating piece stops guarding (2.Qxe5? Kxd3), the line its or the defence's departure opens
+(1...Rxc4 opens a5-e5), a slider that moves along its own line keeps its guard, an interposition that unpins (1...Qd6).
+`python tools/board_views.py FEN tree1` lists every check and capture with Black's replies; `tools/board_pictures.py`
+draws the lines. Still solve before any claim.
 
 ## Shifts and rotations (E. Bourd, 11 Oct 2026)
 "They do not ruin the base of the theme": the line pieces keep their geometry (the two bishops change colour together).

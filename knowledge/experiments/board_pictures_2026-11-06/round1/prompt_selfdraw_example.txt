@@ -1,0 +1,42 @@
+You are a subject in a blind test of how a chess position is best presented to a model. White is to move in every position. For each position give:
+- "checks": every White move that gives check (SAN, e.g. "Qd5+")
+- "mates": every White move that mates at once (SAN)
+- "pins": every unit of either colour pinned to its own king (squares, e.g. "d5")
+- "black_captures": every capture Black could make if it were Black to move (SAN)
+Use English letters (N = knight). Answer at a glance, the way you would in the middle of a conversation about the position: no square-by-square reconstruction, no move generation tables, a few lines of notes per position at most.
+
+Before answering each position, DRAW it yourself first: write the 8x8 board as text, then write out every file, rank and diagonal through the black king and through each White line piece, with what stands on them. Then answer from your drawing.
+
+=== A ===
+
+FEN: 3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8 w - - 0 1
+
+=== B ===
+
+FEN: b2R4/b6p/8/N2pPQ2/2Npp2R/1pPk3P/1Pp5/2n2KB1 w - - 0 1
+
+=== C ===
+
+FEN: 8/1N2K1B1/2p5/2pk4/Q7/3P4/3N4/2r1n2b w - - 0 1
+
+=== D ===
+
+FEN: 1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8 w - - 0 1
+
+=== E ===
+
+FEN: b5BQ/4K3/4p2B/1N6/1p2P3/1P1krpN1/1R6/8 w - - 0 1
+
+=== F ===
+
+FEN: 8/7B/p6K/r4N2/1N1Pk3/2P3QP/6P1/5r2 w - - 0 1
+
+=== G ===
+
+FEN: Q1K5/8/8/8/5p1p/R1n5/4NN1k/7B w - - 0 1
+
+=== H ===
+
+FEN: 8/2p3p1/2b1Q1B1/r1r5/p1Pk2P1/3NN3/3K4/8 w - - 0 1
+
+Reply with ONE JSON object and nothing else: {"<position id>": {"checks": [...], "mates": [...], "pins": [...], "black_captures": [...]}, ...}. Empty list when there is none.

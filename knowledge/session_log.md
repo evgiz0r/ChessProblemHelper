@@ -1672,3 +1672,12 @@ no motive layer to mirror.
 - The three composed miniatures re-solved with the critique: sound, but all fail the gate (single phase, flights,
   out-of-play key). The lab's composing score was soundness only.
 - requirements.txt gained pytest: this container had none, so the test rule in CLAUDE.md could not run in a fresh session.
+- Same day, his follow-up: "can we see how these intuitively help around some of those [misreadings] ... draw a picture
+  for visualizing those formats". New tools/board_pictures.py (plain, rays = annotated drawn, arrows = relations drawn,
+  field = kingzone drawn; test). A scan of ten chat transcripts found no further geometry corrections by him; the four
+  recorded cases (Bc4 slip, Pe4 pin, queen checks with pawn recapture, fxe5) plus four post-key mate-in-one positions.
+  Three rounds of blind subagents, record in knowledge/experiments/board_pictures_2026-11-06.md: enumerating, every format
+  ~100% (a ceiling); quick reading at low effort on 40 positions (his idea), board formats repeat the Bc4 error (a
+  bishop/rook next to the king read as check) and FEN misses discovered checks, rays picture best; solving by sight,
+  every false mate a departure effect and 1...Qd6 missed again. Two round-2 solvers stopped at 31 minutes (missing data).
+  Compose skill paragraph sharpened (contact, discovered checks, departure effects); two lessons.

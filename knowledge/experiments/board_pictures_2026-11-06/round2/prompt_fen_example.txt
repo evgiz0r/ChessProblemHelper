@@ -1,0 +1,19 @@
+You are a subject in a blind test of how a chess problem is best presented to a model. Each position is a mate-in-2 problem (#2), White to move. Solve each one by sight, as a composer reads a diagram (you have no tools): give the key, the threat, Black's defences that stop the threat with White's mate after each (write concrete moves; for a piece with several defending moves list each move you consider), and the set play (Black moves in the diagram position that already have a mate ready, with that mate). Use English letters (N = knight).
+
+=== P1 ===
+
+FEN: 3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8 w - - 0 1
+
+=== P2 ===
+
+FEN: b2R4/b6p/8/N2pPQ2/2Npp2R/1pPk3P/1Pp5/2n2KB1 w - - 0 1
+
+=== P3 ===
+
+FEN: 1B6/2Q3p1/1P5N/1p2rp2/1N1k1P2/5K2/5P2/8 w - - 0 1
+
+=== P4 ===
+
+FEN: 8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8 w - - 0 1
+
+Reply with ONE JSON object and nothing else: {"<problem id>": {"key": "Bxf5", "threat": ["Qe4"], "variations": [["<black move>", "<white mate>"], ...], "set": [["<black move>", "<white mate>"], ...]}, ...}

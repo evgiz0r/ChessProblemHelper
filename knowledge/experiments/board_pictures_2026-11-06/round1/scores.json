@@ -1,0 +1,64 @@
+{
+ "table": {
+  "fen": {
+   "checks": 1.0,
+   "mates": 1.0,
+   "pins": 1.0,
+   "black_captures": 1.0,
+   "mean": 1.0
+  },
+  "grid_list": {
+   "checks": 1.0,
+   "mates": 1.0,
+   "pins": 1.0,
+   "black_captures": 1.0,
+   "mean": 1.0
+  },
+  "annotated": {
+   "checks": 1.0,
+   "mates": 1.0,
+   "pins": 1.0,
+   "black_captures": 1.0,
+   "mean": 1.0
+  },
+  "selfdraw": {
+   "checks": 1.0,
+   "mates": 1.0,
+   "pins": 1.0,
+   "black_captures": 1.0,
+   "mean": 1.0
+  },
+  "pic_plain": {
+   "checks": 1.0,
+   "mates": 1.0,
+   "pins": 1.0,
+   "black_captures": 1.0,
+   "mean": 1.0
+  },
+  "pic_rays": {
+   "checks": 1.0,
+   "mates": 1.0,
+   "pins": 1.0,
+   "black_captures": 1.0,
+   "mean": 1.0
+  },
+  "pic_arrows": {
+   "checks": 0.96,
+   "mates": 1.0,
+   "pins": 1.0,
+   "black_captures": 1.0,
+   "mean": 0.99
+  }
+ },
+ "errors": {
+  "fen": [],
+  "grid_list": [],
+  "annotated": [],
+  "selfdraw": [],
+  "pic_plain": [],
+  "pic_rays": [],
+  "pic_arrows": [
+   "B checks: missed ['Qxe4'] extra []"
+  ]
+ }
+}
