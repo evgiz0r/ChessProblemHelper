@@ -248,7 +248,8 @@ taken for a check (Bc4 v Kd4: name the line, rank/file or diagonal), (2) discove
 claimed mate: what the mating piece stops guarding (2.Qxe5? Kxd3), the line its or the defence's departure opens
 (1...Rxc4 opens a5-e5), a slider that moves along its own line keeps its guard, an interposition that unpins (1...Qd6).
 `python tools/board_views.py FEN tree1` lists every check and capture with Black's replies; `tools/board_pictures.py`
-draws the lines. Still solve before any claim.
+draws the lines; `python tools/move_delta.py "<FEN b ...>" "X Y"` says what 1...X 2.Y opened, dropped and kept (text, or a
+picture with a third argument): use it to name the cause of a failed mate. Still solve before any claim.
 
 ## Shifts and rotations (E. Bourd, 11 Oct 2026)
 "They do not ruin the base of the theme": the line pieces keep their geometry (the two bishops change colour together).

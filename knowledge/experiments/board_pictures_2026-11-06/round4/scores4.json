@@ -1,0 +1,140 @@
+{
+ "fen": {
+  "rows": {
+   "true mate": [
+    16,
+    20
+   ],
+   "trap (round-2 error)": [
+    3,
+    6
+   ],
+   "trap (generated)": [
+    1,
+    14
+   ]
+  },
+  "wrong": [
+   "C02 1...Bd6 2.Qxd6 said Y (trap (generated); opened; bourd-halfpin-rank-changes-v2 set)",
+   "C06 1...Ba8 2.Qe4 said Y (trap (round-2 error); kept; P4 set (round-2 error))",
+   "C08 1...Rxc4 2.Nf5 said Y (trap (round-2 error); opened; P4 after 1.Qe6 (round-2 error))",
+   "C09 1...Kd4 2.Qd5 said N (true mate; mate; claude-halfpin-ss-qf7 after the key)",
+   "C11 1...Nce1 2.Qg6 said Y (trap (generated); dropped; claude-halfpin-ss-qf7 set)",
+   "C14 1...g6 2.Nc6 said Y (trap (generated); dropped; claude-rook-correction-rd5-rc5-single after the key)",
+   "C18 1...Rd8 2.Qe5 said N (true mate; mate; bourd-queen-pin-selfpin set)",
+   "C19 1...e6 2.Qg5 said Y (trap (generated); opened; claude-dombrovskis-bd8-kernel after the key)",
+   "C21 1...Bf6 2.Be3 said Y (trap (generated); dropped; bourd-two-bishops-qb5 after the key)",
+   "C22 1...Rb5 2.Qe4 said Y (trap (generated); opened; bourd-grimshaw-d4-three-phases set)",
+   "C24 1...Rb8 2.Bh7 said Y (trap (generated); dropped; bourd-bench-sb-capture-bf4 set)",
+   "C26 1...Rb5 2.Nxb3 said Y (trap (generated); kept; bourd-halfpin-diagonal-bb1 after the key)",
+   "C29 1...Bd6 2.Rxd6 said N (true mate; mate; bourd-bench-masked-qh1-ph3 after the key)",
+   "C32 1...Qxf5 2.Nd3 said Y (trap (generated); dropped; bourd-two-captures-three-phase after the key)",
+   "C33 1...Qf7 2.Qxe5 said Y (trap (round-2 error); dropped; P1 set (round-2 error))",
+   "C34 1...Ba7 2.Re3 said Y (trap (generated); kept; claude-unpin-pinned-pinner-bh5-try set)",
+   "C35 1...Na2 2.Bb6 said Y (trap (generated); opened; bourd-bishop-rook-battery-kc5-airy after the key)",
+   "C36 1...Re5 2.Ne6 said Y (trap (generated); kept; bourd-queen-pin-selfpin after the key)",
+   "C38 1...Ne1 2.Rf4 said Y (trap (generated); opened; bourd-bench-masked-qh1-ph3 after the key)",
+   "C40 1...Rb2 2.Qd5 said N (true mate; mate; bourd-halfpin-rs-qf7 after the key)"
+  ]
+ },
+ "pic_plain": {
+  "rows": {
+   "true mate": [
+    11,
+    20
+   ],
+   "trap (round-2 error)": [
+    4,
+    6
+   ],
+   "trap (generated)": [
+    4,
+    14
+   ]
+  },
+  "wrong": [
+   "C01 1...Qxd8 2.Qe4 said N (true mate; mate; bourd-novice-2002 after the key)",
+   "C02 1...Bd6 2.Qxd6 said Y (trap (generated); opened; bourd-halfpin-rank-changes-v2 set)",
+   "C04 1...Nc2 2.Qf5 said N (true mate; mate; claude-changed-type1-qg8 set)",
+   "C06 1...Ba8 2.Qe4 said Y (trap (round-2 error); kept; P4 set (round-2 error))",
+   "C09 1...Kd4 2.Qd5 said N (true mate; mate; claude-halfpin-ss-qf7 after the key)",
+   "C12 1...Qh8 2.Qxe5 said N (true mate; mate; claude-type3-c5-blackqueen set)",
+   "C13 1...Bb7 2.Qe4 said Y (trap (round-2 error); kept; P4 set (round-2 error))",
+   "C14 1...g6 2.Nc6 said Y (trap (generated); dropped; claude-rook-correction-rd5-rc5-single after the key)",
+   "C17 1...Rxe2 2.Rf3 said N (true mate; mate; bourd-grimshaw-d3-changed-set after the key)",
+   "C20 1...e1=N 2.Re7 said N (true mate; mate; claude-bishop-opens-d-file after the key)",
+   "C21 1...Bf6 2.Be3 said Y (trap (generated); dropped; bourd-two-bishops-qb5 after the key)",
+   "C24 1...Rb8 2.Bh7 said Y (trap (generated); dropped; bourd-bench-sb-capture-bf4 set)",
+   "C26 1...Rb5 2.Nxb3 said Y (trap (generated); kept; bourd-halfpin-diagonal-bb1 after the key)",
+   "C27 1...Rb7 2.Nc3 said N (true mate; mate; claude-two-rooks-capture-knight after the key)",
+   "C30 1...c1=R 2.Qc4 said N (true mate; mate; bourd-type3-c5-threat-18 after the key)",
+   "C32 1...Qxf5 2.Nd3 said Y (trap (generated); dropped; bourd-two-captures-three-phase after the key)",
+   "C34 1...Ba7 2.Re3 said Y (trap (generated); kept; claude-unpin-pinned-pinner-bh5-try set)",
+   "C35 1...Na2 2.Bb6 said Y (trap (generated); opened; bourd-bishop-rook-battery-kc5-airy after the key)",
+   "C36 1...Re5 2.Ne6 said Y (trap (generated); kept; bourd-queen-pin-selfpin after the key)",
+   "C38 1...Ne1 2.Rf4 said Y (trap (generated); opened; bourd-bench-masked-qh1-ph3 after the key)",
+   "C39 1...Nh3 2.Ne6 said N (true mate; mate; bourd-three-captures-e4 after the key)"
+  ]
+ },
+ "pic_after": {
+  "rows": {
+   "true mate": [
+    16,
+    20
+   ],
+   "trap (round-2 error)": [
+    3,
+    6
+   ],
+   "trap (generated)": [
+    12,
+    14
+   ]
+  },
+  "wrong": [
+   "C05 1...Rxc4 2.Qe5 said Y (trap (round-2 error); opened; P4 after 1.Qe6 (round-2 error))",
+   "C07 1...Nd4 2.Qe5 said N (true mate; mate; claude-halfpin-ss-qh5 set)",
+   "C08 1...Rxc4 2.Nf5 said Y (trap (round-2 error); opened; P4 after 1.Qe6 (round-2 error))",
+   "C17 1...Rxe2 2.Rf3 said N (true mate; mate; bourd-grimshaw-d3-changed-set after the key)",
+   "C25 1...Re5 2.Qxe5 said Y (trap (round-2 error); opened; P4 set (round-2 error))",
+   "C29 1...Bd6 2.Rxd6 said N (true mate; mate; bourd-bench-masked-qh1-ph3 after the key)",
+   "C31 1...Bxf6 2.Ne6 said N (true mate; mate; bourd-bench-masked-qh1-ph3-rc8 after the key)",
+   "C32 1...Qxf5 2.Nd3 said Y (trap (generated); dropped; bourd-two-captures-three-phase after the key)",
+   "C35 1...Na2 2.Bb6 said Y (trap (generated); opened; bourd-bishop-rook-battery-kc5-airy after the key)"
+  ]
+ },
+ "text_delta": {
+  "rows": {
+   "true mate": [
+    20,
+    20
+   ],
+   "trap (round-2 error)": [
+    6,
+    6
+   ],
+   "trap (generated)": [
+    14,
+    14
+   ]
+  },
+  "wrong": []
+ },
+ "pic_delta": {
+  "rows": {
+   "true mate": [
+    20,
+    20
+   ],
+   "trap (round-2 error)": [
+    6,
+    6
+   ],
+   "trap (generated)": [
+    14,
+    14
+   ]
+  },
+  "wrong": []
+ }
+}

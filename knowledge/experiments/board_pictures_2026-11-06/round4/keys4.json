@@ -1,0 +1,442 @@
+[
+ {
+  "source": "bourd-novice-2002 after the key",
+  "fen": "3N1r1B/3R4/2P2q2/1K1pnB2/3k1p2/6p1/3PQ3/8 b - - 0 1",
+  "d": "Qxd8",
+  "m": "Qe4",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C01"
+ },
+ {
+  "source": "bourd-halfpin-rank-changes-v2 set",
+  "fen": "b7/3p1K2/Q4pB1/R1bnkN2/7R/q2p4/3n1N2/8 b - - 0 1",
+  "d": "Bd6",
+  "m": "Qxd6",
+  "why": [
+   "opened"
+  ],
+  "mate": false,
+  "id": "C02"
+ },
+ {
+  "source": "bourd-two-rook-selfpin after the key",
+  "fen": "8/3Rp1K1/6B1/1r3N1R/2N1k2P/1p4B1/2bQP3/1n3rq1 b - - 1 1",
+  "d": "Rb6",
+  "m": "Qd5",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C03"
+ },
+ {
+  "source": "claude-changed-type1-qg8 set",
+  "fen": "8/3BB3/5NQ1/4k1Pp/2pn4/2n1P3/8/7K b - - 0 1",
+  "d": "Nc2",
+  "m": "Qf5",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C04"
+ },
+ {
+  "source": "P4 after 1.Qe6 (round-2 error)",
+  "fen": "8/2p3p1/2b1Q1B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 1 1",
+  "d": "Rxc4",
+  "m": "Qe5",
+  "why": [
+   "opened"
+  ],
+  "mate": false,
+  "id": "C05"
+ },
+ {
+  "source": "P4 set (round-2 error)",
+  "fen": "8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 0 1",
+  "d": "Ba8",
+  "m": "Qe4",
+  "why": [
+   "kept"
+  ],
+  "mate": false,
+  "id": "C06"
+ },
+ {
+  "source": "claude-halfpin-ss-qh5 set",
+  "fen": "7Q/4N3/6N1/6B1/r3k2K/2Pn4/r1n3P1/1B6 b - - 0 1",
+  "d": "Nd4",
+  "m": "Qe5",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C07"
+ },
+ {
+  "source": "P4 after 1.Qe6 (round-2 error)",
+  "fen": "8/2p3p1/2b1Q1B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 1 1",
+  "d": "Rxc4",
+  "m": "Nf5",
+  "why": [
+   "opened"
+  ],
+  "mate": false,
+  "id": "C08"
+ },
+ {
+  "source": "claude-halfpin-ss-qf7 after the key",
+  "fen": "8/4NQ2/3p4/R7/1p2k3/3n2K1/2nP4/1B6 b - - 1 1",
+  "d": "Kd4",
+  "m": "Qd5",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C09"
+ },
+ {
+  "source": "bourd-changed-diag-file-qc7 after the key",
+  "fen": "B1RK3b/2QPp3/1P6/7r/2pkpB2/8/3nP3/3N4 b - - 1 1",
+  "d": "Nf3",
+  "m": "Qxc4",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C10"
+ },
+ {
+  "source": "claude-halfpin-ss-qf7 set",
+  "fen": "8/4N1Q1/3p4/R7/1p2k3/3n2K1/2nP4/1B6 b - - 0 1",
+  "d": "Nce1",
+  "m": "Qg6",
+  "why": [
+   "dropped"
+  ],
+  "mate": false,
+  "id": "C11"
+ },
+ {
+  "source": "claude-type3-c5-blackqueen set",
+  "fen": "8/1p1R4/2N2R2/pQ2p2q/1nP1k3/8/4p3/1KB5 b - - 0 1",
+  "d": "Qh8",
+  "m": "Qxe5",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C12"
+ },
+ {
+  "source": "P4 set (round-2 error)",
+  "fen": "8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 0 1",
+  "d": "Bb7",
+  "m": "Qe4",
+  "why": [
+   "kept"
+  ],
+  "mate": false,
+  "id": "C13"
+ },
+ {
+  "source": "claude-rook-correction-rd5-rc5-single after the key",
+  "fen": "1B6/6p1/1P5N/1p2rp2/1N1k1P2/5K2/2Q2P2/8 b - - 1 1",
+  "d": "g6",
+  "m": "Nc6",
+  "why": [
+   "dropped"
+  ],
+  "mate": false,
+  "id": "C14"
+ },
+ {
+  "source": "claude-changed-type1-double-closing after the key",
+  "fen": "K2N2Q1/4B1n1/3p1P2/p1p1k3/r7/1n2P1N1/6B1/3r4 b - - 1 1",
+  "d": "Rda1",
+  "m": "Nc6",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C15"
+ },
+ {
+  "source": "claude-queen-held-battery-qd1 after the key",
+  "fen": "8/2R2N2/4p1B1/1PPk4/R2N1q2/2P1p3/2P2PP1/1K1Q4 b - - 1 1",
+  "d": "Qd6",
+  "m": "Nf3",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C16"
+ },
+ {
+  "source": "bourd-grimshaw-d3-changed-set after the key",
+  "fen": "B3K3/3N4/6pN/6p1/5k2/1Q2b2R/4Pr2/1b1r4 b - - 0 1",
+  "d": "Rxe2",
+  "m": "Rf3",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C17"
+ },
+ {
+  "source": "bourd-queen-pin-selfpin set",
+  "fen": "q3r3/8/3B4/N1N4Q/p1PkPR1r/6p1/3Pp3/3nK2b b - - 0 1",
+  "d": "Rd8",
+  "m": "Qe5",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C18"
+ },
+ {
+  "source": "claude-dombrovskis-bd8-kernel after the key",
+  "fen": "3b4/4p1Q1/8/5k1P/8/1B3P1N/8/7K b - - 1 1",
+  "d": "e6",
+  "m": "Qg5",
+  "why": [
+   "opened"
+  ],
+  "mate": false,
+  "id": "C19"
+ },
+ {
+  "source": "claude-bishop-opens-d-file after the key",
+  "fen": "4N2K/2R2p2/5P1p/4k1p1/3bP3/5P2/4p3/2BQ4 b - - 1 1",
+  "d": "e1=N",
+  "m": "Re7",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C20"
+ },
+ {
+  "source": "bourd-two-bishops-qb5 after the key",
+  "fen": "nK6/3B4/N2PP2R/1QBk2P1/5P2/2b2P2/2b5/8 b - - 1 1",
+  "d": "Bf6",
+  "m": "Be3",
+  "why": [
+   "dropped"
+  ],
+  "mate": false,
+  "id": "C21"
+ },
+ {
+  "source": "bourd-grimshaw-d4-three-phases set",
+  "fen": "8/qp6/1b2Q1p1/3P2B1/rr5p/pPPk4/3NN3/3K4 b - - 0 1",
+  "d": "Rb5",
+  "m": "Qe4",
+  "why": [
+   "opened"
+  ],
+  "mate": false,
+  "id": "C22"
+ },
+ {
+  "source": "bourd-bishop-knight-battery-bh7 after the key",
+  "fen": "5R1B/4p1NB/R3P3/3nkP2/4P2N/4PP2/b6K/8 b - - 1 1",
+  "d": "Bb3",
+  "m": "Ng6",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C23"
+ },
+ {
+  "source": "bourd-bench-sb-capture-bf4 set",
+  "fen": "6B1/1rn5/3P1R2/1p1NB1p1/1PbPk1P1/4P1K1/2P5/8 b - - 0 1",
+  "d": "Rb8",
+  "m": "Bh7",
+  "why": [
+   "dropped"
+  ],
+  "mate": false,
+  "id": "C24"
+ },
+ {
+  "source": "P4 set (round-2 error)",
+  "fen": "8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 0 1",
+  "d": "Re5",
+  "m": "Qxe5",
+  "why": [
+   "opened"
+  ],
+  "mate": false,
+  "id": "C25"
+ },
+ {
+  "source": "bourd-halfpin-diagonal-bb1 after the key",
+  "fen": "8/4N3/8/2pP2R1/Qrbk1P1n/npR5/1K1N1P2/1B6 b - - 1 1",
+  "d": "Rb5",
+  "m": "Nxb3",
+  "why": [
+   "kept"
+  ],
+  "mate": false,
+  "id": "C26"
+ },
+ {
+  "source": "claude-two-rooks-capture-knight after the key",
+  "fen": "8/8/1r6/5p1N/2PBkPpK/4P2P/3PPn2/1N4r1 b - - 1 1",
+  "d": "Rb7",
+  "m": "Nc3",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C27"
+ },
+ {
+  "source": "claude-one-bishop-change-2 after the key",
+  "fen": "7n/6b1/1Np5/8/R2Pk1K1/2Q5/8/8 b - - 1 1",
+  "d": "Nf7",
+  "m": "Qf3",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C28"
+ },
+ {
+  "source": "bourd-bench-masked-qh1-ph3 after the key",
+  "fen": "7B/2RKpP2/p4R2/4b1N1/1PPk2Br/2N3Qp/r4Pn1/7q b - - 1 1",
+  "d": "Bd6",
+  "m": "Rxd6",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C29"
+ },
+ {
+  "source": "bourd-type3-c5-threat-18 after the key",
+  "fen": "4r3/3p4/3P1RN1/bQP5/Kn2kNb1/2p5/2p1pBP1/8 b - - 0 1",
+  "d": "c1=R",
+  "m": "Qc4",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C30"
+ },
+ {
+  "source": "bourd-bench-masked-qh1-ph3-rc8 after the key",
+  "fen": "2R4B/3KpP2/p4R2/4b1N1/1PPk2Br/2N3Qp/r4Pn1/7q b - - 1 1",
+  "d": "Bxf6",
+  "m": "Ne6",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C31"
+ },
+ {
+  "source": "bourd-two-captures-three-phase after the key",
+  "fen": "KB3R2/4p2P/4Pq2/2pPNB1p/1pRbNk1P/6p1/3P2Q1/7n b - - 1 1",
+  "d": "Qxf5",
+  "m": "Nd3",
+  "why": [
+   "dropped"
+  ],
+  "mate": false,
+  "id": "C32"
+ },
+ {
+  "source": "P1 set (round-2 error)",
+  "fen": "3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8 b - - 0 1",
+  "d": "Qf7",
+  "m": "Qxe5",
+  "why": [
+   "dropped"
+  ],
+  "mate": false,
+  "id": "C33"
+ },
+ {
+  "source": "claude-unpin-pinned-pinner-bh5-try set",
+  "fen": "8/3R1B2/1b1P4/8/K1N3r1/5k2/3n3Q/4R3 b - - 0 1",
+  "d": "Ba7",
+  "m": "Re3",
+  "why": [
+   "kept"
+  ],
+  "mate": false,
+  "id": "C34"
+ },
+ {
+  "source": "bourd-bishop-rook-battery-kc5-airy after the key",
+  "fen": "K7/1BNP1p2/5R2/B1k1Np2/1n4n1/b1P3p1/5R2/1r3bQ1 b - - 1 1",
+  "d": "Na2",
+  "m": "Bb6",
+  "why": [
+   "opened"
+  ],
+  "mate": false,
+  "id": "C35"
+ },
+ {
+  "source": "bourd-queen-pin-selfpin after the key",
+  "fen": "q3r3/8/3B4/N1N5/p1PkPR1r/6p1/3PQ3/3nK2b b - - 0 1",
+  "d": "Re5",
+  "m": "Ne6",
+  "why": [
+   "kept"
+  ],
+  "mate": false,
+  "id": "C36"
+ },
+ {
+  "source": "claude-queen-held-battery-qd1 after the key",
+  "fen": "8/2R2N2/4p1B1/1PPk4/R2N1q2/2P1p3/2P2PP1/1K1Q4 b - - 1 1",
+  "d": "Qg4",
+  "m": "Qf3",
+  "why": [
+   "kept"
+  ],
+  "mate": false,
+  "id": "C37"
+ },
+ {
+  "source": "bourd-bench-masked-qh1-ph3 after the key",
+  "fen": "7B/2RKpP2/p4R2/4b1N1/1PPk2Br/2N3Qp/r4Pn1/7q b - - 1 1",
+  "d": "Ne1",
+  "m": "Rf4",
+  "why": [
+   "opened"
+  ],
+  "mate": false,
+  "id": "C38"
+ },
+ {
+  "source": "bourd-three-captures-e4 after the key",
+  "fen": "1K6/8/8/p1N2Qnp/1b1kB3/3P1bN1/1PPn1P2/7q b - - 1 1",
+  "d": "Nh3",
+  "m": "Ne6",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C39"
+ },
+ {
+  "source": "bourd-halfpin-rs-qf7 after the key",
+  "fen": "8/5Q2/6N1/8/1p2k2K/3nNp2/2rP1P2/1Bnb4 b - - 1 1",
+  "d": "Rb2",
+  "m": "Qd5",
+  "why": [
+   "mate"
+  ],
+  "mate": true,
+  "id": "C40"
+ }
+]

@@ -1,0 +1,697 @@
+Blind test of chess intuition. Each item is a position with BLACK to move. Black plays the first move named, then White the second, which gives check. Is White's move MATE? Answer Y or N. Go by your first impression; do not work it out square by square. English letters (N = knight).
+
+Under each position you get, for both moves, what the move changes: lines it opens and closes, what the moving piece stops and starts guarding (and which of those its side no longer covers at all), what it still guards next to the black king, pins, and the black king's flights.
+
+=== C01 === Moves: 1...Qxd8 2.Qe4
+
+FEN: 3N1r1B/3R4/2P2q2/1K1pnB2/3k1p2/6p1/3PQ3/8 b - - 0 1
+
+Qxd8: bQ f6->d8
+  opens: bRf8 now sees f5(B)
+  opens: wBh8 now sees e5(n)
+  captured: wNd8, which saw b7 c6(P) e6 f7
+  mover drops: c6(P) d6 e5(n) e6 f5(B) f7 g6 g7 h6 h8(B)
+  of those, no Black unit covers any more: d6 e6 g7 h6
+  mover gains: a5 a8 b6 b8 c7 c8 d7(R) e8 f6
+  now pinned: bNe5
+Qe4#: wQ e2->e4
+  closes: wBf5 no longer sees b1 c2 d3
+  mover drops: b5(K) c4 d1 d2(P) f1 f2 g4 h2 h5
+  of those, no White unit covers any more: b5(K) d1 d2(P) f1 f2 h2 h5
+  mover gains: b1 c2 d4(k) d5(p) e2 f4(p) f5(B) h1
+  mover still guards next to the black king: d3 e3 e5(n)
+
+=== C02 === Moves: 1...Bd6 2.Qxd6
+
+FEN: b7/3p1K2/Q4pB1/R1bnkN2/7R/q2p4/3n1N2/8 b - - 0 1
+
+Bd6: bB c5->d6
+  opens: bQa3 now sees d6(b)
+  opens: wRa5 now sees d5(n)
+  closes: wQa6 no longer sees e6 f6(p)
+  mover drops: a7 b6 d4 e3 f2(N)
+  of those, no Black unit covers any more: a7 f2(N)
+  mover gains: b8 c5 c7 e5(k)
+  now pinned: bNd5
+Qxd6+: wQ a6->d6
+  opens: wRa5 now sees a7 a8(b)
+  captured: bBd6, which saw a3(q) b4 b8 c5 c7 e5(k) e7 f8
+  mover drops: a5(R) a7 a8(b) b5 b7 c4 c8 d3(p)
+  of those, no White unit covers any more: a5(R) b7 c8
+  mover gains: a3(q) a6 b4 b8 c5 c7 d5(n) d7(p) e5(k) e6 e7 f6(p) f8
+
+=== C03 === Moves: 1...Rb6 2.Qd5
+
+FEN: 8/3Rp1K1/6B1/1r3N1R/2N1k2P/1p4B1/2bQP3/1n3rq1 b - - 1 1
+
+Rb6: bR b5->b6
+  closes: bQg1 no longer sees a7
+  mover drops: a5 c5 d5 e5 f5(N)
+  of those, no Black unit covers any more: a5
+  mover gains: a6 b5 c6 d6 e6 f6 g6(B)
+Qd5#: wQ d2->d5
+  closes: wRd7 no longer sees d2 d3 d4
+  mover drops: b4 c1 c2(b) c3 e1 e2(P) e3 f4 g5 h6
+  of those, no White unit covers any more: b4 c1 c2(b) c3 e2(P)
+  mover gains: a8 b5 b7 c4(N) c5 c6 d2 e4(k) e5 e6 f5(N) f7 g8
+  mover still guards next to the black king: d3 d4
+
+=== C04 === Moves: 1...Nc2 2.Qf5
+
+FEN: 8/3BB3/5NQ1/4k1Pp/2pn4/2n1P3/8/7K b - - 0 1
+
+Nc2: bN d4->c2
+  closes: wQg6 no longer sees b1
+  mover drops: b3 b5 c6 e2 e6 f3 f5
+  of those, no Black unit covers any more: c6 f3
+  mover gains: a1 a3 b4 d4 e1 e3(P)
+Qf5#: wQ g6->f5
+  closes: wBd7 no longer sees g4 h3
+  mover drops: e8 f7 g7 g8 h5(p) h6
+  of those, no White unit covers any more: f7 g7
+  mover gains: d7(B) e5(k) e6 f1 f2 f3 f4 g4 g6 h3
+  mover still guards next to the black king: e4 f6(N)
+
+=== C05 === Moves: 1...Rxc4 2.Qe5
+
+FEN: 8/2p3p1/2b1Q1B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 1 1
+
+Rxc4: bR c5->c4
+  opens: bRa5 now sees d5 e5 f5 g5 h5
+  captured: wPc4, which saw b5 d5
+  mover drops: a5(r) b5 d5 e5 f5 g5 h5
+  of those, no Black unit covers any more: a5(r)
+  mover gains: a4(p) b4 c1 c2 c3 c5 d4(k)
+Qe5+: wQ e6->e5
+  closes: bRa5 no longer sees f5 g5 h5
+  mover drops: c4(r) c6(b) c8 d7 f7 g4(P) g6(B) g8
+  of those, no White unit covers any more: c6(b) c8 d7 g6(B) g8
+  mover gains: a5(r) b5 c5 c7(p) d4(k) e6 f4 g3 g5 g7(p) h2 h5
+  mover still guards next to the black king: d5 e3(N) e4
+
+=== C06 === Moves: 1...Ba8 2.Qe4
+
+FEN: 8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 0 1
+
+Ba8: bB c6->a8
+  opens: bRc5 now sees c7(p)
+  mover drops: a4(p) b5 d7 e8
+  of those, no Black unit covers any more: d7 e8
+  mover gains: c6
+  mover still guards next to the black king: d5 e4
+Qe4+: wQ e7->e4
+  closes: wBg6 no longer sees d3(N)
+  closes: bBa8 no longer sees f3 g2 h1
+  mover drops: c5(r) c7(p) d6 d7 d8 f6 f7 f8 g5 g7(p) h4
+  of those, no White unit covers any more: c7(p) d6 d7 d8 f6 f8 g5 g7(p) h4
+  mover gains: a8(b) b7 c6 d3(N) d4(k) d5 e7 f3 f4 f5 g2 g4(P) g6(B) h1
+  mover still guards next to the black king: e3(N) e5
+
+=== C07 === Moves: 1...Nd4 2.Qe5
+
+FEN: 7Q/4N3/6N1/6B1/r3k2K/2Pn4/r1n3P1/1B6 b - - 0 1
+
+Nd4: bN c2->d4
+  opens: wBb1 now sees d3(n)
+  opens: bRa2 now sees d2 e2 f2 g2(P)
+  closes: bRa4 no longer sees e4(k)
+  closes: wQh8 no longer sees c3(P)
+  mover drops: a1 a3 b4 e1 e3
+  mover gains: b3 b5 c2 c6 e2 e6 f3 f5
+  now pinned: bNd3
+Qe5#: wQ h8->e5
+  mover drops: a8 c8 d8 e8 f8 g8 h4(K) h5 h6 h7
+  of those, no White unit covers any more: a8 d8 e8 h7
+  mover gains: a5 b5 c5 c7 d5 d6 e4(k) e6 e7(N) f4 f5 g3 g5(B) h2 h8
+  mover still guards next to the black king: d4(n)
+
+=== C08 === Moves: 1...Rxc4 2.Nf5
+
+FEN: 8/2p3p1/2b1Q1B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 1 1
+
+Rxc4: bR c5->c4
+  opens: bRa5 now sees d5 e5 f5 g5 h5
+  captured: wPc4, which saw b5 d5
+  mover drops: a5(r) b5 d5 e5 f5 g5 h5
+  of those, no Black unit covers any more: a5(r)
+  mover gains: a4(p) b4 c1 c2 c3 c5 d4(k)
+Nf5+: wN e3->f5
+  opens: wQe6 now sees e1 e2
+  closes: bRa5 no longer sees g5 h5
+  closes: wQe6 no longer sees g4(P)
+  closes: wBg6 no longer sees d3(N) e4
+  mover drops: c2 c4(r) d1 d5 f1 g2 g4(P)
+  of those, no White unit covers any more: f1 g2 g4(P)
+  mover gains: d4(k) d6 e3 e7 g3 g7(p) h4 h6
+
+=== C09 === Moves: 1...Kd4 2.Qd5
+
+FEN: 8/4NQ2/3p4/R7/1p2k3/3n2K1/2nP4/1B6 b - - 1 1
+
+Kd4: bK e4->d4
+  mover drops: f3 f4 f5
+  of those, no Black unit covers any more: f3 f5
+  mover gains: c3 c4 c5 e4
+  mover still guards next to the black king: d3(n) d5 e3 e5
+  black king gains flight: e4
+  black king loses flight: d4(k)
+Qd5#: wQ f7->d5
+  closes: wRa5 no longer sees e5 f5 g5 h5
+  mover drops: e7(N) e8 f1 f2 f4 f6 f8 g6 g7 h7
+  of those, no White unit covers any more: e7(N) e8 f1 f6 f8 g7 h7
+  mover gains: a5(R) a8 b5 b7 c5 c6 d4(k) d6(p) e4 e5 f7 g2 g5 h1
+  mover still guards next to the black king: c4
+  black king loses flight: e4
+
+=== C10 === Moves: 1...Nf3 2.Qxc4
+
+FEN: B1RK3b/2QPp3/1P6/7r/2pkpB2/8/3nP3/3N4 b - - 1 1
+
+Nf3: bN d2->f3
+  opens: wBf4 now sees c1
+  mover drops: b1 b3 c4(p) e4(p) f1
+  of those, no Black unit covers any more: b1 f1
+  mover gains: d2 d4(k) e1 e5 g1 g5 h2 h4
+Qxc4#: wQ c7->c4
+  opens: wBf4 now sees b8
+  opens: wRc8 now sees c4(Q) c5 c6
+  captured: bPc4, which saw b3 d3
+  mover drops: a7 b6(P) b7 b8 d6 d7(P) d8(K) e5 f4(B)
+  of those, no White unit covers any more: b6(P) f4(B)
+  mover gains: a2 a4 a6 b3 b4 b5 c1 c2 c3 c7 d3 d4(k) d5 e2(P) e6 f7 g8
+  mover still guards next to the black king: c5
+
+=== C11 === Moves: 1...Nce1 2.Qg6
+
+FEN: 8/4N1Q1/3p4/R7/1p2k3/3n2K1/2nP4/1B6 b - - 0 1
+
+Nce1: bN c2->e1
+  opens: wBb1 now sees d3(n)
+  mover drops: a1 a3 b4(p) d4 e3
+  of those, no Black unit covers any more: a1
+  mover gains: c2 d3(n) f3 g2
+  now pinned: bNd3
+Qg6+: wQ g7->g6
+  mover drops: a1 b2 c3 d4 e5 e7(N) f8 h8
+  of those, no White unit covers any more: b2 d4 e7(N) f8 h8
+  mover gains: d6(p) e4(k) e6 e8 f5 g7 h5
+  black king gains flight: d4
+
+=== C12 === Moves: 1...Qh8 2.Qxe5
+
+FEN: 8/1p1R4/2N2R2/pQ2p2q/1nP1k3/8/4p3/1KB5 b - - 0 1
+
+Qh8: bQ h5->h8
+  mover drops: e2(p) e5(p) f3 f5 f7 g4 g5 g6
+  of those, no Black unit covers any more: e2(p) f7 g4 g5 g6
+  mover gains: a8 b8 c8 d8 f6(R) f8 g7 g8 h5
+Qxe5#: wQ b5->e5
+  captured: bPe5, which saw d4 f4
+  mover drops: a4 a6 b4(n) b6 b7(p) c4(P) c6(N)
+  of those, no White unit covers any more: a4 a6 b6 c4(P)
+  mover gains: a1 b2 b5 b8 c3 c7 d4 d6 e4(k) e6 e7 e8 f4 f5 f6(R) g3 g5 h2 h5
+  mover still guards next to the black king: d5
+
+=== C13 === Moves: 1...Bb7 2.Qe4
+
+FEN: 8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 0 1
+
+Bb7: bB c6->b7
+  opens: bRc5 now sees c7(p)
+  mover drops: a4(p) b5 d7 e8
+  of those, no Black unit covers any more: d7 e8
+  mover gains: a6 c6 c8
+  mover still guards next to the black king: d5 e4
+Qe4+: wQ e7->e4
+  closes: wBg6 no longer sees d3(N)
+  closes: bBb7 no longer sees f3 g2 h1
+  mover drops: c5(r) c7(p) d6 d7 d8 f6 f7 f8 g5 g7(p) h4
+  of those, no White unit covers any more: c7(p) d6 d7 d8 f6 f8 g5 g7(p) h4
+  mover gains: b7(b) c6 d3(N) d4(k) d5 e7 f3 f4 f5 g2 g4(P) g6(B) h1
+  mover still guards next to the black king: e3(N) e5
+
+=== C14 === Moves: 1...g6 2.Nc6
+
+FEN: 1B6/6p1/1P5N/1p2rp2/1N1k1P2/5K2/2Q2P2/8 b - - 1 1
+
+g6: bP g7->g6
+  mover drops: f6 h6(N)
+  of those, no Black unit covers any more: f6 h6(N)
+  mover gains: f5(p) h5
+Nc6+: wN b4->c6
+  closes: wQc2 no longer sees c7 c8
+  mover drops: a2 a6 c2(Q) d3 d5
+  of those, no White unit covers any more: a6 c2(Q) d5
+  mover gains: a5 a7 b4 b8(B) d4(k) d8 e5(r) e7
+  black king gains flight: d5
+
+=== C15 === Moves: 1...Rda1 2.Nc6
+
+FEN: K2N2Q1/4B1n1/3p1P2/p1p1k3/r7/1n2P1N1/6B1/3r4 b - - 1 1
+
+Rda1: bR d1->a1
+  mover drops: d2 d3 d4 d5 d6(p)
+  of those, no Black unit covers any more: d3
+  mover gains: a2 a3 a4(r) d1
+Nc6#: wN d8->c6
+  opens: wQg8 now sees a8(K) b8 c8
+  closes: wBg2 no longer sees a8(K) b7
+  mover drops: b7 e6 f7
+  mover gains: a5(p) a7 b4 b8 d4 d8 e5(k) e7(B)
+
+=== C16 === Moves: 1...Qd6 2.Nf3
+
+FEN: 8/2R2N2/4p1B1/1PPk4/R2N1q2/2P1p3/2P2PP1/1K1Q4 b - - 1 1
+
+Qd6: bQ f4->d6
+  mover drops: d4(N) e3(p) e4 f2(P) f3 f5 f6 f7(N) g4 g5 h4 h6
+  of those, no Black unit covers any more: e3(p) f3 f6 f7(N) g4 g5 h4 h6
+  mover gains: a6 b6 c5(P) c6 d5(k) d7 d8 e6(p) e7 f4 f8
+  mover still guards next to the black king: e5
+Nf3#: wN d4->f3
+  opens: wQd1 now sees d5(k)
+  opens: wRa4 now sees e4 f4 g4 h4
+  closes: wQd1 no longer sees g4 h5
+  mover drops: b3 b5(P) c2(P) c6 e2 e6(p) f5
+  of those, no White unit covers any more: b5(P) e6(p)
+  mover gains: d2 d4 e1 e5 g1 g5 h2 h4
+
+=== C17 === Moves: 1...Rxe2 2.Rf3
+
+FEN: B3K3/3N4/6pN/6p1/5k2/1Q2b2R/4Pr2/1b1r4 b - - 0 1
+
+Rxe2: bR f2->e2
+  opens: bBe3 now sees g1
+  captured: wPe2, which saw d3 f3
+  mover drops: f1 f3 f4(k)
+  mover gains: a2 b2 c2 d2 e1 e3(b) f2
+Rf3#: wR h3->f3
+  closes: wBa8 no longer sees g2 h1
+  mover drops: h1 h2 h4 h5 h6(N)
+  of those, no White unit covers any more: h1 h2 h4 h5 h6(N)
+  mover gains: f1 f2 f4(k) h3
+  mover still guards next to the black king: e3(b) g3
+
+=== C18 === Moves: 1...Rd8 2.Qe5
+
+FEN: q3r3/8/3B4/N1N4Q/p1PkPR1r/6p1/3Pp3/3nK2b b - - 0 1
+
+Rd8: bR e8->d8
+  closes: bQa8 no longer sees e8
+  mover drops: e4(P) e5 e6 e7
+  of those, no Black unit covers any more: e6 e7
+  mover gains: d6(B) d7 e8
+Qe5#: wQ h5->e5
+  opens: bRh4 now sees h6 h7 h8
+  closes: wBd6 no longer sees f4(R)
+  mover drops: e2(p) f3 f7 g4 g6 h4(r) h6 h7
+  of those, no White unit covers any more: g6 h6 h7
+  mover gains: d4(k) d6(B) e4(P) e6 e7 f4(R) f6 g7 h5
+  mover still guards next to the black king: c5(N) d5
+
+=== C19 === Moves: 1...e6 2.Qg5
+
+FEN: 3b4/4p1Q1/8/5k1P/8/1B3P1N/8/7K b - - 1 1
+
+e6: bP e7->e6
+  opens: wQg7 now sees a7 b7 c7 d7
+  opens: bBd8 now sees f6 g5 h4
+  closes: wBb3 no longer sees f7 g8
+  mover drops: d6 f6
+  of those, no Black unit covers any more: d6
+  mover gains: d5 f5(k)
+Qg5+: wQ g7->g5
+  closes: bBd8 no longer sees h4
+  mover drops: a1 a7 b2 b7 c3 c7 d4 d7 e5 f7 f8 h7 h8
+  of those, no White unit covers any more: a1 a7 b2 b7 c3 c7 d4 d7 e5 f7 f8 h7 h8
+  mover gains: c1 d2 d8(b) e3 f4 f5(k) g7 h4 h5(P)
+  mover still guards next to the black king: f6 g4 g6
+  black king gains flight: e5
+
+=== C20 === Moves: 1...e1=N 2.Re7
+
+FEN: 4N2K/2R2p2/5P1p/4k1p1/3bP3/5P2/4p3/2BQ4 b - - 1 1
+
+e1=N: bN e2->e1
+  opens: wQd1 now sees f3(P)
+  closes: wQd1 no longer sees f1 g1 h1
+  mover drops: d1(Q) f1
+  of those, no Black unit covers any more: d1(Q) f1
+  mover gains: c2 d3 f3(P) g2
+Re7#: wR c7->e7
+  mover drops: c1(B) c2 c3 c4 c5 c6 c8
+  of those, no White unit covers any more: c3 c4 c5 c6 c8
+  mover gains: c7 e5(k) e6 e8(N)
+  black king loses flight: e6
+
+=== C21 === Moves: 1...Bf6 2.Be3
+
+FEN: nK6/3B4/N2PP2R/1QBk2P1/5P2/2b2P2/2b5/8 b - - 1 1
+
+Bf6: bB c3->f6
+  closes: wRh6 no longer sees e6(P)
+  mover drops: a5 b4 d2 e1
+  of those, no Black unit covers any more: a5 b4 d2 e1
+  mover gains: c3 d8 e7 g5(P)
+  mover still guards next to the black king: d4 e5
+Be3+: wB c5->e3
+  opens: wQb5 now sees d5(k)
+  mover drops: a3 b4 d6(P)
+  of those, no White unit covers any more: a3 d6(P)
+  mover gains: c1 c5 d2 f4(P)
+  mover still guards next to the black king: d4
+  black king gains flight: d6(P)
+
+=== C22 === Moves: 1...Rb5 2.Qe4
+
+FEN: 8/qp6/1b2Q1p1/3P2B1/rr5p/pPPk4/3NN3/3K4 b - - 0 1
+
+Rb5: bR b4->b5
+  opens: bRa4 now sees c4 d4 e4 f4 g4 h4(p)
+  mover drops: a4(r) c4 d4 e4 f4 g4 h4(p)
+  mover gains: a5 b4 c5 d5(P)
+Qe4+: wQ e6->e4
+  closes: bRa4 no longer sees f4 g4 h4(p)
+  mover drops: b6(b) c6 c8 d6 d7 f6 f7 g8 h3
+  of those, no White unit covers any more: b6(b) c8 d6 d7 f7 g8 h3
+  mover gains: a4(r) b4 c4 d3(k) d4 e6 f3 f4 g2 h1 h4(p)
+  mover still guards next to the black king: e2(N) e3
+
+=== C23 === Moves: 1...Bb3 2.Ng6
+
+FEN: 5R1B/4p1NB/R3P3/3nkP2/4P2N/4PP2/b6K/8 b - - 1 1
+
+Bb3: bB a2->b3
+  opens: wRa6 now sees a1
+  mover drops: b1
+  of those, no Black unit covers any more: b1
+  mover gains: a2 a4 c2 d1
+  mover still guards next to the black king: d5(n)
+Ng6#: wN h4->g6
+  closes: wBh7 no longer sees f5(P)
+  mover drops: f3(P) f5(P) g2
+  of those, no White unit covers any more: f3(P)
+  mover gains: e5(k) e7(p) f4 f8(R) h4 h8(B)
+
+=== C24 === Moves: 1...Rb8 2.Bh7
+
+FEN: 6B1/1rn5/3P1R2/1p1NB1p1/1PbPk1P1/4P1K1/2P5/8 b - - 0 1
+
+Rb8: bR b7->b8
+  mover drops: a7 c7(n)
+  of those, no Black unit covers any more: a7 c7(n)
+  mover gains: a8 b7 c8 d8 e8 f8 g8(B)
+Bh7+: wB g8->h7
+  opens: bRb8 now sees h8
+  mover drops: d5(N) e6 f7
+  of those, no White unit covers any more: d5(N)
+  mover gains: e4(k) f5 g6 g8
+  black king gains flight: d5(N)
+
+=== C25 === Moves: 1...Re5 2.Qxe5
+
+FEN: 8/2p1Q1p1/2b3B1/r1r5/p1Pk2P1/3NN3/3K4/8 b - - 0 1
+
+Re5: bR c5->e5
+  opens: bRa5 now sees d5 e5(r)
+  opens: wQe7 now sees a3 b4
+  closes: wQe7 no longer sees e3(N) e4
+  mover drops: c4(P) c6(b)
+  of those, no Black unit covers any more: c6(b)
+  mover gains: c5 e3(N) e4 e6 e7(Q)
+  mover still guards next to the black king: d5
+Qxe5+: wQ e7->e5
+  captured: bRe5, which saw a5(r) b5 c5 d5 e3(N) e4 e6 e7 f5 g5 h5
+  mover drops: a3 b4 d7 d8 f7 f8 h4
+  of those, no White unit covers any more: a3 d7 d8 f8 h4
+  mover gains: a5(r) b5 d4(k) d5 e3(N) e4 e7 f4 f5 g3 h2 h5
+  mover still guards next to the black king: c5
+
+=== C26 === Moves: 1...Rb5 2.Nxb3
+
+FEN: 8/4N3/8/2pP2R1/Qrbk1P1n/npR5/1K1N1P2/1B6 b - - 1 1
+
+Rb5: bR b4->b5
+  opens: wQa4 now sees c4(b)
+  closes: wQa4 no longer sees c6 d7 e8
+  closes: bBc4 no longer sees a6
+  mover drops: a4(Q) c4(b)
+  of those, no Black unit covers any more: a4(Q)
+  mover gains: a5 b4 c5(p)
+  now pinned: bBc4
+Nxb3+: wN d2->b3
+  captured: bPb3, which saw a2 c2
+  mover drops: b1(B) c4(b) e4 f1 f3
+  of those, no White unit covers any more: f1
+  mover gains: a1 a5 c1 c5(p) d2 d4(k)
+  now pinned: wNb3
+
+=== C27 === Moves: 1...Rb7 2.Nc3
+
+FEN: 8/8/1r6/5p1N/2PBkPpK/4P2P/3PPn2/1N4r1 b - - 1 1
+
+Rb7: bR b6->b7
+  opens: wBd4 now sees a7
+  mover drops: a6 c6 d6 e6 f6 g6 h6
+  of those, no Black unit covers any more: a6 c6 d6 e6 f6 g6 h6
+  mover gains: a7 b6 c7 d7 e7 f7 g7 h7
+Nc3#: wN b1->c3
+  opens: bRg1 now sees a1
+  closes: wBd4 no longer sees a1 b2
+  mover drops: a3 d2(P)
+  of those, no White unit covers any more: a3 d2(P)
+  mover gains: a2 a4 b1 b5 d1 d5 e2(P) e4(k)
+
+=== C28 === Moves: 1...Nf7 2.Qf3
+
+FEN: 7n/6b1/1Np5/8/R2Pk1K1/2Q5/8/8 b - - 1 1
+
+Nf7: bN h8->f7
+  mover drops: g6
+  of those, no Black unit covers any more: g6
+  mover gains: d6 d8 e5 g5 h6 h8
+Qf3#: wQ c3->f3
+  mover drops: a1 a5 b2 b4 c1 c2 c4 c5 c6(p) d2 d4(P) e1
+  of those, no White unit covers any more: b2 c1 c2 c6(p) d2 e1
+  mover gains: c3 d1 e2 e4(k) f1 f2 f4 f5 f6 f7(n) g2 g4(K) h1
+  mover still guards next to the black king: d3 e3
+
+=== C29 === Moves: 1...Bd6 2.Rxd6
+
+FEN: 7B/2RKpP2/p4R2/4b1N1/1PPk2Br/2N3Qp/r4Pn1/7q b - - 1 1
+
+Bd6: bB e5->d6
+  opens: wQg3 now sees d6(b)
+  closes: wRf6 no longer sees a6(p) b6 c6
+  mover drops: d4(k) f6(R)
+  of those, no Black unit covers any more: d4(k)
+  mover gains: b4(P) c5 e5 e7(p)
+Rxd6#: wR f6->d6
+  opens: wBh8 now sees d4(k) e5
+  captured: bBd6, which saw b4(P) c5 c7(R) e5 e7(p) f4 g3(Q)
+  mover drops: f2(P) f3 f4 f5 f7(P)
+  mover gains: a6(p) b6 c6 d4(k) d5 d7(K) f6
+
+=== C30 === Moves: 1...c1=R 2.Qc4
+
+FEN: 4r3/3p4/3P1RN1/bQP5/Kn2kNb1/2p5/2p1pBP1/8 b - - 0 1
+
+c1=R: bR c2->c1
+  mover drops: -
+  mover gains: a1 c2 c3(p) e1 f1 g1 h1
+Qc4#: wQ b5->c4
+  mover drops: a4(K) a5(b) b6 b7 b8 c6 d7(p)
+  of those, no White unit covers any more: a4(K) b7 b8 c6 d7(p)
+  mover gains: a2 b3 b5 c3(p) d4 d5 e4(k) e6 f7 g8
+  mover still guards next to the black king: d3
+
+=== C31 === Moves: 1...Bxf6 2.Ne6
+
+FEN: 2R4B/3KpP2/p4R2/4b1N1/1PPk2Br/2N3Qp/r4Pn1/7q b - - 1 1
+
+Bxf6: bB e5->f6
+  opens: wQg3 now sees b8 c7 d6
+  captured: wRf6, which saw a6(p) b6 c6 d6 e6 f2(P) f3 f4 f5 f7(P) g6 h6
+  mover drops: b8 c7 d6 f4 g3(Q)
+  of those, no Black unit covers any more: b8 c7 g3(Q)
+  mover gains: e5 e7(p) g5(N) g7 h8(B)
+  mover still guards next to the black king: d4(k)
+  now pinned: bBf6
+Ne6#: wN g5->e6
+  opens: bBf6 now sees h4(r)
+  closes: wBg4 no longer sees d7(K)
+  mover drops: e4 f3 f7(P) h3(p) h7
+  of those, no White unit covers any more: f7(P) h7
+  mover gains: c5 c7 d4(k) d8 f4 f8 g5 g7
+
+=== C32 === Moves: 1...Qxf5 2.Nd3
+
+FEN: KB3R2/4p2P/4Pq2/2pPNB1p/1pRbNk1P/6p1/3P2Q1/7n b - - 1 1
+
+Qxf5: bQ f6->f5
+  opens: wRf8 now sees f5(q)
+  captured: wBf5, which saw e4(N) e6(P) g4 g6 h3 h7(P)
+  mover drops: e7(p) g7 h4(P) h6 h8
+  of those, no Black unit covers any more: e7(p) g7 h4(P) h6 h8
+  mover gains: e4(N) f4(k) f6 g4 h3 h5(p) h7(P)
+  mover still guards next to the black king: e5(N) g5
+  now pinned: bQf5
+  black king loses flight: f5(q)
+Nd3+: wN e5->d3
+  opens: bBd4 now sees f6 g7 h8
+  opens: bQf5 now sees d5(P)
+  opens: wBb8 now sees f4(k)
+  mover drops: c4(R) c6 d7 f3 f7 g4 g6
+  of those, no White unit covers any more: c4(R) g4 g6
+  mover gains: b2 b4(p) c1 c5(p) e1 e5 f2 f4(k)
+  black king gains flight: g4
+
+=== C33 === Moves: 1...Qf7 2.Qxe5
+
+FEN: 3N1r1B/3R4/2P2q2/1K1pnp2/3k1p2/3B2p1/3PQ3/8 b - - 0 1
+
+Qf7: bQ f6->f7
+  opens: wBh8 now sees e5(n)
+  closes: wRd7 no longer sees g7 h7
+  closes: bRf8 no longer sees f6
+  mover drops: c6(P) d6 d8(N) e5(n) g5 h4 h6 h8(B)
+  of those, no Black unit covers any more: d6 g5 h4 h6
+  mover gains: d5(p) d7(R) e8 f6 g8 h5 h7
+  now pinned: bNe5
+Qxe5+: wQ e2->e5
+  opens: wBd3 now sees f1
+  captured: bNe5, which saw c4 c6(P) d3(B) d7(R) f3 f7(q) g4 g6
+  mover drops: d1 d2(P) d3(B) f1 f2 f3 g2 g4 h2 h5
+  of those, no White unit covers any more: d1 d2(P) d3(B) f2 f3 g2 g4 h2 h5
+  mover gains: b8 c7 d4(k) d5(p) d6 e2 e6 e7 e8 f4(p) f5(p) f6 g7 h8(B)
+  mover still guards next to the black king: e3 e4
+  no longer pinned: bNe5 (captured)
+  black king gains flight: d3(B)
+
+=== C34 === Moves: 1...Ba7 2.Re3
+
+FEN: 8/3R1B2/1b1P4/8/K1N3r1/5k2/3n3Q/4R3 b - - 0 1
+
+Ba7: bB b6->a7
+  mover drops: a5 c7 d8
+  of those, no Black unit covers any more: a5 c7 d8
+  mover gains: b6 b8
+  mover still guards next to the black king: e3 f2
+Re3+: wR e1->e3
+  closes: bBa7 no longer sees f2 g1
+  mover drops: a1 b1 c1 d1 f1 g1 h1
+  of those, no White unit covers any more: a1 b1 c1 d1 f1
+  mover gains: a3 b3 c3 d3 e1 f3(k)
+  mover still guards next to the black king: e2 e4
+
+=== C35 === Moves: 1...Na2 2.Bb6
+
+FEN: K7/1BNP1p2/5R2/B1k1Np2/1n4n1/b1P3p1/5R2/1r3bQ1 b - - 1 1
+
+Na2: bN b4->a2
+  opens: bRb1 now sees b5 b6 b7(B)
+  opens: bBa3 now sees c5(k)
+  opens: wBa5 now sees c3(P)
+  mover drops: a6 c2 c6 d3 d5
+  of those, no Black unit covers any more: c2
+  mover gains: b4 c1 c3(P)
+Bb6+: wB a5->b6
+  closes: bRb1 no longer sees b7(B)
+  closes: wRf6 no longer sees a6
+  mover drops: b4 c3(P)
+  of those, no White unit covers any more: c3(P)
+  mover gains: a5 a7 c5(k)
+
+=== C36 === Moves: 1...Re5 2.Ne6
+
+FEN: q3r3/8/3B4/N1N5/p1PkPR1r/6p1/3PQ3/3nK2b b - - 0 1
+
+Re5: bR e8->e5
+  opens: bQa8 now sees f8 g8 h8
+  closes: wBd6 no longer sees f4(R)
+  mover drops: a8(q) b8 c8 d8 f8 g8 h8
+  of those, no Black unit covers any more: a8(q)
+  mover gains: c5(N) d5 e8 f5 g5 h5
+  mover still guards next to the black king: e4(P)
+Ne6+: wN c5->e6
+  opens: bRe5 now sees a5(N) b5
+  opens: wBd6 now sees a3 b4
+  closes: bRe5 no longer sees e7 e8
+  mover drops: a4(p) a6 b3 b7 d3 d7 e4(P)
+  of those, no White unit covers any more: a4(p) a6 d7
+  mover gains: c5 c7 d4(k) d8 f4(R) f8 g5 g7
+
+=== C37 === Moves: 1...Qg4 2.Qf3
+
+FEN: 8/2R2N2/4p1B1/1PPk4/R2N1q2/2P1p3/2P2PP1/1K1Q4 b - - 1 1
+
+Qg4: bQ f4->g4
+  closes: wQd1 no longer sees h5
+  mover drops: c7(R) d6 e3(p) e5 f2(P) f6 f7(N) h2 h6
+  of those, no Black unit covers any more: c7(R) e3(p) f6 f7(N) h2 h6
+  mover gains: d1(Q) e2 e6(p) f4 g2(P) g6(B) h3 h5
+  mover still guards next to the black king: d4(N) e4
+Qf3+: wQ d1->f3
+  closes: bQg4 no longer sees d1 e2
+  mover drops: b1(K) c1 c2(P) d2 d3 d4(N) e1 f1 g1 h1
+  of those, no White unit covers any more: b1(K) d2 e1 f1 g1 h1
+  mover gains: d1 d5(k) e3(p) e4 f2(P) f4 f5 f6 f7(N) g2(P) g3 h3
+
+=== C38 === Moves: 1...Ne1 2.Rf4
+
+FEN: 7B/2RKpP2/p4R2/4b1N1/1PPk2Br/2N3Qp/r4Pn1/7q b - - 1 1
+
+Ne1: bN g2->e1
+  opens: bQh1 now sees a8 b7 c6 d5 e4 f3
+  opens: wQg3 now sees g1
+  closes: bQh1 no longer sees a1 b1 c1 d1
+  mover drops: e3 f4 h4(r)
+  of those, no Black unit covers any more: h4(r)
+  mover gains: c2 d3 f3 g2
+Rf4+: wR f6->f4
+  opens: bBe5 now sees g7 h8(B)
+  opens: wBh8 now sees e5(b)
+  closes: wQg3 no longer sees e5(b)
+  closes: bBe5 no longer sees g3(Q)
+  mover drops: a6(p) b6 c6 d6 e6 g6 h6
+  of those, no White unit covers any more: a6(p) b6 g6 h6
+  mover gains: d4(k) e4 f6 g4(B)
+  now pinned: bBe5
+
+=== C39 === Moves: 1...Nh3 2.Ne6
+
+FEN: 1K6/8/8/p1N2Qnp/1b1kB3/3P1bN1/1PPn1P2/7q b - - 1 1
+
+Nh3: bN g5->h3
+  opens: wQf5 now sees h5(p)
+  closes: bQh1 no longer sees h4 h5(p)
+  mover drops: e4(B) e6 f3(b) f7 h7
+  of those, no Black unit covers any more: e6 f7 h7
+  mover gains: f2(P) f4 g1 g5
+Ne6#: wN c5->e6
+  opens: bBb4 now sees d6 e7 f8
+  opens: wQf5 now sees a5(p) b5
+  closes: wQf5 no longer sees c8 d7
+  mover drops: a4 a6 b3 b7 d3(P) d7 e4(B)
+  of those, no White unit covers any more: a4 a6 d7
+  mover gains: c5 c7 d4(k) d8 f4 f8 g5 g7
+
+=== C40 === Moves: 1...Rb2 2.Qd5
+
+FEN: 8/5Q2/6N1/8/1p2k2K/3nNp2/2rP1P2/1Bnb4 b - - 1 1
+
+Rb2: bR c2->b2
+  opens: wBb1 now sees d3(n)
+  opens: bBd1 now sees a4 b3
+  mover drops: c1(n) c3 c4 c5 c6 c7 c8
+  of those, no Black unit covers any more: c4 c6 c7 c8
+  mover gains: b1(B) b3 b4(p) c2
+  now pinned: bNd3
+Qd5#: wQ f7->d5
+  mover drops: a7 c7 e7 e8 f3(p) f4 f6 f8 g6(N) g7 h7
+  of those, no White unit covers any more: a7 c7 e8 f3(p) f6 g6(N) g7 h7
+  mover gains: a5 a8 b5 c5 c6 d3(n) d4 d6 d8 e4(k) e5 f7 g5 h5
+  mover still guards next to the black king: f5
+  black king loses flight: d4
+
+Reply with ONE JSON object and nothing else: {"C01": "Y", "C02": "N", ...}

@@ -1681,3 +1681,8 @@ no motive layer to mirror.
   bishop/rook next to the king read as check) and FEN misses discovered checks, rays picture best; solving by sight,
   every false mate a departure effect and 1...Qd6 missed again. Two round-2 solvers stopped at 31 minutes (missing data).
   Compose skill paragraph sharpened (contact, discovered checks, departure effects); two lessons.
+- 7 Nov ("continue"): built the move-change view the experiments asked for, tools/move_delta.py (lines opened/closed,
+  guards dropped/gained/kept, side's lost guards, pins, flights; text and picture; tests on the four round-2 errors incl.
+  the Qd6 unpin). Round 4, 40 "1...X 2.Y mate?" claims at low effort: FEN 20, plain diagram 19, boards after the moves 31
+  (control), move-change text 40, picture 40 - with the caveat that the traps were chosen by the effects the view shows.
+  Recorded as round 4 of board_pictures_2026-11-06.md; compose skill points to the tool; one lesson. Full regression run.
