@@ -1686,3 +1686,18 @@ no motive layer to mirror.
   the Qd6 unpin). Round 4, 40 "1...X 2.Y mate?" claims at low effort: FEN 20, plain diagram 19, boards after the moves 31
   (control), move-change text 40, picture 40 - with the caveat that the traps were chosen by the effects the view shows.
   Recorded as round 4 of board_pictures_2026-11-06.md; compose skill points to the tool; one lesson. Full regression run.
+
+## Session 10 Nov 2026 (chat, "compose a problem with two knight defenses on the same square, answered by a mate on the same square")
+- Bench read first: his two sittings of the day were a cleared board and a rook test; nothing on this theme.
+- Reading: both knights to one square X, both mates capture on X by different pieces (this also satisfies "both mates on
+  one square"). The knight that stays guards X, so the mates need a half-pin or a discharge. Script: no half-pinned pair
+  shares a target next to the king; Ke5, Se4/Se2 (pinner e1), X = c3.
+- Hand scheme: 1...Se4-c3 2.Sb5xc3# (Ra5 battery, the knight covers e4), 1...Se2-c3 2.Qxc3# (Se4 pinned); separation
+  by the e4 flight and by bBf1 seeing through e2 to b5. freethreat (12 runs over three rounds) converged on the threat
+  2.Qd5# (the knight on c3 guards d5) and on sound post-keys; keyfind gave 1.d6! (the pawn masked the battery and the
+  threat square): sound, 8+6, gate FAIL single phase only. keyfind --patch also gave 1.Qc6! (both mates changed from a
+  set 2.Qd4#, but that set mate follows every knight move; key piece attacked by c7).
+- Second layer, tried and failed: bishop mask on d5 (one-sided tries only), knight mask with line-cutting landings
+  (2x2 plan, threat Rd5 lets every Se4 move defend), evolve DEFTRIES=1/2, CHANGED=1, TRYCHANGE=1 (8 jobs): nothing past
+  the seeds. Shown to him as a scheme with the plan, not as a problem. Recorded: two stage positions, four lessons, the
+  themes reference (changed_mates.md), diagram docs/blog/cards/claude-two-knights-c3-scheme.png.

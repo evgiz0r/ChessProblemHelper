@@ -24,6 +24,16 @@ diagram; rank/file protection of d5/e4 is a check line, diagonal protection of b
 sacrifice on b5 to the c7 knight repeats its mate (same departure); set Sf3# needs f3, the g5 knight's third square.
 Search: unmask_search with KSQ and THREAT fixed; bare cores in freethreat gave nothing. Published layers to beat:
 tries refuted by each knight (Bourd 2004 psis-6ceeea4d02, Kapros, Ahues), changed mates (Stojnic 2004 1st Prize).
+Two knights to one square, both mates ON that square (10 Nov 2026, claude-two-knights-c3-mates-c3,
+8/8/2Q1NpK1/RN1Pk3/4np2/8/B3n3/4Rb2, 1.d6! (2.Qd5#) S4c3 2.Sxc3#, S2c3 2.Qxc3#; stage, gate FAIL single phase):
+the knight that stays home guards the square too, so a direct mate there needs it pinned (half-pin Re1-Se2-Se4-Ke5)
+or the mate must be a discharge (Sb5xc3 unmasking Ra5; the knight on c3 then covers the vacated e4). A half-pinned
+pair never shares a target next to its king: the square is two away diagonally (c3/g3 for Ke5). The arrival on c3
+defends only by guarding d5 or e4 (no white line through c3 reaches the field except the long diagonal, which the
+knights would interpose on). Separation: Qxc3? Ke4 (the queen's departure from c6 gives up e4), Sxc3? Bb5 (bBf1 sees
+through the vacated e2). Second layer not found: a light bishop mask on d5 gives only tries refuted by 1...Se2-c3
+(it supplies e6/f5 alone); a knight mask on d5 can cut one line per landing (e3 pin line, b4 Qa5-c3, e7 Bd8-f6) -
+the 2x2 plan, unbuilt (Rd5 leaves e4, so every Se4 move defends; d4 needs a third guard in the discharge mate).
 Two captures of the threat's guard (daily No. 3): Sd7xe5 and Re3xe5 both remove d6's only guard. Set mates by
 the lines the departures open (Rd8#, Qd2# through e3); 1.Qe7 leaves the g5-d2 line and the mates change to the
 knight's unguard of c5 (Qc5#) and the rook's self-block of e5 (Qxd7#). Evolve CHANGED=1 seeded with the core

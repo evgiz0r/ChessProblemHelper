@@ -4159,6 +4159,44 @@
    "status": "draft (gate FAIL: one-sided extension)",
    "note": "1.Re6! (2.Qe4#) Sxe6 2.Qxe6#, Sd4 2.Rxd6#, f5 2.Rxf5#; tries 1.Re8? (Sxe8 2.Qe6#, Se6 2.Qxe6#) and 1.Ree7? both fail to Sd4!: only from e6 does the rook take d6, so the short Bristol is the key and the long ones tries. bPd6/bPf6 guard e5 (1.Re5+ refuted twice, no Qe5). Flaws: the tries reach only the Sd4 variation (one-sided, gate FAIL); one refutation for both tries; no changed mates (Se6/Sxe6 both 2.Qxe6#); Sxe6 Qxe6 and f5 Rxf5 capture the defender; wKd7 unnatural; bPc3 and bPf2 are cook-stoppers (bPf2 stops 1.Rxf6). Not shown as a problem; his request was two phases with changed play.",
    "solution": "#2 (5+8)   FEN 8/2nK1R2/3p1p2/1npk4/8/1Np1R3/4Qp2/8 w - - 0 1\nSet play:\n   1...Sa7/Sa3 2.Qd3#\n   1...f5 2.Rxf5#\n   1...c4 2.Qf3#\n   unprovided: Se8, Sa8, Se6, Sa6, Sd4, c2, f1=Q, f1=R, f1=B, f1=S\nTry: 1.Re8? (threat: 2.Qe4#)\n   1...Sxe8 2.Qe6#\n   1...Se6 2.Qxe6#\n   1...f5 2.Rxf5#\n   (10 further moves allow the threat)\n   but 1...Sd4!\nTry: 1.Ree7? (threat: 2.Qe4#)\n   1...Se6 2.Qxe6#\n   1...f5 2.Rxf5#\n   (11 further moves allow the threat)\n   but 1...Sd4!\nTry: 1.Qg4? (threat: 2.Qe4#)\n   1...f5 2.Rxf5#\n   (12 further moves allow the threat)\n   but 1...Sd4!\nKey: 1.Re6! (threat: 2.Qe4#)\n   1...Sxe6 2.Qxe6#\n   1...Sd4 2.Rxd6#\n   1...f5 2.Rxf5#\n   (11 further moves allow the threat)\nPatterns:\n   Bristol: 1.Re8 + 2.Qe4#   [try Re8]\n   Bristol (in variation): 1.Re8 Sxe8 2.Qe6#   [try Re8]\n   Bristol (in variation): 1.Re8 Se6 2.Qxe6#   [try Re8]\n   Bristol: 1.Ree7 + 2.Qe4#   [try Ree7]\n   Bristol (in variation): 1.Ree7 Se6 2.Qxe6#   [try Ree7]\n   Bristol: 1.Re6 + 2.Qe4#   [key Re6]\n(4106 nodes, 0.27s)"
+  },
+  {
+   "id": "claude-two-knights-c3-mates-c3",
+   "fen": "8/8/2Q1NpK1/RN1Pk3/4np2/8/B3n3/4Rb2",
+   "stip": "#2",
+   "author": "Claude (10 Nov 2026), theme set by E. Bourd",
+   "source": "request 'two knight defences on the same square, answered by a mate on the same square'; half-pin geometry by hand, post-key by freethreat (CORE Ke5/Se4/Se2/Bf1/Re1/Ra5/Sb5, WANT N4c3->Nb5c3, N2c3->[QB]*c3), key by keyfind.",
+   "themes": [
+    "Two black knights defend on the same square c3 (guard d5 against 2.Qd5#); both mates capture on c3, by different pieces",
+    "Half-pin Re1-Se2-Se4-Ke5: after 1...Se2-c3 the pinned Se4 cannot retake on c3 (2.Qxc3#)",
+    "Discovered mate on c3: 1...Se4-c3 2.Sxc3# (Ra5 battery); the white knight on c3 covers the vacated e4",
+    "Dual avoidance: 1...Se4-c3 2.Qxc3+? Ke4 (the queen's departure from c6 gives up e4); 1...Se2-c3 2.Sxc3+? Bb5 (Bf1 sees through the vacated e2)",
+    "Unmasking key: the pawn d5 masks the battery and blocks the threat square; on d6 it shuts Qc7/Qd6 (set duals after 1...Se2-c3)"
+   ],
+   "keys": [
+    "d6"
+   ],
+   "cooked": false,
+   "rejected": "single phase (gate FAIL): no tries, no changed mates; a scheme stage",
+   "note": "1.d6! (2.Qd5#) S4c3 2.Sxc3#, S2c3 2.Qxc3#. Sound, 8+6, 3 pawns, gate FAIL 'single phase' only. Connected variations: Sb5 and Qc6 hold d6 for each other. Flaws: single phase; the key is the obvious clearance of the queen's mating square; both mates capture the defender (inherent to the theme as read); the two dual avoidances have different motives (flight / black line opened); the half-pin is used in one direction only (Se2's pin plays no role). Second layer tried and not found: (1) light bishop mask on d5 (8/8/2QPNpK1/RN1Bk3/4np2/8/4n3/4Rb2): Bb3/Ba2 give the pair, but the bishop supplies only light squares (e6, f5), so every try fails to 1...Se2-c3 (one-sided); 1.Bc4 shuts Bf1 and the queen's c-file and both knights get 2.Sxc3#. (2) Knight mask on d5 with Qa5 rear, Rd7 (threat Rd5), Bd8 (f6 via e7): landings e3 (pin line), b4 (Qa5-c3) and e7 (Bd8-f6) each cut one line - the 2x2 plan - but Rd5 does not cover e4, so every Se4 move defends; d4 in the Sxc3 mate needs a third guard. (3) evolve DEFTRIES=1/2, CHANGED=1, TRYCHANGE=1 from this seed: nothing beyond the seed.",
+   "solution": "#2 (8+6)   FEN 8/8/2Q1NpK1/RN1Pk3/4np2/8/B3n3/4Rb2 w - - 0 1\nSet play:\n   1...Sd4 2.Qc7#/Qd6#  [dual]\n   1...S2g3/Sg1/Sc1 2.Qc7#/Qd6#/Qc3#  [dual]\n   1...S2c3 2.Qxc3#/Qc7#/Qd6#  [dual]\n   unprovided: Sd6, Sg5, Sc5, S4g3, S4c3, Sf2, Sd2, Bh3, Bg2, f5, f3\nTry: 1.Rxe2? (threat: 2.Qc7#/Qd6#/Qc3#)\n   (4 further moves allow the threat)\n   but 1...Bxe2!\nTry: 1.Sc5? (threat: 2.Qe8#/Qe6#/Sd7#/Sd3#)\n   1...Sd6 2.Qxd6#\n   1...Sg5 2.Qxf6#/Qc7#/Qd6#  [dual]\n   (13 further moves allow the threat)\n   but 1...Sxc5!\nKey: 1.d6! (threat: 2.Qd5#)\n   1...S4c3 2.Sxc3#\n   1...S2c3 2.Qxc3#\n   (14 further moves allow the threat)\nPatterns:\n   changed threat: Qc3#/Qc7#/Qd6# / Qe6#/Qe8#/Sd3#/Sd7#   [try Rxe2 vs try Sc5]\n   changed threat: Qc3#/Qc7#/Qd6# / Qd5#   [try Rxe2 vs key d6]\n   changed threat: Qe6#/Qe8#/Sd3#/Sd7# / Qd5#   [try Sc5 vs key d6]\n(3514 nodes, 0.22s)\n"
+  },
+  {
+   "id": "claude-two-knights-c3-qc6",
+   "fen": "8/2p5/1Q1PNpK1/RN2k3/4np2/8/B3n3/4Rb2",
+   "stip": "#2",
+   "author": "Claude (10 Nov 2026), keyfind --patch on the post-key of claude-two-knights-c3-mates-c3",
+   "source": "same session; the queen as key piece, battery loaded in the diagram (its discharges fail)",
+   "themes": [
+    "Both thematic mates changed: set 1...S4c3/S2c3 2.Qd4#, after 1.Qc6! 2.Sxc3# / 2.Qxc3#"
+   ],
+   "keys": [
+    "Qc6"
+   ],
+   "cooked": false,
+   "rejected": "the set mate 2.Qd4# follows every knight move (not specific to c3), the key piece stands attacked by c7 (escape key)",
+   "note": "Gate would count the changes, but the change is random-move play: a single set mate for both defences and for every Se4 move. Kept as the sibling that shows the queen can be the key piece.",
+   "solution": "#2 (8+7)   FEN 8/2p5/1Q1PNpK1/RN2k3/4np2/8/B3n3/4Rb2 w - - 0 1\nSet play:\n   1...Sxd6/Sg5/S4g3/S4c3/Sf2/Sd2 2.Qd4#\n   1...Sd4 2.Qxd4#/Qc5#  [dual]\n   1...S2g3/Sg1/Sc1 2.Qc5#/Qd4#  [dual]\n   1...S2c3 2.Qd4#\n   unprovided: Sc5, Bh3, Bg2, cxd6, cxb6, c6, f5, f3, c5\nTry: 1.Rxe2? (threat: 2.Sbxc7#/Qc5#/Qd4#)\n   (8 further moves allow the threat)\n   but 1...cxb6!\nKey: 1.Qc6! (threat: 2.Qd5#)\n   1...S4c3 2.Sxc3#\n   1...S2c3 2.Qxc3#\n   (15 further moves allow the threat)\nChanged continuations:\n   1...S2c3: Qd4# -> Qc3#   [set play vs key Qc6]\n   1...S4c3: Qd4# -> Sc3#   [set play vs key Qc6]\nPatterns:\n   changed threat: Qc5#/Qd4#/Sbxc7# / Qd5#   [try Rxe2 vs key Qc6]\n(3411 nodes, 0.2s)\n"
   }
  ]
 }
