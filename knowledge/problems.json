@@ -4197,6 +4197,23 @@
    "rejected": "the set mate 2.Qd4# follows every knight move (not specific to c3), the key piece stands attacked by c7 (escape key)",
    "note": "Gate would count the changes, but the change is random-move play: a single set mate for both defences and for every Se4 move. Kept as the sibling that shows the queen can be the key piece.",
    "solution": "#2 (8+7)   FEN 8/2p5/1Q1PNpK1/RN2k3/4np2/8/B3n3/4Rb2 w - - 0 1\nSet play:\n   1...Sxd6/Sg5/S4g3/S4c3/Sf2/Sd2 2.Qd4#\n   1...Sd4 2.Qxd4#/Qc5#  [dual]\n   1...S2g3/Sg1/Sc1 2.Qc5#/Qd4#  [dual]\n   1...S2c3 2.Qd4#\n   unprovided: Sc5, Bh3, Bg2, cxd6, cxb6, c6, f5, f3, c5\nTry: 1.Rxe2? (threat: 2.Sbxc7#/Qc5#/Qd4#)\n   (8 further moves allow the threat)\n   but 1...cxb6!\nKey: 1.Qc6! (threat: 2.Qd5#)\n   1...S4c3 2.Sxc3#\n   1...S2c3 2.Qxc3#\n   (15 further moves allow the threat)\nChanged continuations:\n   1...S2c3: Qd4# -> Qc3#   [set play vs key Qc6]\n   1...S4c3: Qd4# -> Sc3#   [set play vs key Qc6]\nPatterns:\n   changed threat: Qc5#/Qd4#/Sbxc7# / Qd5#   [try Rxe2 vs key Qc6]\n(3411 nodes, 0.2s)\n"
+  },
+  {
+   "id": "claude-quick-qc6-pawns",
+   "fen": "8/1Q6/8/2p1p3/3k4/1P3p2/3K4/2N5",
+   "stip": "#2",
+   "author": "Claude (21 Nov 2026), random light-miniature sampler (boxed king, unique quiet key, 3 distinct mates)",
+   "source": "chat: 'a simple mate in 2, something pretty and quick, doesnt have to be high quality'",
+   "themes": [
+    "Pawn block miniature: three black pawn moves, three different mates (Qd6#, Qxc4#, Se2#)"
+   ],
+   "keys": [
+    "Qc6"
+   ],
+   "cooked": false,
+   "rejected": "gate FAIL single phase (no tries, no changes); zugzwang; set play provides only f2 (e4, c4 unprovided); 2.Qxc4# captures the defender",
+   "note": "4+4, quiet key 1.Qc6! takes the queen to the square that sees d6, c4 and e4 at once. 1...e4 2.Qd6# (self-block e4), 1...c4 2.Qxc4#, 1...f2 2.Se2# (set and solution). Shown as the light simple problem he asked for, flaws named.",
+   "solution": "#2 (4+4)   FEN 8/1Q6/8/2p1p3/3k4/1P3p2/3K4/2N5 w - - 0 1\nSet play:\n   1...f2 2.Se2#\n   unprovided: e4, c4\nKey: 1.Qc6! (zugzwang)\n   1...e4 2.Qd6#\n   1...c4 2.Qxc4#\n   1...f2 2.Se2#\n(473 nodes, 0.02s)\n"
   }
  ]
 }

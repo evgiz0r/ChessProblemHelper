@@ -142,6 +142,12 @@ very specific flights, cannot be extended without breaking. His b5-knight scheme
 a second self-block correction because every step was checked at its lightest form. My Bf2-g3 cell died
 because it needed every flight covered from the start: nothing could be added and nothing could move.
 
+## A quick light problem with no theme (21 Nov 2026)
+"Simple, pretty and quick, doesn't have to be high quality": go to `python -m chesscomp.compose.light_sampler SEED 240 OUT`
+(four seeds in parallel, then `sort -r` and read the D3 lines) after the first failed evolve round, not the fourth. It
+finds sound light placements (claude-quick-qc6-pawns, 4+4, 1.Qc6!), not mechanisms: its finds are single-phase blocks.
+Show them with the flaws named, and say that a second phase would take a real scheme.
+
 ## Tempo
 One solve per change; never sixteen minutes of placing without a solve. Between solves, `python -m chesscomp.compose.trytable FEN [SQUARE ...]`
 shows every move of a unit (threat, refutations, mates) in a second: use it for each one-unit change, then the solver. If four or five posts of the

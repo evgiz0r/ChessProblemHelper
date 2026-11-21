@@ -1701,3 +1701,15 @@ no motive layer to mirror.
   (2x2 plan, threat Rd5 lets every Se4 move defend), evolve DEFTRIES=1/2, CHANGED=1, TRYCHANGE=1 (8 jobs): nothing past
   the seeds. Shown to him as a scheme with the plan, not as a problem. Recorded: two stage positions, four lessons, the
   themes reference (changed_mates.md), diagram docs/blog/cards/claude-two-knights-c3-scheme.png.
+
+## Session 21 Nov 2026 (chat, "a simple mate in 2, something pretty and quick; doesnt have to be high quality")
+- Bench read first: nothing since his 10 Nov sittings (a cleared board, a rook test).
+- evolve, 13 jobs in 4 rounds (FLIGHT, SELFBLOCK, CORR from bare and seeded cores): checking keys, cooks, diagram flights.
+  Best idea: the king star 6K1/8/2Q1p3/4k3/3N4/5R2/5PB1/8, 1.Rg3! Kf6 Qxe6#, Kf4 Qe4#, Kxd4 Qc3#, but Kxd4 is a diagram
+  flight, and protecting the knight makes 1.Qxe6 mate in one (lesson). keyfind --patch on its post-key: nothing.
+- Wrote a random light-miniature sampler (now chesscomp/compose/light_sampler.py, with a test): 4 jobs x 4 min found
+  claude-quick-qc6-pawns, 8/1Q6/8/2p1p3/3k4/1P3p2/3K4/2N5 (4+4), 1.Qc6! zz e4 Qd6#, c4 Qxc4#, f2 Se2#. Gate FAIL single
+  phase (no try: every queen try fails to two moves), zugzwang, two unprovided set moves. Shown as the light problem he
+  asked for, flaws named; recorded as rejected for publication.
+- Time: about 70 minutes for a "quick" request; the sampler should have come after the first failed evolve round, not the
+  fourth.
